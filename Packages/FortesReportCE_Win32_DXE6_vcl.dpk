@@ -27,6 +27,7 @@ package FortesReportCE_Win32_DXE6_vcl;
 {$DEFINE VCL}
 {$DEFINE DELPHI}
 {$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'Fortes Report Comunity Edition'}
 {$IMPLICITBUILD ON}
 
 requires

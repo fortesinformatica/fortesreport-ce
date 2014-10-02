@@ -1,4 +1,4 @@
-package FortesReportCE_Win32_DXE7_vcl;
+package FortesReportCE_Win32_DXE_vcl;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
