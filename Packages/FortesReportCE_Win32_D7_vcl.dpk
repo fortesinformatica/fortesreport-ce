@@ -1,0 +1,70 @@
+package FortesReportCE_Win32_D7_vcl;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Fortes Report Comunity Edition'}
+{$IMPLICITBUILD OFF}
+{$DEFINE DELPHI}
+{$DEFINE DELPHI7}
+{$DEFINE VCL}
+
+requires
+  designide,
+  dbrtl,
+  vcldb,
+  vcl,
+  rtl,
+  vcljpg;
+
+contains
+  RLReport in '..\Source\RLReport.pas',
+  RLUtils in '..\Source\RLUtils.pas',
+  RLPreviewForm in '..\Source\RLPreviewForm.pas',
+  RLPreview in '..\Source\RLPreview.pas',
+  RLFeedBack in '..\Source\RLFeedBack.pas',
+  RLMetaFile in '..\Source\RLMetaFile.pas',
+  RLParser in '..\Source\RLParser.pas',
+  RLConsts in '..\Source\RLConsts.pas',
+  RLTypes in '..\Source\RLTypes.pas',
+  RLFilters in '..\Source\RLFilters.pas',
+  RLPrintDialog in '..\Source\RLPrintDialog.pas',
+  RLSaveDialog in '..\Source\RLSaveDialog.pas',
+  RLPrinters in '..\Source\RLPrinters.pas',
+  RLBarcode in '..\Source\RLBarcode.pas',
+  RLDraftFilter in '..\Source\RLDraftFilter.pas',
+  RLRichFilter in '..\Source\RLRichFilter.pas',
+  RLHTMLFilter in '..\Source\RLHTMLFilter.pas',
+  RLPDFFilter in '..\Source\RLPDFFilter.pas',
+  RLXLSFilter in '..\Source\RLXLSFilter.pas',
+  RLRichText in '..\Source\RLRichText.pas',
+  RLSpoolFilter in '..\Source\RLSpoolFilter.pas',
+  RLMetaVCL in '..\Source\RLMetaVCL.pas',
+  RLFindDialog in '..\Source\RLFindDialog.pas',
+  RLAbout in '..\Source\RLAbout.pas',
+  RLReg in '..\Source\RLReg.pas',
+  RLDesign in '..\Source\RLDesign.pas',
+  RlCompilerConsts in '..\Source\RlCompilerConsts.pas',
+  RLComponentFactory in '..\Source\RLComponentFactory.pas';
+
+end.
+
