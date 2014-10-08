@@ -51,6 +51,7 @@
 {$ifdef VER250} {$define DELPHIXE4} {$endif}
 {$ifdef VER260} {$define DELPHIXE5} {$endif}
 {$ifdef VER270} {$define DELPHIXE6} {$endif}
+{$ifdef VER280} {$define DELPHIXE7} {$endif}
 
 // UPs e DOWNs
 
@@ -77,6 +78,7 @@
 {$ifdef DELPHIXE4} {$define DELPHIXE4_UP} {$define DELPHIXE4_DOWN} {$endif}
 {$ifdef DELPHIXE5} {$define DELPHIXE5_UP} {$define DELPHIXE5_DOWN} {$endif}
 {$ifdef DELPHIXE6} {$define DELPHIXE6_UP} {$define DELPHIXE6_DOWN} {$endif}
+{$ifdef DELPHIXE7} {$define DELPHIXE7_UP} {$define DELPHIXE7_DOWN} {$endif}
 
 
 // UP
@@ -87,6 +89,7 @@
 {$ifdef CBUILDER4_UP} {$define CBUILDER3_UP} {$endif}
 {$ifdef CBUILDER3_UP} {$define CBUILDER1_UP} {$endif}
 
+{$ifdef DELPHIXE7_UP} {$define DELPHIXE6_UP} {$endif}
 {$ifdef DELPHIXE6_UP} {$define DELPHIXE5_UP} {$endif}
 {$ifdef DELPHIXE5_UP} {$define DELPHIXE4_UP} {$endif}
 {$ifdef DELPHIXE4_UP} {$define DELPHIXE3_UP} {$endif}
