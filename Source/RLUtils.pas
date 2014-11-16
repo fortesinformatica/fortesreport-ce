@@ -1,20 +1,20 @@
 {@unit RLUtils - Rotinas de uso geral. }
 unit RLUtils;
 
+{$i RLReport.inc}
+
+{$ifdef fpc}
+{$mode delphi}
+{$H+}
+{$endif}
+
 interface
 
 uses
   SysUtils, Classes, Math, DB,
-{$ifndef LINUX}
   Windows,
-{$else}
   Types,
-{$endif}
-{$ifdef VCL}
   Graphics, Forms;
-{$else}
-  QGraphics, QForms;
-{$endif}
 
 {@var TempDir - Especifica aonde deverão ser criados os arquivos temporários.
  Na inicialização do sistema é atribuido um valor padrão a esta variável. Este valor pode ser alterado depois.
@@ -180,7 +180,7 @@ function RGB(R, G, B: Byte): TColor;
 function NeedAuxBitmap: TBitmap;
 function NewBitmap: TBitmap; overload;
 function NewBitmap(Width, Height: Integer): TBitmap; overload;
-{$if CompilerVersion < 20 }
+{$ifdef fpc or DELPHI2009_DOWN}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
 {$ifend}
@@ -193,7 +193,7 @@ type
 
 implementation
 
-{$if CompilerVersion < 20 }
+{$ifdef fpc or DELPHI2009_DOWN}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := C in CharSet;

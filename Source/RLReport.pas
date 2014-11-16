@@ -1,6 +1,12 @@
 {@unit RLReport - Implementação dos principais componentes e tipos do FortesReport. }
 unit RLReport;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
@@ -8,13 +14,13 @@ uses
 {$ifndef DELPHI5}
   Variants,
 {$endif}
-{$ifndef LINUX}
-  Windows,
-{$else}
   Types,
-{$endif}
-{$ifdef VCL}
-  ExtCtrls, DBCtrls, Controls, Forms, Dialogs, StdCtrls, Messages, Buttons, Graphics, Mask,
+  ExtCtrls, DBCtrls, Controls, Forms, Dialogs, StdCtrls, Messages, Buttons, Graphics,
+  {$ifndef FPC}
+  Mask,
+  {$else}
+  LMessages,
+  {$endif}
 {$ifdef DELPHI}
 {$ifndef DELPHI5}
   MaskUtils,
@@ -23,15 +29,7 @@ uses
 {$ifdef CPP}
   MaskUtils,
 {$endif}
-{$else}
-  Qt, QTypes, QExtCtrls, QDBCtrls, QControls, QForms, QDialogs,
-  QStdCtrls, QButtons, QGraphics, MaskUtils,
-{$endif}
-{$ifdef VCL}
   RLMetaVCL,
-{$else}
-  RLMetaCLX,
-{$endif}
   RLMetaFile, RLFeedBack, RLParser, RLFilters, RLConsts, RLUtils,
   RLPrintDialog, RLPreviewForm, RLPreview,
   RLTypes, RLPrinters, RlCompilerConsts;

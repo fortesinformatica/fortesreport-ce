@@ -1,3 +1,12 @@
+{@unit RLMetaFile - Implementação das classes e rotinas para manipulação de coleções gráficas. }
+unit RLMetaFile;
+
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 {$ifdef VCL}
   {$define INCLUDEVCL}
 {$else}
@@ -11,9 +20,6 @@
 {$ifdef CLX}
   {$define INCLUDECLX}
 {$endif}
-
-{@unit RLMetaFile - Implementação das classes e rotinas para manipulação de coleções gráficas. }
-unit RLMetaFile;
 
 interface
 

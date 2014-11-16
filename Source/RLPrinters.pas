@@ -1,15 +1,18 @@
 {@unit RLPrinters - Implementação do wrapper para o objeto Printer. }
 unit RLPrinters;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
 interface
 
 uses
-  Classes, SysUtils, Math, 
-{$ifndef LINUX}
-  Windows, WinSpool, Graphics, Dialogs, Messages, Printers, 
-{$else}
-  QGraphics, QDialogs, QPrinters, Types, 
-{$endif}
+  {$ifdef LCLWin32}
+  Windows, WinUtilPrn, OSPrinters,
+  {$endif}
+  Classes, SysUtils, Math,
+  Graphics, Dialogs, Messages, Printers,
   RLConsts, RLTypes, RLUtils;
 
 type
@@ -122,7 +125,7 @@ begin
   raise Exception.Create(AMessage);
 end;
 
-{$ifndef LINUX}
+{$ifndef FPC}
 type
   TPrinterEx = class(TPrinter) end;
 procedure ReloadCurrentPrinter;
@@ -169,11 +172,11 @@ procedure TRLPrinterWrapper.BeginDoc(const ATitle: string = '');
 begin
   Printer.Title := ATitle;
   Printer.BeginDoc;
-{$ifndef LINUX}
+  {$ifndef FPC}
   Printer.Canvas.Font.PixelsPerInch := GetDeviceCaps(Printer.Handle, LOGPIXELSY);
-{$else}
+  {$else}
   Printer.Canvas.Font.PixelsPerInch := Printer.YDPI;
-{$endif}
+  {$endif}
 end;
 
 procedure TRLPrinterWrapper.EndDoc;
@@ -198,14 +201,15 @@ begin
   Result := Printer.Canvas;
 end;
 
-{$ifndef LINUX}
 function ConvOrientation(AOrientation: TRLSystemOrientation): TPrinterOrientation;
 begin
   if AOrientation = DMORIENT_PORTRAIT then
     Result := Printers.poPortrait
   else
     Result := Printers.poLandscape;
-end; 
+end;
+
+{$ifndef FPC}
 procedure TRLPrinterWrapper.SelectSystemPaperSize(APaperSize: TRLSystemPaperType;
   APaperWidthMM, APaperHeightMM: Double; AOrientation: TRLSystemOrientation; ASetPaperBin: Boolean);
 var
@@ -357,8 +361,9 @@ end;
 procedure TRLPrinterWrapper.SelectSystemPaperSize(APaperSize: TRLSystemPaperType;
   APaperWidthMM, APaperHeightMM: Double; AOrientation: TRLSystemOrientation; ASetPaperBin: Boolean);
 begin
-  Printer.PrintAdapter.PageSize := APaperSize;
+  //Printer.PrintAdapter.PageSize := APaperSize;
   // adaptação de dimensões para o componente
+  // Na LCL não existe metodo portável para se definir o tamanho do papel personalizado
   if APaperSize = UserPaperCode then
   begin
     {
@@ -369,7 +374,7 @@ begin
     }
   end;
   // orientação do papel
-  Printer.Orientation := AOrientation;
+  Printer.Orientation := ConvOrientation(AOrientation);
 end;
 procedure TRLPrinterWrapper.GetBinNames(AStringList: TStrings);
 begin
@@ -392,7 +397,7 @@ begin
 end;
 
 procedure TRLPrinterWrapper.LoadMetrics(var APrinterMetrics: TRLPrinterMetrics);
-{$ifndef LINUX}
+{$ifndef FPC}
 var
   dc: HDC;
 {$endif}
@@ -400,7 +405,7 @@ begin
   try
     if not AnyPrinter then
       raise Exception.Create('Nenhuma impressora selecionada.');
-{$ifndef LINUX}
+{$ifndef FPC}
     dc := Printer.Handle;
     if dc = 0 then
     begin
@@ -430,8 +435,8 @@ begin
       APrinterMetrics.PhysicalHeight := Round(FCustomHeight * APrinterMetrics.PPIY / InchAsMM)
     else 
       APrinterMetrics.PhysicalHeight := Printer.PageHeight;
-    APrinterMetrics.MarginLeft := Printer.Margins.CX;
-    APrinterMetrics.MarginTop := Printer.Margins.CY;
+    APrinterMetrics.MarginLeft := Printer.PaperSize.PaperRect.WorkRect.Left;
+    APrinterMetrics.MarginTop := Printer.PaperSize.PaperRect.WorkRect.Top;
     APrinterMetrics.MarginRight := APrinterMetrics.MarginLeft;
     APrinterMetrics.MarginBottom := APrinterMetrics.MarginTop;
     APrinterMetrics.ClientWidth := APrinterMetrics.PhysicalWidth - (APrinterMetrics.MarginLeft + APrinterMetrics.MarginRight);
@@ -477,7 +482,7 @@ begin
   Result := Token(Printers[AIndex], 2);
 end;
 
-{$ifndef LINUX}
+{$ifndef FPC}
 type
   TPrinterInfo = record
     PrinterName: string;
@@ -537,54 +542,26 @@ end;
 procedure TRLPrinterWrapper.LoadPrintersList(APrinters: TStrings);
 var
   I: Integer;
-{$ifdef LINUX}
-  S: string;
-{$endif}
 begin
   APrinters.Clear;
-{$ifdef LINUX}
-  with TStringList.Create do
-    try
-      LoadFromFile('/etc/printcap');
-      for I := 0 to Count - 1 do
-      begin
-        S := Trim(Strings[I]);
-        if (S <> '') and not (S[1] in [':', '|', '#']) then
-          if Pos('|', S) > 0 then
-            APrinters.Add(Copy(S, 1, Pos('|', S) - 1))
-          else if Pos(':', S) > 0 then
-            APrinters.Add(Copy(S, 1, Pos(':', S) - 1))
-          else
-            APrinters.Add(S);
-      end;
-    finally
-      Free;
-    end;
-{$else}
   for I := 0 to Printer.Printers.Count - 1 do
     APrinters.Add(Printer.Printers[I] + '|?');
-{$endif}
 end;
 
 function TRLPrinterWrapper.AnyPrinter: Boolean;
 begin
-{$ifdef LINUX}
-  if (Printer.PrintAdapter.OutputDevice = '') and (Printers.Count > 0) then
-    Printer.SetPrinter(PrinterNames[0]);
-  Result := (Printer.PrintAdapter.OutputDevice <> '');
-{$else}
   if (Printer.PrinterIndex = -1) and (Printers.Count > 0) then
     Printer.PrinterIndex := 0;
   Result := (Printer.PrinterIndex <> -1);
-{$endif}
 end;
 
 function TRLPrinterWrapper.GetPrinterPort: string;
-{$ifndef LINUX}
+{$ifndef FPC}
 var
   PInfo: TPrinterInfo;
 {$endif}
 begin
+  //todo: verify the best way to get the printer port in LCL
   if not AnyPrinter then
     Result := ''
   else if (PrinterIndex < 0) or not (PrinterIndex < Printers.Count) then
@@ -592,7 +569,7 @@ begin
   else
   begin
     Result := Token(Printers[PrinterIndex], 2);
-{$ifndef LINUX}
+{$ifndef FPC}
     if Result = '?' then
     begin
       ReloadCurrentPrinter;
@@ -632,50 +609,24 @@ begin
 end;
 
 function TRLPrinterWrapper.GetPrinterIndex: Integer;
-{$ifdef LINUX}
-var
-  I: Integer;
-{$endif}
 begin
   AnyPrinter;
-{$ifdef LINUX}
-  Result := -1;
-  for I := 0 to Printer.Printers.Count - 1 do
-    if AnsiSameText(TruePrinterName(PrinterNames[I]), Printer.OutputDevice) then
-    begin
-      Result := I;
-      Break;
-    end;
-{$else}
   Result := Printer.PrinterIndex;
-{$endif}
 end;
 
 procedure TRLPrinterWrapper.SetPrinterIndex(const Value: Integer);
 begin
   PrintersNeeded;
   if (Value >= 0) and (Value < Printers.Count) then
-{$ifndef LINUX}
     Printer.PrinterIndex := Value;
-{$else}
-    Printer.SetPrinter(PrinterNames[Value]);
-{$endif}
 end;
 
 procedure TRLPrinterWrapper.Refresh;
-{$ifndef LINUX}
-var
-  savedprinterindex: Integer;
-{$endif}
 begin
-  if Assigned(FPrinters) then
-    FPrinters.Free;
-  FPrinters := nil;
-{$ifndef LINUX}
-  savedprinterindex := Printer.PrinterIndex;
+  FreeAndNil(FPrinters);
+  //todo: investigate why Delphi does not call Refresh
+{$ifdef FPC}
   Printer.Refresh;
-  Printer.PrinterIndex := -1;
-  Printer.PrinterIndex := Min(savedprinterindex, Printer.Printers.Count - 1);
 {$endif}
 end;
 
@@ -690,6 +641,7 @@ begin
 end;
 
 function TRLPrinterWrapper.SupportsDuplex: Boolean;
+{$ifndef FPC}
 var
   Device, Driver, Port: array[0..255] of Char;
   DriverHandle: THandle;
@@ -697,8 +649,29 @@ begin
   Printer.GetPrinter(Device, Driver, Port, DriverHandle);
   Result := WinSpool.DeviceCapabilities(Device, Port, DC_DUPLEX, nil, nil) <> 0;
 end;
+{$else FPC}
+{$ifdef LCLWin32}
+var
+  PDev: TPrinterDevice;
+begin
+  Result := Printer.PrinterIndex <> -1;
+  if Result then
+  begin
+    //todo: implement GetPrinterDevice
+    PDev := TPrinterDevice(Printer.Printers.Objects[Printer.PrinterIndex]);
+    Result := DeviceCapabilities(PChar(PDev.Device), PChar(PDev.Port), DC_DUPLEX, nil, nil) <> 0;
+  end;
+end;
+{$else LCLWin32}
+begin
+  //note: Printer Duplex nor supported in non windows
+  Result := False;
+end;
+{$endif LCLWin32}
+{$endif FPC}
 
 function TRLPrinterWrapper.GetDuplex: Boolean;
+{$ifndef FPC}
 var
   Device, Driver, Port: array[0..80] of Char;
   DriverHandle: THandle;
@@ -717,8 +690,15 @@ begin
     end;
   end;
 end;
+{$else}
+begin
+  //todo: Implement TRLPrinterWrapper.GetDuplex
+  Result := True;
+end;
+{$endif}
 
 procedure TRLPrinterWrapper.SetDuplex(const Value: Boolean);
+{$ifndef FPC}
 var
   Device, Driver, Port: array[0..80] of Char;
   DriverHandle: THandle;
@@ -745,6 +725,12 @@ begin
     end;
   end;
 end;
+{$else}
+begin
+  //todo: Implement TRLPrinterWrapper.SetDuplex
+end;
+{$endif}
+
 
 function TRLPrinterWrapper.GetOddEven: TRLPrintOddEvenPages;
 begin
@@ -766,7 +752,7 @@ begin
 end;
 
 function TRLPrinterWrapper.ExecuteSetup: Boolean;
-{$ifndef LINUX}
+{$ifndef FPC}
 var
   PrinterHandle: THandle;
   PrinterInfo2: PPrinterInfo2;
@@ -775,13 +761,11 @@ var
   BytesNeeded: DWORD;
   PrinterDevMode: PDeviceMode;
   DocFlags: Integer;
-{$endif}
 begin
   Result := False;
   Refresh;
-{$ifndef LINUX}
   PrinterHandle := 0;
-	BytesNeeded := 0;
+  BytesNeeded := 0;
   FillChar(PrinterDefaults, SizeOf(PrinterDefaults), 0);
   {Fred - 08/04/2008 - Correção de chamada de diálogo de impressão quando a impressora
    está em outro computador da rede }
@@ -845,8 +829,12 @@ begin
   finally
     WinSpool.ClosePrinter(PrinterHandle);
   end;
-{$endif}
 end;
+{$else}
+begin
+  //todo: implement TRLPrinterWrapper.ExecuteSetup
+end;
+{$endif}
 
 function TRLPrinterWrapper.GetPrinterDisplays(AIndex: Integer): string;
 var

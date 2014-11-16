@@ -1,6 +1,6 @@
-{$I RLReport.inc}
-
 unit RLMetaVCL;
+
+{$I RLReport.inc}
 
 interface
 
@@ -249,10 +249,13 @@ begin
     taRightJustify: Result := MetaTextAlignmentRight;
     taCenter: Result := MetaTextAlignmentCenter;
   else
+    //todo: See the need of this code
+    {
     if ASource = succ(taCenter) then
       Result := MetaTextAlignmentJustify
     else
       Result := MetaTextAlignmentLeft;
+    }
   end;
 end;
 
@@ -452,7 +455,10 @@ begin
     MetaTextAlignmentLeft: Result := taLeftJustify;
     MetaTextAlignmentRight: Result := taRightJustify;
     MetaTextAlignmentCenter: Result := taCenter;
+    //todo: See the meaning of this code
+    {
     MetaTextAlignmentJustify: Result := succ(taCenter);
+    }
   else
     Result := taLeftJustify;
   end;
@@ -599,18 +605,22 @@ const
     (Count: 2;Lengths: (1, 1, 0, 0, 0, 0)), // psDot
     (Count: 4;Lengths: (2, 1, 1, 1, 0, 0)), // psDashDot
     (Count: 6;Lengths: (3, 1, 1, 1, 1, 1)), // psDashDotDot
-    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear - psInsideFrame in LCL
 {$ifdef DELPHI2006}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)),
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)),
 {$endif}
-    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psInsideFrame
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psInsideFrame - psPattern in LCL
 {$ifdef DELPHI2007_UP} // delphi 2007 em diante
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psUserStyle
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psAlternate
+{$endif}
+{$ifdef FPC}
+    ,
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psClear in LCL
 {$endif}
     );
 

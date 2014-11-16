@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="FortesReportCE_Lazarus"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <IncludeFiles Value="D:\repositories\github\fortesreport-ce\Source\"/>
+        <OtherUnitFiles Value="..\Source"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Files Count="5">
+      <Item1>
+        <Filename Value="..\Source\RLPrinters.pas"/>
+        <UnitName Value="RLPrinters"/>
+      </Item1>
+      <Item2>
+        <Filename Value="..\Source\RLReport.inc"/>
+        <Type Value="Include"/>
+      </Item2>
+      <Item3>
+        <Filename Value="..\Source\RLReport.pas"/>
+        <UnitName Value="RLReport"/>
+      </Item3>
+      <Item4>
+        <Filename Value="..\Source\RLTypes.pas"/>
+        <UnitName Value="RLTypes"/>
+      </Item4>
+      <Item5>
+        <Filename Value="..\Source\RLUtils.pas"/>
+        <UnitName Value="RLUtils"/>
+      </Item5>
+    </Files>
+    <Type Value="RunAndDesignTime"/>
+    <RequiredPkgs Count="2">
+      <Item1>
+        <PackageName Value="Printer4Lazarus"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

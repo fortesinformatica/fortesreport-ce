@@ -1,5 +1,11 @@
 unit RLPrintDialog;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
@@ -288,7 +294,9 @@ begin
   BorderWidth := 8;
   Caption := 'Imprimir';
   Position := poScreenCenter;
+  {$ifndef FPC}
   Scaled := False;
+  {$endif}
 {$ifdef VCL}
   BorderStyle := bsDialog;
 {$else}

@@ -142,3 +142,7 @@
 // Simbolos especiais
 {$ifdef DELPHI5_UP} {$define USE_VARIANTS} {$endif}
 
+{$ifdef FPC}
+{$define VCL}
+{$define USE_VARIANTS}
+{$endif}
