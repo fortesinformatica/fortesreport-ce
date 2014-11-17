@@ -1,15 +1,14 @@
 {@unit RLPrinters - Implementação do wrapper para o objeto Printer. }
 unit RLPrinters;
 
-{$ifdef FPC}
-{$mode delphi}
-{$endif}
-
 interface
 
 uses
+  {$ifdef Windows}
+  Windows,
   {$ifdef LCLWin32}
-  Windows, WinUtilPrn, OSPrinters,
+  WinUtilPrn, OSPrinters,
+  {$endif}
   {$endif}
   Classes, SysUtils, Math,
   Graphics, Dialogs, Messages, Printers,

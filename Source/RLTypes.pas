@@ -1,10 +1,6 @@
 {@unit RLTypes - Definição de tipos comuns e rotinas de manipulação de tipos. }
 unit RLTypes;
 
-{$ifdef FPC}
-{$mode delphi}
-{$endif}
-
 interface
 
 uses

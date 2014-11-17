@@ -92,10 +92,11 @@ begin
   ClientWidth := 373;
   Color := clWhite;
   Position := poScreenCenter;
+  {$ifndef FPC}
   Scaled := False;
+  {$endif}
   PixelsPerInch := 96;
   KeyPreview := True;
-  Scaled := False;
   AutoScroll := False;
 
   ImageLogo := TImage.Create(Self);

@@ -4,12 +4,7 @@ unit RLRichText;
 interface
 
 uses
-  Classes, SysUtils, Contnrs, Math, 
-{$ifndef LINUX}
-  Windows, 
-{$else}
-  Types, 
-{$endif}
+  Classes, SysUtils, Contnrs, Math, Types,
 {$ifdef CLX}
   QGraphics, RLMetaCLX, 
 {$else}

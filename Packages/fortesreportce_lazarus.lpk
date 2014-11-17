@@ -11,8 +11,18 @@
         <OtherUnitFiles Value="..\Source"/>
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
+      <Parsing>
+        <SyntaxOptions>
+          <SyntaxMode Value="Delphi"/>
+        </SyntaxOptions>
+      </Parsing>
+      <CodeGeneration>
+        <Optimizations>
+          <OptimizationLevel Value="2"/>
+        </Optimizations>
+      </CodeGeneration>
     </CompilerOptions>
-    <Files Count="5">
+    <Files Count="25">
       <Item1>
         <Filename Value="..\Source\RLPrinters.pas"/>
         <UnitName Value="RLPrinters"/>
@@ -33,6 +43,86 @@
         <Filename Value="..\Source\RLUtils.pas"/>
         <UnitName Value="RLUtils"/>
       </Item5>
+      <Item6>
+        <Filename Value="..\Source\RLAbout.pas"/>
+        <UnitName Value="RLAbout"/>
+      </Item6>
+      <Item7>
+        <Filename Value="..\Source\RLBarcode.pas"/>
+        <UnitName Value="RLBarcode"/>
+      </Item7>
+      <Item8>
+        <Filename Value="..\Source\RlCompilerConsts.pas"/>
+        <UnitName Value="RlCompilerConsts"/>
+      </Item8>
+      <Item9>
+        <Filename Value="..\Source\RLComponentFactory.pas"/>
+        <UnitName Value="RLComponentFactory"/>
+      </Item9>
+      <Item10>
+        <Filename Value="..\Source\RLConsts.pas"/>
+        <UnitName Value="RLConsts"/>
+      </Item10>
+      <Item11>
+        <Filename Value="..\Source\RLFeedBack.pas"/>
+        <UnitName Value="RLFeedBack"/>
+      </Item11>
+      <Item12>
+        <Filename Value="..\Source\RLFilters.pas"/>
+        <UnitName Value="RLFilters"/>
+      </Item12>
+      <Item13>
+        <Filename Value="..\Source\RLFindDialog.pas"/>
+        <UnitName Value="RLFindDialog"/>
+      </Item13>
+      <Item14>
+        <Filename Value="..\Source\RLHTMLFilter.pas"/>
+        <UnitName Value="RLHTMLFilter"/>
+      </Item14>
+      <Item15>
+        <Filename Value="..\Source\RLMetaFile.pas"/>
+        <UnitName Value="RLMetaFile"/>
+      </Item15>
+      <Item16>
+        <Filename Value="..\Source\RLMetaVCL.pas"/>
+        <UnitName Value="RLMetaVCL"/>
+      </Item16>
+      <Item17>
+        <Filename Value="..\Source\RLParser.pas"/>
+        <UnitName Value="RLParser"/>
+      </Item17>
+      <Item18>
+        <Filename Value="..\Source\RLPreview.pas"/>
+        <UnitName Value="RLPreview"/>
+      </Item18>
+      <Item19>
+        <Filename Value="..\Source\RLPreviewForm.pas"/>
+        <UnitName Value="RLPreviewForm"/>
+      </Item19>
+      <Item20>
+        <Filename Value="..\Source\RLPrintDialog.pas"/>
+        <UnitName Value="RLPrintDialog"/>
+      </Item20>
+      <Item21>
+        <Filename Value="..\Source\RLRichFilter.pas"/>
+        <UnitName Value="RLRichFilter"/>
+      </Item21>
+      <Item22>
+        <Filename Value="..\Source\RLRichText.pas"/>
+        <UnitName Value="RLRichText"/>
+      </Item22>
+      <Item23>
+        <Filename Value="..\Source\RLSaveDialog.pas"/>
+        <UnitName Value="RLSaveDialog"/>
+      </Item23>
+      <Item24>
+        <Filename Value="..\Source\RLSpoolFilter.pas"/>
+        <UnitName Value="RLSpoolFilter"/>
+      </Item24>
+      <Item25>
+        <Filename Value="..\Source\RLXLSFilter.pas"/>
+        <UnitName Value="RLXLSFilter"/>
+      </Item25>
     </Files>
     <Type Value="RunAndDesignTime"/>
     <RequiredPkgs Count="2">

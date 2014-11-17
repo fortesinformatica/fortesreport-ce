@@ -1,10 +1,6 @@
 {@unit RLReport - Implementação dos principais componentes e tipos do FortesReport. }
 unit RLReport;
 
-{$ifdef FPC}
-{$mode delphi}
-{$endif}
-
 {$I RLReport.inc}
 
 interface
@@ -8168,7 +8164,7 @@ begin
             if (Field is TFloatField) and TFloatField(Field).Currency then
             begin
               P := ffCurrency;
-              {$if CompilerVersion >= cvDelphiXE3}
+              {$ifdef FPC or DELPHIXE3_UP}
               C := FormatSettings.CurrencyDecimals;
               {$else}
               C := CurrencyDecimals;
@@ -8282,12 +8278,16 @@ begin
       Result := ''
     else if AField is TBlobField then
       Result := ''
+    {$ifndef FPC}
     else if AField is TObjectField then
       Result := 0
+    {$endif}
     else if AField is TVariantField then
       Result := 0
+    {$ifndef FPC}
     else if AField is TInterfaceField then
       Result := ''
+    {$endif}
     else
       Result := Null
   else
@@ -9431,7 +9431,7 @@ begin
       itCarbonCopy: S := IntToStr(FindParentBand.CarbonIndex + 1);
       itDate: S := DateToStr(M.ReportDateTime);
       itDetailCount: S := IntToStr(FindParentPager.DetailCount);
-      {$if CompilerVersion >= cvDelphiXE3}
+      {$ifdef FPC or DELPHIXE3_UP}
       itFullDate: S := FormatDateTime(FormatSettings.LongDateFormat, M.ReportDateTime);
       {$else}
       itFullDate: S := FormatDateTime(LongDateFormat, M.ReportDateTime);

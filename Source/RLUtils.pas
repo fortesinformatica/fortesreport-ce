@@ -3,11 +3,6 @@ unit RLUtils;
 
 {$i RLReport.inc}
 
-{$ifdef fpc}
-{$mode delphi}
-{$H+}
-{$endif}
-
 interface
 
 uses

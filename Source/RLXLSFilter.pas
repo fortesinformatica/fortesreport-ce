@@ -1,12 +1,19 @@
 {@unit RLXLSFilter - Implementação do filtro para criação de planilhas do Excel. }
 unit RLXLSFilter;
 
+{$I RLReport.inc}
+
 interface
 
 uses
+{$ifndef FPC}
+  Windows,
+{$else}
+  LCLIntf, LCLType,
+{$endif}
   SysUtils, StrUtils, Classes, Contnrs, Math, DateUtils,
 {$ifdef VCL}
-  Windows, Graphics, RLMetaVCL,
+  Graphics, RLMetaVCL,
 {$else}
   Types, QGraphics, RLMetaCLX, 
 {$endif}
@@ -1395,7 +1402,7 @@ var
 begin
   BackupValueText:=ValueText;
   Result := False;
-  {$if CompilerVersion >= cvDelphiXE3}
+  {$ifdef FPC or DELPHIXE3_UP}
   ThousandChar := IfThen(FormatSettings.DecimalSeparator = '.', ',', '.');
   {$else}
   ThousandChar := IfThen(DecimalSeparator = '.', ',', '.');
@@ -1405,7 +1412,7 @@ begin
   ValueText := StringReplace(ValueText, #13#10, ' ', [rfReplaceAll]);
   ValueText := StringReplace(ValueText, #10, ' ', [rfReplaceAll]);
   ValueText := StringReplace(ValueText, ThousandChar, '', [rfReplaceAll]); // retira separador de milhares
-  {$if CompilerVersion >= cvDelphiXE3}
+  {$ifdef FPC or DELPHIXE3_UP}
   ValueText := StringReplace(ValueText, FormatSettings.DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
   {$else}
   ValueText := StringReplace(ValueText, DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
@@ -1442,7 +1449,7 @@ begin
   if (ValueText <> '') and (ErrorCode = 0) then
   begin
     System.Str(Value, ValueText); // transforma o valor de volta em AnsiString com os decimais corretos
-    {$if CompilerVersion >= cvDelphiXE3}
+    {$ifdef FPC or DELPHIXE3_UP}
     ValueText := Trim(StringReplace(ValueText, '.', FormatSettings.DecimalSeparator, [rfReplaceAll]));
     {$else}
     ValueText := Trim(StringReplace(ValueText, '.', DecimalSeparator, [rfReplaceAll]));
