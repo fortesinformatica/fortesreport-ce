@@ -1,15 +1,12 @@
 {@unit RLHTMLFilter - Implementação do filtro para criação de páginas web. }
 unit RLHTMLFilter;
 
+{$I RLReport.inc}
+
 interface
 
 uses
-  SysUtils, Classes, Contnrs, 
-{$ifndef LINUX}
-  Windows, 
-{$else}
-  Types, 
-{$endif}
+  SysUtils, Classes, Contnrs, Types,
 {$ifdef VCL}
   Graphics, RLMetaVCL, 
 {$else}

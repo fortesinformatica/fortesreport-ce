@@ -1,6 +1,12 @@
 {@unit RLFilters - Implementação do filtro padrão de impressão e classes abstratas para filtros de gravação e impressão. }
 unit RLFilters;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses

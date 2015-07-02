@@ -1,6 +1,8 @@
 {@unit RLPDFFilter - Implementação do filtro para criação de arquivos PDF. }
 unit RLPDFFilter;
 
+{$I RLReport.inc}
+
 interface
 
 uses
@@ -305,19 +307,24 @@ type
 
     procedure Assign(Source: TRLPDFFilterPageSetup); reintroduce;
     procedure Clear;
+  //fpc does not allow to publish records
+  {$ifndef FPC}
   published
+  {$endif}
+    property ColumnMargin: TRLPDFFilterMarginType read FColumnMargin write FColumnMargin;
+    property ColumnGap: TRLPDFFilterLocationType read FColumnGap write FColumnGap;
     property PaperSize: TRLPDFFilterPaperSizeType read FPaperSize write FPaperSize;
-    property LandScape: Boolean read FLandScape write FLandScape;
     property MediaSize: TRLPDFFilterPaperSizeType read FMediaSize write FMediaSize;
     property Margins: TRLPDFFilterMarginType read FMargins write FMargins;
+    property WorkArea: TRLPDFFilterMarginType read FWorkArea write FWorkArea;
+  published
     property PageBorder: Boolean read FPageBorder write FPageBorder;
     property ColumnBorder: TRLPDFFilterColumnBorderType
       read FColumnBorder write FColumnBorder;
     property BorderDashPattern: TRLPDFFilterDashPatternType
       read FBorderDashPattern write FBorderDashPattern;
-    property ColumnMargin: TRLPDFFilterMarginType read FColumnMargin write FColumnMargin;
-    property ColumnGap: TRLPDFFilterLocationType read FColumnGap write FColumnGap;
     property ColumnCount: Word read FColumnCount write FColumnCount;
+    property LandScape: Boolean read FLandScape write FLandScape;
     property RowCount: Word read FRowCount write FRowCount;
     property FontPointSize: Word read FFontPointSize write FFontPointSize;
     property ColumnFontPointSize: Word read FColumnFontPointSize
@@ -326,7 +333,6 @@ type
     property ColumnLeadingPointSize: Word read FColumnLeadingPointSize
       write FColumnLeadingPointSize;
     property CharCount: Word read FCharCount write FCharCount;
-    property WorkArea: TRLPDFFilterMarginType read FWorkArea write FWorkArea;
   end;
 
   {@class TRLPDFFilterDocumentInfo - Informações para a geração de documento PDF. }

@@ -1,6 +1,10 @@
-{$I RLReport.inc}
-
 unit RLDesign;
+
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
 
 interface
 
@@ -13,9 +17,6 @@ uses
 {$endif}
 {$ifdef VCL}
   Forms, 
-{$endif}
-{$ifdef CLX}
-  QForms, 
 {$endif}
   RLReport, RLConsts, RLUtils, RLTypes, 
   RLAbout;
