@@ -1,10 +1,19 @@
 {@unit RLPreviewForm - Implementação do form padrão de pré-visualização. }
 unit RLPreviewForm;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
   SysUtils, Math, Contnrs, Classes, Messages,
+  {$ifdef FPC}
+  LCLType,
+  {$endif}
 {$ifdef VCL}
   Windows, Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
 {$else}
@@ -272,7 +281,9 @@ procedure PreviewFromFileDialog;
 
 implementation
 
+{$ifndef FPC}
 uses VCLCom;
+{$endif}
 
 ///{$R *.dfm}
 
@@ -1516,8 +1527,19 @@ begin
 end;
 
 procedure TRLPreviewForm.SpeedButtonZoomDownClick(Sender: TObject);
+{$ifdef FPC}
+var
+  ZoomFactor: Double;
+{$endif}
 begin
+  {$ifndef FPC}
   Preview.ZoomFactor := Max(10, Preview.ZoomFactor - 10);
+  {$else}
+  //todo: see why the above code fails to compile with fpc
+  ZoomFactor := Preview.ZoomFactor - 10;
+  if ZoomFactor > 10 then
+    ZoomFactor := 10;
+  {$endif}
   UpdateComboBoxZoom;
 end;
 

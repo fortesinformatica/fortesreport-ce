@@ -1,6 +1,12 @@
 {@unit RLPreview - Implementação dos componentes de pré-visualização. }
 unit RLPreview;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
@@ -396,6 +402,7 @@ begin
 end;
 
 procedure TRLPreview.CopyPageWMF(Sender: TObject);
+{$ifndef FPC}
 var
   mf: TMetaFile;
   mfc: TMetaFileCanvas;
@@ -420,6 +427,11 @@ begin
     end;
   end;
 end;
+{$else}
+begin
+  //todo: implement TRLPreview.CopyPageWMF
+end;
+{$endif}
 
 procedure TRLPreview.FirstPage;
 begin
@@ -1071,7 +1083,10 @@ begin
 end;
 
 initialization
+  //todo: See how to load HandOpen and HandClosed cursors
+  {$ifndef FPC}
   Screen.Cursors[crHandOpen] := LoadCursor(hInstance, 'HANDOPEN');
   Screen.Cursors[crHandClosed] := LoadCursor(hInstance, 'HANDCLOSED');
+  {$endif}
 end.
 

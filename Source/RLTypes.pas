@@ -4,11 +4,7 @@ unit RLTypes;
 interface
 
 uses
-{$ifndef LINUX}
   Windows, Printers, 
-{$else}
-  Types, QPrinters, 
-{$endif}
   Classes;
 
 type
@@ -25,13 +21,8 @@ type
     ClientHeight: Integer;
   end;
 
-{$ifndef LINUX}
   TRLSystemPaperType = Integer;
   TRLSystemOrientation = Integer;
-{$else}
-  TRLSystemPaperType = TPageSize;
-  TRLSystemOrientation = TPrinterOrientation;
-{$endif}
 
   TRLPaperInfo = record
                  Width: Double;
@@ -66,12 +57,15 @@ type
                 fpEng_DoublePost, fpEng_DoubleLarge, fpEng_Demy, fpEng_DoubleDemy, fpEng_QuadDemy, fpEng_MusicDemy, fpEng_Medium, fpEng_Royal, fpEng_SuperRoyal, 
                 fpEng_Elephant, fpEng_Imperial, 
                 fpCustom);
-                          
-{$ifndef LINUX}
-const UserPaperCode = DMPAPER_USER;
-{$else}
-const UserPaperCode = psNPageSize;
+
+{$ifdef fpc}
+const
+  DMPAPER_USER = 256;
+  DMORIENT_PORTRAIT = 1;
+  DMORIENT_LANDSCAPE = 2;
 {$endif}
+const
+  UserPaperCode = DMPAPER_USER;
 
 var
   PaperInfo: array[TRLPaperSize] of TRLPaperInfo;

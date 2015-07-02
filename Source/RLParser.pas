@@ -1,7 +1,11 @@
-{$I RLReport.inc}
-
 {@unit RLParser - Implementação do componente de avaliação de expressões. }
 unit RLParser;
+
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
 
 interface
 
@@ -1047,12 +1051,16 @@ begin
     begin
       info := GetPropInfo(APersistent, APropName);
       if info <> nil then
+        {$ifndef FPC}
         case info^.PropType^^.Kind of
+        {$else}
+        case info^.PropType^.Kind of
+        {$endif}
           tkInteger, 
           tkChar, 
           tkWChar: Result := GetOrdProp(APersistent, info);
           tkEnumeration: Result := GetEnumProp(APersistent, info);
-          tkSet: Result := GetSetProp(APersistent, info);
+          tkSet: Result := GetSetProp(APersistent, info, False);
           tkFloat: Result := GetFloatProp(APersistent, info);
           tkMethod: Result := info^.PropType^.Name;
           tkString, 
@@ -1073,7 +1081,11 @@ begin
   begin
     info := GetPropInfo(APersistent, APropName);
     if info <> nil then
+      {$ifndef FPC}
       case info^.PropType^^.Kind of
+      {$else}
+      case info^.PropType^.Kind of
+      {$endif}
         tkInteger, 
         tkChar, 
         tkWChar: begin
@@ -1137,7 +1149,7 @@ function TRLExpressionParser.FindDependentPart(AOwner: TPersistent; const AName:
   begin
     Result := nil;
     info := GetPropInfo(AOwner, AName);
-    if Assigned(info) and (info^.PropType^^.Kind = tkClass) then
+    if Assigned(info) and (info^.PropType^{$ifndef FPC}^{$endif}.Kind = tkClass) then
     begin
       obj := TObject(GetOrdProp(AOwner, info));
       if Assigned(obj) and (obj is TPersistent) then

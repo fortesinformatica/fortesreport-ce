@@ -1,15 +1,17 @@
 {@unit RLRichFilter - Implementação do filtro para geração de arquivos no formato RichText. }
 unit RLRichFilter;
 
+{$i RLReport.inc}
+
 interface
 
 uses
-  SysUtils, Classes, 
-{$ifndef LINUX}
-  Windows, 
+{$ifndef FPC}
+  Windows,
 {$else}
-  Types, 
+  LCLIntf,
 {$endif}
+  SysUtils, Classes, Types,
 {$ifdef VCL}
   Graphics, RLMetaVCL, 
 {$else}

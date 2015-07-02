@@ -1,5 +1,11 @@
 unit RLFeedBack;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
