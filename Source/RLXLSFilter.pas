@@ -1406,7 +1406,7 @@ begin
   ThousandChar := IfThen(FormatSettings.DecimalSeparator = '.', ',', '.');
   {$else}
   ThousandChar := IfThen(DecimalSeparator = '.', ',', '.');
-  {$ifend}
+  {$endif}
   // limpa o texto
   ValueText := Str;
   ValueText := StringReplace(ValueText, #13#10, ' ', [rfReplaceAll]);
@@ -1416,7 +1416,7 @@ begin
   ValueText := StringReplace(ValueText, FormatSettings.DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
   {$else}
   ValueText := StringReplace(ValueText, DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
-  {$ifend}
+  {$endif}
   ValueText := Trim(ValueText);
   if SameText(ValueText, '0.00') or SameText(ValueText, '0') then
     //Não faz nada
@@ -1453,7 +1453,7 @@ begin
     ValueText := Trim(StringReplace(ValueText, '.', FormatSettings.DecimalSeparator, [rfReplaceAll]));
     {$else}
     ValueText := Trim(StringReplace(ValueText, '.', DecimalSeparator, [rfReplaceAll]));
-    {$ifend}
+    {$endif}
     Result := True;
   end;
 end;

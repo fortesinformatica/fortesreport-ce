@@ -178,7 +178,7 @@ function NewBitmap(Width, Height: Integer): TBitmap; overload;
 {$ifdef fpc or DELPHI2009_DOWN}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
-{$ifend}
+{$endif}
 
 {/@unit}
 
@@ -198,7 +198,7 @@ function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := (C < #$0100) and (AnsiChar(C) in CharSet);
 end; 
-{$ifend}
+{$endif}
 
 function NewBitmap: TBitmap;
 begin
