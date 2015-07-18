@@ -177,7 +177,11 @@ begin
     Width := 65;
     Height := 13;
 {$ifdef VCL}
+{$ifdef FPC}
+    Caption := CS_Version + ' LCL';
+{$else}
     Caption := CS_Version + ' VCL';
+{$endif}
 {$endif}
 {$ifdef CLX}
     Caption := CS_Version + ' CLX';

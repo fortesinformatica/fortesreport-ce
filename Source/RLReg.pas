@@ -18,9 +18,7 @@ uses
  {$endif}
 {$endif}
   RLDesign, RLReport,
-  {$ifndef FPC}
-   RLDraftFilter, RLRichFilter, RLHTMLFilter, RLPDFFilter, RLXLSFilter,
-  {$endif}
+   RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter, RLXLSFilter,
   RLParser, RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm;
 
 procedure Register;
@@ -54,13 +52,11 @@ begin
                                       TRLDBBarcode, 
                                       TRLPreview, 
                                       TRLExpressionParser,
-                                      {$ifndef FPC}
-                                      TRLDraftFilter, 
-                                      TRLRichFilter, 
-                                      TRLHTMLFilter, 
-                                      TRLPDFFilter, 
+                                      TRLDraftFilter,
+                                      TRLHTMLFilter,
+                                      TRLRichFilter,
+                                      TRLPDFFilter,
                                       TRLXLSFilter,
-                                      {$endif}
                                       TRLPreviewSetup]);
   // editores de componentes
   RegisterComponentEditor(TRLReport, TRLReportDesigner);

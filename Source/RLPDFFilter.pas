@@ -6,7 +6,10 @@ unit RLPDFFilter;
 interface
 
 uses
-  SysUtils, Classes, Math, {$if CompilerVersion >= 29}Vcl.Imaging.jpeg{$else}Jpeg{$ifend},
+  SysUtils, Classes, Math,
+  {$ifndef FPC}
+  {$ifdef CompilerVersion >= 29}Vcl.Imaging.jpeg{$else}Jpeg{$ifend},
+  {$endif}
 {$ifdef VCL}
   Windows, Graphics, RLMetaVCL, 
 {$else}
@@ -705,14 +708,22 @@ function JPeg8Of(Src: TGraphic): TJPEGImage;
 var
   bmp: TBitmap;
 begin
+  {$ifdef FPC}
+  if (Src is TJPEGImage) and (TJPEGImage(Src).PixelFormat = pf8bit) then
+  {$else}
   if (Src is TJPEGImage) and (TJPEGImage(Src).PixelFormat = jf8Bit) then
+  {$endif}
     Result := TJPEGImage(Src)
   else
   begin
     bmp := Bitmap32Of(Src);
     try
       Result := TJPEGImage.Create;
+      {$ifdef FPC}
+      Result.PixelFormat := pf8bit;
+      {$else}
       Result.PixelFormat := jf8Bit;
+      {$endif}
       Result.Assign(bmp);
     finally
       if bmp <> Src then
@@ -1780,7 +1791,11 @@ begin
     Writeln('/ColorSpace/DeviceGray')
   else
     Writeln('/ColorSpace/DeviceRGB');
-  if AJpeg.PixelFormat = jf8Bit then
+  {$ifdef FPC}
+  if AJpeg.PixelFormat = pf8bit then
+  {$else}
+    if AJpeg.PixelFormat = jf8Bit then
+  {$endif}
     Writeln('/BitsPerComponent 8')
   else
     Writeln('/BitsPerComponent 24');

@@ -25,7 +25,7 @@
       </CodeGeneration>
     </CompilerOptions>
     <Version Major="4"/>
-    <Files Count="32">
+    <Files Count="37">
       <Item1>
         <Filename Value="..\Source\RLPrinters.pas"/>
         <UnitName Value="RLPrinters"/>
@@ -155,6 +155,26 @@
         <Filename Value="..\Source\RLSaveDialog.pas"/>
         <UnitName Value="RLSaveDialog"/>
       </Item32>
+      <Item33>
+        <Filename Value="..\Source\RLRichFilter.pas"/>
+        <UnitName Value="RLRichFilter"/>
+      </Item33>
+      <Item34>
+        <Filename Value="..\Source\RLPDFFilter.pas"/>
+        <UnitName Value="RLPDFFilter"/>
+      </Item34>
+      <Item35>
+        <Filename Value="..\Source\RLXLSFilter.pas"/>
+        <UnitName Value="RLXLSFilter"/>
+      </Item35>
+      <Item36>
+        <Filename Value="..\Source\RLHTMLFilter.pas"/>
+        <UnitName Value="RLHTMLFilter"/>
+      </Item36>
+      <Item37>
+        <Filename Value="..\Source\RLDraftFilter.pas"/>
+        <UnitName Value="RLDraftFilter"/>
+      </Item37>
     </Files>
     <RequiredPkgs Count="3">
       <Item1>

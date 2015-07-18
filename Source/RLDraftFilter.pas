@@ -573,7 +573,11 @@ begin
   Len := Length(Aux);
   if Len > 0 then
   begin
+    {$ifdef FPC}
+    WritePrinter(PrnHandle, @Aux[1], Len, PDword(Len));
+    {$else}
     WritePrinter(PrnHandle, @Aux[1], Len, Len);
+    {$endif}
   end;
 end;
 
@@ -1171,7 +1175,11 @@ begin
         tempbmp.PixelFormat := pf32bit;
         tempbmp.Width := Round((AObj.BoundsRect.Right - AObj.BoundsRect.Left) * AspectratioX);
         tempbmp.Height := Round((AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) * AspectratioY);
+        {$ifdef FPC}
+        tempbmp.Canvas.StretchDraw(Bounds(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$else}
         tempbmp.Canvas.StretchDraw(Rect(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$endif}
         asbitmap.Width := tempbmp.Width;
         asbitmap.Height := tempbmp.Height;
         case FDitheringMethod of
