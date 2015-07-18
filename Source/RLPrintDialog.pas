@@ -1,11 +1,21 @@
 unit RLPrintDialog;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
-  Classes, SysUtils, Math, 
+{$IFnDEF FPC}
+  Windows,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
+  Classes, SysUtils, Math,
 {$ifndef LINUX}
-  Windows, 
 {$else}
 {$endif}
 {$ifdef VCL}
@@ -288,7 +298,9 @@ begin
   BorderWidth := 8;
   Caption := 'Imprimir';
   Position := poScreenCenter;
+  {$ifndef FPC}
   Scaled := False;
+  {$endif}
 {$ifdef VCL}
   BorderStyle := bsDialog;
 {$else}
@@ -328,7 +340,7 @@ begin
     Name := 'LabelOptions';
     Parent := GroupBoxPrinter;
     AutoSize := True;
-    Caption := 'Opções do filtro:';
+    Caption := 'OpÃ§Ãµes do filtro:';
   end;
 
   TRLComponentFactory.CreateComponent(TComboBox, Self, ComboBoxPrinterNames);
@@ -389,7 +401,7 @@ begin
   begin
     Name := 'GroupBoxPages';
     Parent := Self;
-    Caption := 'Intervalo de páginas';
+    Caption := 'Intervalo de pÃ¡ginas';
     TabOrder := 1;
   end;
 
@@ -398,7 +410,7 @@ begin
   begin
     Name := 'LabelToPage';
     Parent := GroupBoxPages;
-    Caption := '&até:';
+    Caption := '&atÃ©:';
   end;
 
   TRLComponentFactory.CreateComponent(TLabel, Self, LabelPageSelectionHint);
@@ -444,7 +456,7 @@ begin
   begin
     Name := 'RadioButtonPagesSelect';
     Parent := GroupBoxPages;
-    Caption := 'Seleção';
+    Caption := 'SeleÃ§Ã£o';
     TabOrder := 4;
   end;
 
@@ -485,7 +497,7 @@ begin
   begin
     Name := 'GroupBoxCopies';
     Parent := Self;
-    Caption := 'Cópias';
+    Caption := 'CÃ³pias';
     TabOrder := 2;
   end;
 
@@ -494,7 +506,7 @@ begin
   begin
     Name := 'LabelCopies';
     Parent := GroupBoxCopies;
-    Caption := 'Número de &cópias:';
+    Caption := 'NÃºmero de &cÃ³pias:';
   end;
 
   TRLComponentFactory.CreateComponent(TEdit, Self, EditCopies);
@@ -541,7 +553,7 @@ begin
     Name := 'CheckBoxDuplex';
     Parent := GroupBoxDuplex;
     TabStop := False;
-    Caption := 'Impressão frente e verso';
+    Caption := 'ImpressÃ£o frente e verso';
     TabOrder := 0;
   end;
 

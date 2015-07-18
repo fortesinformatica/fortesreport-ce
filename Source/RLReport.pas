@@ -1,6 +1,8 @@
 {@unit RLReport - Implementação dos principais componentes e tipos do FortesReport. }
 unit RLReport;
 
+{$I RLReport.inc}
+
 interface
 
 uses
@@ -8,13 +10,13 @@ uses
 {$ifndef DELPHI5}
   Variants,
 {$endif}
-{$ifndef LINUX}
-  Windows,
-{$else}
   Types,
-{$endif}
-{$ifdef VCL}
-  ExtCtrls, DBCtrls, Controls, Forms, Dialogs, StdCtrls, Messages, Buttons, Graphics, Mask,
+  ExtCtrls, DBCtrls, Controls, Forms, Dialogs, StdCtrls, Messages, Buttons, Graphics,
+  {$ifndef FPC}
+  Mask,
+  {$else}
+  LMessages,
+  {$endif}
 {$ifdef DELPHI}
 {$ifndef DELPHI5}
   MaskUtils,
@@ -23,15 +25,7 @@ uses
 {$ifdef CPP}
   MaskUtils,
 {$endif}
-{$else}
-  Qt, QTypes, QExtCtrls, QDBCtrls, QControls, QForms, QDialogs,
-  QStdCtrls, QButtons, QGraphics, MaskUtils,
-{$endif}
-{$ifdef VCL}
   RLMetaVCL,
-{$else}
-  RLMetaCLX,
-{$endif}
   RLMetaFile, RLFeedBack, RLParser, RLFilters, RLConsts, RLUtils,
   RLPrintDialog, RLPreviewForm, RLPreview,
   RLTypes, RLPrinters, RlCompilerConsts;
@@ -8170,11 +8164,11 @@ begin
             if (Field is TFloatField) and TFloatField(Field).Currency then
             begin
               P := ffCurrency;
-              {$if CompilerVersion >= cvDelphiXE3}
+              {$ifdef DELPHIXE3_UP OR FPC}
               C := FormatSettings.CurrencyDecimals;
               {$else}
               C := CurrencyDecimals;
-              {$ifend}
+              {$endif}
             end
             else
             begin
@@ -8284,12 +8278,16 @@ begin
       Result := ''
     else if AField is TBlobField then
       Result := ''
+    {$ifndef FPC}
     else if AField is TObjectField then
       Result := 0
+    {$endif}
     else if AField is TVariantField then
       Result := 0
+    {$ifndef FPC}
     else if AField is TInterfaceField then
       Result := ''
+    {$endif}
     else
       Result := Null
   else
@@ -9433,7 +9431,7 @@ begin
       itCarbonCopy: S := IntToStr(FindParentBand.CarbonIndex + 1);
       itDate: S := DateToStr(M.ReportDateTime);
       itDetailCount: S := IntToStr(FindParentPager.DetailCount);
-      {$if CompilerVersion >= cvDelphiXE3}
+      {$ifdef DELPHIXE3_UP or  FPC}
       itFullDate: S := FormatDateTime(FormatSettings.LongDateFormat, M.ReportDateTime);
       {$else}
       itFullDate: S := FormatDateTime(LongDateFormat, M.ReportDateTime);

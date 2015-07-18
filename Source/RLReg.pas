@@ -1,16 +1,27 @@
 unit RLReg;
 
+{$ifdef FPC}
+  {$MODE DELPHI}
+{$endif}
+
 interface
 
 uses
-  Classes, RLDesign, 
-{$ifdef DELPHI5}
-  DsgnIntF, 
+  Classes,
+{$ifdef FPC}
+  PropEdits, ComponentEditors, LCLType, LResources,
 {$else}
-  DesignIntF, 
+ {$ifdef DELPHI5}
+   DsgnIntF,
+ {$else}
+   DesignIntF,
+ {$endif}
 {$endif}
-  RLReport, RLDraftFilter, RLRichFilter, RLHTMLFilter, RLPDFFilter, RLParser, 
-  RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm, RLXLSFilter;
+  RLDesign, RLReport,
+  {$ifndef FPC}
+   RLDraftFilter, RLRichFilter, RLHTMLFilter, RLPDFFilter, RLXLSFilter,
+  {$endif}
+  RLParser, RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm;
 
 procedure Register;
 
@@ -42,12 +53,14 @@ begin
                                       TRLBarcode, 
                                       TRLDBBarcode, 
                                       TRLPreview, 
-                                      TRLExpressionParser, 
+                                      TRLExpressionParser,
+                                      {$ifndef FPC}
                                       TRLDraftFilter, 
                                       TRLRichFilter, 
                                       TRLHTMLFilter, 
                                       TRLPDFFilter, 
-                                      TRLXLSFilter, 
+                                      TRLXLSFilter,
+                                      {$endif}
                                       TRLPreviewSetup]);
   // editores de componentes
   RegisterComponentEditor(TRLReport, TRLReportDesigner);
@@ -55,6 +68,11 @@ begin
   RegisterPropertyEditor(TypeInfo(TRLDataFieldProperty), nil, 'DataField', TRLDataFieldEditor);
   RegisterPropertyEditor(TypeInfo(TRLDataFieldsProperty), TRLCustomGroup, 'DataFields', TRLDataFieldsEditor);
 end;
+
+initialization
+{$ifdef FPC}
+  {$I Fortes4.lrs}
+{$endif}
 
 end.
 

@@ -211,6 +211,46 @@ type
     LS_PageSelectionHint: string;
     {@var LS_DefaultJobTitle - Variável de internacionalização para "Relatório %s". :/}
     LS_DefaultJobTitle: string;
+    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Aplicar". :/}
+    Ls_Aplicar: String;
+    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Propriedades". :/}
+    Ls_Propriedades: String;
+    {@var Ls_Salvar_Como - Variável de internacionalização para "Salvar como". :/}
+    Ls_Salvar_Como: String;
+    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Nome do Arquivo". :/}
+    Ls_Nome_Arquivo: String;
+    {@var Ls_File_corrupted - Variável de internacionalização para "Arquivo corrompido". :/}
+    Ls_File_corrupted: String;
+    {@var Ls_File_corrupted - Variável de internacionalização para "Versão de Arquivo inválido". :/}
+    Ls_File_version: String;
+    {@var Ls_Page_setings - Variável de internacionalização para "Configuração da Página". :/}
+    Ls_Page_settings: String;
+    {@var Ls_Page_margins - Variável de internacionalização para "Margem da Página". :/}
+    Ls_Page_margins: String;
+    {@var Ls_Page_margins_top - Variável de internacionalização para "Margem Superior". :/}
+    Ls_Page_margins_top: String;
+    {@var Ls_Page_margins_bottom - Variável de internacionalização para "Margem Inferior". :/}
+    Ls_Page_margins_bottom: String;
+    {@var Ls_Page_margins_rigth - Variável de internacionalização para "Margem direita". :/}
+    Ls_Page_margins_rigth: String;
+    {@var Ls_Page_left_bottom - Variável de internacionalização para "Margem equerda". :/}
+    Ls_Page_margins_left: String;
+    {@var Ls_Page_margins_paper - Variável de internacionalização para "Margem do Papel". :/}
+    Ls_Page_margins_paper: String;
+    {@var Ls_Page_paper - Variável de internacionalização para "Papel". :/}
+    Ls_Page_paper: String;
+    {@var Ls_Paper_Size - Variável de internacionalização para "Tamanho do Papel". :/}
+    Ls_Paper_Size: String;
+    {@var Ls_Paper_Width - Variável de internacionalização para "Largura do Papel". :/}
+    Ls_Paper_Size_Width: String;
+    {@var Ls_Paper_Size_Heigth - Variável de internacionalização para "Altura do Papel". :/}
+    Ls_Paper_Size_Heigth: String;
+    {@var Ls_Paper_Orientation - Variável de internacionalização para "Orientação do Papel". :/}
+    Ls_Paper_Orientation: String;
+    {@var Ls_Paper_Orientation_Landscape - Variável de internacionalização para "Orientação da página em retrato". :/}
+    Ls_Paper_Orientation_Landscape: String;
+    {@var Ls_Paper_Orientation_Portrait - Variável de internacionalização para "Orientação da página em paisagem". :/}
+    Ls_Paper_Orientation_Portrait: String;
 
     LS_LastFooMsg: string;
   end;
@@ -321,6 +361,7 @@ var
     LS_PrintDialogError: 'Problems with print dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Report "%s"';
+    LS_Propriedades: 'Settings';
   );
 
 var
@@ -413,6 +454,8 @@ var
     LS_PrintDialogError: 'Problemas com o diálogo da impressora';
     LS_PageSelectionHint: 'Separe com ponto-e-vírgula os números ou intervalos de páginas a imprimir. Ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Relatório "%s"';
+    Ls_Aplicar: 'Aplicar';
+    Ls_Propriedades: 'Propriedades';
   );
 
 var
@@ -505,6 +548,7 @@ var
     LS_PrintDialogError: 'Problems calling the printer dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Rapport "%s"';
+    Ls_Aplicar: 'Bewerben Sie sich';
   );
 
 var

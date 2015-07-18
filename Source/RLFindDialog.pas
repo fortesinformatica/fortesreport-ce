@@ -1,11 +1,22 @@
 unit RLFindDialog;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
+{$IFnDEF FPC}
+  Windows,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
   SysUtils, Contnrs, Classes, TypInfo,
 {$ifdef VCL}
-  Windows, Messages, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
+  Messages, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
 {$else}
   Types, QControls, Qt, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QTypes, QGraphics,
 {$endif}
@@ -115,7 +126,7 @@ begin
     Top := 12;
     Width := 75;
     Height := 21;
-    Caption := '&Próxima';
+    Caption := '&PrÃ³xima';
     Default := True;
     TabOrder := 1;
     OnClick := BitBtnFindNextClick;
@@ -155,7 +166,7 @@ begin
     Top := 64;
     Width := 193;
     Height := 17;
-    Caption := 'Diferenciar &maiúsculas e minúsculas';
+    Caption := 'Diferenciar &maiÃºsculas e minÃºsculas';
     TabOrder := 4;
   end;
   TRLComponentFactory.CreateComponent(TRadioGroup, Self, RadioGroupDirection);
@@ -167,7 +178,7 @@ begin
     Top := 36;
     Width := 73;
     Height := 49;
-    Caption := ' Direção ';
+    Caption := ' DireÃ§Ã£o ';
     TabOrder := 5;
   end;
 

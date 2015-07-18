@@ -52,6 +52,7 @@
 {$ifdef VER260} {$define DELPHIXE5} {$endif}
 {$ifdef VER270} {$define DELPHIXE6} {$endif}
 {$ifdef VER280} {$define DELPHIXE7} {$endif}
+{$ifdef VER290} {$define DELPHIXE8} {$endif}
 
 // UPs e DOWNs
 
@@ -79,6 +80,7 @@
 {$ifdef DELPHIXE5} {$define DELPHIXE5_UP} {$define DELPHIXE5_DOWN} {$endif}
 {$ifdef DELPHIXE6} {$define DELPHIXE6_UP} {$define DELPHIXE6_DOWN} {$endif}
 {$ifdef DELPHIXE7} {$define DELPHIXE7_UP} {$define DELPHIXE7_DOWN} {$endif}
+{$ifdef DELPHIXE8} {$define DELPHIXE8_UP} {$define DELPHIXE8_DOWN} {$endif}
 
 
 // UP
@@ -89,6 +91,7 @@
 {$ifdef CBUILDER4_UP} {$define CBUILDER3_UP} {$endif}
 {$ifdef CBUILDER3_UP} {$define CBUILDER1_UP} {$endif}
 
+{$ifdef DELPHIXE8_UP} {$define DELPHIXE7_UP} {$endif}
 {$ifdef DELPHIXE7_UP} {$define DELPHIXE6_UP} {$endif}
 {$ifdef DELPHIXE6_UP} {$define DELPHIXE5_UP} {$endif}
 {$ifdef DELPHIXE5_UP} {$define DELPHIXE4_UP} {$endif}
@@ -135,6 +138,8 @@
 {$ifdef DELPHIXE3_DOWN} {$define DELPHIXE4_DOWN} {$endif}
 {$ifdef DELPHIXE4_DOWN} {$define DELPHIXE5_DOWN} {$endif}
 {$ifdef DELPHIXE5_DOWN} {$define DELPHIXE6_DOWN} {$endif}
+{$ifdef DELPHIXE6_DOWN} {$define DELPHIXE7_DOWN} {$endif}
+{$ifdef DELPHIXE7_DOWN} {$define DELPHIXE8_DOWN} {$endif}
 
 // ate o Delphi5 so existia VCL, depois disso o proprio projeto eh q tem q se pronunciar
 {$ifdef DELPHI5_DOWN} {$define VCL} {$endif}
@@ -142,3 +147,7 @@
 // Simbolos especiais
 {$ifdef DELPHI5_UP} {$define USE_VARIANTS} {$endif}
 
+{$ifdef FPC}
+{$define VCL}
+{$define USE_VARIANTS}
+{$endif}

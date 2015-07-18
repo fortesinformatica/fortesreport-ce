@@ -529,20 +529,29 @@ end;
 
 function GetBitmapPixel(ABitmap: TBitmap; AX, AY: Integer; ADefault: TColor): TColor;
 begin
+  {$ifndef FPC}
   if AY < ABitmap.Height then
     with TRGBArray(ABitmap.ScanLine[AY]^)[AX] do
       Result := RGB(rgbRed, rgbGreen, rgbBlue)
+  {$else}
+  if AY < ABitmap.Height then
+    Result := aBitmap.Canvas.Pixels[aX,aY]
+  {$endif}
   else
     Result := ADefault;
 end;
-{$if CompilerVersion >= cvDelphiXE3}
-function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
+{$ifdef DELPHIXE3_UP}
+ function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
+{$endif}
+{$ifdef FPC}
+ function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
 {$else}
-function LinePrinterStart(const PrnName, DocName: String): Cardinal;
+ function LinePrinterStart(const PrnName, DocName: String): Cardinal;
 {$ifend}
 var
   di: TDocInfo1;
 begin
+  {$ifndef FPC}
   FillChar(di, SizeOf(di), 0);
   di.pDocName := PChar(DocName);
   di.pOutputFile := nil;
@@ -550,6 +559,9 @@ begin
   OpenPrinter(PChar(PrnName), Result, nil);
   StartDocPrinter(Result, 1, @di);
   StartPagePrinter(Result);
+  {$else}
+  //note: implement RLDraftFilter.LinePrinterStart
+  {$endif}
 end;
 
 procedure LinePrinterWrite(PrnHandle: Cardinal; const Text: String);

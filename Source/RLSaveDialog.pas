@@ -1,11 +1,21 @@
 unit RLSaveDialog;
 
+{$ifdef FPC}
+{$mode delphi}
+{$endif}
+
+{$I RLReport.inc}
+
 interface
 
 uses
-  Classes, SysUtils, 
+{$IFnDEF FPC}
+  Windows,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
+  Classes, SysUtils,
 {$ifndef LINUX}
-  Windows, 
 {$else}
 {$endif}
 {$ifdef VCL}
@@ -211,7 +221,7 @@ begin
     Top := 68;
     Width := 365;
     Height := 101;
-    Caption := ' Páginas no intervalo';
+    Caption := ' PÃ¡ginas no intervalo';
     TabOrder := 2;
     TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
     with LabelFromPage do
@@ -234,7 +244,7 @@ begin
       Top := 45;
       Width := 18;
       Height := 13;
-      Caption := '&até:';
+      Caption := '&atÃ©:';
       FocusControl := EditToPage;
     end;
     TRLComponentFactory.CreateComponent(TRadioButton, Self, RadioButtonPagesAll);
@@ -260,7 +270,7 @@ begin
       Top := 44;
       Width := 61;
       Height := 17;
-      Caption := 'Páginas';
+      Caption := 'PÃ¡ginas';
       TabOrder := 1;
     end;
     TRLComponentFactory.CreateComponent(TRadioButton, Self, RadioButtonPagesSelect);
@@ -272,7 +282,7 @@ begin
       Top := 68;
       Width := 73;
       Height := 17;
-      Caption := '&Seleção';
+      Caption := '&SeleÃ§Ã£o';
       TabOrder := 2;
     end;
     TRLComponentFactory.CreateComponent(TEdit, Self, EditFromPage);

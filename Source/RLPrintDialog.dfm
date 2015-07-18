@@ -49,7 +49,7 @@ object RLPrintDialog: TRLPrintDialog
       Width = 77
       Height = 13
       Alignment = taRightJustify
-      Caption = 'Op'#231#245'es do filtro:'
+      Caption = 'Opções do filtro:'
       FocusControl = ComboBoxOptions
     end
     object ComboBoxPrinterNames: TComboBox
@@ -106,14 +106,14 @@ object RLPrintDialog: TRLPrintDialog
     Top = 108
     Width = 261
     Height = 145
-    Caption = 'Intervalo de p'#225'ginas'
+    Caption = 'Intervalo de páginas'
     TabOrder = 1
     object LabelToPage: TLabel
       Left = 172
       Top = 48
       Width = 18
       Height = 13
-      Caption = '&at'#233':'
+      Caption = '&até:'
       FocusControl = EditToPage
     end
     object LabelPageSelectionHint: TLabel
@@ -123,7 +123,7 @@ object RLPrintDialog: TRLPrintDialog
       Height = 41
       AutoSize = False
       Caption = 
-        'Separe com ponto-e-v'#237'rgula os n'#250'meros e/ou intervalos de p'#225'ginas' +
+        'Separe com ponto-e-vírgula os números e/ou intervalos de páginas' +
         ' a serem impressos. Ex.: 1;3;5-12;4'
       WordWrap = True
     end
@@ -158,7 +158,7 @@ object RLPrintDialog: TRLPrintDialog
       Top = 72
       Width = 65
       Height = 17
-      Caption = 'Sele'#231#227'o'
+      Caption = 'Seleção'
       TabOrder = 4
     end
     object EditFromPage: TEdit
@@ -194,14 +194,14 @@ object RLPrintDialog: TRLPrintDialog
     Top = 108
     Width = 293
     Height = 145
-    Caption = 'C'#243'pias'
+    Caption = 'Cópias'
     TabOrder = 2
     object LabelCopies: TLabel
       Left = 12
       Top = 24
       Width = 89
       Height = 13
-      Caption = 'N'#250'mero de &c'#243'pias:'
+      Caption = 'Número de &cópias:'
     end
     object LabelOddPages: TLabel
       Left = 28
@@ -209,7 +209,7 @@ object RLPrintDialog: TRLPrintDialog
       Width = 73
       Height = 13
       Alignment = taRightJustify
-      Caption = 'Pares/'#237'mpares:'
+      Caption = 'Pares/ímpares:'
       FocusControl = ComboBoxOddPages
     end
     object EditCopies: TEdit
@@ -230,7 +230,7 @@ object RLPrintDialog: TRLPrintDialog
       TabOrder = 1
       Items.Strings = (
         'Pares'
-        #205'mpares'
+        'Ímpares'
         'Todas')
     end
   end

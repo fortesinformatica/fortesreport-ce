@@ -1,6 +1,6 @@
-{$I RLReport.inc}
-
 unit RLMetaVCL;
+
+{$I RLReport.inc}
 
 interface
 
@@ -249,10 +249,13 @@ begin
     taRightJustify: Result := MetaTextAlignmentRight;
     taCenter: Result := MetaTextAlignmentCenter;
   else
+    //todo: See the need of this code
+    {
     if ASource = succ(taCenter) then
       Result := MetaTextAlignmentJustify
     else
       Result := MetaTextAlignmentLeft;
+    }
   end;
 end;
 
@@ -452,7 +455,10 @@ begin
     MetaTextAlignmentLeft: Result := taLeftJustify;
     MetaTextAlignmentRight: Result := taRightJustify;
     MetaTextAlignmentCenter: Result := taCenter;
+    //todo: See the meaning of this code
+    {
     MetaTextAlignmentJustify: Result := succ(taCenter);
+    }
   else
     Result := taLeftJustify;
   end;
@@ -599,7 +605,7 @@ const
     (Count: 2;Lengths: (1, 1, 0, 0, 0, 0)), // psDot
     (Count: 4;Lengths: (2, 1, 1, 1, 0, 0)), // psDashDot
     (Count: 6;Lengths: (3, 1, 1, 1, 1, 1)), // psDashDotDot
-    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear - psInsideFrame in LCL
 {$ifdef DELPHI2006}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
@@ -607,11 +613,15 @@ const
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)),
 {$endif}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psInsideFrame
-{$if CompilerVersion >= 18}// delphi 2007 em diante
+{$ifdef CompilerVersion >= 18}// delphi 2007 em diante
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psUserStyle
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psAlternate
 {$ifend}
+{$ifdef FPC}
+    ,
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psClear in LCL
+{$endif}
     );
 
 procedure CanvasLineToEx(ACanvas: TCanvas; X, Y: Integer);
@@ -681,7 +691,7 @@ end;
 procedure FontGetMetrics(const AFontName: AnsiString; AFontStyles: TFontStyles; var AFontRec: TRLMetaFontMetrics);
 var
   size: Integer;
-  outl: POutlineTextMetric;
+  outl: POutlineTextmetricA;
   I: Integer;
   bmp: TBitmap;
 begin
@@ -692,13 +702,13 @@ begin
   bmp.Canvas.Font.Style := AFontStyles;
   bmp.Canvas.Font.Size := 750;
   //
-  size := GetOutlineTextMetrics(bmp.Canvas.Handle, SizeOf(TOutlineTextmetricA), nil);
+  size := GetOutlineTextMetricsA(bmp.Canvas.Handle, SizeOf(TOutlineTextmetricA), nil);
   if size = 0 then
     raise Exception.Create('Invalid font for GetOutlineTextMetrics');
   GetMem(outl, size);
   try
     outl^.otmSize := size;
-    if GetOutlineTextMetrics(bmp.Canvas.Handle, size, outl) = 0 then
+    if GetOutlineTextMetricsA(bmp.Canvas.Handle, size, outl) = 0 then
       raise Exception.Create('GetOutlineTextMetrics failed');
     //
     AFontRec.TrueType := (outl^.otmTextMetrics.tmPitchAndFamily and TMPF_TRUETYPE) = TMPF_TRUETYPE;
