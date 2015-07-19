@@ -610,7 +610,7 @@ const
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)),
 {$endif}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psInsideFrame
-{$ifdef CompilerVersion >= 18}// delphi 2007 em diante
+{$ifdef DELPHI2007_UP}// delphi 2007 em diante
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psUserStyle
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psAlternate

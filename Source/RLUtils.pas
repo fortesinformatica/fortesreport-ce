@@ -179,7 +179,7 @@ function NewBitmap(Width, Height: Integer): TBitmap; overload;
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
 {$endif}
-{$ifdef DELPHI2009_DOWN}
+{$ifdef DELPHI2007_DOWN}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
 {$endif}
@@ -204,7 +204,7 @@ begin
 end;
 {$endif}
 
-{$ifdef DELPHI2009_DOWN}
+{$ifdef DELPHI2007_DOWN}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := C in CharSet;
