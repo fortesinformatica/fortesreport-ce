@@ -34,7 +34,7 @@ type
   TRLCustomPrintFilter = class;
   TRLCustomSaveFilter = class;
 
-  TRLFilterClassOption = (foEmulateCopies, fsSetupDialog);
+  TRLFilterClassOption = (foEmulateCopies, foSetupDialog);
   TRLFilterClassOptions = set of TRLFilterClassOption;
 
   { TRLCustomFilter }
@@ -48,11 +48,7 @@ type
 
     FDisplayName: string;
     FPages: TRLGraphicStorage;
-{$ifdef FPC}
     FProgress: TfrmRLFeedBack;
-{$else}
-    FProgress: TfrmRLFeedBack;
-{$endif}
     FShowProgress: Boolean;
     FCanceled: Boolean;
     FClassOptions: TRLFilterClassOptions;
@@ -288,7 +284,7 @@ begin
   FProgress := nil;
   FShowProgress := True;
   FCanceled := False;
-  FClassOptions := [];
+  FClassOptions := [foEmulateCopies];
   //
   inherited;
   //

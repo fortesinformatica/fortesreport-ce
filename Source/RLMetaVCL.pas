@@ -249,13 +249,10 @@ begin
     taRightJustify: Result := MetaTextAlignmentRight;
     taCenter: Result := MetaTextAlignmentCenter;
   else
-    //todo: See the need of this code
-    {
     if ASource = succ(taCenter) then
       Result := MetaTextAlignmentJustify
     else
       Result := MetaTextAlignmentLeft;
-    }
   end;
 end;
 
