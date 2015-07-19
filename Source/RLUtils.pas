@@ -192,7 +192,7 @@ type
 
 implementation
 
-{$ifdef fpc or DELPHI2009_DOWN}
+{$ifdef FPC}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := C in CharSet;
@@ -201,7 +201,19 @@ end;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := (C < #$0100) and (AnsiChar(C) in CharSet);
-end; 
+end;
+{$endif}
+
+{$ifdef DELPHI2009_DOWN}
+function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
+begin
+  Result := C in CharSet;
+end;
+
+function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean;
+begin
+  Result := (C < #$0100) and (AnsiChar(C) in CharSet);
+end;
 {$endif}
 
 function NewBitmap: TBitmap;
@@ -1029,4 +1041,5 @@ finalization
   FreeObj(AuxBitmap);
 
 end.
+
 

@@ -340,7 +340,7 @@ begin
     Name := 'LabelOptions';
     Parent := GroupBoxPrinter;
     AutoSize := True;
-    Caption := 'OpÃ§Ãµes do filtro:';
+    Caption := 'Opções do filtro:';
   end;
 
   TRLComponentFactory.CreateComponent(TComboBox, Self, ComboBoxPrinterNames);
@@ -401,7 +401,7 @@ begin
   begin
     Name := 'GroupBoxPages';
     Parent := Self;
-    Caption := 'Intervalo de pÃ¡ginas';
+    Caption := 'Intervalo de páginas';
     TabOrder := 1;
   end;
 
@@ -410,7 +410,7 @@ begin
   begin
     Name := 'LabelToPage';
     Parent := GroupBoxPages;
-    Caption := '&atÃ©:';
+    Caption := '&até:';
   end;
 
   TRLComponentFactory.CreateComponent(TLabel, Self, LabelPageSelectionHint);
@@ -456,7 +456,7 @@ begin
   begin
     Name := 'RadioButtonPagesSelect';
     Parent := GroupBoxPages;
-    Caption := 'SeleÃ§Ã£o';
+    Caption := 'Seleção';
     TabOrder := 4;
   end;
 
@@ -497,7 +497,7 @@ begin
   begin
     Name := 'GroupBoxCopies';
     Parent := Self;
-    Caption := 'CÃ³pias';
+    Caption := 'Cópias';
     TabOrder := 2;
   end;
 
@@ -506,7 +506,7 @@ begin
   begin
     Name := 'LabelCopies';
     Parent := GroupBoxCopies;
-    Caption := 'NÃºmero de &cÃ³pias:';
+    Caption := 'Número de &cópias:';
   end;
 
   TRLComponentFactory.CreateComponent(TEdit, Self, EditCopies);
@@ -553,7 +553,7 @@ begin
     Name := 'CheckBoxDuplex';
     Parent := GroupBoxDuplex;
     TabStop := False;
-    Caption := 'ImpressÃ£o frente e verso';
+    Caption := 'Impressão frente e verso';
     TabOrder := 0;
   end;
 

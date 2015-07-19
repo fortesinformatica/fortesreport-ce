@@ -126,7 +126,7 @@ begin
     Top := 12;
     Width := 75;
     Height := 21;
-    Caption := '&PrÃ³xima';
+    Caption := '&Próxima';
     Default := True;
     TabOrder := 1;
     OnClick := BitBtnFindNextClick;
@@ -166,7 +166,7 @@ begin
     Top := 64;
     Width := 193;
     Height := 17;
-    Caption := 'Diferenciar &maiÃºsculas e minÃºsculas';
+    Caption := 'Diferenciar &maiúsculas e minúsculas';
     TabOrder := 4;
   end;
   TRLComponentFactory.CreateComponent(TRadioGroup, Self, RadioGroupDirection);
@@ -178,7 +178,7 @@ begin
     Top := 36;
     Width := 73;
     Height := 49;
-    Caption := ' DireÃ§Ã£o ';
+    Caption := ' Direção ';
     TabOrder := 5;
   end;
 

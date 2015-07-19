@@ -126,7 +126,7 @@
 {$ifdef DELPHI4_DOWN} {$define DELPHI5_DOWN} {$endif}
 {$ifdef DELPHI5_DOWN} {$define DELPHI6_DOWN} {$endif}
 {$ifdef DELPHI6_DOWN} {$define DELPHI7_DOWN} {$endif}
-{$ifdef DELPHI7_DOWN} {$define DELPHI8_DOWN} {$endif}
+{$ifdef DELPHI7_DOWN} {$define DELPHI2005_DOWN} {$endif}
 {$ifdef DELPHI2005_DOWN} {$define DELPHI2006_DOWN} {$endif}
 {$ifdef DELPHI2006_DOWN} {$define DELPHI2007_DOWN} {$endif}
 {$ifdef DELPHI2007_DOWN} {$define DELPHI2008_DOWN} {$endif}

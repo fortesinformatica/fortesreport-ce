@@ -1402,21 +1402,29 @@ var
 begin
   BackupValueText:=ValueText;
   Result := False;
-  {$ifdef DELPHIXE3_UP or FPC}
+  {$ifdef DELPHIXE3_UP}
   ThousandChar := IfThen(FormatSettings.DecimalSeparator = '.', ',', '.');
   {$else}
+  {$IFDEF FPC}
+  ThousandChar := IfThen(FormatSettings.DecimalSeparator = '.', ',', '.');
+  {$ELSE}
   ThousandChar := IfThen(DecimalSeparator = '.', ',', '.');
-  {$ifend}
+  {$endif}
+  {$endif}
   // limpa o texto
   ValueText := Str;
   ValueText := StringReplace(ValueText, #13#10, ' ', [rfReplaceAll]);
   ValueText := StringReplace(ValueText, #10, ' ', [rfReplaceAll]);
   ValueText := StringReplace(ValueText, ThousandChar, '', [rfReplaceAll]); // retira separador de milhares
-  {$ifdef DELPHIXE3_UP or FPC}
+  {$ifdef DELPHIXE3_UP}
+  ValueText := StringReplace(ValueText, FormatSettings.DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
+  {$else}
+  {$ifdef FPC}
   ValueText := StringReplace(ValueText, FormatSettings.DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
   {$else}
   ValueText := StringReplace(ValueText, DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
-  {$ifend}
+  {$ENDIF}
+  {$ENDIF}
   ValueText := Trim(ValueText);
   if SameText(ValueText, '0.00') or SameText(ValueText, '0') then
     //Não faz nada
@@ -1449,11 +1457,15 @@ begin
   if (ValueText <> '') and (ErrorCode = 0) then
   begin
     System.Str(Value, ValueText); // transforma o valor de volta em AnsiString com os decimais corretos
-    {$ifdef DELPHIXE3_UP or FPC}
+    {$ifdef DELPHIXE3_UP}
+    ValueText := Trim(StringReplace(ValueText, '.', FormatSettings.DecimalSeparator, [rfReplaceAll]));
+    {$else}
+    {$ifdef FPC}
     ValueText := Trim(StringReplace(ValueText, '.', FormatSettings.DecimalSeparator, [rfReplaceAll]));
     {$else}
     ValueText := Trim(StringReplace(ValueText, '.', DecimalSeparator, [rfReplaceAll]));
-    {$ifend}
+    {$ENDIF}
+    {$ENDIF}
     Result := True;
   end;
 end;

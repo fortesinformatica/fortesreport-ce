@@ -88,7 +88,7 @@ RemoteSymbols=0
 MinStackSize=16384
 MaxStackSize=1048576
 ImageBase=4194304
-ExeDescription=FortesReport VCL Library
+ExeDescription=Fortes Report Comunity Edition
 [Directories]
 OutputDir=
 UnitOutputDir=..\Binary\Win32_D7_vcl
@@ -135,8 +135,6 @@ ProductName=
 ProductVersion=4.0
 Comments=
 CompileDate=terça-feira, 2 de abril de 2013 11:11
-[Excluded Packages]
-c:\arquivos de programas\borland\delphi7\Bin\dcldss70.bpl=Borland Decision Cube Components
 [HistoryLists\hlConditionals]
 Count=4
 Item0=DELPHI;DELPHI7;VCL
@@ -146,4 +144,12 @@ Item3=DELPHI;DELPHI5
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
-
+[HistoryLists\hlUnitOutputDirectory]
+Count=1
+Item0=..\Binary\Win32_D7_vcl
+[HistoryLists\hlBPLOutput]
+Count=1
+Item0=..\Binary\Win32_D7_vcl
+[HistoryLists\hlDCPOutput]
+Count=1
+Item0=..\Binary\Win32_D7_vcl

@@ -617,7 +617,7 @@ const
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psUserStyle
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psAlternate
-{$ifend}
+{$endif}
 {$ifdef FPC}
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psClear in LCL

@@ -1,4 +1,4 @@
-{@unit RLPreviewForm - Implementa√ß√£o do form padr√£o de pr√©-visualiza√ß√£o. }
+{@unit RLPreviewForm - ImplementaÁ„o do form padr„o de prÈ-visualizaÁ„o. }
 unit RLPreviewForm;
 
 {$ifdef FPC}
@@ -13,15 +13,12 @@ uses
 {$IFnDEF FPC}
   Windows,
 {$ELSE}
-  Windows, LCLIntf, LMessages,
+  Windows, LCLIntf, LMessages, FileUtil,
 {$ENDIF}
   SysUtils, Math, Contnrs, Classes, Messages,
-  {$ifdef FPC}
-  LCLType,
-  {$endif}
+  {$ifdef FPC}  LCLType, {$endif}
 {$ifdef VCL}
   Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
-  FileUtil,
 {$else}
   Types, QControls, Qt, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QTypes, QGraphics,
 {$endif}
@@ -125,9 +122,9 @@ type
   TRLPreviewEditOptions = (eoCanReposition, eoCanResizeItems, eoCanEditText, eoCanDeleteItems, eoCanPointOut);
   TRLPreviewEditOptionsSet = set of TRLPreviewEditOptions;
 
-  {@class TRLPreviewSetup - Op√ß√µes do pr√©-visualizador padr√£o.
-   Todos os relat√≥rios que n√£o tiverem suas pr√≥prias configura√ß√µes de previsualiza√ß√£o
-   seguir√£o as regras estabelecidas neste componente. }
+  {@class TRLPreviewSetup - OpÁıes do prÈ-visualizador padr„o.
+   Todos os relatÛrios que n„o tiverem suas prÛprias configuraÁıes de previsualizaÁ„o
+   seguir„o as regras estabelecidas neste componente. }
   TRLPreviewSetup = class(TComponent)
   private
     FBeforePrint: TNotifyEvent;
@@ -172,10 +169,10 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
 
-    {@prop SentToPrinter - Indica se o relat√≥rio foi impresso ao menos uma vez. :/}
+    {@prop SentToPrinter - Indica se o relatÛrio foi impresso ao menos uma vez. :/}
     property SentToPrinter: Boolean read GetSentToPrinter write SetSentToPrinter;
 
-    {@prop WindowBounds - Indica ou determina as dimens√µes padr√µes da janela quando ela n√£o est√° maximizada. :/}
+    {@prop WindowBounds - Indica ou determina as dimensıes padrıes da janela quando ela n„o est· maximizada. :/}
     property WindowBounds: TRect read GetWindowBounds write SetWindowBounds;
   published
     {@prop WindowState - Indica o estado inicial da janela de preview. :/}
@@ -184,13 +181,13 @@ type
     {@prop FormStyle - Indica o estilo da janela de preview. :/}
     property FormStyle: TFormStyle read GetFormStyle write SetFormStyle default fsNormal;
 
-    {@prop ShowModal - Indica se a janela de preview ser√° modal. :/}
+    {@prop ShowModal - Indica se a janela de preview ser· modal. :/}
     property ShowModal: Boolean read GetShowModal write SetShowModal default False;
 
-    {@prop Position - Indica a posi√ß√£o da janela de preview. :/}
+    {@prop Position - Indica a posiÁ„o da janela de preview. :/}
     property Position: TPosition read GetPosition write SetPosition default poScreenCenter;
 
-    {@prop BorderIcons - Seleciona os bot√µes da janela de preview. :/}
+    {@prop BorderIcons - Seleciona os botıes da janela de preview. :/}
     property BorderIcons: TBorderIcons read GetBorderIcons write SetBorderIcons default [biSystemMenu, biMinimize, biMaximize];
 
     {@prop HelpFile - Nome do arquivo de help para a janela preview, se houver. :/}
@@ -199,47 +196,47 @@ type
     {@prop HelpContext - Contexto de help para a janela preview, se houver. :/}
     property HelpContext: Integer read GetHelpContext write SetHelpContext default 0;
 
-    {@prop Caption - T√≠tulo da janela de preview. :/}
+    {@prop Caption - TÌtulo da janela de preview. :/}
     property Caption: string read GetCaption write SetCaption;
 
     {@prop ZoomFactor - Fator de zoom inicial (percentual). :/}
     property ZoomFactor: Double read GetZoomFactor write SetZoomFactor stored IsZoomFactor;
 
-    {@prop EnabledButtons - Bot√µes habilitados.
-                            Atrav√©s desta prop pode-se mostrar ou esconder bot√µes da barra de ferramentas.
+    {@prop EnabledButtons - Botıes habilitados.
+                            AtravÈs desta prop pode-se mostrar ou esconder botıes da barra de ferramentas.
      @links TRLPreviewFormButtonsSet. :/}
     property EnabledButtons: TRLPreviewFormButtonsSet read FEnabledButtons write SetEnabledButtons default [pbPrint, pbSave, pbSend];
 
     property CustomActionText: string read FCustomActionText write FCustomActionText;
     property OnCustomAction: TNotifyEvent read FOnCustomAction write FOnCustomAction;
 
-    {@prop EditOptions - Op√ß√µes de edi√ß√£o (ainda n√£o dispon√≠vel).
-     Determina que opera√ß√µes poder√£o ser realizadas pelo usu√°rio no conte√∫do do relat√≥rio
-     j√° preparado.
+    {@prop EditOptions - OpÁıes de ediÁ„o (ainda n„o disponÌvel).
+     Determina que operaÁıes poder„o ser realizadas pelo usu·rio no conte˙do do relatÛrio
+     j· preparado.
      @links TRLPreviewEditOptions,TRLPreviewEditOptionsSet. :/}
     property EditOptions: TRLPreviewEditOptionsSet read FEditOptions write SetEditOptions default [];
 
-    {@event BeforePrint - Sempre antes de imprimir ou quando o usu√°rio pressiona o bot√£o "Imprimir". :/}
+    {@event BeforePrint - Sempre antes de imprimir ou quando o usu·rio pressiona o bot„o "Imprimir". :/}
     property BeforePrint: TNotifyEvent read FBeforePrint write FBeforePrint;
 
-    {@event AfterPrint - Sempre ap√≥s a impress√£o ou quando o filtro de impress√£o termina de processar todas as p√°ginas. :/}
+    {@event AfterPrint - Sempre apÛs a impress„o ou quando o filtro de impress„o termina de processar todas as p·ginas. :/}
     property AfterPrint: TNotifyEvent read FAfterPrint write FAfterPrint;
 
-    {@event BeforeSave - Sempre antes de salvar/exportar ou quando o usu√°rio pressiona o bot√£o "Salvar". :/}
+    {@event BeforeSave - Sempre antes de salvar/exportar ou quando o usu·rio pressiona o bot„o "Salvar". :/}
     property BeforeSave: TNotifyEvent read FBeforeSave write FBeforeSave;
 
-    {@event AfterSave - Sempre ap√≥s o salvamento/exporta√ß√£o ou quando o filtro de salvamento termina de processar todas as p√°ginas. :/}
+    {@event AfterSave - Sempre apÛs o salvamento/exportaÁ„o ou quando o filtro de salvamento termina de processar todas as p·ginas. :/}
     property AfterSave: TNotifyEvent read FAfterSave write FAfterSave;
 
-    {@event BeforeSend - Sempre antes de enviar o relat√≥rio via e-mail ou quando o usu√°rio pressionar o bot√£o "Enviar". :/}
+    {@event BeforeSend - Sempre antes de enviar o relatÛrio via e-mail ou quando o usu·rio pressionar o bot„o "Enviar". :/}
     property BeforeSend: TNotifyEvent read FBeforeSend write FBeforeSend;
 
-    {@event OnSend - Sempre ao enviar um relat√≥rio via e-mail.
-     O programador deve implementar este evento e providenciar o envio do relat√≥rio.
-     O FortesReport n√£o prove esta rotina, apenas fornece a interface para isso. :/}
+    {@event OnSend - Sempre ao enviar um relatÛrio via e-mail.
+     O programador deve implementar este evento e providenciar o envio do relatÛrio.
+     O FortesReport n„o prove esta rotina, apenas fornece a interface para isso. :/}
     property OnSend: TNotifyEvent read FOnSend write FOnSend;
 
-    {@event AfterSend - Sempre ap√≥s a conclus√£o do envio do relat√≥rio via e-mail. :/}
+    {@event AfterSend - Sempre apÛs a conclus„o do envio do relatÛrio via e-mail. :/}
     property AfterSend: TNotifyEvent read FAfterSend write FAfterSend;
   end;
   {/@class}
@@ -267,20 +264,20 @@ var
   OnCreatePreviewForm: TOnCreatePreviewFormProc = nil;
   ShowPreviewOnWindowsTaskBar: Boolean = False;
 
-{@proc PreviewPagesWithOptions - Exibe o form padr√£o de pr√©-visualiza√ß√£o com op√ß√µes. :}
+{@proc PreviewPagesWithOptions - Exibe o form padr„o de prÈ-visualizaÁ„o com opÁıes. :}
 procedure PreviewPagesWithOptions(APages: TRLGraphicStorage; AShowModal: Boolean;
   AFormStyle: TFormStyle; APosition: TPosition; AWindowState: TWindowState;
   ABorderIcons: TBorderIcons; const AHelpFile: string; AHelpContext: Integer; ACaption: TCaption);
 {/@proc}
 
-{@proc PreviewPages - Exibe o form padr√£o de pr√©-visualiza√ß√£o com as op√ß√µes default. :/}
+{@proc PreviewPages - Exibe o form padr„o de prÈ-visualizaÁ„o com as opÁıes default. :/}
 procedure PreviewPages(APages: TRLGraphicStorage);
-{@proc PreviewFromFile - Carrega o arquivo de relat√≥rio e exibe o form padr√£o de pr√©-visualiza√ß√£o. :/}
+{@proc PreviewFromFile - Carrega o arquivo de relatÛrio e exibe o form padr„o de prÈ-visualizaÁ„o. :/}
 procedure PreviewFromFile(const AFileName: string);
-{@proc PreviewFromStream - Carrega a stream de relat√≥rio e exibe o form padr√£o de pr√©-visualiza√ß√£o. :/}
+{@proc PreviewFromStream - Carrega a stream de relatÛrio e exibe o form padr„o de prÈ-visualizaÁ„o. :/}
 procedure PreviewFromStream(AStream: TStream);
-{@proc PreviewFromFileDialog - Exibe di√°logo para a carga de arquivo de relat√≥rio e exibe
- o form padr√£o de pr√©-visualiza√ß√£o. :/}
+{@proc PreviewFromFileDialog - Exibe di·logo para a carga de arquivo de relatÛrio e exibe
+ o form padr„o de prÈ-visualizaÁ„o. :/}
 procedure PreviewFromFileDialog;
 
 {/@unit}
@@ -338,7 +335,11 @@ var
   savecursor: TCursor;
   pages: TRLGraphicStorage;
 begin
-  if not FileExistsUTF8(AFileName) { *Converted from FileExists* } then
+  {$IFDEF FPC}
+   if not FileExistsUTF8(AFileName) then
+   {$else}
+   if not FileExists(AFileName) then
+   {$endif}
     raise Exception.Create(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"');
   //
   pages := TRLGraphicStorage.Create;
@@ -461,7 +462,7 @@ begin
     Left := SpeedButtonClose.BoundsRect.Right;
     Top := SpeedButtonClose.Top;
     Height := SpeedButtonClose.Height;
-    // copia a mesma margem dos outros bot√≤es
+    // copia a mesma margem dos outros botÚes
     B := NeedAuxBitmap;
     B.Canvas.Font := PanelTools.Font;
     Width := B.Canvas.TextWidth(Caption) + SpeedButtonClose.Width - B.Canvas.TextWidth(SpeedButtonClose.Caption);
@@ -624,7 +625,7 @@ begin
   Height := 375;
   VertScrollBar.Range := 29;
   AutoScroll := False;
-  Caption := 'Pr√©-visualiza√ß√£o';
+  Caption := 'PrÈ-visualizaÁ„o';
   KeyPreview := True;
   WindowState := wsNormal;
   OnKeyDown := FormKeyDown;
@@ -783,7 +784,7 @@ begin
       Height := 22;
       Caption := ' ';
       Flat := True;
-      Hint := 'Voc√™ tamb√©m pode aumentar ou reduzir o zoom do relat√≥rio'#13+
+      Hint := 'VocÍ tambÈm pode aumentar ou reduzir o zoom do relatÛrio'#13+
               'precionando "Ctrl" e usando a rolagem do mouse.';
       ShowHint := True;
       Glyph := HexToBitmap(
@@ -812,7 +813,7 @@ begin
       Height := 22;
       Caption := ' ';
       Flat := True;
-      Hint := 'Voc√™ tamb√©m pode aumentar ou reduzir o zoom do relat√≥rio'#13+
+      Hint := 'VocÍ tambÈm pode aumentar ou reduzir o zoom do relatÛrio'#13+
               'precionando "Ctrl" e usando a rolagem do mouse.';
       ShowHint := True;
       Glyph := HexToBitmap(
@@ -1075,9 +1076,9 @@ begin
           '50%'#13 +
           '25%'#13 +
           '10%'#13 +
-          'Largura da p√°gina'#13 +
-          'P√°gina inteira'#13 +
-          'V√°rias p√°ginas'#13;
+          'Largura da p·gina'#13 +
+          'P·gina inteira'#13 +
+          'V·rias p·ginas'#13;
       end;
     end;
     TRLComponentFactory.CreateComponent(TPanel, Self, PanelCopyright);
@@ -1323,7 +1324,11 @@ begin
       try
         MaxPage := Preview.Pages.PageCount;
         if Self.Preview.Pages.Title <> '' then
-          FileName := ExpandFileNameUTF8(FileNameFromText(Self.Preview.Pages.Title)) { *Converted from ExpandFileName* }
+        {$IFDEF FPC}
+          FileName := ExpandFileNameUTF8(FileNameFromText(Self.Preview.Pages.Title))
+          {$ELSE}
+          FileName := ExpandFileName(FileNameFromText(Self.Preview.Pages.Title))
+          {$ENDIF}
         else if (SelectedFilter <> nil) and (SelectedFilter is TRLCustomSaveFilter) then
           FileName := TRLCustomSaveFilter(SelectedFilter).FileName
         else

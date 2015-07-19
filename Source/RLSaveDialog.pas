@@ -221,7 +221,7 @@ begin
     Top := 68;
     Width := 365;
     Height := 101;
-    Caption := ' PÃ¡ginas no intervalo';
+    Caption := ' Páginas no intervalo';
     TabOrder := 2;
     TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
     with LabelFromPage do
@@ -244,7 +244,7 @@ begin
       Top := 45;
       Width := 18;
       Height := 13;
-      Caption := '&atÃ©:';
+      Caption := '&até:';
       FocusControl := EditToPage;
     end;
     TRLComponentFactory.CreateComponent(TRadioButton, Self, RadioButtonPagesAll);
@@ -270,7 +270,7 @@ begin
       Top := 44;
       Width := 61;
       Height := 17;
-      Caption := 'PÃ¡ginas';
+      Caption := 'Páginas';
       TabOrder := 1;
     end;
     TRLComponentFactory.CreateComponent(TRadioButton, Self, RadioButtonPagesSelect);
@@ -282,7 +282,7 @@ begin
       Top := 68;
       Width := 73;
       Height := 17;
-      Caption := '&SeleÃ§Ã£o';
+      Caption := '&Seleção';
       TabOrder := 2;
     end;
     TRLComponentFactory.CreateComponent(TEdit, Self, EditFromPage);

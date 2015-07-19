@@ -21,9 +21,9 @@ uses
   Qt, QGraphics, QControls, QForms, QDialogs, QStdCtrls, QExtCtrls, QButtons,
 {$endif}
 {$ifdef FPC}
-  SysUtils, LCLIntf,
+  LCLIntf,
 {$endif}
-  Classes, RLConsts, RLUtils, RLComponentFactory;
+  SysUtils, Classes, RLConsts, RLUtils, RLComponentFactory;
 
 type
 
@@ -89,7 +89,11 @@ end;
 procedure TFormRLAbout.LabelHomeClick(Sender: TObject);
 begin
 {$ifdef MSWINDOWS}
-   OpenDocument(PChar(TLabel(Sender).Hint)); { *Converted from ShellExecute* }
+ {$IFDEF FPC}
+   OpenDocument(PChar(TLabel(Sender).Hint));
+  {$ELSE}
+   ShellExecute(0, nil, PChar(TLabel(Sender).Hint), nil, nil, SW_SHOWNORMAL);
+  {$ENDIF}
 {$endif}
 end;
 

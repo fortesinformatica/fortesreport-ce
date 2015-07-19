@@ -8,7 +8,7 @@ interface
 uses
   SysUtils, Classes, Math,
   {$ifndef FPC}
-  {$ifdef CompilerVersion >= 29}Vcl.Imaging.jpeg{$else}Jpeg{$ifend},
+  {$ifdef CompilerVersion >= 29}Vcl.Imaging.jpeg{$else}Jpeg{$endif},
   {$endif}
 {$ifdef VCL}
   Windows, Graphics, RLMetaVCL, 
