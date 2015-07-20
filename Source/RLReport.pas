@@ -9435,7 +9435,7 @@ begin
       itFullDate: S := FormatDateTime(FormatSettings.LongDateFormat, M.ReportDateTime);
       {$else}
       itFullDate: S := FormatDateTime(LongDateFormat, M.ReportDateTime);
-      {$ifend}
+      {$endif}
       itHour: S := TimeToStr(M.ReportDateTime);
       itJunction: S := JunctionStr;
       itLastPageNumber: S := '{' + lp + '}';
