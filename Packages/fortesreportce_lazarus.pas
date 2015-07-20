@@ -7,16 +7,17 @@ unit FortesReportCE_Lazarus;
 interface
 
 uses
-  RLPrinters, RLReport, RLTypes, RLUtils, RLAbout, RLBarcode, 
-  RlCompilerConsts, RLComponentFactory, RLConsts, RLFeedBack, RLFilters, 
-  RLFindDialog, RLHTMLFilter, RLMetaFile, RLMetaVCL, RLParser, RLPreview, 
-  RLPreviewForm, RLPrintDialog, RLRichFilter, RLRichText, RLSaveDialog, 
-  RLSpoolFilter, RLXLSFilter, LazarusPackageIntf;
+  RLPrinters, RLReport, RLTypes, RLUtils, RLBarcode, RLComponentFactory, 
+  RLConsts, RLFilters, RLMetaFile, RLParser, RLPreview, RLRichText, RLMetaLCL, 
+  RLReg, RLSpoolFilter, RLAbout, RLFeedBack, RLFindDialog, RLPreviewForm, 
+  RLPrintDialog, RLSaveDialog, RLRichFilter, RLPDFFilter, RLXLSFilter, 
+  RLHTMLFilter, RLDraftFilter, LazarusPackageIntf;
 
 implementation
 
 procedure Register;
 begin
+  RegisterUnit('RLReg', @RLReg.Register);
 end;
 
 initialization

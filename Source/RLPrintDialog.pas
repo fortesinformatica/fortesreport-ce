@@ -9,9 +9,13 @@ unit RLPrintDialog;
 interface
 
 uses
-  Classes, SysUtils, Math, 
+{$IFnDEF FPC}
+  Windows,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
+  Classes, SysUtils, Math,
 {$ifndef LINUX}
-  Windows, 
 {$else}
 {$endif}
 {$ifdef VCL}

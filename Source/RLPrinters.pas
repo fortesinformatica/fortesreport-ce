@@ -4,20 +4,21 @@ unit RLPrinters;
 interface
 
 uses
-  {$ifdef Windows}
-  Windows,
-    {$ifdef LCLWin32}
-    WinUtilPrn, OSPrinters,
-    {$endif}
-  {$endif}
-  {$ifndef LINUX}
-  Windows, WinSpool, Graphics, Dialogs, Messages, Printers,
+{$ifndef LINUX}
+  {$ifndef FPC}
+    Windows, WinSpool, Messages,
   {$else}
+    {$ifdef LCLWin32}
+      Windows, WinUtilPrn, OSPrinters,
+    {$else}
+      process,
+    {$endif}
+   {$endif}
+    Graphics, Dialogs, Printers,
+{$else}
   QGraphics, QDialogs, QPrinters, Types,
-  {$endif}
-  Classes, SysUtils, Math,
-  //Graphics, Dialogs, Messages, Printers,
-  RLConsts, RLTypes, RLUtils;
+{$endif}
+  Classes, SysUtils, RLConsts, RLTypes, RLUtils;
 
 type
   TRLPrintOddEvenPages = (odOddPagesOnly, odEvenPagesOnly, odAllPages);

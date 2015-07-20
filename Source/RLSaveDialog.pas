@@ -9,9 +9,13 @@ unit RLSaveDialog;
 interface
 
 uses
-  Classes, SysUtils, 
+{$IFnDEF FPC}
+  Windows,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
+  Classes, SysUtils,
 {$ifndef LINUX}
-  Windows, 
 {$else}
 {$endif}
 {$ifdef VCL}

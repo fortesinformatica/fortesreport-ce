@@ -249,13 +249,10 @@ begin
     taRightJustify: Result := MetaTextAlignmentRight;
     taCenter: Result := MetaTextAlignmentCenter;
   else
-    //todo: See the need of this code
-    {
     if ASource = succ(taCenter) then
       Result := MetaTextAlignmentJustify
     else
       Result := MetaTextAlignmentLeft;
-    }
   end;
 end;
 
@@ -613,11 +610,11 @@ const
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)),
 {$endif}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psInsideFrame
-{$if CompilerVersion >= 18}// delphi 2007 em diante
+{$ifdef DELPHI2007_UP}// delphi 2007 em diante
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psUserStyle
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psAlternate
-{$ifend}
+{$endif}
 {$ifdef FPC}
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psClear in LCL

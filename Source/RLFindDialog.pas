@@ -9,9 +9,14 @@ unit RLFindDialog;
 interface
 
 uses
+{$IFnDEF FPC}
+  Windows,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
   SysUtils, Contnrs, Classes, TypInfo,
 {$ifdef VCL}
-  Windows, Messages, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
+  Messages, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
 {$else}
   Types, QControls, Qt, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QTypes, QGraphics,
 {$endif}

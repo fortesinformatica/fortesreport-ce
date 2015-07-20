@@ -7,7 +7,7 @@ interface
 
 uses
   SysUtils, Classes, Math, DB,
-  Windows,
+  {$ifndef UNIX}Windows,{$endif}
   Types,
   Graphics, Forms;
 
@@ -165,6 +165,14 @@ type
     rgbReserved: Byte;
   end;
 {$endif}
+{$ifdef UNIX}
+  TRGBQuad = packed record
+    rgbBlue: Byte;
+    rgbGreen: Byte;
+    rgbRed: Byte;
+    rgbReserved: Byte;
+  end;
+{$endif}
   TRGBArray = array[0..0] of TRGBQuad;
   PRGBArray = ^TRGBArray;
 
@@ -175,10 +183,14 @@ function RGB(R, G, B: Byte): TColor;
 function NeedAuxBitmap: TBitmap;
 function NewBitmap: TBitmap; overload;
 function NewBitmap(Width, Height: Integer): TBitmap; overload;
-{$ifdef fpc or DELPHI2009_DOWN}
+{$ifdef FPC}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
-{$ifend}
+{$endif}
+{$ifdef DELPHI2007_DOWN}
+function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
+function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
+{$endif}
 
 {/@unit}
 
@@ -188,7 +200,7 @@ type
 
 implementation
 
-{$ifdef fpc or DELPHI2009_DOWN}
+{$ifdef FPC}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := C in CharSet;
@@ -197,8 +209,20 @@ end;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := (C < #$0100) and (AnsiChar(C) in CharSet);
-end; 
-{$ifend}
+end;
+{$endif}
+
+{$ifdef DELPHI2007_DOWN}
+function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
+begin
+  Result := C in CharSet;
+end;
+
+function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean;
+begin
+  Result := (C < #$0100) and (AnsiChar(C) in CharSet);
+end;
+{$endif}
 
 function NewBitmap: TBitmap;
 begin
@@ -1025,4 +1049,5 @@ finalization
   FreeObj(AuxBitmap);
 
 end.
+
 

@@ -1,31 +1,48 @@
 {$I RLReport.inc}
 
+{$IFDEF FPC}
+  {$MODE Delphi}
+{$ENDIF}
+
 unit RLAbout;
 
 interface
 
 uses
-  SysUtils, Classes,
+
 {$ifdef MSWINDOWS}
   ShellAPI,
 {$endif}
 {$ifdef VCL}
-  Windows, Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons,
+  {$ifndef FPC}Windows,{$endif}
+   Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons,
 {$endif}
 {$ifdef CLX}
   Types,
   Qt, QGraphics, QControls, QForms, QDialogs, QStdCtrls, QExtCtrls, QButtons,
 {$endif}
-  RLConsts, RLUtils, RLComponentFactory;
+{$ifdef FPC}
+  LCLIntf, LCLType,
+{$endif}
+  SysUtils, Classes, RLConsts, RLUtils, RLComponentFactory;
 
 type
+
+  { TFormRLAbout }
+
   TFormRLAbout = class(TForm)
+    bbtOk: TBitBtn;
     ImageLogo: TImage;
+    imgLogo: TImage;
     LabelTitle: TLabel;
     LabelVersion: TLabel;
     LabelHome: TLabel;
     LabelCopyright: TLabel;
     BitBtnOk: TBitBtn;
+    lblCopyright: TLabel;
+    lblHome: TLabel;
+    lblTitle: TLabel;
+    lblVersion: TLabel;
     procedure LabelHomeClick(Sender: TObject);
   private
     TypedAuthorKey: string;
@@ -73,7 +90,11 @@ end;
 procedure TFormRLAbout.LabelHomeClick(Sender: TObject);
 begin
 {$ifdef MSWINDOWS}
-  ShellExecute(0, nil, PChar(TLabel(Sender).Hint), nil, nil, SW_SHOWNORMAL);
+ {$IFDEF FPC}
+   OpenDocument(PChar(TLabel(Sender).Hint));
+  {$ELSE}
+   ShellExecute(0, nil, PChar(TLabel(Sender).Hint), nil, nil, SW_SHOWNORMAL);
+  {$ENDIF}
 {$endif}
 end;
 
@@ -161,7 +182,11 @@ begin
     Width := 65;
     Height := 13;
 {$ifdef VCL}
+{$ifdef FPC}
+    Caption := CS_Version + ' LCL';
+{$else}
     Caption := CS_Version + ' VCL';
+{$endif}
 {$endif}
 {$ifdef CLX}
     Caption := CS_Version + ' CLX';

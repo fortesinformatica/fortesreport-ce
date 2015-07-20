@@ -8,17 +8,24 @@ interface
 uses
   SysUtils, Classes, Math, Contnrs, 
 {$ifndef LINUX}
-  Windows, WinSpool, ShellApi, 
+  {$ifdef FPC}
+    LCLIntf, LCLType, IntfGraphics, FPImage, FileUtil, Process,
+  {$else}
+    Windows, WinSpool, ShellApi,
+  {$endif}
 {$else}
   Types, Libc, 
 {$endif}
 {$ifdef VCL}
-  Graphics, RLMetaVCL, 
+  {$ifdef FPC}
+    Graphics, RLMetaLCL,
+  {$else}
+    Graphics, RLMetaVCL, RlCompilerConsts,
+  {$endif}
 {$else}
   QGraphics, RLMetaCLX, 
 {$endif}
-  RLMetaFile, RLConsts, RLUtils, RLFilters, RLTypes, RLPrinters,
-  RlCompilerConsts;
+  RLMetaFile, RLConsts, RLUtils, RLFilters, RLTypes, RLPrinters;
 
 type
   {@type TRLDraftAccentMethod - Comportamento do filtro em relação aos caracteres acentuados.
@@ -61,7 +68,7 @@ type
    dkProgram - A prop DevicePath indica o nome de um programa spooler. Padrão recomendado para o Linux;
    dkFileName - A prop DevicePath aponta para um nome de arquivo. Este arquivo poderá ser copiado para
    outra impressora, ou ser utilizado como debug. :/}
-  TRLDeviceKind = (dkPrinter, dkPrinterPort, dkProgram, dkFileName);
+  TRLDeviceKind = ({$ifndef FPC}dkPrinter,{$endif} dkPrinterPort, dkProgram, dkFileName);
 
   {@type TRLDitheringMethod - Método para impressão de imagens.
    Esta propriedade indica que técnica deve ser utilizada para transformar imagens coloridas em pontos preto e branco.
@@ -152,7 +159,9 @@ type
     // state variables
 
     FDeviceHandle: file;
+{$ifndef FPC}
     FPrinterHandle: Cardinal;
+ {$endif}
     FSendFirstReset: Boolean;
     FDeviceFileName: String;
     FPrintCut: TPoint;
@@ -540,15 +549,16 @@ begin
   else
     Result := ADefault;
 end;
-{$ifdef DELPHIXE3_UP or FPC}
-function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
+
+{$ifndef FPC}
+{$ifdef DELPHIXE3_UP}
+ function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
 {$else}
-function LinePrinterStart(const PrnName, DocName: String): Cardinal;
-{$ifend}
+ function LinePrinterStart(const PrnName, DocName: String): Cardinal;
+{$endif}
 var
   di: TDocInfo1;
 begin
-  {$ifndef FPC}
   FillChar(di, SizeOf(di), 0);
   di.pDocName := PChar(DocName);
   di.pOutputFile := nil;
@@ -556,9 +566,6 @@ begin
   OpenPrinter(PChar(PrnName), Result, nil);
   StartDocPrinter(Result, 1, @di);
   StartPagePrinter(Result);
-  {$else}
-  //note: implement RLDraftFilter.LinePrinterStart
-  {$endif}
 end;
 
 procedure LinePrinterWrite(PrnHandle: Cardinal; const Text: String);
@@ -570,7 +577,11 @@ begin
   Len := Length(Aux);
   if Len > 0 then
   begin
+    {$ifdef FPC}
+    WritePrinter(PrnHandle, @Aux[1], Len, PDword(Len));
+    {$else}
     WritePrinter(PrnHandle, @Aux[1], Len, Len);
+    {$endif}
   end;
 end;
 
@@ -580,6 +591,7 @@ begin
   EndDocPrinter(PrnHandle);
   ClosePrinter(PrnHandle);
 end;
+{$endif}
 
 { TDraftImage }
 
@@ -678,10 +690,12 @@ begin
   FCurrentCharWidth := CPPPins(FCurrentCPP);
   FCurrentCharHeight := LPPPins(FCurrentLPP);
   //
+  {$ifndef FPC}
   if FDeviceKind = dkPrinter then
     FPrinterHandle := LinePrinterStart(RLPrinter.PrinterName, 'FortesReport')
   else
   begin
+  {$endif}
     case FDeviceKind of
       dkPrinterPort: FDeviceFileName := RLPrinter.PrinterPort;
       dkProgram: begin
@@ -692,10 +706,13 @@ begin
     else
       FDeviceFileName := FDevicePath;
     end;
+
     //
     AssignFile(FDeviceHandle, FDeviceFileName);
     Rewrite(FDeviceHandle, 1);
-  end; 
+{$ifndef FPC}
+  end;
+{$endif}
   //
   ResetPage;
 end;
@@ -705,16 +722,22 @@ var
   cmd: String;
 {$ifndef LINUX}
 var
-  par: String;
-  I: Integer;
+{$ifdef FPC}
+  VProcess: TProcess;
+{$else}
+  par:string;
+  i  :integer;
+{$endif}
 {$endif}
 begin
   NewPage;
   //
+  {$ifndef FPC}
   if FDeviceKind = dkPrinter then
     LinePrinterEnd(FPrinterHandle)
   else
   begin
+  {$endif}
     CloseFile(FDeviceHandle);
     case FDeviceKind of
       dkPrinterPort: ;
@@ -724,19 +747,34 @@ begin
         cmd := StringReplace(cmd, '%p', RLPrinter.PrinterName, [rfReplaceAll, rfIgnoreCase]);
         cmd := StringReplace(cmd, '%f', FDeviceFileName, [rfReplaceAll, rfIgnoreCase]);
 {$ifndef LINUX}
+{$ifdef FPC}
+        VProcess := TProcess.Create(nil);
+        try
+          begin
+            VProcess.Options := [poNoConsole];
+            VProcess.CommandLine := Cmd;
+            VProcess.Execute;
+            end;
+        finally
+          VProcess.Free;
+        end;
+{$else}
         I := Pos(' ', cmd);
         if I = 0 then
           I := Length(cmd) + 1;
         par := Copy(cmd, I + 1, Length(cmd));
         cmd := Copy(cmd, 1, I - 1);
         ShellExecute(0, 'open', PChar(cmd), PChar(par), nil, SW_SHOWNORMAL);
+{$endif}
 {$else}
         Libc.system(PChar(cmd));
 {$endif};
       end;
       dkFileName: ;
     end;
+{$ifndef FPC}
   end;
+{$endif};
 end;
 
 procedure TRLDraftFilter.InternalNewPage;
@@ -833,13 +871,17 @@ var
   Aux: AnsiString;
 begin
   if AData <> '' then
+  {$ifndef FPC}
     if FDeviceKind = dkPrinter then
       LinePrinterWrite(FPrinterHandle, AData)
     else
     begin
+  {$endif}
       Aux := AnsiString(AData);
       BlockWrite(FDeviceHandle, Aux[1], Length(Aux));
+  {$ifndef FPC}
     end;
+  {$endif}
 end;
 
 function TRLDraftFilter.FormFactorX: Double;
@@ -1168,7 +1210,11 @@ begin
         tempbmp.PixelFormat := pf32bit;
         tempbmp.Width := Round((AObj.BoundsRect.Right - AObj.BoundsRect.Left) * AspectratioX);
         tempbmp.Height := Round((AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) * AspectratioY);
+        {$ifdef FPC}
+        tempbmp.Canvas.StretchDraw(Bounds(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$else}
         tempbmp.Canvas.StretchDraw(Rect(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$endif}
         asbitmap.Width := tempbmp.Width;
         asbitmap.Height := tempbmp.Height;
         case FDitheringMethod of

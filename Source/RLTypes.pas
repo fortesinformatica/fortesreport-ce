@@ -4,7 +4,10 @@ unit RLTypes;
 interface
 
 uses
-  Windows, Printers, 
+  {$ifndef FPC}
+    Windows,
+  {$endif}
+  Printers,
   Classes;
 
 type
@@ -325,6 +328,7 @@ initialization
   //
   SetPaperInfo(fpCustom, 0, 0, 'User Defined');
 
+{$ifndef FPC}
   // Equivalências para Windows
 {$ifndef LINUX}
   SetPaperEqv(fpA2, DMPAPER_A2);
@@ -443,6 +447,7 @@ initialization
   SetPaperEqv(fpLedger, psLedger);
   SetPaperEqv(fpTabloid, psTabloid);
   SetPaperEqv(fpCustom, psNPageSize);
+{$endif}
 {$endif}
 
 end.

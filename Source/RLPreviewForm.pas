@@ -10,12 +10,15 @@ unit RLPreviewForm;
 interface
 
 uses
+{$IFnDEF FPC}
+  Windows,
+{$ELSE}
+  Windows, LCLIntf, LMessages, FileUtil,
+{$ENDIF}
   SysUtils, Math, Contnrs, Classes, Messages,
-  {$ifdef FPC}
-  LCLType,
-  {$endif}
+  {$ifdef FPC}  LCLType, {$endif}
 {$ifdef VCL}
-  Windows, Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
+  Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
 {$else}
   Types, QControls, Qt, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QTypes, QGraphics,
 {$endif}
@@ -332,7 +335,11 @@ var
   savecursor: TCursor;
   pages: TRLGraphicStorage;
 begin
-  if not FileExists(AFileName) then
+  {$IFDEF FPC}
+   if not FileExistsUTF8(AFileName) then
+   {$else}
+   if not FileExists(AFileName) then
+   {$endif}
     raise Exception.Create(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"');
   //
   pages := TRLGraphicStorage.Create;
@@ -1317,7 +1324,11 @@ begin
       try
         MaxPage := Preview.Pages.PageCount;
         if Self.Preview.Pages.Title <> '' then
+        {$IFDEF FPC}
+          FileName := ExpandFileNameUTF8(FileNameFromText(Self.Preview.Pages.Title))
+          {$ELSE}
           FileName := ExpandFileName(FileNameFromText(Self.Preview.Pages.Title))
+          {$ENDIF}
         else if (SelectedFilter <> nil) and (SelectedFilter is TRLCustomSaveFilter) then
           FileName := TRLCustomSaveFilter(SelectedFilter).FileName
         else

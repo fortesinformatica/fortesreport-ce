@@ -12,7 +12,11 @@ interface
 uses
   Classes, SysUtils, 
 {$ifndef LINUX}
-  Windows, 
+  {$ifdef FPC}
+     LCLIntf,
+   {$else}
+     Windows,
+   {$endif}
 {$else}
   Types, 
 {$endif}
@@ -34,7 +38,7 @@ type
   TRLCustomPrintFilter = class;
   TRLCustomSaveFilter = class;
 
-  TRLFilterClassOption = (foEmulateCopies);
+  TRLFilterClassOption = (foEmulateCopies, foSetupDialog);
   TRLFilterClassOptions = set of TRLFilterClassOption;
 
   { TRLCustomFilter }
@@ -79,10 +83,6 @@ type
 
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
 
-    //
-
-    property ClassOptions: TRLFilterClassOptions read FClassOptions write FClassOptions;
-
   public
 
     // override methods
@@ -114,6 +114,8 @@ type
     {@method DrawPage - Desenha o conteúdo da superfície informada na página corrente. :/}
     procedure DrawPage(APage: TRLGraphicSurface);
 
+    procedure ExecuteDialog; virtual;
+
     {@method FilterPages - Processa as páginas através do filtro.
      A lista de páginas aPages pode ser obtida na prop Pages de um TRLReport após a preparação do relatório, ou de
      modo avulso criando uma instancia do TRLGraphicStorage e carregando um relatório do disco.
@@ -136,6 +138,8 @@ type
 
     {@prop Canceled - Indica se o processo foi interrompido pelo usuário. :/}
     property Canceled: Boolean read FCanceled write FCanceled;
+
+    property ClassOptions: TRLFilterClassOptions read FClassOptions write FClassOptions;
   end;
   {/@class}
   
@@ -284,7 +288,7 @@ begin
   FProgress := nil;
   FShowProgress := True;
   FCanceled := False;
-  FClassOptions := [];
+  FClassOptions := [foEmulateCopies];
   //
   inherited;
   //
@@ -333,6 +337,10 @@ end;
 procedure TRLCustomFilter.DrawPage(APage: TRLGraphicSurface);
 begin
   InternalDrawPage(APage);
+end;
+
+procedure TRLCustomFilter.ExecuteDialog;
+begin
 end;
 
 function TRLCustomFilter.PageInRange(APageNo: Integer; const APageSelection: string): Boolean;
@@ -413,6 +421,7 @@ begin
               DrawPage(page);
               if FShowProgress then
                 FProgress.Tick;
+
               if FCanceled then
                 Break;
             end;

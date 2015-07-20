@@ -1,0 +1,104 @@
+object FormRLAbout: TFormRLAbout
+  Left = 468
+  Height = 148
+  Top = 186
+  Width = 374
+  ClientHeight = 148
+  ClientWidth = 374
+  LCLVersion = '1.4.2.0'
+  object imgLogo: TImage
+    Left = 12
+    Height = 32
+    Top = 12
+    Width = 32
+    AutoSize = True
+    Picture.Data = {
+      07544269746D617076020000424D760200000000000076000000280000002000
+      000020000000010004000000000000020000120B0000120B0000100000001000
+      000000000000000080000080000000808000800000008000800080800000C0C0
+      C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFF
+      FF00FFFFFFFFFFFFFFFFFFFF9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9FFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFF9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF99FFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFF99FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF99FFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFF99FFFFFFFFFFFFFFFFFFFFFFFFFFFFF999FFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFF99FFFFFFFFFFFFFFFFFFFFFFFFFFFFF999FFFFFFFFFFFF
+      FFFFFFFFFFFF99FFF999FFFFFFFFFFFFFFFFFFFFFF99FFFF999FFFFFFFFFFFFF
+      FFFFFFFF999FFFFF999FFFFFFFFFFFFFFFFFFFF9999FFFF9999FFFFFFFFFFFFF
+      FFFFFF9999FFFFF9999FFFFFFFFFFFFFFFFFF99999FFFFF9999FFFFFFFFFFFFF
+      FFFFF99999FFFF99999FFFFFFFFFFFFFFFFFF99999FFFF99999FFFFFFFFFFFFF
+      FFFFF999999FFF99999FFFFFFFFFFFFFFFFFFF999999FF99999FFFFFFFFFFFFF
+      FFFFFFF999999F99999FFFFFFFFFFFFFFFFFFFFFF9999999999FFFFFFFFFFFFF
+      FFFFFFFFFFF999999999FFFFFFFFFFFFFFFFFFFFFFFFF9999999FFFFFFFFFFFF
+      FFFFFFFFFFFFFF9999999FFFFFFFFF999FFFFF9999FFFFF999999999999999FF
+      FFFFF999999FFFFF99999999999FFFFFFFFFF999999FFFFFF999999FFFFFFFFF
+      FFFFF999999FFFFFFF9999999FFFFFFFFFFFF999999FFFFFFFFF99999999FFFF
+      999FFF9999FFFFFFFFFFFF99999999999FFFFFFFFFFFFFFFFFFFFFFFF9999FFF
+      FFFF
+    }
+  end
+  object lblTitle: TLabel
+    Left = 52
+    Height = 19
+    Top = 12
+    Width = 101
+    Caption = 'FortesReport'
+    Font.Color = clBlack
+    Font.Height = 19
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblVersion: TLabel
+    Left = 52
+    Height = 13
+    Top = 32
+    Width = 64
+    Caption = 'Versão 0.2.06'
+    Font.Color = clBlack
+    Font.Height = 13
+    Font.Name = 'helvetica'
+    Font.Pitch = fpVariable
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblHome: TLabel
+    Left = 52
+    Height = 14
+    Top = 72
+    Width = 168
+    Caption = 'http://www.fortesinformatica.com.br'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'Times New Roman'
+    Font.Pitch = fpVariable
+    Font.Style = [fsUnderline]
+    ParentColor = False
+    ParentFont = False
+  end
+  object lblCopyright: TLabel
+    Left = 52
+    Height = 14
+    Top = 56
+    Width = 211
+    Caption = 'Copyright (c) 1998-2015  Fortes Informática'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    ParentColor = False
+    ParentFont = False
+  end
+  object bbtOk: TBitBtn
+    Left = 256
+    Height = 26
+    Top = 112
+    Width = 99
+    Caption = '&Ok'
+    Kind = bkOK
+    TabOrder = 0
+  end
+end
