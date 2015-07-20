@@ -5,7 +5,10 @@ unit RLMetaLCL;
 interface
 
 uses
-  Windows, SysUtils, Graphics, Classes, Math, StdCtrls, 
+  {$ifdef LCLWin32}
+  Windows,
+  {$endif}
+  LCLIntf, LCLType, LCLProc, SysUtils, Graphics, Classes, Math, StdCtrls,
   RLMetaFile, RLUtils, RLConsts;
 
 type
@@ -494,7 +497,7 @@ end;
 
 function CanvasGetClipRect(ACanvas: TCanvas): TRect;
 begin
-  GetClipBox(ACanvas.Handle, Result);
+  GetClipBox(ACanvas.Handle, @Result);
 end;
 
 procedure CanvasSetClipRect(ACanvas: TCanvas; const ARect: TRect);

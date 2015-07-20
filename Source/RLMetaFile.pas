@@ -26,7 +26,12 @@ interface
 uses
   SysUtils, Contnrs,
 {$ifdef VCL}
-  Windows, Graphics, Dialogs,
+  {$ifdef FPC}
+     Types,
+   {$else}
+     Windows,
+   {$endif}
+   Graphics, Dialogs,
 {$endif}
 {$ifdef CLX}
   Types, QGraphics, QDialogs,

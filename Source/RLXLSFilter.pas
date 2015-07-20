@@ -13,7 +13,11 @@ uses
 {$endif}
   SysUtils, StrUtils, Classes, Contnrs, Math, DateUtils,
 {$ifdef VCL}
-  Graphics, RLMetaVCL,
+  {$ifdef FPC}
+    Types, Graphics, RLMetaLCL,
+  {$else}
+    Graphics, RLMetaVCL,
+  {$endif}
 {$else}
   Types, QGraphics, RLMetaCLX, 
 {$endif}

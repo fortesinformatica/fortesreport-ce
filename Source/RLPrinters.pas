@@ -5,14 +5,20 @@ interface
 
 uses
 {$ifndef LINUX}
-  Windows, {$ifdef LCLWin32} WinUtilPrn, OSPrinters, {$endif}
-  WinSpool, Graphics, Dialogs, Messages, Printers,
+  {$ifndef FPC}
+    Windows, WinSpool, Messages,
+  {$else}
+    {$ifdef LCLWin32}
+      Windows, WinUtilPrn, OSPrinters,
+    {$else}
+      process,
+    {$endif}
+   {$endif}
+    Graphics, Dialogs, Printers,
 {$else}
   QGraphics, QDialogs, QPrinters, Types,
 {$endif}
-  Classes, SysUtils, Math,
-  //Graphics, Dialogs, Messages, Printers,
-  RLConsts, RLTypes, RLUtils;
+  Classes, SysUtils, RLConsts, RLTypes, RLUtils;
 
 type
   TRLPrintOddEvenPages = (odOddPagesOnly, odEvenPagesOnly, odAllPages);

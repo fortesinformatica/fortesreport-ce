@@ -12,7 +12,11 @@ interface
 uses
   Classes, SysUtils, 
 {$ifndef LINUX}
-  Windows, 
+  {$ifdef FPC}
+     LCLIntf,
+   {$else}
+     Windows,
+   {$endif}
 {$else}
   Types, 
 {$endif}

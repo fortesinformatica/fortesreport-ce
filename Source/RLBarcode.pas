@@ -7,7 +7,12 @@ interface
 
 uses
 {$ifdef VCL}
-  Windows, Graphics, Dialogs, 
+  {$ifdef FPC}
+     LCLIntf,
+   {$else}
+     Windows,
+   {$endif}
+  Graphics, Dialogs,
 {$else}
   Types, QGraphics, QDialogs, 
 {$endif}

@@ -7,7 +7,7 @@ interface
 
 uses
   SysUtils, Classes, Math, DB,
-  Windows,
+  {$ifndef UNIX}Windows,{$endif}
   Types,
   Graphics, Forms;
 
@@ -158,6 +158,14 @@ procedure Log(const AMsg: String);
 
 type
 {$ifdef KYLIX}
+  TRGBQuad = packed record
+    rgbBlue: Byte;
+    rgbGreen: Byte;
+    rgbRed: Byte;
+    rgbReserved: Byte;
+  end;
+{$endif}
+{$ifdef UNIX}
   TRGBQuad = packed record
     rgbBlue: Byte;
     rgbGreen: Byte;

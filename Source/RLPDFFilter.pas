@@ -11,7 +11,11 @@ uses
   {$ifdef CompilerVersion >= 29}Vcl.Imaging.jpeg{$else}Jpeg{$endif},
   {$endif}
 {$ifdef VCL}
-  Windows, Graphics, RLMetaVCL, 
+  {$ifdef FPC}
+    LCLIntf, LCLType, Types, Graphics, RLMetaLCL,
+  {$else}
+    Windows, Graphics, RLMetaVCL,
+  {$endif}
 {$else}
   Types, QGraphics, RLMetaCLX,
 {$endif}

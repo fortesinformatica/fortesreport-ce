@@ -8,7 +8,11 @@ interface
 uses
   SysUtils, Classes, Contnrs, Types,
 {$ifdef VCL}
-  Graphics, RLMetaVCL, 
+  {$ifdef FPC}
+    Graphics, RLMetaLCL,
+  {$else}
+    Graphics, RLMetaVCL,
+  {$endif}
 {$else}
   QGraphics, RLMetaCLX, 
 {$endif}

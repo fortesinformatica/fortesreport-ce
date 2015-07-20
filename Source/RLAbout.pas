@@ -14,14 +14,15 @@ uses
   ShellAPI,
 {$endif}
 {$ifdef VCL}
-  Windows, Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons,
+  {$ifndef FPC}Windows,{$endif}
+   Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons,
 {$endif}
 {$ifdef CLX}
   Types,
   Qt, QGraphics, QControls, QForms, QDialogs, QStdCtrls, QExtCtrls, QButtons,
 {$endif}
 {$ifdef FPC}
-  LCLIntf,
+  LCLIntf, LCLType,
 {$endif}
   SysUtils, Classes, RLConsts, RLUtils, RLComponentFactory;
 
