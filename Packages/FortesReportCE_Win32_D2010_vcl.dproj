@@ -1,4 +1,4 @@
-	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{B1202F89-3283-48F5-A33F-495026D875E5}</ProjectGuid>
 			<MainSource>FortesReportCE_Win32_D2010_vcl.dpk</MainSource>
