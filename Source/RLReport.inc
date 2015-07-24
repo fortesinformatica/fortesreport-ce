@@ -149,6 +149,7 @@
 {$ifdef DELPHI5_UP} {$define USE_VARIANTS} {$endif}
 
 {$ifdef FPC}
+ {$define UNICODE}
  {$define VCL}
  {$define USE_VARIANTS}
 {$endif}

@@ -1521,7 +1521,7 @@ end;
 
 function TRLDraftFilter.GetOptionsLabel: String;
 begin
-  Result := LocaleStrings.LS_FormStr;
+  Result := GetLocalizeStr(LocaleStrings.LS_FormStr);
 end;
 
 function TRLDraftFilter.GetOptionIndex: Integer;
@@ -1534,9 +1534,9 @@ begin
   if FOptions = nil then
   begin
     FOptions := TStringList.Create;
-    FOptions.Add(LocaleStrings.LS_DefaultStr);
-    FOptions.Add('80 ' + LocaleStrings.LS_ColumnsStr);
-    FOptions.Add('132 ' + LocaleStrings.LS_ColumnsStr);
+    FOptions.Add(GetLocalizeStr(LocaleStrings.LS_DefaultStr));
+    FOptions.Add(GetLocalizeStr('80 ' + LocaleStrings.LS_ColumnsStr));
+    FOptions.Add(GetLocalizeStr('132 ' + LocaleStrings.LS_ColumnsStr));
   end;
   //
   Result := FOptions;

@@ -2173,7 +2173,7 @@ begin
   begin
     Result := DataSet.FindField(FDataField);
     if Result = nil then
-      raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.DataField "' + FDataField + '"');
+      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.DataField "' + FDataField + '"'));
   end
   else
     Result := nil;

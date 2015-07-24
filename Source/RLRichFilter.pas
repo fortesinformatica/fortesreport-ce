@@ -201,7 +201,7 @@ begin
   FFontNames := TStringList.Create;
   //
   DefaultExt := '.rtf';
-  DisplayName := LocaleStrings.LS_RichFormatStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_RichFormatStr);
 end;
 
 destructor TRLRichFilter.Destroy;

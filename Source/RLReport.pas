@@ -4832,7 +4832,7 @@ var
   savecursor: TCursor;
 begin
   if not FileExists(AFileName) then
-    raise Exception.Create(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"'));
 
   savecursor := Screen.Cursor;
   Screen.Cursor := crHourGlass;
@@ -4861,7 +4861,7 @@ begin
     dialog.DefaultExt := FormatFileExt(ReportFileExt);
     dialog.Filter := AddFileFilter('', CS_ProductTitleStr, ReportFileExt);
     dialog.FilterIndex := 1;
-    dialog.Title := LocaleStrings.LS_LoadReportStr;
+    dialog.Title := GetLocalizeStr(LocaleStrings.LS_LoadReportStr);
     if dialog.Execute then
       LoadReportFromFile(dialog.FileName);
   finally
@@ -6863,30 +6863,30 @@ function TRLCustomControl.RequestParentPager: TRLCustomPager;
 begin
   Result := FindParentPager;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentPager');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentPager'));
 end;
 
 function TRLCustomControl.RequestParentSkipper: TRLCustomSkipper;
 begin
   Result := FindParentSkipper;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
-      Name + '.ParentSkipper');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' +
+      Name + '.ParentSkipper'));
 end;
 
 function TRLCustomControl.RequestParentReport: TRLCustomReport;
 begin
   Result := FindParentReport;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentReport');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentReport'));
 end;
 
 function TRLCustomControl.RequestParentSurface: TRLGraphicSurface;
 begin
   Result := FindParentSurface;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
-      Name + '.ParentSurface');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' +
+      Name + '.ParentSurface'));
 end;
 
 procedure TRLCustomControl.DoBeforePrint(var APrintIt: Boolean);
@@ -7548,13 +7548,13 @@ begin
     if csLoading in ComponentState then
       FFriendlyName := ''
     else
-      raise Exception.Create(LocaleStrings.LS_InvalidNameStr + ' "' + Value + '"')
+      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_InvalidNameStr + ' "' + Value + '"'))
   else
   begin
     for I := 0 to Owner.ComponentCount - 1 do
       if Owner.Components[I] is TRLCustomControl then
         if AnsiSameText(Value, TRLCustomControl(Owner.Components[I]).FriendlyName) then
-          raise Exception.Create(LocaleStrings.LS_DuplicateNameStr + ' "' + Value + '"');
+          raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_DuplicateNameStr + ' "' + Value + '"'));
     FFriendlyName := Value;
   end;
 
@@ -9334,9 +9334,9 @@ begin
     t2 := Copy(S, I + 1, MaxInt);
   end;
   if t1 = '' then
-    t1 := LocaleStrings.LS_PageBreakStr;
+    t1 := GetLocalizeStr(LocaleStrings.LS_PageBreakStr);
   if t2 = '' then
-    t2 := LocaleStrings.LS_ReportEndStr;
+    t2 := GetLocalizeStr(LocaleStrings.LS_ReportEndStr);
 
   if fPrintEndTextOnNextReport then
   begin
@@ -9388,7 +9388,7 @@ begin
     t2 := Copy(S, I + 1, MaxInt);
   end;
   if t1 = '' then
-    t1 := LocaleStrings.LS_PageMendStr;
+    t1 := GetLocalizeStr(LocaleStrings.LS_PageMendStr);
   if t2 = '' then
     t2 := CLEARCONST;
 
@@ -12711,8 +12711,8 @@ begin
         begin
           F := S.DataSource.DataSet.FindField(K);
           if F = nil then
-            raise Exception.Create(LocaleStrings.LS_NotFoundStr +
-              ': ' + Name + '.DataField "' + K + '"');
+            raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr +
+              ': ' + Name + '.DataField "' + K + '"'));
           Result := Result + F.AsString;
         end;
         Delete(N, 1, I);
@@ -13072,7 +13072,7 @@ begin
       Aux := Aux.NextReport;
       Inc(LevelCount);
     end;
-    Master.ProgressForm := TfrmRLFeedBack.Create(LocaleStrings.LS_PrintingInProgressStr,
+    Master.ProgressForm := TfrmRLFeedBack.Create(GetLocalizeStr(LocaleStrings.LS_PrintingInProgressStr),
       LevelCount);
     Master.ProgressForm.Show;
     Master.ProgressForm.SetFocus;
@@ -13206,7 +13206,7 @@ end;
 procedure TRLCustomReport.DataNext;
 begin
   StepProgress;
-  SetProgressPhase(LocaleStrings.LS_PageStr + ' ' + IntToStr(MasterReport.PageNumber));
+  SetProgressPhase(GetLocalizeStr(LocaleStrings.LS_PageStr + ' ' + IntToStr(MasterReport.PageNumber)));
   inherited;
 end;
 
@@ -13289,7 +13289,7 @@ begin
         MasterReport.FCurrentPageNumber := Self.FFirstPageNumber - 1;
       if MasterReport.ShowProgress then
         CreateProgress;
-      SetProgressPhase(LocaleStrings.LS_PreparingReportStr);
+      SetProgressPhase(GetLocalizeStr(LocaleStrings.LS_PreparingReportStr));
       KeepOn := True;
       DoBeforePrint(KeepOn);
       if not KeepOn then
@@ -13355,14 +13355,14 @@ begin
           raise
         else if not (E is EAbort) then
           if ReportServiceMode then
-            Log(Name + ': ' + LocaleStrings.LS_PrepareErrorStr + #13 +
+            Log(Name + ': ' + GetLocalizeStr(LocaleStrings.LS_PrepareErrorStr) + #13 +
               E.ClassName + '(' + E.Message + ')')
           else
             if Assigned(OnPrepareError) then
               OnPrepareError(Self, E)
             else
-              ShowMessage(Name + ': ' + LocaleStrings.LS_PrepareErrorStr +
-                          #13 + E.ClassName + '(' + E.Message + ')');
+              ShowMessage(GetLocalizeStr(Name + ': ' + LocaleStrings.LS_PrepareErrorStr +
+                          #13 + E.ClassName + '(' + E.Message + ')'));
       end;
     end;
   finally
@@ -13515,7 +13515,7 @@ begin
   if Aux = '' then
     Aux := Format(LocaleStrings.LS_DefaultJobTitle,
       [ParamStr(0) + ': ' + Owner.Name + '.' + Self.Name]);
-  Pages.JobTitle := Aux;
+  Pages.JobTitle := GetLocalizeStr(Aux);
 
   if PageSetup.Orientation = poLandscape then
     Pages.Orientation := MetaOrientationLandscape
@@ -13927,7 +13927,7 @@ begin
   FBorderIcons := [biSystemMenu, biMinimize, biMaximize];
   FHelpFile := '';
   FHelpContext := 0;
-  FCaption := LocaleStrings.LS_PreviewStr;
+  FCaption := GetLocalizeStr(LocaleStrings.LS_PreviewStr);
 
   inherited Create;
 end;
@@ -13947,7 +13947,7 @@ end;
 
 function TRLPreviewOptions.IsCaption: Boolean;
 begin
-  Result := (FCaption <> LocaleStrings.LS_PreviewStr);
+  Result := (FCaption <> GetLocalizeStr(LocaleStrings.LS_PreviewStr));
 end;
 
 { TRLCompositeOptions }

@@ -1864,7 +1864,7 @@ begin
   titleno := FSheets.Count;
   repeat
     Inc(titleno);
-    Result := LocaleStrings.LS_PageStr + IntToStr(titleno);
+    Result := GetLocalizeStr(LocaleStrings.LS_PageStr + IntToStr(titleno));
     I := 0;
     while (I < SheetCount) and not AnsiSameText(Sheets[I].Title, Result) do
       Inc(I);
@@ -2091,7 +2091,7 @@ begin
   FHorzTabs := TRLXLSTabs.Create;
   FVertTabs := TRLXLSTabs.Create;
   DefaultExt := '.xls';
-  DisplayName := LocaleStrings.LS_XLSFormatStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_XLSFormatStr);
 ///  FilterStyle := FilterStyle + []; ///fsSetupDialog];
 end;
 

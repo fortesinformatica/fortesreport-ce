@@ -349,17 +349,17 @@ begin
     Top := 80;
   end;
   //
-  Caption := LocaleStrings.LS_SaveStr;
-  LabelFileName.Caption := LocaleStrings.LS_FileNameStr;
-  LabelUseFilter.Caption := LocaleStrings.LS_UseFilterStr;
-  GroupBoxPages.Caption := ' ' + LocaleStrings.LS_PageRangeStr + ' ';
-  LabelFromPage.Caption := LocaleStrings.LS_RangeFromStr;
-  LabelToPage.Caption := LocaleStrings.LS_RangeToStr;
-  RadioButtonPagesAll.Caption := LocaleStrings.LS_AllStr;
-  RadioButtonPagesInterval.Caption := LocaleStrings.LS_PagesStr;
-  RadioButtonPagesSelect.Caption := LocaleStrings.LS_SelectionStr;
-  ButtonSave.Caption := LocaleStrings.LS_SaveStr;
-  ButtonCancel.Caption := LocaleStrings.LS_CancelStr;
+  Caption := GetLocalizeStr(LocaleStrings.LS_SaveStr);
+  LabelFileName.Caption := GetLocalizeStr(LocaleStrings.LS_FileNameStr);
+  LabelUseFilter.Caption := GetLocalizeStr(LocaleStrings.LS_UseFilterStr);
+  GroupBoxPages.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_PageRangeStr + ' ');
+  LabelFromPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeFromStr);
+  LabelToPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeToStr);
+  RadioButtonPagesAll.Caption := GetLocalizeStr(LocaleStrings.LS_AllStr);
+  RadioButtonPagesInterval.Caption := GetLocalizeStr(LocaleStrings.LS_PagesStr);
+  RadioButtonPagesSelect.Caption := GetLocalizeStr(LocaleStrings.LS_SelectionStr);
+  ButtonSave.Caption := GetLocalizeStr(LocaleStrings.LS_SaveStr);
+  ButtonCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
 end;
 
 procedure TRLSaveDialog.LoadFilterList;
@@ -368,7 +368,7 @@ var
   F: TRLCustomSaveFilter;
 begin
   ComboBoxFilters.Items.Clear;
-  ComboBoxFilters.Items.AddObject(LocaleStrings.LS_DefaultStr, nil);
+  ComboBoxFilters.Items.AddObject(GetLocalizeStr(LocaleStrings.LS_DefaultStr), nil);
   J := 0;
   for I := 0 to ActiveFilters.Count - 1 do
     if TObject(ActiveFilters[I]) is TRLCustomSaveFilter then

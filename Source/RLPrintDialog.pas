@@ -23,7 +23,7 @@ uses
 {$else}
   QGraphics, QControls, QForms, QDialogs, QStdCtrls, 
 {$endif}
-  RLFilters, RLConsts, RLPrinters, RLTypes, RLComponentFactory;
+  RLFilters, RLConsts, RLPrinters, RLTypes, RLUtils, RLComponentFactory;
 
 type
   TRLPrintDialogOption = (rpoPrintToFile, rpoPageNums, rpoSelection, rpoWarning, rpoHelp, rpoDisablePrintToFile);
@@ -587,28 +587,28 @@ begin
   LabelToPage.FocusControl := EditToPage;
   LabelFromPage.FocusControl := EditFromPage;
   //
-  LabelPageSelectionHint.Caption := LocaleStrings.LS_PageSelectionHint;
-  Caption := LocaleStrings.LS_PrintStr;
-  GroupBoxPrinter.Caption := ' ' + LocaleStrings.LS_PrinterStr + ' ';
-  LabelPrinterName.Caption := LocaleStrings.LS_NameStr + ':';
-  LabelFilterName.Caption := LocaleStrings.LS_UseFilterStr + ':';
-  CheckBoxPrintToFile.Caption := LocaleStrings.LS_PrintToFileStr;
-  GroupBoxPages.Caption := ' ' + LocaleStrings.LS_PageRangeStr + ' ';
-  LabelFromPage.Caption := LocaleStrings.LS_RangeFromStr + ':';
-  LabelToPage.Caption := LocaleStrings.LS_RangeToStr + ':';
-  RadioButtonPagesAll.Caption := LocaleStrings.LS_AllStr;
-  RadioButtonPagesInterval.Caption := LocaleStrings.LS_PagesStr;
-  RadioButtonPagesSelect.Caption := LocaleStrings.LS_SelectionStr;
-  GroupBoxCopies.Caption := ' ' + LocaleStrings.LS_CopiesStr + ' ';
+  LabelPageSelectionHint.Caption := GetLocalizeStr(LocaleStrings.LS_PageSelectionHint);
+  Caption := GetLocalizeStr(LocaleStrings.LS_PrintStr);
+  GroupBoxPrinter.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_PrinterStr + ' ');
+  LabelPrinterName.Caption := GetLocalizeStr(LocaleStrings.LS_NameStr + ':');
+  LabelFilterName.Caption := GetLocalizeStr(LocaleStrings.LS_UseFilterStr + ':');
+  CheckBoxPrintToFile.Caption := GetLocalizeStr(LocaleStrings.LS_PrintToFileStr);
+  GroupBoxPages.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_PageRangeStr + ' ');
+  LabelFromPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeFromStr + ':');
+  LabelToPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeToStr + ':');
+  RadioButtonPagesAll.Caption := GetLocalizeStr(LocaleStrings.LS_AllStr);
+  RadioButtonPagesInterval.Caption := GetLocalizeStr(LocaleStrings.LS_PagesStr);
+  RadioButtonPagesSelect.Caption := GetLocalizeStr(LocaleStrings.LS_SelectionStr);
+  GroupBoxCopies.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_CopiesStr + ' ');
   EditCopies.Text := IntToStr(RLPrinter.Copies);
-  LabelCopies.Caption := LocaleStrings.LS_NumberOfCopiesStr + ':';
-  ButtonOk.Caption := LocaleStrings.LS_OkStr;
-  ButtonCancel.Caption := LocaleStrings.LS_CancelStr;
-  LabelOddPages.Caption := LocaleStrings.LS_OddPages + '/' + LocaleStrings.LS_EvenPages + ':';
+  LabelCopies.Caption := GetLocalizeStr(LocaleStrings.LS_NumberOfCopiesStr + ':');
+  ButtonOk.Caption := GetLocalizeStr(LocaleStrings.LS_OkStr);
+  ButtonCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
+  LabelOddPages.Caption := GetLocalizeStr(LocaleStrings.LS_OddPages + '/' + LocaleStrings.LS_EvenPages + ':');
   ComboBoxOddPages.Items.Text :=
-    LocaleStrings.LS_OddPagesOnly + #13#10 +
+    GetLocalizeStr(LocaleStrings.LS_OddPagesOnly + #13#10 +
     LocaleStrings.LS_EvenPagesOnly + #13#10 +
-    LocaleStrings.LS_AllOddAndEven;
+    LocaleStrings.LS_AllOddAndEven);
   case RLPrinter.OddEven of
     odOddPagesOnly: ComboBoxOddPages.ItemIndex := 0;
     odEvenPagesOnly: ComboBoxOddPages.ItemIndex := 1;
@@ -684,7 +684,7 @@ var
   F: TRLCustomPrintFilter;
 begin
   ComboBoxFilters.Items.Clear;
-  ComboBoxFilters.Items.AddObject(LocaleStrings.LS_DefaultStr, nil);
+  ComboBoxFilters.Items.AddObject(GetLocalizeStr(LocaleStrings.LS_DefaultStr), nil);
   //
   J := 0;
   for I := 0 to ActiveFilters.Count - 1 do
@@ -840,7 +840,7 @@ begin
   Screen.Cursor := crHourGlass;
   try
     if not RLPrinter.ExecuteSetup then
-      ShowMessage(LocaleStrings.LS_PrintDialogError);
+      ShowMessage(GetLocalizeStr(LocaleStrings.LS_PrintDialogError));
   finally
     Screen.Cursor := crDefault;
     ButtonPrinterSetup.Enabled := True;

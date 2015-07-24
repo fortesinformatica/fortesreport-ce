@@ -22,8 +22,7 @@ uses
 {$ifdef VCL}
   Forms, 
 {$endif}
-  RLReport, RLConsts, RLUtils, RLTypes, 
-  RLAbout;
+  RLReport, RLConsts, RLUtils, RLTypes, RLAbout;
 
 type
 
@@ -94,9 +93,9 @@ end;
 function TRLReportDesigner.GetVerb(Index: Integer): string;
 begin
   case Index of
-    0: Result := LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr + '...';
+    0: Result :=  GetLocalizeStr(LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr + '...');
     1: Result := '-';
-    2: Result := LocaleStrings.LS_PreviewStr;
+    2: Result :=  GetLocalizeStr(LocaleStrings.LS_PreviewStr);
   end;
 end;
 

@@ -108,7 +108,7 @@ begin
 {$else}
   BorderStyle := fbsDialog;
 {$endif};
-  Caption := LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr;
+  Caption := GetLocalizeStr(LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr);
   ClientHeight := 155;
   ClientWidth := 373;
   Color := clWhite;
@@ -208,7 +208,7 @@ begin
     Top := 56;
     Width := 211;
     Height := 14;
-    Caption := CS_CopyrightStr + #13 + CS_AuthorNameStr;
+    Caption := GetLocalizeStr(CS_CopyrightStr + #13 + CS_AuthorNameStr);
     Font.Name := 'helvetica';
     Font.Color := clBlack;
     Font.Height := -11;

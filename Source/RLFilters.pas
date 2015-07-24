@@ -462,7 +462,7 @@ end;
 
 procedure TRLCustomFilter.CreateProgress;
 begin
-  FProgress := TfrmRLFeedBack.Create(LocaleStrings.LS_FilterInProgressStr);
+  FProgress := TfrmRLFeedBack.Create(GetLocalizeStr(LocaleStrings.LS_FilterInProgressStr));
   FProgress.Show;
   FProgress.SetFocus;
   FProgress.OnCancel := ProgressCanceled;

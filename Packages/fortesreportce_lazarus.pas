@@ -11,7 +11,7 @@ uses
   RLConsts, RLFilters, RLMetaFile, RLParser, RLPreview, RLRichText, RLMetaLCL, 
   RLReg, RLSpoolFilter, RLAbout, RLFeedBack, RLFindDialog, RLPreviewForm, 
   RLPrintDialog, RLSaveDialog, RLRichFilter, RLPDFFilter, RLXLSFilter, 
-  RLHTMLFilter, RLDraftFilter, LazarusPackageIntf;
+  RLHTMLFilter, RLDraftFilter, RLDesign, LazarusPackageIntf;
 
 implementation
 
