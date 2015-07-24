@@ -136,8 +136,8 @@ begin
     Top := 64;
   end;
   //
-  BitBtnCancel.Caption := LocaleStrings.LS_CancelStr;
-  LabelStepName.Caption := LocaleStrings.LS_WaitStr;
+  BitBtnCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
+  LabelStepName.Caption := GetLocalizeStr(LocaleStrings.LS_WaitStr);
 end;
 
 constructor TfrmRLFeedBack.Create(const ATitle: String; ALevels: Integer = 1);
@@ -212,9 +212,9 @@ end;
 
 procedure TfrmRLFeedBack.Finish;
 begin
-  LabelStepName.Caption := LocaleStrings.LS_FinishedStr;
+  LabelStepName.Caption := GetLocalizeStr(LocaleStrings.LS_FinishedStr);
   BitBtnCancel.Kind := bkOk;
-  BitBtnCancel.Caption := LocaleStrings.LS_CloseStr;
+  BitBtnCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CloseStr);
   BitBtnCancel.Default := True;
   TimerBlink.Enabled := True;
   while not Finished do 

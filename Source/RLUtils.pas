@@ -8,7 +8,7 @@ interface
 uses
   SysUtils, Classes, Math, DB,
   {$ifndef UNIX}Windows,{$endif}
-  Types,
+  Types, {$ifdef FPC}FileUtil,{$endif}
   Graphics, Forms;
 
 {@var TempDir - Especifica aonde deverão ser criados os arquivos temporários.
@@ -192,6 +192,8 @@ function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
 {$endif}
 
+function GetLocalizeStr( AString : AnsiString ) : String ;
+
 {/@unit}
 
 type
@@ -223,6 +225,27 @@ begin
   Result := (C < #$0100) and (AnsiChar(C) in CharSet);
 end;
 {$endif}
+
+function GetLocalizeStr( AString : AnsiString ) : String ;
+begin
+{$IFDEF UNICODE}
+ {$IFDEF USE_LConvEncoding}
+   Result := CP1252ToUTF8( AString ) ;
+ {$ELSE}
+   {$IFDEF FPC}
+     {$IFNDEF NOGUI}
+       Result := SysToUTF8( AString )
+     {$ELSE}
+       Result := AnsiToUtf8( AString ) ;
+     {$ENDIF}
+   {$ELSE}
+     Result := String(AnsiToUtf8( String(AString) )) ;
+   {$ENDIF}
+ {$ENDIF}
+{$ELSE}
+  Result := AString
+{$ENDIF}
+end ;
 
 function NewBitmap: TBitmap;
 begin

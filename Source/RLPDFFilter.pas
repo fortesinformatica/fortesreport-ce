@@ -628,7 +628,7 @@ begin
   inherited Create(AOwner);
 
   DefaultExt := '.pdf';
-  DisplayName := LocaleStrings.LS_PDFFormatStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_PDFFormatStr);
 
   FixupPageSetup;
   Reset;

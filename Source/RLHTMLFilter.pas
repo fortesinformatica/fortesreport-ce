@@ -279,7 +279,7 @@ begin
   inherited;
   //
   DefaultExt := '.htm';
-  DisplayName := LocaleStrings.LS_WebPageStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_WebPageStr);
 end;
 
 destructor TRLHTMLFilter.Destroy;

@@ -852,7 +852,7 @@ begin
     Result := PrinterNames[AIndex];
     Port := PrinterPorts[AIndex];
     if (Port <> Result) and (Port <> '?') then
-      Result := Result + ' ' + LocaleStrings.LS_AtStr + ' ' + Port;
+      Result := GetLocalizeStr(Result + ' ' + LocaleStrings.LS_AtStr + ' ' + Port);
   end;
 end;
 

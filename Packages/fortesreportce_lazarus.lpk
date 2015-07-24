@@ -25,7 +25,7 @@
       </CodeGeneration>
     </CompilerOptions>
     <Version Major="4"/>
-    <Files Count="36">
+    <Files Count="37">
       <Item1>
         <Filename Value="..\Source\RLPrinters.pas"/>
         <UnitName Value="RLPrinters"/>
@@ -171,6 +171,10 @@
         <Filename Value="..\Source\RLDraftFilter.pas"/>
         <UnitName Value="RLDraftFilter"/>
       </Item36>
+      <Item37>
+        <Filename Value="..\Source\RLDesign.pas"/>
+        <UnitName Value="RLDesign"/>
+      </Item37>
     </Files>
     <RequiredPkgs Count="3">
       <Item1>
