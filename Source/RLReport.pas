@@ -12651,8 +12651,8 @@ begin
   P := RequestParentPager;
   S := RequestParentSkipper;
 
-  if ((PageBreaking = pbBeforePrint) and (R.DataBandPrinted > 0))
-       or not self.UnlimitedHeight then
+  if ((PageBreaking = pbBeforePrint) and (R.DataBandPrinted > 0)
+      and not self.UnlimitedHeight) then
   begin
     if Assigned(P) then
       P.InternalNewPage(Self, not P.IsSatisfied);

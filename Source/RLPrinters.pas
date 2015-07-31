@@ -837,7 +837,13 @@ begin
 end;
 {$else}
 begin
-  //todo: implement TRLPrinterWrapper.ExecuteSetup
+  Result := False;
+  {$IFDEF LCLWin32}
+    TWinPrinter(Printer).AdvancedProperties;
+  {$ELSE}
+    ShowMessage('Printer.AdvancedProperties is not yet implemented for this platform');
+  {$ENDIF}
+  Result := True;
 end;
 {$endif}
 

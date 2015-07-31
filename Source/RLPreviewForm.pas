@@ -1164,6 +1164,8 @@ begin
   SpeedButtonClose.Caption := GetLocalizeStr(LocaleStrings.LS_CloseStr);
   SpeedButtonCopyright.Hint := GetLocalizeStr(CS_ProductTitleStr + '  ' + CS_Version);
   SpeedButtonCopyright.ShowHint := True;
+  SpeedButtonZoomDown.Hint := GetLocalizeStr(LocaleStrings.LS_ZoomHint);
+  SpeedButtonZoomUp.Hint := GetLocalizeStr(LocaleStrings.LS_ZoomHint);
   ComboBoxZoom.Items[8] := GetLocalizeStr(LocaleStrings.LS_EntireWidthStr);
   ComboBoxZoom.Items[9] := GetLocalizeStr(LocaleStrings.LS_EntirePageStr);
   ComboBoxZoom.Items[10] := GetLocalizeStr(LocaleStrings.LS_MultiplePagesStr);
@@ -1606,7 +1608,7 @@ begin
   if not (csDesigning in ComponentState) then
   begin
     if Assigned(SetupInstance) then
-      raise Exception.Create('Only one instance of ' + ClassName + ' is allowed.');
+      raise Exception.Create(GetLocalizeStr('Only one instance of ' + ClassName + ' is allowed.'));
     SetupInstance := Self;
   end;
 end;

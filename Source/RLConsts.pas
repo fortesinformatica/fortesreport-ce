@@ -211,6 +211,8 @@ type
     LS_PageSelectionHint: string;
     {@var LS_DefaultJobTitle - Variável de internacionalização para "Relatório %s". :/}
     LS_DefaultJobTitle: string;
+    {@var LS_ZoomHint - Variável de internacionalização para "Diminuir o zoom" :/}
+    LS_ZoomHint: string;
     {@var Ls_Nome_Arquivo - Variável de internacionalização para "Aplicar". :/}
     Ls_Aplicar: String;
     {@var Ls_Nome_Arquivo - Variável de internacionalização para "Propriedades". :/}
@@ -454,6 +456,7 @@ var
     LS_PrintDialogError: 'Problemas com o diálogo da impressora';
     LS_PageSelectionHint: 'Separe com ponto-e-vírgula os números ou intervalos de páginas a imprimir. Ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Relatório "%s"';
+    LS_ZoomHint: 'Você também pode aumentar ou reduzir o zoom do relatório' + #13 + 'precionando "Ctrl" e usando a rolagem do mouse.';
     Ls_Aplicar: 'Aplicar';
     Ls_Propriedades: 'Propriedades';
   );

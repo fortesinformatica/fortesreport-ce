@@ -112,10 +112,10 @@ RootDir=
 [Version Info]
 IncludeVerInfo=1
 AutoIncBuild=1
-MajorVer=3
-MinorVer=82
-Release=7
-Build=129
+MajorVer=4
+MinorVer=0
+Release=0
+Build=0
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=Fortes Informatica Ltda
 FileDescription=FortesReport
-FileVersion=4.0
+FileVersion=4.0.0.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -134,7 +134,7 @@ OriginalFilename=
 ProductName=
 ProductVersion=4.0
 Comments=
-CompileDate=terça-feira, 2 de abril de 2013 11:11
+CompileDate=terça-feira, 28 de julho de 2015 22:07
 [HistoryLists\hlConditionals]
 Count=4
 Item0=DELPHI;DELPHI7;VCL

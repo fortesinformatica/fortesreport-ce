@@ -298,9 +298,9 @@ begin
   BorderWidth := 8;
   Caption := 'Imprimir';
   Position := poScreenCenter;
-  {$ifndef FPC}
+{$ifndef FPC}
   Scaled := False;
-  {$endif}
+{$endif}
 {$ifdef VCL}
   BorderStyle := bsDialog;
 {$else}
@@ -340,7 +340,7 @@ begin
     Name := 'LabelOptions';
     Parent := GroupBoxPrinter;
     AutoSize := True;
-    Caption := 'Opções do filtro:';
+    Caption := GetLocalizeStr('Opções do filtro:');
   end;
 
   TRLComponentFactory.CreateComponent(TComboBox, Self, ComboBoxPrinterNames);
@@ -401,7 +401,7 @@ begin
   begin
     Name := 'GroupBoxPages';
     Parent := Self;
-    Caption := 'Intervalo de páginas';
+    Caption := GetLocalizeStr('Intervalo de páginas');
     TabOrder := 1;
   end;
 
@@ -506,7 +506,7 @@ begin
   begin
     Name := 'LabelCopies';
     Parent := GroupBoxCopies;
-    Caption := 'Número de &cópias:';
+    Caption := GetLocalizeStr('Número de &cópias:');
   end;
 
   TRLComponentFactory.CreateComponent(TEdit, Self, EditCopies);
@@ -524,7 +524,7 @@ begin
     Name := 'LabelOddPages';
     Parent := GroupBoxCopies;
     Alignment := taRightJustify;
-    Caption := 'Pares/'#237'mpares:';
+    Caption := GetLocalizeStr('Pares/'#237'mpares:');
     FocusControl := ComboBoxOddPages;
   end;
 
@@ -536,7 +536,7 @@ begin
     Style := csDropDownList;
     ItemHeight := 13;
     TabOrder := 1;
-    Items.Text := 'Pares'#13#10#205'mpares'#13#10'Todas';
+    Items.Text := GetLocalizeStr('Pares'#13#10#205'mpares'#13#10'Todas');
   end;
 
   TRLComponentFactory.CreateComponent(TGroupBox, Self, GroupBoxDuplex);
@@ -553,7 +553,7 @@ begin
     Name := 'CheckBoxDuplex';
     Parent := GroupBoxDuplex;
     TabStop := False;
-    Caption := 'Impressão frente e verso';
+    Caption := GetLocalizeStr('Impressão frente e verso');
     TabOrder := 0;
   end;
 

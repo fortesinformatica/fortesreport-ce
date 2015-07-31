@@ -8,8 +8,8 @@ interface
 uses
   SysUtils, Classes, Math, DB,
   {$ifndef UNIX}Windows,{$endif}
-  Types, {$ifdef FPC}FileUtil,{$endif}
-  Graphics, Forms;
+  {$ifdef FPC}FileUtil,{$endif}
+  Types, Graphics, Forms;
 
 {@var TempDir - Especifica aonde deverão ser criados os arquivos temporários.
  Na inicialização do sistema é atribuido um valor padrão a esta variável. Este valor pode ser alterado depois.
@@ -192,7 +192,7 @@ function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
 {$endif}
 
-function GetLocalizeStr( AString : AnsiString ) : String ;
+function GetLocalizeStr(AString: AnsiString) : String;
 
 {/@unit}
 
@@ -226,26 +226,26 @@ begin
 end;
 {$endif}
 
-function GetLocalizeStr( AString : AnsiString ) : String ;
+function GetLocalizeStr(AString : AnsiString ): String;
 begin
-{$IFDEF UNICODE}
- {$IFDEF USE_LConvEncoding}
-   Result := CP1252ToUTF8( AString ) ;
- {$ELSE}
-   {$IFDEF FPC}
-     {$IFNDEF NOGUI}
-       Result := SysToUTF8( AString )
-     {$ELSE}
-       Result := AnsiToUtf8( AString ) ;
-     {$ENDIF}
-   {$ELSE}
-     Result := String(AnsiToUtf8( String(AString) )) ;
-   {$ENDIF}
- {$ENDIF}
-{$ELSE}
-  Result := AString
-{$ENDIF}
-end ;
+{$ifdef UNICODE}
+ {$ifdef USE_LConvEncoding}
+   Result := CP1252ToUTF8(AString);
+ {$else}
+   {$ifdef FPC}
+     {$ifndef NOGUI}
+       Result := SysToUTF8(AString);
+     {$else}
+       Result := AnsiToUtf8(AString);
+     {$endif}
+   {$else}
+     Result := String(AnsiToUtf8(String(AString)));
+   {$endif}
+ {$endif}
+{$else}
+  Result := AString;
+{$endif}
+end;
 
 function NewBitmap: TBitmap;
 begin
@@ -1071,6 +1071,4 @@ finalization
   ClearTempFiles;
   FreeObj(AuxBitmap);
 
-end.
-
-
+end.  
