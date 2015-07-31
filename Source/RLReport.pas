@@ -2948,7 +2948,6 @@ type
     FFooterMeasuring: TRLFooterMeasuring;
     FDataBandPrinted: Integer;
     FPagerStatus: TRLPagerStatus;
-    FUnlimitedHeight: Boolean;
     function GetSummaryHeight: Integer;
     function GetSummaryHeightSum: Integer;
     function GetFooterHeight: Integer;
@@ -3037,8 +3036,6 @@ type
      Indica se o Pager está completando a página com bands vazias após o término dos dados.
      @links TRLPagerStatus. :/}
     property PagerStatus: TRLPagerStatus read FPagerStatus;
-    {@prop UnlimitedHeight - Define se o vai ter quebra de pagina. :/}
-    property UnlimitedHeight: Boolean read FUnlimitedHeight write FUnlimitedHeight;
   end;
 
   {/@class}
@@ -4735,8 +4732,6 @@ type
     property Transparent;
     {@prop Visible = ancestor /}
     property Visible;
-    {@prop UnlimitedHeight = ancestor /}
-    property UnlimitedHeight;
 
     // events
 
@@ -11510,7 +11505,6 @@ var
 begin
   // se a band tem obrigatoriamente que ser impressa nesta página...
   if BandType in [btFooter, btColumnFooter] then
-  else if self.GetMasterReport.UnlimitedHeight then
   // se a band couber na página...
   else if HeightFits(FPrintSize.Y, VertSpace) then
   // se não puder dividir a band ou o pedaço que couber for menor que o tamanho mínimo...
@@ -11960,7 +11954,6 @@ begin
   FFooterMeasuring := fmNone;
   FDataBandPrinted := 0;
   FPagerStatus := [];
-  FUnlimitedHeight := False;
 
   // objects
   FSortedBands := TRLSortedBands.Create;
@@ -12651,8 +12644,7 @@ begin
   P := RequestParentPager;
   S := RequestParentSkipper;
 
-  if ((PageBreaking = pbBeforePrint) and (R.DataBandPrinted > 0)
-      and not self.UnlimitedHeight) then
+  if (PageBreaking = pbBeforePrint) and (R.DataBandPrinted > 0) then
   begin
     if Assigned(P) then
       P.InternalNewPage(Self, not P.IsSatisfied);
@@ -12679,9 +12671,6 @@ begin
   end;
 
   EndDoc;
-
-  if self.UnlimitedHeight then
-    exit;
 
   if PageBreaking = pbAfterPrint then
     R.InvalidatePage;
@@ -13006,7 +12995,6 @@ begin
   FPreviewOptions := nil;
   FCompositeOptions := nil;
   FForcePrepare := True;
-  FUnlimitedHeight := False;
 
   FillChar(DialogParams, SizeOf(DialogParams), 0);
   FillChar(FPrinterMetrics, SizeOf(FPrinterMetrics), 0);
