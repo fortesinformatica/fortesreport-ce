@@ -4,7 +4,7 @@ unit RLPDFFilter;
 interface
 
 uses
-  SysUtils, Classes, Math, Jpeg,
+  SysUtils, Classes, Math, {$if CompilerVersion >= 29}Vcl.Imaging.jpeg{$else}Jpeg{$ifend},
 {$ifdef VCL}
   Windows, Graphics, RLMetaVCL, 
 {$else}
