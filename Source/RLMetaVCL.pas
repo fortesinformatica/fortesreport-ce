@@ -607,11 +607,11 @@ const
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)),
 {$endif}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psInsideFrame
-{$ifdef DELPHI2007_UP} // delphi 2007 em diante
+{$if CompilerVersion >= 11}// delphi 2007 em diante
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psUserStyle
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psAlternate
-{$endif}
+{$ifend}
     );
 
 procedure CanvasLineToEx(ACanvas: TCanvas; X, Y: Integer);
