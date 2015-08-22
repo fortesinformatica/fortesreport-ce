@@ -25,6 +25,12 @@
 			<CfgParent>Base</CfgParent>
 			<Base>true</Base>
 		</PropertyGroup>
+		<PropertyGroup Condition="'$(Platform)'=='Win32' and '$(Cfg_2)'=='true' or '$(Cfg_2_Win32)'!=''">
+			<Cfg_2_Win32>true</Cfg_2_Win32>
+			<CfgParent>Cfg_2</CfgParent>
+			<Cfg_2>true</Cfg_2>
+			<Base>true</Base>
+		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_Define>DELPHI;VCL;$(DCC_Define)</DCC_Define>
 			<VerInfo_Locale>1046</VerInfo_Locale>
@@ -32,9 +38,9 @@
 			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=;CompileDate=terca-feira, 22 de maio de 2012 17:56</VerInfo_Keys>
 			<DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;$(DCC_Namespace)</DCC_Namespace>
 			<DCC_Description>Fortes Report Comunity Edition</DCC_Description>
-			<DCC_DcuOutput>.\bin\dXE3</DCC_DcuOutput>
-			<DCC_DcpOutput>.\bin\dXE3</DCC_DcpOutput>
-			<DCC_BplOutput>.\bin\dXE3</DCC_BplOutput>
+			<DCC_DcuOutput>..\Binary\Win32_DXE_vcl</DCC_DcuOutput>
+			<DCC_DcpOutput>..\Binary\Win32_DXE_vcl</DCC_DcpOutput>
+			<DCC_BplOutput>..\Binary\Win32_DXE_vcl</DCC_BplOutput>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
 			<GenPackage>true</GenPackage>
@@ -56,6 +62,9 @@
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<DCC_IMPLICIT_STRING_CAST>false</DCC_IMPLICIT_STRING_CAST>
 			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<DCC_DcpOutput>..\Binary\Win_DXE_vcl</DCC_DcpOutput>
 		</PropertyGroup>
 		<ItemGroup>
 			<DelphiCompile Include="FortesReportCE_Win32_DXE_vcl.dpk">
