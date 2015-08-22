@@ -76,13 +76,13 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Cfg_1)'!=''">
 		<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
-		<DCC_Define>RELEASE;NATIVEEXCEL;$(DCC_Define)</DCC_Define>
+		<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 		<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
 		<DCC_DebugInformation>false</DCC_DebugInformation>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Cfg_2)'!=''">
 		<DCC_IMPLICIT_STRING_CAST>false</DCC_IMPLICIT_STRING_CAST>
-		<DCC_Define>DEBUG;NATIVEEXCEL;$(DCC_Define)</DCC_Define>
+		<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
 		<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>

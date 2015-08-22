@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{1A294E4C-7C59-4A95-B0AE-3F69FC1CEA36}</ProjectGuid>
         <MainSource>FortesReportCE_Win32_DXE7_vcl.dpk</MainSource>
-        <ProjectVersion>16.0</ProjectVersion>
+        <ProjectVersion>16.1</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
