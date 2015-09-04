@@ -145,7 +145,6 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <DCC_DcuOutput>..\Binary\Win32_DXE7_vcl</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -229,12 +228,6 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="2">
-                <DeployFile LocalName="..\Binary\Win32_DX_vcl\FortesReportCE_Win32_DXE9_vcl.bpl" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>FortesReportCE_Win32_DXE9_vcl.bpl</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -256,6 +249,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="..\Binary\Win32_DXE7_vcl\FortesReportCE_Win32_DXE9_vcl.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>FortesReportCE_Win32_DXE9_vcl.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\Binary\Win32_DX_vcl\FortesReportCE_Win32_DXE9_vcl.bpl" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>FortesReportCE_Win32_DXE9_vcl.bpl</RemoteName>
                         <Overwrite>true</Overwrite>

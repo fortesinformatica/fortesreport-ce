@@ -1,7 +1,6 @@
 package FortesReportCE_Win32_DXE8_vcl;
 
 {$R *.res}
-{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
@@ -27,7 +26,7 @@ package FortesReportCE_Win32_DXE8_vcl;
 {$DEFINE VCL}
 {$DEFINE DELPHI}
 {$DEFINE USE_VARIANTS}
-{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'Fortes Report Comunity Edition'}
 {$IMPLICITBUILD ON}
 
 requires
