@@ -8,14 +8,17 @@
 {                                                                              }
 { Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
 {                                                                              }
-{ Colaboradores nesse arquivo: Márcio Martins                                  }
-{                              Ronaldo Moreira                                 }
+{ Colaboradores nesse arquivo: Ronaldo Moreira                                 }
+{                              Márcio Martins                                  }
 {                              Régys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Você pode obter a última versão desse arquivo na pagina do  Projeto ACBr    }
-{ Componentes localizado em                                                    }
+{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
+{                                                                              }
+{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
 {  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
 { sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }

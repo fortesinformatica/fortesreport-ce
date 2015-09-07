@@ -8,14 +8,17 @@
 {                                                                              }
 { Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
 {                                                                              }
-{ Colaboradores nesse arquivo: Márcio Martins                                  }
-{                              Ronaldo Moreira                                 }
+{ Colaboradores nesse arquivo: Ronaldo Moreira                                 }
+{                              Márcio Martins                                  }
 {                              Régys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Você pode obter a última versão desse arquivo na pagina do  Projeto ACBr    }
-{ Componentes localizado em                                                    }
+{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
+{                                                                              }
+{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
 {  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
 { sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }
@@ -42,9 +45,6 @@
 |* - Descrição...
 ******************************************************************************}
 
-{$I RLReport.inc}
-
-{@unit RLConsts - Variáveis de internacionalização e variáveis de configuração. }
 unit RLConsts;
 
 interface
@@ -74,6 +74,7 @@ const
   cRLSobreDialogoTitulo = 'FortesReport Community Edition';
   cRLSobreTitulo = 'FortesReport Community Edition VCL';
   cRLSobreDescricao = 'FortesReport Community Edition VCL ' + #13#10 +
+                      'http://www.fortesreport.com.br' + #13#10 +
                       'https://github.com/fortesinformatica/fortesreport-ce' + #13#10 +
                       'Componentes para Geração de Relatórios' + #13#10 +
                       'Lesser General Public License version 2.0';
@@ -84,7 +85,7 @@ const
 const
   CS_CopyrightStr = 'Copyright © 1999-2015 Fortes Informática';
   CS_ProductTitleStr = 'FortesReport Community Edition';
-  CS_URLStr = 'https://github.com/fortesinformatica/fortesreport-ce';
+  CS_URLStr = 'http://www.fortesreport.com.br';
   CS_AuthorNameStr = 'Ronaldo Moreira';
   CS_Version = '4.0';
 

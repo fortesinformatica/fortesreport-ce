@@ -8,14 +8,17 @@
 {                                                                              }
 { Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
 {                                                                              }
-{ Colaboradores nesse arquivo: Márcio Martins                                  }
-{                              Ronaldo Moreira                                 }
+{ Colaboradores nesse arquivo: Ronaldo Moreira                                 }
+{                              Márcio Martins                                  }
 {                              Régys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Você pode obter a última versão desse arquivo na pagina do  Projeto ACBr    }
-{ Componentes localizado em                                                    }
+{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
+{                                                                              }
+{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
 {  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
 { sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }
@@ -64,8 +67,14 @@ const
   cvDelphi2009    = 20;	  //VER200
   cvDelphi2010    = 21;	  //VER210
   cvDelphiXE      = 22;	  //VER220
-  cvDelphiXE2	    = 23;   //VER230
-  cvDelphiXE3	    = 24;   //VER240
+  cvDelphiXE2	  = 23;   //VER230
+  cvDelphiXE3	  = 24;   //VER240
+  cvDelphiXE4	  = 25;   //VER250
+  cvDelphiXE5	  = 26;   //VER260
+  cvDelphiXE6	  = 27;   //VER270
+  cvDelphiXE7	  = 28;   //VER280
+  cvDelphiXE8	  = 29;   //VER290
+  cvDelphiXE9	  = 25;   //VER300 Seatle
 
 implementation
 end.
