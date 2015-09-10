@@ -13473,7 +13473,7 @@ begin
     if Self.ReportState = rsReady then
       Dialog.MaxPage := Self.Pages.PageCount;
     Dialog.Orientation := Self.PageSetup.Orientation;
-    Dialog.Copies := 1;
+    Dialog.Copies :=  1;
     Result := Dialog.Execute;
     if Result then
     begin
@@ -13499,7 +13499,8 @@ begin
   DialogParams.ToPage1 := MaxInt;
   DialogParams.Selection := '';
   RLPrinter.OddEven := odAllPages;
-  RLPrinter.Copies := 1;
+  if RLPrinter.Copies < 1 then
+    RLPrinter.Copies := 1;
 
   if FPrintDialog then
     if not ShowPrintDialog then
