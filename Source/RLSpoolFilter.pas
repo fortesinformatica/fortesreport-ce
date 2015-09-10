@@ -275,6 +275,7 @@ end;
 constructor TRLSpoolFilter.Create(AOwner: TComponent);
 begin
   inherited;
+  ClassOptions := ClassOptions + [foEmulateCopies];
 end;
 
 procedure TRLSpoolFilter.SetDocBounds(APaperWidth, APaperHeight: Double; AOrientation: TRLMetaOrientation);
