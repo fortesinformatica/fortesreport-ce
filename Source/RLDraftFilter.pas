@@ -582,11 +582,11 @@ begin
   else
     Result := ADefault;
 end;
-{$if CompilerVersion >= cvDelphiXE3}
+{$IFDEF DELPHIXE2_UP}
 function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
-{$else}
+{$ELSE}
 function LinePrinterStart(const PrnName, DocName: String): Cardinal;
-{$ifend}
+{$ENDIF}
 var
   di: TDocInfo1;
 begin
