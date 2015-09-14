@@ -47,19 +47,25 @@
 {$I RLReport.inc}
 
 {@unit RLPreviewForm - Implementação do form padrão de pré-visualização. }
-
 unit RLPreviewForm;
 
 interface
 
 uses
-  SysUtils, Math, Contnrs, Classes, Messages,
-{$ifdef VCL}
-  Windows, Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
-{$else}
-  Types, QControls, Qt, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QTypes, QGraphics,
-{$endif}
-  RLConsts, RLMetaFile, RLPreview, RLFilters, RLUtils, RLPrintDialog, RLSaveDialog, RLPrinters, RLTypes, RLFindDialog, RLComponentFactory;
+  {$IfDef MSWINDOWS}
+   Windows, Messages,
+  {$EndIf}
+  SysUtils, Math, Contnrs, Classes,
+  {$IfDef FPC}
+   LCLIntf, LCLType, FileUtil,
+  {$EndIf}
+  {$IfDef CLX}
+   QTypes, QControls, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QGraphics, Qt,
+  {$Else}
+   Types, Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
+  {$EndIf}
+  RLConsts, RLMetaFile, RLPreview, RLFilters, RLUtils, RLPrintDialog,
+  RLSaveDialog, RLPrinters, RLTypes, RLFindDialog, RLComponentFactory;
 
 type
 
@@ -321,7 +327,9 @@ procedure PreviewFromFileDialog;
 
 implementation
 
+{$IfNDef FPC}
 uses VCLCom;
+{$endif}
 
 ///{$R *.dfm}
 
@@ -370,8 +378,12 @@ var
   savecursor: TCursor;
   pages: TRLGraphicStorage;
 begin
+  {$IfDef FPC}
+  if not FileExistsUTF8(AFileName) then
+  {$Else}
   if not FileExists(AFileName) then
-    raise Exception.Create(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"');
+  {$EndIf}
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"'));
   //
   pages := TRLGraphicStorage.Create;
   try
@@ -418,7 +430,7 @@ begin
       DefaultExt := FormatFileExt(ReportFileExt);
       Filter := AddFileFilter('', CS_ProductTitleStr, ReportFileExt);
       FilterIndex := 1;
-      Title := LocaleStrings.LS_LoadReportStr;
+      Title := GetLocalizeStr(LocaleStrings.LS_LoadReportStr);
       if Execute then
         PreviewFromFile(FileName);
     finally
@@ -1165,39 +1177,41 @@ begin
     Top := 220;
   end;
   //
-  Caption := LocaleStrings.LS_PreviewStr;
-  SpeedButtonFirst.Hint := LocaleStrings.LS_FirstPageStr;
+  Caption := GetLocalizeStr(LocaleStrings.LS_PreviewStr);
+  SpeedButtonFirst.Hint := GetLocalizeStr(LocaleStrings.LS_FirstPageStr);
   SpeedButtonFirst.ShowHint := True;
-  SpeedButtonPrior.Hint := LocaleStrings.LS_PriorPageStr;
+  SpeedButtonPrior.Hint := GetLocalizeStr(LocaleStrings.LS_PriorPageStr);
   SpeedButtonPrior.ShowHint := True;
-  SpeedButtonNext.Hint := LocaleStrings.LS_NextPageStr;
+  SpeedButtonNext.Hint := GetLocalizeStr(LocaleStrings.LS_NextPageStr);
   SpeedButtonNext.ShowHint := True;
-  SpeedButtonLast.Hint := LocaleStrings.LS_LastPageStr;
+  SpeedButtonLast.Hint := GetLocalizeStr(LocaleStrings.LS_LastPageStr);
   SpeedButtonLast.ShowHint := True;
-  SpeedButtonViews.Hint := LocaleStrings.LS_DivideScreenStr;
+  SpeedButtonViews.Hint := GetLocalizeStr(LocaleStrings.LS_DivideScreenStr);
   SpeedButtonViews.ShowHint := True;
-  SpeedButtonPrint.Hint := LocaleStrings.LS_PrintStr;
+  SpeedButtonPrint.Hint := GetLocalizeStr(LocaleStrings.LS_PrintStr);
   SpeedButtonPrint.ShowHint := True;
-  SpeedButtonPrint.Caption := LocaleStrings.LS_PrintStr;
-  SpeedButtonSave.Hint := LocaleStrings.LS_SaveToFileStr;
+  SpeedButtonPrint.Caption := GetLocalizeStr(LocaleStrings.LS_PrintStr);
+  SpeedButtonSave.Hint := GetLocalizeStr(LocaleStrings.LS_SaveToFileStr);
   SpeedButtonSave.ShowHint := True;
-  SpeedButtonSave.Caption := LocaleStrings.LS_SaveStr;
-  SpeedButtonEdit.Hint := LocaleStrings.LS_EditStr;
+  SpeedButtonSave.Caption := GetLocalizeStr(LocaleStrings.LS_SaveStr);
+  SpeedButtonEdit.Hint := GetLocalizeStr(LocaleStrings.LS_EditStr);
   SpeedButtonEdit.ShowHint := True;
-  SpeedButtonSend.Caption := LocaleStrings.LS_SendStr;
-  SpeedButtonSend.Hint := LocaleStrings.LS_SendToStr;
+  SpeedButtonSend.Caption := GetLocalizeStr(LocaleStrings.LS_SendStr);
+  SpeedButtonSend.Hint := GetLocalizeStr(LocaleStrings.LS_SendToStr);
   SpeedButtonSend.ShowHint := True;
-  LabelPage.Caption := LocaleStrings.LS_PageStr;
-  LabelOf.Caption := LocaleStrings.LS_OfStr;
+  LabelPage.Caption := GetLocalizeStr(LocaleStrings.LS_PageStr);
+  LabelOf.Caption := GetLocalizeStr(LocaleStrings.LS_OfStr);
   PanelPageCount.Caption := '0';
-  SpeedButtonClose.Hint := LocaleStrings.LS_CloseStr;
+  SpeedButtonClose.Hint := GetLocalizeStr(LocaleStrings.LS_CloseStr);
   SpeedButtonClose.ShowHint := True;
-  SpeedButtonClose.Caption := LocaleStrings.LS_CloseStr;
-  SpeedButtonCopyright.Hint := CS_ProductTitleStr + '  ' + CS_Version;
+  SpeedButtonClose.Caption := GetLocalizeStr(LocaleStrings.LS_CloseStr);
+  SpeedButtonCopyright.Hint := GetLocalizeStr(CS_ProductTitleStr + '  ' + CS_Version);
   SpeedButtonCopyright.ShowHint := True;
-  ComboBoxZoom.Items[8] := LocaleStrings.LS_EntireWidthStr;
-  ComboBoxZoom.Items[9] := LocaleStrings.LS_EntirePageStr;
-  ComboBoxZoom.Items[10] := LocaleStrings.LS_MultiplePagesStr;
+  SpeedButtonZoomDown.Hint := GetLocalizeStr(LocaleStrings.LS_ZoomHint);
+  SpeedButtonZoomUp.Hint := GetLocalizeStr(LocaleStrings.LS_ZoomHint);
+  ComboBoxZoom.Items[8] := GetLocalizeStr(LocaleStrings.LS_EntireWidthStr);
+  ComboBoxZoom.Items[9] := GetLocalizeStr(LocaleStrings.LS_EntirePageStr);
+  ComboBoxZoom.Items[10] := GetLocalizeStr(LocaleStrings.LS_MultiplePagesStr);
   //
   if Assigned(SetupInstance) then
   begin
@@ -1355,7 +1369,11 @@ begin
       try
         MaxPage := Preview.Pages.PageCount;
         if Self.Preview.Pages.Title <> '' then
-          FileName := ExpandFileName(FileNameFromText(Self.Preview.Pages.Title))
+        {$IFDEF FPC}
+         FileName := ExpandFileNameUTF8(FileNameFromText(Self.Preview.Pages.Title))
+        {$ELSE}
+         FileName := ExpandFileName(FileNameFromText(Self.Preview.Pages.Title))
+        {$ENDIF}
         else if (SelectedFilter <> nil) and (SelectedFilter is TRLCustomSaveFilter) then
           FileName := TRLCustomSaveFilter(SelectedFilter).FileName
         else
@@ -1622,7 +1640,7 @@ begin
   if not (csDesigning in ComponentState) then
   begin
     if Assigned(SetupInstance) then
-      raise Exception.Create('Only one instance of ' + ClassName + ' is allowed.');
+      raise Exception.Create(GetLocalizeStr('Only one instance of ' + ClassName + ' is allowed.'));
     SetupInstance := Self;
   end;
 end;
