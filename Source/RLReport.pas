@@ -64,7 +64,7 @@ uses
    QDBCtrls, QMask, RLMetaCLX,
   {$Else}
    Types, Buttons, Graphics, Controls, Dialogs, Forms, ExtCtrls, DBCtrls,
-   RLMetaVCL,
+   RLMetaVCL, StdCtrls,
    {$IfDef FPC}
     LMessages,
    {$Else}
