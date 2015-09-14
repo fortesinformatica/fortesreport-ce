@@ -46,34 +46,23 @@
 
 {$I RLReport.inc}
 
-{$ifdef VCL}
-  {$define INCLUDEVCL}
-{$else}
-  {$ifndef LINUX}
-    {$ifdef CLX}
-      {$define INCLUDEVCL}
-      {$define CLXPLUSVCL}
-    {$endif}
-  {$endif}
-{$endif}
-{$ifdef CLX}
-  {$define INCLUDECLX}
-{$endif}
-
 {@unit RLMetaFile - Implementação das classes e rotinas para manipulação de coleções gráficas. }
 unit RLMetaFile;
 
 interface
 
 uses
-  SysUtils, Contnrs,
-{$ifdef VCL}
-  Windows, Graphics, Dialogs,
-{$endif}
-{$ifdef CLX}
-  Types, QGraphics, QDialogs,
-{$endif}
-  Classes, Math,
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
+  Classes, SysUtils, Contnrs, Math,
+  {$IfDef CLX}
+   QTypes, QGraphics, QDialogs,
+  {$Else}
+   Types, Graphics, Dialogs,
+  {$EndIf}
   RLUtils, RLConsts;
 
 const
@@ -1036,12 +1025,8 @@ function NewGroupId: Integer;
 
 implementation
 
-{$ifdef VCL}
-uses RLMetaVCL;
-{$endif}
-{$ifdef CLX}
-uses RLMetaCLX;
-{$endif}
+uses
+  {$IfDef CLX} RLMetaCLX {$Else} RLMetaVCL {$EndIf};
 
 { UTILS }
 

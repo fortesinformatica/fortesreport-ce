@@ -52,20 +52,26 @@ unit RLAbout;
 interface
 
 uses
-  SysUtils, Classes,
-{$ifdef MSWINDOWS}
-  ShellAPI,
-{$endif}
-{$ifdef VCL}
-  Windows, Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons,
-{$endif}
-{$ifdef CLX}
-  Types,
-  Qt, QGraphics, QControls, QForms, QDialogs, QStdCtrls, QExtCtrls, QButtons,
-{$endif}
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows, ShellAPI,
+   {$EndIf}
+  {$EndIf}
+  Classes, SysUtils,
+  {$IfDef CLX}
+   QTypes, Qt, QGraphics, QControls, QForms, QDialogs, QStdCtrls, QExtCtrls, QButtons,
+  {$Else}
+   Types, Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons,
+  {$EndIf}
+  {$ifdef FPC}
+   LCLIntf, LCLType,
+  {$endif}
   RLConsts, RLUtils, RLComponentFactory;
 
 type
+
+  { TFormRLAbout }
+
   TFormRLAbout = class(TForm)
     ImageLogo: TImage;
     LabelTitle: TLabel;
@@ -107,21 +113,20 @@ begin
     if SameText(TypedAuthorKey, TheAuthorKey) then
       Caption := 'Autor: ' + CS_AuthorNameStr;
   end;
-{$ifdef CLX}
-  if Key = key_escape then
+
+  if Key = {$IfDef CLX}key_escape{$Else}vk_escape{$EndIf} then
     BitBtnOk.Click;
-{$endif}
-{$ifdef VCL}
-  if Key = vk_escape then
-    BitBtnOk.Click;
-{$endif}
 end;
 
 procedure TFormRLAbout.LabelHomeClick(Sender: TObject);
 begin
-{$ifdef MSWINDOWS}
-  ShellExecute(0, nil, PChar(TLabel(Sender).Hint), nil, nil, SW_SHOWNORMAL);
-{$endif}
+  {$IfDef FPC}
+    OpenDocument(PChar(TLabel(Sender).Hint));
+  {$Else}
+   {$IfDef MSWINDOWS}
+    ShellExecute(0, nil, PChar(TLabel(Sender).Hint), nil, nil, SW_SHOWNORMAL);
+   {$EndIf}
+  {$EndIf}
 end;
 
 procedure TFormRLAbout.Init;
@@ -129,20 +134,21 @@ begin
   Left := 250;
   Top := 223;
   ActiveControl := BitBtnOk;
-{$ifdef VCL}
-  BorderStyle := bsDialog;
-{$else}
-  BorderStyle := fbsDialog;
-{$endif};
-  Caption := LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr;
+  {$ifdef CLX}
+   BorderStyle := fbsDialog;
+  {$else}
+   BorderStyle := bsDialog;
+  {$endif};
+  Caption := GetLocalizeStr(LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr);
   ClientHeight := 155;
   ClientWidth := 373;
   Color := clWhite;
   Position := poScreenCenter;
+  {$ifndef FPC}
   Scaled := False;
+  {$endif}
   PixelsPerInch := 96;
   KeyPreview := True;
-  Scaled := False;
   AutoScroll := False;
 
   ImageLogo := TImage.Create(Self);
@@ -206,12 +212,15 @@ begin
     Top := 32;
     Width := 65;
     Height := 13;
-{$ifdef VCL}
-    Caption := CS_Version + ' VCL';
-{$endif}
-{$ifdef CLX}
-    Caption := CS_Version + ' CLX';
-{$endif}
+    {$ifdef CLX}
+     Caption := CS_Version + ' CLX';
+    {$Else}
+     {$ifdef FPC}
+      Caption := CS_Version + ' LCL';
+     {$else}
+      Caption := CS_Version + ' VCL';
+     {$endif}
+    {$endif}
     Font.Name := 'helvetica';
     Font.Color := clBlack;
     Font.Height := 13;
@@ -229,7 +238,7 @@ begin
     Top := 56;
     Width := 211;
     Height := 14;
-    Caption := CS_CopyrightStr + #13 + CS_AuthorNameStr;
+    Caption := GetLocalizeStr(CS_CopyrightStr + #13 + CS_AuthorNameStr);
     Font.Name := 'helvetica';
     Font.Color := clBlack;
     Font.Height := -11;

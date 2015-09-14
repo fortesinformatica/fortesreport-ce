@@ -52,11 +52,11 @@ interface
 
 uses
   SysUtils, Classes,
-{$ifdef VCL}
-  Graphics, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons, Controls, ComCtrls,
-{$else}
-  QTypes, QGraphics, QForms, QDialogs, QStdCtrls, QExtCtrls, QButtons, QControls, QComCtrls,
-{$endif}
+  {$IfDef CLX}
+   QTypes, QGraphics, QForms, QDialogs, QStdCtrls, QExtCtrls, QButtons, QControls, QComCtrls,
+  {$Else}
+   types, Graphics, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons, Controls, ComCtrls,
+  {$EndIf}
   RLUtils, RLComponentFactory;
 
 type
@@ -117,11 +117,11 @@ begin
   Font.Pitch := fpVariable;
   Font.Style := [];
   Position := poScreenCenter;
-{$ifdef VCL}
-  BorderStyle := bsDialog
-{$else}
-  BorderStyle := fbsDialog;
-{$endif};
+  {$ifdef CLX}
+   BorderStyle := fbsDialog;
+  {$else}
+   BorderStyle := bsDialog
+  {$endif};
   PixelsPerInch := 96;
   TRLComponentFactory.CreateComponent(TLabel, Self, LabelStepName);
   with LabelStepName do
@@ -178,8 +178,8 @@ begin
     Top := 64;
   end;
   //
-  BitBtnCancel.Caption := LocaleStrings.LS_CancelStr;
-  LabelStepName.Caption := LocaleStrings.LS_WaitStr;
+  BitBtnCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
+  LabelStepName.Caption := GetLocalizeStr(LocaleStrings.LS_WaitStr);
 end;
 
 constructor TfrmRLFeedBack.Create(const ATitle: String; ALevels: Integer = 1);
@@ -254,9 +254,9 @@ end;
 
 procedure TfrmRLFeedBack.Finish;
 begin
-  LabelStepName.Caption := LocaleStrings.LS_FinishedStr;
+  LabelStepName.Caption := GetLocalizeStr(LocaleStrings.LS_FinishedStr);
   BitBtnCancel.Kind := bkOk;
-  BitBtnCancel.Caption := LocaleStrings.LS_CloseStr;
+  BitBtnCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CloseStr);
   BitBtnCancel.Default := True;
   TimerBlink.Enabled := True;
   while not Finished do 

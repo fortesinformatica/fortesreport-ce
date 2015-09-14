@@ -67,8 +67,8 @@ const
   cvDelphi2009    = 20;	  //VER200
   cvDelphi2010    = 21;	  //VER210
   cvDelphiXE      = 22;	  //VER220
-  cvDelphiXE2	  = 23;   //VER230
-  cvDelphiXE3	  = 24;   //VER240
+  cvDelphiXE2	    = 23;   //VER230
+  cvDelphiXE3	    = 24;   //VER240
   cvDelphiXE4	  = 25;   //VER250
   cvDelphiXE5	  = 26;   //VER260
   cvDelphiXE6	  = 27;   //VER270

@@ -47,23 +47,17 @@
 {$I RLReport.inc}
 
 {@unit RLHTMLFilter - Implementação do filtro para criação de páginas web. }
-
 unit RLHTMLFilter;
 
 interface
 
 uses
-  SysUtils, Classes, Contnrs, 
-{$ifndef LINUX}
-  Windows, 
-{$else}
-  Types, 
-{$endif}
-{$ifdef VCL}
-  Graphics, RLMetaVCL, 
-{$else}
-  QGraphics, RLMetaCLX, 
-{$endif}
+  SysUtils, Classes, Contnrs, Types,
+  {$ifdef CLX}
+   QGraphics, RLMetaCLX,
+  {$else}
+   Graphics, RLMetaVCL,
+  {$endif}
   RLMetaFile, RLConsts, RLFilters, RLUtils, RLTypes;
 
 type
@@ -327,7 +321,7 @@ begin
   inherited;
   //
   DefaultExt := '.htm';
-  DisplayName := LocaleStrings.LS_WebPageStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_WebPageStr);
 end;
 
 destructor TRLHTMLFilter.Destroy;
