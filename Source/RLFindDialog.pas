@@ -51,12 +51,20 @@ unit RLFindDialog;
 interface
 
 uses
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
   SysUtils, Contnrs, Classes, TypInfo,
-{$ifdef VCL}
-  Windows, Messages, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
-{$else}
-  Types, QControls, Qt, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QTypes, QGraphics,
-{$endif}
+  {$IfDef FPC}
+   LCLIntf, LCLType,
+  {$EndIf}
+  {$IfDef CLX}
+   QTypes, QGraphics, QControls, QForms, QDialogs, QStdCtrls, QButtons, QExtCtrls, Qt,
+  {$Else}
+   Types, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
+  {$EndIf}
   RLConsts, RLUtils, RLComponentFactory;
 
 type
@@ -121,11 +129,11 @@ end;
 procedure TfrmRLFindDialog.Init;
 begin
   BorderIcons := [biSystemMenu];
-{$ifdef VCL}
-  BorderStyle := bsDialog;
-{$else}
-  BorderStyle := fbsDialog;
-{$endif}
+  {$ifdef CLX}
+   BorderStyle := fbsDialog;
+  {$else}
+   BorderStyle := bsDialog;
+  {$endif}
   Caption := 'Procurar';
   ClientHeight := 94;
   ClientWidth := 367;
@@ -220,19 +228,19 @@ begin
   end;
 
   //
-  Caption := LocaleStrings.LS_FindCaptionStr;
-  LabelTextToFind.Caption := LocaleStrings.LS_TextToFindStr + ':';
+  Caption := GetLocalizeStr(LocaleStrings.LS_FindCaptionStr);
+  LabelTextToFind.Caption := GetLocalizeStr(LocaleStrings.LS_TextToFindStr + ':');
   EditTextToFind.Text := '';
-  BitBtnFindNext.Caption := LocaleStrings.LS_FindNextStr;
-  BitBtnCancel.Caption := LocaleStrings.LS_CancelStr;
-  CheckBoxWholeWords.Caption := LocaleStrings.LS_WholeWordsStr;
-  CheckBoxMatchCase.Caption := LocaleStrings.LS_MatchCaseStr;
+  BitBtnFindNext.Caption := GetLocalizeStr(LocaleStrings.LS_FindNextStr);
+  BitBtnCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
+  CheckBoxWholeWords.Caption := GetLocalizeStr(LocaleStrings.LS_WholeWordsStr);
+  CheckBoxMatchCase.Caption := GetLocalizeStr(LocaleStrings.LS_MatchCaseStr);
 
-  RadioGroupDirection.Caption := ' ' + LocaleStrings.LS_DirectionCaptionStr + ' ';
+  RadioGroupDirection.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_DirectionCaptionStr + ' ');
 
   RadioGroupDirection_GetItems.Clear;
-  RadioGroupDirection_GetItems.Add(LocaleStrings.LS_DirectionUpStr);
-  RadioGroupDirection_GetItems.Add(LocaleStrings.LS_DirectionDownStr);
+  RadioGroupDirection_GetItems.Add(GetLocalizeStr(LocaleStrings.LS_DirectionUpStr));
+  RadioGroupDirection_GetItems.Add(GetLocalizeStr(LocaleStrings.LS_DirectionDownStr));
   RadioGroupDirection_SetItemIndex(1);
 end;
 
@@ -304,7 +312,7 @@ begin
     end;
   end; 
   if not found then
-    ShowMessage(LocaleStrings.LS_NotFoundStr); 
+    ShowMessage(GetLocalizeStr(LocaleStrings.LS_NotFoundStr)); 
 end;
 
 destructor TfrmRLFindDialog.Destroy;

@@ -129,8 +129,8 @@ begin
                                       TRLBarcode, 
                                       TRLDBBarcode, 
                                       TRLPreview, 
-                                      TRLExpressionParser, 
-                                      TRLDraftFilter, 
+                                      TRLExpressionParser,
+                                      TRLDraftFilter,
                                       TRLRichFilter, 
                                       TRLHTMLFilter, 
                                       TRLPDFFilter, 
@@ -146,11 +146,12 @@ end;
 
 {$IFDEF DELPHI2007_UP}
 initialization
-	AddSplash;
-	RegisterAboutBox;
+  AddSplash;
+  RegisterAboutBox;
 
 finalization
-	UnregisterAboutBox;
+  UnregisterAboutBox;
 {$ENDIF}
 
 end.
+

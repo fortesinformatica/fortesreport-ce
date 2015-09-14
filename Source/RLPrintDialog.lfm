@@ -1,0 +1,260 @@
+object RLPrintDialog: TRLPrintDialog
+  Left = 218
+  Height = 309
+  Top = 244
+  Width = 574
+  ActiveControl = ComboBoxPrinterNames
+  AutoSize = True
+  BorderWidth = 8
+  Caption = 'Imprimir'
+  ClientHeight = 309
+  ClientWidth = 574
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = 11
+  Font.Name = 'MS Sans Serif'
+  Font.Pitch = fpVariable
+  Position = poScreenCenter
+  LCLVersion = '1.4.2.0'
+  object GroupBoxPrinter: TGroupBox
+    Left = 7
+    Height = 105
+    Top = 3
+    Width = 561
+    Caption = 'Impressora'
+    ClientHeight = 87
+    ClientWidth = 557
+    TabOrder = 0
+    object LabelPrinterName: TLabel
+      Left = 12
+      Height = 13
+      Top = 24
+      Width = 31
+      Caption = '&Nome:'
+      FocusControl = ComboBoxPrinterNames
+      ParentColor = False
+    end
+    object LabelFilterName: TLabel
+      Left = 12
+      Height = 13
+      Top = 48
+      Width = 47
+      Caption = 'Usar &filtro:'
+      FocusControl = ComboBoxPrinterNames
+      ParentColor = False
+    end
+    object LabelOptions: TLabel
+      Left = 12
+      Height = 13
+      Top = 72
+      Width = 77
+      Alignment = taRightJustify
+      Caption = 'Opções do filtro:'
+      FocusControl = ComboBoxOptions
+      ParentColor = False
+    end
+    object ComboBoxPrinterNames: TComboBox
+      Left = 68
+      Height = 21
+      Top = 20
+      Width = 365
+      ItemHeight = 13
+      Style = csDropDownList
+      TabOrder = 0
+    end
+    object CheckBoxPrintToFile: TCheckBox
+      Left = 440
+      Height = 19
+      Top = 48
+      Width = 110
+      Caption = 'Imprimir em arquivo'
+      TabOrder = 4
+      TabStop = False
+    end
+    object ComboBoxFilters: TComboBox
+      Left = 68
+      Height = 21
+      Top = 44
+      Width = 365
+      ItemHeight = 13
+      Style = csDropDownList
+      TabOrder = 1
+    end
+    object ComboBoxOptions: TComboBox
+      Left = 96
+      Height = 21
+      Top = 68
+      Width = 161
+      ItemHeight = 13
+      Style = csDropDownList
+      TabOrder = 2
+    end
+    object ButtonPrinterSetup: TButton
+      Left = 440
+      Height = 21
+      Top = 20
+      Width = 109
+      Caption = 'Propriedades'
+      TabOrder = 3
+      TabStop = False
+    end
+  end
+  object GroupBoxPages: TGroupBox
+    Left = 3
+    Height = 156
+    Top = 110
+    Width = 261
+    Caption = 'Intervalo de páginas'
+    ClientHeight = 138
+    ClientWidth = 257
+    TabOrder = 1
+    object LabelToPage: TLabel
+      Left = 172
+      Height = 13
+      Top = 48
+      Width = 18
+      Caption = '&até:'
+      FocusControl = EditToPage
+      ParentColor = False
+    end
+    object LabelPageSelectionHint: TLabel
+      Left = 12
+      Height = 57
+      Top = 96
+      Width = 237
+      AutoSize = False
+      Caption = 'Separe com ponto-e-vírgula os números e/ou intervalos de páginas a serem impressos. Ex.: 1;3;5-12;4'
+      ParentColor = False
+      WordWrap = True
+    end
+    object LabelFromPage: TLabel
+      Left = 96
+      Height = 13
+      Top = 49
+      Width = 15
+      Caption = '&de:'
+      FocusControl = EditFromPage
+      ParentColor = False
+    end
+    object RadioButtonPagesAll: TRadioButton
+      Left = 12
+      Height = 19
+      Top = 24
+      Width = 50
+      Caption = '&Todas'
+      Checked = True
+      TabOrder = 0
+      TabStop = True
+    end
+    object RadioButtonPagesInterval: TRadioButton
+      Left = 12
+      Height = 19
+      Top = 48
+      Width = 61
+      Caption = 'Intervalo'
+      TabOrder = 1
+    end
+    object RadioButtonPagesSelect: TRadioButton
+      Left = 12
+      Height = 19
+      Top = 72
+      Width = 59
+      Caption = 'Seleção'
+      TabOrder = 4
+    end
+    object EditFromPage: TEdit
+      Left = 116
+      Height = 21
+      Top = 44
+      Width = 49
+      TabStop = False
+      TabOrder = 2
+      Text = '1'
+    end
+    object EditToPage: TEdit
+      Left = 196
+      Height = 21
+      Top = 44
+      Width = 49
+      TabStop = False
+      TabOrder = 3
+    end
+    object EditPageSelection: TEdit
+      Left = 96
+      Height = 21
+      Top = 68
+      Width = 149
+      TabOrder = 5
+    end
+  end
+  object GroupBoxCopies: TGroupBox
+    Left = 272
+    Height = 89
+    Top = 110
+    Width = 296
+    Caption = 'Cópias'
+    ClientHeight = 71
+    ClientWidth = 292
+    TabOrder = 2
+    object LabelCopies: TLabel
+      Left = 12
+      Height = 13
+      Top = 10
+      Width = 89
+      Caption = 'Número de &cópias:'
+      ParentColor = False
+    end
+    object LabelOddPages: TLabel
+      Left = 28
+      Height = 13
+      Top = 34
+      Width = 73
+      Alignment = taRightJustify
+      Caption = 'Pares/ímpares:'
+      FocusControl = ComboBoxOddPages
+      ParentColor = False
+    end
+    object EditCopies: TEdit
+      Left = 108
+      Height = 21
+      Top = 6
+      Width = 49
+      TabOrder = 0
+      Text = '1'
+    end
+    object ComboBoxOddPages: TComboBox
+      Left = 108
+      Height = 21
+      Top = 30
+      Width = 161
+      ItemHeight = 13
+      Items.Strings = (
+        'Pares'
+        'Ímpares'
+        'Todas'
+      )
+      Style = csDropDownList
+      TabOrder = 1
+    end
+  end
+  object ButtonOk: TButton
+    Left = 402
+    Height = 25
+    Top = 266
+    Width = 75
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 3
+  end
+  object ButtonCancel: TButton
+    Left = 486
+    Height = 25
+    Top = 266
+    Width = 75
+    Cancel = True
+    Caption = 'Cancelar'
+    ModalResult = 2
+    TabOrder = 4
+  end
+end

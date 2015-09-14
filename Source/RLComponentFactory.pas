@@ -67,9 +67,6 @@ var
 
 implementation
 
-uses
-  StdCtrls;
-
 class procedure TRLComponentFactory.CreateComponent(ComponentClass: TComponentClass; AOwner: TComponent; var AComponent);
 begin
   TComponent(AComponent) := nil;

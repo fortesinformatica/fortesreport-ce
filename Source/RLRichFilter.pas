@@ -47,23 +47,25 @@
 {$I RLReport.inc}
 
 {@unit RLRichFilter - Implementação do filtro para geração de arquivos no formato RichText. }
-
 unit RLRichFilter;
 
 interface
 
 uses
-  SysUtils, Classes, 
-{$ifndef LINUX}
-  Windows, 
-{$else}
-  Types, 
-{$endif}
-{$ifdef VCL}
-  Graphics, RLMetaVCL, 
-{$else}
-  QGraphics, RLMetaCLX, 
-{$endif}
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
+  SysUtils, Classes, Types,
+  {$IfDef FPC}
+   LCLIntf,
+  {$endif}
+  {$IfDef CLX}
+   QGraphics, RLMetaCLX,
+  {$Else}
+   Graphics, RLMetaVCL,
+  {$EndIf}
   RLMetaFile, RLFilters, RLTypes, RLConsts, RLUtils;
 
 type
@@ -248,7 +250,7 @@ begin
   FFontNames := TStringList.Create;
   //
   DefaultExt := '.rtf';
-  DisplayName := LocaleStrings.LS_RichFormatStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_RichFormatStr);
 end;
 
 destructor TRLRichFilter.Destroy;

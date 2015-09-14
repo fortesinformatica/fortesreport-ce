@@ -47,18 +47,15 @@
 {$I RLReport.inc}
 
 {@unit RLTypes - Definição de tipos comuns e rotinas de manipulação de tipos. }
-
 unit RLTypes;
 
 interface
 
 uses
-{$ifndef LINUX}
-  Windows, Printers, 
-{$else}
-  Types, QPrinters, 
-{$endif}
-  Classes;
+  {$IfDef MSWINDOWS}
+    Windows, 
+  {$EndIf}
+  Classes, Printers;
 
 type
   TRLPrinterMetrics = record
@@ -74,13 +71,8 @@ type
     ClientHeight: Integer;
   end;
 
-{$ifndef LINUX}
   TRLSystemPaperType = Integer;
   TRLSystemOrientation = Integer;
-{$else}
-  TRLSystemPaperType = TPageSize;
-  TRLSystemOrientation = TPrinterOrientation;
-{$endif}
 
   TRLPaperInfo = record
                  Width: Double;
@@ -115,12 +107,15 @@ type
                 fpEng_DoublePost, fpEng_DoubleLarge, fpEng_Demy, fpEng_DoubleDemy, fpEng_QuadDemy, fpEng_MusicDemy, fpEng_Medium, fpEng_Royal, fpEng_SuperRoyal, 
                 fpEng_Elephant, fpEng_Imperial, 
                 fpCustom);
-                          
-{$ifndef LINUX}
-const UserPaperCode = DMPAPER_USER;
-{$else}
-const UserPaperCode = psNPageSize;
-{$endif}
+
+const
+{$IfDef FPC}
+  DMPAPER_USER = 256;
+  DMORIENT_PORTRAIT = 1;
+  DMORIENT_LANDSCAPE = 2;
+  DMBIN_MANUAL = 4;
+{$EndIf}
+  UserPaperCode = DMPAPER_USER;
 
 var
   PaperInfo: array[TRLPaperSize] of TRLPaperInfo;
@@ -466,7 +461,7 @@ initialization
 {$endif}
 
   // Equivalências para Linux/CLX
-{$ifdef LINUX}
+{$IfNDef MSWINDOWS}
   SetPaperEqv(fpA0, psA0);
   SetPaperEqv(fpA1, psA1);
   SetPaperEqv(fpA2, psA2);

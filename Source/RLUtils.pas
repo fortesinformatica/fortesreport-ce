@@ -46,24 +46,33 @@
 
 {$I RLReport.inc}
 
-{@unit RLUtils - Rotinas de uso geral. }
+{$IfDef DELPHI2007_DOWN}
+ {$Define NO_CHARINSET}
+{$EndIf}
+{$IfDef FPC}
+ {$Define NO_CHARINSET}
+{$EndIf}
 
+
+{@unit RLUtils - Rotinas de uso geral. }
 unit RLUtils;
 
 interface
 
 uses
-  SysUtils, Classes, Math, DB,
-{$ifndef LINUX}
-  Windows,
-{$else}
-  Types,
-{$endif}
-{$ifdef VCL}
-  Graphics, Forms;
-{$else}
-  QGraphics, QForms;
-{$endif}
+  {$IfDef MSWINDOWS}
+   Windows,
+  {$EndIf}
+  SysUtils, Classes, DB,
+  {$IfDef FPC}
+   FileUtil,
+  {$EndIf}
+  {$IfDef CLX}
+   QTypes, QGraphics, QForms,
+  {$Else}
+   Types, Graphics, Forms,
+  {$EndIf}
+  Math;
 
 {@var TempDir - Especifica aonde deverão ser criados os arquivos temporários.
  Na inicialização do sistema é atribuido um valor padrão a esta variável. Este valor pode ser alterado depois.
@@ -211,7 +220,7 @@ procedure LogClear;
 procedure Log(const AMsg: String);
 
 type
-{$ifdef KYLIX}
+{$ifdef CLX}
   TRGBQuad = packed record
     rgbBlue: Byte;
     rgbGreen: Byte;
@@ -222,17 +231,20 @@ type
   TRGBArray = array[0..0] of TRGBQuad;
   PRGBArray = ^TRGBArray;
 
-{$ifdef KYLIX}
+{$ifdef CLX}
 function RGB(R, G, B: Byte): TColor;
 {$endif}
 
 function NeedAuxBitmap: TBitmap;
 function NewBitmap: TBitmap; overload;
 function NewBitmap(Width, Height: Integer): TBitmap; overload;
-{$if CompilerVersion < 20 }
+{$IfDef NO_CHARINSET}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
-{$ifend}
+{$EndIf}
+
+function GetLocalizeStr(AString: AnsiString) : String;
+function GetAnsiStr(AString: String) : AnsiString;
 
 {/@unit}
 
@@ -242,7 +254,7 @@ type
 
 implementation
 
-{$if CompilerVersion < 20 }
+{$IfDef NO_CHARINSET}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := C in CharSet;
@@ -251,8 +263,38 @@ end;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := (C < #$0100) and (AnsiChar(C) in CharSet);
-end; 
-{$ifend}
+end;
+{$EndIf}
+
+function GetLocalizeStr(AString : AnsiString ): String;
+begin
+{$ifdef UNICODE}
+ {$ifdef USE_LConvEncoding}
+   Result := CP1252ToUTF8(AString);
+ {$else}
+   {$ifdef FPC}
+     {$ifndef NOGUI}
+       Result := SysToUTF8(AString);
+     {$else}
+       Result := AnsiToUtf8(AString);
+     {$endif}
+   {$else}
+     Result := String(AnsiToUtf8(String(AString)));
+   {$endif}
+ {$endif}
+{$else}
+  Result := AString;
+{$endif}
+end;
+
+function GetAnsiStr(AString: String): AnsiString;
+begin
+{$IFDEF UNICODE}
+  Result := Utf8ToAnsi(AString);
+{$Else}
+  Result := AString;
+{$EndIf}
+end;
 
 function NewBitmap: TBitmap;
 begin
@@ -333,7 +375,7 @@ begin
   pointer(APtr) := nil;
 end;
 
-{$ifdef KYLIX}
+{$ifdef CLX}
 function RGB(R, G, B: Byte): TColor;
 begin
   Result := (R or (G shl 8) or (B shl 16));
@@ -599,12 +641,8 @@ begin
   if Result <> '' then
     Result := Result + '|';
   Result := Result + ADescription + ' (*' + FormatFileExt(AExt) + ')';
-{$ifdef VCL}
+
   Result := Result + '|*' + FormatFileExt(AExt);
-{$else} {$ifdef DELPHI7}
-  Result := Result + '|*' + FormatFileExt(AExt);
-{$endif}
-{$endif}
 end;
 
 function GetFileFilterExt(const AFilter: String; AIndex: Integer): String;
@@ -625,12 +663,6 @@ begin
     if P > 0 then
       M := Copy(M, 1, P - 1);
     Inc(I);
-{$ifdef VCL}
-    Inc(I);
-{$else} {$ifdef DELPHI7}
-    Inc(I);
-{$endif}
-{$endif}
   end;
   P := Pos('.', M);
   if P > 0 then
@@ -681,7 +713,7 @@ end;
 
 procedure RotateBitmap(ASource, ADest: TBitmap; AAngle: Double; AAxis, AOffset: TPoint);
 type
-{$ifdef KYLIX}
+{$ifdef CLX}
   TRGBQuad = packed record
     rgbBlue: Byte;
     rgbGreen: Byte;
@@ -1081,5 +1113,4 @@ finalization
   ClearTempFiles;
   FreeObj(AuxBitmap);
 
-end.
-
+end.  
