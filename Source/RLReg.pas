@@ -51,7 +51,7 @@ unit RLReg;
 interface
 
 uses
-  Classes,
+  Classes, SysUtils,
   {$ifdef FPC}
    PropEdits, ComponentEditors, LCLType, LResources,
   {$Else}
@@ -62,7 +62,6 @@ uses
    {$endif}
   {$endif}
   {$IFDEF DELPHI2007_UP}ToolsApi, Windows, Graphics,{$ENDIF}
-
   RLDesign, RLReport,
   RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter, RLXLSFilter,
   RLParser, RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm;
@@ -70,6 +69,9 @@ uses
 procedure Register;
 
 implementation
+
+uses
+  RLConsts;
 
 {$R 'RLReport.dcr'}
 

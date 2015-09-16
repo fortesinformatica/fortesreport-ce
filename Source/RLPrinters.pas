@@ -63,7 +63,7 @@ uses
   {$IfDef CLX}
    QTypes, QGraphics, QDialogs, QPrinters,
   {$Else}
-   Types, Graphics, Dialogs, Printers,
+   Types, Graphics, Dialogs, Printers, Math,
   {$EndIf}
   {$IfDef FPC}
    OSPrinters,

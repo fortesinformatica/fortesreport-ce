@@ -327,11 +327,21 @@ end;
 
 procedure TRLPrintDialog.Init;
 const
+  {$IfDef FPC}
+  GroupMarginX = 8;
+  GroupMarginY = 2;
+  LineHeight = 21;
+  LineSpacing = 6;
+  ColSpacing = 4;
+  PlataformSpacing = 5;
+  {$Else}
   GroupMarginX = 8;
   GroupMarginY = 16;
   LineHeight = 21;
   LineSpacing = 4;
   ColSpacing = 4;
+  PlataformSpacing = 0;
+  {$EndIf}
 var
   TableLayout: TTableLayout;
   BottomLine, MiddleCol: Integer;
@@ -340,9 +350,12 @@ begin
   BorderWidth := 8;
   Caption := 'Imprimir';
   Position := poScreenCenter;
-{$ifndef FPC}
+{$IfNDef FPC}
   Scaled := False;
-{$endif}
+{$Else}
+  BorderSpacing.InnerBorder := LineSpacing;
+{$EndIf}
+
 {$ifdef CLX}
   BorderStyle := fbsDialog;
 {$else}
@@ -445,6 +458,7 @@ begin
     Parent := Self;
     Caption := GetLocalizeStr('Intervalo de páginas');
     TabOrder := 1;
+    //{$IfDef FPC}Height := 160;{$EndIf}
   end;
 
   TRLComponentFactory.CreateComponent(TLabel, Self, LabelToPage);
@@ -662,18 +676,18 @@ begin
 
 
   //
-  Self.ClientWidth := 560;
-  Self.ClientHeight := 280;
+  Self.ClientWidth := 560 + (PlataformSpacing*4);
+  Self.ClientHeight := 280 + (PlataformSpacing*4);
   MiddleCol := 240;
   GroupBoxPrinter.SetBounds(0, 0, Self.ClientWidth, 100);
   BottomLine := GroupBoxPrinter.BoundsRect.Bottom;
-  GroupBoxPages.SetBounds(0, BottomLine, MiddleCol, 140);
+  GroupBoxPages.SetBounds(0, BottomLine, MiddleCol, 140 + (PlataformSpacing*4));
   Inc(MiddleCol, ColSpacing);
-  GroupBoxCopies.SetBounds(MiddleCol, BottomLine, Self.ClientWidth - MiddleCol, 70);
+  GroupBoxCopies.SetBounds(MiddleCol, BottomLine, Self.ClientWidth - MiddleCol, 70 + (PlataformSpacing*2));
   BottomLine := GroupBoxCopies.BoundsRect.Bottom;
-  GroupBoxDuplex.SetBounds(MiddleCol, BottomLine, GroupBoxCopies.Width, 70);
+  GroupBoxDuplex.SetBounds(MiddleCol, BottomLine, GroupBoxCopies.Width, 70 + (PlataformSpacing*2));
   BottomLine := GroupBoxPages.BoundsRect.Bottom + LineSpacing;
-  ButtonCancel.SetBounds(Self.ClientWidth - 75, BottomLine, 75, 25);
+  ButtonCancel.SetBounds(Self.ClientWidth - PlataformSpacing - 75, BottomLine, 75, 25);
   ButtonOk.SetBounds(ButtonCancel.BoundsRect.Left - ColSpacing - 75, BottomLine, 75, 25);
   //
   TableLayout := TTableLayout.Create;
@@ -681,7 +695,7 @@ begin
   TableLayout.Spacing := Point(ColSpacing, LineSpacing);
   TableLayout.Margins := Rect(GroupMarginX, GroupMarginY, GroupMarginX, GroupMarginY);
 
-  TableLayout.SetColWidths([50, 365, 120]);
+  TableLayout.SetColWidths([55, 360, 120]);
   TableLayout.Row(0, [LabelPrinterName, ComboBoxPrinterNames, ButtonPrinterSetup]);
   TableLayout.Row(1, [LabelFilterName, ComboBoxFilters, CheckBoxPrintToFile]);
   TableLayout.Row(2, [LabelOptions, ComboBoxOptions]);
