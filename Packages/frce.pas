@@ -2,7 +2,7 @@
   This source is only used to compile and install the package.
  }
 
-unit FortesReportCE_Lazarus;
+unit frce;
 
 interface
 
@@ -21,5 +21,5 @@ begin
 end;
 
 initialization
-  RegisterPackage('FortesReportCE_Lazarus', @Register);
+  RegisterPackage('frce', @Register);
 end.

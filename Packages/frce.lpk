@@ -2,7 +2,7 @@
 <CONFIG>
   <Package Version="4">
     <PathDelim Value="\"/>
-    <Name Value="FortesReportCE_Lazarus"/>
+    <Name Value="frce"/>
     <Type Value="RunAndDesignTime"/>
     <Author Value="Fortes Informatica"/>
     <CompilerOptions>
@@ -88,8 +88,8 @@
         <UnitName Value="RLReg"/>
       </Item15>
       <Item16>
-        <Filename Value="fortesreportce_lazarus.pas"/>
-        <UnitName Value="FortesReportCE_Lazarus"/>
+        <Filename Value="frce.pas"/>
+        <UnitName Value="frce"/>
       </Item16>
       <Item17>
         <Filename Value="..\Source\RLSpoolFilter.pas"/>
