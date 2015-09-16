@@ -763,9 +763,12 @@ begin
     AFontRec.FirstChar := Byte(outl^.otmTextMetrics.tmFirstChar);
     AFontRec.LastChar := Byte(outl^.otmTextMetrics.tmLastChar);
 
+    {$IfDef FPC}
     GetCharWidth(bmp.Canvas.Handle,aFontRec.FirstChar,aFontRec.LastChar,aFontRec.Widths[aFontRec.FirstChar]);
-    //for I := AFontRec.FirstChar to AFontRec.LastChar do
-    //  AFontRec.Widths[I] := bmp.Canvas.TextWidth( GetLocalizeStr(Chr(I)) );
+    {$Else}
+    for I := AFontRec.FirstChar to AFontRec.LastChar do
+      AFontRec.Widths[I] := bmp.Canvas.TextWidth(Chr(I));
+    {$EndIf}
 
     AFontRec.FontDescriptor.Name := AFontName;
     AFontRec.FontDescriptor.Styles := '';

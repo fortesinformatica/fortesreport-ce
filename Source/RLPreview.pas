@@ -47,6 +47,7 @@
 {$I RLReport.inc}
 
 {@unit RLPreview - Implementação dos componentes de pré-visualização. }
+
 unit RLPreview;
 
 interface
@@ -399,10 +400,12 @@ begin
   M.Caption := 'Copiar como Bitmap';
   M.OnClick := CopyPageBMP;
   FPopup.Items.Add(M);
+  {$IfNDef FPC}
   M := TMenuItem.Create(FPopup);
   M.Caption := 'Copiar como MetaFile';
   M.OnClick := CopyPageWMF;
   FPopup.Items.Add(M);
+  {$EndIf}
   //
   inherited Create(AOwner);
   //
@@ -1133,10 +1136,7 @@ begin
 end;
 
 initialization
-  //todo: See how to load HandOpen and HandClosed cursors
-  {$ifndef FPC}
   Screen.Cursors[crHandOpen] := LoadCursor(hInstance, 'HANDOPEN');
   Screen.Cursors[crHandClosed] := LoadCursor(hInstance, 'HANDCLOSED');
-  {$endif}
 end.
 
