@@ -101,11 +101,11 @@ object RLPrintDialog: TRLPrintDialog
   end
   object GroupBoxPages: TGroupBox
     Left = 3
-    Height = 156
+    Height = 162
     Top = 110
     Width = 261
     Caption = 'Intervalo de páginas'
-    ClientHeight = 138
+    ClientHeight = 144
     ClientWidth = 257
     TabOrder = 1
     object LabelToPage: TLabel
@@ -190,7 +190,7 @@ object RLPrintDialog: TRLPrintDialog
   object GroupBoxCopies: TGroupBox
     Left = 272
     Height = 89
-    Top = 110
+    Top = 112
     Width = 296
     Caption = 'Cópias'
     ClientHeight = 71
