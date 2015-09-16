@@ -738,7 +738,7 @@ end;
 procedure FontGetMetrics(const AFontName: AnsiString; AFontStyles: TFontStyles; var AFontRec: TRLMetaFontMetrics);
 var
   size: Integer;
-  outl: POutlineTextMetric;
+  outl: POutlineTextMetricA;
   I: Integer;
   bmp: TBitmap;
 begin
@@ -749,13 +749,13 @@ begin
   bmp.Canvas.Font.Style := AFontStyles;
   bmp.Canvas.Font.Size := 750;
   //
-  size := GetOutlineTextMetrics(bmp.Canvas.Handle, SizeOf(TOutlineTextmetricA), nil);
+  size := GetOutlineTextMetricsA(bmp.Canvas.Handle, SizeOf(TOutlineTextmetricA), nil);
   if size = 0 then
     raise Exception.Create('Invalid font for GetOutlineTextMetrics');
   GetMem(outl, size);
   try
     outl^.otmSize := size;
-    if GetOutlineTextMetrics(bmp.Canvas.Handle, size, outl) = 0 then
+    if GetOutlineTextMetricsA(bmp.Canvas.Handle, size, outl) = 0 then
       raise Exception.Create('GetOutlineTextMetrics failed');
     //
     AFontRec.TrueType := (outl^.otmTextMetrics.tmPitchAndFamily and TMPF_TRUETYPE) = TMPF_TRUETYPE;
@@ -763,9 +763,12 @@ begin
     AFontRec.FirstChar := Byte(outl^.otmTextMetrics.tmFirstChar);
     AFontRec.LastChar := Byte(outl^.otmTextMetrics.tmLastChar);
 
+    {$IfDef FPC}
     GetCharWidth(bmp.Canvas.Handle,aFontRec.FirstChar,aFontRec.LastChar,aFontRec.Widths[aFontRec.FirstChar]);
-    //for I := AFontRec.FirstChar to AFontRec.LastChar do
-    //  AFontRec.Widths[I] := bmp.Canvas.TextWidth( GetLocalizeStr(Chr(I)) );
+    {$Else}
+    for I := AFontRec.FirstChar to AFontRec.LastChar do
+      AFontRec.Widths[I] := bmp.Canvas.TextWidth(Chr(I));
+    {$EndIf}
 
     AFontRec.FontDescriptor.Name := AFontName;
     AFontRec.FontDescriptor.Styles := '';
