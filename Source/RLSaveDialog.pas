@@ -173,6 +173,8 @@ end;
 // PRIVATE
 
 procedure TRLSaveDialog.Init;
+Const
+  GbTop = {$IfDef FPC} 0 {$Else} 10{$EndIf};
 begin
   Left := 211;
   Top := 407;
@@ -271,7 +273,7 @@ begin
       Name := 'LabelFromPage';
       Parent := GroupBoxPages;
       Left := 68;
-      Top := 45;
+      Top := 35 + GbTop;
       Width := 15;
       Height := 13;
       Caption := '&de:';
@@ -283,7 +285,7 @@ begin
       Name := 'LabelToPage';
       Parent := GroupBoxPages;
       Left := 136;
-      Top := 45;
+      Top := 35 + GbTop;
       Width := 18;
       Height := 13;
       Caption := '&até:';
@@ -295,7 +297,7 @@ begin
       Name := 'RadioButtonPagesAll';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 20;
+      Top := 10 + GbTop;
       Width := 113;
       Height := 17;
       Caption := 'Salvar &tudo';
@@ -309,7 +311,7 @@ begin
       Name := 'RadioButtonPagesInterval';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 44;
+      Top := 34 + GbTop;
       Width := 61;
       Height := 17;
       Caption := 'Páginas';
@@ -321,7 +323,7 @@ begin
       Name := 'RadioButtonPagesSelect';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 68;
+      Top := 58 + GbTop;
       Width := 73;
       Height := 17;
       Caption := '&Seleção';
@@ -333,7 +335,7 @@ begin
       Name := 'EditFromPage';
       Parent := GroupBoxPages;
       Left := 88;
-      Top := 44;
+      Top := 34 + GbTop;
       Width := 41;
       Height := 21;
       TabStop := False;
@@ -347,7 +349,7 @@ begin
       Name := 'EditToPage';
       Parent := GroupBoxPages;
       Left := 160;
-      Top := 44;
+      Top := 34 + GbTop;
       Width := 41;
       Height := 21;
       TabStop := False;

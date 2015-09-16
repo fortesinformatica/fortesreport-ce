@@ -276,7 +276,7 @@ type
       AFontId, AFontSize: Integer);
     function WriteBitmap(ABitmap: TBitmap): Integer;
     procedure WriteBitmapData(ABitmap: TBitmap);
-    function WriteJpeg(AJpeg: TJpegImage): Integer;
+    function WriteJpeg(AJpeg: TJpegImage; InternalDraw: Boolean = False): Integer;
     procedure WriteJpegData(AJpeg: TJpegImage);
 
     function PDF_PointStr(X, Y: Double): string;
@@ -772,6 +772,8 @@ begin
     Result.Height := Src.Height;
     Result.PixelFormat := pf8bit;
     Result.Canvas.Draw(0, 0, Src);
+    // FPC always will change "PixelFormat" to pf24bit, when you try to read it...
+    // So I changed WriteJpeg() to receive a Flag as a parameter
     {$Else}
     bmp := Bitmap32Of(Src);
     try
@@ -887,7 +889,7 @@ begin
       ifJPeg:
       begin
         jpg := JPeg8Of(grp);
-        Result := WriteJpeg(jpg);
+        Result := WriteJpeg(jpg, True);
       end;
     else
       raise Exception.Create('Unknown imageformat');
@@ -1827,7 +1829,7 @@ begin
   EndShortObj;
 end;
 
-function TRLPDFFilter.WriteJpeg(AJpeg: TJpegImage): Integer;
+function TRLPDFFilter.WriteJpeg(AJpeg: TJpegImage; InternalDraw: Boolean): Integer;
 var
   begstm: Integer;
   endstm: Integer;
@@ -1846,7 +1848,7 @@ begin
   else
     Writeln('/ColorSpace/DeviceRGB');
 
-  if AJpeg.PixelFormat = {$IfDef FPC}pf8bit{$Else}jf8Bit{$EndIf} then
+  if InternalDraw or (AJpeg.PixelFormat = {$IfDef FPC}pf8bit{$Else}jf8Bit{$EndIf}) then
     Writeln('/BitsPerComponent 8')
   else
     Writeln('/BitsPerComponent 24');
@@ -2096,7 +2098,12 @@ class function TRLPDFFilter.PDF_EncodeText(const AText: string): string;
 var
   I: Integer;
 begin
+  {$IfDef FPC}
   Result := GetAnsiStr(AText);
+  {$Else}
+  Result := AText;
+  {$EndIf}
+
   for I := Length(Result) downto 1 do
     if CharInSet(Result[I], ['(', ')', '\']) then
     begin

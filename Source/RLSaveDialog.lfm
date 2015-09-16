@@ -1,69 +1,75 @@
 object RLSaveDialog: TRLSaveDialog
   Left = 211
+  Height = 224
   Top = 407
+  Width = 391
   ActiveControl = EditFileName
   BorderStyle = bsDialog
   Caption = 'Salvar como'
   ClientHeight = 224
   ClientWidth = 391
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = 11
   Font.Name = 'MS Sans Serif'
   Font.Pitch = fpVariable
-  Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 96
+  LCLVersion = '1.4.2.0'
   object LabelFileName: TLabel
     Left = 12
+    Height = 13
     Top = 16
     Width = 84
-    Height = 13
     Caption = 'Nome do arquivo:'
+    ParentColor = False
   end
   object LabelUseFilter: TLabel
     Left = 12
+    Height = 13
     Top = 44
     Width = 86
-    Height = 13
     Caption = 'Salvar no formato:'
+    ParentColor = False
   end
   object SpeedButtonLookup: TSpeedButton
     Left = 356
+    Height = 21
     Top = 12
     Width = 21
-    Height = 21
     Caption = '...'
   end
   object GroupBoxPages: TGroupBox
     Left = 12
+    Height = 101
     Top = 68
     Width = 365
-    Height = 101
     Caption = ' Páginas no intervalo  '
+    ClientHeight = 83
+    ClientWidth = 361
     TabOrder = 2
     object LabelFromPage: TLabel
       Left = 68
+      Height = 13
       Top = 45
       Width = 15
-      Height = 13
       Caption = '&de:'
       FocusControl = EditFromPage
+      ParentColor = False
     end
     object LabelToPage: TLabel
       Left = 136
+      Height = 13
       Top = 45
       Width = 18
-      Height = 13
       Caption = '&até:'
       FocusControl = EditToPage
+      ParentColor = False
     end
     object RadioButtonPagesAll: TRadioButton
       Left = 8
+      Height = 19
       Top = 20
-      Width = 113
-      Height = 17
+      Width = 74
       Caption = 'Salvar &tudo'
       Checked = True
       TabOrder = 0
@@ -71,45 +77,45 @@ object RLSaveDialog: TRLSaveDialog
     end
     object RadioButtonPagesInterval: TRadioButton
       Left = 8
+      Height = 19
       Top = 44
-      Width = 61
-      Height = 17
+      Width = 58
       Caption = 'Páginas'
       TabOrder = 1
     end
     object RadioButtonPagesSelect: TRadioButton
       Left = 8
+      Height = 19
       Top = 68
-      Width = 73
-      Height = 17
+      Width = 59
       Caption = '&Seleção'
       TabOrder = 2
     end
     object EditFromPage: TEdit
       Left = 88
+      Height = 21
       Top = 44
       Width = 41
-      Height = 21
+      OnChange = EditFromPageChange
       TabStop = False
       TabOrder = 3
       Text = '1'
-      OnChange = EditFromPageChange
     end
     object EditToPage: TEdit
       Left = 160
+      Height = 21
       Top = 44
       Width = 41
-      Height = 21
+      OnChange = EditFromPageChange
       TabStop = False
       TabOrder = 4
-      OnChange = EditFromPageChange
     end
   end
   object ButtonSave: TButton
     Left = 220
+    Height = 25
     Top = 184
     Width = 75
-    Height = 25
     Caption = 'Salvar'
     Default = True
     ModalResult = 1
@@ -117,9 +123,9 @@ object RLSaveDialog: TRLSaveDialog
   end
   object ButtonCancel: TButton
     Left = 304
+    Height = 25
     Top = 184
     Width = 75
-    Height = 25
     Cancel = True
     Caption = 'Cancelar'
     ModalResult = 2
@@ -127,23 +133,23 @@ object RLSaveDialog: TRLSaveDialog
   end
   object EditFileName: TEdit
     Left = 108
+    Height = 21
     Top = 12
     Width = 249
-    Height = 21
     TabOrder = 0
   end
   object ComboBoxFilters: TComboBox
     Left = 108
+    Height = 21
     Top = 40
     Width = 269
-    Height = 21
-    Style = csDropDownList
     ItemHeight = 13
-    TabOrder = 1
     OnChange = ComboBoxFiltersChange
+    Style = csDropDownList
+    TabOrder = 1
   end
   object SaveDialog: TSaveDialog
-    Left = 340
-    Top = 80
+    left = 340
+    top = 80
   end
 end

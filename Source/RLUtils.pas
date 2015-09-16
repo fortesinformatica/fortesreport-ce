@@ -46,7 +46,7 @@
 
 {$I RLReport.inc}
 
-{$IfDef DELPHI2007_DOWN}
+{$IfNDef DELPHI2007_UP}
  {$Define NO_CHARINSET}
 {$EndIf}
 {$IfDef FPC}

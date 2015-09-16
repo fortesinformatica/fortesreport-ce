@@ -127,6 +127,8 @@ begin
 end;
 
 procedure TfrmRLFindDialog.Init;
+Const
+  PlataformSpacing = {$IfDef FPC} 20 {$Else} 0{$EndIf};
 begin
   BorderIcons := [biSystemMenu];
   {$ifdef CLX}
@@ -135,8 +137,8 @@ begin
    BorderStyle := bsDialog;
   {$endif}
   Caption := 'Procurar';
-  ClientHeight := 94;
-  ClientWidth := 367;
+  ClientHeight := 94 + PlataformSpacing;
+  ClientWidth := 367 + PlataformSpacing;
   Color := clBtnFace;
   Position := poScreenCenter;
   OnDeactivate := FormDeactivate;
@@ -158,7 +160,7 @@ begin
     Parent := Self;
     Left := 48;
     Top := 12;
-    Width := 229;
+    Width := 229 + PlataformSpacing;
     Height := 21;
     TabOrder := 0;
   end;
@@ -167,7 +169,7 @@ begin
   begin
     Name := 'BitBtnFindNext';
     Parent := Self;
-    Left := 284;
+    Left := 284 + PlataformSpacing;
     Top := 12;
     Width := 75;
     Height := 21;
@@ -181,7 +183,7 @@ begin
   begin
     Name := 'BitBtnCancel';
     Parent := Self;
-    Left := 284;
+    Left := 284 + PlataformSpacing;
     Top := 36;
     Width := 75;
     Height := 21;
@@ -219,10 +221,10 @@ begin
   begin
     Name := 'RadioGroupDirection';
     Parent := Self;
-    Left := 204;
+    Left := 204 + PlataformSpacing;
     Top := 36;
     Width := 73;
-    Height := 49;
+    Height := 49 + PlataformSpacing;
     Caption := ' Direção ';
     TabOrder := 5;
   end;

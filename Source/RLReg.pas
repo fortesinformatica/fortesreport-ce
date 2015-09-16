@@ -66,6 +66,9 @@ procedure Register;
 
 implementation
 
+uses
+  RLConsts;
+
 {$R 'RLReport.dcr'}
 
 {$IFDEF DELPHI2007_UP}

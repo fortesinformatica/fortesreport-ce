@@ -598,7 +598,7 @@ end;
  function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
 {$else}
  function LinePrinterStart(const PrnName, DocName: String): Cardinal;
-{$ifend}
+{$EndIf}
 var
   di: TDocInfo1;
 begin
