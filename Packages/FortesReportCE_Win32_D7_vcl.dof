@@ -115,7 +115,7 @@ AutoIncBuild=1
 MajorVer=3
 MinorVer=82
 Release=7
-Build=130
+Build=133
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=Fortes Informatica Ltda
 FileDescription=FortesReport
-FileVersion=3.82.7.130
+FileVersion=3.82.7.133
 InternalName=
 LegalCopyright=
 LegalTrademarks=
