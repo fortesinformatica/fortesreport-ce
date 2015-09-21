@@ -1,34 +1,31 @@
 package FortesReportCE_Win32_DXE_vcl;
 
 {$R *.res}
-{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
-{$DEBUGINFO OFF}
+{$DEBUGINFO ON}
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
 {$LOCALSYMBOLS ON}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
+{$OPTIMIZATION ON}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
-{$REFERENCEINFO ON}
+{$REFERENCEINFO OFF}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
-{$DEFINE VCL}
-{$DEFINE DELPHI}
-{$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'Fortes Report Comunity Edition'}
 {$IMPLICITBUILD ON}
+{$DEFINE DELPHI}
+{$DEFINE VCL}
 
 requires
   rtl,
@@ -61,6 +58,10 @@ contains
   RLHTMLFilter in '..\Source\RLHTMLFilter.pas',
   RLPDFFilter in '..\Source\RLPDFFilter.pas',
   RLXLSFilter in '..\Source\RLXLSFilter.pas',
+  RLCRC32 in '..\Source\RLCRC32.pas',
+  RLPkZip in '..\Source\RLPkZip.pas',
+  RLXLSXFileFormat in '..\Source\RLXLSXFileFormat.pas',
+  RLXLSXFilter in '..\Source\RLXLSXFilter.pas',
   RLRichText in '..\Source\RLRichText.pas',
   RLSpoolFilter in '..\Source\RLSpoolFilter.pas',
   RLMetaVCL in '..\Source\RLMetaVCL.pas',

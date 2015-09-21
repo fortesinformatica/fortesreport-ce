@@ -1,7 +1,6 @@
 package FortesReportCE_Win32_DXE4_vcl;
 
 {$R *.res}
-{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
@@ -26,7 +25,6 @@ package FortesReportCE_Win32_DXE4_vcl;
 {$DEFINE DEBUG}
 {$DEFINE VCL}
 {$DEFINE DELPHI}
-{$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'Fortes Report Comunity Edition'}
 {$IMPLICITBUILD ON}
 
@@ -61,6 +59,10 @@ contains
   RLHTMLFilter in '..\Source\RLHTMLFilter.pas',
   RLPDFFilter in '..\Source\RLPDFFilter.pas',
   RLXLSFilter in '..\Source\RLXLSFilter.pas',
+  RLCRC32 in '..\Source\RLCRC32.pas',
+  RLPkZip in '..\Source\RLPkZip.pas',
+  RLXLSXFileFormat in '..\Source\RLXLSXFileFormat.pas',
+  RLXLSXFilter in '..\Source\RLXLSXFilter.pas',
   RLRichText in '..\Source\RLRichText.pas',
   RLSpoolFilter in '..\Source\RLSpoolFilter.pas',
   RLMetaVCL in '..\Source\RLMetaVCL.pas',

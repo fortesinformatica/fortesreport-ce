@@ -1,4 +1,4 @@
-package FortesReportCE_Win32_DXE6_vcl;
+package FortesReportCE_Win32_DXE8_vcl;
 
 {$R *.res}
 {$ALIGN 8}
@@ -25,6 +25,7 @@ package FortesReportCE_Win32_DXE6_vcl;
 {$DEFINE DEBUG}
 {$DEFINE VCL}
 {$DEFINE DELPHI}
+{$DEFINE USE_VARIANTS}
 {$DESCRIPTION 'Fortes Report Comunity Edition'}
 {$IMPLICITBUILD ON}
 

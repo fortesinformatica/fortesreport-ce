@@ -1,3 +1,51 @@
+{ Projeto: FortesReport Community Edition                                      }
+{ É um poderoso gerador de relatórios disponível como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relatórios são constituídos por bandas que  }
+{ têm funções específicas no fluxo de impressão. Você definir agrupamentos     }
+{ subníveis e totais simplesmente pela relação hierárquica entre as bandas.    }
+{ Além disso possui uma rica paleta de Componentes                             }
+{                                                                              }
+{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
+{                                                                              }
+{ Colaboradores nesse arquivo: Ronaldo Moreira                                 }
+{                              Márcio Martins                                  }
+{                              Régys Borges da Silveira                        }
+{                              Juliomar Marchetti                              }
+{                                                                              }
+{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  localizado em                                                               }
+{ https://github.com/fortesinformatica/fortesreport-ce                         }
+{                                                                              }
+{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
+{                                                                              }
+{  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
+{ sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a versão 2.1 da Licença, ou (a seu critério) }
+{ qualquer versão posterior.                                                   }
+{                                                                              }
+{  Esta biblioteca é distribuída na expectativa de que seja útil, porém, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE OU      }
+{ ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICENÇA.TXT ou LICENSE.TXT)              }
+{                                                                              }
+{  Você deve ter recebido uma cópia da Licença Pública Geral Menor do GNU junto}
+{ com esta biblioteca; se não, escreva para a Free Software Foundation, Inc.,  }
+{ no endereço 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Você também pode obter uma copia da licença em:                              }
+{ http://www.opensource.org/licenses/gpl-license.php                           }
+{                                                                              }
+{******************************************************************************}
+
+{******************************************************************************
+|* Historico
+|*
+|* xx/xx/xxxx:  Autor...
+|* - Descrição...
+******************************************************************************}
+
+{$I RLReport.inc}
+
 {$ifdef VCL}
   {$define INCLUDEVCL}
 {$else}
@@ -1299,7 +1347,7 @@ begin
           gkTextRect: with TRLTextObject.Create(surface) do
                          begin
                            BoundsRect := ToMetaRect(Rect(rec.X1, rec.Y1, rec.X2, rec.Y2));
-                           Text := texts[rec.Text];
+                           Text := AnsiString(texts[rec.Text]);
                            Origin := ToMetaPoint(Point(rec.X, rec.Y));
                            Alignment := rec.Alignment + 1;
                            Layout := MetaTextLayoutTop;
@@ -1328,7 +1376,7 @@ begin
                            Parity := False;
                            pgraph := StrToGraphic(texts[rec.Text], rec.Tag);
                            try
-                             Data := ToMetaGraphic(pgraph);
+                             Data := AnsiString(ToMetaGraphic(pgraph));
                            finally
                              pgraph.free;
                            end;
@@ -1339,7 +1387,7 @@ begin
                            Parity := False;
                            pgraph := StrToGraphic(texts[rec.Text], rec.Tag);
                            try
-                             Data := ToMetaGraphic(pgraph);
+                             Data := AnsiString(ToMetaGraphic(pgraph));
                            finally
                              pgraph.free;
                            end;
@@ -1356,7 +1404,7 @@ begin
                          end;
           gkPolygon: with TRLPolygonObject.Create(surface) do
                          begin
-                           Points := ToMetaPointArray(StrToPoints(texts[rec.Text]));
+                           Points := ToMetaPointArray(StrToPoints(AnsiString(texts[rec.Text])));
                            BoundsRect := ToMetaRect(Rect(rec.X1, rec.Y1, rec.X2, rec.Y2));
                            Pen.Color := ToMetaColor(rec.Pen.Color);
                            Pen.Mode := ToMetaPenMode(rec.Pen.Mode);
@@ -1367,7 +1415,7 @@ begin
                          end;
           gkPolyline: with TRLPolylineObject.Create(surface) do
                          begin
-                           Points := ToMetaPointArray(StrToPoints(texts[rec.Text]));
+                           Points := ToMetaPointArray(StrToPoints(AnsiString(texts[rec.Text])));
                            BoundsRect := ToMetaRect(Rect(rec.X1, rec.Y1, rec.X2, rec.Y2));
                            Pen.Color := ToMetaColor(rec.Pen.Color);
                            Pen.Mode := ToMetaPenMode(rec.Pen.Mode);
@@ -1440,7 +1488,7 @@ begin
         begin
           S := TRLTextObject(obj).Text;
           textid := texts.Add(S);
-          S := TRLTextObject(obj).Font.GetName;
+          S := AnsiString(TRLTextObject(obj).Font.GetName);
           fontid := texts.indexof(S);
           if fontid = -1 then
             fontid := texts.Add(S);
@@ -1585,7 +1633,7 @@ begin
       AOutput.Write(count, SizeOf(count));
       for I := 0 to count - 1 do
       begin
-        S := texts[I];
+        S := AnsiString(texts[I]);
         len := Length(S);
         AOutput.Write(len, SizeOf(len));
         AOutput.Write(S[1], len);
@@ -1924,15 +1972,15 @@ procedure TRLGraphicStorage.SaveToStream(AStream: TStream);
     // grava símbolos
     for I := 0 to count - 1 do
     begin
-      ln := FMacros[I];
+      ln := AnsiString(FMacros[I]);
       // downgrade
       P := Pos('=', ln);
       if P <> 0 then
       begin
-        name := Trim(Copy(ln, 1, P - 1));
-        value := Trim(Copy(ln, P + 1, Length(ln)));
+        name := AnsiString(Trim(Copy(ln, 1, P - 1)));
+        value := AnsiString(Trim(Copy(ln, P + 1, Length(ln))));
         if (FFileVersion < 3) and AnsiSameText(name, 'Orientation') then
-          ln := name + '=' + IntToStr(StrToIntDef(value, 1) - 1);
+          ln := name + '=' + AnsiString(IntToStr(StrToIntDef(value, 1) - 1));
       end;
       // grava length + nome
       len := Length(ln);
@@ -2062,10 +2110,10 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
       P := Pos('=', ln);
       if P <> 0 then
       begin
-        name := Trim(Copy(ln, 1, P - 1));
-        value := Trim(Copy(ln, P + 1, Length(ln)));
+        name := AnsiString(Trim(Copy(ln, 1, P - 1)));
+        value := AnsiString(Trim(Copy(ln, P + 1, Length(ln))));
         if (FFileVersion < 3) and AnsiSameText(name, 'Orientation') then
-          ln := name + '=' + IntToStr(StrToIntDef(value, 0) + 1);
+          ln := name + '=' + AnsiString(IntToStr(StrToIntDef(value, 0) + 1));
       end;
       //
       FMacros.Add(ln);
@@ -2421,7 +2469,7 @@ procedure TRLGraphicSurface.SaveToStream(AStream: TStream);
     // grava símbolos
     for I := 0 to count - 1 do
     begin
-      ln := FMacros[I];
+      ln := AnsiString(FMacros[I]);
       len := Length(ln);
       AStream.Write(len, SizeOf(len));
       AStream.Write(ln[1], len);
@@ -2440,7 +2488,7 @@ procedure TRLGraphicSurface.SaveToStream(AStream: TStream);
     // grava nomes das fontes
     for I := 0 to count - 1 do
     begin
-      name := FFonts[I];
+      name := AnsiString(FFonts[I]);
       len := Length(name);
       // grava length + nome
       AStream.Write(len, SizeOf(len));
@@ -2983,13 +3031,13 @@ end;
 
 procedure TRLGraphicSurface.Write(const AText: String);
 begin
-  TextOut(FPenPos.X, FPenPos.Y, AText);
+  TextOut(FPenPos.X, FPenPos.Y, AnsiString(AText));
   Inc(FPenPos.X, TextWidth(AText));
 end;
 
 procedure TRLGraphicSurface.Writeln(const AText: String);
 begin
-  TextOut(FPenPos.X, FPenPos.Y, AText);
+  TextOut(FPenPos.X, FPenPos.Y, AnsiString(AText));
   FPenPos.X := FMargins.Left;
   Inc(FPenPos.Y, TextHeight(AText));
 end;
@@ -3002,7 +3050,7 @@ begin
   FModified := True;
   obj := TRLImageObject.Create(Self);
   obj.BoundsRect := ToMetaRect(Rect(AX, AY, AX + AGraphic.Width, AY + AGraphic.Height));
-  obj.Data := ToMetaGraphic(AGraphic);
+  obj.Data := AnsiString(ToMetaGraphic(AGraphic));
   obj.Parity := AParity;
 end;
 
@@ -3025,7 +3073,7 @@ begin
   FModified := True;
   obj := TRLImageObject.Create(Self);
   obj.BoundsRect := ToMetaRect(ARect);
-  obj.Data := ToMetaGraphic(AGraphic);
+  obj.Data := AnsiString(ToMetaGraphic(AGraphic));
   obj.Parity := AParity;
 end;
 
@@ -3835,7 +3883,7 @@ begin
         else
           Continue; 
         Delete(AText, M, I - M + 1);
-        Insert(keyvalue, AText, M);
+        Insert(AnsiString(keyvalue), AText, M);
         I := M + Length(keyvalue);
       end;
     end

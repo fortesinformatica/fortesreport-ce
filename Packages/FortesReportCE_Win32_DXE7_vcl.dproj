@@ -2,7 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{1A294E4C-7C59-4A95-B0AE-3F69FC1CEA36}</ProjectGuid>
         <MainSource>FortesReportCE_Win32_DXE7_vcl.dpk</MainSource>
-        <ProjectVersion>16.0</ProjectVersion>
+        <ProjectVersion>16.1</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
@@ -77,8 +77,8 @@
         <GenDll>true</GenDll>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
-        <SanitizedProjectName>FortesReportCE_Win32_DXE6_vcl</SanitizedProjectName>
-        <DCC_DcuOutput>..\Binary\Win32_DXE6_vcl</DCC_DcuOutput>
+        <SanitizedProjectName>FortesReportCE_Win32_DXE7_vcl</SanitizedProjectName>
+        <DCC_DcuOutput>..\Binary\Win32_DXE7_vcl</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
@@ -119,6 +119,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_DcuOutput>..\Binary\Win32_DXE7_vcl</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -192,11 +193,11 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp210.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
                 <Source>
-                    <Source Name="MainSource">FortesReportCE_Win32_DXE6_vcl.dpk</Source>
+                    <Source Name="MainSource">FortesReportCE_Win32_DXE7_vcl.dpk</Source>
                 </Source>
             </Delphi.Personality>
             <Deployment/>

@@ -88,7 +88,7 @@ RemoteSymbols=0
 MinStackSize=16384
 MaxStackSize=1048576
 ImageBase=4194304
-ExeDescription=FortesReport VCL Library
+ExeDescription=Fortes Report Comunity Edition
 [Directories]
 OutputDir=
 UnitOutputDir=..\Binary\Win32_D7_vcl
@@ -115,7 +115,7 @@ AutoIncBuild=1
 MajorVer=3
 MinorVer=82
 Release=7
-Build=129
+Build=133
 Debug=0
 PreRelease=0
 Special=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=Fortes Informatica Ltda
 FileDescription=FortesReport
-FileVersion=4.0
+FileVersion=3.82.7.133
 InternalName=
 LegalCopyright=
 LegalTrademarks=
@@ -146,4 +146,3 @@ Item3=DELPHI;DELPHI5
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
-

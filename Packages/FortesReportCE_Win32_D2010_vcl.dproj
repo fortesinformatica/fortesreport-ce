@@ -1,7 +1,7 @@
 ﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{57A265A3-5030-47D3-955F-E3E72C1CB377}</ProjectGuid>
-			<MainSource>FortesReportCE_Win32_DXE_vcl.dpk</MainSource>
+			<MainSource>FortesReportCE_Win32_D2010_vcl.dpk</MainSource>
 			<ProjectVersion>14.3</ProjectVersion>
 			<Config Condition="'$(Config)'==''">Debug</Config>
 			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
@@ -38,9 +38,9 @@
 			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=;CompileDate=terca-feira, 22 de maio de 2012 17:56</VerInfo_Keys>
 			<DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;$(DCC_Namespace)</DCC_Namespace>
 			<DCC_Description>Fortes Report Comunity Edition</DCC_Description>
-			<DCC_DcuOutput>..\Binary\Win32_DXE_vcl</DCC_DcuOutput>
-			<DCC_DcpOutput>..\Binary\Win32_DXE_vcl</DCC_DcpOutput>
-			<DCC_BplOutput>..\Binary\Win32_DXE_vcl</DCC_BplOutput>
+			<DCC_DcuOutput>..\Binary\Win32_D2010_vcl</DCC_DcuOutput>
+			<DCC_DcpOutput>..\Binary\Win32_D2010_vcl</DCC_DcpOutput>
+			<DCC_BplOutput>..\Binary\Win32_D2010_vcl</DCC_BplOutput>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
 			<GenPackage>true</GenPackage>
@@ -64,10 +64,10 @@
 			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-			<DCC_DcpOutput>..\Binary\Win_DXE_vcl</DCC_DcpOutput>
+			<DCC_DcpOutput>..\Binary\Win_D2010_vcl</DCC_DcpOutput>
 		</PropertyGroup>
 		<ItemGroup>
-			<DelphiCompile Include="FortesReportCE_Win32_DXE_vcl.dpk">
+			<DelphiCompile Include="FortesReportCE_Win32_D2010_vcl.dpk">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
 			<DCCReference Include="rtl.dcp"/>
@@ -127,7 +127,7 @@
 			<BorlandProject>
 				<Delphi.Personality>
 					<Source>
-						<Source Name="MainSource">FortesReportCE_Win32_DXE_vcl.dpk</Source>
+						<Source Name="MainSource">FortesReportCE_Win32_D2010_vcl.dpk</Source>
 					</Source>
 					<Parameters/>
 					<VersionInfo>

@@ -1,6 +1,50 @@
-{$I RLReport.inc}
+{******************************************************************************}
+{ Projeto: FortesReport Community Edition                                      }
+{ É um poderoso gerador de relatórios disponível como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relatórios são constituídos por bandas que  }
+{ têm funções específicas no fluxo de impressão. Você definir agrupamentos     }
+{ subníveis e totais simplesmente pela relação hierárquica entre as bandas.    }
+{ Além disso possui uma rica paleta de Componentes                             }
+{                                                                              }
+{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
+{                                                                              }
+{ Colaboradores nesse arquivo: Ronaldo Moreira                                 }
+{                              Márcio Martins                                  }
+{                              Régys Borges da Silveira                        }
+{                              Juliomar Marchetti                              }
+{                                                                              }
+{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  localizado em                                                               }
+{ https://github.com/fortesinformatica/fortesreport-ce                         }
+{                                                                              }
+{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
+{                                                                              }
+{  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
+{ sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a versão 2.1 da Licença, ou (a seu critério) }
+{ qualquer versão posterior.                                                   }
+{                                                                              }
+{  Esta biblioteca é distribuída na expectativa de que seja útil, porém, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE OU      }
+{ ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICENÇA.TXT ou LICENSE.TXT)              }
+{                                                                              }
+{  Você deve ter recebido uma cópia da Licença Pública Geral Menor do GNU junto}
+{ com esta biblioteca; se não, escreva para a Free Software Foundation, Inc.,  }
+{ no endereço 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Você também pode obter uma copia da licença em:                              }
+{ http://www.opensource.org/licenses/gpl-license.php                           }
+{                                                                              }
+{******************************************************************************}
 
-{@unit RLConsts - Variáveis de internacionalização e variáveis de configuração. }
+{******************************************************************************
+|* Historico
+|*
+|* xx/xx/xxxx:  Autor...
+|* - Descrição...
+******************************************************************************}
+
 unit RLConsts;
 
 interface
@@ -25,10 +69,22 @@ const
   MaxPageNo = 999999;
 
   ReportFileExt = '.rpf';
+	
+  { constantes para exibição na inicialização e no sobre do delphi a partir da versão 2009 }
+  cRLSobreDialogoTitulo = 'FortesReport Community Edition';
+  cRLSobreTitulo = 'FortesReport Community Edition VCL';
+  cRLSobreDescricao = 'FortesReport Community Edition VCL ' + #13#10 +
+                      'http://www.fortesreport.com.br' + #13#10 +
+                      'https://github.com/fortesinformatica/fortesreport-ce' + #13#10 +
+                      'Componentes para Geração de Relatórios' + #13#10 +
+                      'Lesser General Public License version 2.0';
+  cRLSobreLicencaStatus = 'LGPLv2';
+  
+  {****                                  *}	
 
 const
-  CS_CopyrightStr = 'Copyright © 1999-2014 Fortes Informática';
-  CS_ProductTitleStr = 'FortesReport';
+  CS_CopyrightStr = 'Copyright © 1999-2015 Fortes Informática';
+  CS_ProductTitleStr = 'FortesReport Community Edition';
   CS_URLStr = 'http://www.fortesreport.com.br';
   CS_AuthorNameStr = 'Ronaldo Moreira';
   CS_Version = '4.0';
