@@ -243,7 +243,9 @@ type
   end;
   {/@class}
   
-  
+function RichTextBounds(const ARichText: String; ARect: TRect; AWordWrap: Boolean): TPoint;
+procedure RichTextDraw(const ARichText: String; ACanvas: TObject; ARect: TRect; AWordWrap: Boolean);
+
 {/@unit}
 
 implementation
@@ -292,6 +294,7 @@ var
   RGBList: TObjectList;
   RGB: TRichRGB;
   TextPos: TPoint;
+  MustResetLineHeight: Boolean;
   LineHeight: Integer;
   TextWidth: Integer;
   TextCut: Integer;
@@ -529,6 +532,7 @@ begin
   //
   TextPos := ARect.TopLeft;
   LineHeight := 0;
+  MustResetLineHeight := False;
   Level := 0;
   LevelSets[Level].Alignment := MetaTextAlignmentLeft;
   //
@@ -621,13 +625,13 @@ begin
                           begin
                             Inc(TextPos.Y, LineHeight);
                             TextPos.X := ARect.Left;
-                            LineHeight := 0;
+                            MustResetLineHeight := True;
                           end
                           else if Escape = 'pard' then
                           begin
                             Inc(TextPos.Y, LineHeight);
                             TextPos.X := ARect.Left;
-                            LineHeight := 0;
+                            MustResetLineHeight := True;
                             LevelSets[Level].Alignment := MetaTextAlignmentLeft;
                           end
                           else if Escape = 'f' then
@@ -697,6 +701,11 @@ begin
                             TextOut(TextPos.X, TextPos.Y, Copy(TokenText, 1, TextCut));
                             Inc(TextPos.X, TextWidth);
                             ASize.X := Max(ASize.X, TextPos.X);
+                            if MustResetLineHeight then
+                            begin
+                              LineHeight := 0;
+                              MustResetLineHeight := False;
+                            end;
                             LineHeight := Max(LineHeight, GetTextHeight(TokenText));
                             while (TextCut < Length(TokenText)) and CharInSet(TokenText[TextCut + 1], SPACESET) do
                               Inc(TextCut);
@@ -705,7 +714,7 @@ begin
                             begin
                               Inc(TextPos.Y, LineHeight);
                               TextPos.X := ARect.Left;
-                              LineHeight := 0;
+                              MustResetLineHeight := True;
                             end;
                           end;
                         end;
