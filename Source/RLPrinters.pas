@@ -312,6 +312,8 @@ begin
       {$ELSE}
        PDev := TPrinterDevice(Printer.Printers.Objects[Printer.PrinterIndex]);
        FDeviceMode := PDev.DevModeA;
+       if FDeviceMode = nil then
+         FDeviceMode := PDeviceModeA( PDev.DevModeW );  // Ugly
       {$ENDIF}
       if FDeviceMode = nil then
         Abort;

@@ -23,22 +23,24 @@ package frce;
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
 {$DESCRIPTION 'Fortes Report Comunity Edition'}
-{$DEFINE RELEASE}
 {$IMPLICITBUILD OFF}
+{$DEFINE RELEASE}
 {$DEFINE DELPHI}
-{$DEFINE DELPHI7}
 {$DEFINE VCL}
 
 requires
   rtl,
   vcl,
-  vclimg,
-  vcljpg,	
   designide,
   xmlrtl,
   vclactnband,
   vclx,
   dbrtl,
+  {$IFDEF VER150} vcljpg,{$ELSE}    // D7
+   {$IFDEF VER180} vcljpg, {$ELSE}  // D2007
+    vclimg,
+   {$ENDIF}
+  {$ENDIF}
   vcldb;
 
 contains

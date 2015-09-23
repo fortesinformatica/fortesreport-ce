@@ -603,7 +603,7 @@ var
   delta, left, top, txtw, txth, wid, I: Integer;
   buff: AnsiString;
 begin
-  buff := AText;
+  buff := AnsiString(AText);
   delta := ACanvas.TextWidth(' ') div 2;
   txtw := ACanvas.TextWidth(buff + ' ');
   txth := ACanvas.TextHeight(buff + ' ');

@@ -200,8 +200,8 @@ function IterateJustification(var AText: AnsiString; var AIndex: Integer): Boole
 {@func ScaleRect - Calcula a maior amostra do retângulo aSource escalonado de modo a caber em aTarget. :/}
 function ScaleRect(const ASource, ATarget: TRect; ACenter: Boolean): TRect;
 
-procedure StreamWrite(AStream: TStream; const AStr: AnsiString);
-procedure StreamWriteLn(AStream: TStream; const AStr: AnsiString = '');
+procedure StreamWrite(AStream: TStream; const AStr: string);
+procedure StreamWriteLn(AStream: TStream; const AStr: string = '');
 
 {@proc RegisterTempFile - Registra um arquivo temporário para ser excluído na finalização. :/}
 procedure RegisterTempFile(const AFileName: String);
@@ -1046,13 +1046,16 @@ begin
     OffsetRect(Result, (tw - W) div 2, (th - H) div 2);
 end;
 
-procedure StreamWrite(AStream: TStream; const AStr: AnsiString);
+procedure StreamWrite(AStream: TStream; const AStr: string);
+var
+  AnsiAux: AnsiString;
 begin
-  if AStr <> '' then
-    AStream.Write(AStr[1], Length(AStr));
+  AnsiAux := AnsiString(AStr);
+  if AnsiAux <> '' then
+    AStream.Write(AnsiAux[1], Length(AnsiAux));
 end;
 
-procedure StreamWriteLn(AStream: TStream; const AStr: AnsiString = '');
+procedure StreamWriteLn(AStream: TStream; const AStr: string = '');
 begin
   StreamWrite(AStream, AStr);
   StreamWrite(AStream, #13#10);

@@ -227,7 +227,7 @@ var
   I: Integer;
   S: AnsiString;
 begin
-  S := IntToHex(AInt, AWid);
+  S := AnsiString(IntToHex(AInt, AWid));
   SetLength(Result, AWid);
   I := 1;
   while I <= Length(S) do

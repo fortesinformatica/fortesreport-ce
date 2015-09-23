@@ -56,15 +56,16 @@ uses
    PropEdits, ComponentEditors, LCLType, LResources,
   {$Else}
    {$ifdef DELPHI5}
-    DsgnIntF,
+  DsgnIntF, 
    {$else}
-    DesignIntF,
+  DesignIntF, 
    {$endif}
   {$endif}
-  {$IFDEF DELPHI2007_UP}ToolsApi, Windows, Graphics,{$ENDIF}
+{$IFDEF DELPHI2007_UP}ToolsApi, Windows, Graphics,{$ENDIF}
   RLDesign, RLReport,
-  RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter, RLXLSFilter,
-  RLParser, RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm;
+  RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter,
+  RLParser, RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm,
+  RLXLSFilter, RLXLSXFilter;
 
 procedure Register;
 
@@ -139,9 +140,10 @@ begin
                                       TRLExpressionParser,
                                       TRLDraftFilter,
                                       TRLRichFilter, 
-                                      TRLHTMLFilter,
-                                      TRLPDFFilter,
-                                      TRLXLSFilter,
+                                      TRLHTMLFilter, 
+                                      TRLPDFFilter, 
+                                      TRLXLSFilter, 
+                                      TRLXLSXFilter, 
                                       TRLPreviewSetup]);
   // editores de componentes
   RegisterComponentEditor(TRLReport, TRLReportDesigner);

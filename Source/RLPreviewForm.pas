@@ -1603,8 +1603,12 @@ begin
 end;
 
 function TRLPreviewForm.GetPreview: TRLPreview;
+var
+  O: TObject;
 begin
-  Result := TRLPreview(FPreviewList[FPreviewIndex]);
+  O := FPreviewList[FPreviewIndex];
+  if O is TRLPreview then
+    Result := TRLPreview(O);
 end;
 
 procedure TRLPreviewForm.PreviewEnter(Sender: TObject);
