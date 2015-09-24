@@ -59,7 +59,7 @@ uses
 {$ENDIF}
 {$IFDEF DELPHI2007_UP}ToolsApi, Windows, Graphics,{$ENDIF}
   RLReport, RLDraftFilter, RLRichFilter, RLHTMLFilter, RLPDFFilter, RLParser,
-  RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm, RLXLSFilter, RLXLSXFilter,
+  RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm, RLXLSFilter,
   RLConsts;
 
 procedure Register;
@@ -135,7 +135,6 @@ begin
                                       TRLHTMLFilter, 
                                       TRLPDFFilter, 
                                       TRLXLSFilter, 
-                                      TRLXLSXFilter, 
                                       TRLPreviewSetup]);
   // editores de componentes
   RegisterComponentEditor(TRLReport, TRLReportDesigner);

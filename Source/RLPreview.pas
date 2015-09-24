@@ -438,6 +438,11 @@ begin
       bitmap.Width := page.Width;
       bitmap.Height := page.Height;
       bitmap.PixelFormat := pf32bit;
+
+      bitmap.Canvas.Brush.Color := clWhite;
+      bitmap.Canvas.Brush.Style := bsSolid;
+      bitmap.Canvas.FillRect(Rect(0, 0, bitmap.Width, bitmap.Height));
+
       page.PaintTo(bitmap.Canvas, Rect(0, 0, bitmap.Width, bitmap.Height));
       ClipBoard.Assign(bitmap);
     end;
