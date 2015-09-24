@@ -610,7 +610,7 @@ begin
   end;
   FileSetDate(FilePath, ZipItem.GetFileAge);
   {$IFDEF WINDOWS}
-  FileSetAttr(path, ZipItem.FileAttributes);
+  FileSetAttr(FilePath, ZipItem.FileAttributes);
   {$ENDIF}
 end;
 

@@ -27,6 +27,9 @@ package frce;
 {$DEFINE RELEASE}
 {$DEFINE DELPHI}
 {$DEFINE VCL}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'Fortes Report Comunity Edition'}
+{$IMPLICITBUILD OFF}
 
 requires
   rtl,
@@ -62,7 +65,6 @@ contains
   RLRichFilter in '..\Source\RLRichFilter.pas',
   RLHTMLFilter in '..\Source\RLHTMLFilter.pas',
   RLPDFFilter in '..\Source\RLPDFFilter.pas',
-  RLXLSFilter in '..\Source\RLXLSFilter.pas',
   RLRichText in '..\Source\RLRichText.pas',
   RLSpoolFilter in '..\Source\RLSpoolFilter.pas',
   RLMetaVCL in '..\Source\RLMetaVCL.pas',
@@ -71,7 +73,12 @@ contains
   RLReg in '..\Source\RLReg.pas',
   RLDesign in '..\Source\RLDesign.pas',
   RlCompilerConsts in '..\Source\RlCompilerConsts.pas',
-  RLComponentFactory in '..\Source\RLComponentFactory.pas';
+  RLComponentFactory in '..\Source\RLComponentFactory.pas',
+  RLCRC32 in '..\Source\RLCRC32.pas',
+  RLPkZip in '..\Source\RLPkZip.pas',
+  RLXLSFilter in '..\Source\RLXLSFilter.pas',
+  RLXLSXFileFormat in '..\Source\RLXLSXFileFormat.pas',
+  RLXLSXFilter in '..\Source\RLXLSXFilter.pas';
 
 end.
 
