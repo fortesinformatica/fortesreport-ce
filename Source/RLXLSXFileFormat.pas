@@ -46,6 +46,13 @@
 
 {$I RLReport.inc}
 
+{$IfDef DELPHI7_DOWN}
+ {$Define NO_SPLITSTRING}
+{$EndIf}
+{$IfDef FPC}
+ {$Define NO_SPLITSTRING}
+{$EndIf}
+
 unit RLXLSXFileFormat;
 
 interface
@@ -302,11 +309,13 @@ const
 
   CT_OXmlFmt = 'application/vnd.openxmlformats';
 
-{$ifdef DELPHI7}
+{$IfDef DELPHI7_DOWN}
 type RawByteString = UTF8String;
 
 var UTF8ToUnicodeString: function(const RawBytes: RawByteString): WideString = UTF8Decode;
+{$EndIf}
 
+{$ifdef NO_SPLITSTRING}
 function SplitString(const S: string; Sep: Char): TStringDynArray;
 var
   I, SepCount, SplitIndex, CopyStart: Integer;
@@ -751,7 +760,7 @@ end;
 
 procedure TRLXLSXWorkbook.WriteUTF8(DestStream: TStream; const Data: string);
 var
-  RawBytes: RawByteString;
+  RawBytes: {$IfDef FPC}AnsiString{$Else}RawByteString{$EndIf};
 begin
   RawBytes := UTF8Encode(Data);
   DestStream.Write(RawBytes[1], Length(RawBytes));
@@ -1369,7 +1378,7 @@ end;
 
 function TRLXLSXWorkbook.AddString(Text: string): Integer;
 var
-  RawBytes: RawByteString;
+  RawBytes: {$IfDef FPC}AnsiString{$Else}RawByteString{$EndIf};
   Capacity: Integer;
 begin
   RawBytes := UTF8Encode(Text);
@@ -1403,7 +1412,7 @@ end;
 
 function TRLXLSXWorkbook.GetString(Index: Integer): string;
 var
-  RawBytes: RawByteString;
+  RawBytes: {$IfDef FPC}AnsiString{$Else}RawByteString{$EndIf};
 begin
   if Index = -1 then
   begin
@@ -1413,7 +1422,7 @@ begin
   SetLength(RawBytes, FStringSizes[Index]);
   FStringStream.Position := FStringOffsets[Index];
   FStringStream.Read(RawBytes[1], FStringSizes[Index]);
-  Result := UTF8ToUnicodeString(RawBytes);
+  Result := {$IfDef FPC}String(RawBytes){$Else} UTF8ToUnicodeString(RawBytes){$EndIf};
 end;
 
 function TRLXLSXWorkbook.Font(Size: Integer; Bold: Boolean = False): Integer;
