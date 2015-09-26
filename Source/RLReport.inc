@@ -13,8 +13,8 @@
 {                              Régys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Você pode obter a última versão desse arquivo na pagina do  Projeto ACBr    }
-{ Componentes localizado em                                                    }
+{  Você pode obter a última versão desse arquivo na pagina do  Projeto         }
+{  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
 {  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
