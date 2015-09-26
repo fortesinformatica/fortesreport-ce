@@ -338,7 +338,8 @@ end;
 
 destructor TRLCustomFilter.Destroy;
 begin
-  ActiveFilters.Extract(Self);
+  if Assigned(ActiveFilters) then
+    ActiveFilters.Extract(Self);
   if SelectedFilter = Self then
     SelectedFilter := nil;
   if Assigned(FPages) then
@@ -567,7 +568,8 @@ initialization
   ActiveFilters := TList.Create;
 
 finalization
-  ActiveFilters.free;
+  FreeAndNil(ActiveFilters);
+
 
 end.
 
