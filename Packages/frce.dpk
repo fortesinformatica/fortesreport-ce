@@ -1,8 +1,6 @@
 package frce;
 
 {$R *.res}
-{$R *.otares}
-{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
@@ -13,24 +11,22 @@ package frce;
 {$LOCALSYMBOLS ON}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
+{$OPTIMIZATION ON}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
 {$REFERENCEINFO OFF}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
+{$DESCRIPTION 'Fortes Report Comunity Edition'}
+{$IMPLICITBUILD OFF}
 {$DEFINE RELEASE}
 {$DEFINE DELPHI}
 {$DEFINE VCL}
-{$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'Fortes Report Comunity Edition'}
-{$IMPLICITBUILD OFF}
 
 requires
   rtl,
@@ -40,7 +36,11 @@ requires
   vclactnband,
   vclx,
   dbrtl,
-  vclimg,
+  {$IFDEF VER150} vcljpg,{$ELSE}    // D7
+   {$IFDEF VER180} vcljpg, {$ELSE}  // D2007
+    vclimg,
+   {$ENDIF}
+  {$ENDIF}
   vcldb;
 
 contains
