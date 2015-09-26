@@ -282,8 +282,9 @@ var
   I: Integer;
 begin
   SetLength(ColSizes, Length(AColSizes));
+
   for I := 0 to Length(AColSizes) - 1 do
-    ColSizes[I] := AColSizes[I]
+    ColSizes[I] := AColSizes[I];
 end;
 
 procedure TableLayout(ARows: array of TControlArray; const AMargins: TRect;
@@ -691,28 +692,32 @@ begin
   ButtonOk.SetBounds(ButtonCancel.BoundsRect.Left - ColSpacing - 75, BottomLine, 75, 25);
   //
   TableLayout := TTableLayout.Create;
-  TableLayout.LineHeight := LineHeight;
-  TableLayout.Spacing := Point(ColSpacing, LineSpacing);
-  TableLayout.Margins := Rect(GroupMarginX, GroupMarginY, GroupMarginX, GroupMarginY);
+  try
+    TableLayout.LineHeight := LineHeight;
+    TableLayout.Spacing := Point(ColSpacing, LineSpacing);
+    TableLayout.Margins := Rect(GroupMarginX, GroupMarginY, GroupMarginX, GroupMarginY);
 
-  TableLayout.SetColWidths([55, 360, 120]);
-  TableLayout.Row(0, [LabelPrinterName, ComboBoxPrinterNames, ButtonPrinterSetup]);
-  TableLayout.Row(1, [LabelFilterName, ComboBoxFilters, CheckBoxPrintToFile]);
-  TableLayout.Row(2, [LabelOptions, ComboBoxOptions]);
+    TableLayout.SetColWidths([55, 360, 120]);
+    TableLayout.Row(0, [LabelPrinterName, ComboBoxPrinterNames, ButtonPrinterSetup]);
+    TableLayout.Row(1, [LabelFilterName, ComboBoxFilters, CheckBoxPrintToFile]);
+    TableLayout.Row(2, [LabelOptions, ComboBoxOptions]);
 
-  TableLayout.SetColWidths([65, 20, 50, 20, 50]);
-  TableLayout.Cell(0, 0, RadioButtonPagesAll);
-  TableLayout.Row(1, [RadioButtonPagesInterval, LabelFromPage, EditFromPage, LabelToPage, EditToPage]);
-  TableLayout.Cell(2, 0, RadioButtonPagesSelect);
-  TableLayout.Range(2, 1, 2, 4, EditPageSelection);
-  TableLayout.Range(3, 0, 4, 4, LabelPageSelectionHint);
+    TableLayout.SetColWidths([65, 20, 50, 20, 50]);
+    TableLayout.Cell(0, 0, RadioButtonPagesAll);
+    TableLayout.Row(1, [RadioButtonPagesInterval, LabelFromPage, EditFromPage, LabelToPage, EditToPage]);
+    TableLayout.Cell(2, 0, RadioButtonPagesSelect);
+    TableLayout.Range(2, 1, 2, 4, EditPageSelection);
+    TableLayout.Range(3, 0, 4, 4, LabelPageSelectionHint);
 
-  TableLayout.SetColWidths([100, 195]);
-  TableLayout.Row(0, [LabelCopies, EditCopies]);
-  TableLayout.Row(1, [LabelOddPages, ComboBoxOddPages]);
+    TableLayout.SetColWidths([100, 195]);
+    TableLayout.Row(0, [LabelCopies, EditCopies]);
+    TableLayout.Row(1, [LabelOddPages, ComboBoxOddPages]);
 
-  TableLayout.SetColWidths([200]);
-  TableLayout.Row(0, [CheckBoxDuplex]);
+    TableLayout.SetColWidths([200]);
+    TableLayout.Row(0, [CheckBoxDuplex]);
+  finally
+    TableLayout.Free;
+  end;
 end;
 
 procedure TRLPrintDialog.LoadPrinterList;
