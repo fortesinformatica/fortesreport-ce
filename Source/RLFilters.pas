@@ -433,7 +433,10 @@ begin
     CreateProgress;
   try
     if foEmulateCopies in FClassOptions then
-      copies := RLPrinter.Copies
+    begin
+      copies := RLPrinter.Copies;
+      RLPrinter.Copies := 1;  // To avoid double the copies
+    end
     else
       copies := 1;
     if FShowProgress then
