@@ -46,12 +46,12 @@
 
 {$I RLReport.inc}
 
-{$IfDef DELPHIXE8_UP}
- {$Define SEARCHREC_USE_TIME}
+{$Define SEARCHREC_USE_TIME}
+
+{$ifDef DELPHIXE7_UP}
+  {$UnDef SEARCHREC_USE_TIME}
 {$EndIf}
-{$IfDef FPC}
- {$Define SEARCHREC_USE_TIME}
-{$EndIf}
+
 
 unit RLPkZip;
 

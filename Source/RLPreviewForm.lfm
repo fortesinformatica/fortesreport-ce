@@ -1,27 +1,26 @@
 object RLPreviewForm: TRLPreviewForm
   Left = 214
+  Height = 406
   Top = 221
   Width = 806
-  Height = 406
   VertScrollBar.Range = 29
-  AutoScroll = False
   Caption = 'Pré-visualização'
+  ClientHeight = 406
+  ClientWidth = 806
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = 11
   Font.Name = 'MS Sans Serif'
   Font.Pitch = fpVariable
-  Font.Style = []
   KeyPreview = True
-  WindowState = wsMaximized
   OnKeyDown = FormKeyDown
-  PixelsPerInch = 96
+  LCLVersion = '1.4.2.0'
+  WindowState = wsMaximized
   object PanelContainer: TPanel
     Left = 0
+    Height = 383
     Top = 23
-    Width = 798
-    Height = 349
+    Width = 806
     Align = alClient
     BevelOuter = bvLowered
     Caption = ' '
@@ -29,31 +28,33 @@ object RLPreviewForm: TRLPreviewForm
   end
   object PanelTools: TPanel
     Left = 0
-    Top = 0
-    Width = 798
     Height = 23
+    Top = 0
+    Width = 806
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 1
     Caption = ' '
+    ClientHeight = 23
+    ClientWidth = 806
     TabOrder = 1
     object SpeedButtonPrint: TSpeedButton
       Left = 1
+      Height = 22
       Top = 1
       Width = 50
-      Height = 22
       Caption = 'Imprimir'
       Flat = True
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnClick = SpeedButtonPrintClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object SpeedButtonFirst: TSpeedButton
       Left = 209
+      Height = 22
       Top = 1
       Width = 22
-      Height = 22
       Caption = ' '
       Flat = True
       Glyph.Data = {
@@ -65,16 +66,16 @@ object RLPreviewForm: TRLPreviewForm
         070070CEEECEEEEEC70070E7FFE7FFFFC700770EFC0EFCCCC7007770EC70EC77
         770077770C770C77770077777C777C7777007777777777777700
       }
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnClick = SpeedButtonFirstClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object SpeedButtonPrior: TSpeedButton
       Left = 231
+      Height = 22
       Top = 1
       Width = 22
-      Height = 22
       Caption = ' '
       Flat = True
       Glyph.Data = {
@@ -86,17 +87,17 @@ object RLPreviewForm: TRLPreviewForm
         070070CEEEEEEEEEC70070E7FFFFFFFFC700770EFCCCCCCCC7007770EC777777
         770077770C777777770077777C77777777007777777777777700
       }
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnMouseDown = SpeedButtonPriorMouseDown
       OnMouseUp = SpeedButtonPriorMouseUp
+      ShowHint = True
+      ParentShowHint = False
     end
     object SpeedButtonNext: TSpeedButton
       Left = 392
+      Height = 22
       Top = 1
       Width = 22
-      Height = 22
       Caption = ' '
       Flat = True
       Glyph.Data = {
@@ -108,17 +109,17 @@ object RLPreviewForm: TRLPreviewForm
         77007CEEEEEEEEEC07007CFFFFFFFF7E07007CCCCCCCCFE0770077777777CE07
         770077777777C077770077777777C77777007777777777777700
       }
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnMouseDown = SpeedButtonPriorMouseDown
       OnMouseUp = SpeedButtonPriorMouseUp
+      ShowHint = True
+      ParentShowHint = False
     end
     object SpeedButtonLast: TSpeedButton
       Left = 414
+      Height = 22
       Top = 1
       Width = 22
-      Height = 22
       Caption = ' '
       Flat = True
       Glyph.Data = {
@@ -130,16 +131,16 @@ object RLPreviewForm: TRLPreviewForm
         77007CEEEEECEEEC07007CFFFF7EFF7E07007CCCCFE0CFE077007777CE07CE07
         77007777C077C07777007777C777C77777007777777777777700
       }
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnClick = SpeedButtonLastClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object SpeedButtonZoomDown: TSpeedButton
       Left = 447
+      Height = 22
       Top = 1
       Width = 22
-      Height = 22
       Caption = ' '
       Flat = True
       Glyph.Data = {
@@ -160,9 +161,9 @@ object RLPreviewForm: TRLPreviewForm
     end
     object SpeedButtonZoomUp: TSpeedButton
       Left = 469
+      Height = 22
       Top = 1
       Width = 22
-      Height = 22
       Caption = ' '
       Flat = True
       Glyph.Data = {
@@ -183,52 +184,52 @@ object RLPreviewForm: TRLPreviewForm
     end
     object SpeedButtonClose: TSpeedButton
       Left = 151
+      Height = 22
       Top = 1
       Width = 49
-      Height = 22
       Caption = 'Fechar'
       Flat = True
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnClick = SpeedButtonCloseClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object Bevel1: TBevel
       Left = 204
+      Height = 21
       Top = 1
       Width = 2
-      Height = 21
     end
     object Bevel3: TBevel
       Left = 441
+      Height = 21
       Top = 1
       Width = 2
-      Height = 21
     end
     object Bevel4: TBevel
       Left = 640
+      Height = 21
       Top = 1
       Width = 2
-      Height = 21
     end
     object SpeedButtonSave: TSpeedButton
       Left = 51
+      Height = 22
       Top = 1
       Width = 50
-      Height = 22
       Caption = 'Salvar'
       Flat = True
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnClick = SpeedButtonSaveClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object SpeedButtonViews: TSpeedButton
       Left = 646
-      Top = 1
-      Width = 22
       Height = 22
       Hint = 'Várias Páginas'
+      Top = 1
+      Width = 22
       Flat = True
       Glyph.Data = {
         EE000000424DEE000000000000007600000028000000100000000F0000000100
@@ -240,25 +241,24 @@ object RLPreviewForm: TRLPreviewForm
         7778FFFFFFF00FFFFFF8BBBBBBB00BBBBBBBBBBBBBB00BBBBBBBBBBBB0B00B0B
         BBBBBBBBBB0000BBBBBBBBBBBBB00BBBBBBB
       }
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnClick = SpeedButtonViewsClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object Bevel5: TBevel
       Left = 672
+      Height = 21
       Top = 1
       Width = 2
-      Height = 21
     end
     object SpeedButtonEdit: TSpeedButton
       Left = 677
-      Top = 1
-      Width = 22
       Height = 22
       Hint = 'Editar'
+      Top = 1
+      Width = 22
       AllowAllUp = True
-      GroupIndex = 1
       Flat = True
       Glyph.Data = {
         EE000000424DEE000000000000007600000028000000100000000F0000000100
@@ -270,64 +270,69 @@ object RLPreviewForm: TRLPreviewForm
         BBBBBBBBB0000BBBBBBBBBBBB000BBBBBBBBBBBBB00BBBBBBBBBBBBBB0BBBBBB
         BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
       }
-      ParentShowHint = False
-      ShowHint = True
+      GroupIndex = 1
       Spacing = -1
       OnClick = SpeedButtonEditClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object Bevel6: TBevel
       Left = 703
+      Height = 21
       Top = 1
       Width = 2
-      Height = 21
     end
     object SpeedButtonSend: TSpeedButton
       Left = 101
+      Height = 22
       Top = 1
       Width = 50
-      Height = 22
       Caption = 'Enviar'
       Flat = True
-      ParentShowHint = False
-      ShowHint = True
       Spacing = -1
       OnClick = SpeedButtonSendClick
+      ShowHint = True
+      ParentShowHint = False
     end
     object PanelPages: TPanel
       Left = 256
+      Height = 21
       Top = 1
       Width = 134
-      Height = 21
       BevelOuter = bvNone
       Caption = ' '
+      ClientHeight = 21
+      ClientWidth = 134
       TabOrder = 0
       object LabelPage: TLabel
         Left = 0
+        Height = 13
         Top = 4
         Width = 33
-        Height = 13
         Caption = 'Página'
+        ParentColor = False
       end
       object LabelOf: TLabel
         Left = 80
+        Height = 13
         Top = 4
         Width = 12
-        Height = 13
         Caption = 'de'
+        ParentColor = False
       end
       object EditPageNo: TEdit
         Left = 40
+        Height = 21
         Top = 0
         Width = 37
-        Height = 21
-        TabOrder = 0
         OnChange = EditPageNoChange
+        TabOrder = 0
       end
       object PanelPageCount: TPanel
         Left = 96
+        Height = 21
         Top = 0
         Width = 37
-        Height = 21
         Alignment = taLeftJustify
         BevelOuter = bvLowered
         Caption = '99999'
@@ -336,21 +341,21 @@ object RLPreviewForm: TRLPreviewForm
     end
     object PanelZoom: TPanel
       Left = 492
+      Height = 21
       Top = 1
       Width = 145
-      Height = 21
       BevelOuter = bvNone
       Caption = ' '
+      ClientHeight = 21
+      ClientWidth = 145
       TabOrder = 1
       object ComboBoxZoom: TComboBox
         Left = 0
+        Height = 21
         Top = 0
         Width = 145
-        Height = 21
         DropDownCount = 11
         ItemHeight = 13
-        TabOrder = 0
-        OnChange = ComboBoxZoomChange
         Items.Strings = (
           '500%'
           '200%'
@@ -364,22 +369,26 @@ object RLPreviewForm: TRLPreviewForm
           'Página inteira'
           'Várias páginas'
         )
+        OnChange = ComboBoxZoomChange
+        TabOrder = 0
       end
     end
     object PanelCopyright: TPanel
-      Left = 775
+      Left = 783
+      Height = 21
       Top = 1
       Width = 22
-      Height = 21
       Align = alRight
       BevelOuter = bvNone
       Caption = ' '
+      ClientHeight = 21
+      ClientWidth = 22
       TabOrder = 2
       object SpeedButtonCopyright: TSpeedButton
         Left = 0
+        Height = 22
         Top = 0
         Width = 22
-        Height = 22
         Caption = ' '
         Flat = True
         Glyph.Data = {
@@ -396,16 +405,16 @@ object RLPreviewForm: TRLPreviewForm
           7777777700007999977777999997799700007799777777799999997700007777
           77777777777777770000
         }
-        ParentShowHint = False
-        ShowHint = True
         Spacing = -1
+        ShowHint = True
+        ParentShowHint = False
       end
     end
   end
   object TimerRepeat: TTimer
     Interval = 100
     OnTimer = TimerRepeatTimer
-    Left = 520
-    Top = 220
+    left = 520
+    top = 220
   end
 end

@@ -338,7 +338,8 @@ end;
 
 destructor TRLCustomFilter.Destroy;
 begin
-  ActiveFilters.Extract(Self);
+  if Assigned(ActiveFilters) then
+    ActiveFilters.Extract(Self);
   if SelectedFilter = Self then
     SelectedFilter := nil;
   if Assigned(FPages) then
@@ -432,7 +433,10 @@ begin
     CreateProgress;
   try
     if foEmulateCopies in FClassOptions then
-      copies := RLPrinter.Copies
+    begin
+      copies := RLPrinter.Copies;
+      RLPrinter.Copies := 1;  // To avoid double the copies
+    end
     else
       copies := 1;
     if FShowProgress then
@@ -567,7 +571,8 @@ initialization
   ActiveFilters := TList.Create;
 
 finalization
-  ActiveFilters.free;
+  FreeAndNil(ActiveFilters);
+
 
 end.
 
