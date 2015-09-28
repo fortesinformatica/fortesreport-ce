@@ -107,9 +107,7 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label20: TLabel;
-    Shape1: TShape;
     Label22: TLabel;
-    procedure imgPropaganda1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtDelphiVersionChange(Sender: TObject);
@@ -124,8 +122,6 @@ type
     procedure wizPgObterFontesEnterPage(Sender: TObject;
       const FromPage: TJvWizardCustomPage);
     procedure btnInstalarfrceClick(Sender: TObject);
-    procedure wizPgObterFontesNextButtonClick(Sender: TObject;
-      var Stop: Boolean);
     procedure wizPgInstalacaoNextButtonClick(Sender: TObject;
       var Stop: Boolean);
     procedure btnVisualizarLogCompilacaoClick(Sender: TObject);
@@ -153,20 +149,12 @@ type
     function PathApp: String;
     function PathArquivoIni: String;
     function PathArquivoLog: String;
-    procedure InstalarCapicom;
-    procedure InstalarOpenSSL;
-    procedure InstalarXMLSec;
-    procedure InstalarDiversos;
-    function PathSystem: String;
-    function RegistrarActiveXServer(const AServerLocation: string;
-      const ARegister: Boolean): Boolean;
-    procedure CopiarArquivoTo(ADestino : TDestino; const ANomeArquivo: String);//    procedure CopiarArquivoToSystem(const ANomeArquivo: String);
     procedure ExtrairDiretorioPacote(NomePacote: string);
     procedure WriteToTXT( const ArqTXT, AString : AnsiString;
       const AppendIfExists : Boolean = True; AddLineBreak : Boolean = True );
     procedure AddLibraryPathToDelphiPath(const APath, AProcurarRemover: String);
     procedure FindDirs(ADirRoot: String; bAdicionar: Boolean = True);
-    procedure DeixarSomenteLib;
+    procedure CopiarArquivosToLib;
   public
 
   end;
@@ -242,7 +230,7 @@ procedure TfrmPrincipal.ExtrairDiretorioPacote(NomePacote: string);
 
 begin
    sDirPackage := '';
-   FindDirPackage(sDirRoot + 'Pacotes\Delphi', NomePacote);
+   FindDirPackage(sDirRoot + 'Packages', NomePacote);
 end;
 
 // retornar o path do aplicativo
@@ -272,173 +260,6 @@ end;
 function TfrmPrincipal.IsCheckOutJaFeito(const ADiretorio: String): Boolean;
 begin
   Result := DirectoryExists(IncludeTrailingPathDelimiter(ADiretorio) + '.svn')
-end;
-
-// retorna o diretório de sistema atual
-function TfrmPrincipal.PathSystem: String;
-var
-  strTmp: array[0..MAX_PATH] of char;
-  DirWindows: String;
-const
-  SYS_64 = 'SysWOW64';
-  SYS_32 = 'System32';
-begin
-  Result := '';
-
-  //SetLength(strTmp, MAX_PATH);
-  if Windows.GetWindowsDirectory(strTmp, MAX_PATH) > 0 then
-  begin
-    DirWindows := Trim(StrPas(strTmp));
-    DirWindows := IncludeTrailingPathDelimiter(DirWindows);
-
-    if DirectoryExists(DirWindows + SYS_64) then
-      Result := DirWindows + SYS_64
-    else
-    if DirectoryExists(DirWindows + SYS_32) then
-      Result := DirWindows + SYS_32
-    else
-      raise EFileNotFoundException.Create('Diretório de sistema não encontrado.');
-  end
-  else
-    raise EFileNotFoundException.Create('Ocorreu um erro ao tentar obter o diretório do windows.');
-end;
-
-function TfrmPrincipal.RegistrarActiveXServer(const AServerLocation: string;
-  const ARegister: Boolean): Boolean;
-var
-  ServerDllRegisterServer: function: HResult; stdcall;
-  ServerDllUnregisterServer: function: HResult; stdcall;
-  ServerHandle: THandle;
-
-  procedure UnloadServerFunctions;
-  begin
-    @ServerDllRegisterServer := nil;
-    @ServerDllUnregisterServer := nil;
-    FreeLibrary(ServerHandle);
-  end;
-
-  function LoadServerFunctions: Boolean;
-  begin
-    Result := False;
-    ServerHandle := SafeLoadLibrary(AServerLocation);
-
-    if (ServerHandle <> 0) then
-    begin
-      @ServerDllRegisterServer := GetProcAddress(ServerHandle, 'DllRegisterServer');
-      @ServerDllUnregisterServer := GetProcAddress(ServerHandle, 'DllUnregisterServer');
-
-      if (@ServerDllRegisterServer = nil) or (@ServerDllUnregisterServer = nil) then
-        UnloadServerFunctions
-      else
-        Result := True;
-    end;
-  end;
-begin
-  Result := False;
-  try
-    if LoadServerFunctions then
-    try
-      if ARegister then
-        Result := ServerDllRegisterServer = S_OK
-      else
-        Result := ServerDllUnregisterServer = S_OK;
-    finally
-      UnloadServerFunctions;
-    end;
-  except
-  end;
-end;
-
-procedure TfrmPrincipal.CopiarArquivoTo(ADestino : TDestino; const ANomeArquivo: String);
-var
-  PathOrigem: String;
-  PathDestino: String;
-  DirSystem: String;
-  DirFRCE: String;
-begin
-  case ADestino of
-    tdSystem: DirSystem := Trim(PathSystem);
-    tdDelphi: DirSystem := sPathBin;
-  end;
-
-  DirFRCE := IncludeTrailingPathDelimiter(edtDirDestino.Text);
-
-  if DirSystem <> EmptyStr then
-    DirSystem := IncludeTrailingPathDelimiter(DirSystem)
-  else
-    raise EFileNotFoundException.Create('Diretório de sistema não encontrado.');
-
-  PathOrigem  := DirFRCE + 'DLLs\' + ANomeArquivo;
-  PathDestino := DirSystem + ExtractFileName(ANomeArquivo);
-
-  if FileExists(PathOrigem) and not(FileExists(PathDestino)) then
-  begin
-    if not CopyFile(PWideChar(PathOrigem), PWideChar(PathDestino), True) then
-    begin
-      raise EFilerError.CreateFmt(
-        'Ocorreu o seguinte erro ao tentar copiar o arquivo "%s": %d - %s', [
-        ANomeArquivo, GetLastError, SysErrorMessage(GetLastError)
-      ]);
-    end;
-  end;
-end;
-
-// copia as dlls da pasta capcom para a pasta escolhida pelo usuario e registra a dll
-procedure TfrmPrincipal.InstalarCapicom;
-begin
-  if sDestino <> tdNone then
-  begin
-    CopiarArquivoTo(sDestino,'Capicom\capicom.dll');
-    CopiarArquivoTo(sDestino,'Capicom\msxml5.dll');
-    CopiarArquivoTo(sDestino,'Capicom\msxml5r.dll');
-
-    if sDestino = tdDelphi then
-    begin
-      RegistrarActiveXServer(sPathBin + 'capicom.dll', True);
-      RegistrarActiveXServer(sPathBin + 'msxml5.dll', True);
-    end
-    else
-    begin
-      RegistrarActiveXServer('capicom.dll', True);
-      RegistrarActiveXServer('msxml5.dll', True);
-    end;
-  end;
-end;
-
-//copia as dlls da pasta Diversoso para a pasta escolhida pelo usuario
-procedure TfrmPrincipal.InstalarDiversos;
-begin
-  if sDestino <> tdNone then
-  begin
-    CopiarArquivoTo(sDestino,'Diversos\iconv.dll');
-    CopiarArquivoTo(sDestino,'Diversos\inpout32.dll');
-    CopiarArquivoTo(sDestino,'Diversos\msvcr71.dll');
-  end;
-end;
-
-// copia as dlls da pasta openssl, estas dlls são utilizadas para assinar
-// arquivos e outras coisas mais
-procedure TfrmPrincipal.InstalarOpenSSL;
-begin
-  if sDestino <> tdNone then
-  begin
-    CopiarArquivoTo(sDestino,'OpenSSL\0.9.8.14\libeay32.dll');
-    CopiarArquivoTo(sDestino,'OpenSSL\0.9.8.14\ssleay32.dll');
-  end;
-end;
-
-//copia as dlls da pasta XMLSec para a pasta escolhida pelo usuario
-procedure TfrmPrincipal.InstalarXMLSec;
-begin
-  if sDestino <> tdNone then
-  begin
-    CopiarArquivoTo(sDestino, 'XMLSec\iconv.dll');
-    CopiarArquivoTo(sDestino, 'XMLSec\libxml2.dll');
-    CopiarArquivoTo(sDestino, 'XMLSec\libxmlsec.dll');
-    CopiarArquivoTo(sDestino, 'XMLSec\libxmlsec-openssl.dll');
-    CopiarArquivoTo(sDestino, 'XMLSec\libxslt.dll');
-    CopiarArquivoTo(sDestino, 'XMLSec\zlib1.dll');
-  end;
 end;
 
 // ler o arquivo .ini de configurações e setar os campos com os valores lidos
@@ -489,19 +310,19 @@ begin
     ForceDirectories(sDirLibrary);
 end;
 
-procedure TfrmPrincipal.DeixarSomenteLib;
+procedure TfrmPrincipal.CopiarArquivosToLib;
   procedure Copiar(const Extensao : string);
   var
     ListArquivos: TStringDynArray;
     i: integer;
   begin
-    ListArquivos := TDirectory.GetFiles(IncludeTrailingPathDelimiter(sDirRoot) + 'Fontes', Extensao ,TSearchOption.soAllDirectories ) ;
+    ListArquivos := TDirectory.GetFiles(IncludeTrailingPathDelimiter(sDirRoot) + 'Source', Extensao ,TSearchOption.soAllDirectories ) ;
     for i := Low(ListArquivos) to High(ListArquivos) do
       TDirectory.Copy(ListArquivos[i], sDirLibrary);
   end;
 begin
   // remover os path com o segundo parametro
-  FindDirs(IncludeTrailingPathDelimiter(sDirRoot) + 'Fontes', False);
+  FindDirs(IncludeTrailingPathDelimiter(sDirRoot) + 'Source', False);
 
   Copiar('*.dcr');
   Copiar('*.res');
@@ -580,10 +401,6 @@ begin
           if ((oDirList.Attr and faDirectory) <> 0) and
               (oDirList.Name <> '.')                and
               (oDirList.Name <> '..')               and
-              NOT(SameText(oDirList.Name, 'quick')) and
-              NOT(SameText(oDirList.Name, 'rave'))  and
-              NOT(SameText(oDirList.Name, 'laz'))   and
-              NOT(SameText(oDirList.Name, 'VerificarNecessidade')) and
               (oDirList.Name <> '__history')        then
           begin
              with oFRCE.Installations[iVersion] do
@@ -610,7 +427,7 @@ end;
 // adicionar o paths ao library path do delphi
 procedure TfrmPrincipal.AddLibrarySearchPath;
 begin
-  FindDirs(IncludeTrailingPathDelimiter(sDirRoot) + 'Fontes');
+  FindDirs(IncludeTrailingPathDelimiter(sDirRoot) + 'Source');
 
   // --
   with oFRCE.Installations[iVersion] do
@@ -635,7 +452,7 @@ begin
   sVersao  := AnsiUpperCase(oFRCE.Installations[iVersion].VersionNumberStr);
   sDirRoot := IncludeTrailingPathDelimiter(edtDirDestino.Text);
 
-  sTipo := 'Lib\Delphi\';
+  sTipo := 'Binary\';
 
   if edtPlatform.ItemIndex = 0 then // Win32
   begin
@@ -811,7 +628,7 @@ var
     if Trim(aErro) = EmptyStr then
     begin
       case sDestino of
-        tdSystem: Msg := Format(aMensagem + ' em "%s"', [PathSystem]);
+//        tdSystem: Msg := Format(aMensagem + ' em "%s"', [PathSystem]);
         tdDelphi: Msg := Format(aMensagem + ' em "%s"', [sPathBin]);
         tdNone:   Msg := 'Tipo de destino "nenhum" não aceito!';
       end;
@@ -821,7 +638,7 @@ var
       Inc(FCountErros);
 
       case sDestino of
-        tdSystem: Msg := Format(aMensagem + ' em "%s": "%s"', [PathSystem, aErro]);
+//        tdSystem: Msg := Format(aMensagem + ' em "%s": "%s"', [PathSystem, aErro]);
         tdDelphi: Msg := Format(aMensagem + ' em "%s": "%s"', [sPathBin, aErro]);
         tdNone:   Msg := 'Tipo de destino "nenhum" não aceito!';
       end;
@@ -853,7 +670,7 @@ begin
 
     // setar barra de progresso
     pgbInstalacao.Position := 0;
-    pgbInstalacao.Max := 1;
+    pgbInstalacao.Max := 5;
 
     // Seta a plataforna selecionada
     SetPlatformSelected;
@@ -880,33 +697,31 @@ begin
     // compilar os pacotes primeiramente
     lstMsgInstalacao.Items.Add('');
     lstMsgInstalacao.Items.Add('COMPILANDO OS PACOTES...');
-//    for iDpk := 0 to frameDpk.Pacotes.Count - 1 do
+
+    NomePacote := 'frce.dpk';
+    // Busca diretório do pacote
+    ExtrairDiretorioPacote(NomePacote);
+
+    if (IsDelphiPackage(NomePacote)) then
     begin
-//      NomePacote := frameDpk.Pacotes[iDpk].Caption;
+      WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
 
-      // Busca diretório do pacote
-      ExtrairDiretorioPacote(NomePacote);
-
-//      if (IsDelphiPackage(NomePacote)) and (frameDpk.Pacotes[iDpk].Checked) then
+      if oFRCE.Installations[iVersion].CompilePackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
       begin
-        WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
-
-        if oFRCE.Installations[iVersion].CompilePackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
-        begin
-          lstMsgInstalacao.Items.Add(Format('Pacote "%s" compilado com sucesso.', [NomePacote]));
-          lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-        end
-        else
-        begin
-          Inc(FCountErros);
-          lstMsgInstalacao.Items.Add(Format('Erro ao compilar o pacote "%s".', [NomePacote]));
-          lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-        end;
+        lstMsgInstalacao.Items.Add(Format('Pacote "%s" compilado com sucesso.', [NomePacote]));
+        lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
+      end
+      else
+      begin
+        Inc(FCountErros);
+        lstMsgInstalacao.Items.Add(Format('Erro ao compilar o pacote "%s".', [NomePacote]));
+        lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
       end;
-
-      pgbInstalacao.Position := pgbInstalacao.Position + 1;
-      Application.ProcessMessages;
     end;
+
+    pgbInstalacao.Position := pgbInstalacao.Position + 1;
+    Application.ProcessMessages;
+
 
     // instalar os pacotes somente se não ocorreu erro na compilação e plataforma for Win32
     if (edtPlatform.ItemIndex = 0) then
@@ -917,52 +732,44 @@ begin
         lstMsgInstalacao.Items.Add('INSTALANDO OS PACOTES...');
         lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
 
-//        for iDpk := 0 to frameDpk.Pacotes.Count - 1 do
+        // Busca diretório do pacote
+        ExtrairDiretorioPacote(NomePacote);
+
+        if IsDelphiPackage(NomePacote) then
         begin
-//          NomePacote := frameDpk.Pacotes[iDpk].Caption;
-
-          // Busca diretório do pacote
-          ExtrairDiretorioPacote(NomePacote);
-
-          if IsDelphiPackage(NomePacote) then
+          // instalar somente os pacotes de designtime
+          GetDPKFileInfo(sDirPackage + NomePacote, bRunOnly);
+          if not bRunOnly then
           begin
-            // instalar somente os pacotes de designtime
-            GetDPKFileInfo(sDirPackage + NomePacote, bRunOnly);
-            if not bRunOnly then
+            WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
+
+            if oFRCE.Installations[iVersion].InstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
             begin
-              // se o pacote estiver marcado instalar, senão desinstalar
-//              if frameDpk.Pacotes[iDpk].Checked then
-              begin
-                WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
-
-                if oFRCE.Installations[iVersion].InstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
-                begin
-                  lstMsgInstalacao.Items.Add(Format('Pacote "%s" instalado com sucesso.', [NomePacote]));
-                  lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-                end
-                else
-                begin
-                  Inc(FCountErros);
-                  lstMsgInstalacao.Items.Add(Format('Ocorreu um erro ao instalar o pacote "%s".', [NomePacote]));
-                  lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-                end;
-              end;
-//              else
-              begin
-                WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
-
-                if oFRCE.Installations[iVersion].UninstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
-                begin
-                  lstMsgInstalacao.Items.Add(Format('Pacote "%s" removido com sucesso...', [NomePacote]));
-                  lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-                end;
-              end;
+              lstMsgInstalacao.Items.Add(Format('Pacote "%s" instalado com sucesso.', [NomePacote]));
+              lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
+            end
+            else
+            begin
+              Inc(FCountErros);
+              lstMsgInstalacao.Items.Add(Format('Ocorreu um erro ao instalar o pacote "%s".', [NomePacote]));
+              lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
             end;
+//              else
+//              begin
+//                WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
+//
+//                if oFRCE.Installations[iVersion].UninstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
+//                begin
+//                  lstMsgInstalacao.Items.Add(Format('Pacote "%s" removido com sucesso...', [NomePacote]));
+//                  lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
+//                end;
+//              end;
           end;
-
-          pgbInstalacao.Position := pgbInstalacao.Position + 1;
-          Application.ProcessMessages;
         end;
+        pgbInstalacao.Position := pgbInstalacao.Position + 1;
+        Application.ProcessMessages;
+
+        CopiarArquivosToLib;
       end
       else
       begin
@@ -977,33 +784,6 @@ begin
       lstMsgInstalacao.Items.Add('Para a plataforma de 64 bits os pacotes são somente compilados.');
       lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
     end;
-
-
-    lstMsgInstalacao.Items.Add('');
-    lstMsgInstalacao.Items.Add('INSTALANDO OUTROS REQUISITOS...');
-    lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-
-    // instalar capicom
-		try
-			InstalarCapicom;
-			MostrarMensagemInstalado('CAPICOM instalado com sucesso');
-		except
-			on E: Exception do
-			begin
-				MostrarMensagemInstalado('Ocorreu erro ao instalar a CAPICOM', E.Message);
-			end;
-		end;
-
-    // instalar OpenSSL
-		try
-			InstalarOpenSSL;
-			MostrarMensagemInstalado('OPENSSL instalado com sucesso');
-		except
-			on E: Exception do
-			begin
-				MostrarMensagemInstalado('Ocorreu erro ao instalar a OPENSSL', E.Message);
-			end;
-		end;
 
   finally
     btnInstalarfrce.Enabled := True;
@@ -1066,10 +846,6 @@ begin
   if oFRCE.Installations[iVersion].VersionNumber < 9 then
     edtPlatform.ItemIndex := 0;
 
-end;
-
-procedure TfrmPrincipal.imgPropaganda1Click(Sender: TObject);
-begin
 end;
 
 // quando clicar em alguma das urls chamar o link mostrado no caption
@@ -1265,42 +1041,6 @@ begin
       'Data: ' + TSVN_Class.WCInfo.Date;
 
     ShowMessage(Msg);
-  end;
-end;
-
-procedure TfrmPrincipal.wizPgObterFontesNextButtonClick(Sender: TObject;
-  var Stop: Boolean);
-var
-  I: Integer;
-  NomePacote: String;
-begin
-  GravarConfiguracoes;
-
-  // verificar se os pacotes existem antes de seguir para o próximo paso
-//  for I := 0 to frameDpk.Pacotes.Count - 1 do
-  begin
-//    if frameDpk.Pacotes[I].Checked then
-    begin
-      sDirRoot := edtDirDestino.Text;
-//      NomePacote := frameDpk.Pacotes[I].Caption;
-
-      // Busca diretório do pacote
-      ExtrairDiretorioPacote(NomePacote);
-
-      if IsDelphiPackage(NomePacote) then
-      begin
-        if not FileExists(sDirPackage + NomePacote) then
-        begin
-          Stop := True;
-          Application.MessageBox(PWideChar(Format(
-            'Pacote "%s" não encontrado, efetue novamente o download do repositório', [NomePacote])),
-            'Erro.',
-            MB_ICONERROR + MB_OK
-          );
-//          Break;
-        end;
-      end;
-    end;
   end;
 end;
 

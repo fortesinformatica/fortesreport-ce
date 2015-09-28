@@ -1,11 +1,11 @@
 object frmPrincipal: TfrmPrincipal
   Left = 359
   Top = 202
-  ActiveControl = lstMsgInstalacao
+  ActiveControl = lbInfo
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Instalador FortesReport Community Edition'
-  ClientHeight = 614
+  ClientHeight = 478
   ClientWidth = 720
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -23,7 +23,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 720
-    Height = 614
+    Height = 478
     ActivePage = wizPgInstalacao
     ButtonBarHeight = 42
     ButtonStart.Caption = 'Para o in'#237'cio'
@@ -51,10 +51,10 @@ object frmPrincipal: TfrmPrincipal
     ShowRouteMap = True
     OnFinishButtonClick = wizPrincipalFinishButtonClick
     OnCancelButtonClick = wizPrincipalCancelButtonClick
-    ExplicitHeight = 612
+    ExplicitHeight = 614
     DesignSize = (
       720
-      614)
+      478)
     object wizPgInicio: TJvWizardWelcomePage
       Header.Visible = False
       Header.Height = 50
@@ -86,7 +86,7 @@ object frmPrincipal: TfrmPrincipal
       WaterMark.Image.Alignment = iaCenter
       WaterMark.Image.Layout = ilTop
       WaterMark.Width = 80
-      ExplicitHeight = 499
+      ExplicitHeight = 501
       object Label6: TLabel
         Left = 25
         Top = 34
@@ -1009,8 +1009,8 @@ object frmPrincipal: TfrmPrincipal
           9E677661470000000049454E44AE426082}
       end
       object lblUrlForum1: TLabel
-        Left = 99
-        Top = 266
+        Left = 93
+        Top = 230
         Width = 254
         Height = 13
         Cursor = crHandPoint
@@ -1024,8 +1024,8 @@ object frmPrincipal: TfrmPrincipal
         OnClick = URLClick
       end
       object lblUrlfrce1: TLabel
-        Left = 99
-        Top = 208
+        Left = 93
+        Top = 172
         Width = 156
         Height = 13
         Cursor = crHandPoint
@@ -1039,8 +1039,8 @@ object frmPrincipal: TfrmPrincipal
         OnClick = URLClick
       end
       object Label19: TLabel
-        Left = 31
-        Top = 192
+        Left = 25
+        Top = 156
         Width = 352
         Height = 13
         Caption = 
@@ -1054,8 +1054,8 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
       end
       object Label21: TLabel
-        Left = 31
-        Top = 250
+        Left = 25
+        Top = 214
         Width = 241
         Height = 13
         Caption = 'Para tirar d'#250'vidas, ajudar ou dar sugest'#245'es visite:'
@@ -1067,8 +1067,8 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
       end
       object Label11: TLabel
-        Left = 99
-        Top = 323
+        Left = 93
+        Top = 287
         Width = 137
         Height = 13
         Cursor = crHandPoint
@@ -1082,8 +1082,8 @@ object frmPrincipal: TfrmPrincipal
         OnClick = URLClick
       end
       object Label12: TLabel
-        Left = 31
-        Top = 307
+        Left = 25
+        Top = 271
         Width = 250
         Height = 13
         Caption = 'Para baixar o cliente de SVN TORTOISE visite o site:'
@@ -1095,8 +1095,8 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
       end
       object Label7: TLabel
-        Left = 99
-        Top = 220
+        Left = 93
+        Top = 184
         Width = 271
         Height = 13
         Cursor = crHandPoint
@@ -1110,8 +1110,8 @@ object frmPrincipal: TfrmPrincipal
         OnClick = URLClick
       end
       object Label8: TLabel
-        Left = 99
-        Top = 371
+        Left = 93
+        Top = 335
         Width = 149
         Height = 13
         Cursor = crHandPoint
@@ -1125,8 +1125,8 @@ object frmPrincipal: TfrmPrincipal
         OnClick = URLClick
       end
       object Label20: TLabel
-        Left = 31
-        Top = 355
+        Left = 25
+        Top = 319
         Width = 145
         Height = 13
         Caption = 'Para baixar o GIT visite o site:'
@@ -1159,10 +1159,10 @@ object frmPrincipal: TfrmPrincipal
       Header.Subtitle.Font.Height = -11
       Header.Subtitle.Font.Name = 'Arial'
       Header.Subtitle.Font.Style = []
+      Color = clWhite
       Caption = 'Configura'#231#245'es'
       OnNextButtonClick = wizPgConfiguracaoNextButtonClick
-      ExplicitLeft = 241
-      ExplicitTop = -85
+      ExplicitHeight = 501
       object Label4: TLabel
         Left = 18
         Top = 157
@@ -1286,10 +1286,10 @@ object frmPrincipal: TfrmPrincipal
       Header.Subtitle.Font.Height = -11
       Header.Subtitle.Font.Name = 'Arial'
       Header.Subtitle.Font.Style = []
+      Color = clWhite
       Caption = 'Reposit'#243'rio'
       OnEnterPage = wizPgObterFontesEnterPage
-      OnNextButtonClick = wizPgObterFontesNextButtonClick
-      ExplicitHeight = 499
+      ExplicitHeight = 501
       object Label1: TLabel
         Left = 77
         Top = 177
@@ -1371,31 +1371,33 @@ object frmPrincipal: TfrmPrincipal
       Header.Subtitle.Font.Height = -11
       Header.Subtitle.Font.Name = 'Arial'
       Header.Subtitle.Font.Style = []
+      Color = clWhite
       Caption = 'Instala'#231#227'o'
       OnEnterPage = wizPgInstalacaoEnterPage
       OnNextButtonClick = wizPgInstalacaoNextButtonClick
-      ExplicitHeight = 499
+      ExplicitHeight = 501
       object btnInstalarfrce: TSpeedButton
-        Left = 430
-        Top = 463
+        Left = 431
+        Top = 336
         Width = 106
         Height = 25
         Caption = 'Instalar'
         OnClick = btnInstalarfrceClick
       end
       object btnVisualizarLogCompilacao: TSpeedButton
-        Left = 20
-        Top = 463
+        Left = 21
+        Top = 336
         Width = 140
         Height = 25
         Caption = 'Visualizar log'
+        Visible = False
         OnClick = btnVisualizarLogCompilacaoClick
       end
       object lstMsgInstalacao: TListBox
         Left = 20
         Top = 111
         Width = 516
-        Height = 323
+        Height = 196
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -1405,14 +1407,14 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 0
+        TabOrder = 1
       end
       object pgbInstalacao: TProgressBar
-        Left = 20
-        Top = 440
+        Left = 21
+        Top = 313
         Width = 516
         Height = 17
-        TabOrder = 1
+        TabOrder = 2
       end
       object pnlInfoCompilador: TPanel
         Left = 20
@@ -1420,7 +1422,7 @@ object frmPrincipal: TfrmPrincipal
         Width = 516
         Height = 90
         BevelOuter = bvLowered
-        TabOrder = 2
+        TabOrder = 0
         object lbInfo: TListBox
           Left = 1
           Top = 1
@@ -1440,12 +1442,13 @@ object frmPrincipal: TfrmPrincipal
         end
       end
       object btnWCInfo: TButton
-        Left = 166
-        Top = 463
+        Left = 167
+        Top = 336
         Width = 140
         Height = 25
         Caption = 'Mostrar '#250'ltima revis'#227'o'
         TabOrder = 3
+        Visible = False
         WordWrap = True
         OnClick = btnWCInfoClick
       end
@@ -1472,7 +1475,7 @@ object frmPrincipal: TfrmPrincipal
       VisibleButtons = [bkFinish]
       Color = clWhite
       Caption = 'Fim'
-      ExplicitHeight = 499
+      ExplicitHeight = 501
       object Label3: TLabel
         Left = 39
         Top = 58
@@ -1568,7 +1571,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 0
       Top = 71
       Width = 166
-      Height = 501
+      Height = 365
       ItemHeight = 30
       AllowClickableNodes = False
       Color = 5788637
@@ -1582,7 +1585,7 @@ object frmPrincipal: TfrmPrincipal
       Indent = 15
       NodeColors.Selected = clBlack
       UsePageTitle = False
-      ExplicitHeight = 499
+      ExplicitHeight = 501
     end
     object pnlTopo: TPanel
       Left = 0
@@ -1593,18 +1596,7 @@ object frmPrincipal: TfrmPrincipal
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 2
-      object Shape1: TShape
-        Left = 0
-        Top = 0
-        Width = 720
-        Height = 71
-        Align = alClient
-        ExplicitLeft = 327
-        ExplicitTop = 3
-        ExplicitWidth = 65
-        ExplicitHeight = 65
-      end
+      TabOrder = 4
       object Image1: TImage
         Left = 473
         Top = 9
