@@ -47,23 +47,17 @@
 {$I RLReport.inc}
 
 {@unit RLRichText - Implementação dos componentes de impressão de texto no formato RichText.}
-
 unit RLRichText;
 
 interface
 
 uses
-  Classes, SysUtils, Contnrs, Math, 
-{$ifndef LINUX}
-  Windows, 
-{$else}
-  Types, 
-{$endif}
-{$ifdef CLX}
-  QGraphics, RLMetaCLX, 
-{$else}
-  Graphics, RLMetaVCL, 
-{$endif}
+  Classes, SysUtils, Contnrs, Math,
+  {$ifdef CLX}
+   QTypes, QGraphics, RLMetaCLX,
+  {$else}
+   Types, Graphics, RLMetaVCL,
+  {$EndIf}
   RLReport, RLUtils, RLMetaFile;
 
 type

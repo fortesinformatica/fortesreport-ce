@@ -51,20 +51,28 @@ unit RLReg;
 interface
 
 uses
-  Classes, SysUtils, RLDesign,
-{$IFDEF DELPHI5}
+  Classes, SysUtils,
+  {$ifdef FPC}
+   PropEdits, ComponentEditors, LCLType, LResources,
+  {$Else}
+   {$ifdef DELPHI5}
   DsgnIntF, 
-{$ELSE}
+   {$else}
   DesignIntF, 
-{$ENDIF}
+   {$endif}
+  {$endif}
 {$IFDEF DELPHI2007_UP}ToolsApi, Windows, Graphics,{$ENDIF}
-  RLReport, RLDraftFilter, RLRichFilter, RLHTMLFilter, RLPDFFilter, RLParser,
-  RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm, RLXLSFilter,
-  RLConsts, RLXLSXFilter;
+  RLDesign, RLReport,
+  RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter,
+  RLParser, RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm,
+  RLXLSFilter, RLXLSXFilter;
 
 procedure Register;
 
 implementation
+
+uses
+  RLConsts;
 
 {$R 'RLReport.dcr'}
 
@@ -129,13 +137,13 @@ begin
                                       TRLBarcode, 
                                       TRLDBBarcode, 
                                       TRLPreview, 
-                                      TRLExpressionParser, 
-                                      TRLDraftFilter, 
+                                      TRLExpressionParser,
+                                      TRLDraftFilter,
                                       TRLRichFilter, 
                                       TRLHTMLFilter, 
                                       TRLPDFFilter, 
-                                      TRLXLSFilter,
-                                      TRLXLSXFilter,
+                                      TRLXLSFilter, 
+                                      TRLXLSXFilter, 
                                       TRLPreviewSetup]);
   // editores de componentes
   RegisterComponentEditor(TRLReport, TRLReportDesigner);
@@ -146,11 +154,12 @@ end;
 
 {$IFDEF DELPHI2007_UP}
 initialization
-	AddSplash;
-	RegisterAboutBox;
+  AddSplash;
+  RegisterAboutBox;
 
 finalization
-	UnregisterAboutBox;
+  UnregisterAboutBox;
 {$ENDIF}
 
 end.
+

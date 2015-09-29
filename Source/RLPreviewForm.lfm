@@ -1,0 +1,420 @@
+object RLPreviewForm: TRLPreviewForm
+  Left = 214
+  Height = 406
+  Top = 221
+  Width = 806
+  VertScrollBar.Range = 29
+  Caption = 'Pré-visualização'
+  ClientHeight = 406
+  ClientWidth = 806
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = 11
+  Font.Name = 'MS Sans Serif'
+  Font.Pitch = fpVariable
+  KeyPreview = True
+  OnKeyDown = FormKeyDown
+  LCLVersion = '1.4.2.0'
+  WindowState = wsMaximized
+  object PanelContainer: TPanel
+    Left = 0
+    Height = 383
+    Top = 23
+    Width = 806
+    Align = alClient
+    BevelOuter = bvLowered
+    Caption = ' '
+    TabOrder = 0
+  end
+  object PanelTools: TPanel
+    Left = 0
+    Height = 23
+    Top = 0
+    Width = 806
+    Align = alTop
+    BevelOuter = bvNone
+    BorderWidth = 1
+    Caption = ' '
+    ClientHeight = 23
+    ClientWidth = 806
+    TabOrder = 1
+    object SpeedButtonPrint: TSpeedButton
+      Left = 1
+      Height = 22
+      Top = 1
+      Width = 50
+      Caption = 'Imprimir'
+      Flat = True
+      Spacing = -1
+      OnClick = SpeedButtonPrintClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SpeedButtonFirst: TSpeedButton
+      Left = 209
+      Height = 22
+      Top = 1
+      Width = 22
+      Caption = ' '
+      Flat = True
+      Glyph.Data = {
+        D6000000424DD60000000000000076000000280000000E0000000C0000000100
+        04000000000060000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        7700777770777077770077770077007777007770C070C0777700770CE00CE000
+        070070CEEECEEEEEC70070E7FFE7FFFFC700770EFC0EFCCCC7007770EC70EC77
+        770077770C770C77770077777C777C7777007777777777777700
+      }
+      Spacing = -1
+      OnClick = SpeedButtonFirstClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SpeedButtonPrior: TSpeedButton
+      Left = 231
+      Height = 22
+      Top = 1
+      Width = 22
+      Caption = ' '
+      Flat = True
+      Glyph.Data = {
+        D6000000424DD60000000000000076000000280000000E0000000C0000000100
+        04000000000060000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        7700777770777777770077770077777777007770C07777777700770CE0000000
+        070070CEEEEEEEEEC70070E7FFFFFFFFC700770EFCCCCCCCC7007770EC777777
+        770077770C777777770077777C77777777007777777777777700
+      }
+      Spacing = -1
+      OnMouseDown = SpeedButtonPriorMouseDown
+      OnMouseUp = SpeedButtonPriorMouseUp
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SpeedButtonNext: TSpeedButton
+      Left = 392
+      Height = 22
+      Top = 1
+      Width = 22
+      Caption = ' '
+      Flat = True
+      Glyph.Data = {
+        D6000000424DD60000000000000076000000280000000E0000000C0000000100
+        04000000000060000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        770077777777077777007777777700777700777777770C077700700000000EC0
+        77007CEEEEEEEEEC07007CFFFFFFFF7E07007CCCCCCCCFE0770077777777CE07
+        770077777777C077770077777777C77777007777777777777700
+      }
+      Spacing = -1
+      OnMouseDown = SpeedButtonPriorMouseDown
+      OnMouseUp = SpeedButtonPriorMouseUp
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SpeedButtonLast: TSpeedButton
+      Left = 414
+      Height = 22
+      Top = 1
+      Width = 22
+      Caption = ' '
+      Flat = True
+      Glyph.Data = {
+        D6000000424DD60000000000000076000000280000000E0000000C0000000100
+        04000000000060000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        77007777077707777700777700770077770077770C070C07770070000EC00EC0
+        77007CEEEEECEEEC07007CFFFF7EFF7E07007CCCCFE0CFE077007777CE07CE07
+        77007777C077C07777007777C777C77777007777777777777700
+      }
+      Spacing = -1
+      OnClick = SpeedButtonLastClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SpeedButtonZoomDown: TSpeedButton
+      Left = 447
+      Height = 22
+      Top = 1
+      Width = 22
+      Caption = ' '
+      Flat = True
+      Glyph.Data = {
+        4E010000424D4E01000000000000760000002800000012000000120000000100
+        040000000000D8000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        77777700000070000000007777777700000070FFF7F7F07777777700000070F7
+        7777707777000700000070F77777F07776F60700000070F7777770776FE60700
+        000070F7778800067E607700000070F77866666786077700000070F78EEEEE66
+        00777700000070F8777777EE60777700000070F877F777EE6077770000007008
+        7700000E60777700000077787FFFFF7E60777700000077787FFFFF7E60777700
+        0000777787FFFF7E077777000000777778777770777777000000777777880007
+        777777000000777777777777777777000000
+      }
+      Spacing = -1
+      OnClick = SpeedButtonZoomDownClick
+    end
+    object SpeedButtonZoomUp: TSpeedButton
+      Left = 469
+      Height = 22
+      Top = 1
+      Width = 22
+      Caption = ' '
+      Flat = True
+      Glyph.Data = {
+        4E010000424D4E01000000000000760000002800000012000000120000000100
+        040000000000D8000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        77777700000070000000007777777700000070FFF7F7F07777777700000070F7
+        7777707777007700000070F77777F07776F60700000070F7777770776FE60700
+        000070F7778800067E600700000070F77866666786077700000070F78EEEEE66
+        00777700000070F8777707EE60777700000070F877F7077E6077770000007008
+        7700000E60777700000077787FF7077E60777700000077787FFF0F7E60777700
+        0000777787FFFF7E077777000000777778777770777777000000777777880007
+        777777000000777777777777777777000000
+      }
+      Spacing = -1
+      OnClick = SpeedButtonZoomUpClick
+    end
+    object SpeedButtonClose: TSpeedButton
+      Left = 151
+      Height = 22
+      Top = 1
+      Width = 49
+      Caption = 'Fechar'
+      Flat = True
+      Spacing = -1
+      OnClick = SpeedButtonCloseClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object Bevel1: TBevel
+      Left = 204
+      Height = 21
+      Top = 1
+      Width = 2
+    end
+    object Bevel3: TBevel
+      Left = 441
+      Height = 21
+      Top = 1
+      Width = 2
+    end
+    object Bevel4: TBevel
+      Left = 640
+      Height = 21
+      Top = 1
+      Width = 2
+    end
+    object SpeedButtonSave: TSpeedButton
+      Left = 51
+      Height = 22
+      Top = 1
+      Width = 50
+      Caption = 'Salvar'
+      Flat = True
+      Spacing = -1
+      OnClick = SpeedButtonSaveClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object SpeedButtonViews: TSpeedButton
+      Left = 646
+      Height = 22
+      Hint = 'Várias Páginas'
+      Top = 1
+      Width = 22
+      Flat = True
+      Glyph.Data = {
+        EE000000424DEE000000000000007600000028000000100000000F0000000100
+        04000000000078000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00BBBBBBB00BBB
+        BBBBBBBBBB0000BBBBBBBBBBB0B00B0BBBBBBBBBBBB00BBBBBBBBBBBBBB00BBB
+        BBBB8888888008888888F777777007777778F770000000000778F77777700777
+        7778FFFFFFF00FFFFFF8BBBBBBB00BBBBBBBBBBBBBB00BBBBBBBBBBBB0B00B0B
+        BBBBBBBBBB0000BBBBBBBBBBBBB00BBBBBBB
+      }
+      Spacing = -1
+      OnClick = SpeedButtonViewsClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object Bevel5: TBevel
+      Left = 672
+      Height = 21
+      Top = 1
+      Width = 2
+    end
+    object SpeedButtonEdit: TSpeedButton
+      Left = 677
+      Height = 22
+      Hint = 'Editar'
+      Top = 1
+      Width = 22
+      AllowAllUp = True
+      Flat = True
+      Glyph.Data = {
+        EE000000424DEE000000000000007600000028000000100000000F0000000100
+        04000000000078000000C40E0000C40E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00BBBBBBBBBBBB
+        BBBBBBBBBBBBB00BBBBBBBBBBBBBB00BBBBBBBBBB0BB00BBBBBBBBBBB00000BB
+        BBBBBBBBB00000BBBBBBBBBBB0000000BBBBBBBBB000000BBBBBBBBBB00000BB
+        BBBBBBBBB0000BBBBBBBBBBBB000BBBBBBBBBBBBB00BBBBBBBBBBBBBB0BBBBBB
+        BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+      }
+      GroupIndex = 1
+      Spacing = -1
+      OnClick = SpeedButtonEditClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object Bevel6: TBevel
+      Left = 703
+      Height = 21
+      Top = 1
+      Width = 2
+    end
+    object SpeedButtonSend: TSpeedButton
+      Left = 101
+      Height = 22
+      Top = 1
+      Width = 50
+      Caption = 'Enviar'
+      Flat = True
+      Spacing = -1
+      OnClick = SpeedButtonSendClick
+      ShowHint = True
+      ParentShowHint = False
+    end
+    object PanelPages: TPanel
+      Left = 256
+      Height = 21
+      Top = 1
+      Width = 134
+      BevelOuter = bvNone
+      Caption = ' '
+      ClientHeight = 21
+      ClientWidth = 134
+      TabOrder = 0
+      object LabelPage: TLabel
+        Left = 0
+        Height = 13
+        Top = 4
+        Width = 33
+        Caption = 'Página'
+        ParentColor = False
+      end
+      object LabelOf: TLabel
+        Left = 80
+        Height = 13
+        Top = 4
+        Width = 12
+        Caption = 'de'
+        ParentColor = False
+      end
+      object EditPageNo: TEdit
+        Left = 40
+        Height = 21
+        Top = 0
+        Width = 37
+        OnChange = EditPageNoChange
+        TabOrder = 0
+      end
+      object PanelPageCount: TPanel
+        Left = 96
+        Height = 21
+        Top = 0
+        Width = 37
+        Alignment = taLeftJustify
+        BevelOuter = bvLowered
+        Caption = '99999'
+        TabOrder = 1
+      end
+    end
+    object PanelZoom: TPanel
+      Left = 492
+      Height = 21
+      Top = 1
+      Width = 145
+      BevelOuter = bvNone
+      Caption = ' '
+      ClientHeight = 21
+      ClientWidth = 145
+      TabOrder = 1
+      object ComboBoxZoom: TComboBox
+        Left = 0
+        Height = 21
+        Top = 0
+        Width = 145
+        DropDownCount = 11
+        ItemHeight = 13
+        Items.Strings = (
+          '500%'
+          '200%'
+          '150%'
+          '100%'
+          '75%'
+          '50%'
+          '25%'
+          '10%'
+          'Largura da página'
+          'Página inteira'
+          'Várias páginas'
+        )
+        OnChange = ComboBoxZoomChange
+        TabOrder = 0
+      end
+    end
+    object PanelCopyright: TPanel
+      Left = 783
+      Height = 21
+      Top = 1
+      Width = 22
+      Align = alRight
+      BevelOuter = bvNone
+      Caption = ' '
+      ClientHeight = 21
+      ClientWidth = 22
+      TabOrder = 2
+      object SpeedButtonCopyright: TSpeedButton
+        Left = 0
+        Height = 22
+        Top = 0
+        Width = 22
+        Caption = ' '
+        Flat = True
+        Glyph.Data = {
+          66010000424D6601000000000000760000002800000014000000140000000100
+          040000000000F0000000C40E0000C40E00001000000000000000000000000000
+          80000080000000808000800000008000800080800000C0C0C000808080000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+          7777777700007777777777797777777700007777777777797777777700007777
+          7777779777777777000077777777799777777777000077777777797777777777
+          0000777777979977777777770000777997779977777777770000777997799977
+          7777777700007999777999777777777700007999777999777777777700007799
+          9979997777777777000077799979997777777777000077777999997777777777
+          0000777777799997777799770000779977799999999977770000799997779999
+          7777777700007999977777999997799700007799777777799999997700007777
+          77777777777777770000
+        }
+        Spacing = -1
+        ShowHint = True
+        ParentShowHint = False
+      end
+    end
+  end
+  object TimerRepeat: TTimer
+    Interval = 100
+    OnTimer = TimerRepeatTimer
+    left = 520
+    top = 220
+  end
+end

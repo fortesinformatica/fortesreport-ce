@@ -52,28 +52,34 @@ unit RLDesign;
 interface
 
 uses
-  Classes, TypInfo, Db, SysUtils, 
-{$ifdef DELPHI5}
-  DsgnIntF, 
-{$else}
-  DesignEditors, DesignIntf, 
-{$endif}
-{$ifdef VCL}
-  Forms, 
-{$endif}
-{$ifdef CLX}
-  QForms, 
-{$endif}
-  RLReport, RLConsts, RLUtils, RLTypes, 
-  RLAbout;
+  Classes, TypInfo, Db, SysUtils,
+  {$IfDef FPC}
+   PropEdits, ComponentEditors, LCLType, LResources,
+  {$Else}
+   {$ifdef DELPHI5}
+    DsgnIntF,
+   {$else}
+    DesignEditors, DesignIntf,
+   {$endif}
+  {$endif}
+  {$ifdef CLX}
+   QForms,
+  {$Else}
+   Forms,
+  {$endif}
+  RLReport, RLConsts, RLUtils, RLTypes, RLAbout;
 
 type
 
-{$ifdef DELPHI5}
+{$IfDef FPC}
+  IDesignerClass = TComponentEditorDesigner;
+{$Else}
+ {$IfDef DELPHI5}
   IDesignerClass = IFormDesigner;
-{$else}
+ {$Else}
   IDesignerClass = IDesigner;
-{$endif}
+ {$EndIf}
+{$EndIf}
 
   { TRLReportDesigner }
 
@@ -132,9 +138,9 @@ end;
 function TRLReportDesigner.GetVerb(Index: Integer): string;
 begin
   case Index of
-    0: Result := LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr + '...';
+    0: Result :=  GetLocalizeStr(LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr + '...');
     1: Result := '-';
-    2: Result := LocaleStrings.LS_PreviewStr;
+    2: Result :=  GetLocalizeStr(LocaleStrings.LS_PreviewStr);
   end;
 end;
 

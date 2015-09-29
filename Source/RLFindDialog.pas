@@ -51,12 +51,20 @@ unit RLFindDialog;
 interface
 
 uses
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
   SysUtils, Contnrs, Classes, TypInfo,
-{$ifdef VCL}
-  Windows, Messages, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
-{$else}
-  Types, QControls, Qt, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QTypes, QGraphics,
-{$endif}
+  {$IfDef FPC}
+   LCLIntf, LCLType,
+  {$EndIf}
+  {$IfDef CLX}
+   QTypes, QGraphics, QControls, QForms, QDialogs, QStdCtrls, QButtons, QExtCtrls, Qt,
+  {$Else}
+   Types, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, ExtCtrls,
+  {$EndIf}
   RLConsts, RLUtils, RLComponentFactory;
 
 type
@@ -119,16 +127,18 @@ begin
 end;
 
 procedure TfrmRLFindDialog.Init;
+Const
+  PlataformSpacing = {$IfDef FPC} 20 {$Else} 0{$EndIf};
 begin
   BorderIcons := [biSystemMenu];
-{$ifdef VCL}
-  BorderStyle := bsDialog;
-{$else}
-  BorderStyle := fbsDialog;
-{$endif}
+  {$ifdef CLX}
+   BorderStyle := fbsDialog;
+  {$else}
+   BorderStyle := bsDialog;
+  {$endif}
   Caption := 'Procurar';
-  ClientHeight := 94;
-  ClientWidth := 367;
+  ClientHeight := 94 + PlataformSpacing;
+  ClientWidth := 367 + PlataformSpacing;
   Color := clBtnFace;
   Position := poScreenCenter;
   OnDeactivate := FormDeactivate;
@@ -150,7 +160,7 @@ begin
     Parent := Self;
     Left := 48;
     Top := 12;
-    Width := 229;
+    Width := 229 + PlataformSpacing;
     Height := 21;
     TabOrder := 0;
   end;
@@ -159,7 +169,7 @@ begin
   begin
     Name := 'BitBtnFindNext';
     Parent := Self;
-    Left := 284;
+    Left := 284 + PlataformSpacing;
     Top := 12;
     Width := 75;
     Height := 21;
@@ -173,7 +183,7 @@ begin
   begin
     Name := 'BitBtnCancel';
     Parent := Self;
-    Left := 284;
+    Left := 284 + PlataformSpacing;
     Top := 36;
     Width := 75;
     Height := 21;
@@ -211,28 +221,28 @@ begin
   begin
     Name := 'RadioGroupDirection';
     Parent := Self;
-    Left := 204;
+    Left := 204 + PlataformSpacing;
     Top := 36;
     Width := 73;
-    Height := 49;
+    Height := 49 + PlataformSpacing;
     Caption := ' Direção ';
     TabOrder := 5;
   end;
 
   //
-  Caption := LocaleStrings.LS_FindCaptionStr;
-  LabelTextToFind.Caption := LocaleStrings.LS_TextToFindStr + ':';
+  Caption := GetLocalizeStr(LocaleStrings.LS_FindCaptionStr);
+  LabelTextToFind.Caption := GetLocalizeStr(LocaleStrings.LS_TextToFindStr + ':');
   EditTextToFind.Text := '';
-  BitBtnFindNext.Caption := LocaleStrings.LS_FindNextStr;
-  BitBtnCancel.Caption := LocaleStrings.LS_CancelStr;
-  CheckBoxWholeWords.Caption := LocaleStrings.LS_WholeWordsStr;
-  CheckBoxMatchCase.Caption := LocaleStrings.LS_MatchCaseStr;
+  BitBtnFindNext.Caption := GetLocalizeStr(LocaleStrings.LS_FindNextStr);
+  BitBtnCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
+  CheckBoxWholeWords.Caption := GetLocalizeStr(LocaleStrings.LS_WholeWordsStr);
+  CheckBoxMatchCase.Caption := GetLocalizeStr(LocaleStrings.LS_MatchCaseStr);
 
-  RadioGroupDirection.Caption := ' ' + LocaleStrings.LS_DirectionCaptionStr + ' ';
+  RadioGroupDirection.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_DirectionCaptionStr + ' ');
 
   RadioGroupDirection_GetItems.Clear;
-  RadioGroupDirection_GetItems.Add(LocaleStrings.LS_DirectionUpStr);
-  RadioGroupDirection_GetItems.Add(LocaleStrings.LS_DirectionDownStr);
+  RadioGroupDirection_GetItems.Add(GetLocalizeStr(LocaleStrings.LS_DirectionUpStr));
+  RadioGroupDirection_GetItems.Add(GetLocalizeStr(LocaleStrings.LS_DirectionDownStr));
   RadioGroupDirection_SetItemIndex(1);
 end;
 
@@ -304,7 +314,7 @@ begin
     end;
   end; 
   if not found then
-    ShowMessage(LocaleStrings.LS_NotFoundStr); 
+    ShowMessage(GetLocalizeStr(LocaleStrings.LS_NotFoundStr)); 
 end;
 
 destructor TfrmRLFindDialog.Destroy;

@@ -1,38 +1,38 @@
 { Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,29 +41,32 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLPreview - ImplementaÁ„o dos componentes de prÈ-visualizaÁ„o. }
+{@unit RLPreview - Implementa√ß√£o dos componentes de pr√©-visualiza√ß√£o. }
 
 unit RLPreview;
 
 interface
 
 uses
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
   Classes, SysUtils, Math, Contnrs,
-{$ifndef LINUX}
-  Windows,
-{$else}
-  Types,
-{$endif}
-{$ifdef VCL}
-  Graphics, Controls, ExtCtrls, Forms, Menus, Clipbrd, Dialogs,
-{$else}
-  QGraphics, QControls, QExtCtrls, QForms, QMenus, QClipbrd, QDialogs,
-{$endif}
+  {$IfDef FPC}
+   LCLIntf, LCLType,
+  {$ENDIF}
+  {$IfDef CLX}
+   QTypes, QGraphics, QControls, QExtCtrls, QForms, QMenus, QClipbrd, QDialogs,
+  {$Else}
+   Types, Graphics, Controls, ExtCtrls, Forms, Menus, Clipbrd, Dialogs,
+  {$EndIf}
   RLMetaFile, RLConsts, RLUtils;
 
 type
@@ -78,8 +81,8 @@ type
     Found: Boolean;
   end;
 
-  {@class TRLPreview - Componente para prÈ-visualizaÁ„o das p·ginas geradas.
-   Possui mÈtodos para controlar a navegaÁ„o.
+  {@class TRLPreview - Componente para pr√©-visualiza√ß√£o das p√°ginas geradas.
+   Possui m√©todos para controlar a navega√ß√£o.
    @pub }
   TRLPreview = class(TScrollBox)
   private
@@ -145,116 +148,116 @@ type
 
     // custom methods
 
-    {@method FirstPage - Posiciona na primeira p·gina. :/}
+    {@method FirstPage - Posiciona na primeira p√°gina. :/}
     procedure FirstPage;
 
-    {@method LastPage - Posiciona na ˙ltima p·gina. :/}
+    {@method LastPage - Posiciona na √∫ltima p√°gina. :/}
     procedure LastPage;
 
-    {@method NextPage - Posiciona na prÛxima p·gina ou grupo de p·ginas. :/}
+    {@method NextPage - Posiciona na pr√≥xima p√°gina ou grupo de p√°ginas. :/}
     procedure NextPage;
 
-    {@method PriorPage - Posiciona na p·gina anterior ou grupo de p·ginas anterior. :/}
+    {@method PriorPage - Posiciona na p√°gina anterior ou grupo de p√°ginas anterior. :/}
     procedure PriorPage;
 
-    {@method PageTop - Posiciona no topo da p·gina corrente. :/}
+    {@method PageTop - Posiciona no topo da p√°gina corrente. :/}
     procedure PageTop;
 
-    {@method PageBottom - Posiciona na parte inferior da p·gina corrente. :/}
+    {@method PageBottom - Posiciona na parte inferior da p√°gina corrente. :/}
     procedure PageBottom;
 
-    {@method PageLeft - Posiciona na parte mais ‡ esquerda da p·gina corrente. :/}
+    {@method PageLeft - Posiciona na parte mais √† esquerda da p√°gina corrente. :/}
     procedure PageLeft;
 
-    {@method PageRight - Posiciona na parte mais ‡ direita da p·gina corrente. :/}
+    {@method PageRight - Posiciona na parte mais √† direita da p√°gina corrente. :/}
     procedure PageRight;
 
-    {@method HalfPageUp - Rola a p·gina para cima. :/}
+    {@method HalfPageUp - Rola a p√°gina para cima. :/}
     procedure HalfPageUp;
 
-    {@method HalfPageDown - Rola a p·gina para baixo. :/}
+    {@method HalfPageDown - Rola a p√°gina para baixo. :/}
     procedure HalfPageDown;
 
-    {@method HalfPageLeft - Rola a p·gina para a esquerda. :/}
+    {@method HalfPageLeft - Rola a p√°gina para a esquerda. :/}
     procedure HalfPageLeft;
 
-    {@method HalfPageRight - Rola a p·gina para a direita. :/}
+    {@method HalfPageRight - Rola a p√°gina para a direita. :/}
     procedure HalfPageRight;
 
-    {@method ScrollLeft - Rola a p·gina um caractere para a esquerda. :/}
+    {@method ScrollLeft - Rola a p√°gina um caractere para a esquerda. :/}
     procedure ScrollLeft;
 
-    {@method ScrollRight - Rola a p·gina um caractere para a direita. :/}
+    {@method ScrollRight - Rola a p√°gina um caractere para a direita. :/}
     procedure ScrollRight;
 
-    {@method ScrollUp - Rola a p·gina uma linha para cima. :/}
+    {@method ScrollUp - Rola a p√°gina uma linha para cima. :/}
     procedure ScrollUp;
 
-    {@method ScrollDown - Rola a p·gina uma linha para baixo. :/}
+    {@method ScrollDown - Rola a p√°gina uma linha para baixo. :/}
     procedure ScrollDown;
 
-    {@method ZoomPage - Focaliza uma p·gina quando em modo m˙ltiplas p·ginas. :/}
+    {@method ZoomPage - Focaliza uma p√°gina quando em modo m√∫ltiplas p√°ginas. :/}
     procedure ZoomPage(Index: Integer);
 
-    {@method GetZoomFactorFullPage - Retorna o fator de zoom ideal para que a p·gina caiba inteiramente na tela. :/}
+    {@method GetZoomFactorFullPage - Retorna o fator de zoom ideal para que a p√°gina caiba inteiramente na tela. :/}
     function GetZoomFactorFullPage: Double;
 
-    {@method ZoomFullPage - Aplica zoom na p·gina corrente para que esta caiba inteira na tela. :/}
+    {@method ZoomFullPage - Aplica zoom na p√°gina corrente para que esta caiba inteira na tela. :/}
     procedure ZoomFullPage;
 
-    {@method ZoomIn - Aumenta o zoom na p·gina corrente para focar um ponto especÌfico. :/}
+    {@method ZoomIn - Aumenta o zoom na p√°gina corrente para focar um ponto espec√≠fico. :/}
     procedure ZoomIn(aPercentual:integer=-1);
 
-    {@method ZoomOut - Diminui o zoom na p·gina corrente para visualizar um espaÁo maior da p·gina. :/}
+    {@method ZoomOut - Diminui o zoom na p√°gina corrente para visualizar um espa√ßo maior da p√°gina. :/}
     procedure ZoomOut(aPercentual:integer=-1);
 
-    {@method GetZoomFactorFullWidth - Retorna o fator de zoom ideal para que a largura da p·gina caiba na tela. :/}
+    {@method GetZoomFactorFullWidth - Retorna o fator de zoom ideal para que a largura da p√°gina caiba na tela. :/}
     function GetZoomFactorFullWidth: Double;
 
-    {@method ZoomFullWidth - Aplica zoom na p·gina corrente para que a sua largura caiba inteira na tela. :/}
+    {@method ZoomFullWidth - Aplica zoom na p√°gina corrente para que a sua largura caiba inteira na tela. :/}
     procedure ZoomFullWidth;
 
-    {@method GetZoomFactorMultiplePages - Retorna o fator de zoom ideal para que v·rias p·ginas caibam na tela. :/}
+    {@method GetZoomFactorMultiplePages - Retorna o fator de zoom ideal para que v√°rias p√°ginas caibam na tela. :/}
     function GetZoomFactorMultiplePages: Double;
 
-    {@method ZoomMultiplePages - Alterna entre os modos p·gina ˙nica e m˙ltiplas p·ginas. :/}
+    {@method ZoomMultiplePages - Alterna entre os modos p√°gina √∫nica e m√∫ltiplas p√°ginas. :/}
     procedure ZoomMultiplePages;
 
-    {@method FindText - Posiciona na prÛxima ocorrÍncia do texto. :/}
+    {@method FindText - Posiciona na pr√≥xima ocorr√™ncia do texto. :/}
     function FindText(const AText: String; AWholeWords, AMatchCase, AFindBackward: Boolean): Boolean;
 
     // custom properties
-    {@prop PageNumber - Determina ou indica o n˙mero da p·gina atual.
-     Nota: O n˙mero da p·gina leva em consideraÁ„o a numeraÁ„o inicial. :/}
+    {@prop PageNumber - Determina ou indica o n√∫mero da p√°gina atual.
+     Nota: O n√∫mero da p√°gina leva em considera√ß√£o a numera√ß√£o inicial. :/}
     property PageNumber: Integer read GetPageNumber write SetPageNumber;
 
-    {@prop PageIndex - Determina ou indica o Ìndice da p·gina atual.
-     Este Ìndice vai de 0 atÈ (Pages.Count-1). :/}
+    {@prop PageIndex - Determina ou indica o √≠ndice da p√°gina atual.
+     Este √≠ndice vai de 0 at√© (Pages.Count-1). :/}
     property PageIndex: Integer read FPageIndex write SetPageIndex;
 
     {@prop ZoomFactor - Determina ou indica o fator de zoom atual. :/}
     property ZoomFactor: Double read FZoomFactor write SetZoomFactor;
 
-    {@prop Editing - Determina ou indica se o preview est· em modo de ediÁ„o.
-     Quando em modo de ediÁ„o, o objeto preview permite que se altere algumas caracterÌsticas do
-     relatÛrio como fontes, cores e atÈ mesmo textos. Estas alteraÁıes podem ser salvas novamente,
+    {@prop Editing - Determina ou indica se o preview est√° em modo de edi√ß√£o.
+     Quando em modo de edi√ß√£o, o objeto preview permite que se altere algumas caracter√≠sticas do
+     relat√≥rio como fontes, cores e at√© mesmo textos. Estas altera√ß√µes podem ser salvas novamente,
      exportadas ou impressas. :/}
     property Editing: Boolean read FEditing write SetEditing;
 
-    {@prop Pages - ReferÍncia para a coleÁ„o de p·ginas.
-     Deve apontar para um objeto TRLGraphicStorage, que pode ser obtido atravÈs da prop
-     Pages do componente TRLReport. Este objeto tambÈm pode ser instanciado e carregar
-     um relatÛrio a partir de um arquivo em disco ou stream. :/}
+    {@prop Pages - Refer√™ncia para a cole√ß√£o de p√°ginas.
+     Deve apontar para um objeto TRLGraphicStorage, que pode ser obtido atrav√©s da prop
+     Pages do componente TRLReport. Este objeto tamb√©m pode ser instanciado e carregar
+     um relat√≥rio a partir de um arquivo em disco ou stream. :/}
     property Pages: TRLGraphicStorage read FPages write SetPages;
 
-    {@prop MultipleMode - Determina ou indica o estado de visualizaÁ„o de m˙ltiplas p·ginas. :/}
+    {@prop MultipleMode - Determina ou indica o estado de visualiza√ß√£o de m√∫ltiplas p√°ginas. :/}
     property MultipleMode: Boolean read GetMultipleMode write SetMultipleMode;
 
   published
 
     // custom properties
 
-    {@prop OnChangeView - Ao mudar as caracterÌsticas de visualizaÁ„o. :/}
+    {@prop OnChangeView - Ao mudar as caracter√≠sticas de visualiza√ß√£o. :/}
     property OnChangeView: TNotifyEvent read FOnChangeView write FOnChangeView;
   end;
   {/@class}
@@ -262,7 +265,7 @@ type
 
   { TRLPreviewBox }
 
-  {@class TRLPreviewBox - Caixa de visualizaÁ„o de p·gina.
+  {@class TRLPreviewBox - Caixa de visualiza√ß√£o de p√°gina.
    @pub }
   TRLPreviewBox = class(TCustomControl)
   private
@@ -291,7 +294,7 @@ type
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
 
-    {@method ObjectAt - Retorna referÍncia para o objeto que intercepta as coordenadas. :/}
+    {@method ObjectAt - Retorna refer√™ncia para o objeto que intercepta as coordenadas. :/}
     function ObjectAt(X, Y: Integer): TRLGraphicObject;
 
   public
@@ -307,7 +310,7 @@ type
 
     // custom properties
 
-    {@prop Page - ReferÍncia para o objeto p·gina. :/}
+    {@prop Page - Refer√™ncia para o objeto p√°gina. :/}
     property Page: TRLGraphicSurface read GetPage;
     destructor Destroy; override;
   end;
@@ -397,10 +400,12 @@ begin
   M.Caption := 'Copiar como Bitmap';
   M.OnClick := CopyPageBMP;
   FPopup.Items.Add(M);
+  {$IfNDef FPC}
   M := TMenuItem.Create(FPopup);
   M.Caption := 'Copiar como MetaFile';
   M.OnClick := CopyPageWMF;
   FPopup.Items.Add(M);
+  {$EndIf}
   //
   inherited Create(AOwner);
   //
@@ -450,6 +455,7 @@ begin
 end;
 
 procedure TRLPreview.CopyPageWMF(Sender: TObject);
+{$ifndef FPC}
 var
   mf: TMetaFile;
   mfc: TMetaFileCanvas;
@@ -474,6 +480,11 @@ begin
     end;
   end;
 end;
+{$else}
+begin
+  //todo: implement TRLPreview.CopyPageWMF
+end;
+{$endif}
 
 procedure TRLPreview.FirstPage;
 begin

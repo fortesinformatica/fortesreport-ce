@@ -51,3 +51,6 @@
 # Delphi history and backups
 __history/
 *.~*
+*.ppu
+*.o
+*.compiled

@@ -53,12 +53,20 @@ unit RLBarcode;
 interface
 
 uses
-{$ifdef VCL}
-  Windows, Graphics, Dialogs, 
-{$else}
-  Types, QGraphics, QDialogs, 
-{$endif}
-  Classes, SysUtils, DB, 
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
+  Classes, SysUtils, DB,
+  {$IfDef CLX}
+   QTypes, QGraphics, QDialogs,
+  {$Else}
+   Types, Graphics, Dialogs,
+  {$EndIf}
+  {$IfDef FPC}
+   LCLIntf,
+  {$EndIf}
   RLReport, RLConsts;
 
 type
@@ -2215,7 +2223,7 @@ begin
   begin
     Result := DataSet.FindField(FDataField);
     if Result = nil then
-      raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.DataField "' + FDataField + '"');
+      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.DataField "' + FDataField + '"'));
   end
   else
     Result := nil;

@@ -53,19 +53,26 @@ unit RLDraftFilter;
 interface
 
 uses
-  SysUtils, Classes, Math, Contnrs, 
-{$ifndef LINUX}
-  Windows, WinSpool, ShellApi, 
-{$else}
-  Types, Libc, 
-{$endif}
-{$ifdef VCL}
-  Graphics, RLMetaVCL, 
-{$else}
-  QGraphics, RLMetaCLX, 
-{$endif}
-  RLMetaFile, RLConsts, RLUtils, RLFilters, RLTypes, RLPrinters,
-  RlCompilerConsts;
+  {$IfDef MSWINDOWS}
+    Windows,
+  {$EndIf}
+  SysUtils, Classes, Math, Contnrs,
+  {$IfDef FPC}
+    LCLIntf, LCLType, IntfGraphics, FPImage, FileUtil, Process,
+    {$IfDef MSWINDOWS} WinUtilPrn, {$EndIf}
+  {$Else}
+    WinSpool, ShellApi,
+  {$EndIf}
+  {$ifdef CLX}
+   QGraphics, RLMetaCLX,
+  {$Else}
+   Graphics,
+   RLMetaVCL,
+   {$IfNDef FPC}
+    RlCompilerConsts,
+   {$EndIf}
+  {$EndIf}
+  RLMetaFile, RLConsts, RLUtils, RLFilters, RLTypes, RLPrinters;
 
 type
   {@type TRLDraftAccentMethod - Comportamento do filtro em relação aos caracteres acentuados.
@@ -576,17 +583,22 @@ end;
 
 function GetBitmapPixel(ABitmap: TBitmap; AX, AY: Integer; ADefault: TColor): TColor;
 begin
+  {$ifndef FPC}
   if AY < ABitmap.Height then
     with TRGBArray(ABitmap.ScanLine[AY]^)[AX] do
       Result := RGB(rgbRed, rgbGreen, rgbBlue)
+  {$else}
+  if AY < ABitmap.Height then
+    Result := aBitmap.Canvas.Pixels[aX,aY]
+  {$endif}
   else
     Result := ADefault;
 end;
-{$IFDEF DELPHIXE2_UP}
-function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
-{$ELSE}
-function LinePrinterStart(const PrnName, DocName: String): Cardinal;
-{$ENDIF}
+{$IfDef DELPHIXE3_UP}
+ function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
+{$else}
+ function LinePrinterStart(const PrnName, DocName: String): Cardinal;
+{$EndIf}
 var
   di: TDocInfo1;
 begin
@@ -594,7 +606,7 @@ begin
   di.pDocName := PChar(DocName);
   di.pOutputFile := nil;
   di.pDatatype := 'RAW';
-  OpenPrinter(PChar(PrnName), Result, nil);
+  OpenPrinter(PChar(PrnName), {$IfDef FPC}@{$EndIf}Result, nil);
   StartDocPrinter(Result, 1, @di);
   StartPagePrinter(Result);
 end;
@@ -608,7 +620,11 @@ begin
   Len := Length(Aux);
   if Len > 0 then
   begin
+    {$ifdef FPC}
+    WritePrinter(PrnHandle, @Aux[1], Len, PDword(Len));
+    {$else}
     WritePrinter(PrnHandle, @Aux[1], Len, Len);
+    {$endif}
   end;
 end;
 
@@ -730,10 +746,11 @@ begin
     else
       FDeviceFileName := FDevicePath;
     end;
+
     //
     AssignFile(FDeviceHandle, FDeviceFileName);
     Rewrite(FDeviceHandle, 1);
-  end; 
+  end;
   //
   ResetPage;
 end;
@@ -743,8 +760,12 @@ var
   cmd: String;
 {$ifndef LINUX}
 var
-  par: String;
-  I: Integer;
+{$ifdef FPC}
+  VProcess: TProcess;
+{$else}
+  par:string;
+  i  :integer;
+{$endif}
 {$endif}
 begin
   NewPage;
@@ -762,12 +783,25 @@ begin
         cmd := StringReplace(cmd, '%p', RLPrinter.PrinterName, [rfReplaceAll, rfIgnoreCase]);
         cmd := StringReplace(cmd, '%f', FDeviceFileName, [rfReplaceAll, rfIgnoreCase]);
 {$ifndef LINUX}
+{$ifdef FPC}
+        VProcess := TProcess.Create(nil);
+        try
+          begin
+            VProcess.Options := [poNoConsole];
+            VProcess.CommandLine := Cmd;
+            VProcess.Execute;
+            end;
+        finally
+          VProcess.Free;
+        end;
+{$else}
         I := Pos(' ', cmd);
         if I = 0 then
           I := Length(cmd) + 1;
         par := Copy(cmd, I + 1, Length(cmd));
         cmd := Copy(cmd, 1, I - 1);
         ShellExecute(0, 'open', PChar(cmd), PChar(par), nil, SW_SHOWNORMAL);
+{$endif}
 {$else}
         Libc.system(PChar(cmd));
 {$endif};
@@ -1206,7 +1240,11 @@ begin
         tempbmp.PixelFormat := pf32bit;
         tempbmp.Width := Round((AObj.BoundsRect.Right - AObj.BoundsRect.Left) * AspectratioX);
         tempbmp.Height := Round((AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) * AspectratioY);
+        {$ifdef FPC}
+        tempbmp.Canvas.StretchDraw(Bounds(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$else}
         tempbmp.Canvas.StretchDraw(Rect(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$endif}
         asbitmap.Width := tempbmp.Width;
         asbitmap.Height := tempbmp.Height;
         case FDitheringMethod of
@@ -1505,7 +1543,7 @@ procedure TRLDraftFilter.Loaded;
 begin
   inherited;
   //
-{$ifdef LINUX}
+{$IfNDef MSWINDOWS}
   if (FDeviceKind = dkProgram) and (Copy(FDevicePath, 1, 5) = '/dev/') then
     FDevicePath := 'lpr -P%p %f';
 {$endif};
@@ -1513,7 +1551,7 @@ end;
 
 function TRLDraftFilter.GetOptionsLabel: String;
 begin
-  Result := LocaleStrings.LS_FormStr;
+  Result := GetLocalizeStr(LocaleStrings.LS_FormStr);
 end;
 
 function TRLDraftFilter.GetOptionIndex: Integer;
@@ -1526,9 +1564,9 @@ begin
   if FOptions = nil then
   begin
     FOptions := TStringList.Create;
-    FOptions.Add(LocaleStrings.LS_DefaultStr);
-    FOptions.Add('80 ' + LocaleStrings.LS_ColumnsStr);
-    FOptions.Add('132 ' + LocaleStrings.LS_ColumnsStr);
+    FOptions.Add(GetLocalizeStr(LocaleStrings.LS_DefaultStr));
+    FOptions.Add(GetLocalizeStr('80 ' + LocaleStrings.LS_ColumnsStr));
+    FOptions.Add(GetLocalizeStr('132 ' + LocaleStrings.LS_ColumnsStr));
   end;
   //
   Result := FOptions;

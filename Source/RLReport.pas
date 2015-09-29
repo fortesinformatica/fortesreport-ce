@@ -47,43 +47,37 @@
 {$I RLReport.inc}
 
 {@unit RLReport - Implementação dos principais componentes e tipos do FortesReport. }
-
 unit RLReport;
 
 interface
 
 uses
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+   Messages,
+  {$EndIf}
   DB, Classes, SysUtils, Math, Contnrs, TypInfo,
-{$ifndef DELPHI5}
-  Variants,
-{$endif}
-{$ifndef LINUX}
-  Windows,
-{$else}
-  Types,
-{$endif}
-{$ifdef VCL}
-  ExtCtrls, DBCtrls, Controls, Forms, Dialogs, StdCtrls, Messages, Buttons, Graphics, Mask,
-{$ifdef DELPHI}
-{$ifndef DELPHI5}
-  MaskUtils,
-{$endif}
-{$endif}
-{$ifdef CPP}
-  MaskUtils,
-{$endif}
-{$else}
-  Qt, QTypes, QExtCtrls, QDBCtrls, QControls, QForms, QDialogs,
-  QStdCtrls, QButtons, QGraphics, MaskUtils,
-{$endif}
-{$ifdef VCL}
-  RLMetaVCL,
-{$else}
-  RLMetaCLX,
-{$endif}
+  {$IfDef CLX}
+   QTypes, QButtons, QGraphics, QControls, QDialogs, QForms, QExtCtrls,
+   QDBCtrls, QMask, RLMetaCLX,
+  {$Else}
+   Types, Buttons, Graphics, Controls, Dialogs, Forms, ExtCtrls, DBCtrls,
+   RLMetaVCL, StdCtrls,
+   {$IfDef FPC}
+    LMessages,
+   {$Else}
+    Mask, RlCompilerConsts,
+   {$EndIf}
+  {$EndIf}
+  {$IfDef USE_VARIANTS}
+   variants,
+  {$EndIf}
+  maskutils,
   RLMetaFile, RLFeedBack, RLParser, RLFilters, RLConsts, RLUtils,
   RLPrintDialog, RLPreviewForm, RLPreview,
-  RLTypes, RLPrinters, RlCompilerConsts;
+  RLTypes, RLPrinters;
 
 type
 
@@ -1277,10 +1271,10 @@ type
     procedure RequestAlign; override;
     function GetClientRect: TRect; override;
     procedure SetName(const Value: TComponentName); override;
-{$ifdef VCL}
-    procedure SetParent(AParent: TWinControl); override;
-{$else}
+{$ifdef CLX}
     procedure SetParent(const AParent: TWidgetControl); override;
+{$else}
+    procedure SetParent(AParent: TWinControl); override;
 {$endif}
     procedure Paint; override;
 
@@ -1444,12 +1438,12 @@ type
     {@method SetAttribute - Modifica o valor do controle. :/}
     function SetAttribute(const AName: string; AValue: Variant): Boolean; virtual;
 
-{$ifdef VCL}
-    procedure CMColorChanged(var Message: TMessage); message CM_COLORCHANGED;
-    procedure CMFontChanged(var Message: TMessage); message CM_FONTCHANGED;
-{$else}
+{$ifdef CLX}
     procedure ColorChanged; override;
     procedure FontChanged; override;
+{$else}
+    procedure CMColorChanged(var Message: TMessage); message CM_COLORCHANGED;
+    procedure CMFontChanged(var Message: TMessage); message CM_FONTCHANGED;
 {$endif}
 
     {@method PrepareStatics - Prepara os controles filhos do painel antes de imprimí-los.
@@ -3193,8 +3187,6 @@ type
     FRecordRange: TRLRecordRange;
     FRangeCount: Integer;
 
-
-
     function IsNextNRecordRange: Boolean;
 
     // assign methods
@@ -3369,7 +3361,7 @@ type
     FForcePrepare: Boolean;
     FCompositeOptions: TRLCompositeOptions;
     FNextReportState: TNextReportState;
-    FOnPrepareError: TRLPrepareErrorEvent; 
+    FOnPrepareError: TRLPrepareErrorEvent;
 
     // assign methods
 
@@ -3609,6 +3601,7 @@ type
     property Color default clWhite;
 
     property NextReportState: TNextReportState read FNextReportState;
+
   end;
 
   {/@class}
@@ -4884,7 +4877,7 @@ var
   savecursor: TCursor;
 begin
   if not FileExists(AFileName) then
-    raise Exception.Create(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"'));
 
   savecursor := Screen.Cursor;
   Screen.Cursor := crHourGlass;
@@ -4913,7 +4906,7 @@ begin
     dialog.DefaultExt := FormatFileExt(ReportFileExt);
     dialog.Filter := AddFileFilter('', CS_ProductTitleStr, ReportFileExt);
     dialog.FilterIndex := 1;
-    dialog.Title := LocaleStrings.LS_LoadReportStr;
+    dialog.Title := GetLocalizeStr(LocaleStrings.LS_LoadReportStr);
     if dialog.Execute then
       LoadReportFromFile(dialog.FileName);
   finally
@@ -6207,7 +6200,7 @@ var
   I: Integer;
   T: TRLBandType;
 begin
-{$ifdef KYLIX1}
+{$ifdef CLX}
   T := btDetail;
 {$endif}
   if ABand is TRLCustomBand then
@@ -6572,22 +6565,7 @@ begin
   end;
 end;
 
-{$ifdef VCL}
-procedure TRLCustomControl.CMColorChanged(var Message: TMessage);
-begin
-  if not (csLoading in ComponentState) and (Color <> clWhite) then
-    FTransparent := False;
-  //  
-  inherited;
-end;
-procedure TRLCustomControl.CMFontChanged(var Message: TMessage);
-begin
-  AdjustBounds;
-  Invalidate;
-  //
-  inherited;
-end;
-{$else}
+{$ifdef CLX}
 
 procedure TRLCustomControl.ColorChanged;
 begin
@@ -6602,6 +6580,23 @@ begin
   AdjustBounds;
   Invalidate;
 
+  inherited;
+end;
+
+{$else}
+
+procedure TRLCustomControl.CMColorChanged(var Message: TMessage);
+begin
+  if not (csLoading in ComponentState) and (Color <> clWhite) then
+    FTransparent := False;
+  //  
+  inherited;
+end;
+procedure TRLCustomControl.CMFontChanged(var Message: TMessage);
+begin
+  AdjustBounds;
+  Invalidate;
+  //
   inherited;
 end;
 
@@ -6915,30 +6910,30 @@ function TRLCustomControl.RequestParentPager: TRLCustomPager;
 begin
   Result := FindParentPager;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentPager');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentPager'));
 end;
 
 function TRLCustomControl.RequestParentSkipper: TRLCustomSkipper;
 begin
   Result := FindParentSkipper;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
-      Name + '.ParentSkipper');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' +
+      Name + '.ParentSkipper'));
 end;
 
 function TRLCustomControl.RequestParentReport: TRLCustomReport;
 begin
   Result := FindParentReport;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentReport');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' + Name + '.ParentReport'));
 end;
 
 function TRLCustomControl.RequestParentSurface: TRLGraphicSurface;
 begin
   Result := FindParentSurface;
   if Result = nil then
-    raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
-      Name + '.ParentSurface');
+    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr + ': ' +
+      Name + '.ParentSurface'));
 end;
 
 procedure TRLCustomControl.DoBeforePrint(var APrintIt: Boolean);
@@ -7319,7 +7314,7 @@ var
   ox, oy: Integer;
   holdst: TRLHoldStyle;
 begin
-{$ifdef KYLIX1}
+{$ifdef CLX}
   holdofs := Point(0, 0);
   holdst := hsAsColumn;
 {$endif}
@@ -7600,13 +7595,13 @@ begin
     if csLoading in ComponentState then
       FFriendlyName := ''
     else
-      raise Exception.Create(LocaleStrings.LS_InvalidNameStr + ' "' + Value + '"')
+      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_InvalidNameStr + ' "' + Value + '"'))
   else
   begin
     for I := 0 to Owner.ComponentCount - 1 do
       if Owner.Components[I] is TRLCustomControl then
         if AnsiSameText(Value, TRLCustomControl(Owner.Components[I]).FriendlyName) then
-          raise Exception.Create(LocaleStrings.LS_DuplicateNameStr + ' "' + Value + '"');
+          raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_DuplicateNameStr + ' "' + Value + '"'));
     FFriendlyName := Value;
   end;
 
@@ -7655,15 +7650,14 @@ begin
   Result := False;
 end;
 
-{$ifdef VCL}
-procedure TRLCustomControl.SetParent(AParent: TWinControl);
-var
-  P: TWinControl;
-{$else}
-
+{$ifdef CLX}
 procedure TRLCustomControl.SetParent(const AParent: TWidgetControl);
 var
   P: TWidgetControl;
+{$else}
+procedure TRLCustomControl.SetParent(AParent: TWinControl);
+var
+  P: TWinControl;
 {$endif}
 begin
   P := AParent;
@@ -8219,11 +8213,11 @@ begin
             if (Field is TFloatField) and TFloatField(Field).Currency then
             begin
               P := ffCurrency;
-              {$if CompilerVersion >= cvDelphiXE3}
+              {$ifdef HAS_FORMATSETTINGS}
               C := FormatSettings.CurrencyDecimals;
               {$else}
               C := CurrencyDecimals;
-              {$ifend}
+              {$endif}
             end
             else
             begin
@@ -8333,12 +8327,16 @@ begin
       Result := ''
     else if AField is TBlobField then
       Result := ''
+    {$ifndef FPC}
     else if AField is TObjectField then
       Result := 0
+    {$endif}
     else if AField is TVariantField then
       Result := 0
+    {$ifndef FPC}
     else if AField is TInterfaceField then
       Result := ''
+    {$endif}
     else
       Result := Null
   else
@@ -8469,7 +8467,7 @@ begin
   end;
   FLast := fieldvalue;
   FLastText := fieldtext;
-{$ifdef DELPHI5}
+{$ifdef USE_VARIANTS}
   if VarType(fieldvalue) in [varSmallint, varInteger, varSingle, varDouble, varCurrency] then
     FSum := FSum + fieldvalue;
 {$else}
@@ -9382,9 +9380,9 @@ begin
     t2 := Copy(S, I + 1, MaxInt);
   end;
   if t1 = '' then
-    t1 := LocaleStrings.LS_PageBreakStr;
+    t1 := GetLocalizeStr(LocaleStrings.LS_PageBreakStr);
   if t2 = '' then
-    t2 := LocaleStrings.LS_ReportEndStr;
+    t2 := GetLocalizeStr(LocaleStrings.LS_ReportEndStr);
 
   if fPrintEndTextOnNextReport then
   begin
@@ -9436,7 +9434,7 @@ begin
     t2 := Copy(S, I + 1, MaxInt);
   end;
   if t1 = '' then
-    t1 := LocaleStrings.LS_PageMendStr;
+    t1 := GetLocalizeStr(LocaleStrings.LS_PageMendStr);
   if t2 = '' then
     t2 := CLEARCONST;
 
@@ -9482,11 +9480,11 @@ begin
       itCarbonCopy: S := IntToStr(FindParentBand.CarbonIndex + 1);
       itDate: S := DateToStr(M.ReportDateTime);
       itDetailCount: S := IntToStr(FindParentPager.DetailCount);
-      {$if CompilerVersion >= cvDelphiXE3}
+      {$ifdef HAS_FORMATSETTINGS}
       itFullDate: S := FormatDateTime(FormatSettings.LongDateFormat, M.ReportDateTime);
       {$else}
       itFullDate: S := FormatDateTime(LongDateFormat, M.ReportDateTime);
-      {$ifend}
+      {$endif}
       itHour: S := TimeToStr(M.ReportDateTime);
       itJunction: S := JunctionStr;
       itLastPageNumber: S := '{' + lp + '}';
@@ -10609,11 +10607,11 @@ begin
     Brush.Style := bsClear;
     if ARound then
     begin
-{$ifdef VCL}
-      curv := 6;
-{$else}
-      curv := 2;
-{$endif}
+      {$ifdef CLX}
+       curv := 2;
+      {$else}
+       curv := 6;
+      {$endif}
       RoundRect(Rect.Left, Rect.Top, Rect.Right, Rect.Bottom, curv, curv);
     end
     else
@@ -12007,6 +12005,7 @@ begin
   FFooterMeasuring := fmNone;
   FDataBandPrinted := 0;
   FPagerStatus := [];
+
   // objects
   FSortedBands := TRLSortedBands.Create;
 
@@ -12752,8 +12751,8 @@ begin
         begin
           F := S.DataSource.DataSet.FindField(K);
           if F = nil then
-            raise Exception.Create(LocaleStrings.LS_NotFoundStr +
-              ': ' + Name + '.DataField "' + K + '"');
+            raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr +
+              ': ' + Name + '.DataField "' + K + '"'));
           Result := Result + F.AsString;
         end;
         Delete(N, 1, I);
@@ -13112,7 +13111,7 @@ begin
       Aux := Aux.NextReport;
       Inc(LevelCount);
     end;
-    Master.ProgressForm := TfrmRLFeedBack.Create(LocaleStrings.LS_PrintingInProgressStr,
+    Master.ProgressForm := TfrmRLFeedBack.Create(GetLocalizeStr(LocaleStrings.LS_PrintingInProgressStr),
       LevelCount);
     Master.ProgressForm.Show;
     Master.ProgressForm.SetFocus;
@@ -13246,7 +13245,7 @@ end;
 procedure TRLCustomReport.DataNext;
 begin
   StepProgress;
-  SetProgressPhase(LocaleStrings.LS_PageStr + ' ' + IntToStr(MasterReport.PageNumber));
+  SetProgressPhase(GetLocalizeStr(LocaleStrings.LS_PageStr + ' ' + IntToStr(MasterReport.PageNumber)));
   inherited;
 end;
 
@@ -13329,7 +13328,7 @@ begin
         MasterReport.FCurrentPageNumber := Self.FFirstPageNumber - 1;
       if MasterReport.ShowProgress then
         CreateProgress;
-      SetProgressPhase(LocaleStrings.LS_PreparingReportStr);
+      SetProgressPhase(GetLocalizeStr(LocaleStrings.LS_PreparingReportStr));
       KeepOn := True;
       DoBeforePrint(KeepOn);
       if not KeepOn then
@@ -13395,14 +13394,14 @@ begin
           raise
         else if not (E is EAbort) then
           if ReportServiceMode then
-            Log(Name + ': ' + LocaleStrings.LS_PrepareErrorStr + #13 +
+            Log(Name + ': ' + GetLocalizeStr(LocaleStrings.LS_PrepareErrorStr) + #13 +
               E.ClassName + '(' + E.Message + ')')
           else
             if Assigned(OnPrepareError) then
               OnPrepareError(Self, E)
             else
-              ShowMessage(Name + ': ' + LocaleStrings.LS_PrepareErrorStr +
-                          #13 + E.ClassName + '(' + E.Message + ')');
+              ShowMessage(GetLocalizeStr(Name + ': ' + LocaleStrings.LS_PrepareErrorStr +
+                          #13 + E.ClassName + '(' + E.Message + ')'));
       end;
     end;
   finally
@@ -13473,7 +13472,7 @@ begin
     if Self.ReportState = rsReady then
       Dialog.MaxPage := Self.Pages.PageCount;
     Dialog.Orientation := Self.PageSetup.Orientation;
-    Dialog.Copies :=  1;
+    Dialog.Copies := 1;
     Result := Dialog.Execute;
     if Result then
     begin
@@ -13556,7 +13555,7 @@ begin
   if Aux = '' then
     Aux := Format(LocaleStrings.LS_DefaultJobTitle,
       [ParamStr(0) + ': ' + Owner.Name + '.' + Self.Name]);
-  Pages.JobTitle := Aux;
+  Pages.JobTitle := GetLocalizeStr(Aux);
 
   if PageSetup.Orientation = poLandscape then
     Pages.Orientation := MetaOrientationLandscape
@@ -13968,7 +13967,7 @@ begin
   FBorderIcons := [biSystemMenu, biMinimize, biMaximize];
   FHelpFile := '';
   FHelpContext := 0;
-  FCaption := LocaleStrings.LS_PreviewStr;
+  FCaption := GetLocalizeStr(LocaleStrings.LS_PreviewStr);
 
   inherited Create;
 end;
@@ -13988,7 +13987,7 @@ end;
 
 function TRLPreviewOptions.IsCaption: Boolean;
 begin
-  Result := (FCaption <> LocaleStrings.LS_PreviewStr);
+  Result := (FCaption <> GetLocalizeStr(LocaleStrings.LS_PreviewStr));
 end;
 
 { TRLCompositeOptions }
