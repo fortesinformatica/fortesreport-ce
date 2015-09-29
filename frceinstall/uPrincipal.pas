@@ -77,7 +77,6 @@ type
     Label6: TLabel;
     Label1: TLabel;
     edtURL: TEdit;
-    imgLogomarca: TImage;
     lblInfoObterFontes: TLabel;
     lstMsgInstalacao: TListBox;
     pnlTopo: TPanel;
@@ -102,7 +101,6 @@ type
     btnVisualizarLogCompilacao: TSpeedButton;
     pnlInfoCompilador: TPanel;
     lbInfo: TListBox;
-    btnWCInfo: TButton;
     Image1: TImage;
     Label7: TLabel;
     Label8: TLabel;
@@ -127,7 +125,6 @@ type
     procedure btnVisualizarLogCompilacaoClick(Sender: TObject);
     procedure wizPgInstalacaoEnterPage(Sender: TObject;
       const FromPage: TJvWizardCustomPage);
-    procedure btnWCInfoClick(Sender: TObject);
   private
     FCountErros: Integer;
     oFRCE: TJclBorRADToolInstallations;
@@ -1025,23 +1022,6 @@ end;
 procedure TfrmPrincipal.btnVisualizarLogCompilacaoClick(Sender: TObject);
 begin
   ShellExecute(Handle, 'open', PWideChar(PathArquivoLog), '', '', 1);
-end;
-
-procedure TfrmPrincipal.btnWCInfoClick(Sender: TObject);
-var
-  Msg: String;
-begin
-  // capturar informações da última revisão
-  TSVN_Class.GetRevision(edtDirDestino.Text);
-  with lbInfo.Items do
-  begin
-    Msg :=
-      'Última Revisão: ' + TSVN_Class.WCInfo.Revision + sLineBreak +
-      'Autor: ' + TSVN_Class.WCInfo.Author + sLineBreak +
-      'Data: ' + TSVN_Class.WCInfo.Date;
-
-    ShowMessage(Msg);
-  end;
 end;
 
 procedure TfrmPrincipal.wizPrincipalCancelButtonClick(Sender: TObject);
