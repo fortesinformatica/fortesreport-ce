@@ -1295,13 +1295,11 @@ begin
   if Assigned(SetupInstance) and Assigned(SetupInstance.BeforePrint) then
     SetupInstance.BeforePrint(Self);
   RLPrinter.OddEven := odAllPages;
-  RLPrinter.Copies := 1;
   priorfocus := Screen.ActiveControl;
   try
     dialog := TRLPrintDialog.CreateNew(nil);
     try
       dialog.MaxPage := Preview.Pages.PageCount;
-      dialog.Copies := 1;
       if Preview.Pages.Orientation = MetaOrientationLandscape then
         dialog.Orientation := poLandscape
       else
