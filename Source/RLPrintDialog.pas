@@ -657,7 +657,7 @@ begin
   RadioButtonPagesInterval.Caption := GetLocalizeStr(LocaleStrings.LS_PagesStr);
   RadioButtonPagesSelect.Caption := GetLocalizeStr(LocaleStrings.LS_SelectionStr);
   GroupBoxCopies.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_CopiesStr + ' ');
-  EditCopies.Text := IntToStr(RLPrinter.Copies);
+  EditCopies.Text := IntToStr(FCopies);
   LabelCopies.Caption := GetLocalizeStr(LocaleStrings.LS_NumberOfCopiesStr + ':');
   ButtonOk.Caption := GetLocalizeStr(LocaleStrings.LS_OkStr);
   ButtonCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
