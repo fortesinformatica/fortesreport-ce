@@ -46,7 +46,7 @@
 
 {$I RLReport.inc}
 
-{$IfDef DELPHI7_DOWN}
+{$IfNDef DELPHI8_UP}
  {$Define NO_SPLITSTRING}
 {$EndIf}
 {$IfDef FPC}
@@ -309,7 +309,7 @@ const
 
   CT_OXmlFmt = 'application/vnd.openxmlformats';
 
-{$IfDef DELPHI7_DOWN}
+{$IfNDef DELPHI8_UP}
 type RawByteString = UTF8String;
 
 var UTF8ToUnicodeString: function(const RawBytes: RawByteString): WideString = UTF8Decode;

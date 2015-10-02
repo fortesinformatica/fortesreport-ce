@@ -590,7 +590,7 @@ begin
   ok := OpenPrinter(@Device, Result, @Defaults);
 {$EndIf}
 
-{$IfDef DELPHI6_DOWN}
+{$IfNDef DELPHI7_UP}
   if not ok then RaiseLastWin32Error;
 {$Else}
   if not ok then RaiseLastOSError;
