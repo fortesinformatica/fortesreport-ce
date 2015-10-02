@@ -71,7 +71,7 @@ uses
     Mask, RlCompilerConsts,
    {$EndIf}
   {$EndIf}
-  {$IfDef USE_VARIANTS}
+  {$IfDef SUPPORTS_VARIANT}
    variants,
   {$EndIf}
   maskutils,
@@ -8467,7 +8467,7 @@ begin
   end;
   FLast := fieldvalue;
   FLastText := fieldtext;
-{$ifdef USE_VARIANTS}
+{$ifdef SUPPORTS_VARIANT}
   if VarType(fieldvalue) in [varSmallint, varInteger, varSingle, varDouble, varCurrency] then
     FSum := FSum + fieldvalue;
 {$else}
