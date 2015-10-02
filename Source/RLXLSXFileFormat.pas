@@ -309,10 +309,12 @@ const
 
   CT_OXmlFmt = 'application/vnd.openxmlformats';
 
+{$IfNDef FPC}
 {$IfNDef DELPHI8_UP}
 type RawByteString = UTF8String;
 
 var UTF8ToUnicodeString: function(const RawBytes: RawByteString): WideString = UTF8Decode;
+{$EndIf}
 {$EndIf}
 
 {$ifdef NO_SPLITSTRING}
