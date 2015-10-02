@@ -44,18 +44,20 @@
 
 //Atualmente homologado somente para VCL, porém há uma trabalho sendo feito para
 //que o mesmo código seja usado no Delphi ou no Lazarus
-{$DEFINE VCL}
+{.$DEFINE VCL}
 {.$DEFINE FMK}
 {.$DEFINE KYLIX}
 {.$DEFINE FREEPASCAL}
 
 {$IFDEF FPC}
- {$MODE DELPHI}
- {$H+}
- {$DEFINE UNICODE}
- {$DEFINE VCL}
- {$DEFINE USE_VARIANTS}
- {$DEFINE HAS_FORMATSETTINGS}
+  {$DEFINE VCL}
+  {$DEFINE UNICODE} // Lazarus 0.9.26 usa UnicodeString como default para String
+  {$DEFINE DELPHI7}
+  {$DEFINE COMPILER7}
+  {$DEFINE HAS_FORMATSETTINGS}
+  {$H+}
+{$ELSE}
+  {$DEFINE BORLAND}
 {$ENDIF}
 
 // biblioteca do Jedi assim temos atualizado sempre
