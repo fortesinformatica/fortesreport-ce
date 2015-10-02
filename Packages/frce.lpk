@@ -9,9 +9,9 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <IncludeFiles Value="..\Source;..\Source\Forms\Lazarus"/>
-        <OtherUnitFiles Value="..\Source;.;..\Source\Forms\Lazarus;..\Source\Filters\Lazarus"/>
-        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+        <IncludeFiles Value="..\Source"/>
+        <OtherUnitFiles Value="..\Source"/>
+        <UnitOutputDirectory Value="..\Binary\libLaz\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
       <Parsing>
         <SyntaxOptions>
