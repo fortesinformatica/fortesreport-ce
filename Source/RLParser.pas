@@ -58,7 +58,7 @@ uses
    {$EndIf}
   {$EndIf}
   Classes, Contnrs, Math, TypInfo,
-  {$IfDef USE_VARIANTS}
+  {$IfDef SUPPORTS_VARIANT}
    Variants,
   {$EndIf}
   SysUtils, RLUtils;
