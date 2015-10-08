@@ -49,6 +49,9 @@
 {$IfNDef DELPHI2007_UP}
  {$Define NO_CHARINSET}
 {$EndIf}
+{$IfDef DELPHI2007}
+ {$Define NO_CHARINSET}
+{$EndIf}
 {$IfDef FPC}
  {$Define NO_CHARINSET}
 {$EndIf}
