@@ -319,6 +319,11 @@ type RawByteString = UTF8String;
 
 var UTF8ToUnicodeString: function(const RawBytes: RawByteString): WideString = UTF8Decode;
 {$EndIf}
+{$IfDef DELPHI2007}
+type RawByteString = UTF8String;
+
+var UTF8ToUnicodeString: function(const RawBytes: RawByteString): WideString = UTF8Decode;
+{$EndIf}
 {$EndIf}
 
 {$ifdef NO_SPLITSTRING}
