@@ -541,10 +541,10 @@ end;
 
 function CanvasGetClipRect(ACanvas: TCanvas): TRect;
 begin
-  {$IfDef MSWINDOWS}
-   GetClipBox(ACanvas.Handle, Result);
-  {$Else}
+  {$IfDef FPC}
    Result := ACanvas.ClipRect;
+  {$Else}
+   GetClipBox(ACanvas.Handle, Result);
   {$EndIf}
 end;
 
