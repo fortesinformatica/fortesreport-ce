@@ -54,6 +54,9 @@ uses
   {$IfDef MSWINDOWS}
    Windows,
   {$EndIf}
+  {$IfDef FPC}
+   LCLIntf, LCLType, LCLProc,
+  {$EndIf}
   SysUtils, Classes, Math,
   Graphics, StdCtrls,
   RLMetaFile, RLUtils, RLConsts;
@@ -538,7 +541,11 @@ end;
 
 function CanvasGetClipRect(ACanvas: TCanvas): TRect;
 begin
-  GetClipBox(ACanvas.Handle, Result);
+  {$IfDef MSWINDOWS}
+   GetClipBox(ACanvas.Handle, Result);
+  {$Else}
+   Result := ACanvas.ClipRect;
+  {$EndIf}
 end;
 
 procedure CanvasSetClipRect(ACanvas: TCanvas; const ARect: TRect);

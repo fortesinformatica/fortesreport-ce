@@ -59,7 +59,10 @@ unit RLXLSXFileFormat;
 interface
 
 uses
-  Windows, Classes, SysUtils, Contnrs, StrUtils, Types, Variants,
+  {$IfDef MSWINDOWS}
+   Windows,
+  {$EndIf}
+  Classes, SysUtils, Contnrs, StrUtils, Types, Variants,
   RLPkZip;
 
 const
@@ -612,7 +615,11 @@ begin
     SetLength(FStringSizes, 0);
     FStringCount := 0;
     Inc(TempFileNameSeed);
-    FStringFileName := SysUtils.Format('RLXLSX[%d.%d.%d].~tmp', [GetCurrentProcessId, GetCurrentThreadId, TempFileNameSeed]);
+    {$IfDef FPC}
+     FStringFileName := SysUtils.Format('RLXLSX[%d.%d.%d].~tmp', [GetProcessID, GetThreadID, TempFileNameSeed]);
+    {$Else}
+     FStringFileName := SysUtils.Format('RLXLSX[%d.%d.%d].~tmp', [GetCurrentProcessId, GetCurrentThreadId, TempFileNameSeed]);
+    {$EndIf}
     FStringStream := TFileStream.Create(FStringFileName, fmCreate);
   end;
 end;

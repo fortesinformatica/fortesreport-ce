@@ -594,6 +594,8 @@ begin
   else
     Result := ADefault;
 end;
+
+{$IfDef MSWINDOWS}
 {$IfDef DELPHIXE2_UP}
  function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
 {$else}
@@ -634,6 +636,7 @@ begin
   EndDocPrinter(PrnHandle);
   ClosePrinter(PrnHandle);
 end;
+{$EndIf}
 
 { TDraftImage }
 
@@ -732,9 +735,12 @@ begin
   FCurrentCharWidth := CPPPins(FCurrentCPP);
   FCurrentCharHeight := LPPPins(FCurrentLPP);
   //
+
+  {$IfDef MSWINDOWS}
   if FDeviceKind = dkPrinter then
     FPrinterHandle := LinePrinterStart(RLPrinter.PrinterName, 'FortesReport')
   else
+  {$EndIf}
   begin
     case FDeviceKind of
       dkPrinterPort: FDeviceFileName := RLPrinter.PrinterPort;
@@ -758,21 +764,19 @@ end;
 procedure TRLDraftFilter.InternalEndDoc;
 var
   cmd: String;
-{$ifndef LINUX}
-var
-{$ifdef FPC}
-  VProcess: TProcess;
-{$else}
   par:string;
   i  :integer;
-{$endif}
-{$endif}
+  {$ifdef FPC}
+   VProcess: TProcess;
+  {$endif}
 begin
   NewPage;
   //
-  if FDeviceKind = dkPrinter then
-    LinePrinterEnd(FPrinterHandle)
-  else
+  {$IfDef MSWINDOWS}
+   if FDeviceKind = dkPrinter then
+     LinePrinterEnd(FPrinterHandle)
+   else
+  {$EndIf}
   begin
     CloseFile(FDeviceHandle);
     case FDeviceKind of
@@ -782,29 +786,30 @@ begin
         cmd := FDevicePath;
         cmd := StringReplace(cmd, '%p', RLPrinter.PrinterName, [rfReplaceAll, rfIgnoreCase]);
         cmd := StringReplace(cmd, '%f', FDeviceFileName, [rfReplaceAll, rfIgnoreCase]);
-{$ifndef LINUX}
-{$ifdef FPC}
-        VProcess := TProcess.Create(nil);
-        try
-          begin
-            VProcess.Options := [poNoConsole];
-            VProcess.CommandLine := Cmd;
-            VProcess.Execute;
-            end;
-        finally
-          VProcess.Free;
-        end;
-{$else}
-        I := Pos(' ', cmd);
-        if I = 0 then
-          I := Length(cmd) + 1;
-        par := Copy(cmd, I + 1, Length(cmd));
-        cmd := Copy(cmd, 1, I - 1);
-        ShellExecute(0, 'open', PChar(cmd), PChar(par), nil, SW_SHOWNORMAL);
-{$endif}
-{$else}
-        Libc.system(PChar(cmd));
-{$endif};
+
+        {$IfDef FPC}
+         VProcess := TProcess.Create(nil);
+         try
+           begin
+             VProcess.Options := [poNoConsole];
+             VProcess.CommandLine := Cmd;
+             VProcess.Execute;
+             end;
+         finally
+           VProcess.Free;
+         end;
+        {$else}
+         {$IfDef MSWINDOWS}
+          I := Pos(' ', cmd);
+          if I = 0 then
+            I := Length(cmd) + 1;
+          par := Copy(cmd, I + 1, Length(cmd));
+          cmd := Copy(cmd, 1, I - 1);
+          ShellExecute(0, 'open', PChar(cmd), PChar(par), nil, SW_SHOWNORMAL);
+         {$Else}
+          Libc.system(PChar(cmd));
+         {$endif};
+        {$endif}
       end;
       dkFileName: ;
     end;
@@ -905,9 +910,11 @@ var
   Aux: AnsiString;
 begin
   if AData <> '' then
-    if FDeviceKind = dkPrinter then
-      LinePrinterWrite(FPrinterHandle, AData)
-    else
+    {$IfDef MSWINDOWS}
+     if FDeviceKind = dkPrinter then
+       LinePrinterWrite(FPrinterHandle, AData)
+     else
+    {$EndIf}
     begin
       Aux := AnsiString(AData);
       BlockWrite(FDeviceHandle, Aux[1], Length(Aux));

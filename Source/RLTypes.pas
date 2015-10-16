@@ -185,7 +185,7 @@ begin
     AResultPaperWidth := PaperInfo[PaperSize].Width;
     AResultPaperHeight := PaperInfo[PaperSize].Height;
   end;
-{$ifndef LINUX}
+{$ifndef CLX}
   if AOrientationLandscape then
     AResultOrientation := DMORIENT_LANDSCAPE
   else
@@ -376,7 +376,7 @@ initialization
   SetPaperInfo(fpCustom, 0, 0, 'User Defined');
 
   // Equivalências para Windows
-{$ifndef LINUX}
+{$IfDef MSWINDOWS}
   SetPaperEqv(fpA2, DMPAPER_A2);
   SetPaperEqv(fpA3, DMPAPER_A3);
   SetPaperEqv(fpA4, DMPAPER_A4);
@@ -461,7 +461,7 @@ initialization
 {$endif}
 
   // Equivalências para Linux/CLX
-{$IfNDef MSWINDOWS}
+{$IfDef CLX}
   SetPaperEqv(fpA0, psA0);
   SetPaperEqv(fpA1, psA1);
   SetPaperEqv(fpA2, psA2);

@@ -56,9 +56,8 @@ uses
    {$IfNDef FPC}
     Windows,
    {$EndIf}
-   Messages,
   {$EndIf}
-  DB, Classes, SysUtils, Math, Contnrs, TypInfo,
+  Messages, DB, Classes, SysUtils, Math, Contnrs, TypInfo,
   {$IfDef CLX}
    QTypes, QButtons, QGraphics, QControls, QDialogs, QForms, QExtCtrls,
    QDBCtrls, QMask, RLMetaCLX,

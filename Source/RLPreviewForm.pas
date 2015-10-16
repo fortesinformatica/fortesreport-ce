@@ -53,11 +53,11 @@ interface
 
 uses
   {$IfDef MSWINDOWS}
-   Windows, Messages,
+   Windows,
   {$EndIf}
-  SysUtils, Math, Contnrs, Classes,
+  Messages, SysUtils, Math, Contnrs, Classes,
   {$IfDef FPC}
-   LCLIntf, LCLType, FileUtil,
+   LMessages, LCLIntf, LCLType, FileUtil,
   {$EndIf}
   {$IfDef CLX}
    QTypes, QControls, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QGraphics, Qt,
@@ -66,6 +66,11 @@ uses
   {$EndIf}
   RLConsts, RLMetaFile, RLPreview, RLFilters, RLUtils, RLPrintDialog,
   RLSaveDialog, RLPrinters, RLTypes, RLFindDialog, RLComponentFactory;
+
+{$IfDef FPC}
+const
+  WM_MOUSEWHEEL = LM_MOUSEWHEEL;
+{$EndIf}
 
 type
 
@@ -1782,7 +1787,11 @@ begin
   if ShowPreviewOnWindowsTaskBar then
   begin
     Params.ExStyle := Params.ExStyle or WS_EX_APPWINDOW or WS_EX_NOPARENTNOTIFY;
-    Params.WndParent := GetDesktopwindow;
+    {$IfDef MSWINDOWS}
+     Params.WndParent := GetDesktopwindow;
+    {$Else}
+     Params.WndParent := Screen.ActiveForm.Handle;
+    {$EndIf}
   end;
 end;
 
