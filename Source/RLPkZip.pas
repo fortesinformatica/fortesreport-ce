@@ -58,7 +58,9 @@ unit RLPkZip;
 interface
 
 uses
-  Windows,
+  {$IfDef MSWINDOWS}
+   Windows,
+  {$EndIf}
   SysUtils, Classes, Contnrs, StrUtils, Types,
   {$IfDef FPC}
    zstream,

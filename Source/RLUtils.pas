@@ -223,7 +223,7 @@ procedure LogClear;
 procedure Log(const AMsg: String);
 
 type
-{$ifdef CLX}
+{$IfNDef MSWINDOWS}
   TRGBQuad = packed record
     rgbBlue: Byte;
     rgbGreen: Byte;
@@ -234,7 +234,7 @@ type
   TRGBArray = array[0..0] of TRGBQuad;
   PRGBArray = ^TRGBArray;
 
-{$ifdef CLX}
+{$IfNDef MSWINDOWS}
 function RGB(R, G, B: Byte): TColor;
 {$endif}
 
@@ -378,7 +378,7 @@ begin
   pointer(APtr) := nil;
 end;
 
-{$ifdef CLX}
+{$IfNDef MSWINDOWS}
 function RGB(R, G, B: Byte): TColor;
 begin
   Result := (R or (G shl 8) or (B shl 16));
