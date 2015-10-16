@@ -2196,10 +2196,12 @@ begin
       fpVariable: font.bFamily := 2;
     end;
     case AFont.CharSet of
-      fcsLatin1: font.bCharSet := 0;
-      fcsKOI8R: font.bCharSet := 130;
-      fcsSet_Ja: font.bCharSet := $80;
-      fcsSet_Ko: font.bCharSet := 129;
+      {$IfDef CLX}
+       fcsLatin1: font.bCharSet := 0;
+       fcsKOI8R: font.bCharSet := 130;
+       fcsSet_Ja: font.bCharSet := $80;
+       fcsSet_Ko: font.bCharSet := 129;
+      {$EndIf}
       ANSI_CHARSET: font.bCharSet := 0;
       DEFAULT_CHARSET: font.bCharSet := 1;
       SYMBOL_CHARSET: font.bCharSet := 2;
