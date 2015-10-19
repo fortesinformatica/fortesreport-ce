@@ -329,6 +329,7 @@ begin
   Copiar('*.res');
   Copiar('*.dfm');
   Copiar('*.ini');
+	Copiar('*.inc');
 end;
 
 procedure TfrmPrincipal.AddLibraryPathToDelphiPath(const APath: String; const AProcurarRemover: String);
