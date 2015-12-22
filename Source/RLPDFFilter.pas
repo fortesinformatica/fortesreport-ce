@@ -668,12 +668,7 @@ begin
   FDocumentInfo := TRLPDFFilterDocumentInfo.Create;
   FPageSetup := TRLPDFFilterPageSetup.Create;
   FTextControl := TRLPDFFilterTextControl.Create;
-
-  {$IfDef FPC}
   FImageFormat := ifJPeg;
-  {$Else}
-  FImageFormat := ifJPeg;
-  {$EndIf}
 
   inherited Create(AOwner);
 
@@ -753,7 +748,7 @@ begin
     Result := TBitmap.Create;
     Result.Width := Src.Width;
     Result.Height := Src.Height;
-    Result.PixelFormat := pf8bit;
+    Result.PixelFormat := pf32bit;
     Result.Canvas.Draw(0, 0, Src);
   end;
 end;
@@ -770,7 +765,7 @@ begin
     Result := TJPEGImage.Create;
     Result.Width := Src.Width;
     Result.Height := Src.Height;
-    Result.PixelFormat := pf8bit;
+    Result.PixelFormat := pf32bit;
     Result.Canvas.Draw(0, 0, Src);
     // FPC always will change "PixelFormat" to pf24bit, when you try to read it...
     // So I changed WriteJpeg() to receive a Flag as a parameter

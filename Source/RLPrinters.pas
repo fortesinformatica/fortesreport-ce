@@ -538,7 +538,7 @@ begin
       //
       if not WarningDisplayed then
       begin
-        ///ShowMessage(LocaleStrings.LS_LoadDefaultConfigStr+#13#13+'Mensagem: '+e.Message);
+        ///ShowMessage(LocaleStrings.LS_LoadDefaultConfigStr+sLineBreak+sLineBreak+'Mensagem: '+e.Message);
         WarningDisplayed := True;
       end;
     end;

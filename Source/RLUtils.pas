@@ -54,6 +54,9 @@
 {$EndIf}
 {$IfDef FPC}
  {$Define NO_CHARINSET}
+ {$IfNDef MSWINDOWS}
+  {$Define USE_LConvEncoding}
+ {$EndIf}
 {$EndIf}
 
 
@@ -68,6 +71,7 @@ uses
   {$EndIf}
   SysUtils, Classes, DB,
   {$IfDef FPC}
+   {$IFDEF USE_LConvEncoding}LConvEncoding, {$ENDIF}
    FileUtil,
   {$EndIf}
   {$IfDef CLX}
@@ -292,10 +296,14 @@ end;
 
 function GetAnsiStr(AString: String): AnsiString;
 begin
-{$IFDEF UNICODE}
-  Result := Utf8ToAnsi(AString);
+{$IfDef USE_LConvEncoding}
+  Result := UTF8ToCP1252( AString ) ;
 {$Else}
-  Result := AString;
+ {$IFDEF UNICODE}
+   Result := Utf8ToAnsi(AString);
+ {$Else}
+   Result := AString;
+ {$EndIf}
 {$EndIf}
 end;
 
@@ -1061,7 +1069,7 @@ end;
 procedure StreamWriteLn(AStream: TStream; const AStr: string = '');
 begin
   StreamWrite(AStream, AStr);
-  StreamWrite(AStream, #13#10);
+  StreamWrite(AStream, sLineBreak);
 end;
 
 var
