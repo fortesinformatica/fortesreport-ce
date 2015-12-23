@@ -832,7 +832,7 @@ begin
       Height := 22;
       Caption := ' ';
       Flat := True;
-      Hint := 'Você também pode aumentar ou reduzir o zoom do relatório'#13+
+      Hint := 'Você também pode aumentar ou reduzir o zoom do relatório'+sLineBreak+
               'precionando "Ctrl" e usando a rolagem do mouse.';
       ShowHint := True;
       Glyph := HexToBitmap(
@@ -861,7 +861,7 @@ begin
       Height := 22;
       Caption := ' ';
       Flat := True;
-      Hint := 'Você também pode aumentar ou reduzir o zoom do relatório'#13+
+      Hint := 'Você também pode aumentar ou reduzir o zoom do relatório'+sLineBreak+
               'precionando "Ctrl" e usando a rolagem do mouse.';
       ShowHint := True;
       Glyph := HexToBitmap(
@@ -1116,17 +1116,17 @@ begin
         TabOrder := 0;
         OnChange := ComboBoxZoomChange;
         Items.Text :=
-          '500%'#13 +
-          '200%'#13 +
-          '150%'#13 +
-          '100%'#13 +
-          '75%'#13 +
-          '50%'#13 +
-          '25%'#13 +
-          '10%'#13 +
-          'Largura da página'#13 +
-          'Página inteira'#13 +
-          'Várias páginas'#13;
+          '500%'+sLineBreak+
+          '200%'+sLineBreak+
+          '150%'+sLineBreak+
+          '100%'+sLineBreak+
+          '75%'+sLineBreak+
+          '50%'+sLineBreak+
+          '25%'+sLineBreak+
+          '10%'+sLineBreak+
+          'Largura da página'+sLineBreak+
+          'Página inteira'+sLineBreak+
+          'Várias páginas'+sLineBreak;
       end;
     end;
     TRLComponentFactory.CreateComponent(TPanel, Self, PanelCopyright);

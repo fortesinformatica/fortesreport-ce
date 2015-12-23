@@ -593,7 +593,9 @@ begin
     Style := csDropDownList;
     ItemHeight := 13;
     TabOrder := 1;
-    Items.Text := GetLocalizeStr('Pares'#13#10#205'mpares'#13#10'Todas');
+    Items.Text := 'Pares'+sLineBreak+
+                  GetLocalizeStr('Ímpares')+sLineBreak+
+                  'Todas';
   end;
 
   TRLComponentFactory.CreateComponent(TGroupBox, Self, GroupBoxDuplex);
@@ -663,8 +665,8 @@ begin
   ButtonCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
   LabelOddPages.Caption := GetLocalizeStr(LocaleStrings.LS_OddPages + '/' + LocaleStrings.LS_EvenPages + ':');
   ComboBoxOddPages.Items.Text :=
-    GetLocalizeStr(LocaleStrings.LS_OddPagesOnly + #13#10 +
-    LocaleStrings.LS_EvenPagesOnly + #13#10 +
+    GetLocalizeStr(LocaleStrings.LS_OddPagesOnly + sLineBreak +
+    LocaleStrings.LS_EvenPagesOnly + sLineBreak +
     LocaleStrings.LS_AllOddAndEven);
   case RLPrinter.OddEven of
     odOddPagesOnly: ComboBoxOddPages.ItemIndex := 0;

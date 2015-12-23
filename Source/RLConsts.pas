@@ -82,10 +82,10 @@ const
   { constantes para exibição na inicialização e no sobre do delphi a partir da versão 2009 }
   cRLSobreDialogoTitulo = 'FortesReport Community Edition';
   cRLSobreTitulo = 'FortesReport Community Edition VCL';
-  cRLSobreDescricao = 'FortesReport Community Edition VCL ' + #13#10 +
-                      'http://www.fortesreport.com.br' + #13#10 +
-                      'https://github.com/fortesinformatica/fortesreport-ce' + #13#10 +
-                      'Componentes para Geração de Relatórios' + #13#10 +
+  cRLSobreDescricao = 'FortesReport Community Edition VCL ' + sLineBreak +
+                      'http://www.fortesreport.com.br' + sLineBreak +
+                      'https://github.com/fortesinformatica/fortesreport-ce' + sLineBreak +
+                      'Componentes para Geração de Relatórios' + sLineBreak +
                       'Lesser General Public License version 2.0';
   cRLSobreLicencaStatus = 'LGPLv2';
   
@@ -521,7 +521,7 @@ var
     LS_PrintDialogError: 'Problemas com o diálogo da impressora';
     LS_PageSelectionHint: 'Separe com ponto-e-vírgula os números ou intervalos de páginas a imprimir. Ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Relatório "%s"';
-    LS_ZoomHint: 'Você também pode aumentar ou reduzir o zoom do relatório' + #13 + 'precionando "Ctrl" e usando a rolagem do mouse.';
+    LS_ZoomHint: 'Você também pode aumentar ou reduzir o zoom do relatório' + sLineBreak + 'precionando "Ctrl" e usando a rolagem do mouse.';
     Ls_Aplicar: 'Aplicar';
     Ls_Propriedades: 'Propriedades';
   );

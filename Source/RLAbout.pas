@@ -238,7 +238,7 @@ begin
     Top := 56;
     Width := 211;
     Height := 14;
-    Caption := GetLocalizeStr(CS_CopyrightStr + #13 + CS_AuthorNameStr);
+    Caption := GetLocalizeStr(CS_CopyrightStr + sLineBreak + CS_AuthorNameStr);
     Font.Name := 'helvetica';
     Font.Color := clBlack;
     Font.Height := -11;

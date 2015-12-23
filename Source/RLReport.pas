@@ -8723,7 +8723,7 @@ begin
           Inc(LineWidth, SpaceWidth);
         Inc(Pos);
       end
-      else if CharInSet(Buffer[Pos], [#13]) then
+      else if CharInSet(Buffer[Pos], [#13, #10]) then
       begin
         Result := Copy(Buffer, Pos0, Pos - Pos0);
         Inc(Pos);
@@ -8734,7 +8734,7 @@ begin
       else
       begin
         PosAux := Pos;
-        while (Pos <= Length(Buffer)) and not CharInSet(Buffer[Pos], [#9, #32, #13]) do
+        while (Pos <= Length(Buffer)) and not CharInSet(Buffer[Pos], [#9, #32, #13, #10]) do
         begin
           Inc(LineWidth, CanvasTextWidth(Canvas, Buffer[Pos]));
           Inc(Pos);
@@ -9649,7 +9649,7 @@ begin
   for I := 0 to len - 1 do
   begin
     if I > 0 then
-      Result := Result + #13;
+      Result := Result + sLineBreak;
     Result := Result + IntToStr(APoints[I].X) + ' ' + IntToStr(APoints[I].Y);
   end;
 end;
@@ -13393,14 +13393,14 @@ begin
           raise
         else if not (E is EAbort) then
           if ReportServiceMode then
-            Log(Name + ': ' + GetLocalizeStr(LocaleStrings.LS_PrepareErrorStr) + #13 +
+            Log(Name + ': ' + GetLocalizeStr(LocaleStrings.LS_PrepareErrorStr) + sLineBreak +
               E.ClassName + '(' + E.Message + ')')
           else
             if Assigned(OnPrepareError) then
               OnPrepareError(Self, E)
             else
               ShowMessage(GetLocalizeStr(Name + ': ' + LocaleStrings.LS_PrepareErrorStr +
-                          #13 + E.ClassName + '(' + E.Message + ')'));
+                          sLineBreak + E.ClassName + '(' + E.Message + ')'));
       end;
     end;
   finally
