@@ -608,7 +608,11 @@ begin
   di.pDocName := PChar(DocName);
   di.pOutputFile := nil;
   di.pDatatype := 'RAW';
+  {$IfDef UNICODE}
+  OpenPrinterW(PWideChar(PrnName), {$IfDef FPC}@{$EndIf}Result, nil);
+  {$Else}
   OpenPrinter(PChar(PrnName), {$IfDef FPC}@{$EndIf}Result, nil);
+  {$EndIf}
   StartDocPrinter(Result, 1, @di);
   StartPagePrinter(Result);
 end;
