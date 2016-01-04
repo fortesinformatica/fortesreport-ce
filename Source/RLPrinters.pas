@@ -181,8 +181,10 @@ begin
   raise Exception.Create(AMessage);
 end;
 
+{$IfNDef FPC}
 type
   TPrinterEx = class(TPrinter) end;
+{$EndIf}
 
 {$IfDef FPC}
 procedure ReloadCurrentPrinter;
@@ -276,7 +278,11 @@ procedure TRLPrinterWrapper.SelectSystemPaperSize(APaperSize: TRLSystemPaperType
   APaperWidthMM, APaperHeightMM: Double; AOrientation: TRLSystemOrientation; ASetPaperBin: Boolean);
 var
   FCapabilities: longint;
+  {$IfDef FPC}
+  FDeviceMode: PDeviceModeW;
+  {$Else}
   FDeviceMode: PDeviceMode;
+  {$EndIf}
   FDriverHandle: THandle;
   FDevice: PChar;
   FDriver: PChar;
@@ -311,9 +317,7 @@ begin
       FDeviceMode := GlobalLock(FDriverHandle);
       {$ELSE}
        PDev := TPrinterDevice(Printer.Printers.Objects[Printer.PrinterIndex]);
-       FDeviceMode := PDev.DevModeA;
-       if FDeviceMode = nil then
-         FDeviceMode := PDeviceModeA( PDev.DevModeW );  // Ugly
+       FDeviceMode := PDev.DevModeW;
       {$ENDIF}
       if FDeviceMode = nil then
         Abort;
@@ -788,10 +792,10 @@ end;
 {$IfDef MSWINDOWS}
 var
   PDev: TPrinterDevice;
-  DevModeRef: PDeviceMode;
+  DevModeRef: PDeviceModeW;
 begin
   PDev := TPrinterDevice(Printer.Printers.Objects[Printer.PrinterIndex]);
-  DevModeRef := PDev.DevModeA;
+  DevModeRef := PDev.DevModeW;
   if DevModeRef <> nil then
     Result := DevModeRef^.dmDuplex <> DMDUP_SIMPLEX;
 end;
@@ -835,10 +839,10 @@ end;
 {$IfDef MSWINDOWS}
 var
   PDev: TPrinterDevice;
-  DevModeRef: PDeviceMode;
+  DevModeRef: PDeviceModeW;
 begin
   PDev := TPrinterDevice(Printer.Printers.Objects[Printer.PrinterIndex]);
-  DevModeRef := PDev.DevModeA;
+  DevModeRef := PDev.DevModeW;
 
   if DevModeRef <> nil then
   begin
