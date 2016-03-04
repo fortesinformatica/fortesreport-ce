@@ -614,7 +614,7 @@ begin
       bytesNeeded := 32768;
     pInfo := AllocMem(bytesNeeded);
     try
-      GetPrinter(hPrinter, 2, {$IfDef FPC}@{$EndIf}pInfo, bytesNeeded, @bytesNeeded);
+      GetPrinter(hPrinter, 2, {$IfDef FPC}PByte(pInfo){$Else}pInfo{$EndIf}, bytesNeeded, @bytesNeeded);
       Result.PrinterName := pInfo^.pPrinterName;
       Result.PrinterPort := pInfo^.pPortName;
       Result.ServerName := pInfo^.pServerName;

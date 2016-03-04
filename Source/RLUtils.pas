@@ -46,16 +46,13 @@
 
 {$I RLReport.inc}
 
-{$IfNDef DELPHI2007_UP}
- {$Define NO_CHARINSET}
-{$EndIf}
-{$IfDef DELPHI2007}
- {$Define NO_CHARINSET}
-{$EndIf}
 {$IfDef FPC}
- {$Define NO_CHARINSET}
- {$IfNDef MSWINDOWS}
-  {$Define USE_LConvEncoding}
+ {$IfNDef VER3}
+  {$Define NO_CHARINSET}
+ {$EndIf}
+{$Else}
+ {$IfNDef DELPHI12_UP}
+  {$Define NO_CHARINSET}
  {$EndIf}
 {$EndIf}
 
@@ -71,8 +68,7 @@ uses
   {$EndIf}
   SysUtils, Classes, DB,
   {$IfDef FPC}
-   {$IFDEF USE_LConvEncoding}LConvEncoding, {$ENDIF}
-   FileUtil,
+   FileUtil, LazUTF8, LConvEncoding,
   {$EndIf}
   {$IfDef CLX}
    QTypes, QGraphics, QForms,
@@ -250,8 +246,8 @@ function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
 {$EndIf}
 
-function GetLocalizeStr(AString: AnsiString) : String;
-function GetAnsiStr(AString: String) : AnsiString;
+function GetLocalizeStr(AString: AnsiString): String;
+function GetAnsiStr(AString: String): AnsiString;
 
 {/@unit}
 
@@ -273,38 +269,26 @@ begin
 end;
 {$EndIf}
 
-function GetLocalizeStr(AString : AnsiString ): String;
+function GetLocalizeStr(AString: AnsiString): String;
 begin
-{$ifdef UNICODE}
- {$ifdef USE_LConvEncoding}
-   Result := CP1252ToUTF8(AString);
- {$else}
-   {$ifdef FPC}
-     {$ifndef NOGUI}
-       Result := SysToUTF8(AString);
-     {$else}
-       Result := AnsiToUtf8(AString);
-     {$endif}
-   {$else}
-     Result := String(AnsiToUtf8(String(AString)));
-   {$endif}
- {$endif}
-{$else}
-  Result := AString;
-{$endif}
+  {$IfDef FPC}
+   Result := CP1252ToUTF8( AString );  // Fortes Report sources uses CP1252
+  {$Else}
+   Result := String(AString);
+  {$EndIf}
 end;
 
 function GetAnsiStr(AString: String): AnsiString;
 begin
-{$IfDef USE_LConvEncoding}
-  Result := UTF8ToCP1252( AString ) ;
-{$Else}
- {$IFDEF UNICODE}
-   Result := Utf8ToAnsi(AString);
- {$Else}
-   Result := AString;
- {$EndIf}
-{$EndIf}
+  {$IfDef FPC}
+   Result := UTF8ToCP1252( AString ) ;   // Fortes Report sources uses CP1252
+  {$Else}
+   {$IFDEF UNICODE}
+    Result := AnsiString(AString);
+   {$Else}
+    Result := AString;
+   {$EndIf}
+  {$EndIf}
 end;
 
 function NewBitmap: TBitmap;

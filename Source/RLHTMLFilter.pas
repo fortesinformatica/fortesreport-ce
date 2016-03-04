@@ -284,7 +284,7 @@ const
 var
   I, J: Integer;
 begin
-  Result := AStr;
+  Result := GetAnsiStr( AStr );
   for I := Length(Result) downto 1 do
   begin
     for J := 1 to MAXENCODECHARS do

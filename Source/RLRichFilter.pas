@@ -215,7 +215,7 @@ function RTF_FormatText(const AText: String): String;
 var
   I: Integer;
 begin
-  Result := AText;
+  Result := GetAnsiStr(AText);
   for I := Length(Result) downto 1 do
     if CharInSet(Result[I], ['{', '}', '\']) then
       Insert('\', Result, I);
@@ -440,7 +440,9 @@ var
         IntersectRect(cut, Rect, cliprct);
         OffsetRect(cut, - Rect.Left, - Rect.Top);
         bmp := ClipGraphic(bmx, cut, False);
-        bmp.PixelFormat := pf8bit;
+        {$IfNDef FPC}
+         bmp.PixelFormat := pf8bit;
+        {$EndIf} 
       finally
         bmx.free;
       end;

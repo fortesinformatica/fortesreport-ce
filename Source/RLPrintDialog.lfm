@@ -1,98 +1,121 @@
 object RLPrintDialog: TRLPrintDialog
-  Left = 218
-  Height = 309
-  Top = 244
-  Width = 574
+  Left = 581
+  Height = 343
+  Top = 180
+  Width = 591
   ActiveControl = ComboBoxPrinterNames
   AutoSize = True
   BorderWidth = 8
   Caption = 'Imprimir'
-  ClientHeight = 309
-  ClientWidth = 574
+  ClientHeight = 343
+  ClientWidth = 591
   Color = clBtnFace
   Font.Color = clWindowText
   Font.Height = 11
   Font.Name = 'MS Sans Serif'
   Font.Pitch = fpVariable
   Position = poScreenCenter
-  LCLVersion = '1.4.2.0'
+  LCLVersion = '1.4.4.0'
   object GroupBoxPrinter: TGroupBox
     Left = 7
-    Height = 105
+    Height = 125
     Top = 3
-    Width = 561
+    Width = 577
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Impressora'
-    ClientHeight = 87
-    ClientWidth = 557
+    ClientHeight = 96
+    ClientWidth = 573
     TabOrder = 0
     object LabelPrinterName: TLabel
-      Left = 12
+      AnchorSideTop.Control = ComboBoxPrinterNames
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = ComboBoxPrinterNames
+      Left = 75
       Height = 13
-      Top = 24
-      Width = 31
+      Top = 14
+      Width = 37
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 5
       Caption = '&Nome:'
       FocusControl = ComboBoxPrinterNames
       ParentColor = False
     end
     object LabelFilterName: TLabel
-      Left = 12
+      AnchorSideTop.Control = ComboBoxFilters
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = ComboBoxFilters
+      Left = 51
       Height = 13
-      Top = 48
-      Width = 47
+      Top = 44
+      Width = 61
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 5
       Caption = 'Usar &filtro:'
       FocusControl = ComboBoxPrinterNames
       ParentColor = False
     end
     object LabelOptions: TLabel
-      Left = 12
+      AnchorSideTop.Control = ComboBoxOptions
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Control = ComboBoxOptions
+      Left = 22
       Height = 13
-      Top = 72
-      Width = 77
+      Top = 74
+      Width = 95
       Alignment = taRightJustify
+      Anchors = [akTop, akRight]
       Caption = 'Opções do filtro:'
       FocusControl = ComboBoxOptions
       ParentColor = False
     end
     object ComboBoxPrinterNames: TComboBox
-      Left = 68
-      Height = 21
-      Top = 20
-      Width = 365
-      ItemHeight = 13
+      Left = 117
+      Height = 25
+      Top = 8
+      Width = 299
+      ItemHeight = 0
       Style = csDropDownList
       TabOrder = 0
     end
     object CheckBoxPrintToFile: TCheckBox
-      Left = 440
-      Height = 19
-      Top = 48
-      Width = 110
+      AnchorSideTop.Control = ComboBoxFilters
+      AnchorSideTop.Side = asrCenter
+      Left = 416
+      Height = 26
+      Top = 37
+      Width = 144
+      Anchors = [akTop, akRight]
       Caption = 'Imprimir em arquivo'
       TabOrder = 4
       TabStop = False
     end
     object ComboBoxFilters: TComboBox
-      Left = 68
-      Height = 21
-      Top = 44
-      Width = 365
-      ItemHeight = 13
+      AnchorSideRight.Control = CheckBoxPrintToFile
+      Left = 117
+      Height = 25
+      Top = 38
+      Width = 294
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Right = 5
+      ItemHeight = 0
       Style = csDropDownList
       TabOrder = 1
     end
     object ComboBoxOptions: TComboBox
-      Left = 96
-      Height = 21
+      Left = 117
+      Height = 25
       Top = 68
       Width = 161
-      ItemHeight = 13
+      ItemHeight = 0
       Style = csDropDownList
       TabOrder = 2
     end
     object ButtonPrinterSetup: TButton
-      Left = 440
-      Height = 21
-      Top = 20
+      AnchorSideTop.Control = ComboBoxPrinterNames
+      AnchorSideTop.Side = asrCenter
+      Left = 424
+      Height = 25
+      Top = 8
       Width = 109
       Caption = 'Propriedades'
       TabOrder = 3
@@ -100,19 +123,24 @@ object RLPrintDialog: TRLPrintDialog
     end
   end
   object GroupBoxPages: TGroupBox
-    Left = 3
+    Left = 8
     Height = 162
-    Top = 110
+    Top = 136
     Width = 261
     Caption = 'Intervalo de páginas'
-    ClientHeight = 144
+    ClientHeight = 133
     ClientWidth = 257
     TabOrder = 1
     object LabelToPage: TLabel
-      Left = 172
+      AnchorSideLeft.Control = EditFromPage
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = RadioButtonPagesInterval
+      AnchorSideTop.Side = asrCenter
+      Left = 176
       Height = 13
-      Top = 48
-      Width = 18
+      Top = 55
+      Width = 22
+      BorderSpacing.Left = 5
       Caption = '&até:'
       FocusControl = EditToPage
       ParentColor = False
@@ -128,19 +156,24 @@ object RLPrintDialog: TRLPrintDialog
       WordWrap = True
     end
     object LabelFromPage: TLabel
-      Left = 96
+      AnchorSideLeft.Control = RadioButtonPagesInterval
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = RadioButtonPagesInterval
+      AnchorSideTop.Side = asrCenter
+      Left = 99
       Height = 13
-      Top = 49
-      Width = 15
+      Top = 55
+      Width = 18
+      BorderSpacing.Left = 10
       Caption = '&de:'
       FocusControl = EditFromPage
       ParentColor = False
     end
     object RadioButtonPagesAll: TRadioButton
       Left = 12
-      Height = 19
+      Height = 26
       Top = 24
-      Width = 50
+      Width = 61
       Caption = '&Todas'
       Checked = True
       TabOrder = 0
@@ -148,75 +181,91 @@ object RLPrintDialog: TRLPrintDialog
     end
     object RadioButtonPagesInterval: TRadioButton
       Left = 12
-      Height = 19
+      Height = 26
       Top = 48
-      Width = 61
+      Width = 77
       Caption = 'Intervalo'
       TabOrder = 1
     end
     object RadioButtonPagesSelect: TRadioButton
       Left = 12
-      Height = 19
+      Height = 26
       Top = 72
-      Width = 59
+      Width = 73
       Caption = 'Seleção'
       TabOrder = 4
     end
     object EditFromPage: TEdit
-      Left = 116
-      Height = 21
-      Top = 44
+      AnchorSideLeft.Control = LabelFromPage
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = RadioButtonPagesInterval
+      AnchorSideTop.Side = asrCenter
+      Left = 122
+      Height = 19
+      Top = 52
       Width = 49
+      BorderSpacing.Left = 5
       TabStop = False
       TabOrder = 2
       Text = '1'
     end
     object EditToPage: TEdit
-      Left = 196
-      Height = 21
-      Top = 44
+      AnchorSideLeft.Control = LabelToPage
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = RadioButtonPagesInterval
+      AnchorSideTop.Side = asrCenter
+      Left = 203
+      Height = 19
+      Top = 52
       Width = 49
+      BorderSpacing.Left = 5
       TabStop = False
       TabOrder = 3
     end
     object EditPageSelection: TEdit
-      Left = 96
-      Height = 21
-      Top = 68
-      Width = 149
+      AnchorSideLeft.Control = RadioButtonPagesSelect
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = RadioButtonPagesSelect
+      AnchorSideTop.Side = asrCenter
+      Left = 95
+      Height = 19
+      Top = 76
+      Width = 157
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Left = 10
       TabOrder = 5
     end
   end
   object GroupBoxCopies: TGroupBox
-    Left = 272
-    Height = 89
-    Top = 112
+    Left = 277
+    Height = 126
+    Top = 138
     Width = 296
     Caption = 'Cópias'
-    ClientHeight = 71
+    ClientHeight = 97
     ClientWidth = 292
     TabOrder = 2
     object LabelCopies: TLabel
       Left = 12
       Height = 13
-      Top = 10
-      Width = 89
+      Top = 8
+      Width = 108
       Caption = 'Número de &cópias:'
       ParentColor = False
     end
     object LabelOddPages: TLabel
-      Left = 28
+      Left = 12
       Height = 13
       Top = 34
-      Width = 73
+      Width = 88
       Alignment = taRightJustify
       Caption = 'Pares/ímpares:'
       FocusControl = ComboBoxOddPages
       ParentColor = False
     end
     object EditCopies: TEdit
-      Left = 108
-      Height = 21
+      Left = 128
+      Height = 19
       Top = 6
       Width = 49
       TabOrder = 0
@@ -224,10 +273,10 @@ object RLPrintDialog: TRLPrintDialog
     end
     object ComboBoxOddPages: TComboBox
       Left = 108
-      Height = 21
+      Height = 27
       Top = 30
       Width = 161
-      ItemHeight = 13
+      ItemHeight = 0
       Items.Strings = (
         'Pares'
         'Ímpares'
@@ -238,9 +287,9 @@ object RLPrintDialog: TRLPrintDialog
     end
   end
   object ButtonOk: TButton
-    Left = 402
+    Left = 400
     Height = 25
-    Top = 266
+    Top = 304
     Width = 75
     Caption = 'OK'
     Default = True
@@ -248,9 +297,9 @@ object RLPrintDialog: TRLPrintDialog
     TabOrder = 3
   end
   object ButtonCancel: TButton
-    Left = 486
+    Left = 484
     Height = 25
-    Top = 266
+    Top = 304
     Width = 75
     Cancel = True
     Caption = 'Cancelar'
