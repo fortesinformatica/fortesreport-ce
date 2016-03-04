@@ -2093,11 +2093,7 @@ class function TRLPDFFilter.PDF_EncodeText(const AText: string): string;
 var
   I: Integer;
 begin
-  {$IfDef FPC}
   Result := GetAnsiStr(AText);
-  {$Else}
-  Result := AText;
-  {$EndIf}
 
   for I := Length(Result) downto 1 do
     if CharInSet(Result[I], ['(', ')', '\']) then

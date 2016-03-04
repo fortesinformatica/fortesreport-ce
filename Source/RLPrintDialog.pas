@@ -396,7 +396,7 @@ begin
     Name := 'LabelOptions';
     Parent := GroupBoxPrinter;
     AutoSize := True;
-    Caption := GetLocalizeStr('Opções do filtro:');
+    Caption := 'Opções do filtro:';
   end;
 
   TRLComponentFactory.CreateComponent(TComboBox, Self, ComboBoxPrinterNames);
@@ -450,6 +450,12 @@ begin
     TabOrder := 3;
     TabStop := False;
     OnClick := ButtonPrinterSetupClick;
+    {$IfDef FPC}
+    AutoSize := True;
+    AnchorSideTop.Control := ComboBoxPrinterNames;
+    AnchorSideTop.Side := asrCenter;
+    {$EndIf}
+
   end;
 
   TRLComponentFactory.CreateComponent(TGroupBox, Self, GroupBoxPages);
@@ -457,17 +463,8 @@ begin
   begin
     Name := 'GroupBoxPages';
     Parent := Self;
-    Caption := GetLocalizeStr('Intervalo de páginas');
+    Caption := 'Intervalo de páginas';
     TabOrder := 1;
-    //{$IfDef FPC}Height := 160;{$EndIf}
-  end;
-
-  TRLComponentFactory.CreateComponent(TLabel, Self, LabelToPage);
-  with LabelToPage do
-  begin
-    Name := 'LabelToPage';
-    Parent := GroupBoxPages;
-    Caption := '&até:';
   end;
 
   TRLComponentFactory.CreateComponent(TLabel, Self, LabelPageSelectionHint);
@@ -478,14 +475,6 @@ begin
     AutoSize := False;
     Caption := '';
     WordWrap := True;
-  end;
-
-  TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
-  with LabelFromPage do
-  begin
-    Name := 'LabelFromPage';
-    Parent := GroupBoxPages;
-    Caption := '&de:';
   end;
 
   TRLComponentFactory.CreateComponent(TRadioButton, Self, RadioButtonPagesAll);
@@ -517,6 +506,18 @@ begin
     TabOrder := 4;
   end;
 
+  TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
+  with LabelFromPage do
+  begin
+    Name := 'LabelFromPage';
+    Parent := GroupBoxPages;
+    Caption := '&de:';
+    {$IfDef FPC}
+    AnchorSideTop.Control := RadioButtonPagesInterval;
+    AnchorSideTop.Side := asrCenter;
+    {$EndIf}
+  end;
+
   TRLComponentFactory.CreateComponent(TEdit, Self, EditFromPage);
   with EditFromPage do
   begin
@@ -526,6 +527,22 @@ begin
     TabOrder := 2;
     Text := '1';
     OnChange := EditFromPageChange;
+    {$IfDef FPC}
+    AnchorSideTop.Control := RadioButtonPagesInterval;
+    AnchorSideTop.Side := asrCenter;
+    {$EndIf}
+  end;
+
+  TRLComponentFactory.CreateComponent(TLabel, Self, LabelToPage);
+  with LabelToPage do
+  begin
+    Name := 'LabelToPage';
+    Parent := GroupBoxPages;
+    Caption := '&até:';
+    {$IfDef FPC}
+    AnchorSideTop.Control := RadioButtonPagesInterval;
+    AnchorSideTop.Side := asrCenter;
+    {$EndIf}
   end;
 
   TRLComponentFactory.CreateComponent(TEdit, Self, EditToPage);
@@ -537,6 +554,10 @@ begin
     TabOrder := 3;
     Text := IntToStr(MaxPageNo);
     OnChange := EditFromPageChange;
+    {$IfDef FPC}
+    AnchorSideTop.Control := RadioButtonPagesInterval;
+    AnchorSideTop.Side := asrCenter;
+    {$EndIf}
   end;
 
   TRLComponentFactory.CreateComponent(TEdit, Self, EditPageSelection);
@@ -547,6 +568,10 @@ begin
     Text := '';
     TabOrder := 5;
     OnChange := EditPageSelectionChange;
+    {$IfDef FPC}
+    AnchorSideTop.Control := RadioButtonPagesSelect;
+    AnchorSideTop.Side := asrCenter;
+    {$EndIf}
   end;
 
   TRLComponentFactory.CreateComponent(TGroupBox, Self, GroupBoxCopies);
@@ -563,7 +588,7 @@ begin
   begin
     Name := 'LabelCopies';
     Parent := GroupBoxCopies;
-    Caption := GetLocalizeStr('Número de &cópias:');
+    Caption := 'Número de &cópias:';
   end;
 
   TRLComponentFactory.CreateComponent(TEdit, Self, EditCopies);
@@ -581,7 +606,7 @@ begin
     Name := 'LabelOddPages';
     Parent := GroupBoxCopies;
     Alignment := taRightJustify;
-    Caption := GetLocalizeStr('Pares/'#237'mpares:');
+    Caption := 'Pares/Ímpares:';
     FocusControl := ComboBoxOddPages;
   end;
 
@@ -594,7 +619,7 @@ begin
     ItemHeight := 13;
     TabOrder := 1;
     Items.Text := 'Pares'+sLineBreak+
-                  GetLocalizeStr('Ímpares')+sLineBreak+
+                  'Ímpares'+sLineBreak+
                   'Todas';
   end;
 
@@ -699,19 +724,19 @@ begin
     TableLayout.Spacing := Point(ColSpacing, LineSpacing);
     TableLayout.Margins := Rect(GroupMarginX, GroupMarginY, GroupMarginX, GroupMarginY);
 
-    TableLayout.SetColWidths([55, 360, 120]);
+    TableLayout.SetColWidths([75, 310, 150]);
     TableLayout.Row(0, [LabelPrinterName, ComboBoxPrinterNames, ButtonPrinterSetup]);
     TableLayout.Row(1, [LabelFilterName, ComboBoxFilters, CheckBoxPrintToFile]);
     TableLayout.Row(2, [LabelOptions, ComboBoxOptions]);
 
-    TableLayout.SetColWidths([65, 20, 50, 20, 50]);
+    TableLayout.SetColWidths([85, 20, 40, 20, 40]);
     TableLayout.Cell(0, 0, RadioButtonPagesAll);
     TableLayout.Row(1, [RadioButtonPagesInterval, LabelFromPage, EditFromPage, LabelToPage, EditToPage]);
     TableLayout.Cell(2, 0, RadioButtonPagesSelect);
     TableLayout.Range(2, 1, 2, 4, EditPageSelection);
     TableLayout.Range(3, 0, 4, 4, LabelPageSelectionHint);
 
-    TableLayout.SetColWidths([100, 195]);
+    TableLayout.SetColWidths([130, 165]);
     TableLayout.Row(0, [LabelCopies, EditCopies]);
     TableLayout.Row(1, [LabelOddPages, ComboBoxOddPages]);
 

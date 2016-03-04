@@ -174,7 +174,7 @@ end;
 
 procedure TRLSaveDialog.Init;
 Const
-  GbTop = {$IfDef FPC} 0 {$Else} 10{$EndIf};
+  GbTop = {$IfDef FPC} 0 {$Else} 20{$EndIf};
 begin
   Left := 211;
   Top := 407;
@@ -267,37 +267,13 @@ begin
     Height := 101;
     Caption := ' Páginas no intervalo';
     TabOrder := 2;
-    TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
-    with LabelFromPage do
-    begin
-      Name := 'LabelFromPage';
-      Parent := GroupBoxPages;
-      Left := 68;
-      Top := 35 + GbTop;
-      Width := 15;
-      Height := 13;
-      Caption := '&de:';
-      FocusControl := EditFromPage;
-    end;
-    TRLComponentFactory.CreateComponent(TLabel, Self, LabelToPage);
-    with LabelToPage do
-    begin
-      Name := 'LabelToPage';
-      Parent := GroupBoxPages;
-      Left := 136;
-      Top := 35 + GbTop;
-      Width := 18;
-      Height := 13;
-      Caption := '&até:';
-      FocusControl := EditToPage;
-    end;
     TRLComponentFactory.CreateComponent(TRadioButton, Self, RadioButtonPagesAll);
     with RadioButtonPagesAll do
     begin
       Name := 'RadioButtonPagesAll';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 10 + GbTop;
+      Top := GbTop;
       Width := 113;
       Height := 17;
       Caption := 'Salvar &tudo';
@@ -311,7 +287,7 @@ begin
       Name := 'RadioButtonPagesInterval';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 34 + GbTop;
+      Top := 24 + GbTop;
       Width := 61;
       Height := 17;
       Caption := 'Páginas';
@@ -323,11 +299,30 @@ begin
       Name := 'RadioButtonPagesSelect';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 58 + GbTop;
+      Top := 48 + GbTop;
       Width := 73;
       Height := 17;
       Caption := '&Seleção';
       TabOrder := 2;
+    end;
+    TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
+    with LabelFromPage do
+    begin
+      Name := 'LabelFromPage';
+      Parent := GroupBoxPages;
+      Left := 68;
+      Top := 25 + GbTop;
+      Width := 15;
+      Height := 13;
+      Caption := '&de:';
+      FocusControl := EditFromPage;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := RadioButtonPagesInterval;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 10;
+      {$EndIf}
     end;
     TRLComponentFactory.CreateComponent(TEdit, Self, EditFromPage);
     with EditFromPage do
@@ -335,13 +330,39 @@ begin
       Name := 'EditFromPage';
       Parent := GroupBoxPages;
       Left := 88;
-      Top := 34 + GbTop;
+      Top := 24 + GbTop;
       Width := 41;
       Height := 21;
       TabStop := False;
       TabOrder := 3;
       Text := '1';
       OnChange := EditFromPageChange;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := LabelFromPage;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 5;
+      {$EndIf}
+    end;
+    TRLComponentFactory.CreateComponent(TLabel, Self, LabelToPage);
+    with LabelToPage do
+    begin
+      Name := 'LabelToPage';
+      Parent := GroupBoxPages;
+      Left := 136;
+      Top := 25 + GbTop;
+      Width := 18;
+      Height := 13;
+      Caption := '&até:';
+      FocusControl := EditToPage;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := EditFromPage;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 5;
+      {$EndIf}
     end;
     TRLComponentFactory.CreateComponent(TEdit, Self, EditToPage);
     with EditToPage do
@@ -349,12 +370,19 @@ begin
       Name := 'EditToPage';
       Parent := GroupBoxPages;
       Left := 160;
-      Top := 34 + GbTop;
+      Top := 24 + GbTop;
       Width := 41;
       Height := 21;
       TabStop := False;
       TabOrder := 4;
       OnChange := EditFromPageChange;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := LabelToPage;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 5;
+      {$EndIf}
     end;
   end;
   TRLComponentFactory.CreateComponent(TButton, Self, ButtonSave);
