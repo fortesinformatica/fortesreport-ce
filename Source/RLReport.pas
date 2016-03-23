@@ -8263,7 +8263,7 @@ begin
     begin
       F := GetField;
       if F <> nil then
-        Result := SmartGetFieldDisplayText(F)
+        Result := SmartGetFieldDisplayText(F, FDisplayMask)
       else if FDataFormula <> '' then
         Result := ApplyMask(P.Parse(Self, FDataFormula))
       else
@@ -8395,7 +8395,7 @@ begin
     DatasetRef.Eof and (FieldRef <> nil) then
   begin
     FieldValue := FieldRef.Value;
-    FieldText := VarToStr(SmartGetFieldDisplayText(FieldRef));
+    FieldText := VarToStr(SmartGetFieldDisplayText(FieldRef, FDisplayMask));
   end;
 end;
 

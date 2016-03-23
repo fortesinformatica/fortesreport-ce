@@ -214,7 +214,7 @@ procedure UnregisterTempFile(const AFileName: String);
 procedure ClearTempFiles;
 
 {@proc SmartGetFieldDisplayText - Retorna a verdadeira intenção do texto de exibição do valor do campo. :/}
-function SmartGetFieldDisplayText(Field: TField): String;
+function SmartGetFieldDisplayText(Field: TField; const Mask: string = ''): String;
 
 var
   LogFileName: String = 'rlib.log';
@@ -1091,10 +1091,12 @@ begin
   end;
 end;
 
-function SmartGetFieldDisplayText(Field: TField): String;
+function SmartGetFieldDisplayText(Field: TField; const Mask: string = ''): String;
 begin
   if (Field is TBlobField) and not Assigned(Field.OnGetText) then
     Result := Field.AsString
+  else if (Field is TFloatField) and (Mask <> '') then
+    Result := FormatFloat(Mask, Field.AsFloat)
   else
     Result := Field.DisplayText;
 end;
