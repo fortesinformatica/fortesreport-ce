@@ -222,6 +222,8 @@ type
     LS_RichFormatStr: string;
     {@var LS_PDFFormatStr - Variável de internacionalização para "Documento PDF" :/}
     LS_PDFFormatStr: string;
+    {@var LS_XLSFormatStr97-2013 - Variável de internacionalização para "Planilha Excel 97-2013" :/}
+    LS_XLSFormatStr97_2013: string;
     {@var LS_XLSFormatStr - Variável de internacionalização para "Planilha Excel" :/}
     LS_XLSFormatStr: string;
     {@var LS_AtStr - Variável de internacionalização para "em" :/}
@@ -401,6 +403,7 @@ var
     LS_WebPageStr: 'Web page';
     LS_RichFormatStr: 'RichText Format';
     LS_PDFFormatStr: 'PDF Document';
+    LS_XLSFormatStr97_2013: 'Excel spreadsheet 97-2013';
     LS_XLSFormatStr: 'Excel spreadsheet';
     LS_AtStr: 'at';
     LS_FormStr: 'Form';
@@ -494,6 +497,7 @@ var
     LS_WebPageStr: 'Página da Web';
     LS_RichFormatStr: 'Formato RichText';
     LS_PDFFormatStr: 'Documento PDF';
+    LS_XLSFormatStr97_2013: 'Planilha Excel 97-2013';
     LS_XLSFormatStr: 'Planilha Excel';
     LS_AtStr: 'em';
     LS_FormStr: 'Formulário';
@@ -589,6 +593,7 @@ var
     LS_WebPageStr: 'Page de Web';
     LS_RichFormatStr: 'Formato RichText';
     LS_PDFFormatStr: 'Documento PDF';
+    LS_XLSFormatStr97_2013: 'Excel tableur 97-2013';
     LS_XLSFormatStr: 'Excel tableur';
     LS_AtStr: 'à';
     LS_FormStr: 'Formulaire';
@@ -682,6 +687,7 @@ var
     LS_WebPageStr: 'Página Web';
     LS_RichFormatStr: 'Formato RichText';
     LS_PDFFormatStr: 'Documento PDF';
+    LS_XLSFormatStr97_2013: 'Planilha Excel 97-2013';
     LS_XLSFormatStr: 'Planilha Excel';
     LS_AtStr: 'en';
     LS_FormStr: 'Formulario';
@@ -774,6 +780,7 @@ var
     LS_WebPageStr: 'Pagina di Web';
     LS_RichFormatStr: 'RichText Format';
     LS_PDFFormatStr: 'PDF Document';
+    LS_XLSFormatStr97_2013: 'Eccella foglio di calcolo elettronico 97-2013';
     LS_XLSFormatStr: 'Eccella foglio di calcolo elettronico';
     LS_AtStr: 'a';
     LS_FormStr: 'Forma';
@@ -866,6 +873,7 @@ var
     LS_WebPageStr: 'Webseite';
     LS_RichFormatStr: 'RichText Format';
     LS_PDFFormatStr: 'PDF Document';
+    LS_XLSFormatStr97_2013: 'Zeichnen Sie Tabelle aus 97-2013';
     LS_XLSFormatStr: 'Zeichnen Sie Tabelle aus';
     LS_AtStr: 'bei';
     LS_FormStr: 'Form';

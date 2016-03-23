@@ -282,7 +282,7 @@ begin
   FOptions := [];
   FHorzTabs := TRLXLSXTabs.Create;
   FVertTabs := TRLXLSXTabs.Create;
-  DefaultExt := '.xls';
+  DefaultExt := '.xlsx';
   DisplayName := LocaleStrings.LS_XLSFormatStr;
 end;
 

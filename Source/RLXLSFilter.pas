@@ -2126,7 +2126,7 @@ begin
   FHorzTabs := TRLXLSTabs.Create;
   FVertTabs := TRLXLSTabs.Create;
   DefaultExt := '.xls';
-  DisplayName := GetLocalizeStr(LocaleStrings.LS_XLSFormatStr);
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_XLSFormatStr97_2013);
 ///  FilterStyle := FilterStyle + []; ///fsSetupDialog];
 end;
 
