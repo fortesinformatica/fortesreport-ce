@@ -197,7 +197,7 @@ end;
 
 function TwipsX(X: Integer): Integer;
 begin
-  Result := Round((X / 96) * 1440 * 2.54);
+  Result := Round((X / 96) * 5 * 2.54); ///Round((X / 96) * 1440 * 2.54);
 end;
 
 function TwipsY(Y: Integer): Integer;
