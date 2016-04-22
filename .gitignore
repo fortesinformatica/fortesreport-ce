@@ -54,3 +54,9 @@ __history/
 *.ppu
 *.o
 *.compiled
+
+#arquivos de instalação locais
+log_*.txt
+Binary
+frceInstall.ini
+
