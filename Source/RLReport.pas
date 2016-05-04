@@ -1,38 +1,38 @@
 { Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLReport - ImplementaÁ„o dos principais componentes e tipos do FortesReport. }
+{@unit RLReport - Implementa√ß√£o dos principais componentes e tipos do FortesReport. }
 unit RLReport;
 
 interface
@@ -140,155 +140,155 @@ type
   TRLDataFieldProperty = type String;
 
   {@type TRLDataFieldsProperty - Tipo de propriedade para lista de nomes de campos de um dataset.
-   Os nomes devem ser separados por ponto-e-vÌrgula (";"). :/}
+   Os nomes devem ser separados por ponto-e-v√≠rgula (";"). :/}
   TRLDataFieldsProperty = type String;
 
   {@type TRLRecordRange - Faixa de registros a processar.
    Pode assumir um dos seguintes valores:
-   rrAllRecords - Processa desde o primeiro registro atÈ o fim (default);
+   rrAllRecords - Processa desde o primeiro registro at√© o fim (default);
    rrCurrentOnly - Processa apenas o registro corrente;
-   rrUntilEof - Processa a partir do registro corrente atÈ o fim;
+   rrUntilEof - Processa a partir do registro corrente at√© o fim;
    rrNextN - Processa a partir do registro corrente (inclusive) N registros. Informe N na prop RangeCount.
    @links TRLCustomSkipper.RecordRange, TRLCustomSkipper.RangeCount. :/}
   TRLRecordRange = (rrAllRecords, rrCurrentOnly, rrUntilEof, rrNextN);
 
   // EVENT TYPES
 
-  {@type TRLRecordAction - AÁ„o tomada a cada registro processado.
+  {@type TRLRecordAction - A√ß√£o tomada a cada registro processado.
    Pode assumir um dos seguintes valores:
-   raUseIt - Utilizar o registro e processar o prÛximo;
-   raIgnoreIt - N„o utilizar o registro e processar o prÛximo;
+   raUseIt - Utilizar o registro e processar o pr√≥ximo;
+   raIgnoreIt - N√£o utilizar o registro e processar o pr√≥ximo;
    raUseAndRetain - Utilizar o registro mais de uma vez;
-   raBlankAndRetain - Imprimir band em branco e utiliz· o registro mais uma vez.
+   raBlankAndRetain - Imprimir band em branco e utiliz√° o registro mais uma vez.
    @links TRLCustomSkipper.DataFirst, TRLCustomSkipper.DataNext. :/}
   TRLRecordAction = (raUseIt, raIgnoreIt, raUseAndRetain, raBlankAndRetain);
 
-  {@type TRLAfterPrintEvent - ApÛs a impress„o de um controle.
-   Implemente um evento TRLAfterPrintEvent para tomar atitudes logo apÛs a impress„o
+  {@type TRLAfterPrintEvent - Ap√≥s a impress√£o de um controle.
+   Implemente um evento TRLAfterPrintEvent para tomar atitudes logo ap√≥s a impress√£o
    de um controle.
    @links TRLBeforePrintEvent, TRLBeforeTextEvent. :/}
   TRLAfterPrintEvent = procedure(Sender: TObject) of object;
 
-  {@type TRLBeforePrintEvent - Antes da impress„o de um controle.
-   Implemente um evento TRLBeforePrintEvent para decidir se o controle ser· impresso,
-   atravÈs do par‚metro PrintIt, ou para alterar as suas caracterÌsticas, como por
-   exemplo: dimensıes, cor, bordas etc.
+  {@type TRLBeforePrintEvent - Antes da impress√£o de um controle.
+   Implemente um evento TRLBeforePrintEvent para decidir se o controle ser√° impresso,
+   atrav√©s do par√¢metro PrintIt, ou para alterar as suas caracter√≠sticas, como por
+   exemplo: dimens√µes, cor, bordas etc.
    @links TRLAfterPrintEvent, TRLBeforeTextEvent. :/}
   TRLBeforePrintEvent = procedure(Sender: TObject; var PrintIt: Boolean) of object;
 
-  {@type TRLBeforeTextEvent - Antes da impress„o de uma caixa de texto.
-   Implemente um evento TRLBeforeTextEvent para decidir se o controle ser· impresso,
-   atravÈs do par‚metro PrintIt, para alterar o texto a imprimir ou para alterar as
-   suas caracterÌsticas, como por exemplo: dimensıes, cor, bordas etc.
-   Nota: Este evento aparecer· como o nome BeforePrint nas caixas de texto.
+  {@type TRLBeforeTextEvent - Antes da impress√£o de uma caixa de texto.
+   Implemente um evento TRLBeforeTextEvent para decidir se o controle ser√° impresso,
+   atrav√©s do par√¢metro PrintIt, para alterar o texto a imprimir ou para alterar as
+   suas caracter√≠sticas, como por exemplo: dimens√µes, cor, bordas etc.
+   Nota: Este evento aparecer√° como o nome BeforePrint nas caixas de texto.
    @links TRLAfterPrintEvent, TRLBeforePrintEvent, TRLCustomLabel. :/}
   TRLBeforeTextEvent = procedure(Sender: TObject; var Text: string;
     var PrintIt: Boolean) of object;
 
-  {@type TRLOnComputeEvent - Ao computar um valor durante iteraÁıes para estatÌstica dos acumuladores.
-   Altere o par‚metro Value e/ou Text para modificar o valor processado pelos acumuladores,
-   ou altere o par‚metro ComputeIt para indicar se o valor deve ser computado ou ignorado.
+  {@type TRLOnComputeEvent - Ao computar um valor durante itera√ß√µes para estat√≠stica dos acumuladores.
+   Altere o par√¢metro Value e/ou Text para modificar o valor processado pelos acumuladores,
+   ou altere o par√¢metro ComputeIt para indicar se o valor deve ser computado ou ignorado.
    @links TRLDBResult. :/}
   TRLOnComputeEvent = procedure(Sender: TObject; var Value: Variant;
     var Text: string; var ComputeIt: Boolean) of object;
 
-  {@type TRLOnDetailComputeEvent - Ao computar uma band detail durante iteraÁıes para estatÌstica dos acumuladores.
-   Altere o par‚metro ComputeIt para indicar se os valores correspondentes ‡ band devem ser computados ou ignorados.
+  {@type TRLOnDetailComputeEvent - Ao computar uma band detail durante itera√ß√µes para estat√≠stica dos acumuladores.
+   Altere o par√¢metro ComputeIt para indicar se os valores correspondentes √† band devem ser computados ou ignorados.
    @links TRLDBResult. :/}
   TRLOnDetailComputeEvent = procedure(Sender: TObject; var ComputeIt: Boolean) of object;
 
-  {@type TRLOnGetBreakEvent - Nas verificaÁıes de quebra de grupo de registros n„o autom·tica.
-   Altere o par‚metro BreakIt para indicar a quebra de sequÍncia de registros num grupo.
+  {@type TRLOnGetBreakEvent - Nas verifica√ß√µes de quebra de grupo de registros n√£o autom√°tica.
+   Altere o par√¢metro BreakIt para indicar a quebra de sequ√™ncia de registros num grupo.
    @links TRLGroup. :/}
   TRLOnGetBreakEvent = procedure(Sender: TObject; var BreakIt: Boolean) of object;
 
   {@type TRLOnDataCountEvent - Ao calcular a quantidade de registros.
    Implemente este evento para informar ao gerador a quantidade de registros a serem processados.
-   Isto ajuda a projetar as expectativas de tÈrmino, e tambÈm elimina a consulta ‡ prop RecordCount
+   Isto ajuda a projetar as expectativas de t√©rmino, e tamb√©m elimina a consulta √† prop RecordCount
    do DataSet que estiver associado pela prop DataSource.
    @links TRLCustomSkipper. :/}
   TRLOnDataCountEvent = procedure(Sender: TObject; var DataCount: Integer) of object;
 
-  {@type TRLOnNeedDataEvent - AlimentaÁ„o de registros sem dataset.
+  {@type TRLOnNeedDataEvent - Alimenta√ß√£o de registros sem dataset.
    Implemente este evento para fornecer registros de dados a um RLReport ou RLSubDetail.
-   Indique o final dos registros alterando o par‚metro MoreData para False.
+   Indique o final dos registros alterando o par√¢metro MoreData para False.
    @links TRLCustomSkipper. :/}
   TRLOnNeedDataEvent = procedure(Sender: TObject; var MoreData: Boolean) of object;
 
   {@type TRLOnDataRecordEvent - Ao processar um registro.
-   Este evento È disparado todas as vezes que um registro È processado, quer tenha sido
+   Este evento √© disparado todas as vezes que um registro √© processado, quer tenha sido
    obtido de um DataSet ou fornecido pelo evento OnNeedData.
-   O par‚metro RecNo representa o n˙mero sequencial do registro corrente.
-   O par‚metro CopyNo È o n˙mero de cÛpia do registro, caso ele esteja sendo repetido.
-   O par‚metro Eof indica ou atribui o fim dos dados. … semelhante ao MoreData do evento OnNeedData.
-   O par‚metro RecordAction indica a prÛxima aÁ„o a ser tomada com o registro.
-   Obs.: Um registro pode ser repetido se a aÁ„o do ˙ltimo evento foi raUseAndRetain e, neste caso, CopyNo ser· maior que 1.
+   O par√¢metro RecNo representa o n√∫mero sequencial do registro corrente.
+   O par√¢metro CopyNo √© o n√∫mero de c√≥pia do registro, caso ele esteja sendo repetido.
+   O par√¢metro Eof indica ou atribui o fim dos dados. √â semelhante ao MoreData do evento OnNeedData.
+   O par√¢metro RecordAction indica a pr√≥xima a√ß√£o a ser tomada com o registro.
+   Obs.: Um registro pode ser repetido se a a√ß√£o do √∫ltimo evento foi raUseAndRetain e, neste caso, CopyNo ser√° maior que 1.
    @links TRLCustomSkipper. :/}
   TRLOnDataRecordEvent = procedure(Sender: TObject; RecNo: Integer;
     CopyNo: Integer; var Eof: Boolean; var RecordAction: TRLRecordAction) of object;
 
   {@type TRLOnDrawEvent - Na hora de desenhar o fundo do controle.
-   Implemente este evento para desenhar aleatÛriamente no fundo de uma controle.
-   Surface representa a superfÌcie de desenho (Canvas) do controle em quest„o.
-   Rect È o ret‚ngulo da ·rea cliente do controle, aonde È possÌvel desenhar.
+   Implemente este evento para desenhar aleat√≥riamente no fundo de uma controle.
+   Surface representa a superf√≠cie de desenho (Canvas) do controle em quest√£o.
+   Rect √© o ret√¢ngulo da √°rea cliente do controle, aonde √© poss√≠vel desenhar.
    @links TRLCustomSite. :/}
   TRLOnDrawEvent = procedure(Sender: TObject; Surface: TRLGraphicSurface;
     Rect: TRect) of object;
 
-  {@type TRLPrepareErrorEvent - Ao ocorrer qualquer erro no mÈtodo Prepare. :/}
+  {@type TRLPrepareErrorEvent - Ao ocorrer qualquer erro no m√©todo Prepare. :/}
   TRLPrepareErrorEvent = procedure(Sender: TObject; Error: Exception) of object;
 
   // ENUMERATED TYPES
 
   {@type TRLBandType - Tipo de banda.
-   O tipo indica o comportamento que a band dever· assumir durante a listagem.
+   O tipo indica o comportamento que a band dever√° assumir durante a listagem.
    Pode assumir um dos seguintes valores:
-   btHeader - CabeÁalho. Imprime uma vez na primeira p·gina e sempre que houver quebra de p·gina ou de sequÍncia
-   de dados. ⁄til para exibir n˙mero de p·gina e nome do relatÛrio ou informaÁıes sobre a sequÍncia de dados atual;
-   btTitle - TÌtulo. Imprime apenas na primeira p·gina ou no Ìnicio de uma sequÍncia de dados abaixo do header. ⁄til
-   para mostrar descriÁ„o prÈvia do relatÛrio;
-   btColumnHeader - CabeÁalho de colunas. Mesmo comportamento do header exceto por seu posicionamento apÛs o title;
+   btHeader - Cabe√ßalho. Imprime uma vez na primeira p√°gina e sempre que houver quebra de p√°gina ou de sequ√™ncia
+   de dados. √ötil para exibir n√∫mero de p√°gina e nome do relat√≥rio ou informa√ß√µes sobre a sequ√™ncia de dados atual;
+   btTitle - T√≠tulo. Imprime apenas na primeira p√°gina ou no √≠nicio de uma sequ√™ncia de dados abaixo do header. √ötil
+   para mostrar descri√ß√£o pr√©via do relat√≥rio;
+   btColumnHeader - Cabe√ßalho de colunas. Mesmo comportamento do header exceto por seu posicionamento ap√≥s o title;
    btDetail - Detalhe. Imprime uma vez para cada registro de dados;
-   btColumnFooter - RodapÈ de colunas. Mesmo comportamento do rodapÈ exceto por seu posicionamento antes do summary;
-   btSummary - Sum·rio. Imprime ao final do relatÛrio ou da sequÍncia de dados antes do footer. ⁄til para mostrar
-   resumos, somatÛrios e informaÁıes estatÌsticas;
-   btFooter - RodapÈ. Imprime uma vez na ˙ltima p·gina e sempre apÛs quebra de p·gina ou de sequÍncia de dados.
+   btColumnFooter - Rodap√© de colunas. Mesmo comportamento do rodap√© exceto por seu posicionamento antes do summary;
+   btSummary - Sum√°rio. Imprime ao final do relat√≥rio ou da sequ√™ncia de dados antes do footer. √ötil para mostrar
+   resumos, somat√≥rios e informa√ß√µes estat√≠sticas;
+   btFooter - Rodap√©. Imprime uma vez na √∫ltima p√°gina e sempre ap√≥s quebra de p√°gina ou de sequ√™ncia de dados.
    @links TRLBand. :/}
   TRLBandType = (btHeader, btTitle, btColumnHeader, btDetail,
     btColumnFooter, btSummary, btFooter);
 
-  {@type TRLCompletionType - Tipo de preenchimento de p·gina.
-   Indica como a p·gina deve ser preenchida apÛs o ˙ltimo registro ser impresso.
+  {@type TRLCompletionType - Tipo de preenchimento de p√°gina.
+   Indica como a p√°gina deve ser preenchida ap√≥s o √∫ltimo registro ser impresso.
    Pode assumir um dos seguintes valores:
-   ctNone - N„o completa p·gina;
-   ctFullPage - Completa com bands em branco atÈ o fim da p·gina;
-   ctMaxBands - Completa com bands em branco atÈ o n˙mero m·ximo de bands do ParentPager;
-   ctMinBands - Completa com bands em branco atÈ o n˙mero mÌnimo de bands do ParentPager.
+   ctNone - N√£o completa p√°gina;
+   ctFullPage - Completa com bands em branco at√© o fim da p√°gina;
+   ctMaxBands - Completa com bands em branco at√© o n√∫mero m√°ximo de bands do ParentPager;
+   ctMinBands - Completa com bands em branco at√© o n√∫mero m√≠nimo de bands do ParentPager.
    @links TRLBand, MaxBands. :/}
   TRLCompletionType = (ctNone, ctFullPage, ctMaxBands, ctMinBands);
 
   {@type TRLImageArrange - Tipo de arranjo de imagem.
-   Indica como uma imagem deve ser distribuÌda no fundo do controle.
+   Indica como uma imagem deve ser distribu√≠da no fundo do controle.
    Pode assumir um dos seguintes valores:
    baAligned - A imagem deve ser alinhada no fundo de acordo com a prop Align;
-   baSidebySide - A imagem deve ser distribuÌda pelo fundo horizontalmente;
+   baSidebySide - A imagem deve ser distribu√≠da pelo fundo horizontalmente;
    baCenter - A imagem deve ser centralizada;
-   baDistributed - A imagem deve ser distribuÌda como numa parede de tijolos.
+   baDistributed - A imagem deve ser distribu√≠da como numa parede de tijolos.
    @links TRLBackground. :/}
   TRLImageArrange = (baAligned, baSidebySide, baCenter, baDistributed);
 
-  {@type TRLReportState - Estado atual do relatÛrio.
-   Indica como est· o relatÛrio em relaÁ„o ‡ sua preparaÁ„o.
+  {@type TRLReportState - Estado atual do relat√≥rio.
+   Indica como est√° o relat√≥rio em rela√ß√£o √† sua prepara√ß√£o.
    Pode assumir um dos seguintes valores:
-   rsAbout - Ainda n„o foi preparado;
-   rsWriting - Est· sendo preparado;
-   rsClosing - N„o h· mais p·ginas a preparar e vai finalizar;
-   rsReady - Foi preparado e est· pronto para imprimir.
+   rsAbout - Ainda n√£o foi preparado;
+   rsWriting - Est√° sendo preparado;
+   rsClosing - N√£o h√° mais p√°ginas a preparar e vai finalizar;
+   rsReady - Foi preparado e est√° pronto para imprimir.
    @links TRLReport. :/}
   TRLReportState = (rsAbout, rsWriting, rsClosing, rsReady);
 
-  {@type TRLDegradeDirection - DireÁ„o do efeito degradÍ.
-  Indica a direÁ„o do efeito de transiÁ„o de cores (degradÍ) no fundo do controle.
+  {@type TRLDegradeDirection - Dire√ß√£o do efeito degrad√™.
+  Indica a dire√ß√£o do efeito de transi√ß√£o de cores (degrad√™) no fundo do controle.
   Pode assumir um dos seguintes valores:
   ddNone - Nenhuma efeito;
   ddHorizontal - Efeito horizontal da esquerda para a direita, de Color para OppositeColor;
@@ -296,74 +296,74 @@ type
    @links TRLDegradeEffect. :/}
   TRLDegradeDirection = (ddNone, ddHorizontal, ddVertical);
 
-  {@type TRLInfoType - Tipo de informaÁ„o de sistema.
-   Indica que informaÁıes de sistema devem ser exibidas pelo controle TRLSystemInfo.
+  {@type TRLInfoType - Tipo de informa√ß√£o de sistema.
+   Indica que informa√ß√µes de sistema devem ser exibidas pelo controle TRLSystemInfo.
    Pode assumir um dos seguintes valores:
-   itCarbonCopy - N˙mero da cÛpia de imagem da band;
-   itDate - Data da impress„o (ver prop TRLReport.ReportDateTime);
-   itDetailCount - Quantidade de detalhes j· impressos;
-   itFullDate - Data e hora da impress„o no formato LongDateFormat;
-   itHour - Hora da impress„o (ver prop TRLReport.ReportDateTime);
-   itJunction - Flag de junÁ„o de p·ginas. Indica se o relatÛrio continua nas prÛximas p·ginas;
-   itLastPageNumber - N˙mero da ˙ltima p·gina do relatÛrio;
-   itMend - Flag de junÁ„o de p·ginas. Indica se a p·gina atual È a continuaÁ„o de p·ginas anteriores;
-   itNow - Data e hora da impress„o no formato ShotDateFormat;
-   itPageNumber - N˙mero da p·gina atual;
-   itPagePreview - N˙mero da p·gina atual e total de p·ginas do relatÛrio;
-   itTitle - TÌtulo do relatÛrio obtido da prop Title do TRLReport;
-   itRecNo - N˙mero sequencial do registro corrente;
-   itCopyNo - N˙mero sequencial da cÛpia do registro.
+   itCarbonCopy - N√∫mero da c√≥pia de imagem da band;
+   itDate - Data da impress√£o (ver prop TRLReport.ReportDateTime);
+   itDetailCount - Quantidade de detalhes j√° impressos;
+   itFullDate - Data e hora da impress√£o no formato LongDateFormat;
+   itHour - Hora da impress√£o (ver prop TRLReport.ReportDateTime);
+   itJunction - Flag de jun√ß√£o de p√°ginas. Indica se o relat√≥rio continua nas pr√≥ximas p√°ginas;
+   itLastPageNumber - N√∫mero da √∫ltima p√°gina do relat√≥rio;
+   itMend - Flag de jun√ß√£o de p√°ginas. Indica se a p√°gina atual √© a continua√ß√£o de p√°ginas anteriores;
+   itNow - Data e hora da impress√£o no formato ShotDateFormat;
+   itPageNumber - N√∫mero da p√°gina atual;
+   itPagePreview - N√∫mero da p√°gina atual e total de p√°ginas do relat√≥rio;
+   itTitle - T√≠tulo do relat√≥rio obtido da prop Title do TRLReport;
+   itRecNo - N√∫mero sequencial do registro corrente;
+   itCopyNo - N√∫mero sequencial da c√≥pia do registro.
    @links TRLSystemInfo, TRLReport, TRLReport.ReportDateTime, TRLCustomBand.CarbonCopies. :}
   TRLInfoType = (itCarbonCopy, itDate, itDetailCount, itFullDate,
     itHour, itJunction, itLastPageNumber, itMend, itNow,
     itPageNumber, itPagePreview, itTitle, itRecNo, itCopyNo);
   {/@type}
 
-  {@type TRLResultInfo - Tipo de informaÁ„o estatÌstica.
-   Indica que informaÁıes estatÌsticas devem ser exibidas pelo controle TRLDBResult.
+  {@type TRLResultInfo - Tipo de informa√ß√£o estat√≠stica.
+   Indica que informa√ß√µes estat√≠sticas devem ser exibidas pelo controle TRLDBResult.
    Pode assumir um dos seguintes valores:
-   riAverage - MÈdia aritmÈtica dos valores impressos;
-   riCount - N˙mero de ocorrÍncias dos valores impressos; 
+   riAverage - M√©dia aritm√©tica dos valores impressos;
+   riCount - N√∫mero de ocorr√™ncias dos valores impressos; 
    riFirst - Primeiro valor impresso;
-   riLast - ⁄ltimo valor impresso;
+   riLast - √öltimo valor impresso;
    riMax - Maior dos valores impressos;
    riMin - Menor dos valores impressos;
-   riSum - Som·tÛrio de todos os valores impressos;
+   riSum - Som√°t√≥rio de todos os valores impressos;
    riFirstText - Primeiro texto impresso;
-   riLastText - ⁄ltimo texto impresso;
-   riSimple - ⁄til para a resoluÁ„o de fÛrmulas com funÁıes built-in. 
+   riLastText - √öltimo texto impresso;
+   riSimple - √ötil para a resolu√ß√£o de f√≥rmulas com fun√ß√µes built-in. 
    @links TRLDBResult. :/}
   TRLResultInfo = (riAverage, riCount, riFirst, riLast, riMax, riMin,
     riSum, riFirstText, riLastText, riSimple);
 
   {@type TRLControlAlign - Alinhamento melhorado.
-   Especifica como um controle deve ser posicionado em relaÁ„o ao controle pai.
+   Especifica como um controle deve ser posicionado em rela√ß√£o ao controle pai.
    Pode assumir um dos seguintes valores:
-   faNone - Nenhum alinhamento. Nenhuma alteraÁ„o autom·tica no posicionamento ou dimens„o do controle;
-   faLeft - Alinhado ‡ esquerda. A largura È mantida e a altura se ajusta ao m·ximo disponÌvel no controle pai;
-   faTop - Alinhado acima. A altura È mantida e a largura se ajusta ao m·ximo disponÌvel no controle pai;
-   faRight - Alinhado ‡ direita. A largura È mantida e a altura se ajusta ao m·ximo disponÌvel no controle pai;
-   faBottom - Alinhado abaixo. A altura È mantida e a largura se ajusta ao m·ximo disponÌvel no controle pai;
-   faLeftMost - Alinhado ‡ esquerda com prioridade. Mesmo que faLeft com prioridade sobre os alinhamentos verticais;
-   faRightMost - Alinhado ‡ direita com prioridade. Mesmo que faRight com prioridade sobre os alinhamentos verticais;
-   faClient - Alinhado ‡ ·rea cliente. O controle se ajusta ‡ ·rea que sobrou no controle pai;
-   faLeftTop - Alinhado ‡ esquerda e acima. O controle mantÈm suas dimensıes e suas coordenadas s„o (0,0);
-   faRightTop - Alinhado ‡ direita e acima. O controle mantÈm suas dimensıes e suas coordenadas s„o (-Width,0);
-   faLeftBottom - Alinhado ‡ esquerda e abaixo. O controle mantÈm suas dimensıes e suas coordenadas s„o (0,-Height);
-   faRightBottom - Alinhado ‡ direita e abaixo. O controle mantÈm suas dimensıes e suas coordenadas s„o (-Width,-Height);
-   faCenter - Alinhado ao centro. O controle mantÈm suas dimensıes;
-   faCenterLeft - Alinhado ao centro e ‡ esquerda. O controle mantÈm suas dimensıes;
-   faCenterTop - Alinhado ao centro e acima. O controle mantÈm suas dimensıes;
-   faCenterRight - Alinhado ao centro e ‡ direita. O controle mantÈm suas dimensıes;
-   faCenterBottom - Alinhado ao centro e abaixo. O controle mantÈm suas dimensıes;
-   faClientLeft - Alinhado ao centro e ‡ esquerda. O controle mantÈm suas dimensıes;
-   faClientTop - Alinhado ao centro e acima. O controle mantÈm suas dimensıes;
-   faClientRight - Alinhado ao centro e ‡ esquerda. O controle mantÈm suas dimensıes;
-   faClientBottom - Alinhado ao centro e abaixo. O controle mantÈm suas dimensıes;
-   faHeight - Alinhado pela altura. O controle mantÈm a sua largura e expande a sua altura de modo a se acomodar no controle pai;
-   faWidth - Alinhado pela largura. O controle mantÈm a sua altura e expande a sua largura de modo a se acomodar no controle pai;
-   faLeftOnly - Alinhado ‡ esquerda somente. O controle tem sua coordenada esquerda igual a 0;
-   faRightOnly - Alinhado ‡ direita somente. O controle tem sua coordenada direita igual a 0;
+   faNone - Nenhum alinhamento. Nenhuma altera√ß√£o autom√°tica no posicionamento ou dimens√£o do controle;
+   faLeft - Alinhado √† esquerda. A largura √© mantida e a altura se ajusta ao m√°ximo dispon√≠vel no controle pai;
+   faTop - Alinhado acima. A altura √© mantida e a largura se ajusta ao m√°ximo dispon√≠vel no controle pai;
+   faRight - Alinhado √† direita. A largura √© mantida e a altura se ajusta ao m√°ximo dispon√≠vel no controle pai;
+   faBottom - Alinhado abaixo. A altura √© mantida e a largura se ajusta ao m√°ximo dispon√≠vel no controle pai;
+   faLeftMost - Alinhado √† esquerda com prioridade. Mesmo que faLeft com prioridade sobre os alinhamentos verticais;
+   faRightMost - Alinhado √† direita com prioridade. Mesmo que faRight com prioridade sobre os alinhamentos verticais;
+   faClient - Alinhado √† √°rea cliente. O controle se ajusta √† √°rea que sobrou no controle pai;
+   faLeftTop - Alinhado √† esquerda e acima. O controle mant√©m suas dimens√µes e suas coordenadas s√£o (0,0);
+   faRightTop - Alinhado √† direita e acima. O controle mant√©m suas dimens√µes e suas coordenadas s√£o (-Width,0);
+   faLeftBottom - Alinhado √† esquerda e abaixo. O controle mant√©m suas dimens√µes e suas coordenadas s√£o (0,-Height);
+   faRightBottom - Alinhado √† direita e abaixo. O controle mant√©m suas dimens√µes e suas coordenadas s√£o (-Width,-Height);
+   faCenter - Alinhado ao centro. O controle mant√©m suas dimens√µes;
+   faCenterLeft - Alinhado ao centro e √† esquerda. O controle mant√©m suas dimens√µes;
+   faCenterTop - Alinhado ao centro e acima. O controle mant√©m suas dimens√µes;
+   faCenterRight - Alinhado ao centro e √† direita. O controle mant√©m suas dimens√µes;
+   faCenterBottom - Alinhado ao centro e abaixo. O controle mant√©m suas dimens√µes;
+   faClientLeft - Alinhado ao centro e √† esquerda. O controle mant√©m suas dimens√µes;
+   faClientTop - Alinhado ao centro e acima. O controle mant√©m suas dimens√µes;
+   faClientRight - Alinhado ao centro e √† esquerda. O controle mant√©m suas dimens√µes;
+   faClientBottom - Alinhado ao centro e abaixo. O controle mant√©m suas dimens√µes;
+   faHeight - Alinhado pela altura. O controle mant√©m a sua largura e expande a sua altura de modo a se acomodar no controle pai;
+   faWidth - Alinhado pela largura. O controle mant√©m a sua altura e expande a sua largura de modo a se acomodar no controle pai;
+   faLeftOnly - Alinhado √† esquerda somente. O controle tem sua coordenada esquerda igual a 0;
+   faRightOnly - Alinhado √† direita somente. O controle tem sua coordenada direita igual a 0;
    faTopOnly - Alinhado acima somente. O controle tem sua coordenada de topo igual a 0;
    faBottomOnly - Alinhado abaixo somente. O controle tem sua coordenada abaixo igual a -Height.
    @links TRLCustomControl. :}
@@ -379,84 +379,84 @@ type
   {@type TRLTextAlignment - Alinhamento melhorado de texto dentro do controle.
    Especifica como o texto deve ser posicionado dentro de um controle de texto.
    Pode assumir um dos seguintes valores:
-   taLeftJustify - Alinhado ‡ esquerda (padr„o);
-   taRightJustify - Alinhado ‡ direita;
+   taLeftJustify - Alinhado √† esquerda (padr√£o);
+   taRightJustify - Alinhado √† direita;
    taCenter - Alinhado ao centro do controle;
-   taJustify - EspaÁos s„o inseridos entre as palavras de modo que o texto ocupe toda a largura do controle.
+   taJustify - Espa√ßos s√£o inseridos entre as palavras de modo que o texto ocupe toda a largura do controle.
    @links TRLCustomLabel, TRLCustomMemo. :/}
   TRLTextAlignment = (taLeftJustify, taRightJustify, taCenter, taJustify);
 
   {@type TRLTextLayout - Alinhamento vertical melhorado de texto dentro do controle.
    Especifica como o texto deve ser posicionado dentro de um controle de texto na vertical.
    Pode assumir um dos seguintes valores:
-   tlTop - Alinhado ao topo (padr„o);
+   tlTop - Alinhado ao topo (padr√£o);
    tlCenter - Alinhado ao centro do controle;
    tlBottom - Alinhado ao fundo;
-   tlJustify - Linhas em branco s„o inseridas entre as linhas de texto de modo que o texto ocupe toda a largura do controle.
+   tlJustify - Linhas em branco s√£o inseridas entre as linhas de texto de modo que o texto ocupe toda a largura do controle.
    @links TRLCustomLabel, TRLCustomMemo. :/}
   TRLTextLayout = (tlTop, tlCenter, tlBottom, tlJustify);
 
-  {@type TRLPageBreaking - Quebra de p·gina forÁada.
-   Especifica se e como a band ou Pager ir· forÁar a quebra de p·gina.
+  {@type TRLPageBreaking - Quebra de p√°gina for√ßada.
+   Especifica se e como a band ou Pager ir√° for√ßar a quebra de p√°gina.
    Pode assumir um dos seguintes valores:
-   pbNone - N„o deve haver quebra de p·gina forÁada;
-   pbBeforePrint - A quebra de p·gina ser· verificada sempre antes da impress„o do controle;
-   pbAfterPrint - A quebra de p·gina ser· verificada sempre apÛs da impress„o do controle.
+   pbNone - N√£o deve haver quebra de p√°gina for√ßada;
+   pbBeforePrint - A quebra de p√°gina ser√° verificada sempre antes da impress√£o do controle;
+   pbAfterPrint - A quebra de p√°gina ser√° verificada sempre ap√≥s da impress√£o do controle.
    @links PageBreaking. :/}
   TRLPageBreaking = (pbNone, pbBeforePrint, pbAfterPrint);
 
-  {@type TRLPrintBandResults - Resultado da impress„o de bands.
+  {@type TRLPrintBandResults - Resultado da impress√£o de bands.
    Pode assumir um dos seguintes valores:
    brNoBands - Nenhuma band foi impressa;
    brPrinted - Ao menos uma band foi impressa;
-   brStackExit - SaÌda forÁada por salto de p·gina.
+   brStackExit - Sa√≠da for√ßada por salto de p√°gina.
    @links TRLCustomPager.PrintBands. :/}
   TRLPrintBandResults = (brNoBands, brPrinted, brStackExit);
 
   {@type TRLHoldStyle - Estilo de ancoragem relativa.
    Pode assumir um dos seguintes valores:
-   hsAsColumn - O controle segue a posiÁ„o horizontal do Holder e copia a sua largura, desde que a propriedade AutoSize seja False;
-   hsHorizontally - O controle apenas segue a posiÁ„o horizontal do Holder;
-   hsVertically - O controle apenas segue a posiÁ„o vertical do Holder;
-   hsRelatively - O controle mantÈm a posiÁ„o horizontal e vertical em relaÁ„o ao Holder.
+   hsAsColumn - O controle segue a posi√ß√£o horizontal do Holder e copia a sua largura, desde que a propriedade AutoSize seja False;
+   hsHorizontally - O controle apenas segue a posi√ß√£o horizontal do Holder;
+   hsVertically - O controle apenas segue a posi√ß√£o vertical do Holder;
+   hsRelatively - O controle mant√©m a posi√ß√£o horizontal e vertical em rela√ß√£o ao Holder.
    @links TRLCustomControl.Holder, TRLCustomControl.SecondHolder. :/}
   TRLHoldStyle = (hsAsColumn, hsHorizontally, hsVertically, hsRelatively,
     hsCopyWidth, hsCopyHeight, hsCopySize);
 
-  {@type TRLPrintQuality - Qualidade de impress„o.
-   Configura os elementos gr·ficos que devem ser impressos.
+  {@type TRLPrintQuality - Qualidade de impress√£o.
+   Configura os elementos gr√°ficos que devem ser impressos.
    Pode assumir um dos seguintes valores:
-   pqFullFeature - Todos os recursos gr·ficos ser„o preservados;
-   pqFixedOnly - Imprimir apenas bordas fixadas. Dispensa caracterÌsticas gr·ficas especiais.
+   pqFullFeature - Todos os recursos gr√°ficos ser√£o preservados;
+   pqFixedOnly - Imprimir apenas bordas fixadas. Dispensa caracter√≠sticas gr√°ficas especiais.
    @links TRLReport. :/}
   TRLPrintQuality = (pqFullFeature, pqFixedOnly);
 
-  {@type TRLControlAnchorsType - ¬ncoras melhoradas.
-   Indica os lados aos quais o controle ser· ancorado.
+  {@type TRLControlAnchorsType - √Çncoras melhoradas.
+   Indica os lados aos quais o controle ser√° ancorado.
    Pode assumir um dos seguintes valores:
-   fkLeft - ¿ esquerda;
+   fkLeft - √Ä esquerda;
    fkTop - Ao topo;
-   fkRight - ¿ direita;
-   fkBottom - ¿ base.
+   fkRight - √Ä direita;
+   fkBottom - √Ä base.
    @links TRLCustomControl. :/}
   TRLControlAnchorsType = (fkLeft, fkTop, fkRight, fkBottom);
 
   {@type TRLControlStateType - Status de um controle FortesReport.
-   Indica o estado atual do controle quanto ‡ impress„o, alinhamento e dimensıes.
+   Indica o estado atual do controle quanto √† impress√£o, alinhamento e dimens√µes.
    Pode assumir um dos seguintes valores:
    stPrinting - Sendo impresso;
    stAligningControls - Alinhando seus controles internos;
-   stAdjustingHoldeds - Ajustando os controles dos quais È o Holder;
-   stAdjustingBounds - Ajustando as suas dimensıes;
-   stExpandingParent - Ajustando o controle pai que È AutoSize e AutoExpand;
-   stRestoringBounds - Restaurando suas dimensıes apÛs a sua impress„o;
-   stMeasuringHeights - Antecipando a sua prÛpria mediÁ„o.
+   stAdjustingHoldeds - Ajustando os controles dos quais √© o Holder;
+   stAdjustingBounds - Ajustando as suas dimens√µes;
+   stExpandingParent - Ajustando o controle pai que √© AutoSize e AutoExpand;
+   stRestoringBounds - Restaurando suas dimens√µes ap√≥s a sua impress√£o;
+   stMeasuringHeights - Antecipando a sua pr√≥pria medi√ß√£o.
    @links TRLCustomControl.ControlState, TRLCustomControl.Holder, TRLCustomControl.AutoSize, TRLCustomControl.AutoExpand. :/}
   TRLControlStateType = (stPrinting, stAligningControls, stAdjustingHoldeds,
     stAdjustingBounds, stExpandingParent, stRestoringBounds, stMeasuringHeights);
 
-  {@type TRLAutoSizeDirType - DireÁ„o do redimensionamento autom·tico.
-   Determina a direÁ„o do redimensionamento autom·tico.
+  {@type TRLAutoSizeDirType - Dire√ß√£o do redimensionamento autom√°tico.
+   Determina a dire√ß√£o do redimensionamento autom√°tico.
    Pode assumir um dos seguintes valores:
    asWidthDir - Redimensionamento pela largura;
    asHeightDir - Redimensionamento pela altura.
@@ -470,26 +470,26 @@ type
    @links TRLCustomControl.AutoSize, TRLCustomControl.AutoExpand. :/}
   TRLControlBehaviorType = (beSiteExpander);
 
-  {@type TRLFooterMeasuring - Momento de mediÁ„o.
-   Determina em que momento deve ser efetuada uma antecipaÁ„o na mediÁ„o de bands como btFooter ou btSummary.
+  {@type TRLFooterMeasuring - Momento de medi√ß√£o.
+   Determina em que momento deve ser efetuada uma antecipa√ß√£o na medi√ß√£o de bands como btFooter ou btSummary.
    Pode assumir um dos seguintes valores:
-   fmNone - Nenhuma antecipaÁ„o È feita;
-   fmAfterHeader - Sempre apÛs a impress„o dos cabeÁalhos;
+   fmNone - Nenhuma antecipa√ß√£o √© feita;
+   fmAfterHeader - Sempre ap√≥s a impress√£o dos cabe√ßalhos;
    fmBeforeDetail - Antes de cada band de detalhe.
    @links TRLCustomBand.BandType. :/}
   TRLFooterMeasuring = (fmNone, fmAfterHeader, fmBeforeDetail);
 
   // SETS
 
-  {@type TRLControlAnchors - Conjunto de ‚ncoras.
-   Indica os lados aos quais o controle ser· ancorado.
+  {@type TRLControlAnchors - Conjunto de √¢ncoras.
+   Indica os lados aos quais o controle ser√° ancorado.
    @links TRLControlAnchorsType, TRLCustomControl.Anchors. :/}
   TRLControlAnchors = set of TRLControlAnchorsType;
 
   {@type TRLAllowedBands - Tipos de band inseridos.
-   Determina que tipos de band inicialmente ser„o inseridos sobre o Pager.
-   Nota: Este recurso È mantido para fins de compatibilidade, pois o FortesReport permite mais de uma band
-   do mesmo tipo por relatÛrio.
+   Determina que tipos de band inicialmente ser√£o inseridos sobre o Pager.
+   Nota: Este recurso √© mantido para fins de compatibilidade, pois o FortesReport permite mais de uma band
+   do mesmo tipo por relat√≥rio.
    @links TRLBandType, TRLCustomPager.AllowedBands. :/}
   TRLAllowedBands = set of TRLBandType;
 
@@ -499,30 +499,30 @@ type
   TRLControlState = set of TRLControlStateType;
 
   {@type TRLControlBehavior - Comportamento do controle.
-   Determina caracterÌsticas de comportamento do controle.
+   Determina caracter√≠sticas de comportamento do controle.
    @links TRLControlBehaviorType, TRLCustomControl.Behavior. :/}
   TRLControlBehavior = set of TRLControlBehaviorType;
 
-  {@type TRLAutoSizeDirSet - DireÁıes de redimensionamento.
-   Determina as direÁıes do redimensionamento autom·tico.
+  {@type TRLAutoSizeDirSet - Dire√ß√µes de redimensionamento.
+   Determina as dire√ß√µes do redimensionamento autom√°tico.
    @links TRLAutoSizeDirType, TRLCustomControl.AutoSizeDir, TRLCustomControl.ExpandParentSite. :/}
   TRLAutoSizeDirSet = set of TRLAutoSizeDirType;
 
   // OBJECT PROPERTIES
 
-  {@type TRLBorderSides - ConfiguraÁ„o r·pida de bordas.
+  {@type TRLBorderSides - Configura√ß√£o r√°pida de bordas.
    Pode assumir um dos seguintes valores:
    sdCustom - As bordas devem ser indicadas pela propriedade Borders;
-   sdNone - O controle n„o deve exibir bordas;
+   sdNone - O controle n√£o deve exibir bordas;
    sdAll - Todas as bordas acionadas.
    @links TRLBorders. :/}
   TRLBorderSides = (sdCustom, sdNone, sdAll);
 
   {@class TRLBorders - Propriedades para as bordas de um TRLCustomControl.
-   Determina que lados ser„o desenhados, a largura, estilo, cor e espessura das linhas. Possui propriedade ParentControl
-   para determinar o controle onde se deve desenhar. Possui mÈtodo AdjustParent que chama o AdjustBounds do ParentControl
+   Determina que lados ser√£o desenhados, a largura, estilo, cor e espessura das linhas. Possui propriedade ParentControl
+   para determinar o controle onde se deve desenhar. Possui m√©todo AdjustParent que chama o AdjustBounds do ParentControl
    sempre que forem alteradas as propriedades que afetam o tamanho. Invoca o Invalidate do ParentControl sempre que houver
-   alteraÁ„o na cor e estilo. Este objeto n„o È respons·vel pelo Paint do ParentControl, este È que deve faze-lo no seu
+   altera√ß√£o na cor e estilo. Este objeto n√£o √© respons√°vel pelo Paint do ParentControl, este √© que deve faze-lo no seu
    Paint de acordo com as propriedades de borda.
    @links TRLCustomControl.Borders. }
   TRLBorders = class(TPersistent)
@@ -575,26 +575,26 @@ type
 
     // custom methods
 
-    {@method PaintTo - Desenha as bordas em um canvas delimitado por um ret‚ngulo. :}
+    {@method PaintTo - Desenha as bordas em um canvas delimitado por um ret√¢ngulo. :}
     procedure PaintTo(ACanvas: TCanvas; ARect: TRect); overload;
     procedure PaintTo(ASurface: TRLGraphicSurface; ARect: TRect); overload;
     {/@method}
 
-    {@method CanDrawLeft - Indica se È pÈrmitido desenhar a borda esquerda. :/}
+    {@method CanDrawLeft - Indica se √© p√©rmitido desenhar a borda esquerda. :/}
     function CanDrawLeft: Boolean;
 
-    {@method CanDrawTop - Indica se È pÈrmitido desenhar a borda superior. :/}
+    {@method CanDrawTop - Indica se √© p√©rmitido desenhar a borda superior. :/}
     function CanDrawTop: Boolean;
 
-    {@method CanDrawRight - Indica se È pÈrmitido desenhar a borda direita. :/}
+    {@method CanDrawRight - Indica se √© p√©rmitido desenhar a borda direita. :/}
     function CanDrawRight: Boolean;
 
-    {@method CanDrawBottom - Indica se È pÈrmitido desenhar a borda inferior. :/}
+    {@method CanDrawBottom - Indica se √© p√©rmitido desenhar a borda inferior. :/}
     function CanDrawBottom: Boolean;
 
     // custom properties
 
-    {@prop ParentControl - Controle sobre o qual as bordas ser„o desenhadas.
+    {@prop ParentControl - Controle sobre o qual as bordas ser√£o desenhadas.
      @links TRLCustomControl. :/}
     property ParentControl: TRLCustomControl read FParentControl write SetParentControl;
 
@@ -602,7 +602,7 @@ type
 
     // custom properties
 
-    {@prop Sides - ConfiguraÁ„o instant‚nea das bordas.
+    {@prop Sides - Configura√ß√£o instant√¢nea das bordas.
      @links TRLBorderSides. :/}
     property Sides: TRLBorderSides read FSides write SetSides default sdNone;
 
@@ -644,7 +644,7 @@ type
 
 
   {@class TRLMargins - Propriedades para as margens internas de alinhamento de um CustomPanel.
-   Determina largura das margens: superior, inferior e laterais em MM. Possui mÈtodo AdjustParent que chama o AdjustBounds
+   Determina largura das margens: superior, inferior e laterais em MM. Possui m√©todo AdjustParent que chama o AdjustBounds
    do ParentControl sempre que forem alteradas as propriedades que afetam o tamanho.
    @links TRLCustomSite.Margins, TRLCustomSite.InsideMargins. }
   TRLMargins = class(TPersistent)
@@ -701,7 +701,7 @@ type
 
     // custom properties
 
-    {@prop ParentControl - ReferÍncia ao controle.
+    {@prop ParentControl - Refer√™ncia ao controle.
      @links TRLCustomControl. :/}
     property ParentControl: TRLCustomControl read FParentControl write FParentControl;
 
@@ -713,24 +713,24 @@ type
 
     // custom properties
 
-    {@prop LeftMargin - Margem esquerda em milÌmetros. :/}
+    {@prop LeftMargin - Margem esquerda em mil√≠metros. :/}
     property LeftMargin: Double read FLeftMargin write SetLeftMargin stored False;
 
-    {@prop TopMargin - Margem superior em milÌmetros. :/}
+    {@prop TopMargin - Margem superior em mil√≠metros. :/}
     property TopMargin: Double read FTopMargin write SetTopMargin stored False;
 
-    {@prop RightMargin - Margem direita em milÌmetros. :/}
+    {@prop RightMargin - Margem direita em mil√≠metros. :/}
     property RightMargin: Double read FRightMargin write SetRightMargin stored False;
 
-    {@prop BottomMargin - Margem inferior em milÌmetros. :/}
+    {@prop BottomMargin - Margem inferior em mil√≠metros. :/}
     property BottomMargin: Double read FBottomMargin write SetBottomMargin stored False;
   end;
 
   {/@class}
 
 
-  {@class TRLPageSetup - Propriedades para configuraÁ„o de p·gina.
-                         Determina a largura e altura do papel em MM, o tipo de papel utilizado e a orientaÁ„o.
+  {@class TRLPageSetup - Propriedades para configura√ß√£o de p√°gina.
+                         Determina a largura e altura do papel em MM, o tipo de papel utilizado e a orienta√ß√£o.
    @links TRLCustomReport.PageSetup. }
   TRLPageSetup = class(TPersistent)
   private
@@ -772,14 +772,14 @@ type
     {@method Assign - Inicializa propriedades a partir de um outro objeto. :/}
     procedure Assign(Source: TRLPageSetup); reintroduce;
 
-    {@prop ParentReport - ReferÍncia ao objeto relatÛrio.
+    {@prop ParentReport - Refer√™ncia ao objeto relat√≥rio.
      @links TRLCustomReport. :/}
     property ParentReport: TRLCustomReport read FParentReport write FParentReport;
 
-    {@prop OrientedWidth - Largura orientada do papel em milÌmetros. :/}
+    {@prop OrientedWidth - Largura orientada do papel em mil√≠metros. :/}
     property OrientedWidth: Double read GetOrientedWidth write SetOrientedWidth;
 
-    {@prop OrientedHeight - Altura orientada do papel em milÌmetros. :/}
+    {@prop OrientedHeight - Altura orientada do papel em mil√≠metros. :/}
     property OrientedHeight: Double read GetOrientedHeight write SetOrientedHeight;
 
   published
@@ -790,20 +790,20 @@ type
      @links TRLPaperSize. :/}
     property PaperSize: TRLPaperSize read FPaperSize write SetPaperSize default fpA4;
 
-    {@prop Orientation - OrientaÁ„o do papel.
+    {@prop Orientation - Orienta√ß√£o do papel.
      @links TRLPageOrientation. :/}
     property Orientation: TRLPageOrientation
       read FOrientation write SetOrientation default poPortrait;
 
-    {@prop PaperWidth - Largura do papel em milÌmetros. :/}
+    {@prop PaperWidth - Largura do papel em mil√≠metros. :/}
     property PaperWidth: Double
       read FPaperWidth write SetPaperWidth stored IsCustomPaperSize;
 
-    {@prop PaperHeight - Altura do papel em milÌmetros. :/}
+    {@prop PaperHeight - Altura do papel em mil√≠metros. :/}
     property PaperHeight: Double
       read FPaperHeight write SetPaperHeight stored IsCustomPaperSize;
 
-    {@prop ForceEmulation - EmulaÁ„o forÁada. :/}
+    {@prop ForceEmulation - Emula√ß√£o for√ßada. :/}
     property ForceEmulation: Boolean
       read FForceEmulation write FForceEmulation default False;
   end;
@@ -812,11 +812,11 @@ type
 
 
   {@type TRLRealBoundsUnit - Unidades de medida para o dimensionamento real de um controle.
-                             Nota: Esta funcionalizade n„o est· implementada. :/}
+                             Nota: Esta funcionalizade n√£o est√° implementada. :/}
   TRLRealBoundsUnit = (buNone, buMilimeters, buInches);
 
-  {@class TRLRealBounds - ConfiguraÁ„o do tamanho real de um controle em milÌmetros ou polegadas.
-                          Nota: Esta funcionalizade n„o est· implementada.
+  {@class TRLRealBounds - Configura√ß√£o do tamanho real de um controle em mil√≠metros ou polegadas.
+                          Nota: Esta funcionalizade n√£o est√° implementada.
    @links TRLCustomControl.RealBounds. }
   TRLRealBounds = class(TPersistent)
   private
@@ -850,7 +850,7 @@ type
 
     // custom methods
 
-    {@prop ParentReport - ReferÍncia ao controle.
+    {@prop ParentReport - Refer√™ncia ao controle.
      @links TRLCustomControl. :/}
     property ParentControl: TRLCustomControl read FParentControl write FParentControl;
     destructor Destroy; override;
@@ -863,16 +863,16 @@ type
      @links TRLRealBoundsUnit. :/}
     property UsedUnit: TRLRealBoundsUnit read FUsedUnit write SetUsedUnit default buNone;
 
-    {@prop Left - Coordenada esquerda em milÌmetros. :/}
+    {@prop Left - Coordenada esquerda em mil√≠metros. :/}
     property Left: Double read FLeft write SetLeft;
 
-    {@prop Top - Coordenada superior em milÌmetros. :/}
+    {@prop Top - Coordenada superior em mil√≠metros. :/}
     property Top: Double read FTop write SetTop;
 
-    {@prop Width - Largura em milÌmetros. :/}
+    {@prop Width - Largura em mil√≠metros. :/}
     property Width: Double read FWidth write SetWidth;
 
-    {@prop Height - Altura em milÌmetros. :/}
+    {@prop Height - Altura em mil√≠metros. :/}
     property Height: Double read FHeight write SetHeight;
   end;
 
@@ -915,7 +915,7 @@ type
 
     // custom methods
 
-    {@method PaintTo - Desenha em outra superfÌcie. :}
+    {@method PaintTo - Desenha em outra superf√≠cie. :}
     procedure PaintTo(ACanvas: TCanvas; ARect: TRect); overload;
     procedure PaintTo(ASurface: TRLGraphicSurface; ARect: TRect); overload;
     {/@method}
@@ -925,7 +925,7 @@ type
 
     // custom properties
 
-    {@prop ParentSite - ReferÍncia ao site sobre o qual o fundo ser· desenhado.
+    {@prop ParentSite - Refer√™ncia ao site sobre o qual o fundo ser√° desenhado.
      @links TRLCustomSite. :/}
     property ParentSite: TRLCustomSite read FParentSite write FParentSite;
 
@@ -941,7 +941,7 @@ type
      @links TRLImageArrange. :/}
     property Arrange: TRLImageArrange read FArrange write SetArrange default baAligned;
 
-    {@prop AutoSize - Redimensionamento autom·tico da imagem. :/}
+    {@prop AutoSize - Redimensionamento autom√°tico da imagem. :/}
     property AutoSize: Boolean read FAutoSize write SetAutoSize default True;
 
     {@prop Height - Altura da imagem. :/}
@@ -960,8 +960,8 @@ type
   {/@class}
 
 
-  {@class TRLDegradeEffect - Efeito de transiÁ„o de cores no fundo de um site.
-                             Determina as cores origem e destino e a direÁ„o do efeito.
+  {@class TRLDegradeEffect - Efeito de transi√ß√£o de cores no fundo de um site.
+                             Determina as cores origem e destino e a dire√ß√£o do efeito.
    @links TRLCustomSite.Degrade, TRLBackground. }
   TRLDegradeEffect = class(TPersistent)
   private
@@ -992,7 +992,7 @@ type
     constructor Create(AOwner: TRLCustomSite);
 
 
-    {@prop ParentSite - ReferÍncia ao site sobre o qual o efeito ser· desenhado.
+    {@prop ParentSite - Refer√™ncia ao site sobre o qual o efeito ser√° desenhado.
      @links TRLCustomSite. :/}
     property ParentSite: TRLCustomSite read FParentSite;
     destructor Destroy; override;
@@ -1001,7 +1001,7 @@ type
 
     // custom properties
 
-    {@prop Direction - DireÁ„o do efeito.
+    {@prop Direction - Dire√ß√£o do efeito.
      @links TRLDegradeDirection. :/}
     property Direction: TRLDegradeDirection
       read FDirection write SetDirection default ddNone;
@@ -1010,7 +1010,7 @@ type
     property OppositeColor: TColor
       read FOppositeColor write SetOppositeColor default clBlack;
 
-    {@prop Granularity - Dist‚ncia entre os tons do efeito. :/}
+    {@prop Granularity - Dist√¢ncia entre os tons do efeito. :/}
     property Granularity: Integer read FGranularity write SetGranularity default 1;
   end;
 
@@ -1025,8 +1025,8 @@ type
   end;
   {/@type}
 
-  {@class TRLSortedBands - Propriedades para atribuiÁ„o de Bands a CustomSkippers.
-                           Determina as Bands incluidas pelos seus tipos bem como controla os tipos de Bands j·
+  {@class TRLSortedBands - Propriedades para atribui√ß√£o de Bands a CustomSkippers.
+                           Determina as Bands incluidas pelos seus tipos bem como controla os tipos de Bands j√°
                            impressos no ParentSkipper.
    @links TRLCustomPager.SortedBands, TRLSortedBandTypes. }
   TRLSortedBands = class(TPersistent)
@@ -1058,7 +1058,7 @@ type
     {@method Clear - Limpa a lista. :/}
     procedure Clear;
 
-    {@method ResetPage - Reseta os flags de impresso para bands n„o title. :/}
+    {@method ResetPage - Reseta os flags de impresso para bands n√£o title. :/}
     procedure ResetPage;
 
     {@method ResetAll - Reseta os flags de impresso para todas as bands. :/}
@@ -1066,7 +1066,7 @@ type
 
     // custom properties
 
-    {@prop List - ReferÍncia para lista de bands do tipo informado.
+    {@prop List - Refer√™ncia para lista de bands do tipo informado.
      @links TRLBandType. :/}
     property List[AType: TRLBandType]: TList read GetList;
 
@@ -1093,14 +1093,14 @@ type
 
   { TRLPreviewOptions }
 
-  {@type TRLPreviewOptionsDefaults - Uso dos defaults no preview padr„o.
+  {@type TRLPreviewOptionsDefaults - Uso dos defaults no preview padr√£o.
    Pode assumir um dos seguintes valores:
-   pdUseDefaults - Utilizar as mesmas opÁıes deixadas pelo ˙ltimo preview;
-   pdIgnoreDefaults - Utilizar as opÁıes definidas na prop PreviewOptions.
+   pdUseDefaults - Utilizar as mesmas op√ß√µes deixadas pelo √∫ltimo preview;
+   pdIgnoreDefaults - Utilizar as op√ß√µes definidas na prop PreviewOptions.
    @links TRLPreviewOptions. :/}
   TRLPreviewOptionsDefaults = (pdUseDefaults, pdIgnoreDefaults);
 
-  {@class TRLPreviewOptions - OpÁıes do form de preview padr„o para um componente TRLReport em particular.
+  {@class TRLPreviewOptions - Op√ß√µes do form de preview padr√£o para um componente TRLReport em particular.
    @links TRLCustomReport.PreviewOptions, TRLPreviewOptionsDefaults. }
   TRLPreviewOptions = class(TPersistent)
   private
@@ -1133,7 +1133,7 @@ type
 
     // custom properties
 
-    {@prop ParentReport - ReferÍncia ao report.
+    {@prop ParentReport - Refer√™ncia ao report.
      @links TRLCustomReport. :/}
     property ParentReport: TRLCustomReport read FParentReport write FParentReport;
 
@@ -1145,16 +1145,16 @@ type
     property WindowState: TWindowState
       read FWindowState write FWindowState default wsMaximized;
 
-    {@prop Position - Indica a posiÁ„o da janela de preview. :/}
+    {@prop Position - Indica a posi√ß√£o da janela de preview. :/}
     property Position: TPosition read FPosition write FPosition default poScreenCenter;
 
     {@prop FormStyle - Indica o estilo da janela de preview. :/}
     property FormStyle: TFormStyle read FFormStyle write FFormStyle default fsNormal;
 
-    {@prop ShowModal - Indica se a janela de preview ser· modal. :/}
+    {@prop ShowModal - Indica se a janela de preview ser√° modal. :/}
     property ShowModal: Boolean read FShowModal write FShowModal default False;
 
-    {@prop BorderIcons - Seleciona os botıes da janela de preview. :/}
+    {@prop BorderIcons - Seleciona os bot√µes da janela de preview. :/}
     property BorderIcons: TBorderIcons
       read FBorderIcons write FBorderIcons default [biSystemMenu, biMinimize, biMaximize];
 
@@ -1164,10 +1164,10 @@ type
     {@prop HelpContext - Contexto de help para a janela preview, se houver. :/}
     property HelpContext: Integer read FHelpContext write FHelpContext default 0;
 
-    {@prop Caption - TÌtulo da janela de preview. :/}
+    {@prop Caption - T√≠tulo da janela de preview. :/}
     property Caption: TCaption read FCaption write FCaption stored IsCaption;
 
-    {@prop Defaults - Indica como estas configuraÁıes ser„o utilizadas pelo form de preview.
+    {@prop Defaults - Indica como estas configura√ß√µes ser√£o utilizadas pelo form de preview.
      @links TRLPreviewOptionsDefaults. :/}
     property Defaults: TRLPreviewOptionsDefaults
       read FDefaults write FDefaults default pdUseDefaults;
@@ -1282,29 +1282,29 @@ type
 
     // assign methods
 
-    {@method GetCaption - Retorna o caption dependendo do estado do relatÛrio. :/}
+    {@method GetCaption - Retorna o caption dependendo do estado do relat√≥rio. :/}
     function GetCaption: TCaption;
 
-    {@method GetMasterReport - Retorna referÍncia ao relatÛrio principal da cadeia apÛs busca recursiva atravÈs das props Parent e PriorReport.
-     Se n„o encontrar, retorna nil.
+    {@method GetMasterReport - Retorna refer√™ncia ao relat√≥rio principal da cadeia ap√≥s busca recursiva atrav√©s das props Parent e PriorReport.
+     Se n√£o encontrar, retorna nil.
      @links TRLCustomReport, TRLCustomReport.NextReport, TRLCustomReport.PriorReport. :/}
     function GetMasterReport: TRLCustomReport;
     function GetLastReport: TRLCustomReport;
 
-    {@method GetClientHeight - Retorna a altura da ·rea cliente.
+    {@method GetClientHeight - Retorna a altura da √°rea cliente.
      @links ClientRect. :/}
     function GetClientHeight: Integer;
 
-    {@method GetClientWidth - Retorna a largura da ·rea cliente.
+    {@method GetClientWidth - Retorna a largura da √°rea cliente.
      @links ClientRect. :/}
     function GetClientWidth: Integer;
 
     // static methods
 
-    {@method AdjustToParentFrame - Ajusta as dimensıes do controle pai, se este for um TFrame. :/}
+    {@method AdjustToParentFrame - Ajusta as dimens√µes do controle pai, se este for um TFrame. :/}
     procedure AdjustToParentFrame(var ALeft, ATop, AWidth, AHeight: Integer);
 
-    {@method AdjustToFixedSize - Ajusta coordenadas de acordo com as dimensıes estabelecidas no mÈtodo CalcSize.
+    {@method AdjustToFixedSize - Ajusta coordenadas de acordo com as dimens√µes estabelecidas no m√©todo CalcSize.
      @links CalcSize. :/}
     procedure AdjustToFixedSize(var ALeft, ATop, AWidth, AHeight: Integer);
 
@@ -1313,39 +1313,39 @@ type
     procedure AdjustToHolder(AHolder: TRLCustomControl;
       var ALeft, ATop, AWidth, AHeight: Integer);
 
-    {@method OriginalSetBounds - Corresponde ao mÈtodo SetBounds original sem efeitos colaterais de alinhamento estendido. :/}
+    {@method OriginalSetBounds - Corresponde ao m√©todo SetBounds original sem efeitos colaterais de alinhamento estendido. :/}
     procedure OriginalSetBounds(ALeft, ATop, AWidth, AHeight: Integer);
 
-    {@method CanSetWidth - Indica se È possÌvel para o usu·rio determinar uma largura aleatÛria para o controle.
-     Em determinadas circunst‚ncias dependendo do alinhamento, autosize ou holder, n„o È possÌvel modificar as dimensıes.
+    {@method CanSetWidth - Indica se √© poss√≠vel para o usu√°rio determinar uma largura aleat√≥ria para o controle.
+     Em determinadas circunst√¢ncias dependendo do alinhamento, autosize ou holder, n√£o √© poss√≠vel modificar as dimens√µes.
      @links AutoSize, Align, Holder. :/}
     function CanSetWidth: Boolean;
 
-    {@method CanSetHeight - Indica se È possÌvel para o usu·rio determinar uma altura aleatÛria para o controle.
-     Em determinadas circunst‚ncias dependendo do alinhamento, autosize ou holder, n„o È possÌvel modificar as dimensıes.
+    {@method CanSetHeight - Indica se √© poss√≠vel para o usu√°rio determinar uma altura aleat√≥ria para o controle.
+     Em determinadas circunst√¢ncias dependendo do alinhamento, autosize ou holder, n√£o √© poss√≠vel modificar as dimens√µes.
      @links AutoSize, Align, Holder. :/}
     function CanSetHeight: Boolean;
 
-    {@method ExpandParentSite - Ajusta as dimensıes do controle pai. :/}
+    {@method ExpandParentSite - Ajusta as dimens√µes do controle pai. :/}
     procedure ExpandParentSite;
 
-    {@method AdjustAlignment - Ajusta as dimensıes do controle respeitando o seu alinhamento. :/}
+    {@method AdjustAlignment - Ajusta as dimens√µes do controle respeitando o seu alinhamento. :/}
     procedure AdjustAlignment(var ARect: TRect);
 
     {@method DoAfterPrint - Invoca o evento AfterPrint.
-                            N„o utilize o mÈtodo diretamente. Ele invoca o evento AfterPrint do controle apÛs a sua impress„o. :/}
+                            N√£o utilize o m√©todo diretamente. Ele invoca o evento AfterPrint do controle ap√≥s a sua impress√£o. :/}
     procedure DoAfterPrint;
 
     {@method DoBeforePrint - Invoca o evento BeforePrint.
-                             N„o utilize o mÈtodo diretamente. Ele invoca o evento BeforePrint do controle antes da sua impress„o. :/}
+                             N√£o utilize o m√©todo diretamente. Ele invoca o evento BeforePrint do controle antes da sua impress√£o. :/}
     procedure DoBeforePrint(var APrintIt: Boolean);
 
     {@method DoBeforeText - Invoca o evento BeforePrint.
-                            N„o utilize o mÈtodo diretamente. Ele invoca o evento BeforePrint do controle antes da sua impress„o. :/}
+                            N√£o utilize o m√©todo diretamente. Ele invoca o evento BeforePrint do controle antes da sua impress√£o. :/}
     procedure DoBeforeText(var AText: string; var APrintIt: Boolean);
 
     {@method DoOnMeasureHeight - Invoca o evento OnMeasureHeight.
-                                 N„o utilize o mÈtodo diretamente. Ele invoca o evento OnMeasureHeight do controle na horas das mediÁıes de p·gina. :/}
+                                 N√£o utilize o m√©todo diretamente. Ele invoca o evento OnMeasureHeight do controle na horas das medi√ß√µes de p√°gina. :/}
     procedure DoOnMeasureHeight;
 
     {@method GetMadeCaption - Produz e retorna o Caption.
@@ -1368,70 +1368,70 @@ type
     procedure CheckParent(var AControl: TWinControl);
     function IsPreparing: Boolean;
 
-    {@method IsBallast - O controle est· sendo impresso como um lastro.
-                         Quando o parentpager est· imprimindo bands em branco para preencher o espaÁo da p·gina, ou
-                         quando o parentskipper foi instruÌdo a saltar um registro, o controle È dito lastro. :/}
+    {@method IsBallast - O controle est√° sendo impresso como um lastro.
+                         Quando o parentpager est√° imprimindo bands em branco para preencher o espa√ßo da p√°gina, ou
+                         quando o parentskipper foi instru√≠do a saltar um registro, o controle √© dito lastro. :/}
     function IsBallast: Boolean;
 
     // dynamic methods
-    {@method CanPrint - IntervenÁ„o antes da impress„o.
-     N„o utilize CanPrint diretamente. Este mÈtodo È disparado automaticamente pelo painel sempre antes de
-     sua impress„o. Este mÈtodo invoca o evento BeforePrint, dentro do qual se pode mudar caracterÌsticas
-     do painel como: tamanho, cor, etc., alÈm de decidir se ele ser· impresso ou n„o.
-     Nota: Paineis n„o visÌveis ou desabilitados n„o disparar„o este mÈtodo.
-     O tamanho do painel ser· restaurado automaticamente apÛs a sua impress„o. :/}
+    {@method CanPrint - Interven√ß√£o antes da impress√£o.
+     N√£o utilize CanPrint diretamente. Este m√©todo √© disparado automaticamente pelo painel sempre antes de
+     sua impress√£o. Este m√©todo invoca o evento BeforePrint, dentro do qual se pode mudar caracter√≠sticas
+     do painel como: tamanho, cor, etc., al√©m de decidir se ele ser√° impresso ou n√£o.
+     Nota: Paineis n√£o vis√≠veis ou desabilitados n√£o disparar√£o este m√©todo.
+     O tamanho do painel ser√° restaurado automaticamente ap√≥s a sua impress√£o. :/}
     function CanPrint: Boolean; dynamic;
 
     {@method CalcSize - Cacula o tamanho do controle. :/}
     procedure CalcSize(var ASize: TPoint); dynamic;
 
     {@method DrawBounds - Desenha bordas.
-     N„o utilize este mÈtodo diretamente. Ele È disparado automaticamente para que sejam impressas as bordas
+     N√£o utilize este m√©todo diretamente. Ele √© disparado automaticamente para que sejam impressas as bordas
      ao redor do panel. :/}
     procedure DrawBounds; dynamic;
 
     {@method CalcWastedPixels - Margens dispensadas do controle. :/}
     function CalcWastedPixels: TRect; dynamic;
 
-    {@method CalcPrintClientRect - Ret‚ngulo com coordenadas relativas ‡ linha corrente da p·gina. :/}
+    {@method CalcPrintClientRect - Ret√¢ngulo com coordenadas relativas √† linha corrente da p√°gina. :/}
     function CalcPrintClientRect: TRect; dynamic;
 
-    {@method CalcPrintBoundsRect - Ret‚ngulo com coordenadas relativas ao parentreport. :/}
+    {@method CalcPrintBoundsRect - Ret√¢ngulo com coordenadas relativas ao parentreport. :/}
     function CalcPrintBoundsRect: TRect; dynamic;
 
-    {@method CalcPrintSizeRect - Cacula o tamanho do controle para fins de impress„o. :/}
+    {@method CalcPrintSizeRect - Cacula o tamanho do controle para fins de impress√£o. :/}
     function CalcPrintSizeRect: TRect; dynamic;
 
     {@method CalcSizeRect - Cacula o tamanho do controle. :/}
     function CalcSizeRect: TRect; dynamic;
 
-    {@method SetClientRect - Estabelece as dimensıes do controle descontando margens etc. :/}
+    {@method SetClientRect - Estabelece as dimens√µes do controle descontando margens etc. :/}
     procedure SetClientRect(const AValue: TRect); virtual;
 
     {@method InternalMakeCaption - Produz Caption. :/}
     function InternalMakeCaption: string; dynamic;
 
     {@method Initialize - Inicializa os acumuladores internos.
-     Inicializa os acumuladores internos do controle em quest„o e de seus controles filhos.
-     Estes acumuladores podem ser contadores de registros, totalizadores de campos numÈricos
-     e informaÁıes de estatÌstica. :/}
+     Inicializa os acumuladores internos do controle em quest√£o e de seus controles filhos.
+     Estes acumuladores podem ser contadores de registros, totalizadores de campos num√©ricos
+     e informa√ß√µes de estat√≠stica. :/}
     procedure Initialize; dynamic;
 
     {@method ComputeDetail - Computar novo Detail.
-     N„o utilize este mÈtodo diretamente. Ele È invocado sempre que uma band de detalhe È impressa para
-     que controles de contabilidade e estatÌstica possam computar seus valores. O controle repassa a chamada
+     N√£o utilize este m√©todo diretamente. Ele √© invocado sempre que uma band de detalhe √© impressa para
+     que controles de contabilidade e estat√≠stica possam computar seus valores. O controle repassa a chamada
      para seus controles filhos em cascata. :/}
     procedure ComputeDetail(ACaller: TObject); dynamic;
 
-    {@method InternalPrint - Processa o controle para impress„o. :/}
+    {@method InternalPrint - Processa o controle para impress√£o. :/}
     procedure InternalPrint; dynamic;
 
-    {@method InternalMeasureHeight - Mede a altura da band de acordo com seu conte˙do, tentando predizer as
-     quebras de folha que vir„o. :/}
+    {@method InternalMeasureHeight - Mede a altura da band de acordo com seu conte√∫do, tentando predizer as
+     quebras de folha que vir√£o. :/}
     procedure InternalMeasureHeight; dynamic;
 
     {@method GetAttribute - Devolve o valor do controle como um Variant.
-     Este valor È arbitr·rio e depende da classe que implementa o mÈtodo. :/}
+     Este valor √© arbitr√°rio e depende da classe que implementa o m√©todo. :/}
     function GetAttribute(const AName: string): Variant; virtual;
 
     {@method SetAttribute - Modifica o valor do controle. :/}
@@ -1445,12 +1445,12 @@ type
     procedure CMFontChanged(var Message: TMessage); message CM_FONTCHANGED;
 {$endif}
 
-    {@method PrepareStatics - Prepara os controles filhos do painel antes de imprimÌ-los.
-     Esta operaÁ„o consiste em invocar os eventos BeforePrint de cada controle, dando oportunidade para o
+    {@method PrepareStatics - Prepara os controles filhos do painel antes de imprim√≠-los.
+     Esta opera√ß√£o consiste em invocar os eventos BeforePrint de cada controle, dando oportunidade para o
      redimensionamento antes de renderizar todos os controles. :/}
     procedure PrepareStatics;
 
-    {@method PrintStatics - Desenha os controles filhos do painel sobre a sua superfÌcie. :/}
+    {@method PrintStatics - Desenha os controles filhos do painel sobre a sua superf√≠cie. :/}
     procedure PrintStatics;
 
     property CouldPrint: Boolean read FCouldPrint write FCouldPrint;
@@ -1468,63 +1468,63 @@ type
 
     // static methods
 
-    {@method IsMeasurable - Indica se o controle pode sofrer predicÁ„o sobre a sua altura. :/}
+    {@method IsMeasurable - Indica se o controle pode sofrer predic√ß√£o sobre a sua altura. :/}
     function IsMeasurable: Boolean;
 
     {@method MeasureHeight - Mede a altura do controle. :/}
     procedure MeasureHeight;
 
-    {@method PushBoundsRect - Guarda as dimensıes do controle. :/}
+    {@method PushBoundsRect - Guarda as dimens√µes do controle. :/}
     procedure PushBoundsRect;
 
-    {@method PopBoundsRect - Restaura as dimensıes do controle. :/}
+    {@method PopBoundsRect - Restaura as dimens√µes do controle. :/}
     procedure PopBoundsRect;
 
-    {@method Print - Gera imagem do controle para impress„o.
+    {@method Print - Gera imagem do controle para impress√£o.
      Gera imagem do controle junto com seus controles filhos e dispara os eventos BeforePrint e AfterPrint. :/}
     procedure Print;
 
-    {@method FindParentSite - ReferÍncia ao site pai. Retorna referÍncia ao site pai apÛs busca din‚mica pela prop Parent.
+    {@method FindParentSite - Refer√™ncia ao site pai. Retorna refer√™ncia ao site pai ap√≥s busca din√¢mica pela prop Parent.
      @links TRLCustomSite. :/}
     function FindParentSite: TRLCustomSite;
 
-    {@method FindParentBand - ReferÍncia ‡ band pai. Retorna referÍncia ‡ band pai apÛs busca din‚mica pela prop Parent.
+    {@method FindParentBand - Refer√™ncia √† band pai. Retorna refer√™ncia √† band pai ap√≥s busca din√¢mica pela prop Parent.
      @links TRLCustomBand. :/}
     function FindParentBand: TRLCustomBand;
 
-    {@method FindParentGroup - ReferÍncia ao grupo pai. Retorna referÍncia ao grupo pai apÛs busca din‚mica pela prop Parent.
+    {@method FindParentGroup - Refer√™ncia ao grupo pai. Retorna refer√™ncia ao grupo pai ap√≥s busca din√¢mica pela prop Parent.
      @links TRLCustomGroup. :/}
     function FindParentGroup: TRLCustomGroup;
 
-    {@method FindParentPager - ReferÍncia ao Pager pai. Retorna referÍncia ao parentpager pai apÛs busca din‚mica pela prop Parent.
+    {@method FindParentPager - Refer√™ncia ao Pager pai. Retorna refer√™ncia ao parentpager pai ap√≥s busca din√¢mica pela prop Parent.
      @links TRLCustomPager. :/}
     function FindParentPager: TRLCustomPager;
 
-    {@method FindParentSkipper - ReferÍncia ‡ skipper pai. Retorna referÍncia ao skipper pai apÛs busca din‚mica pela prop Parent.
+    {@method FindParentSkipper - Refer√™ncia √† skipper pai. Retorna refer√™ncia ao skipper pai ap√≥s busca din√¢mica pela prop Parent.
      @links TRLCustomSkipper. :/}
     function FindParentSkipper: TRLCustomSkipper;
 
-    {@method FindParentReport - ReferÍncia ao relatÛrio pai. Retorna referÍncia ao relatÛrio pai apÛs busca din‚mica pela prop Parent.
+    {@method FindParentReport - Refer√™ncia ao relat√≥rio pai. Retorna refer√™ncia ao relat√≥rio pai ap√≥s busca din√¢mica pela prop Parent.
      @links TRLCustomReport. :/}
     function FindParentReport: TRLCustomReport;
 
-    {@method RequestParentPager - ReferÍncia ao Pager pai. Gera exceÁ„o se n„o encontrar.
+    {@method RequestParentPager - Refer√™ncia ao Pager pai. Gera exce√ß√£o se n√£o encontrar.
      @links TRLCustomPager. :/}
     function RequestParentPager: TRLCustomPager;
 
-    {@method RequestParentSkipper - ReferÍncia ‡ skipper pai. Gera exceÁ„o se n„o encontrar.
+    {@method RequestParentSkipper - Refer√™ncia √† skipper pai. Gera exce√ß√£o se n√£o encontrar.
      @links TRLCustomSkipper. :/}
     function RequestParentSkipper: TRLCustomSkipper;
 
-    {@method RequestParentSurface - ReferÍncia ‡ skipper pai. Gera exceÁ„o se n„o encontrar.
+    {@method RequestParentSurface - Refer√™ncia √† skipper pai. Gera exce√ß√£o se n√£o encontrar.
      @links TRLGraphicSurface. :/}
     function RequestParentSurface: TRLGraphicSurface;
 
-    {@method RequestParentReport - ReferÍncia ao report pai. Gera exceÁ„o se n„o encontrar.
+    {@method RequestParentReport - Refer√™ncia ao report pai. Gera exce√ß√£o se n√£o encontrar.
      @links TRLCustomReport. :/}
     function RequestParentReport: TRLCustomReport;
 
-    {@method Realign - ForÁa o realinhamento do controle dentro de seu control pai. :/}
+    {@method Realign - For√ßa o realinhamento do controle dentro de seu control pai. :/}
     procedure Realign; reintroduce;
 
     {@method RealignControls - Realinha os controles dentro deste de acordo com suas props. :/}
@@ -1535,8 +1535,8 @@ type
 
     // dynamic methods
 
-    {@method FindParentSurface - SuperfÌcie de desenho pai.
-     ReferÍncia ‡ superfÌcie de desenho do painel pai.
+    {@method FindParentSurface - Superf√≠cie de desenho pai.
+     Refer√™ncia √† superf√≠cie de desenho do painel pai.
      @links TRLGraphicSurface. :/}
     function FindParentSurface: TRLGraphicSurface; dynamic;
 
@@ -1555,19 +1555,19 @@ type
     property Alignment: TRLTextAlignment
       read FAlignment write SetAlignment default taLeftJustify;
 
-    {@prop AutoSize - Redimensionamento autom·tico. Determina se o controle ir· se
-     redimensionar automaticamente de acordo com o seu conte˙do. :/}
+    {@prop AutoSize - Redimensionamento autom√°tico. Determina se o controle ir√° se
+     redimensionar automaticamente de acordo com o seu conte√∫do. :/}
     property AutoSize: Boolean read FAutoSize write SetAutoSize default False;
 
-    {@prop AutoSizeDir - Determina em que direÁıes o controle poder· efetuar o redimensionamento autom·tico.
+    {@prop AutoSizeDir - Determina em que dire√ß√µes o controle poder√° efetuar o redimensionamento autom√°tico.
      @links TRLAutoSizeDirSet. :/}
     property AutoSizeDir: TRLAutoSizeDirSet
       read FAutoSizeDir write FAutoSizeDir default [];
 
-    {@prop AutoExpand - Determina se o controle far· a expans„o de acordo com o seu conte˙do. :/}
+    {@prop AutoExpand - Determina se o controle far√° a expans√£o de acordo com o seu conte√∫do. :/}
     property AutoExpand: Boolean read FAutoExpand write SetAutoExpand default False;
 
-    {@prop AutoTrunc - Determina se o tamanho do controle depende do conte˙do impresso. :/}
+    {@prop AutoTrunc - Determina se o tamanho do controle depende do conte√∫do impresso. :/}
     property AutoTrunc: Boolean read FAutoTrunc write SetAutoTrunc default False;
 
     {@prop Behavior - Comportamento do controle. Utilize Behavior para definir o comportamento do controle sob diversos aspectos.
@@ -1577,7 +1577,7 @@ type
     {@prop Caption - Texto a imprimir. :/}
     property Caption: TCaption read GetCaption write SetCaption stored IsCaption;
 
-    {@prop FriendlyName - Nome amig·vel para uso com o ExpressionParser e interface com o usu·rio final. :/}
+    {@prop FriendlyName - Nome amig√°vel para uso com o ExpressionParser e interface com o usu√°rio final. :/}
     property FriendlyName: string
       read FFriendlyName write SetFriendlyName stored IsFriendlyName;
 
@@ -1586,7 +1586,7 @@ type
     property HoldStyle: TRLHoldStyle read FHoldStyle write SetHoldStyle default
       hsAsColumn;
 
-    {@prop HolderOffset - Dist‚ncia do ancoradouro. :/}
+    {@prop HolderOffset - Dist√¢ncia do ancoradouro. :/}
     property HolderOffset: TPoint read FHolderOffset write FHolderOffset;
 
     {@prop Layout - Layout do texto. Define o posicionamento vertical do texto no controle.
@@ -1598,14 +1598,14 @@ type
     property SecondHoldStyle: TRLHoldStyle read FSecondHoldStyle
       write SetSecondHoldStyle default hsAsColumn;
 
-    {@prop SecondHolderOffset - Dist‚ncia ao segundo ancoradouro. :/}
+    {@prop SecondHolderOffset - Dist√¢ncia ao segundo ancoradouro. :/}
     property SecondHolderOffset: TPoint read FSecondHolderOffset
       write FSecondHolderOffset;
 
-    {@prop Transparent - TransparÍncia do controle em tempo de impress„o.
-     Utilize Transparent quando for necess·rio imprimir apenas o conte˙do do painel.
-     Um painel normalmente sobrepıe qualquer imagem ou efeito que estiver por tr·s dele.
-     Quando o painel È transparente n„o possui uma cor de preenchimento, preservando a
+    {@prop Transparent - Transpar√™ncia do controle em tempo de impress√£o.
+     Utilize Transparent quando for necess√°rio imprimir apenas o conte√∫do do painel.
+     Um painel normalmente sobrep√µe qualquer imagem ou efeito que estiver por tr√°s dele.
+     Quando o painel √© transparente n√£o possui uma cor de preenchimento, preservando a
      imagem ou efeitos desenhados no painel pai. :/}
     property Transparent: Boolean read FTransparent write SetTransparent default True;
 
@@ -1615,68 +1615,68 @@ type
      @links TRLControlState. :/}
     property ControlState: TRLControlState read FControlState write FControlState;
 
-    {@prop OldBoundsRect - ContÈm as ˙ltimas dimensıes do controle antes da ˙ltima alteraÁ„o. :/}
+    {@prop OldBoundsRect - Cont√©m as √∫ltimas dimens√µes do controle antes da √∫ltima altera√ß√£o. :/}
     property OldBoundsRect: TRect read FOldBoundsRect write FOldBoundsRect;
 
-    {@prop PeekBoundsRect - ContÈm as dimensıes originais do controle salvas antes da sua impress„o. :/}
+    {@prop PeekBoundsRect - Cont√©m as dimens√µes originais do controle salvas antes da sua impress√£o. :/}
     property PeekBoundsRect: TRect read FPeekBoundsRect write FPeekBoundsRect;
 
     // indirections
 
-    {@prop ClientHeight - Determina ou indica a altura da ·rea cliente. :/}
+    {@prop ClientHeight - Determina ou indica a altura da √°rea cliente. :/}
     property ClientHeight: Integer read GetClientHeight write SetClientHeight;
 
-    {@prop ClientRect - Ret‚ngulo da ·rea cliente.
-     Retorna ret‚ngulo contendo as coordenadas da ·rea cliente do controle.
-     A ·rea cliente corresponde ao ret‚ngulo Rect(0,0,Width,Height), deduzido das bordas. :/}
+    {@prop ClientRect - Ret√¢ngulo da √°rea cliente.
+     Retorna ret√¢ngulo contendo as coordenadas da √°rea cliente do controle.
+     A √°rea cliente corresponde ao ret√¢ngulo Rect(0,0,Width,Height), deduzido das bordas. :/}
     property ClientRect: TRect read GetClientRect write SetClientRect;
 
-    {@prop ClientWidth - Determina ou indica a largura da ·rea cliente. :/}
+    {@prop ClientWidth - Determina ou indica a largura da √°rea cliente. :/}
     property ClientWidth: Integer read GetClientWidth write SetClientWidth;
 
     // links
 
-    {@prop Holder - Controle referÍncia para ancoragem.
-     O mecanismo por tr·s da prop holder È um dos recursos mais interessantes do FortesReport. Esta prop
-     aponta para um controle que servir· como ‚ncora, como referÍncia de posicionamento.
-     … possÌvel informar para um RLDBText de uma band detalhe que sua posiÁ„o horizontal deve se
-     mantÍr sempre igual ao RLLabel correspondente no cabeÁalho, indicando RLDBText.Holder:=RLLabel.
-     Deste modo, ao mover o label do cabeÁalho, em tempo de design ou impress„o, o RLDBText ser·
+    {@prop Holder - Controle refer√™ncia para ancoragem.
+     O mecanismo por tr√°s da prop holder √© um dos recursos mais interessantes do FortesReport. Esta prop
+     aponta para um controle que servir√° como √¢ncora, como refer√™ncia de posicionamento.
+     √â poss√≠vel informar para um RLDBText de uma band detalhe que sua posi√ß√£o horizontal deve se
+     mant√™r sempre igual ao RLLabel correspondente no cabe√ßalho, indicando RLDBText.Holder:=RLLabel.
+     Deste modo, ao mover o label do cabe√ßalho, em tempo de design ou impress√£o, o RLDBText ser√°
      movido junto com ele.
-     H· v·rias opÁıes de ancoragem e tambÈm h· a possibilidade de um controle possuir dois
-     holders: um para referÍncia horizontal e outro para vertical, por exemplo.
+     H√° v√°rias op√ß√µes de ancoragem e tamb√©m h√° a possibilidade de um controle possuir dois
+     holders: um para refer√™ncia horizontal e outro para vertical, por exemplo.
      @links TRLCustomControl, HoldStyle, SecondHolder. :/}
     property Holder: TRLCustomControl read FHolder write SetHolder;
 
-    {@prop SecondHolder - Segundo controle referÍncia de ancoragem. Define um outro controle para referÍncia de ancoragem.
+    {@prop SecondHolder - Segundo controle refer√™ncia de ancoragem. Define um outro controle para refer√™ncia de ancoragem.
      @links TRLCustomControl, SecondHoldStyle, Holder. :/}
     property SecondHolder: TRLCustomControl read FSecondHolder write SetSecondHolder;
 
     // agregates
 
     {@prop Borders - Bordas ao redor do controle.
-     Utilize Borders para exibir bordas ao redor do painel. As bordas ser„o exibidas entre as margens
-     exteriores e interiores do painel. … possÌvel informar que lados ser„o exibidos, a largura das linhas,
-     o nÌvel de qualidade, a cor e etc.
+     Utilize Borders para exibir bordas ao redor do painel. As bordas ser√£o exibidas entre as margens
+     exteriores e interiores do painel. √â poss√≠vel informar que lados ser√£o exibidos, a largura das linhas,
+     o n√≠vel de qualidade, a cor e etc.
      @links TRLBorders. :/}
     property Borders: TRLBorders read FBorders write SetBorders;
 
-    {@prop RealBounds - ConfiguraÁ„o do tamanho real de um controle em milÌmetros ou polegadas.
-     Nota: Esta funcionalizade n„o est· implementada.
+    {@prop RealBounds - Configura√ß√£o do tamanho real de um controle em mil√≠metros ou polegadas.
+     Nota: Esta funcionalizade n√£o est√° implementada.
      @links TRLRealBounds. :/}
     property RealBounds: TRLRealBounds read FRealBounds write SetRealBounds;
 
     // readonly
 
-    {@prop Holdeds - Lista de controles "agarrados". ContÈm a lista dos controles que orientam suas posiÁıes relativamente ‡s coordenadas deste. :/}
+    {@prop Holdeds - Lista de controles "agarrados". Cont√©m a lista dos controles que orientam suas posi√ß√µes relativamente √†s coordenadas deste. :/}
     property Holdeds: TList read FHoldeds;
 
-    {@prop MasterReport - RelatÛrio mestre.
-     Retorna referÍncia ao componente TRLReport do relatÛrio mestre ao qual o painel pertence.
-     A pesquisa È feita dinamicamente a cada chamada e utiliza a propriedade Parent.
-     Nota: O FortesReport permite a composiÁ„o de relatÛrios atravÈs de concatenaÁ„o.
-     Esta propriedade deve retornar uma referÍncia ao primeiro relatÛrio da composiÁ„o, do
-     qual se pode extrair informaÁıes comuns a todos os relatÛrios, como: n˙mero de p·ginas,
+    {@prop MasterReport - Relat√≥rio mestre.
+     Retorna refer√™ncia ao componente TRLReport do relat√≥rio mestre ao qual o painel pertence.
+     A pesquisa √© feita dinamicamente a cada chamada e utiliza a propriedade Parent.
+     Nota: O FortesReport permite a composi√ß√£o de relat√≥rios atrav√©s de concatena√ß√£o.
+     Esta propriedade deve retornar uma refer√™ncia ao primeiro relat√≥rio da composi√ß√£o, do
+     qual se pode extrair informa√ß√µes comuns a todos os relat√≥rios, como: n√∫mero de p√°ginas,
      tamanho do papel, etc.
      @links TRLCustomReport. :/}
     property MasterReport: TRLCustomReport read GetMasterReport;
@@ -1684,7 +1684,7 @@ type
 
     // events
 
-    {@event AfterPrint - ApÛs a impress„o. Ocorre exatamente apÛs o controle ter sua imagem impressa no relatÛrio.
+    {@event AfterPrint - Ap√≥s a impress√£o. Ocorre exatamente ap√≥s o controle ter sua imagem impressa no relat√≥rio.
      @links TRLAfterPrintEvent. :/}
     property AfterPrint: TRLAfterPrintEvent read FAfterPrint write FAfterPrint;
 
@@ -1693,15 +1693,15 @@ type
 
     // standard properties
 
-    {@prop ParentColor - HeranÁa de cor. Define se o controle deve herdar a cor do controle pai. :/}
+    {@prop ParentColor - Heran√ßa de cor. Define se o controle deve herdar a cor do controle pai. :/}
     property ParentColor default True;
 
-    {@prop ParentFont - HeranÁa de fonte. Define se o controle deve herdar a fonte do controle pai. :/}
+    {@prop ParentFont - Heran√ßa de fonte. Define se o controle deve herdar a fonte do controle pai. :/}
     property ParentFont default True;
 
-    {@prop Visible - Determina se o controle ser· visÌvel em tempo de impress„o.
-     Com esta propriedade configurada para False o controle ser· ignorado em tempo de impress„o e nenhum evento
-     ligado a ele ser· disparado. :/}
+    {@prop Visible - Determina se o controle ser√° vis√≠vel em tempo de impress√£o.
+     Com esta propriedade configurada para False o controle ser√° ignorado em tempo de impress√£o e nenhum evento
+     ligado a ele ser√° disparado. :/}
     property Visible;
 
     {@prop Color - Cor do controle. Define a cor de fundo do controle. :/}
@@ -1716,7 +1716,7 @@ type
 
   { TRLCustomDBControl }
 
-  {@class TRLCustomDBControl - Classe base da qual se pode derivar controles de impress„o dataware.
+  {@class TRLCustomDBControl - Classe base da qual se pode derivar controles de impress√£o dataware.
    @ancestor TRLCustomControl. }
   TRLCustomDBControl = class(TRLCustomControl)
   private
@@ -1752,14 +1752,14 @@ type
      @links TRLDataFieldProperty. :/}
     property DataField: TRLDataFieldProperty read FDataField write SetDataField;
 
-    {@prop DataSource - ReferÍncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
+    {@prop DataSource - Refer√™ncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
     property DataSource: TDataSource read FDataSource write SetDataSource;
 
     // readonly
-    {@prop Field - ReferÍncia para o objeto TField determinado pelas props DataField e DataSource. :/}
+    {@prop Field - Refer√™ncia para o objeto TField determinado pelas props DataField e DataSource. :/}
     property Field: TField read GetField;
 
-    {@prop DataSet - ReferÍncia para o objeto TDataSet determinado pela prop DataSource. :/}
+    {@prop DataSet - Refer√™ncia para o objeto TDataSet determinado pela prop DataSource. :/}
     property DataSet: TDataSet read GetDataSet;
   end;
 
@@ -1769,7 +1769,7 @@ type
   { TRLCustomLabel }
 
   {@class TRLCustomLabel - Classe base da qual derivam todas as caixas de texto.
-   Utilize descendentes do TRLCustomLabel para imprimir textos est·ticos ou din‚micos sobre o relatÛrio.
+   Utilize descendentes do TRLCustomLabel para imprimir textos est√°ticos ou din√¢micos sobre o relat√≥rio.
    @ancestor TRLCustomControl. }
   TRLCustomLabel = class(TRLCustomControl)
   protected
@@ -1791,8 +1791,8 @@ type
 
     // custom properties
 
-    {@prop AutoSize - Redimensionamento autom·tico.
-     Determina se a label ir· se redimensionar automaticamente de acordo com o tamanho do seu Caption. :/}
+    {@prop AutoSize - Redimensionamento autom√°tico.
+     Determina se a label ir√° se redimensionar automaticamente de acordo com o tamanho do seu Caption. :/}
     property AutoSize default True;
 
     {@prop Caption - Texto a ser impresso no corpo do label. :/}
@@ -1800,8 +1800,8 @@ type
 
     // events
 
-    {@event BeforePrint - Antes da impress„o. Ocorre antes da impress„o do controle para alterar o texto ou
-     suspender a sua impress„o.
+    {@event BeforePrint - Antes da impress√£o. Ocorre antes da impress√£o do controle para alterar o texto ou
+     suspender a sua impress√£o.
      @links TRLBeforeTextEvent. :/}
     property BeforePrint: TRLBeforeTextEvent read FBeforeText write FBeforeText;
   end;
@@ -1811,7 +1811,7 @@ type
 
   { TRLCustomAngleLabel }
 
-  {@class TRLCustomAngleLabel - Caixa de texto com rotaÁ„o por ‚ngulo.
+  {@class TRLCustomAngleLabel - Caixa de texto com rota√ß√£o por √¢ngulo.
    @ancestor TRLCustomControl. }
   TRLCustomAngleLabel = class(TRLCustomControl)
   private
@@ -1846,23 +1846,23 @@ type
 
     // custom properties
 
-    {@prop Angle - ¬ngulo de inclinaÁ„o.
-     Determina o ‚ngulo de inclinaÁ„o no desenho do texto. :/}
+    {@prop Angle - √Çngulo de inclina√ß√£o.
+     Determina o √¢ngulo de inclina√ß√£o no desenho do texto. :/}
     property Angle: Double read FAngle write SetAngle stored IsAngle;
 
-    {@prop AngleBorders - Funcionalidade n„o implementada. :/}
+    {@prop AngleBorders - Funcionalidade n√£o implementada. :/}
     property AngleBorders: Boolean
       read FAngleBorders write SetAngleBorders default False;
 
     // events
 
-    {@event BeforePrint - Antes da impress„o.
-     Ocorre antes da impress„o do controle para alterar o texto ou suspender a sua impress„o.
+    {@event BeforePrint - Antes da impress√£o.
+     Ocorre antes da impress√£o do controle para alterar o texto ou suspender a sua impress√£o.
      @links TRLBeforeTextEvent. :/}
     property BeforePrint: TRLBeforeTextEvent read FBeforeText write FBeforeText;
 
-    {@prop AutoSize - Redimensionamento autom·tico.
-     Determina se a label ir· se redimensionar automaticamente de acordo com o tamanho do seu Caption. :/}
+    {@prop AutoSize - Redimensionamento autom√°tico.
+     Determina se a label ir√° se redimensionar automaticamente de acordo com o tamanho do seu Caption. :/}
     property AutoSize default True;
   end;
 
@@ -1917,28 +1917,28 @@ type
 
     // custom properties
 
-    {@prop Text - Texto auxiliar. Este texto dever· ser impresso junto com o conte˙do do campo. :/}
+    {@prop Text - Texto auxiliar. Este texto dever√° ser impresso junto com o conte√∫do do campo. :/}
     property Text: TCaption read FText write SetText;
 
     {@prop DataField - Nome do campo associado.
      @links TRLDataFieldProperty. :/}
     property DataField: TRLDataFieldProperty read FDataField write SetDataField;
 
-    {@prop DataFormula - Express„o matem·tica envolvendo campos, valores e literais. :/}
+    {@prop DataFormula - Express√£o matem√°tica envolvendo campos, valores e literais. :/}
     property DataFormula: string read FDataFormula write SetDataFormula;
 
-    {@prop DataSource - ReferÍncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
+    {@prop DataSource - Refer√™ncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
     property DataSource: TDataSource read FDataSource write SetDataSource;
 
-    {@prop DisplayMask - Mascara de formataÁ„o. :/}
+    {@prop DisplayMask - Mascara de formata√ß√£o. :/}
     property DisplayMask: string read FDisplayMask write FDisplayMask;
 
     // readonly
 
-    {@prop Field - ReferÍncia para o objeto TField determinado pelas props DataField e DataSource. :/}
+    {@prop Field - Refer√™ncia para o objeto TField determinado pelas props DataField e DataSource. :/}
     property Field: TField read GetField;
 
-    {@prop DataSet - ReferÍncia para o objeto TDataSet determinado pela prop DataSource. :/}
+    {@prop DataSet - Refer√™ncia para o objeto TDataSet determinado pela prop DataSource. :/}
     property DataSet: TDataSet read GetDataSet;
   end;
 
@@ -1958,7 +1958,7 @@ type
     Last: Variant;
   end;
 
-  {@class TRLCustomDBResult - Caixa de texto para resultado de c·culos matem·ticos com campos de um dataset.
+  {@class TRLCustomDBResult - Caixa de texto para resultado de c√°culos matem√°ticos com campos de um dataset.
    @ancestor TRLCustomDBText. }
   TRLCustomDBResult = class(TRLCustomDBText)
   private
@@ -2011,7 +2011,7 @@ type
     procedure InternalPrint; override;
     function GetAttribute(const AName: string): Variant; override;
 
-    {@method Resolve - Avalia uma funÁ„o built-in. :/}
+    {@method Resolve - Avalia uma fun√ß√£o built-in. :/}
     function Resolve(Sender: TObject; const Identifier: string;
       Params: Variant): Variant;
 
@@ -2024,11 +2024,11 @@ type
 
     // properties
 
-    {@prop Info - Tipo de informaÁ„o.
+    {@prop Info - Tipo de informa√ß√£o.
      @links TRLResultInfo. :/}
     property Info: TRLResultInfo read FInfo write SetInfo default riSimple;
 
-    {@prop ResetAfterPrint - Zerar os acumuladores apÛs a impress„o. :/}
+    {@prop ResetAfterPrint - Zerar os acumuladores ap√≥s a impress√£o. :/}
     property ResetAfterPrint: Boolean read FResetAfterPrint
       write FResetAfterPrint default False;
 
@@ -2037,12 +2037,12 @@ type
     {@prop Value - Valor parcial. :/}
     property Value: Variant read GetValue;
 
-    {@prop ComputeNulls - Indica se campos com valor nulo ser„o computados. :/}
+    {@prop ComputeNulls - Indica se campos com valor nulo ser√£o computados. :/}
     property ComputeNulls: Boolean read FComputeNulls write FComputeNulls default True;
 
     // events
 
-    {@event OnCompute - Ocorre durante os c·lculos estatÌsticos para validaÁ„o do valor a ser computado.
+    {@event OnCompute - Ocorre durante os c√°lculos estat√≠sticos para valida√ß√£o do valor a ser computado.
      @links TRLOnComputeEvent. :/}
     property OnCompute: TRLOnComputeEvent read FOnCompute write FOnCompute;
   end;
@@ -2052,7 +2052,7 @@ type
 
   { TRLCustomSystemInfo }
 
-  {@class TRLCustomSystemInfo - Caixa de texto com informaÁıes de sistema.
+  {@class TRLCustomSystemInfo - Caixa de texto com informa√ß√µes de sistema.
    @ancestor TRLCustomLabel. }
   TRLCustomSystemInfo = class(TRLCustomLabel)
   private
@@ -2084,7 +2084,7 @@ type
 
     // custom properties
 
-    {@prop Info - Tipo de informaÁ„o.
+    {@prop Info - Tipo de informa√ß√£o.
      @links TRLInfoType. :/}
     property Info: TRLInfoType read FInfoType write SetInfoType default itDate;
 
@@ -2112,19 +2112,19 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     procedure Paint; override;
-    {@prop WordWrap - Quebra autom·tica de linha.
-     Determina se quebras autom·ticas de linha dever„o ser inseridas de modo a encaixar o texto de acordo com a
+    {@prop WordWrap - Quebra autom√°tica de linha.
+     Determina se quebras autom√°ticas de linha dever√£o ser inseridas de modo a encaixar o texto de acordo com a
      largura do controle. :/}
     property WordWrap: Boolean read FWordWrap write SetWordWrap default True;
     {@prop IntegralHeight - Altura integral das linhas.
-     Determina se as linhas que excederem a ·rea cliente do controle ser„o exibidas. :/}
+     Determina se as linhas que excederem a √°rea cliente do controle ser√£o exibidas. :/}
     property IntegralHeight: Boolean
       read FIntegralHeight write FIntegralHeight default False;
-    {@event BeforePrint - Antes da impress„o. Ocorre antes da impress„o do controle para alterar o texto ou suspender
-     a sua impress„o.
+    {@event BeforePrint - Antes da impress√£o. Ocorre antes da impress√£o do controle para alterar o texto ou suspender
+     a sua impress√£o.
      @links TRLBeforeTextEvent. :/}
     property BeforePrint: TRLBeforeTextEvent read FBeforeText write FBeforeText;
-    {@prop AutoSize - Redimensionamento autom·tico. Determina se o memo ir· se redimensionar automaticamente de
+    {@prop AutoSize - Redimensionamento autom√°tico. Determina se o memo ir√° se redimensionar automaticamente de
      acordo com o tamanho do seu texto. :/}
     property AutoSize default True;
   end;
@@ -2211,20 +2211,20 @@ type
 
     // custom properties
 
-    {@prop Field - ReferÍncia para o objeto TField determinado pelas props DataField e DataSource. :/}
+    {@prop Field - Refer√™ncia para o objeto TField determinado pelas props DataField e DataSource. :/}
     property Field: TField read GetField;
 
-    {@prop DataSet - ReferÍncia para o objeto TDataSet determinado pela prop DataSource. :/}
+    {@prop DataSet - Refer√™ncia para o objeto TDataSet determinado pela prop DataSource. :/}
     property DataSet: TDataSet read GetDataSet;
 
     {@prop DataField - Nome do campo associado.
      @links TRLDataFieldProperty. :/}
     property DataField: TRLDataFieldProperty read FDataField write SetDataField;
 
-    {@prop DataFormula - Express„o matem·tica envolvendo campos, valores e literais. :/}
+    {@prop DataFormula - Express√£o matem√°tica envolvendo campos, valores e literais. :/}
     property DataFormula: string read FDataFormula write SetDataFormula;
 
-    {@prop DataSource - ReferÍncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
+    {@prop DataSource - Refer√™ncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
     property DataSource: TDataSource read FDataSource write SetDataSource;
   end;
 
@@ -2276,16 +2276,16 @@ type
 
     // custom properties
 
-    {@prop Center - CentralizaÁ„o da imagem.
-     Determina se a imagem deve ser posicionada ao centro da ·rea cliente. :/}
+    {@prop Center - Centraliza√ß√£o da imagem.
+     Determina se a imagem deve ser posicionada ao centro da √°rea cliente. :/}
     property Center: Boolean read FCenter write SetCenter default False;
 
     {@prop Stretch - Esticamento da imagem.
-     Indica se a imagem deve ser esticada de modo a preencher totalmente a ·rea cliente do controle. :/}
+     Indica se a imagem deve ser esticada de modo a preencher totalmente a √°rea cliente do controle. :/}
     property Stretch: Boolean read FStretch write SetStretch default False;
 
     {@prop Scaled - Esticamento proporcional.
-     Indica se a imagem deve ser esticada de modo a preencher ·rea cliente do controle mantendo a mesma proporÁ„o
+     Indica se a imagem deve ser esticada de modo a preencher √°rea cliente do controle mantendo a mesma propor√ß√£o
      de altura e largura. :/}
     property Scaled: Boolean read FScaled write SetScaled default False;
 
@@ -2296,8 +2296,8 @@ type
 
     // events
 
-    {@event BeforePrint - Antes da impress„o. Ocorre antes da impress„o do controle para modificar a imagem ou
-     suspender a sua impress„o.
+    {@event BeforePrint - Antes da impress√£o. Ocorre antes da impress√£o do controle para modificar a imagem ou
+     suspender a sua impress√£o.
      @links TRLBeforePrintEvent. :/}
     property BeforePrint: TRLBeforePrintEvent read FBeforePrint write FBeforePrint;
   end;
@@ -2343,17 +2343,17 @@ type
 
     // custom properties
 
-    {@prop Field - ReferÍncia para o objeto TField determinado pelas props DataField e DataSource. :/}
+    {@prop Field - Refer√™ncia para o objeto TField determinado pelas props DataField e DataSource. :/}
     property Field: TField read GetField;
 
-    {@prop DataSet - ReferÍncia para o objeto TDataSet determinado pela prop DataSource. :/}
+    {@prop DataSet - Refer√™ncia para o objeto TDataSet determinado pela prop DataSource. :/}
     property DataSet: TDataSet read GetDataSet;
 
     {@prop DataField - Nome do campo associado.
      @links TRLDataFieldProperty. :/}
     property DataField: TRLDataFieldProperty read FDataField write SetDataField;
 
-    {@prop DataSource - ReferÍncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
+    {@prop DataSource - Refer√™ncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
     property DataSource: TDataSource read FDataSource write SetDataSource;
   end;
 
@@ -2362,28 +2362,28 @@ type
 
   { TRLCustomDraw }
 
-  {@type TRLDrawKind - Tipo de figura geomÈtrica para o componente TRLDraw.
+  {@type TRLDrawKind - Tipo de figura geom√©trica para o componente TRLDraw.
    Pode assumir um dos seguintes valores:
-   dkRectangle - Desenha um ret‚ngulo ou um quadrado;
+   dkRectangle - Desenha um ret√¢ngulo ou um quadrado;
    dkLine - Desenha uma linha reta;
-   dkTriangle - Desenha um tri‚ngulo;
-   dkElipse - Desenha uma elipse ou um cÌrculo;
+   dkTriangle - Desenha um tri√¢ngulo;
+   dkElipse - Desenha uma elipse ou um c√≠rculo;
    dkArrow - Desenha uma seta simples;
-   dkCustom - Desenha um polÌgono cujos pontos s„o definidos na prop DrawData.
+   dkCustom - Desenha um pol√≠gono cujos pontos s√£o definidos na prop DrawData.
    @links TRLDraw, TRLCustomDraw.DrawData. :/}
   TRLDrawKind = (dkRectangle, dkLine, dkTriangle, dkElipse, dkArrow, dkCustom);
 
-  {@type TRLDrawOptions - OpÁıes para desenho de figuras do RLDraw.
+  {@type TRLDrawOptions - Op√ß√µes para desenho de figuras do RLDraw.
    Pode ser um conjunto dos seguintes valores:
-   doKeepAspectRatio - A relaÁ„o entre largura e altura da figura deve ser mantida;
-   doKeepSize - O tamanho da figura ser· o original (mesmo do ‚ngulo zero) para qualquer ‚ngulo escolhido;
-   doKeepVisible - A figura ter· um tamanho que permita que ela seja vista inteira em qualquer ‚ngulo escolhido.
+   doKeepAspectRatio - A rela√ß√£o entre largura e altura da figura deve ser mantida;
+   doKeepSize - O tamanho da figura ser√° o original (mesmo do √¢ngulo zero) para qualquer √¢ngulo escolhido;
+   doKeepVisible - A figura ter√° um tamanho que permita que ela seja vista inteira em qualquer √¢ngulo escolhido.
    @links TRLDraw, TRLCustomDraw.DrawData. :}
   TRLDrawOption = (doKeepAspectRatio, doKeepSize, doKeepVisible);
   TRLDrawOptions = set of TRLDrawOption;
   {/@type}
 
-  {@class TRLCustomDraw - Classe base para caixa de desenho de figuras geomÈtricas.
+  {@class TRLCustomDraw - Classe base para caixa de desenho de figuras geom√©tricas.
    @ancestor TRLCustomControl. }
   TRLCustomDraw = class(TRLCustomControl)
   private
@@ -2446,44 +2446,44 @@ type
 
     // custom properties
 
-    {@prop Angle - ¬ngulo de rotaÁ„o da figura. :/}
+    {@prop Angle - √Çngulo de rota√ß√£o da figura. :/}
     property Angle: Double read FAngle write SetAngle stored IsAngle;
 
-    {@prop DrawKind - Tipo de figura geomÈtrica.
+    {@prop DrawKind - Tipo de figura geom√©trica.
      @links TRLDrawKind. :/}
     property DrawKind: TRLDrawKind read FDrawKind write SetDrawKind default dkRectangle;
 
     // agregates
 
-    {@prop Brush - Cor e padr„o de preenchimento da figura. :/}
+    {@prop Brush - Cor e padr√£o de preenchimento da figura. :/}
     property Brush: TBrush read FBrush write SetBrush;
 
-    {@prop Pen - Cor e estilo dos traÁoes usados no desenho da figura. :/}
+    {@prop Pen - Cor e estilo dos tra√ßoes usados no desenho da figura. :/}
     property Pen: TPen read FPen write SetPen;
 
-    {@prop DrawData - Lista de coordenadas para desenho do polÌgono.
-     A lista È uma sequÍncia de n˙meros inteiros separados por espaÁos. Cada par de n˙meros
-     representa a coordenada absoluta de um ponto do polÌgono. Todos os pontos ser„o
-     ligados. O primeiro e o ˙ltimo fechar„o o polÌgono. O polÌgono ser· desenhado e preenchido
+    {@prop DrawData - Lista de coordenadas para desenho do pol√≠gono.
+     A lista √© uma sequ√™ncia de n√∫meros inteiros separados por espa√ßos. Cada par de n√∫meros
+     representa a coordenada absoluta de um ponto do pol√≠gono. Todos os pontos ser√£o
+     ligados. O primeiro e o √∫ltimo fechar√£o o pol√≠gono. O pol√≠gono ser√° desenhado e preenchido
      de acordo com as props Pen e Brush. :/}
     property DrawData: TStrings read FDrawData write SetDrawData stored IsDrawData;
 
-    {@prop Center - A figura deve ser centralizada na ·rea cliente. :/}
+    {@prop Center - A figura deve ser centralizada na √°rea cliente. :/}
     property Center: Boolean read FCenter write SetCenter default True;
 
-    {@prop DrawWidth - Largura da figura em pixels. Quando n„o informada, fica valendo a largura do componente. :/}
+    {@prop DrawWidth - Largura da figura em pixels. Quando n√£o informada, fica valendo a largura do componente. :/}
     property DrawWidth: Integer read FDrawWidth write SetDrawWidth stored IsDrawSize;
 
-    {@prop DrawHeight - Altura da figura em pixels. Quando n„o informada, fica valendo a altura do componente. :/}
+    {@prop DrawHeight - Altura da figura em pixels. Quando n√£o informada, fica valendo a altura do componente. :/}
     property DrawHeight: Integer read FDrawHeight write SetDrawHeight stored IsDrawSize;
 
-    {@prop Options - Determina v·rias opÁıes de desenho da figura. @links TRLDrawOptions. :/}
+    {@prop Options - Determina v√°rias op√ß√µes de desenho da figura. @links TRLDrawOptions. :/}
     property Options: TRLDrawOptions read FOptions write SetOptions default [];
 
     // events
 
-    {@event BeforePrint - Antes da impress„o. Ocorre antes da impress„o do controle para modificar a imagem
-                          ou suspender a sua impress„o.
+    {@event BeforePrint - Antes da impress√£o. Ocorre antes da impress√£o do controle para modificar a imagem
+                          ou suspender a sua impress√£o.
      @links TRLBeforePrintEvent. :/}
     property BeforePrint: TRLBeforePrintEvent read FBeforePrint write FBeforePrint;
   end;
@@ -2493,8 +2493,8 @@ type
 
   { TRLCustomSite }
 
-  {@class TRLCustomSite - Classe base da qual derivam todos os paineis de impress„o como: TRLBand, TRLPanel,
-   TRLGroup e o prÛprio TRLReport. Derive a partir do TRLCustomSite para criar qualquer painel customizado.
+  {@class TRLCustomSite - Classe base da qual derivam todos os paineis de impress√£o como: TRLBand, TRLPanel,
+   TRLGroup e o pr√≥prio TRLReport. Derive a partir do TRLCustomSite para criar qualquer painel customizado.
    Nota: Descendentes do TRLCustomSite podem conter controles e outros paineis.
    @links TRLPanel, TRLBand, TRLGroup, TRLReport.
    @ancestor TRLCustomControl. }
@@ -2548,8 +2548,8 @@ type
     procedure CalcSize(var ASize: TPoint); override;
 
     {@method GetClientRect - Margens externas do painel.
-     Retorna ret‚ngulo contendo as coordenadas da ·rea cliente do painel.
-     A ·rea cliente corresponde ao ret‚ngulo (0,0,Width,Height), deduzido
+     Retorna ret√¢ngulo contendo as coordenadas da √°rea cliente do painel.
+     A √°rea cliente corresponde ao ret√¢ngulo (0,0,Width,Height), deduzido
      das margens externas, internas e das bordas. :/}
     function GetClientRect: TRect; override;
 
@@ -2563,50 +2563,50 @@ type
     procedure InternalPrint; override;
     procedure InternalMeasureHeight; override;
 
-    {@method AlignControls - Alinha os controles filhos. N„o utilize este mÈtodo diretamente.
+    {@method AlignControls - Alinha os controles filhos. N√£o utilize este m√©todo diretamente.
      Ele provoca o alinhamento os controles filhos do panel segundo a propriedade estendida Align de cada controle
-     atravÈs do mÈtodo AlignControls e prossegue recursivamente. :}
+     atrav√©s do m√©todo AlignControls e prossegue recursivamente. :}
     procedure AlignControls(ARect: TRect); reintroduce; overload;
     procedure AlignControls(AControl: TControl; var Rect: TRect); overload; override;
     {/@method}
 
-    {@method DoOnDraw - Invoca o evento OnDraw. N„o utilize este mÈtodo diretamente.
-     Ele È invocado durante a impress„o do panel para permitir que um desenho qualquer seja feito em sua superfÌcie. :/}
+    {@method DoOnDraw - Invoca o evento OnDraw. N√£o utilize este m√©todo diretamente.
+     Ele √© invocado durante a impress√£o do panel para permitir que um desenho qualquer seja feito em sua superf√≠cie. :/}
     procedure DoOnDraw(ASurface: TRLGraphicSurface; ARect: TRect);
 
     // dynamic methods
 
-    {@method SurfaceOpening - Uma nova superfÌcie de impress„o est· sendo aberta.
-     Local ideal para inicializaÁıes relativas ‡ p·gina ou sequÍncia de dados. :/}
+    {@method SurfaceOpening - Uma nova superf√≠cie de impress√£o est√° sendo aberta.
+     Local ideal para inicializa√ß√µes relativas √† p√°gina ou sequ√™ncia de dados. :/}
     procedure SurfaceOpening; dynamic;
 
-    {@method SurfaceBeginDraw - Os controles est„o sendo desenhados na nova superfÌcie de desenho. :/}
+    {@method SurfaceBeginDraw - Os controles est√£o sendo desenhados na nova superf√≠cie de desenho. :/}
     procedure SurfaceBeginDraw; dynamic;
 
-    {@method SurfaceOpened - A superfÌcie de impress„o foi aberta e os controles est·ticos j· foram desenhados. :/}
+    {@method SurfaceOpened - A superf√≠cie de impress√£o foi aberta e os controles est√°ticos j√° foram desenhados. :/}
     procedure SurfaceOpened; dynamic;
 
-    {@method WriteSurface - A superfÌcie de impress„o est· pronta para a rotina de trabalho, se houver. :/}
+    {@method WriteSurface - A superf√≠cie de impress√£o est√° pronta para a rotina de trabalho, se houver. :/}
     procedure WriteSurface; dynamic;
 
-    {@method SurfaceEndDraw - Os controles est·ticos que dependem do tamanho do site e os de finalizaÁ„o est„o sendo desenhados. :/}
+    {@method SurfaceEndDraw - Os controles est√°ticos que dependem do tamanho do site e os de finaliza√ß√£o est√£o sendo desenhados. :/}
     procedure SurfaceEndDraw; dynamic;
 
-    {@method SurfaceClosed - A superfÌcie j· foi fechada e agora dever· ser acumulada na superfÌcie do controle pai. :/}
+    {@method SurfaceClosed - A superf√≠cie j√° foi fechada e agora dever√° ser acumulada na superf√≠cie do controle pai. :/}
     procedure SurfaceClosed; dynamic;
 
-    {@method TruncateSurface - O desenho da superfÌcie j· foi terminado e sua altura definitiva deve ser determinada. :/}
+    {@method TruncateSurface - O desenho da superf√≠cie j√° foi terminado e sua altura definitiva deve ser determinada. :/}
     procedure TruncateSurface; dynamic;
 
-    {@method MarkPrintPosition - Primeira marcaÁ„o da linha/coluna e dimensıes de impress„o. :/}
+    {@method MarkPrintPosition - Primeira marca√ß√£o da linha/coluna e dimens√µes de impress√£o. :/}
     procedure MarkPrintPosition; dynamic;
 
-    {@method ThrowSurface - Procede a transferÍncia e posicionamento da superfÌcie de impress„o sobre a superfÌcie do controle pai. :/}
+    {@method ThrowSurface - Procede a transfer√™ncia e posicionamento da superf√≠cie de impress√£o sobre a superf√≠cie do controle pai. :/}
     procedure ThrowSurface; dynamic;
 
-    {@method PrepareBackgroundSurface - Prepara a superfÌcie de desenho do controle pai antes da relocaÁ„o.
-     Neste momento o controle est· ciente do sua posiÁ„o e tamanho finais e deve providenciar a preparaÁ„o da
-     superfÌcie do controle pai.
+    {@method PrepareBackgroundSurface - Prepara a superf√≠cie de desenho do controle pai antes da reloca√ß√£o.
+     Neste momento o controle est√° ciente do sua posi√ß√£o e tamanho finais e deve providenciar a prepara√ß√£o da
+     superf√≠cie do controle pai.
      @links TRLGraphicSurface. :/}
     procedure PrepareBackgroundSurface(ABackgroundSurface: TRLGraphicSurface;
       const ARect: TRect); dynamic;
@@ -2614,7 +2614,7 @@ type
     procedure DrawClient; dynamic;
 
     {@method DrawBackground - Desenha imagem de fundo.
-     N„o utilize este mÈtodo diretamente. Ele desenha a imagem definida em Background no fundo do painel. :/}
+     N√£o utilize este m√©todo diretamente. Ele desenha a imagem definida em Background no fundo do painel. :/}
     procedure DrawBackground(const ARect: TRect); dynamic;
 
     function CalcEffectiveRect: TRect; dynamic;
@@ -2636,12 +2636,12 @@ type
 
     // static methods
 
-    {@method OpenSurface - Cria uma nova superfÌcie de desenho e inicializa-a.
-     N„o utilize este mÈtodo diretamente. EstÈ mÈtodo È invocado pelo o mÈtodo Print. :/}
+    {@method OpenSurface - Cria uma nova superf√≠cie de desenho e inicializa-a.
+     N√£o utilize este m√©todo diretamente. Est√© m√©todo √© invocado pelo o m√©todo Print. :/}
     procedure OpenSurface;
 
-    {@method CloseSurface - Fecha superfÌcie de desenho e envia-a para o panel pai.
-     N„o utilize este mÈtodo diretamente. EstÈ mÈtodo È invocado apÛs o mÈtodo Print. Ele fecha a superfÌcie de
+    {@method CloseSurface - Fecha superf√≠cie de desenho e envia-a para o panel pai.
+     N√£o utilize este m√©todo diretamente. Est√© m√©todo √© invocado ap√≥s o m√©todo Print. Ele fecha a superf√≠cie de
      desenho e a repassa para o panel pai para ser devidamente posicionada. :/}
     procedure CloseSurface;
 
@@ -2651,25 +2651,25 @@ type
 
     {@prop Background - Imagem para o fundo do painel.
      Utilize Background para colocar uma imagem no fundo do painel. A imagem deve ser um bitmap ou icone e pode ser
-     disposta de v·rias formas de acordo com a propriedade Arrange.
+     disposta de v√°rias formas de acordo com a propriedade Arrange.
      @links TRLBackground. :/}
     property Background: TRLBackground read FBackground write SetBackground;
 
-    {@prop Degrade - Efeito de transiÁ„o de cores no fundo do painel.
-     Utilize Degrade para produzir o efeito de transiÁ„o de cores no fundo do painel. Pode-se configurar as cores
-     origem e destino, bem como a direÁ„o e a qualidade do efeito.
+    {@prop Degrade - Efeito de transi√ß√£o de cores no fundo do painel.
+     Utilize Degrade para produzir o efeito de transi√ß√£o de cores no fundo do painel. Pode-se configurar as cores
+     origem e destino, bem como a dire√ß√£o e a qualidade do efeito.
      @links TRLDegradeEffect. :/}
     property Degrade: TRLDegradeEffect read FDegrade write SetDegrade;
 
     {@prop InsideMargins - Margens internas do painel.
-     Utilize InsideMargins quando for necess·rio posicionar os controles dentro do painel com um afastamento lateral
-     dentro do ret‚ngulo definido por Margins e Borders.
+     Utilize InsideMargins quando for necess√°rio posicionar os controles dentro do painel com um afastamento lateral
+     dentro do ret√¢ngulo definido por Margins e Borders.
      @links TRLMargins. :/}
     property InsideMargins: TRLMargins read FInsideMargins write SetInsideMargins;
 
     {@prop Margins - Margens externas do painel.
-     Utilize Margins quando for necess·rio posicionar os controles dentro do painel com um afastamento lateral ou para
-     reduzir o ret‚ngulo das bordas.
+     Utilize Margins quando for necess√°rio posicionar os controles dentro do painel com um afastamento lateral ou para
+     reduzir o ret√¢ngulo das bordas.
      @links TRLMargins. :/}
     property Margins: TRLMargins read FMargins write SetMargins;
 
@@ -2679,14 +2679,14 @@ type
      @links TRLOnDrawEvent. :/}
     property OnDraw: TRLOnDrawEvent read FOnDraw write FOnDraw;
 
-    {@event BeforePrint - Antes da impress„o. Ocorre antes da impress„o do controle para modific·-lo ou suspender
-     sua impress„o.
+    {@event BeforePrint - Antes da impress√£o. Ocorre antes da impress√£o do controle para modific√°-lo ou suspender
+     sua impress√£o.
      @links TRLBeforePrintEvent. :/}
     property BeforePrint: TRLBeforePrintEvent read FBeforePrint write FBeforePrint;
 
     // readonly
 
-    {@prop Surface - SuperfÌcie de desenho.
+    {@prop Surface - Superf√≠cie de desenho.
      @links TRLGraphicSurface. :/}
     property Surface: TRLGraphicSurface read FSurface;
 
@@ -2724,7 +2724,7 @@ type
 
   { TRLCustomBandSet }
 
-  {@class TRLCustomBandSet - Classe base para criaÁ„o de bands.
+  {@class TRLCustomBandSet - Classe base para cria√ß√£o de bands.
    @ancestor TRLCustomSite. }
   TRLCustomBandSet = class(TRLCustomSite)
   private
@@ -2748,23 +2748,23 @@ type
 
   {/@class}
 
-  {@type TRLBandOption - OpÁ„o para formataÁ„o e comportamento de uma band.
+  {@type TRLBandOption - Op√ß√£o para formata√ß√£o e comportamento de uma band.
    Pode assumir um dos seguintes valores:
-   boOptimisticPageBreak - Quebra de p·gina otimista. O c·lculo de espaÁo para
-   forÁar a quebra de p·gina È feito somente apÛs a renderizaÁ„o da band. Assim,
-   o usu·rio pode modificar a altura da band e interferir na decis„o da quebra.
+   boOptimisticPageBreak - Quebra de p√°gina otimista. O c√°lculo de espa√ßo para
+   for√ßar a quebra de p√°gina √© feito somente ap√≥s a renderiza√ß√£o da band. Assim,
+   o usu√°rio pode modificar a altura da band e interferir na decis√£o da quebra.
    @links TRLBand.Options. :/}
   TRLBandOption = (boOptimisticPageBreak);
 
-  {@type TRLBandOptions - Conjunto de opÁıes para formataÁ„o e comportamento de uma band.
+  {@type TRLBandOptions - Conjunto de op√ß√µes para formata√ß√£o e comportamento de uma band.
    @links TRLBandOption. :/}
   TRLBandOptions = set of TRLBandOption;
 
   { TRLCustomBand }
 
-  {@class TRLCustomBand - Classe base da qual derivam as bandas de impress„o.
-   Derive a partir da TRLCustomBand para criar bandas de impress„o de dados.
-   As bandas de impress„o formam a base do algorÌtmo de paginaÁ„o do FortesReport.
+  {@class TRLCustomBand - Classe base da qual derivam as bandas de impress√£o.
+   Derive a partir da TRLCustomBand para criar bandas de impress√£o de dados.
+   As bandas de impress√£o formam a base do algor√≠tmo de pagina√ß√£o do FortesReport.
    @links TRLBand, TRLDetailGrid.
    @ancestor TRLCustomBandSet. }
   TRLCustomBand = class(TRLCustomBandSet)
@@ -2793,23 +2793,23 @@ type
     function MaxBandsReached: Boolean;
   protected
     procedure SurfaceClosed; override;
-    {@method ThrowSurface - Procede a transferÍncia e posicionamento da superfÌcie de impress„o sobre a superfÌcie
+    {@method ThrowSurface - Procede a transfer√™ncia e posicionamento da superf√≠cie de impress√£o sobre a superf√≠cie
      do controle pai.
-     Determina a posiÁ„o e as dimensıes de impress„o antes da relocaÁ„o para o controle pai. :/}
+     Determina a posi√ß√£o e as dimens√µes de impress√£o antes da reloca√ß√£o para o controle pai. :/}
     procedure ThrowSurface; override;
     {@method VerticalExceeded - O limite vertical foi excedido e uma atitude deve ser tomada.
-     No caso das bands simples, a impress„o para para uma nova p·gina. :/}
+     No caso das bands simples, a impress√£o para para uma nova p√°gina. :/}
     procedure VerticalExceeded; dynamic;
     procedure MarkPrintPosition; override;
     procedure InternalPrint; override;
-    {@method HeightFits - A band cabe na p·gina atual. Se n„o couber, aAvailableHeight representar· o espaÁo disponÌvel
+    {@method HeightFits - A band cabe na p√°gina atual. Se n√£o couber, aAvailableHeight representar√° o espa√ßo dispon√≠vel
      em pixels. :/}
     function HeightFits(AHeight: Integer; var AAvailable: Integer): Boolean; dynamic;
-    {@method SkipToNextPosition - Move o cursor do parentpager para a posiÁ„o da prÛxima band. :/}
+    {@method SkipToNextPosition - Move o cursor do parentpager para a posi√ß√£o da pr√≥xima band. :/}
     procedure SkipToNextPosition(AWidth, AHeight: Integer); dynamic;
     function GetBandTypeName: string; dynamic;
-    {@method IsDataBand - Indica se a band È uma band de dados.
-     Se o tipo da band È btDetail ou btSummary e ela n„o est· sendo impressa como um lastro, ent„o ela È uma band
+    {@method IsDataBand - Indica se a band √© uma band de dados.
+     Se o tipo da band √© btDetail ou btSummary e ela n√£o est√° sendo impressa como um lastro, ent√£o ela √© uma band
      de dados.
      @links IsBallast, BandType. :/}
     function IsDataBand: Boolean;
@@ -2818,41 +2818,41 @@ type
     FGreenBarFlag: Boolean;
     constructor Create(AOwner: TComponent); override;
     procedure Paint; override;
-    {@prop Completing - Indica se a band est· sendo impressa apÛs o fim dos dados para completar o espaÁo que sobrou. :/}
+    {@prop Completing - Indica se a band est√° sendo impressa ap√≥s o fim dos dados para completar o espa√ßo que sobrou. :/}
     property Completing: Boolean read GetCompleting;
-    {@prop CarbonIndex - N˙mero da cÛpia da band. :/}
+    {@prop CarbonIndex - N√∫mero da c√≥pia da band. :/}
     property CarbonIndex: Integer read FCarbonIndex write FCarbonIndex;
-    {@prop AlignToBottom - Alinhado a parte inferior da p·gina.
-     ForÁa a band a ser impressa na parte inferior da p·gina como se fosse um btFooter. :/}
+    {@prop AlignToBottom - Alinhado a parte inferior da p√°gina.
+     For√ßa a band a ser impressa na parte inferior da p√°gina como se fosse um btFooter. :/}
     property AlignToBottom: Boolean
       read FAlignToBottom write FAlignToBottom default False;
     {@prop BandType - Define o comportamento da banda.
-     Utilize a propriedade BandType para definir o comportamento da banda em relaÁ„o aos dados impressos.
+     Utilize a propriedade BandType para definir o comportamento da banda em rela√ß√£o aos dados impressos.
      @links TRLBandType. :/}
     property BandType: TRLBandType read FBandType write SetBandType default btDetail;
-    {@prop CarbonCopies - N˙mero de cÛpias da band. :/}
+    {@prop CarbonCopies - N√∫mero de c√≥pias da band. :/}
     property CarbonCopies: Integer read FCarbonCopies write SetCarbonCopies default 1;
-    {@prop Completion - Tipo de preenchimento de p·gina.
+    {@prop Completion - Tipo de preenchimento de p√°gina.
      @links TRLCompletionType. :/}
     property Completion: TRLCompletionType
       read FCompletion write FCompletion default ctNone;
-    {@prop Computable - Indica se a band È v·lida para estatÌsticas. :/}
+    {@prop Computable - Indica se a band √© v√°lida para estat√≠sticas. :/}
     property Computable: Boolean read FComputable write FComputable default True;
     {@prop GroupIndex - Agrupamento de bands. :/}
     property GroupIndex: Integer read FGroupIndex write SetGroupIndex default 0;
-    {@prop PageBreaking - Quebra de p·gina.
+    {@prop PageBreaking - Quebra de p√°gina.
      @links TRLPageBreaking. :/}
     property PageBreaking: TRLPageBreaking read FPageBreaking
       write FPageBreaking default pbNone;
-    {@prop IntegralHeight - Determina se a band poder· ser exibida parcialmente.
-     Se a band com o seu conte˙do n„o couber na p·gina, a band poder· ser dividida em partes por p·gina. :/}
+    {@prop IntegralHeight - Determina se a band poder√° ser exibida parcialmente.
+     Se a band com o seu conte√∫do n√£o couber na p√°gina, a band poder√° ser dividida em partes por p√°gina. :/}
     property IntegralHeight: Boolean
       read FIntegralHeight write FIntegralHeight default True;
-    {@prop Options - OpÁıes diversas de formataÁ„o e comportamento da band.
+    {@prop Options - Op√ß√µes diversas de formata√ß√£o e comportamento da band.
      @links TRLBandOptions. :/}
     property Options: TRLBandOptions read FOptions write FOptions default [];
     property OnCompute: TRLOnDetailComputeEvent read FOnCompute write FOnCompute;
-    {@prop AutoExpand - Expans„o autom·tica de acordo com crescimento do conte˙do. :/}
+    {@prop AutoExpand - Expans√£o autom√°tica de acordo com crescimento do conte√∫do. :/}
     property AutoExpand default True;
     property GreenBarPrint:Boolean read FGreenBarPrint write FGreenBarPrint default False;
     property GreenBarColor: TColor read FGreenBarColor write FGreenBarColor default $00E5E5E5;
@@ -2863,16 +2863,16 @@ type
 
   { TRLCustomDetailGrid }
 
-  {@type TRLDetailGridOrganization - OrganizaÁ„o para impress„o das bandas.
+  {@type TRLDetailGridOrganization - Organiza√ß√£o para impress√£o das bandas.
    Pode assumir um dos seguintes valores:
-   goInRows - Todas as bandas de uma linha s„o impressas antes de passar para a linha seguinte (padr„o);
-   goInColumns - As bandas s„o impressas verticalmente em coluna atÈ o fim da p·gina e ent„o a impress„o passa para
-   o topo da prÛxima coluna.
+   goInRows - Todas as bandas de uma linha s√£o impressas antes de passar para a linha seguinte (padr√£o);
+   goInColumns - As bandas s√£o impressas verticalmente em coluna at√© o fim da p√°gina e ent√£o a impress√£o passa para
+   o topo da pr√≥xima coluna.
    @links TRLDetailGrid. :/}
   TRLDetailGridOrganization = (goInRows, goInColumns);
 
   {@class TRLCustomDetailGrid - Classe base para bandas de detalhe multi-colunas.
-   Banda de tipo fixado em btDetail. Ideal para a impress„o de etiquetas e relatÛrios em colunas.
+   Banda de tipo fixado em btDetail. Ideal para a impress√£o de etiquetas e relat√≥rios em colunas.
    @ancestor TRLCustomBand. }
   TRLCustomDetailGrid = class(TRLCustomBand)
   private
@@ -2910,14 +2910,14 @@ type
     procedure SurfaceClosed; override;
 
     {@method VerticalExceeded - O limite vertical foi excedido e uma atitude deve ser tomada.
-     No caso do detailgrid, se a orientaÁ„o for colbycol, ent„o a impress„o deve passar para uma nova coluna. :/}
+     No caso do detailgrid, se a orienta√ß√£o for colbycol, ent√£o a impress√£o deve passar para uma nova coluna. :/}
     procedure VerticalExceeded; override;
 
-    {@method HeightFits - A band cabe na p·gina atual.
-     Se n„o couber, aAvailableHeight representar· o espaÁo disponÌvel em pixels. :/}
+    {@method HeightFits - A band cabe na p√°gina atual.
+     Se n√£o couber, aAvailableHeight representar√° o espa√ßo dispon√≠vel em pixels. :/}
     function HeightFits(AHeight: Integer; var AAvailable: Integer): Boolean; override;
 
-    {@method SkipToNextPosition - Move o cursor do parentpager para a posiÁ„o da prÛxima band na coluna ‡ direita
+    {@method SkipToNextPosition - Move o cursor do parentpager para a posi√ß√£o da pr√≥xima band na coluna √† direita
      ou abaixo. :/}
     procedure SkipToNextPosition(AWidth, AHeight: Integer); override;
 
@@ -2937,22 +2937,22 @@ type
 
     // internal custom properties
 
-    {@prop ColIndex - Õndice da coluna imprimindo. :/}
+    {@prop ColIndex - √çndice da coluna imprimindo. :/}
     property ColIndex: Integer read FColIndex;
 
     {@prop ColCount - Total de colunas da grid. :/}
     property ColCount: Integer read FColCount write SetColCount default 1;
 
-    {@prop ColSpacing - EspaÁo entre as colunas em milÌmetros. :/}
+    {@prop ColSpacing - Espa√ßo entre as colunas em mil√≠metros. :/}
     property ColSpacing: Double read FColSpacing write SetColSpacing stored IsManyCols;
 
-    {@prop ColWidth - Largura das colunas em milÌmetros. :/}
+    {@prop ColWidth - Largura das colunas em mil√≠metros. :/}
     property ColWidth: Double read FColWidth write SetColWidth stored IsManyCols;
 
-    {@prop RowIndex - Õndice da linha imprimindo. :/}
+    {@prop RowIndex - √çndice da linha imprimindo. :/}
     property RowIndex: Integer read FRowIndex;
 
-    {@prop Organization - Determina a direÁ„o para a impress„o das bandas.
+    {@prop Organization - Determina a dire√ß√£o para a impress√£o das bandas.
      @links TRLDetailGridOrganization. :/}
     property Organization: TRLDetailGridOrganization
       read FOrganization write FOrganization default goInRows;
@@ -2966,17 +2966,17 @@ type
   {@type TRLPagerStatusType - Estado do Pager.
    Indica os estados que o Pager pode assumir.
    Pode ser um dos seguintes valores:
-   psCompleting - Est· completando a p·gina com bands em branco. :/}
+   psCompleting - Est√° completando a p√°gina com bands em branco. :/}
   TRLPagerStatusType = (psCompleting);
 
   {@type TRLPagerStatus - Conjunto de estados do Pager.
-   Indica os trabalhos que o Pager est· executando. :/}
+   Indica os trabalhos que o Pager est√° executando. :/}
   TRLPagerStatus = set of TRLPagerStatusType;
 
   {@class TRLCustomPager - Classe base para paginadores.
-   Derive a partir da TRLCustomPager para criar controles de quebra de p·gina.
-   Os paginadores s„o containers para as bandas de impress„o e controlam a quantidade de bandas que podem ser
-   impressas por p·gina.
+   Derive a partir da TRLCustomPager para criar controles de quebra de p√°gina.
+   Os paginadores s√£o containers para as bandas de impress√£o e controlam a quantidade de bandas que podem ser
+   impressas por p√°gina.
    @links TRLReport, TRLSubDetail, TRLGroup.
    @ancestor TRLCustomBandSet. }
   TRLCustomPager = class(TRLCustomBandSet)
@@ -3049,11 +3049,11 @@ type
     procedure BeginDoc;
     procedure EndDoc;
     procedure NewPage;
-    {@prop MaxBands - N˙mero m·ximo de bands para o Pager. :/}
+    {@prop MaxBands - N√∫mero m√°ximo de bands para o Pager. :/}
     property MaxBands: Integer read FMaxBands write FMaxBands default 0;
-    {@prop MinBands - N˙mero mÌnimo de bands para o Pager. :/}
+    {@prop MinBands - N√∫mero m√≠nimo de bands para o Pager. :/}
     property MinBands: Integer read FMinBands write FMinBands default 0;
-    {@prop PageBreaking - Quebra de p·gina do Pager.
+    {@prop PageBreaking - Quebra de p√°gina do Pager.
      @links TRLPageBreaking. :/}
     property PageBreaking: TRLPageBreaking read FPageBreaking
       write FPageBreaking default pbNone;
@@ -3061,28 +3061,28 @@ type
      @links TRLAllowedBands. :/}
     property AllowedBands: TRLAllowedBands read FAllowedBands
       write SetAllowedBands default [];
-    {@prop ForceMinBands - ForÁar a quantidade mÌnima de bands. :/}
+    {@prop ForceMinBands - For√ßar a quantidade m√≠nima de bands. :/}
     property ForceMinBands: Boolean
       read FForceMinBands write FForceMinBands default False;
-    {@prop FooterMeasuring - AntecipaÁ„o do c·lculo da altura dos rodapÈs.
+    {@prop FooterMeasuring - Antecipa√ß√£o do c√°lculo da altura dos rodap√©s.
      @links TRLFooterMeasuring. :/}
     property FooterMeasuring: TRLFooterMeasuring
       read FFooterMeasuring write FFooterMeasuring default fmNone;
-    {@prop RelativePagerRow - N˙mero da linha atual relativa ao Pager. :/}
+    {@prop RelativePagerRow - N√∫mero da linha atual relativa ao Pager. :/}
     property RelativePagerRow: Integer read FRelativePagerRow write FRelativePagerRow;
-    {@prop DetailsInSurface - Quantidade de detalhes impressos na p·gina atual. :/}
+    {@prop DetailsInSurface - Quantidade de detalhes impressos na p√°gina atual. :/}
     property DetailsInSurface: Integer read FDetailsInSurface write FDetailsInSurface;
-    {@prop NewPageNeeded - Indica a necessidade de salto de p·gina. :/}
+    {@prop NewPageNeeded - Indica a necessidade de salto de p√°gina. :/}
     property NewPageNeeded: Boolean read GetNewPageNeeded write FNewPageNeeded;
-    {@prop DataBandPrinted - Indica se alguma band de dados j· foi impressa na p·gina atual. :/}
+    {@prop DataBandPrinted - Indica se alguma band de dados j√° foi impressa na p√°gina atual. :/}
     property DataBandPrinted: Integer read FDataBandPrinted write FDataBandPrinted;
-    {@prop DetailCount - N˙mero de bands de detalhe impressas desde o inÌcio da impress„o. :/}
+    {@prop DetailCount - N√∫mero de bands de detalhe impressas desde o in√≠cio da impress√£o. :/}
     property DetailCount: Integer read FDetailCount;
     {@prop SortedBands - Lista de bands agrupadas pelo tipo.
      @links TRLSortedBands. :/}
     property SortedBands: TRLSortedBands read FSortedBands;
     {@prop PagerStatus - Estado do Pager.
-     Indica se o Pager est· completando a p·gina com bands vazias apÛs o tÈrmino dos dados.
+     Indica se o Pager est√° completando a p√°gina com bands vazias ap√≥s o t√©rmino dos dados.
      @links TRLPagerStatus. :/}
     property PagerStatus: TRLPagerStatus read FPagerStatus;
   end;
@@ -3092,8 +3092,8 @@ type
 
   { TRLCustomGroup }
 
-  {@class TRLCustomGroup - Classe base para sequÍncias de registros de dados.
-   Utilize descendentes do TRLCustomGroup para imprimir sequÍncias de registros de dados.
+  {@class TRLCustomGroup - Classe base para sequ√™ncias de registros de dados.
+   Utilize descendentes do TRLCustomGroup para imprimir sequ√™ncias de registros de dados.
    @ancestor TRLCustomPager. }
   TRLCustomGroup = class(TRLCustomPager)
   private
@@ -3132,28 +3132,28 @@ type
 
     // custom properties
 
-    {@prop DataFields - Campo ou conjunto de campos que determinam a quebra de sequÍncia de registros.
-     Informe os campos determinantes da quebra de sequÍncia de registros. Os campos devem ser separados por
-     ponto-e-vÌrgula ";". A quebra automatica È detectada atravÈs da comparaÁ„o no conte˙do dos campos do ˙ltimo
+    {@prop DataFields - Campo ou conjunto de campos que determinam a quebra de sequ√™ncia de registros.
+     Informe os campos determinantes da quebra de sequ√™ncia de registros. Os campos devem ser separados por
+     ponto-e-v√≠rgula ";". A quebra automatica √© detectada atrav√©s da compara√ß√£o no conte√∫do dos campos do √∫ltimo
      registro impresso com o atual.
      @links TRLDataFieldsProperty. :/}
     property DataFields: TRLDataFieldsProperty read FDataFields write SetDataFields;
 
-    {@prop DataFormula - Express„o matem·tica envolvendo campos, valores e literais. @links DataFields. :/}
+    {@prop DataFormula - Express√£o matem√°tica envolvendo campos, valores e literais. @links DataFields. :/}
     property DataFormula: string read FDataFormula write SetDataFormula;
 
     {@prop Enabled - Quebra de registros habilitada.
-     Quando setada para False, esta propriedade desativa as quebras de sequÍncia do grupo, porÈm sem interferir
-     nos controles e grupos internos, que s„o impressos normalmente. :/}
+     Quando setada para False, esta propriedade desativa as quebras de sequ√™ncia do grupo, por√©m sem interferir
+     nos controles e grupos internos, que s√£o impressos normalmente. :/}
     property Enabled;
 
     // events
 
-    {@event OnGetBreak - Evento que determina da quebra de sequÍncia de registros.
-     Informe na implementaÁ„o do evento OnGetBreak quando a quebra de sequÍncia dever· ser efetuada. Sender È uma
-     referÍncia ao componente de grupo que originou a chamada. O par‚metro BreakIt dever· ser setado para True para
-     que a quebra aconteÁa.
-     Nota: Este evento È chamado a partir do segundo registro da sequÍncia a ser impresso.
+    {@event OnGetBreak - Evento que determina da quebra de sequ√™ncia de registros.
+     Informe na implementa√ß√£o do evento OnGetBreak quando a quebra de sequ√™ncia dever√° ser efetuada. Sender √© uma
+     refer√™ncia ao componente de grupo que originou a chamada. O par√¢metro BreakIt dever√° ser setado para True para
+     que a quebra aconte√ßa.
+     Nota: Este evento √© chamado a partir do segundo registro da sequ√™ncia a ser impresso.
      @links TRLOnGetBreakEvent. :/}
     property OnGetBreak: TRLOnGetBreakEvent read FOnGetBreak write FOnGetBreak;
   end;
@@ -3165,8 +3165,8 @@ type
 
   {@class TRLCustomSkipper - Classe base para Pager com fontes de dados.
    Derive a partir da TRLCustomSkipper para criar fontes de dados para as bandas.
-   As fontes de dados, alÈm de acumularem a funÁ„o de paginadores, controlam a sequÍncia de dados, automaticamente
-   quando a fonte È uma DataSource, ou atravÈs de eventos de interaÁ„o.
+   As fontes de dados, al√©m de acumularem a fun√ß√£o de paginadores, controlam a sequ√™ncia de dados, automaticamente
+   quando a fonte √© uma DataSource, ou atrav√©s de eventos de intera√ß√£o.
    @links TRLReport, TRLSubDetail.
    @ancestor TRLCustomPager. }
   TRLCustomSkipper = class(TRLCustomPager)
@@ -3213,7 +3213,7 @@ type
 
     // custom properties
 
-    {@prop DataSource - ReferÍncia ao DataSource de onde os registros ser„o obtidos. :/}
+    {@prop DataSource - Refer√™ncia ao DataSource de onde os registros ser√£o obtidos. :/}
     property DataSource: TDataSource read FDataSource write SetDataSource;
 
     {@prop RecordRange - Indica a faixa de registros a processar. @links TRLRecordRange, RangeCount. :/}
@@ -3248,14 +3248,14 @@ type
     {@prop DataEof - Indica o final dos dados de entrada. :/}
     property DataEof: Boolean read FDataEof;
 
-    {@prop RecordAction - AÁ„o tomada para ˙ltimo registro.
+    {@prop RecordAction - A√ß√£o tomada para √∫ltimo registro.
      @links TRLRecordAction. :/}
     property RecordAction: TRLRecordAction read FRecordAction;
 
-    {@prop RecNo - N˙mero do registro atual. :/}
+    {@prop RecNo - N√∫mero do registro atual. :/}
     property RecNo: Integer read FRecNo;
 
-    {@prop CopyNo - N˙mero da cÛpia da band atual. :/}
+    {@prop CopyNo - N√∫mero da c√≥pia da band atual. :/}
     property CopyNo: Integer read FCopyNo;
   end;
 
@@ -3264,9 +3264,9 @@ type
 
   { TRLCustomSubDetail }
 
-  {@class TRLCustomSubDetail - Mini relatÛrio para relacionamentos tipo master/detail.
-   Utilize os descendentes do TRLCustomSubDetail para imprimir registros ou sequÍncias de dados relacionadas com
-   os registros da fontes de dados principal. O controle de sub-detalhe È especialmente ˙til quando se quer listar
+  {@class TRLCustomSubDetail - Mini relat√≥rio para relacionamentos tipo master/detail.
+   Utilize os descendentes do TRLCustomSubDetail para imprimir registros ou sequ√™ncias de dados relacionadas com
+   os registros da fontes de dados principal. O controle de sub-detalhe √© especialmente √∫til quando se quer listar
    registros de uma base que possui registros filhos ou relacionados (Master/Detail), aonde um TRLReport responderia
    pelos registros principais e o TRLSubDetail pelos registros filhos.
    @links TRLSubDetail.
@@ -3294,7 +3294,7 @@ type
 
     // custom properties
 
-    {@prop Positioning - Posicionamento do subdetail. Equivalente ‡ prop BandType da TRLBand.
+    {@prop Positioning - Posicionamento do subdetail. Equivalente √† prop BandType da TRLBand.
      @links TRLBandType. :/}
     property Positioning: TRLBandType
       read FPositioning write SetPositioning default btDetail;
@@ -3302,7 +3302,7 @@ type
 
   {/@class}
 
-  {@type TRLPrintDialogParams - Intervalo de p·ginas a passar como default para o di·logo de impress„o. :}
+  {@type TRLPrintDialogParams - Intervalo de p√°ginas a passar como default para o di√°logo de impress√£o. :}
   TRLPrintDialogParams = record
     FromPage1: Integer;
     ToPage1: Integer;
@@ -3312,10 +3312,10 @@ type
 
   { TRLCustomReport }
 
-  {@class TRLCustomReport - Componente principal na confecÁ„o de relatÛrios.
-   Utilize os descendentes do TRLCustomReport como ponto de partida na confecÁ„o de qualquer relatÛrio com o
+  {@class TRLCustomReport - Componente principal na confec√ß√£o de relat√≥rios.
+   Utilize os descendentes do TRLCustomReport como ponto de partida na confec√ß√£o de qualquer relat√≥rio com o
    FortesReport. Um componente TRLCustomReport pode listar registros de uma fonte de dados, solicitar os dados
-   atravÈs de eventos em tempo de execuÁ„o ou apenas imprimir p·ginas confeccionadas com os componentes da biblioteca.
+   atrav√©s de eventos em tempo de execu√ß√£o ou apenas imprimir p√°ginas confeccionadas com os componentes da biblioteca.
    @links TRLReport.
    @ancestor TRLCustomSkipper. }
   TNextReportState=(nrStart,nrNext,nrEnd);
@@ -3470,106 +3470,106 @@ type
 
     // custom properties
 
-    {@prop AdjustableMargins - Determina se as margens poder„o ser aumentadas de acordo com a ·rea n„o imprimÌvel da
+    {@prop AdjustableMargins - Determina se as margens poder√£o ser aumentadas de acordo com a √°rea n√£o imprim√≠vel da
      impressora. :/}
     property AdjustableMargins: Boolean read FAdjustableMargins
       write SetAdjustableMargins default False;
 
-    {@prop FirstPageNumber - N˙meraÁ„o para a primeira p·gina. :/}
+    {@prop FirstPageNumber - N√∫mera√ß√£o para a primeira p√°gina. :/}
     property FirstPageNumber: Integer read FFirstPageNumber
       write FFirstPageNumber default 1;
 
-    {@prop ForcePrepare - Indica se o relatÛrio deve ser sempre preparado antes de imprimir ou visualizar.
+    {@prop ForcePrepare - Indica se o relat√≥rio deve ser sempre preparado antes de imprimir ou visualizar.
      @links Prepare. :/}
     property ForcePrepare: Boolean read FForcePrepare write FForcePrepare default True;
 
-    {@prop PrintDialog - Indica se um di·logo de seleÁ„o ser· exibido antes da impress„o. :/}
+    {@prop PrintDialog - Indica se um di√°logo de sele√ß√£o ser√° exibido antes da impress√£o. :/}
     property PrintDialog: Boolean read FPrintDialog write FPrintDialog default True;
 
-    {@prop PrintEmpty - Indica se o relatÛrio deve ser gerado e impresso mesmo que n„o haja registros a imprimir. :/}
+    {@prop PrintEmpty - Indica se o relat√≥rio deve ser gerado e impresso mesmo que n√£o haja registros a imprimir. :/}
     property PrintEmpty: Boolean read FPrintEmpty write FPrintEmpty default True;
 
-    {@prop ShowDesigners - Exibir rÈgua e delineadores dos controles em tempo de design. :/}
+    {@prop ShowDesigners - Exibir r√©gua e delineadores dos controles em tempo de design. :/}
     property ShowDesigners: Boolean
       read FShowDesigners write SetShowDesigners default True;
 
-    {@prop ShowTracks - Exibir rÈgua em tempo de design. :/}
+    {@prop ShowTracks - Exibir r√©gua em tempo de design. :/}
     property ShowTracks: Boolean read FShowTracks write SetShowTracks default True;
 
-    {@prop ShowExplosion - N„o implementada. :/}
+    {@prop ShowExplosion - N√£o implementada. :/}
     property ShowExplosion: Boolean
       read FShowExplosion write SetShowExplosion default False;
 
-    {@prop Title - TÌtulo do relatÛrio.
+    {@prop Title - T√≠tulo do relat√≥rio.
      Pode ser recuperado pelo componente TRLSystemInfo. :/}
     property Title: string read FTitle write SetTitle;
 
-    {@prop JobTitle - TÌtulo do trabalho de impress„o. Aparece na lista de trabalhos de impress„o do sistema operacional. :/}
+    {@prop JobTitle - T√≠tulo do trabalho de impress√£o. Aparece na lista de trabalhos de impress√£o do sistema operacional. :/}
     property JobTitle: string read FJobTitle write SetJobTitle stored IsJobTitle;
 
     {@prop ShowProgress - Exibir barra de progresso. :/}
     property ShowProgress: Boolean read FShowProgress write FShowProgress default True;
 
-    {@prop PrintQuality - Qualidade de impress„o.
+    {@prop PrintQuality - Qualidade de impress√£o.
      @links TRLPrintQuality. :/}
     property PrintQuality: TRLPrintQuality read FPrintQuality
       write SetPrintQuality default pqFullFeature;
 
-    {@prop ReportDateTime - Data e hora de impress„o do relatÛrio. :/}
+    {@prop ReportDateTime - Data e hora de impress√£o do relat√≥rio. :/}
     property ReportDateTime: TDateTime read FReportDateTime write FReportDateTime;
 
     // external
 
-    {@prop DefaultFilter - Filtro padr„o de impress„o.
+    {@prop DefaultFilter - Filtro padr√£o de impress√£o.
      @links TRLCustomPrintFilter. :/}
     property DefaultFilter: TRLCustomPrintFilter
       read FDefaultFilter write SetDefaultFilter;
 
-    {@prop ExpressionParser - ReferÍncia para um objeto avaliador de expressıes matem·ticas.
+    {@prop ExpressionParser - Refer√™ncia para um objeto avaliador de express√µes matem√°ticas.
      @links TRLExpressionParser. :/}
     property ExpressionParser: TRLExpressionParser
       read FExpressionParser write SetExpressionParser;
 
-    {@prop PriorReport - RelatÛrio anterior da composiÁ„o.
+    {@prop PriorReport - Relat√≥rio anterior da composi√ß√£o.
      @links TRLCustomReport. :/}
     property PriorReport: TRLCustomReport read FPriorReport write SetPriorReport;
 
-    {@prop NextReport - RelatÛrio seguinte da composiÁ„o.
+    {@prop NextReport - Relat√≥rio seguinte da composi√ß√£o.
      @links TRLCustomReport. :/}
     property NextReport: TRLCustomReport read FNextReport write SetNextReport;
 
     // internal custom properties
 
-    {@prop PageIndex - Õndice da p·gina atual. :/}
+    {@prop PageIndex - √çndice da p√°gina atual. :/}
     property PageIndex: Integer read FPageIndex;
 
-    {@prop PageNumber - N˙mero da p·gina atual (FirstPageNumber+PageIndex). :/}
+    {@prop PageNumber - N√∫mero da p√°gina atual (FirstPageNumber+PageIndex). :/}
     property PageNumber: Integer read GetPageNumber;
 
-    {@prop ReportState - Estado da preparaÁ„o do relatÛrio.
+    {@prop ReportState - Estado da prepara√ß√£o do relat√≥rio.
      @links TRLReportState. :/}
     property ReportState: TRLReportState read FReportState;
 
     // readonly
 
-    {@prop Canceled - Indica se o relatÛrio foi cancelado durante a preparaÁ„o. :/}
+    {@prop Canceled - Indica se o relat√≥rio foi cancelado durante a prepara√ß√£o. :/}
     property Canceled: Boolean read FCanceled;
 
     // agregates
 
-    {@prop PrinterMetrics - Dimensıes do papel na impressora.
+    {@prop PrinterMetrics - Dimens√µes do papel na impressora.
      @links TRLPrinterMetrics. :/}
     property PrinterMetrics: TRLPrinterMetrics read FPrinterMetrics;
 
-    {@prop Pages - Lista de p·ginas preparadas.
+    {@prop Pages - Lista de p√°ginas preparadas.
      @links TRLGraphicStorage. :/}
     property Pages: TRLGraphicStorage read FPages;
 
-    {@prop PageSetup - ConfiguraÁ„o do papel.
+    {@prop PageSetup - Configura√ß√£o do papel.
      @links TRLPageSetup. :/}
     property PageSetup: TRLPageSetup read FPageSetup write SetPageSetup;
 
-    {@prop PreviewOptions - OpÁıes de prÈ-visualizaÁ„o.
+    {@prop PreviewOptions - Op√ß√µes de pr√©-visualiza√ß√£o.
      @links TRLPreviewOptions. :/}
     property PreviewOptions: TRLPreviewOptions
       read FPreviewOptions write SetPreviewOptions;
@@ -3579,10 +3579,10 @@ type
 
     // events
 
-    {@event OnPageEnding - Ao terminar uma p·gina. :/}
+    {@event OnPageEnding - Ao terminar uma p√°gina. :/}
     property OnPageEnding: TNotifyEvent read FOnPageEnding write FOnPageEnding;
 
-    {@event OnPageStarting - No inÌcio de cada p·gina. :/}
+    {@event OnPageStarting - No in√≠cio de cada p√°gina. :/}
     property OnPageStarting: TNotifyEvent read FOnPageStarting write FOnPageStarting;
 
     {@event OnFilterText - Ao imprimir qualquer texto.
@@ -3590,7 +3590,7 @@ type
      @links TRLBeforeTextEvent. :/}
     property OnFilterText: TRLBeforeTextEvent read FOnFilterText write FOnFilterText;
 
-    {@event OnPrepareError - Ao ocorrer qualquer erro no mÈtodo Prepare. :/}
+    {@event OnPrepareError - Ao ocorrer qualquer erro no m√©todo Prepare. :/}
     property OnPrepareError: TRLPrepareErrorEvent read FOnPrepareError write FOnPrepareError;
 
     // standard
@@ -3610,8 +3610,8 @@ type
 
   { TRLLabel }
 
-  {@class TRLLabel - Caixa de texto padr„o.
-   Utilize o TRLLabel para imprimir textos est·ticos sobre o relatÛrio.
+  {@class TRLLabel - Caixa de texto padr√£o.
+   Utilize o TRLLabel para imprimir textos est√°ticos sobre o relat√≥rio.
    @icon TRLLabel.jpg
    @ancestor TRLCustomLabel.
    @pub }
@@ -3676,7 +3676,7 @@ type
 
   { TRLAngleLabel }
 
-  {@class TRLAngleLabel - Caixa de texto de com rotaÁ„o por ‚ngulo.
+  {@class TRLAngleLabel - Caixa de texto de com rota√ß√£o por √¢ngulo.
    @icon TRLAngleLabel.jpg
    @ancestor TRLCustomAngleLabel.
    @pub }
@@ -3818,7 +3818,7 @@ type
 
   { TRLDBResult }
 
-  {@class TRLDBResult - Caixa de texto de resultado de operaÁıes matem·ticas ou estatÌticas com campos de dataset.
+  {@class TRLDBResult - Caixa de texto de resultado de opera√ß√µes matem√°ticas ou estat√≠ticas com campos de dataset.
    @icon TRLDBResult.jpg
    @ancestor TRLCustomDBResult.
    @pub }
@@ -3899,7 +3899,7 @@ type
 
   { TRLSystemInfo }
 
-  {@class TRLSystemInfo - Caixa de texto de com informaÁıes do sistema.
+  {@class TRLSystemInfo - Caixa de texto de com informa√ß√µes do sistema.
    @icon TRLSystemInfo.jpg
    @ancestor TRLCustomSystemInfo.
    @pub }
@@ -4232,8 +4232,8 @@ type
 
   { TRLDraw }
 
-  {@class TRLDraw - Caixa de desenho para figuras geomÈtricas.
-   As figuras podem ser de um tipo prÈ-determinado ou customizado pelo usu·rio.
+  {@class TRLDraw - Caixa de desenho para figuras geom√©tricas.
+   As figuras podem ser de um tipo pr√©-determinado ou customizado pelo usu√°rio.
    @icon TRLDraw.jpg
    @ancestor TRLCustomDraw.
    @pub }
@@ -4382,10 +4382,10 @@ type
 
   { TRLBand }
 
-  {@class TRLBand - Banda de impress„o.
-   Utilize a banda de impress„o para representar registros de dados ou quebras de sequÍncias de dados. Ela deve ser
+  {@class TRLBand - Banda de impress√£o.
+   Utilize a banda de impress√£o para representar registros de dados ou quebras de sequ√™ncias de dados. Ela deve ser
    colocada dentro de um Report, Group ou SubDetail.
-   O comportamento da banda È controlado atravÈs da propriedade BandType.
+   O comportamento da banda √© controlado atrav√©s da propriedade BandType.
    @icon TRLBand.jpg
    @ancestor TRLCustomBand.
    @pub }
@@ -4463,7 +4463,7 @@ type
   { TRLDetailGrid }
 
   {@class TRLDetailGrid - Banda de detalhe multi-colunas.
-   Banda de tipo fixo btDetail. Ideal para a impress„o de etiquetas e relatÛrios em colunas.
+   Banda de tipo fixo btDetail. Ideal para a impress√£o de etiquetas e relat√≥rios em colunas.
    @icon TRLDetailGrid.jpg
    @ancestor TRLCustomDetailGrid.
    @pub }
@@ -4534,16 +4534,16 @@ type
 
   { TRLGroup }
 
-  {@class TRLGroup - SequÍncia de registros de dados.
-   Insira bands sobre um componente de grupo para imprimir sequÍncias de registros de dados.
-   A quebra de sequÍncia dos registros ser· detectada automaticamente se for indicado um campo ou conjunto de campos
-   atravÈs da propriedade DataFields, ou ainda pela express„o contida em DataFormula. A quebra tambÈm poder· ser feita
+  {@class TRLGroup - Sequ√™ncia de registros de dados.
+   Insira bands sobre um componente de grupo para imprimir sequ√™ncias de registros de dados.
+   A quebra de sequ√™ncia dos registros ser√° detectada automaticamente se for indicado um campo ou conjunto de campos
+   atrav√©s da propriedade DataFields, ou ainda pela express√£o contida em DataFormula. A quebra tamb√©m poder√° ser feita
    interativamente durante as chamadas ao evento OnGetBreak. Um componente de grupo deve conter pelo menos uma band de
-   detalhe para imprimir os registros da sequÍncia. Adicionalmente, podem ser inseridos quaisquer outros tipos de band
-   como, por exemplo: btSummary para mostrar somatÛrios e estatÌsticas ao final da sequÍncia, ou btHeader para mostrar
-   cabeÁalhos. Grupos podem ser inseridos recursivamente dentro de outros grupos formando uma cadeia de sequÍncias
-   hier·rquicas. Subdetalhes tambÈm podem ser inseridos dentro de grupos e vice-versa. Um grupo pode ser desativado
-   sem no entanto influenciar na impress„o dos seus controles atravÈs da propriedade Enabled.
+   detalhe para imprimir os registros da sequ√™ncia. Adicionalmente, podem ser inseridos quaisquer outros tipos de band
+   como, por exemplo: btSummary para mostrar somat√≥rios e estat√≠sticas ao final da sequ√™ncia, ou btHeader para mostrar
+   cabe√ßalhos. Grupos podem ser inseridos recursivamente dentro de outros grupos formando uma cadeia de sequ√™ncias
+   hier√°rquicas. Subdetalhes tamb√©m podem ser inseridos dentro de grupos e vice-versa. Um grupo pode ser desativado
+   sem no entanto influenciar na impress√£o dos seus controles atrav√©s da propriedade Enabled.
    @links TRLSubDetail.
    @icon TRLGroup.jpg
    @ancestor TRLCustomGroup.
@@ -4615,9 +4615,9 @@ type
 
   { TRLSubDetail }
 
-  {@class TRLSubDetail - Sub-relatÛrio.
-   Utilize o TRLSubDetail para imprimir registros ou sequÍncias de dados relacionadas com os registros da fontes de
-   dados principal. O controle de sub-detalhe È especialmente ˙til quando se quer listar registros de uma base que
+  {@class TRLSubDetail - Sub-relat√≥rio.
+   Utilize o TRLSubDetail para imprimir registros ou sequ√™ncias de dados relacionadas com os registros da fontes de
+   dados principal. O controle de sub-detalhe √© especialmente √∫til quando se quer listar registros de uma base que
    possui registros filhos ou relacionados (Master/Detail), aonde um TRLReport responderia pelos registros principais
    e o TRLSubDetail pelos registros filhos.
    @links TRLGroup.
@@ -4691,10 +4691,10 @@ type
 
   { TRLReport }
 
-  {@class TRLReport - Componente principal na construÁ„o de relatÛrios.
-   Utilize o TRLReport como ponto de partida na confecÁ„o de qualquer relatÛrio com o FortesReport. Um componente
-   TRLReport pode listar registros de uma fonte de dados, solicitar os dados atravÈs de eventos em tempo de execuÁ„o
-   ou apenas imprimir p·ginas confeccionadas com os componentes da biblioteca.
+  {@class TRLReport - Componente principal na constru√ß√£o de relat√≥rios.
+   Utilize o TRLReport como ponto de partida na confec√ß√£o de qualquer relat√≥rio com o FortesReport. Um componente
+   TRLReport pode listar registros de uma fonte de dados, solicitar os dados atrav√©s de eventos em tempo de execu√ß√£o
+   ou apenas imprimir p√°ginas confeccionadas com os componentes da biblioteca.
    @icon TRLReport.jpg
    @ancestor TRLCustomReport.
    @pub }
@@ -4804,11 +4804,11 @@ type
 
 {/@class}
 
-{@proc LoadReportDialog - Carrega e prÈ-visualiza relatÛrio com di·logo.
- Exibe um di·logo para carga de relatÛrio salvo em disco e em seguida chama o preview padr„o. :/}
+{@proc LoadReportDialog - Carrega e pr√©-visualiza relat√≥rio com di√°logo.
+ Exibe um di√°logo para carga de relat√≥rio salvo em disco e em seguida chama o preview padr√£o. :/}
 procedure LoadReportDialog;
 
-{@proc LoadReportFromFile - Carrega e prÈ-visualiza relatÛrio a partir de um arquivo. :/}
+{@proc LoadReportFromFile - Carrega e pr√©-visualiza relat√≥rio a partir de um arquivo. :/}
 procedure LoadReportFromFile(const AFileName: string);
 
 // ronaldo 20100415 - para nao prejudicar outras aplicacoes
@@ -6677,7 +6677,7 @@ begin
     for I := 0 to L.Count - 1 do
     begin
       C := TControl(L[I]);
-      // panel ou control n„o site
+      // panel ou control n√£o site
       if IsStaticCustomControl(C) then
         with TRLCustomControl(C) do
           if CanPrint then
@@ -6733,7 +6733,7 @@ begin
     for I := 0 to L.Count - 1 do
     begin
       C := TControl(L[I]);
-      // panel ou control n„o site
+      // panel ou control n√£o site
       if IsStaticCustomControl(C) then
         with TRLCustomControl(C) do
           if CouldPrint then
@@ -7108,7 +7108,7 @@ begin
     Exit;
   if FHoldeds.IndexOf(AControl) = -1 then
     FHoldeds.Add(AControl);
-  // guarda posiÁ„o relativa
+  // guarda posi√ß√£o relativa
   M := GetScreenPos(Self);
   N := GetScreenPos(AControl);
   P.X := N.X - M.X;
@@ -7117,7 +7117,7 @@ begin
     0: AControl.HolderOffset := P;
     1: AControl.SecondHolderOffset := P;
   end;
-  // ajusta posiÁ„o do controle amarrado
+  // ajusta posi√ß√£o do controle amarrado
   AControl.AdjustBounds;
 end;
 
@@ -7203,7 +7203,7 @@ begin
     // detecta controle escravo de largura
     if Align in faFreeWidthSet then
     begin
-      // procura o site pai n„o escravo de largura
+      // procura o site pai n√£o escravo de largura
       S := FindParentSite;
       while (S <> nil) and not (S.Align in faFreeWidthSet) do
         S := S.FindParentSite;
@@ -7216,7 +7216,7 @@ begin
     // detecta controle escravo de altura
     if Align in faFreeHeightSet then
     begin
-      // procura o site pai n„o escravo de altura
+      // procura o site pai n√£o escravo de altura
       S := FindParentSite;
       while (S <> nil) and not (S.Align in faFreeHeightSet) do
         S := S.FindParentSite;
@@ -7287,7 +7287,7 @@ begin
   end;
 end;
 
-// adequa o frame que contÈm o control
+// adequa o frame que cont√©m o control
 procedure TRLCustomControl.AdjustToParentFrame(
   var ALeft, ATop, AWidth, AHeight: Integer);
 var
@@ -7392,7 +7392,7 @@ begin
   AdjustToParentFrame(ALeft, ATop, AWidth, AHeight);
   AdjustToHolder(FHolder, ALeft, ATop, AWidth, AHeight);
   AdjustToHolder(FSecondHolder, ALeft, ATop, AWidth, AHeight);
-  // se as coordenadas mudaram em relaÁ„o ao controle pai...
+  // se as coordenadas mudaram em rela√ß√£o ao controle pai...
   if (OldBoundsRect.Left <> ALeft) or (OldBoundsRect.Top <> ATop) or
     (RectWidth(OldBoundsRect) <> AWidth) or (RectHeight(OldBoundsRect) <>
     AHeight) then
@@ -7468,8 +7468,8 @@ end;
 
 procedure TRLCustomControl.SetCaption(const AValue: TCaption);
 begin
-  // fPreparingCaption È o caption para efeitos de impress„o, e È descartado quando o relatÛrio termina
-  // fCaption contÈm o texto oficial do caption, que deve ser gravado do dfm
+  // fPreparingCaption √© o caption para efeitos de impress√£o, e √© descartado quando o relat√≥rio termina
+  // fCaption cont√©m o texto oficial do caption, que deve ser gravado do dfm
   FPreparingCaption := AValue;
   if IsPreparing then
   else if (AValue = GetDefaultCaption) and (csDesigning in ComponentState) then
@@ -7564,10 +7564,10 @@ end;
 
 procedure TRLCustomControl.CheckParent(var AControl: TWinControl);
 begin
-  // uma band n„o pode conter outras
+  // uma band n√£o pode conter outras
   if (Self is TRLCustomBand) and (AControl is TRLCustomBand) then
     AControl := AControl.Parent;
-  // um panel n„o pode conter bands ou paginadores
+  // um panel n√£o pode conter bands ou paginadores
   if (Self is TRLCustomBand) or (Self is TRLCustomPager) then
     while (AControl <> nil) and (AControl is TRLCustomPanel) do
       AControl := AControl.Parent;
@@ -7753,7 +7753,7 @@ begin
   if (DataSet <> nil) and (FDataField <> '') then
   begin
     Result := DataSet.FindField(FDataField);
-{Fred/Ronaldo/Tiago - 10/05/2010 - Comentado para n„o dar erro na DLIB2
+{Fred/Ronaldo/Tiago - 10/05/2010 - Comentado para n√£o dar erro na DLIB2
     if Result = nil then
       raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
         Name + '.DataField "' + FDataField + '"');}
@@ -7871,11 +7871,11 @@ begin
   ASize := Point(Width, Height);
   if not AutoSize then
     Exit;
-  // texto a utilizar para o c·lculo
+  // texto a utilizar para o c√°lculo
   C := Caption;
   if (C = '') and not IsPreparing then
     C := Name;
-  // dimensıes do texto
+  // dimens√µes do texto
   ASize.X := 0;
   ASize.Y := 0;
   with TextBounds(C + ' ', Self.Font, 0) do
@@ -8062,11 +8062,11 @@ begin
   ASize := Point(Width, Height);
   if not AutoSize then
     Exit;
-  // texto a utilizar para o c·lculo
+  // texto a utilizar para o c√°lculo
   C := Caption;
   if (C = '') and not IsPreparing then
     C := Name;
-  // dimensıes do texto
+  // dimens√µes do texto
   ASize.X := 0;
   ASize.Y := 0;
   with TextBounds(C + ' ', Self.Font, FAngle) do
@@ -8177,7 +8177,7 @@ begin
   if (DataSet <> nil) and (FDataField <> '') then
   begin
     Result := DataSet.FindField(FDataField);
-{Fred/Ronaldo - 14/01/2009 - Comentado para n„o dar erro na DLIB2
+{Fred/Ronaldo - 14/01/2009 - Comentado para n√£o dar erro na DLIB2
     if Result = nil then
       raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
         Name + '.DataField "' + FDataField + '"');}
@@ -8833,8 +8833,8 @@ end;
 procedure MemoDraw(const Buffer: string; Canvas: TObject;
   Alignment: TRLTextAlignment; const ARect: TRect; WordWrap: Boolean);
 const
-  {Fred/Ronaldo - 19/07/2012 - Tamanho m·ximo de texto possÌvel para n„o quebrar linha,
-   Isto foi necess·rio para corrigir bug nas funÁıes que usavam MaxWidth somado com outros valores
+  {Fred/Ronaldo - 19/07/2012 - Tamanho m√°ximo de texto poss√≠vel para n√£o quebrar linha,
+   Isto foi necess√°rio para corrigir bug nas fun√ß√µes que usavam MaxWidth somado com outros valores
    e extrapolavam o MaxInt}
   MaxTextWidth = MaxInt div 2;
 var
@@ -8926,11 +8926,11 @@ begin
   ASize := Point(Width, Height);
   if not AutoSize then
     Exit;
-  // texto a utilizar para o c·lculo
+  // texto a utilizar para o c√°lculo
   C := Caption;
   if (C = '') and not IsPreparing then
     C := Name;
-  // dimensıes do texto
+  // dimens√µes do texto
   ASize.Y := 0;
   aux := MemoSize(C, Self.Font, ASize.X);
   if aux.Y = 0 then
@@ -9053,7 +9053,7 @@ begin
   if (DataSet <> nil) and (FDataField <> '') then
   begin
     Result := DataSet.FindField(FDataField);
-{Fred/Ronaldo/Tiago - 10/05/2010 - Comentado para n„o dar erro na DLIB2
+{Fred/Ronaldo/Tiago - 10/05/2010 - Comentado para n√£o dar erro na DLIB2
     if Result = nil then
       raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
         Name + '.DataField "' + FDataField + '"');}
@@ -9326,7 +9326,7 @@ begin
   if (DataSet <> nil) and (FDataField <> '') then
   begin
     Result := DataSet.FindField(FDataField);
-{Fred/Ronaldo/Tiago - 10/05/2010 - Comentado para n„o dar erro na DLIB2
+{Fred/Ronaldo/Tiago - 10/05/2010 - Comentado para n√£o dar erro na DLIB2
     if Result = nil then
       raise Exception.Create(LocaleStrings.LS_NotFoundStr + ': ' +
         Name + '.DataField "' + FDataField + '"');}
@@ -9359,19 +9359,19 @@ var
   P: TRLCustomReport;
   ParentRLReport: TRLCustomReport;
 begin
-  // a propriedade TEXT pode vir na seguinte forma: "Esta p·gina # o relatÛrio\|continua;encerra";
+  // a propriedade TEXT pode vir na seguinte forma: "Esta p√°gina # o relat√≥rio\|continua;encerra";
   t1 := '';
   t2 := '';
   S := FText;
   I := Pos('|', S);
   if I > 0 then
   begin
-    // elimina os textos antes da barra e apÛs a segunda barra, se houver
+    // elimina os textos antes da barra e ap√≥s a segunda barra, se houver
     Delete(S, 1, I);
     I := Pos('|', S);
     if I > 0 then
       S := Copy(S, 1, I - 1);
-    // primeiro e segundo par‚metros
+    // primeiro e segundo par√¢metros
     I := Pos(';', S);
     if I = 0 then
       I := Length(S) + 1;
@@ -9413,19 +9413,19 @@ var
   S, t1, t2: string;
   I, Q: Integer;
 begin
-  // a propriedade TEXT pode vir na seguinte forma: "Esta p·gina È a # o relatÛrio\|continuaÁ„o;";
+  // a propriedade TEXT pode vir na seguinte forma: "Esta p√°gina √© a # o relat√≥rio\|continua√ß√£o;";
   t1 := '';
   t2 := '';
   S := FText;
   I := Pos('|', S);
   if I > 0 then
   begin
-    // elimina os textos antes da barra e apÛs a segunda barra, se houver
+    // elimina os textos antes da barra e ap√≥s a segunda barra, se houver
     Delete(S, 1, I);
     I := Pos('|', S);
     if I > 0 then
       S := Copy(S, 1, I - 1);
-    // primeiro e segundo par‚metros
+    // primeiro e segundo par√¢metros
     I := Pos(';', S);
     if I = 0 then
       I := Length(S) + 1;
@@ -9501,20 +9501,20 @@ begin
     Result := ''
   else
   begin
-    // elimina opÁıes embutidas em TEXT
+    // elimina op√ß√µes embutidas em TEXT
     Result := FText;
     I := Pos('|', Result);
     if I > 0 then
       Result := Copy(Result, 1, I - 1);
-    // substitui par‚metros em TEXT
+    // substitui par√¢metros em TEXT
     repeat
-      // prÛximo par‚metro de S
+      // pr√≥ximo par√¢metro de S
       P := Pos(#9, S);
       if P = 0 then
         P := Length(S) + 1;
       V := Copy(S, 1, P - 1);
       Delete(S, 1, P);
-      // prÛximo lugar em Result
+      // pr√≥ximo lugar em Result
       I := Pos('#', Result);
       if I = 0 then
         Result := Result + V
@@ -10016,7 +10016,7 @@ var
   L: TList;
   I, J, W, H: Integer;
 
-  // retorna TRUE se os controles na ordem correta segundo o alinhamento e suas posiÁıes
+  // retorna TRUE se os controles na ordem correta segundo o alinhamento e suas posi√ß√µes
   function IsOrdered(AControl1, AControl2: TControl; AAlign: TRLControlAlign): Boolean;
   begin
     case AAlign of
@@ -10055,7 +10055,7 @@ var
     end;
   end;
 
-  // retorna nÌvel de alinhamento (prioridade)
+  // retorna n√≠vel de alinhamento (prioridade)
   function AlignPriority(AControl: TControl): Integer;
   begin
     if IsStaticCustomControl(AControl) then
@@ -10099,7 +10099,7 @@ var
       Result := 0;
   end;
 
-  // retorna TRUE se os controles na ordem correta segundo grupos, nÌveis e suas posiÁıes perante a um alinhamento
+  // retorna TRUE se os controles na ordem correta segundo grupos, n√≠veis e suas posi√ß√µes perante a um alinhamento
   function IsPrior(AControl1, AControl2: TControl; AAlign: TRLControlAlign): Boolean;
   var
     prio1, prio2, group1, group2: Integer;
@@ -10125,7 +10125,7 @@ var
       Result := (prio1 < prio2);
   end;
 
-  // adiciona controle numa lista na posiÁ„o ideal para o alinhamento
+  // adiciona controle numa lista na posi√ß√£o ideal para o alinhamento
   procedure AddToList(AControl: TControl; var AArray: TAlignControlArray);
   var
     A: TRLControlAlign;
@@ -10168,7 +10168,7 @@ begin
     // criar listas de alinhamento
     for align := Low(TRLControlAlign) to High(TRLControlAlign) do
       alignarray[align] := TList.Create;
-    // adiciona controles ‡s listas de alinhamento
+    // adiciona controles √†s listas de alinhamento
     for I := 0 to ControlCount - 1 do
     begin
       control := Controls[I];
@@ -10177,7 +10177,7 @@ begin
       AddToList(control, alignarray);
     end;
 
-    // ret‚ngulo de alinhamento
+    // ret√¢ngulo de alinhamento
     alignrect := ARect;
 
     // alinhamentos de alta prioridade: leftmost, rightmost
@@ -10198,7 +10198,7 @@ begin
       Dec(alignrect.Right, control.Width);
     end;
 
-    // alinhamentos de mÈdia prioridade: top,bottom
+    // alinhamentos de m√©dia prioridade: top,bottom
     L := alignarray[faTop];
     for I := 0 to L.Count - 1 do
     begin
@@ -10234,7 +10234,7 @@ begin
       Dec(alignrect.Right, control.Width);
     end;
 
-    // alinhamento pela sobra de espaÁo: client
+    // alinhamento pela sobra de espa√ßo: client
     auxrect := alignrect;
     L := alignarray[faClient];
     if L.Count > 0 then
@@ -10251,7 +10251,7 @@ begin
       end;
     end;
 
-    // outros alinhamentos que pegam a mesma sobra de espaÁo 
+    // outros alinhamentos que pegam a mesma sobra de espa√ßo 
     leftrect := alignrect;
     rightrect := alignrect;
 
@@ -10294,7 +10294,7 @@ begin
       end;
     end;
 
-    // sobras ‡ base
+    // sobras √† base
     auxrect := alignrect;
     L := alignarray[faLeftBottom];
     for I := 0 to L.Count - 1 do
@@ -10333,7 +10333,7 @@ begin
       end;
     end;
 
-    // sobras ‡ esquerda
+    // sobras √† esquerda
     auxrect := leftrect;
     L := alignarray[faClientLeft];
     if L.Count > 0 then
@@ -10352,7 +10352,7 @@ begin
       end;
     end;
 
-    // sobras ‡ direita
+    // sobras √† direita
     auxrect := rightrect;
     L := alignarray[faClientRight];
     if L.Count > 0 then
@@ -10374,7 +10374,7 @@ begin
     // alinhamentos parciais
     auxrect := alignrect;
 
-    // somente ‡ esquerda
+    // somente √† esquerda
     L := alignarray[faLeftOnly];
     for I := 0 to L.Count - 1 do
     begin
@@ -10382,7 +10382,7 @@ begin
       SetControlBoundsRect(control, Classes.Rect(auxrect.Left, control.Top,
         auxrect.Left + control.Width, control.Top + control.Height));
     end;
-    // somente ‡ direita
+    // somente √† direita
     L := alignarray[faRightOnly];
     for I := 0 to L.Count - 1 do
     begin
@@ -10398,7 +10398,7 @@ begin
       SetControlBoundsRect(control, Classes.Rect(control.Left, auxrect.Top,
         control.Left + control.Width, auxrect.Top + control.Height));
     end;
-    // somente ‡ base
+    // somente √† base
     L := alignarray[faBottomOnly];
     for I := 0 to L.Count - 1 do
     begin
@@ -10406,7 +10406,7 @@ begin
       SetControlBoundsRect(control, Classes.Rect(control.Left,
         auxrect.Bottom - control.Height, control.Left + control.Width, auxrect.Bottom));
     end;
-    // somente ‡ altura
+    // somente √† altura
     L := alignarray[faHeight];
     for I := 0 to L.Count - 1 do
     begin
@@ -10414,7 +10414,7 @@ begin
       SetControlBoundsRect(control, Classes.Rect(control.Left, auxrect.Top,
         control.Left + control.Width, auxrect.Bottom));
     end;
-    // somente ‡ largura
+    // somente √† largura
     L := alignarray[faWidth];
     for I := 0 to L.Count - 1 do
     begin
@@ -10425,7 +10425,7 @@ begin
 
     // alinhamentos aos centros
 
-    // centro ‡ esquerda
+    // centro √† esquerda
     auxrect := alignrect;
     L := alignarray[faCenterLeft];
     if L.Count > 0 then
@@ -10463,7 +10463,7 @@ begin
         Inc(auxrect.Left, W);
       end;
     end;
-    // centro ‡ direita
+    // centro √† direita
     auxrect := alignrect;
     L := alignarray[faCenterRight];
     if L.Count > 0 then
@@ -10482,7 +10482,7 @@ begin
         Inc(auxrect.Top, W);
       end;
     end;
-    // centro ‡ base
+    // centro √† base
     auxrect := alignrect;
     L := alignarray[faCenterBottom];
     if L.Count > 0 then
@@ -10757,7 +10757,7 @@ begin
   InvalidateAllFrom(Self);
 end;
 
-// invoca evento durante a impress„o 
+// invoca evento durante a impress√£o 
 procedure TRLCustomSite.DoOnDraw(ASurface: TRLGraphicSurface; ARect: TRect);
 var
   R: TRect;
@@ -10776,7 +10776,7 @@ var
 begin
   if Surface.Opened then
     Exit;
-  // por precauÁ„o, abre o canvas do controle pai antes
+  // por precau√ß√£o, abre o canvas do controle pai antes
   S := FindParentSite;
   if (S <> nil) and not S.Surface.Opened then
     S.OpenSurface;
@@ -10950,7 +10950,7 @@ begin
     Brush.Style := bsSolid;
     FillRect(Z);
   end;
-  // preenche espaÁos n„o client
+  // preenche espa√ßos n√£o client
   if E.Top > S.Top then
   begin
     R := S;
@@ -11429,7 +11429,7 @@ var
   pgrow: Integer;
 begin
   Pager := RequestParentPager;
-  // excedeu a ˙ltima linha para bands de dados?
+  // excedeu a √∫ltima linha para bands de dados?
   if BandType = btSummary then
     footr := Pager.GetRelativeFooterRow(False)
   else
@@ -11466,16 +11466,16 @@ begin
   Pager := RequestParentPager;
   DestSurface := RequestParentSurface;
 
-  // checa se È preciso saltar a p·gina antes de imprimir esta band
+  // checa se √© preciso saltar a p√°gina antes de imprimir esta band
   if IsDataBand and Report.NewPageNeeded or
-    // se o ˙ltimo controle impresso recomendou que o salto fosse feito na prÛxima band de dados
+    // se o √∫ltimo controle impresso recomendou que o salto fosse feito na pr√≥xima band de dados
     (PageBreaking = pbBeforePrint) and (Report.DataBandPrinted > 0) or
-    // se a quebra deve ser feita antes desta band e j· foi impresso algum detalhe
+    // se a quebra deve ser feita antes desta band e j√° foi impresso algum detalhe
     (BandType = btDetail) and MaxBandsReached then
-    // se esta band excede o m·ximo previsto pelo seu pager
+    // se esta band excede o m√°ximo previsto pelo seu pager
     Pager.InternalNewPage(Self, not Pager.IsSatisfied);
 
-  // bands alinhadas ao rodapÈ da p·gina (footers s„o sempre alinhados)
+  // bands alinhadas ao rodap√© da p√°gina (footers s√£o sempre alinhados)
   if AlignToBottom or (BandType in [btFooter]) then
     case BandType of
       btFooter: Pager.GoFooterRow;
@@ -11495,11 +11495,11 @@ begin
   while TotalCut < FPrintSize.Y do
   begin
     CutHeight := FPrintSize.Y - TotalCut;
-    // se a band tem obrigatoriamente que ser impressa nesta p·gina...
+    // se a band tem obrigatoriamente que ser impressa nesta p√°gina...
     if BandType in [btFooter, btColumnFooter] then
-    // se a band (ou pedaÁo) couber na p·gina...
+    // se a band (ou peda√ßo) couber na p√°gina...
     else if HeightFits(CutHeight, VertSpace) then
-    // se n„o puder dividir a band ou o pedaÁo que couber for menor que o tamanho mÌnimo...
+    // se n√£o puder dividir a band ou o peda√ßo que couber for menor que o tamanho m√≠nimo...
     else if IntegralHeight or (VertSpace < Constraints.MinHeight) then
       VerticalExceeded
     else if not IntegralHeight then
@@ -11510,7 +11510,7 @@ begin
         VerticalExceeded
     else
       CutHeight := VertSpace;
-    // tamanho da band descontando o pedaÁo j· impresso
+    // tamanho da band descontando o peda√ßo j√° impresso
     SrcRect := Rect(0, TotalCut, FPrintSize.X, TotalCut + CutHeight);
     DestRect := SrcRect;
     MoveRect(DestRect, FPrintPosition.X, FPrintPosition.Y);
@@ -11538,7 +11538,7 @@ end;
 
 procedure TRLCustomBand.VerticalExceeded;
 begin
-  // move para a prÛxima p·gina
+  // move para a pr√≥xima p√°gina
   RequestParentPager.InternalNewPage(Self, False);
   MarkPrintPosition;
 end;
@@ -11553,11 +11553,11 @@ procedure TRLCustomBand.CheckPageBreak;
 var
   VertSpace: Integer;
 begin
-  // se a band tem obrigatoriamente que ser impressa nesta p·gina...
+  // se a band tem obrigatoriamente que ser impressa nesta p√°gina...
   if BandType in [btFooter, btColumnFooter] then
-  // se a band couber na p·gina...
+  // se a band couber na p√°gina...
   else if HeightFits(FPrintSize.Y, VertSpace) then
-  // se n„o puder dividir a band ou o pedaÁo que couber for menor que o tamanho mÌnimo...
+  // se n√£o puder dividir a band ou o peda√ßo que couber for menor que o tamanho m√≠nimo...
   else if IntegralHeight or (VertSpace < Constraints.MinHeight) then
     VerticalExceeded;
 end;
@@ -11633,11 +11633,11 @@ begin
       end;
       FGreenBarFlag := not FGreenBarFlag;
     end;
-    // se for detail comput·vel deve computar o registro
+    // se for detail comput√°vel deve computar o registro
     DoCompute := (BandType = btDetail) and CanCompute and not IsBallast;
     // se for band de dados, deve setar o flag de dados impressos
     IsDataLike := DoCompute or (BandType = btSummary);
-    // computa o registro nos controles da prÛpria band
+    // computa o registro nos controles da pr√≥pria band
     if DoCompute then
       Self.ComputeDetail(Self);
     inherited;
@@ -11855,7 +11855,7 @@ end;
 
 procedure TRLCustomDetailGrid.VerticalExceeded;
 begin
-  // se a organizaÁ„o È em colunas, passa para a prÛxima coluna
+  // se a organiza√ß√£o √© em colunas, passa para a pr√≥xima coluna
   if FOrganization = goInColumns then
   begin
     Inc(FColIndex);
@@ -11938,7 +11938,7 @@ var
   Pager: TRLCustomPager;
 begin
   Pager := RequestParentPager;
-  // excedeu a ˙ltima linha para bands de dados?
+  // excedeu a √∫ltima linha para bands de dados?
   pagerrow := FTopRow + GetClientCellRect(FColIndex, FRowIndex).Top;
   AAvailable := Pager.GetRelativeColumnFooterRowNoSummary(False) - pagerrow;
   Result := (AHeight <= AAvailable);
@@ -12090,7 +12090,7 @@ begin
   FNewPageCaller := ACaller;
   try
     ParentPager := FindParentPager;
-    // moveonly=True significa que o Pager n„o vai se dividir entre a p·gina atual e a prÛxima
+    // moveonly=True significa que o Pager n√£o vai se dividir entre a p√°gina atual e a pr√≥xima
     if IntegralHeight and (ParentPager <> nil) and
       (ParentPager.DataBandPrinted > Self.DataBandPrinted) then
       AMoveOnly := True;
@@ -12296,7 +12296,7 @@ begin
     L := SortedBands.List[btDetail];
     if L.Count = 0 then
       Exit;
-    // encontra a band que ser· utilizada para completar a p·gina  
+    // encontra a band que ser√° utilizada para completar a p√°gina  
     B := nil;
     for I := 0 to L.Count - 1 do
       if TObject(L.Items[I]) is TRLCustomBand then
@@ -12503,9 +12503,9 @@ begin
   globxy := CalcGlobalPrintPosition;
   wasted := GetWastedBottomSum;
 
-  // a linha de impressao do footer È calculada pelo tamanho da pagina menos a
+  // a linha de impressao do footer √© calculada pelo tamanho da pagina menos a
   // altura dos footers e columnfooters abaixo segundo a hierarquia de pagers
-  // ainda subtrai, È claro, a altura dos footers deste pager
+  // ainda subtrai, √© claro, a altura dos footers deste pager
   footer := GetFooterHeightSum;
   ppager := FindParentPager;
   if ppager <> nil then
@@ -12519,14 +12519,14 @@ end;
 
 function TRLCustomPager.GetRelativeSummaryRow(AConsiderAligned: Boolean): Integer;
 begin
-  // a linha do primeiro sumario deste pager È a linha do primeiro rodape deste pager (footer)
+  // a linha do primeiro sumario deste pager √© a linha do primeiro rodape deste pager (footer)
   // menos a altura dos sumarios deste pager
   Result := GetRelativeFooterRow(AConsiderAligned) - GetSummaryHeight;
 end;
 
 {function TRLCustomPager.GetRelativeColumnFooterRow: Integer;
 begin
-  // a linha do primeiro columnfooter deste pager È a linha do primeiro sumario
+  // a linha do primeiro columnfooter deste pager √© a linha do primeiro sumario
   // deste pager menos a altura dos columnfooters deste pager
   Result := GetRelativeSummaryRow - GetColumnFooterHeight;
 end;}///
@@ -13368,7 +13368,7 @@ begin
       // atualiza numero da ultima pagina previamente
       MasterReport.Pages.Macros.Values[LastPageNumberMacroName(Self)] :=
         IntToStr(PageNumber);
-      // atualiza o numero da ultima pagina para os relatorios anteriores que s„o da mesma sess„o
+      // atualiza o numero da ultima pagina para os relatorios anteriores que s√£o da mesma sess√£o
       Rep := Self;
       while not Rep.CompositeOptions.ResetPageNumber and (Rep.PriorReport <> nil) do
       begin
@@ -13377,7 +13377,7 @@ begin
         Rep := Rep.PriorReport;
       end;
 
-      // prepara o prÛximo relatÛrio
+      // prepara o pr√≥ximo relat√≥rio
       if (FNextReport <> nil) and not FNextReport.Prepare then
         Exit;
       // depois disso o relatorio esta pronto
@@ -13471,7 +13471,7 @@ begin
     if Self.ReportState = rsReady then
       Dialog.MaxPage := Self.Pages.PageCount;
     Dialog.Orientation := Self.PageSetup.Orientation;
-    Dialog.Copies := 1;
+    Dialog.Copies := RLPrinter.Copies;
     Result := Dialog.Execute;
     if Result then
     begin
@@ -13544,7 +13544,7 @@ procedure TRLCustomReport.UpdateMacros;
 var
   Aux: string;
 begin
-  // atualiza sÌmbolos
+  // atualiza s√≠mbolos
   Pages.FirstPageNumber := FirstPageNumber;
   ///Pages.LastPageNumber :=PageNumber;
 
