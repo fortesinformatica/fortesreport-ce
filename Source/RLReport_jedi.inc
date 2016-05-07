@@ -292,7 +292,7 @@
   BCB21        Defined when compiling with C++Builder Personality of RAD Studio XE7 (also known as C++Builder XE7) (Codename CARPATHIA)
   BCB22        Defined when compiling with C++Builder Personality of RAD Studio XE8 (also known as C++Builder XE8) (Codename ELBRUS)
   BCB23        Defined when compiling with C++Builder Personality of RAD Studio 10 Seattle (also known as C++Builder 10 Seattle) (Codename AITANA)
-  BCB24        Defined when compiling with C++Builder Personality of RAD Studio 10.1 London (also known as C++Builder 10.1 London) (Codename BIGBEN)
+  BCB24        Defined when compiling with C++Builder Personality of RAD Studio 10.1 Berlin (also known as C++Builder 10.1 Berlin) (Codename BIGBEN)
   BCB1_UP      Defined when compiling with C++Builder 1 or higher
   BCB3_UP      Defined when compiling with C++Builder 3 or higher
   BCB4_UP      Defined when compiling with C++Builder 4 or higher
@@ -998,7 +998,7 @@
         {$DEFINE BCB24}
       {$ELSE}
         {$DEFINE DELPHI24}
-        {$DEFINE DELPHIX_LONDON} // synonym to DELPHI24
+        {$DEFINE DELPHIX_BERLIN} // synonym to DELPHI24
         {$DEFINE DELPHICOMPILER24}
       {$ENDIF BCB}
       {$DEFINE RTL310_UP}
@@ -1013,7 +1013,7 @@
         {$DEFINE BCB24}
       {$ELSE}
         {$DEFINE DELPHI24}
-        {$DEFINE DELPHIX_LONDON} // synonym to DELPHI24
+        {$DEFINE DELPHIX_BERLIN} // synonym to DELPHI24
         {$DEFINE DELPHICOMPILER24}
       {$ENDIF BCB}
       {$DEFINE RTL310_UP}
