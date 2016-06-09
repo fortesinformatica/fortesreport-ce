@@ -6879,8 +6879,12 @@ var
 begin
   W := Self;
   while (W <> nil) and not (W is TRLCustomSkipper) do
-    W := W.Parent;
-  Result := TRLCustomSkipper(W);
+    W := W.Parent;  
+  
+  if Assigned(W) then
+    Result := TRLCustomSkipper(W);
+  else
+    Result := nil;   
 end;
 
 function TRLCustomControl.FindParentPager: TRLCustomPager;
@@ -6889,8 +6893,12 @@ var
 begin
   W := Parent;
   while (W <> nil) and not (W is TRLCustomPager) do
-    W := W.Parent;
-  Result := TRLCustomPager(W);
+    W := W.Parent;  
+  
+  if Assigned(W) then
+    Result := TRLCustomPager(W)
+  else
+    Result := nil;  
 end;
 
 function TRLCustomControl.FindParentSurface: TRLGraphicSurface;
