@@ -6882,7 +6882,7 @@ begin
     W := W.Parent;  
   
   if Assigned(W) then
-    Result := TRLCustomSkipper(W);
+    Result := TRLCustomSkipper(W)
   else
     Result := nil;   
 end;
