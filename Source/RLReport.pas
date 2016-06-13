@@ -13471,7 +13471,7 @@ begin
     if Self.ReportState = rsReady then
       Dialog.MaxPage := Self.Pages.PageCount;
     Dialog.Orientation := Self.PageSetup.Orientation;
-    Dialog.Copies := 1;
+    Dialog.Copies := RLPrinter.Copies;
     Result := Dialog.Execute;
     if Result then
     begin
