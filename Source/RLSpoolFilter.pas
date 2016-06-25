@@ -62,10 +62,10 @@ uses
    QTypes, QGraphics, RLMetaCLX,
   {$else}
    Types, Graphics, RLMetaVCL,
-  {$endif}
-  {$ifdef FPC}
-    LCLIntf, LCLType,
-  {$endif}
+  {$EndIf}
+  {$IfDef FPC}
+   LCLIntf, LCLType,
+  {$EndIf}
   RLMetaFile, RLFilters, RLTypes, RLPrinters, RLConsts, RLUtils;
 
 type

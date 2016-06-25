@@ -53,11 +53,11 @@ interface
 
 uses
   SysUtils, Classes, Contnrs, Types,
-  {$ifdef CLX}
+  {$IfDef CLX}
    QGraphics, RLMetaCLX,
-  {$else}
+  {$Else}
    Graphics, RLMetaVCL,
-  {$endif}
+  {$EndIf}
   RLMetaFile, RLConsts, RLFilters, RLUtils, RLTypes;
 
 type

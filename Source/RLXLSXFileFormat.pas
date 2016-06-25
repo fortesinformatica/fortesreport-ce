@@ -47,7 +47,7 @@
 {$I RLReport.inc}
 
 {$IfNDef DELPHIXE_UP}
-{$Define NO_SPLITSTRING}
+ {$Define NO_SPLITSTRING}
 {$EndIf}
 
 {$IfDef FPC}

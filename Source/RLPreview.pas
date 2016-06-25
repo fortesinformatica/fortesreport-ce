@@ -1,4 +1,4 @@
-{ Projeto: FortesReport Community Edition                                      }
+﻿{ Projeto: FortesReport Community Edition                                      }
 { É um poderoso gerador de relatórios disponível como um pacote de componentes }
 { para Delphi. Em FortesReport, os relatórios são constituídos por bandas que  }
 { têm funções específicas no fluxo de impressão. Você definir agrupamentos     }
@@ -61,7 +61,7 @@ uses
   Classes, SysUtils, Math, Contnrs,
   {$IfDef FPC}
    LCLIntf, LCLType,
-  {$ENDIF}
+  {$EndIf}
   {$IfDef CLX}
    QTypes, QGraphics, QControls, QExtCtrls, QForms, QMenus, QClipbrd, QDialogs,
   {$Else}

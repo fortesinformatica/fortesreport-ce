@@ -53,9 +53,9 @@ interface
 
 uses
   Classes, SysUtils, Contnrs, Math,
-  {$ifdef CLX}
+  {$IfDef CLX}
    QTypes, QGraphics, RLMetaCLX,
-  {$else}
+  {$Else}
    Types, Graphics, RLMetaVCL,
   {$EndIf}
   RLReport, RLUtils, RLMetaFile;

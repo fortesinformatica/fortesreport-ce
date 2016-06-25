@@ -56,7 +56,6 @@
  {$EndIf}
 {$EndIf}
 
-
 {@unit RLUtils - Rotinas de uso geral. }
 unit RLUtils;
 

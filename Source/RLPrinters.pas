@@ -67,7 +67,7 @@ uses
   {$EndIf}
   {$IfDef FPC}
    OSPrinters,
-   {$IfDef MSWINDOWS}WinUtilPrn,{$Else}process,{$EndIf}
+   {$IfDef MSWINDOWS} WinUtilPrn, {$Else} process, {$EndIf}
   {$EndIf}
   RLConsts, RLTypes, RLUtils;
 

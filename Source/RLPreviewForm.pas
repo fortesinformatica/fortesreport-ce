@@ -53,16 +53,16 @@ interface
 
 uses
   {$IfDef MSWINDOWS}
-  Windows,
+   Windows,
   {$EndIf}
-  Messages, SysUtils, Math, Contnrs, Classes,
+   Messages, SysUtils, Math, Contnrs, Classes,
   {$IfDef FPC}
-  LMessages, LCLIntf, LCLType, FileUtil,
+   LMessages, LCLIntf, LCLType, FileUtil,
   {$EndIf}
   {$IfDef CLX}
-  QTypes, QControls, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QGraphics, Qt,
+   QTypes, QControls, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QGraphics, Qt,
   {$Else}
-  Types, Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
+   Types, Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
   {$EndIf}
   RLConsts, RLMetaFile, RLPreview, RLFilters, RLUtils, RLPrintDialog,
   RLSaveDialog, RLPrinters, RLTypes, RLFindDialog, RLComponentFactory;
