@@ -383,11 +383,7 @@ var
   savecursor: TCursor;
   pages: TRLGraphicStorage;
 begin
-  {$IfDef FPC}
-  if not FileExistsUTF8(AFileName) then
-  {$Else}
   if not FileExists(AFileName) then
-  {$EndIf}
     raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"'));
   //
   pages := TRLGraphicStorage.Create;
