@@ -47,23 +47,25 @@
 {$I RLReport.inc}
 
 {@unit RLFilters - Implementação do filtro padrão de impressão e classes abstratas para filtros de gravação e impressão. }
-
 unit RLFilters;
 
 interface
 
 uses
-  Classes, SysUtils, 
-{$ifndef LINUX}
-  Windows, 
-{$else}
-  Types, 
-{$endif}
-{$ifdef VCL}
-  Forms, Dialogs, 
-{$else}
-  QForms, QDialogs, 
-{$endif}
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
+  Classes, SysUtils,
+  {$IfDef CLX}
+   QTypes, QForms, QDialogs,
+  {$Else}
+   Types, Forms, Dialogs,
+  {$EndIf}
+  {$IfDef FPC}
+   LCLIntf,
+  {$EndIf}
   RLMetaFile, RLConsts, RLTypes, RLUtils, RLFeedBack, RLPrinters;
 
 const
@@ -336,7 +338,8 @@ end;
 
 destructor TRLCustomFilter.Destroy;
 begin
-  ActiveFilters.Extract(Self);
+  if Assigned(ActiveFilters) then
+    ActiveFilters.Extract(Self);
   if SelectedFilter = Self then
     SelectedFilter := nil;
   if Assigned(FPages) then
@@ -430,7 +433,10 @@ begin
     CreateProgress;
   try
     if foEmulateCopies in FClassOptions then
-      copies := RLPrinter.Copies
+    begin
+      copies := RLPrinter.Copies;
+      RLPrinter.Copies := 1;  // To avoid double the copies
+    end
     else
       copies := 1;
     if FShowProgress then
@@ -456,6 +462,7 @@ begin
               DrawPage(page);
               if FShowProgress then
                 FProgress.Tick;
+
               if FCanceled then
                 Break;
             end;
@@ -496,7 +503,7 @@ end;
 
 procedure TRLCustomFilter.CreateProgress;
 begin
-  FProgress := TfrmRLFeedBack.Create(LocaleStrings.LS_FilterInProgressStr);
+  FProgress := TfrmRLFeedBack.Create(GetLocalizeStr(LocaleStrings.LS_FilterInProgressStr));
   FProgress.Show;
   FProgress.SetFocus;
   FProgress.OnCancel := ProgressCanceled;
@@ -564,7 +571,8 @@ initialization
   ActiveFilters := TList.Create;
 
 finalization
-  ActiveFilters.free;
+  FreeAndNil(ActiveFilters);
+
 
 end.
 

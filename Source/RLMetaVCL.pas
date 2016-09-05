@@ -51,7 +51,14 @@ unit RLMetaVCL;
 interface
 
 uses
-  Windows, SysUtils, Graphics, Classes, Math, StdCtrls, 
+  {$IfDef MSWINDOWS}
+   Windows,
+  {$EndIf}
+  {$IfDef FPC}
+   LCLIntf, LCLType, LCLProc,
+  {$EndIf}
+  SysUtils, Classes, Math,
+  Graphics, StdCtrls,
   RLMetaFile, RLUtils, RLConsts;
 
 type
@@ -534,7 +541,11 @@ end;
 
 function CanvasGetClipRect(ACanvas: TCanvas): TRect;
 begin
-  GetClipBox(ACanvas.Handle, Result);
+  {$IfDef FPC}
+   Result := ACanvas.ClipRect;
+  {$Else}
+   GetClipBox(ACanvas.Handle, Result);
+  {$EndIf}
 end;
 
 procedure CanvasSetClipRect(ACanvas: TCanvas; const ARect: TRect);
@@ -645,6 +656,11 @@ const
     (Count: 2;Lengths: (1, 1, 0, 0, 0, 0)), // psDot
     (Count: 4;Lengths: (2, 1, 1, 1, 0, 0)), // psDashDot
     (Count: 6;Lengths: (3, 1, 1, 1, 1, 1)), // psDashDotDot
+{$IfDef FPC}
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psInsideFrame
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psPattern
+    (Count: 0;Lengths: (0, 0, 0, 0, 0, 0))  // psClear
+{$Else}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
 {$ifdef DELPHI2006}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psClear
@@ -653,11 +669,12 @@ const
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)),
 {$endif}
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psInsideFrame
-{$if CompilerVersion >= 18}// delphi 2007 em diante
+{$IfDef DELPHI2007_UP}// delphi 2007 em diante
     ,
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)), // psUserStyle
     (Count: 0;Lengths: (0, 0, 0, 0, 0, 0)) // psAlternate
-{$ifend}
+{$endif}
+{$endif}
     );
 
 procedure CanvasLineToEx(ACanvas: TCanvas; X, Y: Integer);
@@ -724,6 +741,7 @@ begin
   end;
 end;
 
+{$IfDef MSWINDOWS}
 procedure FontGetMetrics(const AFontName: AnsiString; AFontStyles: TFontStyles; var AFontRec: TRLMetaFontMetrics);
 var
   size: Integer;
@@ -751,12 +769,14 @@ begin
     AFontRec.BaseFont := AFontName;
     AFontRec.FirstChar := Byte(outl^.otmTextMetrics.tmFirstChar);
     AFontRec.LastChar := Byte(outl^.otmTextMetrics.tmLastChar);
-    // o Win2K retorna zero como largura de todos os caracteres com a funcao GetCharWidth32
-    // vamos usar o modo dificil com TextWidth 
-    //GetCharWidth32(bmp.Canvas.Handle,aFontRec.FirstChar,aFontRec.LastChar,aFontRec.Widths[aFontRec.FirstChar]);
+
+    {$IfDef FPC}
+    GetCharWidth(bmp.Canvas.Handle,aFontRec.FirstChar,aFontRec.LastChar,aFontRec.Widths[aFontRec.FirstChar]);
+    {$Else}
     for I := AFontRec.FirstChar to AFontRec.LastChar do
       AFontRec.Widths[I] := bmp.Canvas.TextWidth(Chr(I));
-    //
+    {$EndIf}
+
     AFontRec.FontDescriptor.Name := AFontName;
     AFontRec.FontDescriptor.Styles := '';
     if fsBold in AFontStyles then
@@ -784,6 +804,50 @@ begin
     FreeMem(outl, size);
   end;
 end;
+{$Else}
+// Extraido do projeto Fortes4Lazarus
+procedure FontGetMetrics(const aFontName:string; aFontStyles:TFontStyles; var aFontRec:TRLMetaFontMetrics);
+var
+  bmp:TBitmap;
+  i  :integer;
+begin
+  bmp := NeedAuxBitmap;
+  bmp.Canvas.Font.Name := aFontName;
+  bmp.Canvas.Font.Style := aFontStyles;
+  bmp.Canvas.Font.Size := 750;
+  //
+  aFontRec.TrueType := True;
+  aFontRec.BaseFont := aFontName;
+  aFontRec.FirstChar := 32;
+  aFontRec.LastChar := 255;
+  for i:=aFontRec.FirstChar to aFontRec.LastChar do
+    aFontRec.Widths[i] := bmp.Canvas.TextWidth( GetLocalizeStr(Chr(i)) );
+  //
+  aFontRec.FontDescriptor.Name := aFontName;
+  aFontRec.FontDescriptor.Styles := '';
+  if fsBold in aFontStyles then
+    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Bold';
+  if fsItalic in aFontStyles then
+    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Italic';
+  if fsUnderline in aFontStyles then
+    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Underline';
+  if fsStrikeOut in aFontStyles then
+    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'StrikeOut';
+  aFontRec.FontDescriptor.Flags :=32;
+  aFontRec.FontDescriptor.FontBBox := Rect(-498,1023,1120,-307);
+  aFontRec.FontDescriptor.MissingWidth := 0;
+  aFontRec.FontDescriptor.StemV := 0;
+  aFontRec.FontDescriptor.StemH := 0;
+  aFontRec.FontDescriptor.ItalicAngle := 0;
+  aFontRec.FontDescriptor.CapHeight := 0;
+  aFontRec.FontDescriptor.XHeight := 0;
+  aFontRec.FontDescriptor.Ascent := 0;
+  aFontRec.FontDescriptor.Descent := 0;
+  aFontRec.FontDescriptor.Leading := 0;
+  aFontRec.FontDescriptor.MaxWidth := 0;
+  aFontRec.FontDescriptor.AvgWidth := 0;
+end;
+{$EndIf}
 
 end.
 

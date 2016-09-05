@@ -46,13 +46,25 @@
 
 {$I RLReport.inc}
 
+{$Define SEARCHREC_USE_TIME}
+
+{$ifDef DELPHIXE7_UP}
+  {$UnDef SEARCHREC_USE_TIME}
+{$EndIf}
+
+
 unit RLPkZip;
 
 interface
 
 uses
-  Windows,
+  {$IfDef MSWINDOWS}
+   Windows,
+  {$EndIf}
   SysUtils, Classes, Contnrs, StrUtils, Types,
+  {$IfDef FPC}
+   zstream,
+  {$EndIf}
   ZLib, RLCRC32;
 
 type
@@ -571,11 +583,11 @@ begin
     FileStream := TFileStream.Create(FileName, fmOpenRead);
     try
       Result := AddItem(AnsiReplaceStr(Copy(FileName, Length(BaseDir)+1, MaxInt), PathDelim, '/'));
-      {$if compilerversion < 22}
-      Result.SetFileAge(SearchRec.Time);
-      {$else}
-      Result.SetFileAge(DateTimeToFileDate(SearchRec.TimeStamp));
-      {$ifend}
+      {$IfDef SEARCHREC_USE_TIME}
+       Result.SetFileAge(SearchRec.Time);
+      {$Else}
+       Result.SetFileAge(DateTimeToFileDate(SearchRec.TimeStamp));
+      {$EndIf}
       Result.FileAttributes := SearchRec.Attr;
       CompressItem(Result, FileStream);
     finally

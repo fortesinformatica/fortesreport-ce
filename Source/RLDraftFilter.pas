@@ -53,19 +53,26 @@ unit RLDraftFilter;
 interface
 
 uses
-  SysUtils, Classes, Math, Contnrs, 
-{$ifndef LINUX}
-  Windows, WinSpool, ShellApi, 
-{$else}
-  Types, Libc, 
-{$endif}
-{$ifdef VCL}
-  Graphics, RLMetaVCL, 
-{$else}
-  QGraphics, RLMetaCLX, 
-{$endif}
-  RLMetaFile, RLConsts, RLUtils, RLFilters, RLTypes, RLPrinters,
-  RlCompilerConsts;
+  {$IfDef MSWINDOWS}
+    Windows,
+  {$EndIf}
+  SysUtils, Classes, Math, Contnrs,
+  {$IfDef FPC}
+    LCLIntf, LCLType, IntfGraphics, FPImage, FileUtil, Process,
+    {$IfDef MSWINDOWS} WinUtilPrn, {$EndIf}
+  {$Else}
+    WinSpool, ShellApi,
+  {$EndIf}
+  {$ifdef CLX}
+   QGraphics, RLMetaCLX,
+  {$Else}
+   Graphics,
+   RLMetaVCL,
+   {$IfNDef FPC}
+    RlCompilerConsts,
+   {$EndIf}
+  {$EndIf}
+  RLMetaFile, RLConsts, RLUtils, RLFilters, RLTypes, RLPrinters;
 
 type
   {@type TRLDraftAccentMethod - Comportamento do filtro em relação aos caracteres acentuados.
@@ -255,9 +262,9 @@ type
     procedure SetPrintStyle(AStyle: Byte);
     function PixelToPinX(X: Integer): Integer;
     function PixelToPinY(Y: Integer): Integer;
-    function PrintCode(const ACommand: String; AParameter: Integer = 0): String;
+    function PrintCode(const ACommand: String; AParameter: Integer = 0): AnsiString;
     procedure SetPrinterFamily(const Value: TRLPrinterFamily);
-    procedure DeviceWrite(const AData: String);
+    procedure DeviceWrite(const AData: AnsiString);
     procedure SetFormSelection(const Value: TRLFormSelection);
     function FormFactorX: Double;
     function SelectFontCPP(const AFontName: String; ASize: Integer): Integer;
@@ -536,7 +543,7 @@ begin
   end;
 end;
 
-function TranslateAccents(const AString, ABS: String): String;
+function TranslateAccents(const AString, ABS: AnsiString): AnsiString;
 var
   I, P: Integer;
 begin
@@ -551,16 +558,18 @@ begin
   end;
 end;
 
-function RemoveAccents(const AString: String): String;
+function RemoveAccents(const AString: AnsiString): AnsiString;
 var
   I, P: Integer;
+  Aux: AnsiString;
 begin
+  Aux := NormalLetters;
   Result := AString;
   for I := 1 to Length(AString) do
   begin
     P := Pos(AString[I], AccentLetters);
     if P > 0 then
-      Result[I] := NormalLetters[P];
+      Result[I] := Aux[P];
   end;
 end;
 
@@ -576,17 +585,24 @@ end;
 
 function GetBitmapPixel(ABitmap: TBitmap; AX, AY: Integer; ADefault: TColor): TColor;
 begin
+  {$ifndef FPC}
   if AY < ABitmap.Height then
     with TRGBArray(ABitmap.ScanLine[AY]^)[AX] do
       Result := RGB(rgbRed, rgbGreen, rgbBlue)
+  {$else}
+  if AY < ABitmap.Height then
+    Result := aBitmap.Canvas.Pixels[aX,aY]
+  {$endif}
   else
     Result := ADefault;
 end;
-{$IFDEF DELPHIXE2_UP}
-function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
-{$ELSE}
-function LinePrinterStart(const PrnName, DocName: String): Cardinal;
-{$ENDIF}
+
+{$IfDef MSWINDOWS}
+{$IfDef DELPHIXE2_UP}
+ function LinePrinterStart(const PrnName, DocName: String): NativeUInt;
+{$else}
+ function LinePrinterStart(const PrnName, DocName: String): Cardinal;
+{$EndIf}
 var
   di: TDocInfo1;
 begin
@@ -594,21 +610,27 @@ begin
   di.pDocName := PChar(DocName);
   di.pOutputFile := nil;
   di.pDatatype := 'RAW';
-  OpenPrinter(PChar(PrnName), Result, nil);
+  {$IfDef UNICODE}
+  OpenPrinterW(PWideChar(PrnName), {$IfDef FPC}@{$EndIf}Result, nil);
+  {$Else}
+  OpenPrinter(PChar(PrnName), {$IfDef FPC}@{$EndIf}Result, nil);
+  {$EndIf}
   StartDocPrinter(Result, 1, @di);
   StartPagePrinter(Result);
 end;
 
-procedure LinePrinterWrite(PrnHandle: Cardinal; const Text: String);
+procedure LinePrinterWrite(PrnHandle: Cardinal; const Text: AnsiString);
 var
   Len: Cardinal;
-  Aux: AnsiString;
 begin
-  Aux:=Ansistring(Text);
-  Len := Length(Aux);
+  Len := Length(Text);
   if Len > 0 then
   begin
-    WritePrinter(PrnHandle, @Aux[1], Len, Len);
+    {$ifdef FPC}
+    WritePrinter(PrnHandle, @Text[1], Len, PDword(Len));
+    {$else}
+    WritePrinter(PrnHandle, @Text[1], Len, Len);
+    {$endif}
   end;
 end;
 
@@ -618,6 +640,7 @@ begin
   EndDocPrinter(PrnHandle);
   ClosePrinter(PrnHandle);
 end;
+{$EndIf}
 
 { TDraftImage }
 
@@ -716,9 +739,12 @@ begin
   FCurrentCharWidth := CPPPins(FCurrentCPP);
   FCurrentCharHeight := LPPPins(FCurrentLPP);
   //
+
+  {$IfDef MSWINDOWS}
   if FDeviceKind = dkPrinter then
     FPrinterHandle := LinePrinterStart(RLPrinter.PrinterName, 'FortesReport')
   else
+  {$EndIf}
   begin
     case FDeviceKind of
       dkPrinterPort: FDeviceFileName := RLPrinter.PrinterPort;
@@ -730,10 +756,11 @@ begin
     else
       FDeviceFileName := FDevicePath;
     end;
+
     //
     AssignFile(FDeviceHandle, FDeviceFileName);
     Rewrite(FDeviceHandle, 1);
-  end; 
+  end;
   //
   ResetPage;
 end;
@@ -741,17 +768,19 @@ end;
 procedure TRLDraftFilter.InternalEndDoc;
 var
   cmd: String;
-{$ifndef LINUX}
-var
-  par: String;
-  I: Integer;
-{$endif}
+  par:string;
+  i  :integer;
+  {$ifdef FPC}
+   VProcess: TProcess;
+  {$endif}
 begin
   NewPage;
   //
-  if FDeviceKind = dkPrinter then
-    LinePrinterEnd(FPrinterHandle)
-  else
+  {$IfDef MSWINDOWS}
+   if FDeviceKind = dkPrinter then
+     LinePrinterEnd(FPrinterHandle)
+   else
+  {$EndIf}
   begin
     CloseFile(FDeviceHandle);
     case FDeviceKind of
@@ -761,16 +790,30 @@ begin
         cmd := FDevicePath;
         cmd := StringReplace(cmd, '%p', RLPrinter.PrinterName, [rfReplaceAll, rfIgnoreCase]);
         cmd := StringReplace(cmd, '%f', FDeviceFileName, [rfReplaceAll, rfIgnoreCase]);
-{$ifndef LINUX}
-        I := Pos(' ', cmd);
-        if I = 0 then
-          I := Length(cmd) + 1;
-        par := Copy(cmd, I + 1, Length(cmd));
-        cmd := Copy(cmd, 1, I - 1);
-        ShellExecute(0, 'open', PChar(cmd), PChar(par), nil, SW_SHOWNORMAL);
-{$else}
-        Libc.system(PChar(cmd));
-{$endif};
+
+        {$IfDef FPC}
+         VProcess := TProcess.Create(nil);
+         try
+           begin
+             VProcess.Options := [poNoConsole];
+             VProcess.CommandLine := Cmd;
+             VProcess.Execute;
+             end;
+         finally
+           VProcess.Free;
+         end;
+        {$else}
+         {$IfDef MSWINDOWS}
+          I := Pos(' ', cmd);
+          if I = 0 then
+            I := Length(cmd) + 1;
+          par := Copy(cmd, I + 1, Length(cmd));
+          cmd := Copy(cmd, 1, I - 1);
+          ShellExecute(0, 'open', PChar(cmd), PChar(par), nil, SW_SHOWNORMAL);
+         {$Else}
+          Libc.system(PChar(cmd));
+         {$endif};
+        {$endif}
       end;
       dkFileName: ;
     end;
@@ -836,9 +879,9 @@ begin
   GetProgrammingCodes(FPrinterFamily, FCommands);
 end;
 
-function TRLDraftFilter.PrintCode(const ACommand: String; AParameter: Integer = 0): String;
+function TRLDraftFilter.PrintCode(const ACommand: String; AParameter: Integer = 0): AnsiString;
 var
-  S, chr: String;
+  S, AChr: String;
   I: Integer;
 begin
   S := FCommands.Values[ACommand];
@@ -848,35 +891,34 @@ begin
   I := 0;
   repeat
     Inc(I);
-    chr := Token(S, I, ',');
-    if chr = '' then
+    AChr := Token(S, I, ',');
+    if AChr = '' then
       Break
-    else if (chr[1] = '''') and (chr[Length(chr)] = '''') then
-      Result := Result + Copy(chr, 2, Length(chr) - 2)
-    else if chr = '#' then
+    else if (AChr[1] = '''') and (AChr[Length(AChr)] = '''') then
+      Result := Result + Copy(AChr, 2, Length(AChr) - 2)
+    else if AChr = '#' then
       Result := Result + Char(AParameter)
-    else if LowerCase(chr) = '#l' then
+    else if LowerCase(AChr) = '#l' then
       Result := Result + Char(AParameter mod 256)
-    else if LowerCase(chr) = '#h' then
+    else if LowerCase(AChr) = '#h' then
       Result := Result + Char(AParameter div 256)
-    else if chr = '$' then
+    else if AChr = '$' then
       Result := Result + IntToStr(AParameter)
     else
-      Result := Result + Char(strtoint(chr));
+      Result := Result + AnsiChar(chr(strtoint(AChr)));
   until False;
 end;
 
-procedure TRLDraftFilter.DeviceWrite(const AData: String);
-var
-  Aux: AnsiString;
+procedure TRLDraftFilter.DeviceWrite(const AData: AnsiString);
 begin
   if AData <> '' then
-    if FDeviceKind = dkPrinter then
-      LinePrinterWrite(FPrinterHandle, AData)
-    else
+    {$IfDef MSWINDOWS}
+     if FDeviceKind = dkPrinter then
+       LinePrinterWrite(FPrinterHandle, AData)
+     else
+    {$EndIf}
     begin
-      Aux := AnsiString(AData);
-      BlockWrite(FDeviceHandle, Aux[1], Length(Aux));
+      BlockWrite(FDeviceHandle, AData[1], Length(AData));
     end;
 end;
 
@@ -1155,7 +1197,7 @@ begin
   R.Top := AObj.BoundsRect.Top;
   R.Right := AObj.BoundsRect.Right;
   R.Bottom := AObj.BoundsRect.Bottom;
-  S := AObj.DisplayText;
+  S := GetAnsiStr(AObj.DisplayText);
   if (AObj.TextFlags and MetaTextFlagAutoSize) = 0 then
   begin
     // corta o texto
@@ -1206,7 +1248,11 @@ begin
         tempbmp.PixelFormat := pf32bit;
         tempbmp.Width := Round((AObj.BoundsRect.Right - AObj.BoundsRect.Left) * AspectratioX);
         tempbmp.Height := Round((AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) * AspectratioY);
+        {$ifdef FPC}
+        tempbmp.Canvas.StretchDraw(Bounds(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$else}
         tempbmp.Canvas.StretchDraw(Rect(0, 0, tempbmp.Width, tempbmp.Height), thegraphic);
+        {$endif}
         asbitmap.Width := tempbmp.Width;
         asbitmap.Height := tempbmp.Height;
         case FDitheringMethod of
@@ -1505,7 +1551,7 @@ procedure TRLDraftFilter.Loaded;
 begin
   inherited;
   //
-{$ifdef LINUX}
+{$IfNDef MSWINDOWS}
   if (FDeviceKind = dkProgram) and (Copy(FDevicePath, 1, 5) = '/dev/') then
     FDevicePath := 'lpr -P%p %f';
 {$endif};
@@ -1513,7 +1559,7 @@ end;
 
 function TRLDraftFilter.GetOptionsLabel: String;
 begin
-  Result := LocaleStrings.LS_FormStr;
+  Result := GetLocalizeStr(LocaleStrings.LS_FormStr);
 end;
 
 function TRLDraftFilter.GetOptionIndex: Integer;
@@ -1526,9 +1572,9 @@ begin
   if FOptions = nil then
   begin
     FOptions := TStringList.Create;
-    FOptions.Add(LocaleStrings.LS_DefaultStr);
-    FOptions.Add('80 ' + LocaleStrings.LS_ColumnsStr);
-    FOptions.Add('132 ' + LocaleStrings.LS_ColumnsStr);
+    FOptions.Add(GetLocalizeStr(LocaleStrings.LS_DefaultStr));
+    FOptions.Add(GetLocalizeStr('80 ' + LocaleStrings.LS_ColumnsStr));
+    FOptions.Add(GetLocalizeStr('132 ' + LocaleStrings.LS_ColumnsStr));
   end;
   //
   Result := FOptions;

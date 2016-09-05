@@ -47,18 +47,25 @@
 {$I RLReport.inc}
 
 {@unit RLSpoolFilter - Implementação do filtro padrão para impressoras. }
-
 unit RLSpoolFilter;
 
 interface
 
 uses
-  Classes, SysUtils, Contnrs, 
-{$ifndef LINUX}
-  Windows, Graphics, RLMetaVCL, 
-{$else}
-  Types, QGraphics, RLMetaCLX, 
-{$endif}
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
+  Classes, SysUtils,
+  {$IfDef CLX}
+   QTypes, QGraphics, RLMetaCLX,
+  {$else}
+   Types, Graphics, RLMetaVCL,
+  {$endif}
+  {$ifdef FPC}
+    LCLIntf, LCLType,
+  {$endif}
   RLMetaFile, RLFilters, RLTypes, RLPrinters, RLConsts, RLUtils;
 
 type

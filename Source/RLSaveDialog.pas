@@ -51,16 +51,20 @@ unit RLSaveDialog;
 interface
 
 uses
-  Classes, SysUtils, 
-{$ifndef LINUX}
-  Windows, 
-{$else}
-{$endif}
-{$ifdef VCL}
-  Messages, Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons, 
-{$else}
-  QGraphics, QControls, QForms, QDialogs, QStdCtrls, QButtons, 
-{$endif}
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows, Messages,
+   {$EndIf}
+  {$EndIf}
+  Classes, SysUtils,
+  {$IfDef FPC}
+   LCLIntf, LCLType,
+  {$EndIf}
+  {$IfDef CLX}
+   QGraphics, QControls, QForms, QDialogs, QStdCtrls, QButtons,
+  {$Else}
+   Graphics, Controls, Forms, Dialogs, StdCtrls, Buttons,
+  {$EndIf}
   RLFilters, RLConsts, RLTypes, RLUtils, RLComponentFactory;
 
 type
@@ -169,14 +173,16 @@ end;
 // PRIVATE
 
 procedure TRLSaveDialog.Init;
+Const
+  GbTop = {$IfDef FPC} 0 {$Else} 20{$EndIf};
 begin
   Left := 211;
   Top := 407;
   ActiveControl := EditFileName;
-{$ifdef VCL}
-  BorderStyle := bsDialog;
-{$else}
+{$ifdef CLX}
   BorderStyle := fbsDialog;
+{$else}
+  BorderStyle := bsDialog;
 {$endif};
   Caption := 'Salvar como';
   ClientHeight := 224;
@@ -261,37 +267,13 @@ begin
     Height := 101;
     Caption := ' Páginas no intervalo';
     TabOrder := 2;
-    TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
-    with LabelFromPage do
-    begin
-      Name := 'LabelFromPage';
-      Parent := GroupBoxPages;
-      Left := 68;
-      Top := 45;
-      Width := 15;
-      Height := 13;
-      Caption := '&de:';
-      FocusControl := EditFromPage;
-    end;
-    TRLComponentFactory.CreateComponent(TLabel, Self, LabelToPage);
-    with LabelToPage do
-    begin
-      Name := 'LabelToPage';
-      Parent := GroupBoxPages;
-      Left := 136;
-      Top := 45;
-      Width := 18;
-      Height := 13;
-      Caption := '&até:';
-      FocusControl := EditToPage;
-    end;
     TRLComponentFactory.CreateComponent(TRadioButton, Self, RadioButtonPagesAll);
     with RadioButtonPagesAll do
     begin
       Name := 'RadioButtonPagesAll';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 20;
+      Top := GbTop;
       Width := 113;
       Height := 17;
       Caption := 'Salvar &tudo';
@@ -305,7 +287,7 @@ begin
       Name := 'RadioButtonPagesInterval';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 44;
+      Top := 24 + GbTop;
       Width := 61;
       Height := 17;
       Caption := 'Páginas';
@@ -317,11 +299,30 @@ begin
       Name := 'RadioButtonPagesSelect';
       Parent := GroupBoxPages;
       Left := 8;
-      Top := 68;
+      Top := 48 + GbTop;
       Width := 73;
       Height := 17;
       Caption := '&Seleção';
       TabOrder := 2;
+    end;
+    TRLComponentFactory.CreateComponent(TLabel, Self, LabelFromPage);
+    with LabelFromPage do
+    begin
+      Name := 'LabelFromPage';
+      Parent := GroupBoxPages;
+      Left := 68;
+      Top := 25 + GbTop;
+      Width := 15;
+      Height := 13;
+      Caption := '&de:';
+      FocusControl := EditFromPage;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := RadioButtonPagesInterval;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 10;
+      {$EndIf}
     end;
     TRLComponentFactory.CreateComponent(TEdit, Self, EditFromPage);
     with EditFromPage do
@@ -329,13 +330,39 @@ begin
       Name := 'EditFromPage';
       Parent := GroupBoxPages;
       Left := 88;
-      Top := 44;
+      Top := 24 + GbTop;
       Width := 41;
       Height := 21;
       TabStop := False;
       TabOrder := 3;
       Text := '1';
       OnChange := EditFromPageChange;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := LabelFromPage;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 5;
+      {$EndIf}
+    end;
+    TRLComponentFactory.CreateComponent(TLabel, Self, LabelToPage);
+    with LabelToPage do
+    begin
+      Name := 'LabelToPage';
+      Parent := GroupBoxPages;
+      Left := 136;
+      Top := 25 + GbTop;
+      Width := 18;
+      Height := 13;
+      Caption := '&até:';
+      FocusControl := EditToPage;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := EditFromPage;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 5;
+      {$EndIf}
     end;
     TRLComponentFactory.CreateComponent(TEdit, Self, EditToPage);
     with EditToPage do
@@ -343,12 +370,19 @@ begin
       Name := 'EditToPage';
       Parent := GroupBoxPages;
       Left := 160;
-      Top := 44;
+      Top := 24 + GbTop;
       Width := 41;
       Height := 21;
       TabStop := False;
       TabOrder := 4;
       OnChange := EditFromPageChange;
+      {$IfDef FPC}
+      AnchorSideLeft.Control := LabelToPage;
+      AnchorSideLeft.Side := asrBottom;
+      AnchorSideTop.Control := RadioButtonPagesInterval;
+      AnchorSideTop.Side := asrCenter;
+      BorderSpacing.Left := 5;
+      {$EndIf}
     end;
   end;
   TRLComponentFactory.CreateComponent(TButton, Self, ButtonSave);
@@ -387,17 +421,17 @@ begin
     Top := 80;
   end;
   //
-  Caption := LocaleStrings.LS_SaveStr;
-  LabelFileName.Caption := LocaleStrings.LS_FileNameStr;
-  LabelUseFilter.Caption := LocaleStrings.LS_UseFilterStr;
-  GroupBoxPages.Caption := ' ' + LocaleStrings.LS_PageRangeStr + ' ';
-  LabelFromPage.Caption := LocaleStrings.LS_RangeFromStr;
-  LabelToPage.Caption := LocaleStrings.LS_RangeToStr;
-  RadioButtonPagesAll.Caption := LocaleStrings.LS_AllStr;
-  RadioButtonPagesInterval.Caption := LocaleStrings.LS_PagesStr;
-  RadioButtonPagesSelect.Caption := LocaleStrings.LS_SelectionStr;
-  ButtonSave.Caption := LocaleStrings.LS_SaveStr;
-  ButtonCancel.Caption := LocaleStrings.LS_CancelStr;
+  Caption := GetLocalizeStr(LocaleStrings.LS_SaveStr);
+  LabelFileName.Caption := GetLocalizeStr(LocaleStrings.LS_FileNameStr);
+  LabelUseFilter.Caption := GetLocalizeStr(LocaleStrings.LS_UseFilterStr);
+  GroupBoxPages.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_PageRangeStr + ' ');
+  LabelFromPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeFromStr);
+  LabelToPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeToStr);
+  RadioButtonPagesAll.Caption := GetLocalizeStr(LocaleStrings.LS_AllStr);
+  RadioButtonPagesInterval.Caption := GetLocalizeStr(LocaleStrings.LS_PagesStr);
+  RadioButtonPagesSelect.Caption := GetLocalizeStr(LocaleStrings.LS_SelectionStr);
+  ButtonSave.Caption := GetLocalizeStr(LocaleStrings.LS_SaveStr);
+  ButtonCancel.Caption := GetLocalizeStr(LocaleStrings.LS_CancelStr);
 end;
 
 procedure TRLSaveDialog.LoadFilterList;
@@ -406,7 +440,7 @@ var
   F: TRLCustomSaveFilter;
 begin
   ComboBoxFilters.Items.Clear;
-  ComboBoxFilters.Items.AddObject(LocaleStrings.LS_DefaultStr, nil);
+  ComboBoxFilters.Items.AddObject(GetLocalizeStr(LocaleStrings.LS_DefaultStr), nil);
   J := 0;
   for I := 0 to ActiveFilters.Count - 1 do
     if TObject(ActiveFilters[I]) is TRLCustomSaveFilter then

@@ -45,12 +45,21 @@
 |* - Descrição...
 ******************************************************************************}
 
+{$I RLReport.inc}
+
+{@unit RLConsts - Variáveis de internacionalização e variáveis de configuração. }
 unit RLConsts;
 
 interface
 
 uses
-  SysUtils, Classes, Dialogs;
+  Classes,
+  {$IfDef CLX}
+   QDialogs,
+  {$Else}
+   Dialogs,
+  {$EndIf}
+  SysUtils ;
 
 const
   {@const ScreenPPI - Resolução do monitor em pixels por polegada.
@@ -69,14 +78,14 @@ const
   MaxPageNo = 999999;
 
   ReportFileExt = '.rpf';
-	
+
   { constantes para exibição na inicialização e no sobre do delphi a partir da versão 2009 }
   cRLSobreDialogoTitulo = 'FortesReport Community Edition';
   cRLSobreTitulo = 'FortesReport Community Edition VCL';
-  cRLSobreDescricao = 'FortesReport Community Edition VCL ' + #13#10 +
-                      'http://www.fortesreport.com.br' + #13#10 +
-                      'https://github.com/fortesinformatica/fortesreport-ce' + #13#10 +
-                      'Componentes para Geração de Relatórios' + #13#10 +
+  cRLSobreDescricao = 'FortesReport Community Edition VCL ' + sLineBreak +
+                      'http://www.fortesreport.com.br' + sLineBreak +
+                      'https://github.com/fortesinformatica/fortesreport-ce' + sLineBreak +
+                      'Componentes para Geração de Relatórios' + sLineBreak +
                       'Lesser General Public License version 2.0';
   cRLSobreLicencaStatus = 'LGPLv2';
   
@@ -213,6 +222,8 @@ type
     LS_RichFormatStr: string;
     {@var LS_PDFFormatStr - Variável de internacionalização para "Documento PDF" :/}
     LS_PDFFormatStr: string;
+    {@var LS_XLSFormatStr97-2013 - Variável de internacionalização para "Planilha Excel 97-2013" :/}
+    LS_XLSFormatStr97_2013: string;
     {@var LS_XLSFormatStr - Variável de internacionalização para "Planilha Excel" :/}
     LS_XLSFormatStr: string;
     {@var LS_AtStr - Variável de internacionalização para "em" :/}
@@ -267,6 +278,48 @@ type
     LS_PageSelectionHint: string;
     {@var LS_DefaultJobTitle - Variável de internacionalização para "Relatório %s". :/}
     LS_DefaultJobTitle: string;
+    {@var LS_ZoomHint - Variável de internacionalização para "Diminuir o zoom" :/}
+    LS_ZoomHint: string;
+    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Aplicar". :/}
+    Ls_Aplicar: String;
+    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Propriedades". :/}
+    Ls_Propriedades: String;
+    {@var Ls_Salvar_Como - Variável de internacionalização para "Salvar como". :/}
+    Ls_Salvar_Como: String;
+    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Nome do Arquivo". :/}
+    Ls_Nome_Arquivo: String;
+    {@var Ls_File_corrupted - Variável de internacionalização para "Arquivo corrompido". :/}
+    Ls_File_corrupted: String;
+    {@var Ls_File_corrupted - Variável de internacionalização para "Versão de Arquivo inválido". :/}
+    Ls_File_version: String;
+    {@var Ls_Page_setings - Variável de internacionalização para "Configuração da Página". :/}
+    Ls_Page_settings: String;
+    {@var Ls_Page_margins - Variável de internacionalização para "Margem da Página". :/}
+    Ls_Page_margins: String;
+    {@var Ls_Page_margins_top - Variável de internacionalização para "Margem Superior". :/}
+    Ls_Page_margins_top: String;
+    {@var Ls_Page_margins_bottom - Variável de internacionalização para "Margem Inferior". :/}
+    Ls_Page_margins_bottom: String;
+    {@var Ls_Page_margins_rigth - Variável de internacionalização para "Margem direita". :/}
+    Ls_Page_margins_rigth: String;
+    {@var Ls_Page_left_bottom - Variável de internacionalização para "Margem equerda". :/}
+    Ls_Page_margins_left: String;
+    {@var Ls_Page_margins_paper - Variável de internacionalização para "Margem do Papel". :/}
+    Ls_Page_margins_paper: String;
+    {@var Ls_Page_paper - Variável de internacionalização para "Papel". :/}
+    Ls_Page_paper: String;
+    {@var Ls_Paper_Size - Variável de internacionalização para "Tamanho do Papel". :/}
+    Ls_Paper_Size: String;
+    {@var Ls_Paper_Width - Variável de internacionalização para "Largura do Papel". :/}
+    Ls_Paper_Size_Width: String;
+    {@var Ls_Paper_Size_Heigth - Variável de internacionalização para "Altura do Papel". :/}
+    Ls_Paper_Size_Heigth: String;
+    {@var Ls_Paper_Orientation - Variável de internacionalização para "Orientação do Papel". :/}
+    Ls_Paper_Orientation: String;
+    {@var Ls_Paper_Orientation_Landscape - Variável de internacionalização para "Orientação da página em retrato". :/}
+    Ls_Paper_Orientation_Landscape: String;
+    {@var Ls_Paper_Orientation_Portrait - Variável de internacionalização para "Orientação da página em paisagem". :/}
+    Ls_Paper_Orientation_Portrait: String;
 
     LS_LastFooMsg: string;
   end;
@@ -350,6 +403,7 @@ var
     LS_WebPageStr: 'Web page';
     LS_RichFormatStr: 'RichText Format';
     LS_PDFFormatStr: 'PDF Document';
+    LS_XLSFormatStr97_2013: 'Excel spreadsheet 97-2013';
     LS_XLSFormatStr: 'Excel spreadsheet';
     LS_AtStr: 'at';
     LS_FormStr: 'Form';
@@ -377,6 +431,7 @@ var
     LS_PrintDialogError: 'Problems with print dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Report "%s"';
+    LS_Propriedades: 'Settings';
   );
 
 var
@@ -442,6 +497,7 @@ var
     LS_WebPageStr: 'Página da Web';
     LS_RichFormatStr: 'Formato RichText';
     LS_PDFFormatStr: 'Documento PDF';
+    LS_XLSFormatStr97_2013: 'Planilha Excel 97-2013';
     LS_XLSFormatStr: 'Planilha Excel';
     LS_AtStr: 'em';
     LS_FormStr: 'Formulário';
@@ -469,6 +525,9 @@ var
     LS_PrintDialogError: 'Problemas com o diálogo da impressora';
     LS_PageSelectionHint: 'Separe com ponto-e-vírgula os números ou intervalos de páginas a imprimir. Ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Relatório "%s"';
+    LS_ZoomHint: 'Você também pode aumentar ou reduzir o zoom do relatório' + sLineBreak + 'precionando "Ctrl" e usando a rolagem do mouse.';
+    Ls_Aplicar: 'Aplicar';
+    Ls_Propriedades: 'Propriedades';
   );
 
 var
@@ -534,6 +593,7 @@ var
     LS_WebPageStr: 'Page de Web';
     LS_RichFormatStr: 'Formato RichText';
     LS_PDFFormatStr: 'Documento PDF';
+    LS_XLSFormatStr97_2013: 'Excel tableur 97-2013';
     LS_XLSFormatStr: 'Excel tableur';
     LS_AtStr: 'à';
     LS_FormStr: 'Formulaire';
@@ -561,6 +621,7 @@ var
     LS_PrintDialogError: 'Problems calling the printer dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Rapport "%s"';
+    Ls_Aplicar: 'Bewerben Sie sich';
   );
 
 var
@@ -626,6 +687,7 @@ var
     LS_WebPageStr: 'Página Web';
     LS_RichFormatStr: 'Formato RichText';
     LS_PDFFormatStr: 'Documento PDF';
+    LS_XLSFormatStr97_2013: 'Planilha Excel 97-2013';
     LS_XLSFormatStr: 'Planilha Excel';
     LS_AtStr: 'en';
     LS_FormStr: 'Formulario';
@@ -718,6 +780,7 @@ var
     LS_WebPageStr: 'Pagina di Web';
     LS_RichFormatStr: 'RichText Format';
     LS_PDFFormatStr: 'PDF Document';
+    LS_XLSFormatStr97_2013: 'Eccella foglio di calcolo elettronico 97-2013';
     LS_XLSFormatStr: 'Eccella foglio di calcolo elettronico';
     LS_AtStr: 'a';
     LS_FormStr: 'Forma';
@@ -810,6 +873,7 @@ var
     LS_WebPageStr: 'Webseite';
     LS_RichFormatStr: 'RichText Format';
     LS_PDFFormatStr: 'PDF Document';
+    LS_XLSFormatStr97_2013: 'Zeichnen Sie Tabelle aus 97-2013';
     LS_XLSFormatStr: 'Zeichnen Sie Tabelle aus';
     LS_AtStr: 'bei';
     LS_FormStr: 'Form';
@@ -840,12 +904,12 @@ var
   );
 
 procedure DetectLocale;
-{$ifdef LINUX}
+{$IfNDef MSWINDOWS}
 var
   dlct: string;
-{$endif}
+{$EndIf}
 begin
-{$ifdef LINUX}
+{$IfNDef MSWINDOWS}
   dlct := AnsiUpperCase(Copy(GetEnvironmentVariable('LANG'), 1, 2));
   if dlct = 'EN' then
     LocaleStrings := EnglishStrings
@@ -861,7 +925,7 @@ begin
     LocaleStrings := SwedishStrings
   else
     LocaleStrings := EnglishStrings;
-{$else}
+{$Else}
   case SysLocale.PriLangID of
     $09 {LANG_ENGLISH}: LocaleStrings := EnglishStrings;
     $16 {LANG_PORTUGUESE}: LocaleStrings := PortugueseStrings;
@@ -872,7 +936,7 @@ begin
   else
     LocaleStrings := EnglishStrings;
   end;
-{$endif}
+{$EndIf}
 end;
 
 initialization

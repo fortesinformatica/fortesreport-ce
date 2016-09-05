@@ -46,24 +46,36 @@
 
 {$I RLReport.inc}
 
-{@unit RLUtils - Rotinas de uso geral. }
+{$IfDef FPC}
+ {$IfNDef VER3}
+  {$Define NO_CHARINSET}
+ {$EndIf}
+{$Else}
+ {$IfNDef DELPHI12_UP}
+  {$Define NO_CHARINSET}
+ {$EndIf}
+{$EndIf}
 
+
+{@unit RLUtils - Rotinas de uso geral. }
 unit RLUtils;
 
 interface
 
 uses
-  SysUtils, Classes, Math, DB,
-{$ifndef LINUX}
-  Windows,
-{$else}
-  Types,
-{$endif}
-{$ifdef VCL}
-  Graphics, Forms;
-{$else}
-  QGraphics, QForms;
-{$endif}
+  {$IfDef MSWINDOWS}
+   Windows,
+  {$EndIf}
+  SysUtils, Classes, DB,
+  {$IfDef FPC}
+   FileUtil, LazUTF8, LConvEncoding,
+  {$EndIf}
+  {$IfDef CLX}
+   QTypes, QGraphics, QForms,
+  {$Else}
+   Types, Graphics, Forms,
+  {$EndIf}
+  Math;
 
 {@var TempDir - Especifica aonde deverão ser criados os arquivos temporários.
  Na inicialização do sistema é atribuido um valor padrão a esta variável. Este valor pode ser alterado depois.
@@ -202,7 +214,7 @@ procedure UnregisterTempFile(const AFileName: String);
 procedure ClearTempFiles;
 
 {@proc SmartGetFieldDisplayText - Retorna a verdadeira intenção do texto de exibição do valor do campo. :/}
-function SmartGetFieldDisplayText(Field: TField): String;
+function SmartGetFieldDisplayText(Field: TField; const Mask: string = ''): String;
 
 var
   LogFileName: String = 'rlib.log';
@@ -211,7 +223,7 @@ procedure LogClear;
 procedure Log(const AMsg: String);
 
 type
-{$ifdef KYLIX}
+{$IfNDef MSWINDOWS}
   TRGBQuad = packed record
     rgbBlue: Byte;
     rgbGreen: Byte;
@@ -222,17 +234,20 @@ type
   TRGBArray = array[0..0] of TRGBQuad;
   PRGBArray = ^TRGBArray;
 
-{$ifdef KYLIX}
+{$IfNDef MSWINDOWS}
 function RGB(R, G, B: Byte): TColor;
 {$endif}
 
 function NeedAuxBitmap: TBitmap;
 function NewBitmap: TBitmap; overload;
 function NewBitmap(Width, Height: Integer): TBitmap; overload;
-{$if CompilerVersion < 20 }
+{$IfDef NO_CHARINSET}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean; overload;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean; overload;
-{$ifend}
+{$EndIf}
+
+function GetLocalizeStr(AString: AnsiString): String;
+function GetAnsiStr(AString: String): AnsiString;
 
 {/@unit}
 
@@ -242,7 +257,7 @@ type
 
 implementation
 
-{$if CompilerVersion < 20 }
+{$IfDef NO_CHARINSET}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := C in CharSet;
@@ -251,8 +266,30 @@ end;
 function CharInSet(C: WideChar; const CharSet: TSysCharSet): Boolean;
 begin
   Result := (C < #$0100) and (AnsiChar(C) in CharSet);
-end; 
-{$ifend}
+end;
+{$EndIf}
+
+function GetLocalizeStr(AString: AnsiString): String;
+begin
+  {$IfDef FPC}
+   Result := CP1252ToUTF8( AString );  // Fortes Report sources uses CP1252
+  {$Else}
+   Result := String(AString);
+  {$EndIf}
+end;
+
+function GetAnsiStr(AString: String): AnsiString;
+begin
+  {$IfDef FPC}
+   Result := UTF8ToCP1252( AString ) ;   // Fortes Report sources uses CP1252
+  {$Else}
+   {$IFDEF UNICODE}
+    Result := AnsiString(AString);
+   {$Else}
+    Result := AString;
+   {$EndIf}
+  {$EndIf}
+end;
 
 function NewBitmap: TBitmap;
 begin
@@ -333,7 +370,7 @@ begin
   pointer(APtr) := nil;
 end;
 
-{$ifdef KYLIX}
+{$IfNDef MSWINDOWS}
 function RGB(R, G, B: Byte): TColor;
 begin
   Result := (R or (G shl 8) or (B shl 16));
@@ -599,12 +636,8 @@ begin
   if Result <> '' then
     Result := Result + '|';
   Result := Result + ADescription + ' (*' + FormatFileExt(AExt) + ')';
-{$ifdef VCL}
+
   Result := Result + '|*' + FormatFileExt(AExt);
-{$else} {$ifdef DELPHI7}
-  Result := Result + '|*' + FormatFileExt(AExt);
-{$endif}
-{$endif}
 end;
 
 function GetFileFilterExt(const AFilter: String; AIndex: Integer): String;
@@ -625,12 +658,6 @@ begin
     if P > 0 then
       M := Copy(M, 1, P - 1);
     Inc(I);
-{$ifdef VCL}
-    Inc(I);
-{$else} {$ifdef DELPHI7}
-    Inc(I);
-{$endif}
-{$endif}
   end;
   P := Pos('.', M);
   if P > 0 then
@@ -681,7 +708,7 @@ end;
 
 procedure RotateBitmap(ASource, ADest: TBitmap; AAngle: Double; AAxis, AOffset: TPoint);
 type
-{$ifdef KYLIX}
+{$ifdef CLX}
   TRGBQuad = packed record
     rgbBlue: Byte;
     rgbGreen: Byte;
@@ -1026,7 +1053,7 @@ end;
 procedure StreamWriteLn(AStream: TStream; const AStr: string = '');
 begin
   StreamWrite(AStream, AStr);
-  StreamWrite(AStream, #13#10);
+  StreamWrite(AStream, sLineBreak);
 end;
 
 var
@@ -1064,10 +1091,12 @@ begin
   end;
 end;
 
-function SmartGetFieldDisplayText(Field: TField): String;
+function SmartGetFieldDisplayText(Field: TField; const Mask: string = ''): String;
 begin
   if (Field is TBlobField) and not Assigned(Field.OnGetText) then
     Result := Field.AsString
+  else if (Field is TFloatField) and (Mask <> '') then
+    Result := FormatFloat(Mask, Field.AsFloat)
   else
     Result := Field.DisplayText;
 end;
@@ -1081,5 +1110,4 @@ finalization
   ClearTempFiles;
   FreeObj(AuxBitmap);
 
-end.
-
+end.  

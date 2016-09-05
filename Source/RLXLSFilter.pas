@@ -47,22 +47,31 @@
 {$I RLReport.inc}
 
 {@unit RLXLSFilter - Implementação do filtro para criação de planilhas do Excel. }
-
 unit RLXLSFilter;
 
 interface
 
 uses
-  SysUtils, StrUtils, Classes, Contnrs, Math, DateUtils,
-{$ifdef VCL}
-  Windows, Graphics, RLMetaVCL,
-{$else}
-  Types, QGraphics, RLMetaCLX, 
-{$endif}
-{$ifdef NATIVEEXCEL}
-  nExcel,
-{$endif}
-  RLMetaFile, RLConsts, RLTypes, RLUtils, RLFilters, RlCompilerConsts;
+  {$IfDef MSWINDOWS}
+   Windows,
+  {$EndIf}
+  SysUtils, Classes, Contnrs,
+  {$IfDef FPC}
+   LCLIntf, LCLType,
+  {$endif}
+  {$ifdef CLX}
+   QTypes, QGraphics, RLMetaCLX,
+  {$Else}
+    Types, Graphics, RLMetaVCL,
+    {$IfNDef FPC}
+     RlCompilerConsts,
+    {$EndIf}
+  {$EndIf}
+  {$IfDef NATIVEEXCEL}
+   nExcel,
+  {$EndIf}
+  Math, DateUtils, StrUtils,
+  RLMetaFile, RLConsts, RLTypes, RLUtils, RLFilters;
 
 const
   XLSMaxDefaultColors = 16;
@@ -1444,21 +1453,21 @@ var
 begin
   BackupValueText:=ValueText;
   Result := False;
-  {$if CompilerVersion >= cvDelphiXE3}
+  {$ifdef HAS_FORMATSETTINGS}
   ThousandChar := IfThen(FormatSettings.DecimalSeparator = '.', ',', '.');
   {$else}
   ThousandChar := IfThen(DecimalSeparator = '.', ',', '.');
-  {$ifend}
+  {$EndIf}
   // limpa o texto
   ValueText := Str;
   ValueText := StringReplace(ValueText, #13#10, ' ', [rfReplaceAll]);
   ValueText := StringReplace(ValueText, #10, ' ', [rfReplaceAll]);
   ValueText := StringReplace(ValueText, ThousandChar, '', [rfReplaceAll]); // retira separador de milhares
-  {$if CompilerVersion >= cvDelphiXE3}
+  {$ifdef HAS_FORMATSETTINGS}
   ValueText := StringReplace(ValueText, FormatSettings.DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
   {$else}
   ValueText := StringReplace(ValueText, DecimalSeparator, '.', [rfReplaceAll]); // coloca ponto como separador de decimais
-  {$ifend}
+  {$EndIf}
   ValueText := Trim(ValueText);
   if SameText(ValueText, '0.00') or SameText(ValueText, '0') then
     //Não faz nada
@@ -1491,11 +1500,11 @@ begin
   if (ValueText <> '') and (ErrorCode = 0) then
   begin
     System.Str(Value, ValueText); // transforma o valor de volta em AnsiString com os decimais corretos
-    {$if CompilerVersion >= cvDelphiXE3}
+    {$ifdef HAS_FORMATSETTINGS}
     ValueText := Trim(StringReplace(ValueText, '.', FormatSettings.DecimalSeparator, [rfReplaceAll]));
     {$else}
     ValueText := Trim(StringReplace(ValueText, '.', DecimalSeparator, [rfReplaceAll]));
-    {$ifend}
+    {$EndIf}
     Result := True;
   end;
 end;
@@ -1890,7 +1899,7 @@ begin
   titleno := FSheets.Count;
   repeat
     Inc(titleno);
-    Result := LocaleStrings.LS_PageStr + IntToStr(titleno);
+    Result := GetLocalizeStr(LocaleStrings.LS_PageStr + IntToStr(titleno));
     I := 0;
     while (I < SheetCount) and not AnsiSameText(Sheets[I].Title, Result) do
       Inc(I);
@@ -2117,7 +2126,7 @@ begin
   FHorzTabs := TRLXLSTabs.Create;
   FVertTabs := TRLXLSTabs.Create;
   DefaultExt := '.xls';
-  DisplayName := LocaleStrings.LS_XLSFormatStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_XLSFormatStr97_2013);
 ///  FilterStyle := FilterStyle + []; ///fsSetupDialog];
 end;
 
@@ -2154,14 +2163,14 @@ procedure TRLXLSWorkbook.WriteBIFFFont(AStream: TStream; AFont: TFont; AColorPal
 var
   room: Integer;
   font: PRLXLSBiff8FONT;
-{$ifdef VCL}
+{$ifdef MSWINDOWS}
   lf: TLogFont;
 {$endif}
 begin
   room := WideStringSize(AnsiString(AFont.Name));
   font := AllocMem(SizeOf(TRLXLSBiff8FONT) + room);
   try
-{$ifdef VCL}
+{$ifdef MSWINDOWS}
     GetObject(AFont.Handle, SizeOf(TLogFont), @lf);
 {$endif}
     StringToWideChar(AnsiString(AFont.Name), PWideChar(Integer(font) + SizeOf(TRLXLSBiff8FONT)), room);
@@ -2177,7 +2186,7 @@ begin
       font.bls := $64; // ref MSDN
     if fsUnderline in AFont.Style then
       font.uls := 1; // ref MSDN
-{$ifdef VCL}
+{$ifdef MSWINDOWS}
     font.bFamily := lf.lfPitchAndFamily;
     font.bCharSet := lf.lfCharSet;
 {$else}
@@ -2187,10 +2196,12 @@ begin
       fpVariable: font.bFamily := 2;
     end;
     case AFont.CharSet of
-      fcsLatin1: font.bCharSet := 0;
-      fcsKOI8R: font.bCharSet := 130;
-      fcsSet_Ja: font.bCharSet := $80;
-      fcsSet_Ko: font.bCharSet := 129;
+      {$IfDef CLX}
+       fcsLatin1: font.bCharSet := 0;
+       fcsKOI8R: font.bCharSet := 130;
+       fcsSet_Ja: font.bCharSet := $80;
+       fcsSet_Ko: font.bCharSet := 129;
+      {$EndIf}
       ANSI_CHARSET: font.bCharSet := 0;
       DEFAULT_CHARSET: font.bCharSet := 1;
       SYMBOL_CHARSET: font.bCharSet := 2;

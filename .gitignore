@@ -51,3 +51,12 @@
 # Delphi history and backups
 __history/
 *.~*
+*.ppu
+*.o
+*.compiled
+
+#arquivos de instalação locais
+log_*.txt
+Binary
+frceInstall.ini
+

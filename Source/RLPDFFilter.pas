@@ -47,18 +47,27 @@
 {$I RLReport.inc}
 
 {@unit RLPDFFilter - Implementação do filtro para criação de arquivos PDF. }
-
 unit RLPDFFilter;
 
 interface
 
 uses
-  SysUtils, Classes, Math, {$if CompilerVersion >= 29}Vcl.Imaging.jpeg{$else}Jpeg{$ifend},
-{$ifdef VCL}
-  Windows, Graphics, RLMetaVCL, 
-{$else}
-  Types, QGraphics, RLMetaCLX,
-{$endif}
+  {$IfDef MSWINDOWS}
+   {$IfNDef FPC}
+    Windows,
+   {$EndIf}
+  {$EndIf}
+  SysUtils, Classes, Math,
+  {$IfDef FPC}
+   LCLIntf, LCLType, LConvEncoding,
+  {$Else}
+   {$IfDef DELPHIXE8_UP}Vcl.Imaging.jpeg{$Else}Jpeg{$EndIf},
+  {$EndIf}
+  {$IfDef CLX}
+   QTypes, QGraphics, RLMetaCLX,
+  {$Else}
+   Types, Graphics, RLMetaVCL,
+  {$endif}
   RLMetaFile, RLConsts, RLTypes, RLUtils, RLFilters;
 
 const
@@ -267,7 +276,7 @@ type
       AFontId, AFontSize: Integer);
     function WriteBitmap(ABitmap: TBitmap): Integer;
     procedure WriteBitmapData(ABitmap: TBitmap);
-    function WriteJpeg(AJpeg: TJpegImage): Integer;
+    function WriteJpeg(AJpeg: TJpegImage; InternalDraw: Boolean = False): Integer;
     procedure WriteJpegData(AJpeg: TJpegImage);
 
     function PDF_PointStr(X, Y: Double): string;
@@ -354,18 +363,20 @@ type
 
     procedure Assign(Source: TRLPDFFilterPageSetup); reintroduce;
     procedure Clear;
-  published
+
     property PaperSize: TRLPDFFilterPaperSizeType read FPaperSize write FPaperSize;
-    property LandScape: Boolean read FLandScape write FLandScape;
     property MediaSize: TRLPDFFilterPaperSizeType read FMediaSize write FMediaSize;
     property Margins: TRLPDFFilterMarginType read FMargins write FMargins;
+    property ColumnMargin: TRLPDFFilterMarginType read FColumnMargin write FColumnMargin;
+    property ColumnGap: TRLPDFFilterLocationType read FColumnGap write FColumnGap;
+    property WorkArea: TRLPDFFilterMarginType read FWorkArea write FWorkArea;
+  published
+    property LandScape: Boolean read FLandScape write FLandScape;
     property PageBorder: Boolean read FPageBorder write FPageBorder;
     property ColumnBorder: TRLPDFFilterColumnBorderType
       read FColumnBorder write FColumnBorder;
     property BorderDashPattern: TRLPDFFilterDashPatternType
       read FBorderDashPattern write FBorderDashPattern;
-    property ColumnMargin: TRLPDFFilterMarginType read FColumnMargin write FColumnMargin;
-    property ColumnGap: TRLPDFFilterLocationType read FColumnGap write FColumnGap;
     property ColumnCount: Word read FColumnCount write FColumnCount;
     property RowCount: Word read FRowCount write FRowCount;
     property FontPointSize: Word read FFontPointSize write FFontPointSize;
@@ -375,7 +386,6 @@ type
     property ColumnLeadingPointSize: Word read FColumnLeadingPointSize
       write FColumnLeadingPointSize;
     property CharCount: Word read FCharCount write FCharCount;
-    property WorkArea: TRLPDFFilterMarginType read FWorkArea write FWorkArea;
   end;
 
   {@class TRLPDFFilterDocumentInfo - Informações para a geração de documento PDF. }
@@ -658,13 +668,12 @@ begin
   FDocumentInfo := TRLPDFFilterDocumentInfo.Create;
   FPageSetup := TRLPDFFilterPageSetup.Create;
   FTextControl := TRLPDFFilterTextControl.Create;
-
   FImageFormat := ifJPeg;
 
   inherited Create(AOwner);
 
   DefaultExt := '.pdf';
-  DisplayName := LocaleStrings.LS_PDFFormatStr;
+  DisplayName := GetLocalizeStr(LocaleStrings.LS_PDFFormatStr);
 
   FixupPageSetup;
   Reset;
@@ -748,19 +757,29 @@ function JPeg8Of(Src: TGraphic): TJPEGImage;
 var
   bmp: TBitmap;
 begin
-  if (Src is TJPEGImage) and (TJPEGImage(Src).PixelFormat = jf8Bit) then
+  if (Src is TJPEGImage) and (TJPEGImage(Src).PixelFormat = {$IfDef FPC}pf8bit{$Else}jf8Bit{$EndIf}) then
     Result := TJPEGImage(Src)
   else
   begin
+    {$IfDef FPC}
+    Result := TJPEGImage.Create;
+    Result.Width := Src.Width;
+    Result.Height := Src.Height;
+    Result.PixelFormat := pf32bit;
+    Result.Canvas.Draw(0, 0, Src);
+    // FPC always will change "PixelFormat" to pf24bit, when you try to read it...
+    // So I changed WriteJpeg() to receive a Flag as a parameter
+    {$Else}
     bmp := Bitmap32Of(Src);
     try
       Result := TJPEGImage.Create;
-      Result.PixelFormat := jf8Bit;
+      Result.PixelFormat := {$IfDef FPC}pf8bit{$Else}jf8Bit{$EndIf};
       Result.Assign(bmp);
     finally
       if bmp <> Src then
         bmp.Free;
     end;
+    {$EndIf}
   end;
 end;
 
@@ -865,7 +884,7 @@ begin
       ifJPeg:
       begin
         jpg := JPeg8Of(grp);
-        Result := WriteJpeg(jpg);
+        Result := WriteJpeg(jpg, True);
       end;
     else
       raise Exception.Create('Unknown imageformat');
@@ -1325,17 +1344,17 @@ begin
   with FDocumentInfo do
   begin
     if Title <> '' then
-      Writeln('/Title(' + Title + ')');
+      Writeln('/Title(' + GetAnsiStr(Title) + ')');
     if Subject <> '' then
-      Writeln('/Subject(' + Subject + ')');
+      Writeln('/Subject(' + GetAnsiStr(Subject) + ')');
     if Author <> '' then
-      Writeln('/Author(' + Author + ')');
+      Writeln('/Author(' + GetAnsiStr(Author) + ')');
     if Keywords <> '' then
-      Writeln('/Keywords(' + Keywords + ')');
+      Writeln('/Keywords(' + GetAnsiStr(Keywords) + ')');
     if Creator <> '' then
-      Writeln('/Creator(' + Creator + ')');
+      Writeln('/Creator(' + GetAnsiStr(Creator) + ')');
     if Producer <> '' then
-      Writeln('/Producer(' + Producer + ')');
+      Writeln('/Producer(' + GetAnsiStr(Producer) + ')');
   end;
 
   EndObj;
@@ -1805,7 +1824,7 @@ begin
   EndShortObj;
 end;
 
-function TRLPDFFilter.WriteJpeg(AJpeg: TJpegImage): Integer;
+function TRLPDFFilter.WriteJpeg(AJpeg: TJpegImage; InternalDraw: Boolean): Integer;
 var
   begstm: Integer;
   endstm: Integer;
@@ -1823,7 +1842,8 @@ begin
     Writeln('/ColorSpace/DeviceGray')
   else
     Writeln('/ColorSpace/DeviceRGB');
-  if AJpeg.PixelFormat = jf8Bit then
+
+  if InternalDraw or (AJpeg.PixelFormat = {$IfDef FPC}pf8bit{$Else}jf8Bit{$EndIf}) then
     Writeln('/BitsPerComponent 8')
   else
     Writeln('/BitsPerComponent 24');
@@ -2073,7 +2093,8 @@ class function TRLPDFFilter.PDF_EncodeText(const AText: string): string;
 var
   I: Integer;
 begin
-  Result := AText;
+  Result := GetAnsiStr(AText);
+
   for I := Length(Result) downto 1 do
     if CharInSet(Result[I], ['(', ')', '\']) then
     begin

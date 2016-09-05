@@ -1,0 +1,7 @@
+frceInstall
+-----------
+
+Instalador do projeto FortesReport Community Edition.
+
+Para compilar e necessário ter a JCL e JVCL instaladas.
+Projeto desenvolvido em Delphi 2010.
