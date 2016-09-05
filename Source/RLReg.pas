@@ -52,16 +52,18 @@ interface
 
 uses
   Classes, SysUtils,
-  {$ifdef FPC}
+  {$IfDef FPC}
    PropEdits, ComponentEditors, LCLType, LResources,
   {$Else}
-   {$ifdef DELPHI5}
-  DsgnIntF, 
-   {$else}
-  DesignIntF, 
-   {$endif}
-  {$endif}
-{$IFDEF DELPHI2007_UP}ToolsApi, Windows, Graphics,{$ENDIF}
+   {$IfDef DELPHI5}
+    DsgnIntF,
+   {$Else}
+    DesignIntF,
+   {$EndIf}
+  {$EndIf}
+  {$IfDef DELPHI2007_UP}
+   ToolsApi, Windows, Graphics,
+  {$EndIf}
   RLDesign, RLReport,
   RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter,
   RLParser, RLPreview, RLMetaFile, RLBarcode, RLRichText, RLPreviewForm,

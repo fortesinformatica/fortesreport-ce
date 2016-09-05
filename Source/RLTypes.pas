@@ -53,7 +53,7 @@ interface
 
 uses
   {$IfDef MSWINDOWS}
-    Windows, 
+   Windows,
   {$EndIf}
   Classes, Printers;
 

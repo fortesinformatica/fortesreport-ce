@@ -58,14 +58,14 @@ uses
   SysUtils, Classes, Contnrs,
   {$IfDef FPC}
    LCLIntf, LCLType,
-  {$endif}
-  {$ifdef CLX}
+  {$EndIf}
+  {$IfDef CLX}
    QTypes, QGraphics, RLMetaCLX,
   {$Else}
-    Types, Graphics, RLMetaVCL,
-    {$IfNDef FPC}
-     RlCompilerConsts,
-    {$EndIf}
+   Types, Graphics, RLMetaVCL,
+   {$IfNDef FPC}
+    RlCompilerConsts,
+   {$EndIf}
   {$EndIf}
   {$IfDef NATIVEEXCEL}
    nExcel,

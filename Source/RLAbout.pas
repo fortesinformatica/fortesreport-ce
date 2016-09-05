@@ -63,9 +63,9 @@ uses
   {$Else}
    Types, Graphics, Controls, Forms, Dialogs, StdCtrls, ExtCtrls, Buttons,
   {$EndIf}
-  {$ifdef FPC}
+  {$IfDef FPC}
    LCLIntf, LCLType,
-  {$endif}
+  {$EndIf}
   RLConsts, RLUtils, RLComponentFactory;
 
 type

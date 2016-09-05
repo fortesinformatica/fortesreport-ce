@@ -56,17 +56,17 @@ uses
   {$IfDef FPC}
    PropEdits, ComponentEditors, LCLType, LResources,
   {$Else}
-   {$ifdef DELPHI5}
+   {$IfDef DELPHI5}
     DsgnIntF,
-   {$else}
+   {$Else}
     DesignEditors, DesignIntf,
-   {$endif}
-  {$endif}
-  {$ifdef CLX}
+   {$EndIf}
+  {$EndIf}
+  {$IfDef CLX}
    QForms,
   {$Else}
    Forms,
-  {$endif}
+  {$EndIf}
   RLReport, RLConsts, RLUtils, RLTypes, RLAbout;
 
 type

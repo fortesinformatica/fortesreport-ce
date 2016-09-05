@@ -55,7 +55,7 @@ uses
   {$IfDef MSWINDOWS}
    Windows,
   {$EndIf}
-  Messages, SysUtils, Math, Contnrs, Classes,
+   Messages, SysUtils, Math, Contnrs, Classes,
   {$IfDef FPC}
    LMessages, LCLIntf, LCLType, FileUtil,
   {$EndIf}
@@ -69,7 +69,7 @@ uses
 
 {$IfDef FPC}
 const
-  WM_MOUSEWHEEL = LM_MOUSEWHEEL;
+  CM_MOUSEWHEEL = LM_MOUSEWHEEL;
 {$EndIf}
 
 type
@@ -152,7 +152,7 @@ type
     procedure ShowFindDialog;
     procedure OnFindHandler(Sender: TObject; const Text: string; Options: TRLFindOptions; var Found: Boolean);
     procedure SpeedButtonCustomActionClick(Sender: TObject);
-    procedure CMMouseWheel(var Message: TMessage); message WM_MOUSEWHEEL;
+    procedure CMMouseWheel(var Message: TCMMouseWheel); message CM_MOUSEWHEEL;
   protected
     { Protected declarations }
     procedure DoClose(var Action: TCloseAction); override;
@@ -1798,16 +1798,16 @@ begin
     EnableWindow(Handle,True);
 end;
 
-procedure TRLPreviewForm.CMMouseWheel(var Message: TMessage);
+procedure TRLPreviewForm.CMMouseWheel(var Message: TCMMouseWheel);
 begin
   if GetKeyState(VK_CONTROL) < 0 then
   begin
-    if Message.wParam > 0 then
+    if Message.WheelDelta > 0 then
       Preview.ZoomIn
     else
       Preview.ZoomOut;
   end
-  else if Message.wParam > 0 then
+  else if Message.WheelDelta > 0 then
       Preview.ScrollUp
     else
       Preview.ScrollDown;

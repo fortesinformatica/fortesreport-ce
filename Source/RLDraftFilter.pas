@@ -54,16 +54,16 @@ interface
 
 uses
   {$IfDef MSWINDOWS}
-    Windows,
+   Windows,
   {$EndIf}
   SysUtils, Classes, Math, Contnrs,
   {$IfDef FPC}
-    LCLIntf, LCLType, IntfGraphics, FPImage, FileUtil, Process,
-    {$IfDef MSWINDOWS} WinUtilPrn, {$EndIf}
+   LCLIntf, LCLType, IntfGraphics, FPImage, FileUtil, Process,
+   {$IfDef MSWINDOWS} WinUtilPrn, {$EndIf}
   {$Else}
-    WinSpool, ShellApi,
+   WinSpool, ShellApi,
   {$EndIf}
-  {$ifdef CLX}
+  {$IfDef CLX}
    QGraphics, RLMetaCLX,
   {$Else}
    Graphics,

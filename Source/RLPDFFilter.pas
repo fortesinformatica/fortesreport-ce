@@ -61,13 +61,13 @@ uses
   {$IfDef FPC}
    LCLIntf, LCLType, LConvEncoding,
   {$Else}
-   {$IfDef DELPHIXE8_UP}Vcl.Imaging.jpeg{$Else}Jpeg{$EndIf},
+   {$IfDef DELPHIXE8_UP} Vcl.Imaging.jpeg {$Else} Jpeg {$EndIf},
   {$EndIf}
   {$IfDef CLX}
    QTypes, QGraphics, RLMetaCLX,
   {$Else}
    Types, Graphics, RLMetaVCL,
-  {$endif}
+  {$EndIf}
   RLMetaFile, RLConsts, RLTypes, RLUtils, RLFilters;
 
 const

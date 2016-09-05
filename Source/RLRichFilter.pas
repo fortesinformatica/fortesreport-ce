@@ -60,7 +60,7 @@ uses
   SysUtils, Classes, Types,
   {$IfDef FPC}
    LCLIntf,
-  {$endif}
+  {$EndIf}
   {$IfDef CLX}
    QGraphics, RLMetaCLX,
   {$Else}

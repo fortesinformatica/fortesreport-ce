@@ -53,7 +53,6 @@
  {$DEFINE HAS_FORMATSETTINGS}
 {$EndIf}
 
-
 unit RLXLSXFilter;
 
 interface
