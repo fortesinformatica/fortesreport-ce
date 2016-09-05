@@ -494,7 +494,11 @@ begin
       FHeapSize := FHeapSize * 2;
     ReallocMem(FHeapPtr, FHeapSize);
   end;
+  {$IfDef FPC}
+  PtrInt(ItemPtr) := PtrInt(FHeapPtr) + FHeapLength;
+  {$Else}
   Integer(ItemPtr) := Integer(FHeapPtr) + FHeapLength;
+  {$EndIf}
   ItemPtr.Data := Integer(Data);
   ItemPtr.KeyLength := Length(AnsiKey);
   Inc(FHeapLength, SizeOf(TRLXLSXHashItem));
@@ -540,7 +544,12 @@ begin
     ItemPtr := Items[ItemIndex];
     if ItemPtr.KeyLength = Length(AnsiKey) then
     begin
+      {$IfDef FPC}
+      PtrInt(StrPtr) := PtrInt(FHeapPtr) + ItemPtr.KeyOffset;
+      {$Else}
       Integer(StrPtr) := Integer(FHeapPtr) + ItemPtr.KeyOffset;
+      {$EndIf}
+
       if CompareMem(StrPtr, @AnsiKey[1], Length(AnsiKey)) then
       begin
         Data := TObject(ItemPtr.Data);
