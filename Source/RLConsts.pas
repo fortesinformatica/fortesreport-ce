@@ -569,7 +569,7 @@ var
     LS_MultiplePagesStr: 'Plusieurs pages';
     LS_ConfigPrinterStr: 'Configuration de l''imprimante';
     LS_SaveToFileStr: 'Enregistrer dans un fichier';
-    LS_SendToStr: 'Envoyer à...;
+    LS_SendToStr: 'Envoyer à...';
     LS_PrinterStr: 'Imprimante';
     LS_NameStr: 'Nom';
     LS_PrintToFileStr: 'Imprimer dans un fichier';
