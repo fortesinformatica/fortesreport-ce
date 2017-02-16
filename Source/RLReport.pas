@@ -182,7 +182,7 @@ type
    suas características, como por exemplo: dimensões, cor, bordas etc.
    Nota: Este evento aparecerá como o nome BeforePrint nas caixas de texto.
    @links TRLAfterPrintEvent, TRLBeforePrintEvent, TRLCustomLabel. :/}
-  TRLBeforeTextEvent = procedure(Sender: TObject; var Text: string;
+  TRLBeforeTextEvent = procedure(Sender: TObject; var AText: string;
     var PrintIt: Boolean) of object;
 
   {@type TRLOnComputeEvent - Ao computar um valor durante iterações para estatística dos acumuladores.
@@ -190,7 +190,7 @@ type
    ou altere o parâmetro ComputeIt para indicar se o valor deve ser computado ou ignorado.
    @links TRLDBResult. :/}
   TRLOnComputeEvent = procedure(Sender: TObject; var Value: Variant;
-    var Text: string; var ComputeIt: Boolean) of object;
+    var AText: string; var ComputeIt: Boolean) of object;
 
   {@type TRLOnDetailComputeEvent - Ao computar uma band detail durante iterações para estatística dos acumuladores.
    Altere o parâmetro ComputeIt para indicar se os valores correspondentes à band devem ser computados ou ignorados.
@@ -8680,22 +8680,22 @@ end;
 
 { RunMemo }
 
-function CanvasTextWidth(Canvas: TObject; const Text: string): Integer;
+function CanvasTextWidth(Canvas: TObject; const AText: string): Integer;
 begin
   if Canvas is TRLGraphicSurface then
-    Result := (Canvas as TRLGraphicSurface).TextWidth(Text)
+    Result := (Canvas as TRLGraphicSurface).TextWidth(AText)
   else if Canvas is TCanvas then
-    Result := (Canvas as TCanvas).TextWidth(Text)
+    Result := (Canvas as TCanvas).TextWidth(AText)
   else
     Result := 0;
 end;
 
-function CanvasTextHeight(Canvas: TObject; const Text: string): Integer;
+function CanvasTextHeight(Canvas: TObject; const AText: string): Integer;
 begin
   if Canvas is TRLGraphicSurface then
-    Result := (Canvas as TRLGraphicSurface).TextHeight(Text)
+    Result := (Canvas as TRLGraphicSurface).TextHeight(AText)
   else if Canvas is TCanvas then
-    Result := (Canvas as TCanvas).TextHeight(Text)
+    Result := (Canvas as TCanvas).TextHeight(AText)
   else
     Result := 0;
 end;
@@ -8766,7 +8766,7 @@ begin
 end;
 
 procedure CanvasTextRect(Canvas: TObject; const ARect: TRect;
-  const Text: string; Alignment: TRLTextAlignment = taLeftJustify);
+  const AText: string; Alignment: TRLTextAlignment = taLeftJustify);
 var
   X, Y: Integer;
 begin
@@ -8774,20 +8774,20 @@ begin
   begin
     case Alignment of
       taCenter: X := (ARect.Left + ARect.Right -
-          (Canvas as TRLGraphicSurface).TextWidth(Text)) div 2;
-      taRightJustify: X := ARect.Right - (Canvas as TRLGraphicSurface).TextWidth(Text);
+          (Canvas as TRLGraphicSurface).TextWidth(AText)) div 2;
+      taRightJustify: X := ARect.Right - (Canvas as TRLGraphicSurface).TextWidth(AText);
       taJustify: X := ARect.Left;
     else // taLeftJustify
       X := ARect.Left;
     end;
     Y := ARect.Top;
-    (Canvas as TRLGraphicSurface).TextRectEx(ARect, X, Y, Text,
+    (Canvas as TRLGraphicSurface).TextRectEx(ARect, X, Y, AText,
       ToMetaTextAlignment(TAlignment(Alignment)), ToMetaTextLayout(TTextLayout(tlTop)),
       MetaTextFlagIntegralHeight or MetaTextFlagAutoSize);
   end
   else if Canvas is TCanvas then
     CanvasTextRectEx(Canvas as TCanvas, ARect, ARect.Left, ARect.Top,
-      Text, ToMetaTextAlignment(TAlignment(Alignment)), ToMetaTextLayout(TTextLayout(tlTop)),
+      AText, ToMetaTextAlignment(TAlignment(Alignment)), ToMetaTextLayout(TTextLayout(tlTop)),
       MetaTextFlagIntegralHeight);
 end;
 

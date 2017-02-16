@@ -71,7 +71,7 @@ type
   TRLFindOption = (foWholeWords, foMatchCase, foFindBackward);
   TRLFindOptions = set of TRLFindOption;
 
-  TRLOnFindEvent = procedure(Sender: TObject; const Text: String; Options: TRLFindOptions; var Found: Boolean) of object;
+  TRLOnFindEvent = procedure(Sender: TObject; const AText: String; Options: TRLFindOptions; var Found: Boolean) of object;
 
   TfrmRLFindDialog = class(TForm)
     LabelTextToFind: TLabel;

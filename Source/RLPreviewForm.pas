@@ -150,7 +150,7 @@ type
     procedure UpdateComboBoxZoom;
     procedure UpdateEditPageNo;
     procedure ShowFindDialog;
-    procedure OnFindHandler(Sender: TObject; const Text: string; Options: TRLFindOptions; var Found: Boolean);
+    procedure OnFindHandler(Sender: TObject; const AText: string; Options: TRLFindOptions; var Found: Boolean);
     procedure SpeedButtonCustomActionClick(Sender: TObject);
     procedure CMMouseWheel(var Message: TCMMouseWheel); message CM_MOUSEWHEEL;
   protected
@@ -1341,11 +1341,11 @@ begin
   Preview.LastPage;
 end;
 
-function FileNameFromText(const Text: string): string;
+function FileNameFromText(const AText: string): string;
 var
   I: Integer;
 begin
-  Result := Trim(Text);
+  Result := Trim(AText);
   for I := Length(Result) downto 1 do
     if CharInSet(Result[I], [#0..#31, #127, '?', '*', ':', '/', '\', '>', '<', '|', '"', '.']) then
       Delete(Result, I, 1);
@@ -1495,9 +1495,9 @@ begin
   FFindDialog.Show;
 end;
 
-procedure TRLPreviewForm.OnFindHandler(Sender: TObject; const Text: string; Options: TRLFindOptions; var Found: Boolean);
+procedure TRLPreviewForm.OnFindHandler(Sender: TObject; const AText: string; Options: TRLFindOptions; var Found: Boolean);
 begin
-  Found := Preview.FindText(Text, foWholeWords in Options, foMatchCase in Options, foFindBackward in Options);
+  Found := Preview.FindText(AText, foWholeWords in Options, foMatchCase in Options, foFindBackward in Options);
 end;
 
 procedure TRLPreviewForm.UpdateComboBoxZoom;
