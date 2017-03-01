@@ -663,7 +663,29 @@ var
     LS_PrintDialogError: 'Erreur dans la boîte de dialogue de l''imprimante';
     LS_PageSelectionHint: 'Séparé des numéros de page ou des intervalles avec ";". p.ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Rapport "%s"';
+    LS_ZoomHint: '';
     LS_Aplicar: 'Appliquer';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -757,6 +779,29 @@ var
     LS_PrintDialogError: 'Problemas con el diálogo de la impresora';
     LS_PageSelectionHint: 'Separar con ";" los números o rangos de páginas para imprimir. Ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Impresión "%s"';
+    LS_ZoomHint: '';
+    LS_Aplicar: '';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -850,6 +895,29 @@ var
     LS_PrintDialogError: 'Problems calling the printer dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Rapporto "%s"';
+    LS_ZoomHint: '';
+    LS_Aplicar: '';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -943,6 +1011,29 @@ var
     LS_PrintDialogError: 'Problems calling the printer dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Das Drucken "%s"';
+    LS_ZoomHint: '';
+    LS_Aplicar: '';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -989,8 +1080,10 @@ var
     LS_NameStr: 'ĐĐĽŃ?';
     LS_PrintToFileStr: 'ĐźĐµŃ‡Đ°Ń‚ŃŚ Đ˛ Ń„Đ°ĐąĐ»';
     LS_PrintInBackgroundStr: 'ĐźĐµŃ‡Đ°Ń‚ŃŚ Đ˛ Ń„ĐľĐ˝Đµ';
+    LS_OptionsStr: 'Đ?Đ°Ń?ŃŃĐžĐšĐşĐ¸';
     LS_SaveInBackground: 'ĐˇĐľŃ…Ń€Đ°Đ˝ĐµĐ˝Đ¸Đµ Đ˛ Ń„ĐľĐ˝Đµ';
     LS_PageRangeStr: 'Đ”Đ¸Đ°ĐżĐ°Đ·ĐľĐ˝ ĐżĐµŃ‡Đ°Ń‚Đ¸';
+    LS_CopyAsImageStr: '';
     LS_RangeFromStr: 'Ń?';
     LS_RangeToStr: 'ĐżĐľ';
     LS_AllStr: 'Đ’Ń?Đµ';
@@ -1006,11 +1099,11 @@ var
     LS_WebPageStr: 'Đ’ĐµĐ± Ń?Ń‚Ń€Đ°Đ˝Đ¸Ń†Đ°';
     LS_RichFormatStr: 'RichText Format';
     LS_PDFFormatStr: 'PDF Đ”ĐľĐşŃĐĽĐµĐ˝Ń‚';
+    LS_XLSFormatStr97_2013: '';
     LS_XLSFormatStr: 'Đ˘Đ°Đ±Đ»Đ¸Ń†Đ° Excel';
     LS_AtStr: 'Đ˛';
     LS_FormStr: 'Đ¤ĐľŃ€ĐĽĐ°';
     LS_DefaultStr: 'ĐźĐľ ŃĐĽĐľĐ»Ń‡Đ°Đ˝Đ¸ŃŽ';
-    //LS_ColsStr: 'ĐˇŃ‚ĐľĐ»Đ±.';
     LS_ZoomInStr: 'ĐŁĐ˛ĐµĐ»Đ¸Ń‡Đ¸Ń‚ŃŚ';
     LS_ZoomOutStr: 'ĐŁĐĽĐµĐ˝ŃŚŃĐ¸Ń‚ŃŚ';
     LS_CopyStr: 'ĐšĐľĐżĐ¸Ń€ĐľĐ˛Đ°Ń‚ŃŚ';
@@ -1023,8 +1116,6 @@ var
     LS_DirectionUpStr: '&Đ’Đ˛ĐµŃ€Ń…';
     LS_DirectionDownStr: 'Đ’&Đ˝Đ¸Đ·';
     LS_DirectionCaptionStr: 'Đ?Đ°ĐżŃ€Đ°Đ˛Đ»ĐµĐ˝Đ¸Đµ';
-    //Ls_GetOutlineTextMetrics: 'GetOutlineTextMetrics Ń?Đ»ĐľĐĽĐ°Đ»ĐľŃ?ŃŚ';
-    //LS_OptionsStr: 'Đ?Đ°Ń?Ń‚Ń€ĐľĐąĐşĐ¸';
     LS_ColumnsStr: 'ĐˇŃ‚ĐľĐ»Đ±Ń†Ń‹';
     LS_SetupStr: 'Setup...';
     LS_FontSizeError: 'Font size error';
@@ -1037,8 +1128,7 @@ var
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Report "%s"';
     LS_ZoomHint: '';
-    //Ls_Progresso: 'ĐźŃ€ĐľĐłŃ€ĐµŃ?Ń?';
-    Ls_Aplicar: 'ĐźŃ€Đ¸ĐĽĐµĐ˝Đ¸Ń‚ŃŚ';
+    LS_Aplicar: 'ĐźŃ€Đ¸ĐĽĐµĐ˝Đ¸Ń‚ŃŚ';
     LS_Propriedades: 'Đ?Đ°Ń?Ń‚Ń€ĐľĐąĐşĐ¸';
     LS_Salvar_Como: 'ĐˇĐľŃ…Ń€Đ°Đ˝Đ¸Ń‚ŃŚ ĐşĐ°Đş';
     LS_Nome_Arquivo: 'ĐĐĽŃ? Ń„Đ°ĐąĐ»Đ°:';
@@ -1058,6 +1148,8 @@ var
     LS_PaperOrientation: 'ĐžŃ€Đ¸ĐµĐ˝Ń‚Đ°Ń†Đ¸Ń?';
     LS_PaperOrientationLandscape: 'Đ›Đ°Đ˝Đ´ŃĐ°Ń„Ń‚Đ˝Đ°Ń?';
     LS_PaperOrientationPortrait: 'ĐźĐľŃ€Ń‚Ń€ĐµŃ‚Đ˝Đ°Ń?';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -1151,7 +1243,29 @@ var
     LS_PrintDialogError: 'Problém s dialogem tisku';
     LS_PageSelectionHint: 'Oddělené čísla stránek nebo rozmezí stránek s ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Report "%s"';
+    LS_ZoomHint: 'Upravit přiblížení.';
+    LS_Aplicar: 'Použít';
     LS_Propriedades: 'Nastavení';
+    LS_Salvar_Como: 'Uložit jako';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: 'Soubor je poškozen!';
+    LS_FileVersion: 'Chybný typ souboru!';
+    LS_PageSettings: 'Nastavení stránky';
+    LS_PageMargins: 'Okraje';
+    LS_PageMarginsTop: 'Nahoře';
+    LS_PageMarginsBottom: 'Dole';
+    LS_PageMarginsRigth: 'Vpravo';
+    LS_PageMarginsLeft: 'Vlevo';
+    LS_PageMarginsPaper: 'Okraje papíru';
+    LS_PagePaper: 'Papír';
+    LS_PaperSize: 'Velikost papíru';
+    LS_PaperSizeWidth: 'Šířka';
+    LS_PaperSizeHeigth: 'Výška';
+    LS_PaperOrientation: 'Orientace';
+    LS_PaperOrientationLandscape: 'Na šířku';
+    LS_PaperOrientationPortrait: 'Na výšku';
+
+    LS_LastFooMsg: '';
   );
 
 procedure DetectLocale;
@@ -1200,4 +1314,3 @@ initialization
   DetectLocale;
 
 end.
-
