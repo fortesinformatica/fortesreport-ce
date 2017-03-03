@@ -271,7 +271,7 @@ end;
 function GetLocalizeStr(AString: AnsiString): String;
 begin
   {$IfDef FPC}
-   Result := CP1252ToUTF8( AString );  // Fortes Report sources uses CP1252
+   Result := ConvertEncoding(AString, GetDefaultTextEncoding, EncodingUTF8);  // Fortes Report sources uses CP1252
   {$Else}
    Result := String(AString);
   {$EndIf}
