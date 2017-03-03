@@ -57,7 +57,7 @@ uses
   {$EndIf}
    Messages, SysUtils, Math, Contnrs, Classes,
   {$IfDef FPC}
-   LMessages, LCLIntf, LCLType, FileUtil,
+   LMessages, LCLIntf, LCLType, LazFileUtils,
   {$EndIf}
   {$IfDef CLX}
    QTypes, QControls, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QGraphics, Qt,
