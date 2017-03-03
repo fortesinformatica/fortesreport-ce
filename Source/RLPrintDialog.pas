@@ -677,6 +677,7 @@ begin
   LabelPrinterName.Caption := GetLocalizeStr(LocaleStrings.LS_NameStr + ':');
   LabelFilterName.Caption := GetLocalizeStr(LocaleStrings.LS_UseFilterStr + ':');
   CheckBoxPrintToFile.Caption := GetLocalizeStr(LocaleStrings.LS_PrintToFileStr);
+  ButtonPrinterSetup.Caption := GetLocalizeStr(LocaleStrings.LS_Propriedades);
   GroupBoxPages.Caption := GetLocalizeStr(' ' + LocaleStrings.LS_PageRangeStr + ' ');
   LabelFromPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeFromStr + ':');
   LabelToPage.Caption := GetLocalizeStr(LocaleStrings.LS_RangeToStr + ':');
@@ -701,7 +702,7 @@ begin
   end;
   LabelOptions.Visible := False;
   ComboBoxOptions.Visible := False;
-
+  CheckBoxDuplex.Caption := GetLocalizeStr(LocaleStrings.LS_Duplex);
 
   //
   Self.ClientWidth := 560 + (PlataformSpacing*4);

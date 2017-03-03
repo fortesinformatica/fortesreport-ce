@@ -320,6 +320,7 @@ type
     LS_PaperOrientationLandscape: String;
     {@var LS_PaperOrientationPortrait - Variável de internacionalização para "Orientação da página em paisagem". :/}
     LS_PaperOrientationPortrait: String;
+    LS_Duplex: string;
 
     LS_LastFooMsg: string;
   end;
@@ -452,6 +453,7 @@ var
     LS_PaperOrientation: 'Orientation';
     LS_PaperOrientationLandscape: 'Landscape';
     LS_PaperOrientationPortrait: 'Portrait';
+    LS_Duplex: 'Automatic two-sided printing';
 
     LS_LastFooMsg: '';
   );
@@ -568,6 +570,7 @@ var
     LS_PaperOrientation: 'Orienta Ô úo';
     LS_PaperOrientationLandscape: 'Paisagem';
     LS_PaperOrientationPortrait: 'Retrato';
+    LS_Duplex: 'Automatic two-sided printing';
 
     LS_LastFooMsg: '';
   );
@@ -684,6 +687,7 @@ var
     LS_PaperOrientation: '';
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
 
     LS_LastFooMsg: '';
   );
@@ -800,6 +804,7 @@ var
     LS_PaperOrientation: '';
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
 
     LS_LastFooMsg: '';
   );
@@ -916,6 +921,7 @@ var
     LS_PaperOrientation: '';
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
 
     LS_LastFooMsg: '';
   );
@@ -1032,6 +1038,7 @@ var
     LS_PaperOrientation: '';
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
 
     LS_LastFooMsg: '';
   );
@@ -1148,6 +1155,7 @@ var
     LS_PaperOrientation: 'ÐžÑ€Ð¸ÐµÐ½Ñ‚Ð°Ñ†Ð¸Ñ?';
     LS_PaperOrientationLandscape: 'Ð›Ð°Ð½Ð´ÑˆÐ°Ñ„Ñ‚Ð½Ð°Ñ?';
     LS_PaperOrientationPortrait: 'ÐŸÐ¾Ñ€Ñ‚Ñ€ÐµÑ‚Ð½Ð°Ñ?';
+    LS_Duplex: 'Automatic two-sided printing';
 
     LS_LastFooMsg: '';
   );
@@ -1264,6 +1272,7 @@ var
     LS_PaperOrientation: 'Orientace';
     LS_PaperOrientationLandscape: 'Na šíøku';
     LS_PaperOrientationPortrait: 'Na výšku';
+    LS_Duplex: 'Automatický oboustranný tisk';
 
     LS_LastFooMsg: '';
   );
