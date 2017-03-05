@@ -637,7 +637,7 @@ begin
     Name := 'CheckBoxDuplex';
     Parent := GroupBoxDuplex;
     TabStop := False;
-    Caption := GetLocalizeStr('Impressão frente e verso');
+    Caption := 'Automatic two-sided printing';
     TabOrder := 0;
   end;
 
