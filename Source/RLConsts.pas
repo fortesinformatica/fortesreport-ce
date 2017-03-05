@@ -570,7 +570,7 @@ var
     LS_PaperOrientation: 'Orienta Ô úo';
     LS_PaperOrientationLandscape: 'Paisagem';
     LS_PaperOrientationPortrait: 'Retrato';
-    LS_Duplex: 'Automatic two-sided printing';
+    LS_Duplex: 'Impressão frente e verso';
 
     LS_LastFooMsg: '';
   );
