@@ -59,7 +59,7 @@ uses
   {$Else}
    Dialogs,
   {$EndIf}
-  SysUtils ;
+  SysUtils;
 
 const
   {@const ScreenPPI - Resolu��o do monitor em pixels por polegada.
@@ -280,46 +280,47 @@ type
     LS_DefaultJobTitle: string;
     {@var LS_ZoomHint - Vari�vel de internacionaliza��o para "Diminuir o zoom" :/}
     LS_ZoomHint: string;
-    {@var Ls_Nome_Arquivo - Vari�vel de internacionaliza��o para "Aplicar". :/}
+    {@var Ls_Aplicar - Vari�vel de internacionaliza��o para "Aplicar". :/}
     Ls_Aplicar: String;
-    {@var Ls_Nome_Arquivo - Vari�vel de internacionaliza��o para "Propriedades". :/}
-    Ls_Propriedades: String;
+    {@var Ls_Propriedades - Vari�vel de internacionaliza��o para "Propriedades". :/}
+    Ls_Propriedades: string;
     {@var Ls_Salvar_Como - Vari�vel de internacionaliza��o para "Salvar como". :/}
-    Ls_Salvar_Como: String;
+    Ls_Salvar_Como: string;
     {@var Ls_Nome_Arquivo - Vari�vel de internacionaliza��o para "Nome do Arquivo". :/}
-    Ls_Nome_Arquivo: String;
-    {@var Ls_File_corrupted - Vari�vel de internacionaliza��o para "Arquivo corrompido". :/}
-    Ls_File_corrupted: String;
-    {@var Ls_File_corrupted - Vari�vel de internacionaliza��o para "Vers�o de Arquivo inv�lido". :/}
-    Ls_File_version: String;
-    {@var Ls_Page_setings - Vari�vel de internacionaliza��o para "Configura��o da P�gina". :/}
-    Ls_Page_settings: String;
+    Ls_Nome_Arquivo: string;
+    {@var LS_FileCorrupted - Vari�vel de internacionaliza��o para "Arquivo corrompido". :/}
+    LS_FileCorrupted: String;
+    {@var LS_FileVersion - Vari�vel de internacionaliza��o para "Vers�o de Arquivo inv�lido". :/}
+    LS_FileVersion: String;
+    {@var Ls_PageSetings - Vari�vel de internacionaliza��o para "Configura��o da P�gina". :/}
+    LS_PageSettings: String;
     {@var Ls_Page_margins - Vari�vel de internacionaliza��o para "Margem da P�gina". :/}
-    Ls_Page_margins: String;
-    {@var Ls_Page_margins_top - Vari�vel de internacionaliza��o para "Margem Superior". :/}
-    Ls_Page_margins_top: String;
-    {@var Ls_Page_margins_bottom - Vari�vel de internacionaliza��o para "Margem Inferior". :/}
-    Ls_Page_margins_bottom: String;
-    {@var Ls_Page_margins_rigth - Vari�vel de internacionaliza��o para "Margem direita". :/}
-    Ls_Page_margins_rigth: String;
-    {@var Ls_Page_left_bottom - Vari�vel de internacionaliza��o para "Margem equerda". :/}
-    Ls_Page_margins_left: String;
-    {@var Ls_Page_margins_paper - Vari�vel de internacionaliza��o para "Margem do Papel". :/}
-    Ls_Page_margins_paper: String;
-    {@var Ls_Page_paper - Vari�vel de internacionaliza��o para "Papel". :/}
-    Ls_Page_paper: String;
-    {@var Ls_Paper_Size - Vari�vel de internacionaliza��o para "Tamanho do Papel". :/}
-    Ls_Paper_Size: String;
-    {@var Ls_Paper_Width - Vari�vel de internacionaliza��o para "Largura do Papel". :/}
-    Ls_Paper_Size_Width: String;
-    {@var Ls_Paper_Size_Heigth - Vari�vel de internacionaliza��o para "Altura do Papel". :/}
-    Ls_Paper_Size_Heigth: String;
-    {@var Ls_Paper_Orientation - Vari�vel de internacionaliza��o para "Orienta��o do Papel". :/}
-    Ls_Paper_Orientation: String;
-    {@var Ls_Paper_Orientation_Landscape - Vari�vel de internacionaliza��o para "Orienta��o da p�gina em retrato". :/}
-    Ls_Paper_Orientation_Landscape: String;
-    {@var Ls_Paper_Orientation_Portrait - Vari�vel de internacionaliza��o para "Orienta��o da p�gina em paisagem". :/}
-    Ls_Paper_Orientation_Portrait: String;
+    LS_PageMargins: String;
+    {@var Ls_PageMarginsTop - Vari�vel de internacionaliza��o para "Margem Superior". :/}
+    LS_PageMarginsTop: String;
+    {@var Ls_PageMarginsBottom - Vari�vel de internacionaliza��o para "Margem Inferior". :/}
+    LS_PageMarginsBottom: String;
+    {@var LS_PageMarginsRigth - Vari�vel de internacionaliza��o para "Margem direita". :/}
+    LS_PageMarginsRigth: String;
+    {@var Ls_PageLeftBottom - Vari�vel de internacionaliza��o para "Margem equerda". :/}
+    LS_PageMarginsLeft: String;
+    {@var LS_PageMarginsPaper - Vari�vel de internacionaliza��o para "Margem do Papel". :/}
+    LS_PageMarginsPaper: String;
+    {@var LS_PagePaper - Vari�vel de internacionaliza��o para "Papel". :/}
+    LS_PagePaper: String;
+    {@var LS_PaperSize - Vari�vel de internacionaliza��o para "Tamanho do Papel". :/}
+    LS_PaperSize: String;
+    {@var LS_PaperWidth - Vari�vel de internacionaliza��o para "Largura do Papel". :/}
+    LS_PaperSizeWidth: String;
+    {@var LS_PaperSizeHeigth - Vari�vel de internacionaliza��o para "Altura do Papel". :/}
+    LS_PaperSizeHeigth: String;
+    {@var LS_PaperOrientation - Vari�vel de internacionaliza��o para "Orienta��o do Papel". :/}
+    LS_PaperOrientation: String;
+    {@var LS_PaperOrientationLandscape - Vari�vel de internacionaliza��o para "Orienta��o da p�gina em retrato". :/}
+    LS_PaperOrientationLandscape: String;
+    {@var LS_PaperOrientationPortrait - Vari�vel de internacionaliza��o para "Orienta��o da p�gina em paisagem". :/}
+    LS_PaperOrientationPortrait: String;
+    LS_Duplex: string;
 
     LS_LastFooMsg: string;
   end;
@@ -431,7 +432,30 @@ var
     LS_PrintDialogError: 'Problems with print dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Report "%s"';
+    LS_ZoomHint: 'Change zoom level';
+    Ls_Aplicar: 'Use';
     LS_Propriedades: 'Settings';
+    LS_Salvar_Como: 'Save as';
+    LS_Nome_Arquivo: 'File Name:';
+    LS_FileCorrupted: 'File is corrupted!';
+    LS_FileVersion: 'Invalid file version!';
+    LS_PageSettings: 'Page Configuration';
+    LS_PageMargins: 'Margins';
+    LS_PageMarginsTop: 'Top';
+    LS_PageMarginsBottom: 'Bottom';
+    LS_PageMarginsRigth: 'Right';
+    LS_PageMarginsLeft: 'Left';
+    LS_PageMarginsPaper: 'Paper Margins';
+    LS_PagePaper: 'Paper';
+    LS_PaperSize: 'Paper Size';
+    LS_PaperSizeWidth: 'Width';
+    LS_PaperSizeHeigth: 'Height';
+    LS_PaperOrientation: 'Orientation';
+    LS_PaperOrientationLandscape: 'Landscape';
+    LS_PaperOrientationPortrait: 'Portrait';
+    LS_Duplex: 'Automatic two-sided printing';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -470,7 +494,7 @@ var
     LS_LastPageStr: '�ltima p�gina';
     LS_EntirePageStr: 'P�gina inteira';
     LS_EntireWidthStr: 'Largura da p�gina';
-    LS_MultiplePagesStr: 'V�rias p�ginas'; 
+    LS_MultiplePagesStr: 'V�rias p�ginas';
     LS_ConfigPrinterStr: 'Configurar impressora';
     LS_SaveToFileStr: 'Salvar em disco';
     LS_SendToStr: 'Enviar para';
@@ -526,8 +550,29 @@ var
     LS_PageSelectionHint: 'Separe com ponto-e-v�rgula os n�meros ou intervalos de p�ginas a imprimir. Ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Relat�rio "%s"';
     LS_ZoomHint: 'Voc� tamb�m pode aumentar ou reduzir o zoom do relat�rio' + sLineBreak + 'pressionando "Ctrl" e usando a rolagem do mouse.';
-    Ls_Aplicar: 'Aplicar';
-    Ls_Propriedades: 'Propriedades';
+    LS_Aplicar: 'Aplicar';
+    LS_Propriedades: 'Propriedades';
+    LS_Salvar_Como: 'Salvar Como';
+    LS_Nome_Arquivo: 'Nome do Arquivo:';
+    LS_FileCorrupted: 'Arquivo Corrompido';
+    LS_FileVersion: 'Vers �o de arquivo inv �lido!';
+    LS_PageSettings: 'Configura �  es da p �gina';
+    LS_PageMargins: 'Margem';
+    LS_PageMarginsTop: 'Superior';
+    LS_PageMarginsBottom: 'Inferior';
+    LS_PageMarginsRigth: 'Direita';
+    LS_PageMarginsLeft: 'Esquerda';
+    LS_PageMarginsPaper: 'Margsss';
+    LS_PagePaper: 'Papel';
+    LS_PaperSize: 'Tamanho do Papel';
+    LS_PaperSizeWidth: 'Largura';
+    LS_PaperSizeHeigth: 'Altura';
+    LS_PaperOrientation: 'Orienta � �o';
+    LS_PaperOrientationLandscape: 'Paisagem';
+    LS_PaperOrientationPortrait: 'Retrato';
+    LS_Duplex: 'Impress�o frente e verso';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -621,7 +666,30 @@ var
     LS_PrintDialogError: 'Erreur dans la bo�te de dialogue de l''imprimante';
     LS_PageSelectionHint: 'S�par� des num�ros de page ou des intervalles avec ";". p.ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Rapport "%s"';
-    Ls_Aplicar: 'Appliquer';
+    LS_ZoomHint: '';
+    LS_Aplicar: 'Appliquer';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -715,6 +783,30 @@ var
     LS_PrintDialogError: 'Problemas con el di�logo de la impresora';
     LS_PageSelectionHint: 'Separar con ";" los n�meros o rangos de p�ginas para imprimir. Ex.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Impresi�n "%s"';
+    LS_ZoomHint: '';
+    LS_Aplicar: '';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -808,6 +900,30 @@ var
     LS_PrintDialogError: 'Problems calling the printer dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Rapporto "%s"';
+    LS_ZoomHint: '';
+    LS_Aplicar: '';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
+
+    LS_LastFooMsg: '';
   );
 
 var
@@ -901,6 +1017,264 @@ var
     LS_PrintDialogError: 'Problems calling the printer dialog';
     LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
     LS_DefaultJobTitle: 'Das Drucken "%s"';
+    LS_ZoomHint: '';
+    LS_Aplicar: '';
+    LS_Propriedades: '';
+    LS_Salvar_Como: '';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: '';
+    LS_FileVersion: '';
+    LS_PageSettings: '';
+    LS_PageMargins: '';
+    LS_PageMarginsTop: '';
+    LS_PageMarginsBottom: '';
+    LS_PageMarginsRigth: '';
+    LS_PageMarginsLeft: '';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: '';
+    LS_PaperSize: '';
+    LS_PaperSizeWidth: '';
+    LS_PaperSizeHeigth: '';
+    LS_PaperOrientation: '';
+    LS_PaperOrientationLandscape: '';
+    LS_PaperOrientationPortrait: '';
+    LS_Duplex: 'Automatic two-sided printing';
+
+    LS_LastFooMsg: '';
+  );
+
+var
+  RussianStrings: TRLLocaleStrings = (
+    LS_PrintingInProgressStr: 'Печать...';
+    LS_FilterInProgressStr: 'Сохранение отчета...';
+    LS_PreparingReportStr: 'Подготовка отчета...';
+    LS_PrinterNotFoundStr: 'Принтер не найден';
+    LS_NoPathToPrinterStr: '�?еправильный путь принтера';
+    LS_LoadDefaultConfigStr: 'Загрузить конфигураци�? по умолчанию';
+    LS_PrinterDriverErrorStr: 'Ошибка драйвера принтера';
+    LS_PageStr: 'Страница';
+    LS_PrepareErrorStr: 'Ошибка при подготовке отчета';
+    LS_PageBreakStr: 'Продолжает�?�?...';
+    LS_PageMendStr: 'Продолжение';
+    LS_ReportEndStr: 'Конец';
+    LS_FileNotFoundStr: 'Файл не найден';
+    LS_FileNameStr: 'Им�? файла';
+    LS_AllFileTypesStr: 'В�?е файлы';
+    LS_LoadReportStr: 'Загрузить отчет';
+    LS_NotFoundStr: '�?е найден';
+    LS_WaitStr: 'Подождите...';
+    LS_FinishedStr: 'Завершено';
+    LS_CancelStr: 'Отмена';
+    LS_CloseStr: 'Закрыть';
+    LS_SaveStr: 'Сохранить';
+    LS_SendStr: 'Отправить';
+    LS_PrintStr: 'Печать';
+    LS_AboutTheStr: 'О Программе';
+    LS_PreviewStr: 'Предварительный про�?мотр';
+    LS_OfStr: 'из';
+    LS_ZoomStr: 'Маштаб';
+    LS_FirstPageStr: 'Перва�? �?траница';
+    LS_PriorPageStr: 'Предыдуща�? �?траница';
+    LS_NextPageStr: 'Следующа�? �?траница';
+    LS_LastPageStr: 'По�?ледн�?�? �?траница';
+    LS_EntirePageStr: 'В�?�? �?траница';
+    LS_EntireWidthStr: 'В�?�? ширина';
+    LS_MultiplePagesStr: '�?е�?колько �?траниц';
+    LS_ConfigPrinterStr: '�?а�?тройка принтера';
+    LS_SaveToFileStr: 'Сохранить в файл';
+    LS_SendToStr: 'Отправить в';
+    LS_PrinterStr: 'Принтер';
+    LS_NameStr: 'Им�?';
+    LS_PrintToFileStr: 'Печать в файл';
+    LS_PrintInBackgroundStr: 'Печать в фоне';
+    LS_OptionsStr: '�?а�?��ОКки';
+    LS_SaveInBackground: 'Сохранение в фоне';
+    LS_PageRangeStr: 'Диапазон печати';
+    LS_CopyAsImageStr: '';
+    LS_RangeFromStr: '�?';
+    LS_RangeToStr: 'по';
+    LS_AllStr: 'В�?е';
+    LS_PagesStr: 'Страницы';
+    LS_SelectionStr: 'Выделение';
+    LS_CopiesStr: 'Копии';
+    LS_NumberOfCopiesStr: 'Кол-во копий';
+    LS_OkStr: 'Хорошо';
+    LS_DivideScreenStr: 'Разделить �?кран';
+    LS_InvalidNameStr: '�?еправильное им�?';
+    LS_DuplicateNameStr: 'Им�? уже и�?пользует�?�?';
+    LS_UseFilterStr: 'Фильтр';
+    LS_WebPageStr: 'Веб �?траница';
+    LS_RichFormatStr: 'RichText Format';
+    LS_PDFFormatStr: 'PDF Документ';
+    LS_XLSFormatStr97_2013: '';
+    LS_XLSFormatStr: 'Таблица Excel';
+    LS_AtStr: 'в';
+    LS_FormStr: 'Форма';
+    LS_DefaultStr: 'По умолчанию';
+    LS_ZoomInStr: 'Увеличить';
+    LS_ZoomOutStr: 'Уменьшить';
+    LS_CopyStr: 'Копировать';
+    LS_EditStr: 'Редактировать';
+    LS_FindCaptionStr: '�?айти';
+    LS_TextToFindStr: 'Те&к�?т';
+    LS_FindNextStr: '�?айти &дальше';
+    LS_WholeWordsStr: '&Только �?лово целиком';
+    LS_MatchCaseStr: '&Учитывать реги�?тр';
+    LS_DirectionUpStr: '&Вверх';
+    LS_DirectionDownStr: 'В&низ';
+    LS_DirectionCaptionStr: '�?аправление';
+    LS_ColumnsStr: 'Столбцы';
+    LS_SetupStr: 'Setup...';
+    LS_FontSizeError: 'Font size error';
+    LS_OddPages: 'Odd';
+    LS_EvenPages: 'Even';
+    LS_OddPagesOnly: 'Odd pages only';
+    LS_EvenPagesOnly: 'Even pages only';
+    LS_AllOddAndEven: 'All';
+    LS_PrintDialogError: 'Problems with print dialog';
+    LS_PageSelectionHint: 'Separate page numbers or page intervals with ";". i.e.: 1;3;5-12;4';
+    LS_DefaultJobTitle: 'Report "%s"';
+    LS_ZoomHint: '';
+    LS_Aplicar: 'Применить';
+    LS_Propriedades: '�?а�?тройки';
+    LS_Salvar_Como: 'Сохранить как';
+    LS_Nome_Arquivo: 'Им�? файла:';
+    LS_FileCorrupted: 'Файл поврежден!';
+    LS_FileVersion: '�?еправильна�? вер�?и�? файла!';
+    LS_PageSettings: '�?а�?тройка �?траницы';
+    LS_PageMargins: 'Пол�?';
+    LS_PageMarginsTop: 'Верх';
+    LS_PageMarginsBottom: '�?их';
+    LS_PageMarginsRigth: 'Право';
+    LS_PageMarginsLeft: 'Лево';
+    LS_PageMarginsPaper: '';
+    LS_PagePaper: 'Бумага';
+    LS_PaperSize: 'Размер бумаги';
+    LS_PaperSizeWidth: 'Ширина';
+    LS_PaperSizeHeigth: 'Вы�?ота';
+    LS_PaperOrientation: 'Ориентаци�?';
+    LS_PaperOrientationLandscape: 'Ландшафтна�?';
+    LS_PaperOrientationPortrait: 'Портретна�?';
+    LS_Duplex: 'Automatic two-sided printing';
+
+    LS_LastFooMsg: '';
+  );
+
+var
+  CzechStrings: TRLLocaleStrings = (
+    LS_PrintingInProgressStr: 'Prob�h� tisk...';
+    LS_FilterInProgressStr: 'Ukl�d�m report...';
+    LS_PreparingReportStr: 'P�ipravuji report...';
+    LS_PrinterNotFoundStr: 'Tisk�rna nenalezena';
+    LS_NoPathToPrinterStr: 'Chybn� cesta k tisk�rn�';
+    LS_LoadDefaultConfigStr: 'Na��st implicitn� nastaven�';
+    LS_PrinterDriverErrorStr: 'Chyba ovlada�e tisku';
+    LS_PageStr: 'Str�nka';
+    LS_PrepareErrorStr: 'Chyba b�hem p��pravy reportu';
+    LS_PageBreakStr: 'Pokra�uje...';
+    LS_PageMendStr: 'Pokra�ov�n�';
+    LS_ReportEndStr: 'Konec';
+    LS_FileNotFoundStr: 'Soubor nenalezen';
+    LS_FileNameStr: 'N�zev souboru';
+    LS_AllFileTypesStr: 'V�echny soubory';
+    LS_LoadReportStr: 'Na��st report';
+    LS_NotFoundStr: 'Nenalezeno';
+    LS_WaitStr: '�ekejte...';
+    LS_FinishedStr: 'Ukon�eno';
+    LS_CancelStr: 'Zru�it';
+    LS_CloseStr: 'Zav��t';
+    LS_SaveStr: 'Ulo�it';
+    LS_SendStr: 'Poslat';
+    LS_PrintStr: 'Tisk';
+    LS_AboutTheStr: 'O aplikaci';
+    LS_PreviewStr: 'N�hled';
+    LS_OfStr: 'z';
+    LS_ZoomStr: 'P�ibl�en�';
+    LS_FirstPageStr: 'Prvn� str�nka';
+    LS_PriorPageStr: 'P�edchoz� str�nka';
+    LS_NextPageStr: 'Dal�� str�nka';
+    LS_LastPageStr: 'Posledn� str�nka';
+    LS_EntirePageStr: 'Cel� str�nka';
+    LS_EntireWidthStr: 'Na ���ku';
+    LS_MultiplePagesStr: 'V�ce str�nek';
+    LS_ConfigPrinterStr: 'Konfigurace tisk�rny';
+    LS_SaveToFileStr: 'Ulo�it do souboru';
+    LS_SendToStr: 'Odeslat';
+    LS_PrinterStr: 'Tisk�rna';
+    LS_NameStr: 'N�zev';
+    LS_PrintToFileStr: 'Tisk do souboru';
+    LS_PrintInBackgroundStr: 'Tisk na pozad�';
+    LS_OptionsStr: 'Volby';
+    LS_SaveInBackground: 'Ulo�it na pozad�';
+    LS_PageRangeStr: 'Page range';
+    LS_CopyAsImageStr: 'Copy as image';
+    LS_RangeFromStr: 'od';
+    LS_RangeToStr: 'do';
+    LS_AllStr: 'V�echny';
+    LS_PagesStr: 'Str�nky';
+    LS_SelectionStr: 'V�b�r';
+    LS_CopiesStr: 'Kopie';
+    LS_NumberOfCopiesStr: 'Po�et kopi�';
+    LS_OkStr: 'OK';
+    LS_DivideScreenStr: 'Rozd�lit obrazovku';
+    LS_InvalidNameStr: 'Chybn� n�zev';
+    LS_DuplicateNameStr: 'N�zev se ji� pou��v�';
+    LS_UseFilterStr: 'Pou��t filtr';
+    LS_WebPageStr: 'Webov� str�nka';
+    LS_RichFormatStr: 'Form�t RichText';
+    LS_PDFFormatStr: 'PDF dokument';
+    LS_XLSFormatStr97_2013: 'Tabulka Excel 97-2013';
+    LS_XLSFormatStr: 'Tabulka Excel';
+    LS_AtStr: 'na';
+    LS_FormStr: 'Formul��';
+    LS_DefaultStr: 'Default';
+    LS_ZoomInStr: 'P�ibl�it';
+    LS_ZoomOutStr: 'Odd�lit';
+    LS_CopyStr: 'Kop�rovat';
+    LS_EditStr: 'Upravit';
+    LS_FindCaptionStr: 'Naj�t';
+    LS_TextToFindStr: 'Te&xt';
+    LS_FindNextStr: 'Naj�t &dal��';
+    LS_WholeWordsStr: '&Pouze cel� slova';
+    LS_MatchCaseStr: '&Rozli�ovat velikost p�smen';
+    LS_DirectionUpStr: '&Nahoru';
+    LS_DirectionDownStr: '&Dol�';
+    LS_DirectionCaptionStr: 'Orientace';
+    LS_ColumnsStr: 'Sloupce';
+    LS_SetupStr: 'Nastaven�...';
+    LS_FontSizeError: 'Chyba velikosti textu';
+    LS_OddPages: 'Sud�';
+    LS_EvenPages: 'Lich�';
+    LS_OddPagesOnly: 'Pouze sud� str�nky';
+    LS_EvenPagesOnly: 'Pouze lich� str�nky';
+    LS_AllOddAndEven: 'V�echny';
+    LS_PrintDialogError: 'Probl�m s dialogem tisku';
+    LS_PageSelectionHint: 'Odd�len� ��sla str�nek st�edn�kem nebo rozmez� str�nek s poml�kou. tj.: 1;3;5-12;4';
+    LS_DefaultJobTitle: 'Report "%s"';
+    LS_ZoomHint: 'Upravit p�ibl�en�.';
+    LS_Aplicar: 'Pou��t';
+    LS_Propriedades: 'Nastaven�';
+    LS_Salvar_Como: 'Ulo�it jako';
+    LS_Nome_Arquivo: '';
+    LS_FileCorrupted: 'Soubor je po�kozen!';
+    LS_FileVersion: 'Chybn� typ souboru!';
+    LS_PageSettings: 'Nastaven� str�nky';
+    LS_PageMargins: 'Okraje';
+    LS_PageMarginsTop: 'Naho�e';
+    LS_PageMarginsBottom: 'Dole';
+    LS_PageMarginsRigth: 'Vpravo';
+    LS_PageMarginsLeft: 'Vlevo';
+    LS_PageMarginsPaper: 'Okraje pap�ru';
+    LS_PagePaper: 'Pap�r';
+    LS_PaperSize: 'Velikost pap�ru';
+    LS_PaperSizeWidth: '���ka';
+    LS_PaperSizeHeigth: 'V��ka';
+    LS_PaperOrientation: 'Orientace';
+    LS_PaperOrientationLandscape: 'Na ���ku';
+    LS_PaperOrientationPortrait: 'Na v��ku';
+    LS_Duplex: 'Automatick� oboustrann� tisk';
+
+    LS_LastFooMsg: '';
   );
 
 procedure DetectLocale;
@@ -923,6 +1297,10 @@ begin
     LocaleStrings := ItalianStrings
   else if dlct = 'SW' then
     LocaleStrings := SwedishStrings
+  else if dlct = 'RU' then
+    LocaleStrings := RussianStrings
+  else if dlct = 'CS' then
+    LocaleStrings := CzechStrings
   else
     LocaleStrings := EnglishStrings;
 {$Else}
@@ -933,6 +1311,8 @@ begin
     $0c {LANG_FRENCH}: LocaleStrings := FrenchStrings;
     $10 {LANG_ITALIAN}: LocaleStrings := ItalianStrings;
     $1d {LANG_SWEDISH}: LocaleStrings := SwedishStrings;
+    $19 {LANG_RUSSIAN}: LocaleStrings := RussianStrings;
+    $05 {LANG_CZECH}: LocaleStrings := CzechStrings;
   else
     LocaleStrings := EnglishStrings;
   end;
@@ -943,4 +1323,3 @@ initialization
   DetectLocale;
 
 end.
-
