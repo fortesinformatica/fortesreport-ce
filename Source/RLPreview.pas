@@ -397,12 +397,12 @@ begin
   //
   FPopup := TPopupMenu.Create(Self);
   M := TMenuItem.Create(FPopup);
-  M.Caption := 'Copiar como Bitmap';
+  M.Caption := GetLocalizeStr(LocaleStrings.LS_CopyAsImageStr);
   M.OnClick := CopyPageBMP;
   FPopup.Items.Add(M);
   {$IfNDef FPC}
   M := TMenuItem.Create(FPopup);
-  M.Caption := 'Copiar como MetaFile';
+  M.Caption := GetLocalizeStr(LocaleStrings.LS_CopyAsMetafileStr);
   M.OnClick := CopyPageWMF;
   FPopup.Items.Add(M);
   {$EndIf}

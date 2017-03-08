@@ -190,8 +190,10 @@ type
     LS_SaveInBackground: string;
     {@var LS_PageRangeStr - Variável de internacionalização para "Intervalo de páginas" :/}
     LS_PageRangeStr: string;
-    {@var LS_CopyAsImageStr - Variável de internacionalização para "Copiar como imagem" :/}
+    {@var LS_CopyAsImageStr - Variável de internacionalização para "Copiar como Bitmap" :/}
     LS_CopyAsImageStr: string;
+    {@var LS_CopyAsMetafile - Variável de internacionalização para "Copiar como Metafile" :/}
+    LS_CopyAsMetafileStr: string;
     {@var LS_RangeFromStr - Variável de internacionalização para "de" :/}
     LS_RangeFromStr: string;
     {@var LS_RangeToStr - Variável de internacionalização para "até" :/}
@@ -286,8 +288,6 @@ type
     Ls_Propriedades: string;
     {@var Ls_Salvar_Como - Variável de internacionalização para "Salvar como". :/}
     Ls_Salvar_Como: string;
-    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Nome do Arquivo". :/}
-    Ls_Nome_Arquivo: string;
     {@var LS_FileCorrupted - Variável de internacionalização para "Arquivo corrompido". :/}
     LS_FileCorrupted: String;
     {@var LS_FileVersion - Variável de internacionalização para "Versão de Arquivo inválido". :/}
@@ -388,7 +388,8 @@ var
     LS_OptionsStr: 'Options';
     LS_SaveInBackground: 'Save in background';
     LS_PageRangeStr: 'Page range';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'from';
     LS_RangeToStr: 'to';
     LS_AllStr: 'All';
@@ -436,9 +437,8 @@ var
     Ls_Aplicar: 'Use';
     LS_Propriedades: 'Settings';
     LS_Salvar_Como: 'Save as';
-    LS_Nome_Arquivo: 'File Name:';
     LS_FileCorrupted: 'File is corrupted!';
-    LS_FileVersion: 'Invalid file version!';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: 'Page Configuration';
     LS_PageMargins: 'Margins';
     LS_PageMarginsTop: 'Top';
@@ -505,7 +505,8 @@ var
     LS_OptionsStr: 'Opções';
     LS_SaveInBackground: 'Salvar em segundo plano';
     LS_PageRangeStr: 'Intervalo de páginas';
-    LS_CopyAsImageStr: 'Copiar como imagem';
+    LS_CopyAsImageStr: 'Copiar como Bitmap';
+    LS_CopyAsMetafileStr: 'Copiar como Metafile';
     LS_RangeFromStr: 'de';
     LS_RangeToStr: 'até';
     LS_AllStr: 'Tudo';
@@ -553,9 +554,8 @@ var
     LS_Aplicar: 'Aplicar';
     LS_Propriedades: 'Propriedades';
     LS_Salvar_Como: 'Salvar Como';
-    LS_Nome_Arquivo: 'Nome do Arquivo:';
     LS_FileCorrupted: 'Arquivo Corrompido';
-    LS_FileVersion: 'Vers úo de arquivo inv ílido!';
+    LS_FileVersion: 'Vers úo de arquivo inv ílido %d!';
     LS_PageSettings: 'Configura Ô  es da p ígina';
     LS_PageMargins: 'Margem';
     LS_PageMarginsTop: 'Superior';
@@ -623,6 +623,7 @@ var
     LS_SaveInBackground: 'Enregistrer dans background';
     LS_PageRangeStr: 'Intervalle de pages';
     LS_CopyAsImageStr: 'Copie sous forme d''image';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'de';
     LS_RangeToStr: 'à';
     LS_AllStr: 'Tout';
@@ -670,9 +671,8 @@ var
     LS_Aplicar: 'Appliquer';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -740,6 +740,7 @@ var
     LS_SaveInBackground: 'Guardar en background';
     LS_PageRangeStr: 'Intervalo de páginas';
     LS_CopyAsImageStr: 'Copiar como imagen';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'de';
     LS_RangeToStr: 'a';
     LS_AllStr: 'Todas';
@@ -787,9 +788,8 @@ var
     LS_Aplicar: '';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -856,7 +856,8 @@ var
     LS_OptionsStr: 'Opzioni';
     LS_SaveInBackground: 'Salvi in sfondo';
     LS_PageRangeStr: 'Serie di pagina';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'da';
     LS_RangeToStr: 'a';
     LS_AllStr: 'Tutti';
@@ -904,9 +905,8 @@ var
     LS_Aplicar: '';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -973,7 +973,8 @@ var
     LS_OptionsStr: 'Möglichkeiten';
     LS_SaveInBackground: 'Ballabwehr in Hintergrund';
     LS_PageRangeStr: 'Rufen Sie Auswahl aus';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'von';
     LS_RangeToStr: 'zu';
     LS_AllStr: 'Alles';
@@ -1021,9 +1022,8 @@ var
     LS_Aplicar: '';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -1090,7 +1090,8 @@ var
     LS_OptionsStr: 'Ð?Ð°Ñ?ÑÑÐžÐšÐºÐ¸';
     LS_SaveInBackground: 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ Ð² Ñ„Ð¾Ð½Ðµ';
     LS_PageRangeStr: 'Ð”Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½ Ð¿ÐµÑ‡Ð°Ñ‚Ð¸';
-    LS_CopyAsImageStr: '';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'Ñ?';
     LS_RangeToStr: 'Ð¿Ð¾';
     LS_AllStr: 'Ð’Ñ?Ðµ';
@@ -1138,9 +1139,8 @@ var
     LS_Aplicar: 'ÐŸÑ€Ð¸Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ';
     LS_Propriedades: 'Ð?Ð°Ñ?Ñ‚Ñ€Ð¾Ð¹ÐºÐ¸';
     LS_Salvar_Como: 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ°Ðº';
-    LS_Nome_Arquivo: 'Ð˜Ð¼Ñ? Ñ„Ð°Ð¹Ð»Ð°:';
     LS_FileCorrupted: 'Ð¤Ð°Ð¹Ð» Ð¿Ð¾Ð²Ñ€ÐµÐ¶Ð´ÐµÐ½!';
-    LS_FileVersion: 'Ð?ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð°Ñ? Ð²ÐµÑ€Ñ?Ð¸Ñ? Ñ„Ð°Ð¹Ð»Ð°!';
+    LS_FileVersion: 'Ð?ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð°Ñ? Ð²ÐµÑ€Ñ?Ð¸Ñ? Ñ„Ð°Ð¹Ð»Ð° %d!';
     LS_PageSettings: 'Ð?Ð°Ñ?Ñ‚Ñ€Ð¾Ð¹ÐºÐ° Ñ?Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹';
     LS_PageMargins: 'ÐŸÐ¾Ð»Ñ?';
     LS_PageMarginsTop: 'Ð’ÐµÑ€Ñ…';
@@ -1206,8 +1206,9 @@ var
     LS_PrintInBackgroundStr: 'Tisk na pozadí';
     LS_OptionsStr: 'Volby';
     LS_SaveInBackground: 'Uložit na pozadí';
-    LS_PageRangeStr: 'Page range';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_PageRangeStr: 'Rozsah stránek';
+    LS_CopyAsImageStr: 'Kopírovat jako bitmapu';
+    LS_CopyAsMetafileStr: 'Kopírovat jako metasoubor';
     LS_RangeFromStr: 'od';
     LS_RangeToStr: 'do';
     LS_AllStr: 'Všechny';
@@ -1255,9 +1256,8 @@ var
     LS_Aplicar: 'Použít';
     LS_Propriedades: 'Nastavení';
     LS_Salvar_Como: 'Uložit jako';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: 'Soubor je poškozen!';
-    LS_FileVersion: 'Chybný typ souboru!';
+    LS_FileVersion: 'Chybný typ souboru %d!';
     LS_PageSettings: 'Nastavení stránky';
     LS_PageMargins: 'Okraje';
     LS_PageMarginsTop: 'Nahoøe';

@@ -1949,7 +1949,7 @@ procedure TRLGraphicStorage.SaveToStream(AStream: TStream);
       3: data := FileHeaderVersion3;
       4: data := FileHeaderVersion4;
     else
-      raise Exception.Create('Incorrect file version "' + IntToStr(FFileVersion) + '"!');
+      raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_FileVersion), [FFileVersion]));
     end;
     Result := AStream.Position;
     AStream.Write(data[1], Length(data));
@@ -2198,7 +2198,7 @@ end;
 procedure TRLGraphicStorage.SetFileVersion(AVersion: Integer);
 begin
   if (AVersion < 1) or (AVersion > 4) then
-    raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileVersion));
+    raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_FileVersion), [AVersion]));
   FFileVersion := AVersion; 
 end;
 
