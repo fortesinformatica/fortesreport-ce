@@ -324,6 +324,8 @@ type
     LS_Duplex: String;
     {@var LS_OnlyOneInstance - Translation variable for "Only one instance of %s is allowed!". :/}
     LS_OnlyOneInstance: String;
+    {@var LS_NotImplemented - Translation variable for "%s is not yet implemented for this platform!". :/}
+    LS_NotImplemented: String;
 
     LS_LastFooMsg: string;
   end;
@@ -458,6 +460,7 @@ var
     LS_PaperOrientationPortrait: 'Portrait';
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
 
     LS_LastFooMsg: '';
   );
@@ -576,6 +579,7 @@ var
     LS_PaperOrientationPortrait: 'Retrato';
     LS_Duplex: 'Impressão frente e verso';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
 
     LS_LastFooMsg: '';
   );
@@ -694,6 +698,7 @@ var
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
 
     LS_LastFooMsg: '';
   );
@@ -812,6 +817,7 @@ var
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
 
     LS_LastFooMsg: '';
   );
@@ -930,6 +936,7 @@ var
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
 
     LS_LastFooMsg: '';
   );
@@ -1048,6 +1055,7 @@ var
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
 
     LS_LastFooMsg: '';
   );
@@ -1166,6 +1174,7 @@ var
     LS_PaperOrientationPortrait: 'ÐŸÐ¾Ñ€Ñ‚Ñ€ÐµÑ‚Ð½Ð°Ñ?';
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
 
     LS_LastFooMsg: '';
   );
@@ -1284,6 +1293,7 @@ var
     LS_PaperOrientationPortrait: 'Na výšku';
     LS_Duplex: 'Automatický oboustranný tisk';
     LS_OnlyOneInstance: 'Je povolena pouze jedna instance %s!';
+    LS_NotImplemented: '%s není implementováno na této platformì!';
 
     LS_LastFooMsg: '';
   );

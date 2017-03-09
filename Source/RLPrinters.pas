@@ -970,7 +970,7 @@ begin
     TWinPrinter(Printer).AdvancedProperties;
     Result := True;
   {$ELSE}
-    ShowMessage('Printer.AdvancedProperties is not yet implemented for this platform');
+    ShowMessage(Format(GetLocalizeStr(LocaleStrings.LS_NotImplemented), ['Printer.AdvancedProperties']));
   {$ENDIF}
 end;
 {$endif}
