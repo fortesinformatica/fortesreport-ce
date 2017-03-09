@@ -63,11 +63,13 @@ uses
   {$IfDef CLX}
    QTypes, QGraphics, QDialogs, QPrinters,
   {$Else}
-   Types, Graphics, Dialogs, Printers, Math,
+   Types, Graphics, Dialogs, Printers,
   {$EndIf}
   {$IfDef FPC}
    OSPrinters,
    {$IfDef MSWINDOWS} WinUtilPrn, {$Else} process, {$EndIf}
+  {$Else}
+    Math,
   {$EndIf}
   RLConsts, RLTypes, RLUtils;
 
@@ -486,7 +488,7 @@ var
 begin
   try
     if not AnyPrinter then
-      raise Exception.Create('Nenhuma impressora selecionada.');
+      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NoPrinterSelected));
 
 {$ifndef FPC}
     dc := Printer.Handle;
@@ -495,7 +497,7 @@ begin
       ReloadCurrentPrinter;
       dc := Printer.Handle;
       if dc = 0 then
-        raise Exception.Create('Handle não disponível.');
+        raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NoHandle));
     end;
     APrinterMetrics.PPIX := GetDeviceCaps(dc, LOGPIXELSX); // Number of pixels per logical inch along the page width
     APrinterMetrics.PPIY := GetDeviceCaps(dc, LOGPIXELSY); // Number of pixels per logical inch along the page height

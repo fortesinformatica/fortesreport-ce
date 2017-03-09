@@ -108,6 +108,8 @@ type
     LS_PreparingReportStr: string;
     {@var LS_PrinterNotFoundStr - Variável de internacionalização para "Nenhuma impressora encontrada" :/}
     LS_PrinterNotFoundStr: string;
+    {@var LS_NoPrinterSelected - Variável de internacionalização para "Nenhuma impressora selecionada" :/}
+    LS_NoPrinterSelected: string;
     {@var LS_NoPathToPrinterStr - Variável de internacionalização para "Caminho inválido para a impressora" :/}
     LS_NoPathToPrinterStr: string;
     {@var LS_LoadDefaultConfigStr - Variável de internacionalização para "Será carregada a configuração padrão" :/}
@@ -326,6 +328,8 @@ type
     LS_OnlyOneInstance: String;
     {@var LS_NotImplemented - Translation variable for "%s is not yet implemented for this platform!". :/}
     LS_NotImplemented: String;
+    {@var LS_NoHandle - Translation variable for "Handle not available!". :/}
+    LS_NoHandle: String;
 
     LS_LastFooMsg: string;
   end;
@@ -352,6 +356,7 @@ var
     LS_FilterInProgressStr: 'Saving report...';
     LS_PreparingReportStr: 'Preparing report...';
     LS_PrinterNotFoundStr: 'Printer not found';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Invalid printer path';
     LS_LoadDefaultConfigStr: 'Load default configuration';
     LS_PrinterDriverErrorStr: 'Printer driver error';
@@ -461,6 +466,7 @@ var
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
     LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -471,6 +477,7 @@ var
     LS_FilterInProgressStr: 'Salvando o relatório...';
     LS_PreparingReportStr: 'Preparando o relatório...';
     LS_PrinterNotFoundStr: 'Nenhuma impressora encontrada';
+    LS_NoPrinterSelected: 'Nenhuma impressora selecionada.';
     LS_NoPathToPrinterStr: 'Caminho inválido para a impressora';
     LS_LoadDefaultConfigStr: 'Será carregada a configuração padrão';
     LS_PrinterDriverErrorStr: 'Erro no driver da impressora';
@@ -580,6 +587,7 @@ var
     LS_Duplex: 'Impressão frente e verso';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
     LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle não disponível!';
 
     LS_LastFooMsg: '';
   );
@@ -590,6 +598,7 @@ var
     LS_FilterInProgressStr: 'Sauver le rapport...';
     LS_PreparingReportStr: 'Préparation du rapport...';
     LS_PrinterNotFoundStr: 'Imprimante non trouvée';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Chemin d''imprimante non valide';
     LS_LoadDefaultConfigStr: 'Chargement de la configuration standard';
     LS_PrinterDriverErrorStr: 'Erreur dans le driver d''impression';
@@ -699,6 +708,7 @@ var
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
     LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not avaible!';
 
     LS_LastFooMsg: '';
   );
@@ -709,6 +719,7 @@ var
     LS_FilterInProgressStr: 'Guardando el informe...';
     LS_PreparingReportStr: 'Preparación del informe...';
     LS_PrinterNotFoundStr: 'Impresora no encontrada';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Camino de la impresora no es válido';
     LS_LoadDefaultConfigStr: 'Cargar la configuración estándar';
     LS_PrinterDriverErrorStr: 'Error en driver de la impresora';
@@ -818,6 +829,7 @@ var
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
     LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -828,6 +840,7 @@ var
     LS_FilterInProgressStr: 'Sauver le rapport...';
     LS_PreparingReportStr: 'Préparation du rapport...';
     LS_PrinterNotFoundStr: 'Imprimante non trouvée';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Invalid printer path';
     LS_LoadDefaultConfigStr: 'Chargement de la configuration standard';
     LS_PrinterDriverErrorStr: 'Erreur dans le driver d''impression';
@@ -937,6 +950,7 @@ var
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
     LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -947,6 +961,7 @@ var
     LS_FilterInProgressStr: 'Das Sparen von Bericht  ...';
     LS_PreparingReportStr: 'Das Vorbereiten von Berich...';
     LS_PrinterNotFoundStr: 'Drucker fand nicht';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Ungültiger Druckerpfad';
     LS_LoadDefaultConfigStr: 'Laden Sie Standardkonfiguration';
     LS_PrinterDriverErrorStr: 'Druckerfahrer Fehler';
@@ -1056,6 +1071,7 @@ var
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
     LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -1066,6 +1082,7 @@ var
     LS_FilterInProgressStr: 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ Ð¾Ñ‚Ñ‡ÐµÑ‚Ð°...';
     LS_PreparingReportStr: 'ÐŸÐ¾Ð´Ð³Ð¾Ñ‚Ð¾Ð²ÐºÐ° Ð¾Ñ‚Ñ‡ÐµÑ‚Ð°...';
     LS_PrinterNotFoundStr: 'ÐŸÑ€Ð¸Ð½Ñ‚ÐµÑ€ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Ð?ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹Ð¹ Ð¿ÑƒÑ‚ÑŒ Ð¿Ñ€Ð¸Ð½Ñ‚ÐµÑ€Ð°';
     LS_LoadDefaultConfigStr: 'Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ? Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ';
     LS_PrinterDriverErrorStr: 'ÐžÑˆÐ¸Ð±ÐºÐ° Ð´Ñ€Ð°Ð¹Ð²ÐµÑ€Ð° Ð¿Ñ€Ð¸Ð½Ñ‚ÐµÑ€Ð°';
@@ -1175,6 +1192,7 @@ var
     LS_Duplex: 'Automatic two-sided printing';
     LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
     LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -1185,6 +1203,7 @@ var
     LS_FilterInProgressStr: 'Ukládám report...';
     LS_PreparingReportStr: 'Pøipravuji report...';
     LS_PrinterNotFoundStr: 'Tiskárna nenalezena';
+    LS_NoPrinterSelected: 'Není vybrána žádná tiskárna.';
     LS_NoPathToPrinterStr: 'Chybná cesta k tiskárnì';
     LS_LoadDefaultConfigStr: 'Naèíst implicitní nastavení';
     LS_PrinterDriverErrorStr: 'Chyba ovladaèe tisku';
@@ -1294,6 +1313,7 @@ var
     LS_Duplex: 'Automatický oboustranný tisk';
     LS_OnlyOneInstance: 'Je povolena pouze jedna instance %s!';
     LS_NotImplemented: '%s není implementováno na této platformì!';
+    LS_NoHandle: 'Handle není dostupný!';
 
     LS_LastFooMsg: '';
   );
