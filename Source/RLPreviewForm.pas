@@ -1639,7 +1639,7 @@ begin
   if not (csDesigning in ComponentState) then
   begin
     if Assigned(SetupInstance) then
-      raise Exception.Create(GetLocalizeStr('Only one instance of ' + ClassName + ' is allowed.'));
+      raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_OnlyOneInstance), [ClassName]));
     SetupInstance := Self;
   end;
 end;

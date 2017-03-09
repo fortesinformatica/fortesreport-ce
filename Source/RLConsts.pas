@@ -320,7 +320,10 @@ type
     LS_PaperOrientationLandscape: String;
     {@var LS_PaperOrientationPortrait - Variável de internacionalização para "Orientação da página em paisagem". :/}
     LS_PaperOrientationPortrait: String;
-    LS_Duplex: string;
+    {@var LS_Duplex - Translation variable for "Automatic two-sided printing". :/}
+    LS_Duplex: String;
+    {@var LS_OnlyOneInstance - Translation variable for "Only one instance of %s is allowed!". :/}
+    LS_OnlyOneInstance: String;
 
     LS_LastFooMsg: string;
   end;
@@ -454,6 +457,7 @@ var
     LS_PaperOrientationLandscape: 'Landscape';
     LS_PaperOrientationPortrait: 'Portrait';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
 
     LS_LastFooMsg: '';
   );
@@ -571,6 +575,7 @@ var
     LS_PaperOrientationLandscape: 'Paisagem';
     LS_PaperOrientationPortrait: 'Retrato';
     LS_Duplex: 'Impressão frente e verso';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
 
     LS_LastFooMsg: '';
   );
@@ -688,6 +693,7 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
 
     LS_LastFooMsg: '';
   );
@@ -805,6 +811,7 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
 
     LS_LastFooMsg: '';
   );
@@ -922,6 +929,7 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
 
     LS_LastFooMsg: '';
   );
@@ -1039,6 +1047,7 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
 
     LS_LastFooMsg: '';
   );
@@ -1156,6 +1165,7 @@ var
     LS_PaperOrientationLandscape: 'Ð›Ð°Ð½Ð´ÑˆÐ°Ñ„Ñ‚Ð½Ð°Ñ?';
     LS_PaperOrientationPortrait: 'ÐŸÐ¾Ñ€Ñ‚Ñ€ÐµÑ‚Ð½Ð°Ñ?';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
 
     LS_LastFooMsg: '';
   );
@@ -1273,6 +1283,7 @@ var
     LS_PaperOrientationLandscape: 'Na šíøku';
     LS_PaperOrientationPortrait: 'Na výšku';
     LS_Duplex: 'Automatický oboustranný tisk';
+    LS_OnlyOneInstance: 'Je povolena pouze jedna instance %s!';
 
     LS_LastFooMsg: '';
   );
