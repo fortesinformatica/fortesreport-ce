@@ -294,6 +294,8 @@ type
     Ls_Salvar_Como: string;
     {@var LS_FileCorrupted - Variável de internacionalização para "Arquivo corrompido". :/}
     LS_FileCorrupted: String;
+    {@var LS_FileCorruptedHeader - Translation variable for "Corrupted file header "%s"!". :/}
+    LS_FileCorruptedHeader: string;
     {@var LS_FileVersion - Variável de internacionalização para "Versão de Arquivo inválido". :/}
     LS_FileVersion: String;
     {@var Ls_PageSetings - Variável de internacionalização para "Configuração da Página". :/}
@@ -451,6 +453,7 @@ var
     LS_Propriedades: 'Settings';
     LS_Salvar_Como: 'Save as';
     LS_FileCorrupted: 'File is corrupted!';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
     LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: 'Page Configuration';
     LS_PageMargins: 'Margins';
@@ -573,6 +576,7 @@ var
     LS_Propriedades: 'Propriedades';
     LS_Salvar_Como: 'Salvar Como';
     LS_FileCorrupted: 'Arquivo Corrompido';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
     LS_FileVersion: 'Vers úo de arquivo inv ílido %d!';
     LS_PageSettings: 'Configura Ô  es da p ígina';
     LS_PageMargins: 'Margem';
@@ -695,6 +699,7 @@ var
     LS_Propriedades: '';
     LS_Salvar_Como: '';
     LS_FileCorrupted: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
     LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
@@ -817,6 +822,7 @@ var
     LS_Propriedades: '';
     LS_Salvar_Como: '';
     LS_FileCorrupted: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
     LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
@@ -939,6 +945,7 @@ var
     LS_Propriedades: '';
     LS_Salvar_Como: '';
     LS_FileCorrupted: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
     LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
@@ -1061,6 +1068,7 @@ var
     LS_Propriedades: '';
     LS_Salvar_Como: '';
     LS_FileCorrupted: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
     LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
@@ -1183,6 +1191,7 @@ var
     LS_Propriedades: 'Ð?Ð°Ñ?Ñ‚Ñ€Ð¾Ð¹ÐºÐ¸';
     LS_Salvar_Como: 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ°Ðº';
     LS_FileCorrupted: 'Ð¤Ð°Ð¹Ð» Ð¿Ð¾Ð²Ñ€ÐµÐ¶Ð´ÐµÐ½!';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
     LS_FileVersion: 'Ð?ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð°Ñ? Ð²ÐµÑ€Ñ?Ð¸Ñ? Ñ„Ð°Ð¹Ð»Ð° %d!';
     LS_PageSettings: 'Ð?Ð°Ñ?Ñ‚Ñ€Ð¾Ð¹ÐºÐ° Ñ?Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹';
     LS_PageMargins: 'ÐŸÐ¾Ð»Ñ?';
@@ -1305,6 +1314,7 @@ var
     LS_Propriedades: 'Nastavení';
     LS_Salvar_Como: 'Uložit jako';
     LS_FileCorrupted: 'Soubor je poškozen!';
+    LS_FileCorruptedHeader: 'Poškozená hlavièka souboru "%s"!';
     LS_FileVersion: 'Chybný typ souboru %d!';
     LS_PageSettings: 'Nastavení stránky';
     LS_PageMargins: 'Okraje';

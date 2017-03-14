@@ -2150,8 +2150,7 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
     else if data = FileHeaderVersion4 then
       FFileVersion := 4
     else
-      { TODO: Add translation }
-      raise Exception.Create('Corrupt file header "' + data + '"!');
+      raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_FileCorruptedHeader), [data]));
   end;
   procedure LoadMacrosFromStream(AStream: TStream);
   var
