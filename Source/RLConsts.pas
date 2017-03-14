@@ -126,6 +126,8 @@ type
     LS_PageMendStr: string;
     {@var LS_ReportEndStr - Variável de internacionalização para "Fim" :/}
     LS_ReportEndStr: string;
+    {@var LS_FileExists - Translation variable for "File already exists. Overwrite?". :/}
+    LS_FileExists: string;
     {@var LS_FileNotFoundStr - Variável de internacionalização para "Arquivo não encontrado" :/}
     LS_FileNotFoundStr: string;
     {@var LS_FileNameStr - Variável de internacionalização para "Nome do arquivo" :/}
@@ -365,6 +367,7 @@ var
     LS_PageBreakStr: 'Continues...';
     LS_PageMendStr: 'Continuation';
     LS_ReportEndStr: 'End';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'File not found';
     LS_FileNameStr: 'File Name';
     LS_AllFileTypesStr: 'All files';
@@ -486,6 +489,7 @@ var
     LS_PageBreakStr: 'Continua...';
     LS_PageMendStr: 'Continuação';
     LS_ReportEndStr: 'Fim';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Arquivo não encontrado';
     LS_FileNameStr: 'Nome do arquivo';
     LS_AllFileTypesStr: 'Todos os arquivos';
@@ -607,6 +611,7 @@ var
     LS_PageBreakStr: 'Suite...';
     LS_PageMendStr: 'A suivre';
     LS_ReportEndStr: 'Fin';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Fichier non trouvé';
     LS_FileNameStr: 'Nom de Fichier';
     LS_AllFileTypesStr: 'Tous les fichiers';
@@ -728,6 +733,7 @@ var
     LS_PageBreakStr: 'Continúa...';
     LS_PageMendStr: 'Continuación';
     LS_ReportEndStr: 'Extremo';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Archivo no encontrado';
     LS_FileNameStr: 'Nombre del Archivo';
     LS_AllFileTypesStr: 'Todos los archivos';
@@ -849,6 +855,7 @@ var
     LS_PageBreakStr: 'Continua...';
     LS_PageMendStr: 'Continuazione';
     LS_ReportEndStr: 'Fine';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Archivio non fondò';
     LS_FileNameStr: 'Nome di file';
     LS_AllFileTypesStr: 'Tutti archiviano';
@@ -970,6 +977,7 @@ var
     LS_PageBreakStr: 'Setzt fort...';
     LS_PageMendStr: 'Fortsetzung';
     LS_ReportEndStr: 'Ende';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'File fand nicht';
     LS_FileNameStr: 'Akte Name';
     LS_AllFileTypesStr: 'Alles legt ab';
@@ -1091,6 +1099,7 @@ var
     LS_PageBreakStr: 'ÐŸÑ€Ð¾Ð´Ð¾Ð»Ð¶Ð°ÐµÑ‚Ñ?Ñ?...';
     LS_PageMendStr: 'ÐŸÑ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ðµ';
     LS_ReportEndStr: 'ÐšÐ¾Ð½ÐµÑ†';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Ð¤Ð°Ð¹Ð» Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½';
     LS_FileNameStr: 'Ð˜Ð¼Ñ? Ñ„Ð°Ð¹Ð»Ð°';
     LS_AllFileTypesStr: 'Ð’Ñ?Ðµ Ñ„Ð°Ð¹Ð»Ñ‹';
@@ -1212,6 +1221,7 @@ var
     LS_PageBreakStr: 'Pokraèuje...';
     LS_PageMendStr: 'Pokraèování';
     LS_ReportEndStr: 'Konec';
+    LS_FileExists: 'Soubor již existuje. Pøepsat?';
     LS_FileNotFoundStr: 'Soubor nenalezen';
     LS_FileNameStr: 'Název souboru';
     LS_AllFileTypesStr: 'Všechny soubory';

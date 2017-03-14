@@ -89,6 +89,7 @@ type
     SaveDialog: TSaveDialog;
     procedure EditFromPageChange(Sender: TObject);
     procedure SpeedButtonLookupClick(Sender: TObject);
+    procedure ButtonSaveClick(Sender: TObject);
   private
     { Private declarations }
     FFileName: String;
@@ -396,8 +397,9 @@ begin
     Height := 25;
     Caption := 'Salvar';
     Default := True;
-    ModalResult := 1;
+    ModalResult := 0;
     TabOrder := 3;
+    OnClick := ButtonSaveClick;
   end;
   TRLComponentFactory.CreateComponent(TButton, Self, ButtonCancel);
   with ButtonCancel do
@@ -572,6 +574,13 @@ begin
   end;
 end;
 
+procedure TRLSaveDialog.ButtonSaveClick(Sender: TObject);
+begin
+  if FileExists(EditFileName.Text) then
+    if MessageDlg(GetLocalizeStr(LocaleStrings.LS_FileExists), mtConfirmation, mbOKCancel, 0) = mrCancel then
+      Exit;
+  ModalResult := mrOK;
+end;
 
 end.
 
