@@ -108,6 +108,8 @@ type
     LS_PreparingReportStr: string;
     {@var LS_PrinterNotFoundStr - Variável de internacionalização para "Nenhuma impressora encontrada" :/}
     LS_PrinterNotFoundStr: string;
+    {@var LS_NoPrinterSelected - Variável de internacionalização para "Nenhuma impressora selecionada" :/}
+    LS_NoPrinterSelected: string;
     {@var LS_NoPathToPrinterStr - Variável de internacionalização para "Caminho inválido para a impressora" :/}
     LS_NoPathToPrinterStr: string;
     {@var LS_LoadDefaultConfigStr - Variável de internacionalização para "Será carregada a configuração padrão" :/}
@@ -124,6 +126,8 @@ type
     LS_PageMendStr: string;
     {@var LS_ReportEndStr - Variável de internacionalização para "Fim" :/}
     LS_ReportEndStr: string;
+    {@var LS_FileExists - Translation variable for "File already exists. Overwrite?". :/}
+    LS_FileExists: string;
     {@var LS_FileNotFoundStr - Variável de internacionalização para "Arquivo não encontrado" :/}
     LS_FileNotFoundStr: string;
     {@var LS_FileNameStr - Variável de internacionalização para "Nome do arquivo" :/}
@@ -190,8 +194,10 @@ type
     LS_SaveInBackground: string;
     {@var LS_PageRangeStr - Variável de internacionalização para "Intervalo de páginas" :/}
     LS_PageRangeStr: string;
-    {@var LS_CopyAsImageStr - Variável de internacionalização para "Copiar como imagem" :/}
+    {@var LS_CopyAsImageStr - Variável de internacionalização para "Copiar como Bitmap" :/}
     LS_CopyAsImageStr: string;
+    {@var LS_CopyAsMetafile - Variável de internacionalização para "Copiar como Metafile" :/}
+    LS_CopyAsMetafileStr: string;
     {@var LS_RangeFromStr - Variável de internacionalização para "de" :/}
     LS_RangeFromStr: string;
     {@var LS_RangeToStr - Variável de internacionalização para "até" :/}
@@ -286,10 +292,10 @@ type
     Ls_Propriedades: string;
     {@var Ls_Salvar_Como - Variável de internacionalização para "Salvar como". :/}
     Ls_Salvar_Como: string;
-    {@var Ls_Nome_Arquivo - Variável de internacionalização para "Nome do Arquivo". :/}
-    Ls_Nome_Arquivo: string;
     {@var LS_FileCorrupted - Variável de internacionalização para "Arquivo corrompido". :/}
     LS_FileCorrupted: String;
+    {@var LS_FileCorruptedHeader - Translation variable for "Corrupted file header "%s"!". :/}
+    LS_FileCorruptedHeader: string;
     {@var LS_FileVersion - Variável de internacionalização para "Versão de Arquivo inválido". :/}
     LS_FileVersion: String;
     {@var Ls_PageSetings - Variável de internacionalização para "Configuração da Página". :/}
@@ -320,7 +326,14 @@ type
     LS_PaperOrientationLandscape: String;
     {@var LS_PaperOrientationPortrait - Variável de internacionalização para "Orientação da página em paisagem". :/}
     LS_PaperOrientationPortrait: String;
-    LS_Duplex: string;
+    {@var LS_Duplex - Translation variable for "Automatic two-sided printing". :/}
+    LS_Duplex: String;
+    {@var LS_OnlyOneInstance - Translation variable for "Only one instance of %s is allowed!". :/}
+    LS_OnlyOneInstance: String;
+    {@var LS_NotImplemented - Translation variable for "%s is not yet implemented for this platform!". :/}
+    LS_NotImplemented: String;
+    {@var LS_NoHandle - Translation variable for "Handle not available!". :/}
+    LS_NoHandle: String;
 
     LS_LastFooMsg: string;
   end;
@@ -347,6 +360,7 @@ var
     LS_FilterInProgressStr: 'Saving report...';
     LS_PreparingReportStr: 'Preparing report...';
     LS_PrinterNotFoundStr: 'Printer not found';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Invalid printer path';
     LS_LoadDefaultConfigStr: 'Load default configuration';
     LS_PrinterDriverErrorStr: 'Printer driver error';
@@ -355,6 +369,7 @@ var
     LS_PageBreakStr: 'Continues...';
     LS_PageMendStr: 'Continuation';
     LS_ReportEndStr: 'End';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'File not found';
     LS_FileNameStr: 'File Name';
     LS_AllFileTypesStr: 'All files';
@@ -388,7 +403,8 @@ var
     LS_OptionsStr: 'Options';
     LS_SaveInBackground: 'Save in background';
     LS_PageRangeStr: 'Page range';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'from';
     LS_RangeToStr: 'to';
     LS_AllStr: 'All';
@@ -436,9 +452,9 @@ var
     Ls_Aplicar: 'Use';
     LS_Propriedades: 'Settings';
     LS_Salvar_Como: 'Save as';
-    LS_Nome_Arquivo: 'File Name:';
     LS_FileCorrupted: 'File is corrupted!';
-    LS_FileVersion: 'Invalid file version!';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: 'Page Configuration';
     LS_PageMargins: 'Margins';
     LS_PageMarginsTop: 'Top';
@@ -454,6 +470,9 @@ var
     LS_PaperOrientationLandscape: 'Landscape';
     LS_PaperOrientationPortrait: 'Portrait';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -464,6 +483,7 @@ var
     LS_FilterInProgressStr: 'Salvando o relatório...';
     LS_PreparingReportStr: 'Preparando o relatório...';
     LS_PrinterNotFoundStr: 'Nenhuma impressora encontrada';
+    LS_NoPrinterSelected: 'Nenhuma impressora selecionada.';
     LS_NoPathToPrinterStr: 'Caminho inválido para a impressora';
     LS_LoadDefaultConfigStr: 'Será carregada a configuração padrão';
     LS_PrinterDriverErrorStr: 'Erro no driver da impressora';
@@ -472,6 +492,7 @@ var
     LS_PageBreakStr: 'Continua...';
     LS_PageMendStr: 'Continuação';
     LS_ReportEndStr: 'Fim';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Arquivo não encontrado';
     LS_FileNameStr: 'Nome do arquivo';
     LS_AllFileTypesStr: 'Todos os arquivos';
@@ -505,7 +526,8 @@ var
     LS_OptionsStr: 'Opções';
     LS_SaveInBackground: 'Salvar em segundo plano';
     LS_PageRangeStr: 'Intervalo de páginas';
-    LS_CopyAsImageStr: 'Copiar como imagem';
+    LS_CopyAsImageStr: 'Copiar como Bitmap';
+    LS_CopyAsMetafileStr: 'Copiar como Metafile';
     LS_RangeFromStr: 'de';
     LS_RangeToStr: 'até';
     LS_AllStr: 'Tudo';
@@ -553,9 +575,9 @@ var
     LS_Aplicar: 'Aplicar';
     LS_Propriedades: 'Propriedades';
     LS_Salvar_Como: 'Salvar Como';
-    LS_Nome_Arquivo: 'Nome do Arquivo:';
     LS_FileCorrupted: 'Arquivo Corrompido';
-    LS_FileVersion: 'Vers úo de arquivo inv ílido!';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
+    LS_FileVersion: 'Vers úo de arquivo inv ílido %d!';
     LS_PageSettings: 'Configura Ô  es da p ígina';
     LS_PageMargins: 'Margem';
     LS_PageMarginsTop: 'Superior';
@@ -571,6 +593,9 @@ var
     LS_PaperOrientationLandscape: 'Paisagem';
     LS_PaperOrientationPortrait: 'Retrato';
     LS_Duplex: 'Impressão frente e verso';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle não disponível!';
 
     LS_LastFooMsg: '';
   );
@@ -581,6 +606,7 @@ var
     LS_FilterInProgressStr: 'Sauver le rapport...';
     LS_PreparingReportStr: 'Préparation du rapport...';
     LS_PrinterNotFoundStr: 'Imprimante non trouvée';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Chemin d''imprimante non valide';
     LS_LoadDefaultConfigStr: 'Chargement de la configuration standard';
     LS_PrinterDriverErrorStr: 'Erreur dans le driver d''impression';
@@ -589,6 +615,7 @@ var
     LS_PageBreakStr: 'Suite...';
     LS_PageMendStr: 'A suivre';
     LS_ReportEndStr: 'Fin';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Fichier non trouvé';
     LS_FileNameStr: 'Nom de Fichier';
     LS_AllFileTypesStr: 'Tous les fichiers';
@@ -623,6 +650,7 @@ var
     LS_SaveInBackground: 'Enregistrer dans background';
     LS_PageRangeStr: 'Intervalle de pages';
     LS_CopyAsImageStr: 'Copie sous forme d''image';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'de';
     LS_RangeToStr: 'à';
     LS_AllStr: 'Tout';
@@ -670,9 +698,9 @@ var
     LS_Aplicar: 'Appliquer';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -688,6 +716,9 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not avaible!';
 
     LS_LastFooMsg: '';
   );
@@ -698,6 +729,7 @@ var
     LS_FilterInProgressStr: 'Guardando el informe...';
     LS_PreparingReportStr: 'Preparación del informe...';
     LS_PrinterNotFoundStr: 'Impresora no encontrada';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Camino de la impresora no es válido';
     LS_LoadDefaultConfigStr: 'Cargar la configuración estándar';
     LS_PrinterDriverErrorStr: 'Error en driver de la impresora';
@@ -706,6 +738,7 @@ var
     LS_PageBreakStr: 'Continúa...';
     LS_PageMendStr: 'Continuación';
     LS_ReportEndStr: 'Extremo';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Archivo no encontrado';
     LS_FileNameStr: 'Nombre del Archivo';
     LS_AllFileTypesStr: 'Todos los archivos';
@@ -740,6 +773,7 @@ var
     LS_SaveInBackground: 'Guardar en background';
     LS_PageRangeStr: 'Intervalo de páginas';
     LS_CopyAsImageStr: 'Copiar como imagen';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'de';
     LS_RangeToStr: 'a';
     LS_AllStr: 'Todas';
@@ -787,9 +821,9 @@ var
     LS_Aplicar: '';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -805,6 +839,9 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -815,6 +852,7 @@ var
     LS_FilterInProgressStr: 'Sauver le rapport...';
     LS_PreparingReportStr: 'Préparation du rapport...';
     LS_PrinterNotFoundStr: 'Imprimante non trouvée';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Invalid printer path';
     LS_LoadDefaultConfigStr: 'Chargement de la configuration standard';
     LS_PrinterDriverErrorStr: 'Erreur dans le driver d''impression';
@@ -823,6 +861,7 @@ var
     LS_PageBreakStr: 'Continua...';
     LS_PageMendStr: 'Continuazione';
     LS_ReportEndStr: 'Fine';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Archivio non fondò';
     LS_FileNameStr: 'Nome di file';
     LS_AllFileTypesStr: 'Tutti archiviano';
@@ -856,7 +895,8 @@ var
     LS_OptionsStr: 'Opzioni';
     LS_SaveInBackground: 'Salvi in sfondo';
     LS_PageRangeStr: 'Serie di pagina';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'da';
     LS_RangeToStr: 'a';
     LS_AllStr: 'Tutti';
@@ -904,9 +944,9 @@ var
     LS_Aplicar: '';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -922,6 +962,9 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -932,6 +975,7 @@ var
     LS_FilterInProgressStr: 'Das Sparen von Bericht  ...';
     LS_PreparingReportStr: 'Das Vorbereiten von Berich...';
     LS_PrinterNotFoundStr: 'Drucker fand nicht';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Ungültiger Druckerpfad';
     LS_LoadDefaultConfigStr: 'Laden Sie Standardkonfiguration';
     LS_PrinterDriverErrorStr: 'Druckerfahrer Fehler';
@@ -940,6 +984,7 @@ var
     LS_PageBreakStr: 'Setzt fort...';
     LS_PageMendStr: 'Fortsetzung';
     LS_ReportEndStr: 'Ende';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'File fand nicht';
     LS_FileNameStr: 'Akte Name';
     LS_AllFileTypesStr: 'Alles legt ab';
@@ -973,7 +1018,8 @@ var
     LS_OptionsStr: 'Möglichkeiten';
     LS_SaveInBackground: 'Ballabwehr in Hintergrund';
     LS_PageRangeStr: 'Rufen Sie Auswahl aus';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'von';
     LS_RangeToStr: 'zu';
     LS_AllStr: 'Alles';
@@ -1021,9 +1067,9 @@ var
     LS_Aplicar: '';
     LS_Propriedades: '';
     LS_Salvar_Como: '';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: '';
-    LS_FileVersion: '';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
+    LS_FileVersion: 'Invalid file version %d!';
     LS_PageSettings: '';
     LS_PageMargins: '';
     LS_PageMarginsTop: '';
@@ -1039,6 +1085,9 @@ var
     LS_PaperOrientationLandscape: '';
     LS_PaperOrientationPortrait: '';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -1049,6 +1098,7 @@ var
     LS_FilterInProgressStr: 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ Ð¾Ñ‚Ñ‡ÐµÑ‚Ð°...';
     LS_PreparingReportStr: 'ÐŸÐ¾Ð´Ð³Ð¾Ñ‚Ð¾Ð²ÐºÐ° Ð¾Ñ‚Ñ‡ÐµÑ‚Ð°...';
     LS_PrinterNotFoundStr: 'ÐŸÑ€Ð¸Ð½Ñ‚ÐµÑ€ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½';
+    LS_NoPrinterSelected: 'No printer selected.';
     LS_NoPathToPrinterStr: 'Ð?ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹Ð¹ Ð¿ÑƒÑ‚ÑŒ Ð¿Ñ€Ð¸Ð½Ñ‚ÐµÑ€Ð°';
     LS_LoadDefaultConfigStr: 'Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ? Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ';
     LS_PrinterDriverErrorStr: 'ÐžÑˆÐ¸Ð±ÐºÐ° Ð´Ñ€Ð°Ð¹Ð²ÐµÑ€Ð° Ð¿Ñ€Ð¸Ð½Ñ‚ÐµÑ€Ð°';
@@ -1057,6 +1107,7 @@ var
     LS_PageBreakStr: 'ÐŸÑ€Ð¾Ð´Ð¾Ð»Ð¶Ð°ÐµÑ‚Ñ?Ñ?...';
     LS_PageMendStr: 'ÐŸÑ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ðµ';
     LS_ReportEndStr: 'ÐšÐ¾Ð½ÐµÑ†';
+    LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Ð¤Ð°Ð¹Ð» Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½';
     LS_FileNameStr: 'Ð˜Ð¼Ñ? Ñ„Ð°Ð¹Ð»Ð°';
     LS_AllFileTypesStr: 'Ð’Ñ?Ðµ Ñ„Ð°Ð¹Ð»Ñ‹';
@@ -1090,7 +1141,8 @@ var
     LS_OptionsStr: 'Ð?Ð°Ñ?ÑÑÐžÐšÐºÐ¸';
     LS_SaveInBackground: 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ Ð² Ñ„Ð¾Ð½Ðµ';
     LS_PageRangeStr: 'Ð”Ð¸Ð°Ð¿Ð°Ð·Ð¾Ð½ Ð¿ÐµÑ‡Ð°Ñ‚Ð¸';
-    LS_CopyAsImageStr: '';
+    LS_CopyAsImageStr: 'Copy as Bitmap';
+    LS_CopyAsMetafileStr: 'Copy as Metafile';
     LS_RangeFromStr: 'Ñ?';
     LS_RangeToStr: 'Ð¿Ð¾';
     LS_AllStr: 'Ð’Ñ?Ðµ';
@@ -1138,9 +1190,9 @@ var
     LS_Aplicar: 'ÐŸÑ€Ð¸Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ';
     LS_Propriedades: 'Ð?Ð°Ñ?Ñ‚Ñ€Ð¾Ð¹ÐºÐ¸';
     LS_Salvar_Como: 'Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ ÐºÐ°Ðº';
-    LS_Nome_Arquivo: 'Ð˜Ð¼Ñ? Ñ„Ð°Ð¹Ð»Ð°:';
     LS_FileCorrupted: 'Ð¤Ð°Ð¹Ð» Ð¿Ð¾Ð²Ñ€ÐµÐ¶Ð´ÐµÐ½!';
-    LS_FileVersion: 'Ð?ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð°Ñ? Ð²ÐµÑ€Ñ?Ð¸Ñ? Ñ„Ð°Ð¹Ð»Ð°!';
+    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
+    LS_FileVersion: 'Ð?ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð°Ñ? Ð²ÐµÑ€Ñ?Ð¸Ñ? Ñ„Ð°Ð¹Ð»Ð° %d!';
     LS_PageSettings: 'Ð?Ð°Ñ?Ñ‚Ñ€Ð¾Ð¹ÐºÐ° Ñ?Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹';
     LS_PageMargins: 'ÐŸÐ¾Ð»Ñ?';
     LS_PageMarginsTop: 'Ð’ÐµÑ€Ñ…';
@@ -1156,6 +1208,9 @@ var
     LS_PaperOrientationLandscape: 'Ð›Ð°Ð½Ð´ÑˆÐ°Ñ„Ñ‚Ð½Ð°Ñ?';
     LS_PaperOrientationPortrait: 'ÐŸÐ¾Ñ€Ñ‚Ñ€ÐµÑ‚Ð½Ð°Ñ?';
     LS_Duplex: 'Automatic two-sided printing';
+    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
+    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_NoHandle: 'Handle not available!';
 
     LS_LastFooMsg: '';
   );
@@ -1166,6 +1221,7 @@ var
     LS_FilterInProgressStr: 'Ukládám report...';
     LS_PreparingReportStr: 'Pøipravuji report...';
     LS_PrinterNotFoundStr: 'Tiskárna nenalezena';
+    LS_NoPrinterSelected: 'Není vybrána žádná tiskárna.';
     LS_NoPathToPrinterStr: 'Chybná cesta k tiskárnì';
     LS_LoadDefaultConfigStr: 'Naèíst implicitní nastavení';
     LS_PrinterDriverErrorStr: 'Chyba ovladaèe tisku';
@@ -1174,6 +1230,7 @@ var
     LS_PageBreakStr: 'Pokraèuje...';
     LS_PageMendStr: 'Pokraèování';
     LS_ReportEndStr: 'Konec';
+    LS_FileExists: 'Soubor již existuje. Pøepsat?';
     LS_FileNotFoundStr: 'Soubor nenalezen';
     LS_FileNameStr: 'Název souboru';
     LS_AllFileTypesStr: 'Všechny soubory';
@@ -1206,8 +1263,9 @@ var
     LS_PrintInBackgroundStr: 'Tisk na pozadí';
     LS_OptionsStr: 'Volby';
     LS_SaveInBackground: 'Uložit na pozadí';
-    LS_PageRangeStr: 'Page range';
-    LS_CopyAsImageStr: 'Copy as image';
+    LS_PageRangeStr: 'Rozsah stránek';
+    LS_CopyAsImageStr: 'Kopírovat jako bitmapu';
+    LS_CopyAsMetafileStr: 'Kopírovat jako metasoubor';
     LS_RangeFromStr: 'od';
     LS_RangeToStr: 'do';
     LS_AllStr: 'Všechny';
@@ -1255,9 +1313,9 @@ var
     LS_Aplicar: 'Použít';
     LS_Propriedades: 'Nastavení';
     LS_Salvar_Como: 'Uložit jako';
-    LS_Nome_Arquivo: '';
     LS_FileCorrupted: 'Soubor je poškozen!';
-    LS_FileVersion: 'Chybný typ souboru!';
+    LS_FileCorruptedHeader: 'Poškozená hlavièka souboru "%s"!';
+    LS_FileVersion: 'Chybný typ souboru %d!';
     LS_PageSettings: 'Nastavení stránky';
     LS_PageMargins: 'Okraje';
     LS_PageMarginsTop: 'Nahoøe';
@@ -1273,6 +1331,9 @@ var
     LS_PaperOrientationLandscape: 'Na šíøku';
     LS_PaperOrientationPortrait: 'Na výšku';
     LS_Duplex: 'Automatický oboustranný tisk';
+    LS_OnlyOneInstance: 'Je povolena pouze jedna instance %s!';
+    LS_NotImplemented: '%s není implementováno na této platformì!';
+    LS_NoHandle: 'Handle není dostupný!';
 
     LS_LastFooMsg: '';
   );
