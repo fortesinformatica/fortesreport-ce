@@ -50,3 +50,5 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+Data 27/03/2017
+[+] Adição do suporte ao RAD Studio Tokyo

@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 359
   Top = 202
-  ActiveControl = ckbFecharTortoise
+  ActiveControl = wizPgInicio
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Instalador FortesReport Community Edition'
@@ -24,7 +24,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 0
     Width = 720
     Height = 478
-    ActivePage = wizPgObterFontes
+    ActivePage = wizPgInicio
     ButtonBarHeight = 42
     ButtonStart.Caption = 'Para o in'#237'cio'
     ButtonStart.NumGlyphs = 1
@@ -88,8 +88,8 @@ object frmPrincipal: TfrmPrincipal
       object Label6: TLabel
         Left = 25
         Top = 34
-        Width = 426
-        Height = 78
+        Width = 418
+        Height = 52
         Caption = 
           'Este assistente o guiar'#225' no processo de instala'#231#227'o do FortesRepo' +
           'rt Community Edition em seu computador.'#13#10#13#10#201' recomend'#225'vel fechar' +
