@@ -281,7 +281,7 @@ type
     property CreatorName: string read FCreatorName write FCreatorName;
     property CreatedTime: TDateTime read FCreatedTime write FCreatedTime;
 
-    function AddString(Text: string): Integer;
+    function AddString(AText: string): Integer;
     function GetString(Index: Integer): string;
     function Font(Size: Integer; Bold: Boolean = False): Integer; overload;
     function Font(const Name: string; Size: Integer; Bold, Italic: Boolean): Integer; overload;
@@ -1400,12 +1400,12 @@ begin
   );
 end;
 
-function TRLXLSXWorkbook.AddString(Text: string): Integer;
+function TRLXLSXWorkbook.AddString(AText: string): Integer;
 var
   RawBytes: {$IfDef FPC}AnsiString{$Else}RawByteString{$EndIf};
   Capacity: Integer;
 begin
-  RawBytes := UTF8Encode(Text);
+  RawBytes := UTF8Encode(AText);
   if Length(RawBytes) = 0 then
   begin
     Result := -1;

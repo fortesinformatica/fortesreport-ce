@@ -397,12 +397,12 @@ begin
   //
   FPopup := TPopupMenu.Create(Self);
   M := TMenuItem.Create(FPopup);
-  M.Caption := 'Copiar como Bitmap';
+  M.Caption := GetLocalizeStr(LocaleStrings.LS_CopyAsImageStr);
   M.OnClick := CopyPageBMP;
   FPopup.Items.Add(M);
   {$IfNDef FPC}
   M := TMenuItem.Create(FPopup);
-  M.Caption := 'Copiar como MetaFile';
+  M.Caption := GetLocalizeStr(LocaleStrings.LS_CopyAsMetafileStr);
   M.OnClick := CopyPageWMF;
   FPopup.Items.Add(M);
   {$EndIf}
@@ -956,9 +956,14 @@ function TRLPreviewBox.GetPage: TRLGraphicSurface;
 var
   I, J: Integer;
 begin
-  I := FPreview.FPageIndex;
-  J := FPreview.FBoxes.IndexOf(Self);
-  Result := FPreview.Pages[I + J];
+	if Assigned(FPreview.Pages) then
+	begin
+    I := FPreview.FPageIndex;
+    J := FPreview.FBoxes.IndexOf(Self);
+    Result := FPreview.Pages[I + J];
+  end
+  else
+    Result := nil;
 end;
 
 function TRLPreviewBox.DoZoom(X: Integer): Integer;
