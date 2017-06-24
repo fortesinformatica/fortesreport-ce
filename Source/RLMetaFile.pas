@@ -2636,7 +2636,7 @@ procedure TRLGraphicSurface.LoadFromStream(AStream: TStream);
     begin
       Inc(I);
       data[I] := AnsiChar(ch);
-      if AnsiChar(ch) = #26 then
+      if ch = #26 then
         Break;
     end;
     SetLength(data, I);

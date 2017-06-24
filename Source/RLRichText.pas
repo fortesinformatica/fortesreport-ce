@@ -64,6 +64,9 @@ type
   { TRLCustomRichText }
 
   {@class TRLCustomRichText - Classe base para caixa de texto formato RichText. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLCustomRichText = class(TRLCustomMemo)
   private
     // custom methods
@@ -87,6 +90,9 @@ type
   { TRLCustomDBRichText }
 
   {@class TRLCustomDBRichText - Classe base para caixa de texto formato RichText ligado a campo de dataset. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLCustomDBRichText = class(TRLCustomDBMemo)
   protected
     // override & reintroduce
@@ -106,6 +112,9 @@ type
 
   {@class TRLRichText - Componente para texto multilinhas em formato RichText. 
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLRichText = class(TRLCustomRichText)
   published
 
@@ -172,6 +181,9 @@ type
 
   {@class TRLDBRichText - Componente para texto multilinhas em formato RichText ligado a campo de dataset.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLDBRichText = class(TRLCustomDBRichText)
   published
 

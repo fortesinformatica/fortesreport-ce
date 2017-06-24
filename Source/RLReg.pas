@@ -118,7 +118,7 @@ end;
 procedure Register;
 begin
   // componentes
-  RegisterComponents('Fortes Report', [TRLReport, 
+  RegisterComponents('Fortes Report CE', [TRLReport, 
                                       TRLBand, 
                                       TRLDetailGrid, 
                                       TRLGroup, 

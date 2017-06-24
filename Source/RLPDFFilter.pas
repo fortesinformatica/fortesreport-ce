@@ -178,6 +178,9 @@ type
    @links TRLHTMLFilter, TRLRichFilter, TRLXLSFilter.
    @ancestor TRLCustomSaveFilter.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLPDFFilter = class(TRLCustomSaveFilter)
   private
     // variables
@@ -336,7 +339,9 @@ type
   end;
 
   {/@class}
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLPDFFilterPageSetup = class(TPersistent)
   private
     FPaperSize: TRLPDFFilterPaperSizeType;
@@ -387,7 +392,10 @@ type
       write FColumnLeadingPointSize;
     property CharCount: Word read FCharCount write FCharCount;
   end;
-
+	
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   {@class TRLPDFFilterDocumentInfo - Informações para a geração de documento PDF. }
   TRLPDFFilterDocumentInfo = class(TPersistent)
   private
@@ -424,7 +432,9 @@ type
   end;
 
   {/@class}
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLPDFFilterTextControl = class(TPersistent)
   private
     FFormFeed: Boolean;

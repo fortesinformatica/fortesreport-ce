@@ -78,6 +78,9 @@ type
   TRLXLSXFilterOption = (xfoFindValueCells, xfoOneSheetPerPage);
   TRLXLSXFilterOptions = set of TRLXLSXFilterOption;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLXLSXTab = class
   public
     Position: Integer;
@@ -93,7 +96,10 @@ type
     Width: Integer;
   end;
   TRLXLSXTabColumns = array of TRLXLSXTabColumn;
-
+	
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLXLSXTabs = class(TObjectList)
   private
     function GetTabs(I: Integer): TRLXLSXTab;
@@ -104,6 +110,9 @@ type
     property Tabs[I: Integer]: TRLXLSXTab read GetTabs; default;
   end;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLXLSXFilter = class(TRLCustomSaveFilter)
   private
     FWorkbook: TRLXLSXWorkbook;

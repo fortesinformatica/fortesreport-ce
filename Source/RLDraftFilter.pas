@@ -200,6 +200,9 @@ type
    @ancestor TRLCustomPrintFilter.
    @links TRLHTMLFilter, TRLRichFilter.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLDraftFilter = class(TRLCustomPrintFilter)
   private
 
@@ -426,14 +429,18 @@ type
   {/@class}
 
   { TDraftObj }
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TDraftObj = class
   public
     PinBounds: TRect;
   end;
 
   { TDraftText }
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TDraftText = class(TDraftObj)
   public
     CPP: Integer;
@@ -442,7 +449,9 @@ type
   end;
 
   { TDraftImage }
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TDraftImage = class(TDraftObj)
   public
     Bitmap: TBitmap;
