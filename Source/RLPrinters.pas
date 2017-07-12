@@ -11,6 +11,7 @@
 {                              Márcio Martins                                  }
 {                              Régys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
+{                              Luis Michel Silva Moreira                       }
 {                                                                              }
 {  Você pode obter a última versão desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
@@ -103,6 +104,7 @@ type
       AOrientation: TRLSystemOrientation; ASetPaperBin: Boolean);
     function GetCanvas: TCanvas;
     function GetPrinterDisplays(AIndex: Integer): string;
+    procedure LoadDefaultMetrics(var APrinterMetrics: TRLPrinterMetrics);
   protected
     procedure GetBinNames(AStringList: TStrings);
   public
@@ -488,7 +490,10 @@ var
 begin
   try
     if not AnyPrinter then
-      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NoPrinterSelected));
+    begin
+      LoadDefaultMetrics(APrinterMetrics);
+      Exit;
+    end;
 
 {$ifndef FPC}
     dc := Printer.Handle;
@@ -530,18 +535,7 @@ begin
   except
     on E: Exception do
     begin
-      // configuração padrão da "HP LaserJet Plus"
-      APrinterMetrics.PPIX := 300;
-      APrinterMetrics.PPIY := 300;
-      APrinterMetrics.PhysicalWidth := 2550;
-      APrinterMetrics.PhysicalHeight := 3300;
-      APrinterMetrics.MarginLeft := 75;
-      APrinterMetrics.MarginTop := 75;
-      APrinterMetrics.MarginRight := APrinterMetrics.MarginLeft;
-      APrinterMetrics.MarginBottom := APrinterMetrics.MarginTop;
-      APrinterMetrics.ClientWidth := APrinterMetrics.PhysicalWidth - (APrinterMetrics.MarginLeft + APrinterMetrics.MarginRight);
-      APrinterMetrics.ClientHeight := APrinterMetrics.PhysicalHeight - (APrinterMetrics.MarginTop + APrinterMetrics.MarginBottom);
-      //
+      LoadDefaultMetrics(APrinterMetrics);
       if not WarningDisplayed then
       begin
         ///ShowMessage(LocaleStrings.LS_LoadDefaultConfigStr+sLineBreak+sLineBreak+'Mensagem: '+e.Message);
@@ -992,6 +986,22 @@ begin
   end;
 end;
 
+procedure TRLPrinterWrapper.LoadDefaultMetrics(
+  var APrinterMetrics: TRLPrinterMetrics);
+begin
+  // Defaulting as "HP LaserJet Plus" metrics
+  APrinterMetrics.PPIX := 300;
+  APrinterMetrics.PPIY := 300;
+  APrinterMetrics.PhysicalWidth := 2550;
+  APrinterMetrics.PhysicalHeight := 3300;
+  APrinterMetrics.MarginLeft := 75;
+  APrinterMetrics.MarginTop := 75;
+  APrinterMetrics.MarginRight := APrinterMetrics.MarginLeft;
+  APrinterMetrics.MarginBottom := APrinterMetrics.MarginTop;
+  APrinterMetrics.ClientWidth := APrinterMetrics.PhysicalWidth - (APrinterMetrics.MarginLeft + APrinterMetrics.MarginRight);
+  APrinterMetrics.ClientHeight := APrinterMetrics.PhysicalHeight - (APrinterMetrics.MarginTop + APrinterMetrics.MarginBottom);
+end;
+
 initialization
   WarningDisplayed := False;
   RLPrinterInstance := nil;
@@ -1001,4 +1011,3 @@ finalization
     RLPrinterInstance.free;
 
 end.
-
