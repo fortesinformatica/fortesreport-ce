@@ -1,38 +1,38 @@
 { Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLPrinters - ImplementaÁ„o do wrapper para o objeto Printer. }
+{@unit RLPrinters - Implementa√ß√£o do wrapper para o objeto Printer. }
 
 unit RLPrinters;
 
@@ -249,9 +249,9 @@ procedure TRLPrinterWrapper.EndDoc;
 var
   savedprinterindex: Integer;
 begin
-  // Na CLX o mÈtodo EndDoc destroi o objeto PrinterAdapter.
-  // Com isso se perde a referÍncia para o OutputDevice escolhido. Nele se baseia o nosso PrinterIndex.
-  // Temos que salv·-lo aqui e restaurar depois do EndDoc.
+  // Na CLX o m√©todo EndDoc destroi o objeto PrinterAdapter.
+  // Com isso se perde a refer√™ncia para o OutputDevice escolhido. Nele se baseia o nosso PrinterIndex.
+  // Temos que salv√°-lo aqui e restaurar depois do EndDoc.
   savedprinterindex := PrinterIndex;
   Printer.EndDoc;
   PrinterIndex := savedprinterindex;
@@ -325,7 +325,7 @@ begin
         Abort;
       try
         FCapabilities := FDeviceMode^.dmFields;
-        //if Able(DM_PAPERSIZE) then // n„o funciona no Win2k/XP
+        //if Able(DM_PAPERSIZE) then // n√£o funciona no Win2k/XP
         FDeviceMode^.dmFields := FDeviceMode^.dmFields or DM_PAPERSIZE;
         FDeviceMode^.dmPaperSize := APaperSize;
         // muda o tamanho do papel
@@ -375,8 +375,8 @@ procedure TRLPrinterWrapper.SelectSystemPaperSize(APaperSize: TRLSystemPaperType
   APaperWidthMM, APaperHeightMM: Double; AOrientation: TRLSystemOrientation; ASetPaperBin: Boolean);
 begin
   //Printer.PrintAdapter.PageSize := APaperSize;
-  // adaptaÁ„o de dimensıes para o componente
-  // Na LCL n„o existe metodo port·vel para se definir o tamanho do papel personalizado
+  // adapta√ß√£o de dimens√µes para o componente
+  // Na LCL n√£o existe metodo port√°vel para se definir o tamanho do papel personalizado
   if APaperSize = UserPaperCode then
   begin
     {
@@ -386,7 +386,7 @@ begin
       Printer.PrintAdapter.PageHeight:=aPaperHeightMM;
     }
   end;
-  // orientaÁ„o do papel
+  // orienta√ß√£o do papel
   Printer.Orientation := ConvOrientation(AOrientation);
 end;
 {$EndIf}
@@ -530,7 +530,7 @@ begin
   except
     on E: Exception do
     begin
-      // configuraÁ„o padr„o da "HP LaserJet Plus"
+      // configura√ß√£o padr√£o da "HP LaserJet Plus"
       APrinterMetrics.PPIX := 300;
       APrinterMetrics.PPIY := 300;
       APrinterMetrics.PhysicalWidth := 2550;
@@ -713,6 +713,15 @@ begin
     Printer.PrinterIndex := Value;
 end;
 
+
+{
+Sugest√£o para verificar erro. A linha destacada abaixo est√° retornando o erro: List index of bound (-1)
+J√° testei em 3 computadores e o erro persiste, uso o Acbr, mas mesmo com outro documento o erro persiste. Parece que n√£o identifica 
+nenhuma impressora, por√©m existe impressoras. Me ajude por gentileza, at√© ent√£o ningu√©m conseguiu, por tal motivo estou reportando o erro.
+meu e-mail: Gabrielrogelin@hotmail.com
+Obrigado pela Ajuda.
+}
+
 procedure TRLPrinterWrapper.Refresh;
 {$IfNDef FPC}
 var
@@ -725,7 +734,7 @@ begin
 {$Else}
   savedprinterindex := Printer.PrinterIndex;
   Printer.Refresh;
-  Printer.PrinterIndex := -1;
+  Printer.PrinterIndex := -1; {LINHA DO ERRO}
   Printer.PrinterIndex := Min(savedprinterindex, Printer.Printers.Count - 1);
 {$EndIf}
 end;
@@ -902,12 +911,12 @@ begin
   PrinterHandle := 0;
   BytesNeeded := 0;
   FillChar(PrinterDefaults, SizeOf(PrinterDefaults), 0);
-  {Fred - 08/04/2008 - CorreÁ„o de chamada de di·logo de impress„o quando a impressora
-   est· em outro computador da rede }
+  {Fred - 08/04/2008 - Corre√ß√£o de chamada de di√°logo de impress√£o quando a impressora
+   est√° em outro computador da rede }
   //Open printer handle (on Windows NT, you need full-access because you will eventually use SetPrinter)
   PrinterDefaults.DesiredAccess := PRINTER_ALL_ACCESS;
   PrinterResult := WinSpool.OpenPrinter(PChar(PrinterName), PrinterHandle, @PrinterDefaults);
-  //Se o computador n„o permite acesso completo ‡ impressora tento usar o acesso mÌnimo 
+  //Se o computador n√£o permite acesso completo √† impressora tento usar o acesso m√≠nimo 
   if GetLastError=ERROR_ACCESS_DENIED then
   begin
     PrinterDefaults.DesiredAccess := PRINTER_ACCESS_USE;
@@ -950,7 +959,7 @@ begin
             Exit;
           PrinterInfo2.pDevMode := PrinterDevMode;
         end;
-        // finalmente chama o di·logo...
+        // finalmente chama o di√°logo...
         WinSpool.DocumentProperties(0, PrinterHandle, PChar(PrinterName), PrinterDevMode^,
           PrinterDevMode^, DM_PROMPT or DM_COPY);
         Result := True;
