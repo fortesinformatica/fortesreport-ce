@@ -5894,7 +5894,8 @@ begin
     baSidebySide,
     baDistributed:
     begin
-      B := NeedAuxBitmap;
+      B := TBitmap.Create;
+//      B := NeedAuxBitmap;  //Desse modo dava erro quando usava o modo distribuido
       B.Width := RectWidth(ARect);
       B.Height := RectHeight(ARect);
       D := 0;
@@ -6058,7 +6059,8 @@ begin
     baSidebySide,
     baDistributed:
     begin
-      B := NeedAuxBitmap;
+      B := TBitmap.Create;
+//      B := NeedAuxBitmap;  //Desse modo dava erro quando usava o modo distribuido
       B.Width := RectWidth(ARect);
       B.Height := RectHeight(ARect);
       D := 0;
