@@ -125,6 +125,9 @@ type
 
   {@class TRLExpressionParser - Avaliador de expressões.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLExpressionParser = class(TComponent)
   private
     { Private declarations }
@@ -268,7 +271,9 @@ type
    MINOR(V1,V2,..,VN) - Função que retorna o menor dos valores passados;
    MAJOR(V1,V2,..,VN) - Função que retorna o maior dos valores passados;
    IF(C,V1,V2) - Função que retorna o valor V1 se a condição C for verdadeira, e V2, caso contrário. /}
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLParserParam = class
   private
     FFunction: TRLParserFunction;
@@ -283,7 +288,10 @@ type
     property Name: String read FName write FName;
     property Value: variant read FValue write FValue;
   end;
-
+	
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLParserParamList = class(TObjectList)
   public
     procedure Assign(AParams: variant); overload;
@@ -295,6 +303,9 @@ type
     property Params[AIndex: Integer]: TRLParserParam read ByIndex; default;
   end;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLParserFunction = class(TPersistent)
   private
     FParser: TRLExpressionParser;
@@ -325,6 +336,9 @@ type
     property Name: String read FName write FName;
   end;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLParserFunctionList = class(TObjectList)
   public
     function ByIndex(AIndex: Integer): TRLParserFunction;
@@ -333,6 +347,9 @@ type
     property Functions[AIndex: Integer]: TRLParserFunction read ByIndex; default;
   end;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLParserValue = class(TPersistent)
   private
     FParser: TRLExpressionParser;
@@ -348,6 +365,9 @@ type
     property Value: variant read FValue write FValue;
   end;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLParserValueList = class(TObjectList)
   public
     function ByIndex(AIndex: Integer): TRLParserValue;
@@ -356,6 +376,9 @@ type
     property Values[AIndex: Integer]: TRLParserValue read ByIndex; default;
   end;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLParserNode = class
   private
     FParser: TRLExpressionParser;
@@ -393,6 +416,9 @@ type
     property ChildCount: Integer read GetChildCount;
   end;
 
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLParserInlineNode = class(TRLParserNode)
   end;
   

@@ -79,6 +79,9 @@ type
    @links TRLRichFilter, TRLPDFFilter, TRLXLSFilter. 
    @ancestor TRLCustomSaveFilter.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLHTMLFilter = class(TRLCustomSaveFilter)
   private
 

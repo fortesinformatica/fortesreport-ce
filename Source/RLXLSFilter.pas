@@ -591,7 +591,9 @@ type
     szPaperA3ExtraTransverse {322 x 445 ìì});
 
   { TRLXLSBorder }
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLXLSBorder = class
   private
     FColor: TColor;
@@ -605,7 +607,9 @@ type
   end;
 
   { TRLXLSBorders }
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLXLSBorders = class
   private
     FBorders: array[TRLXLSBorderType] of TRLXLSBorder;
@@ -628,6 +632,9 @@ type
 
   {@class TRLXLSRange - Representa uma faixa de células de uma planilha.
    Uma faixa (range) é o meio para se acessar ou modificar o conteúdo e as características das células. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLXLSRange = class
   private
     FWorksheet: TRLXLSWorksheet;
@@ -681,6 +688,9 @@ type
   { TRLXLSRow }
 
   {@class TRLXLSRow - Representa uma linha de uma planilha. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLXLSRow = class
   private
     FIndex: Integer;
@@ -699,6 +709,9 @@ type
   { TRLXLSCol }
 
   {@class TRLXLSCol - Representa uma coluna de uma planilha. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLXLSCol = class
   private
     FIndex: Integer;
@@ -717,6 +730,9 @@ type
   { TRLXLSPageSetup }
   
   {@class TRLXLSPageSetup - Configuração da página de impressão no Excel. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLXLSPageSetup = class(TPersistent)
   private
     FBlackAndWhite: Boolean;
@@ -815,6 +831,9 @@ type
   { TRLXLSWorksheet }
 
   {@class TRLXLSWorksheet - Representa uma aba de uma planilha Excel. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLXLSWorksheet = class
   private
     FWorkbook: TRLXLSWorkbook;
@@ -891,6 +910,9 @@ type
   PXLSSheetsRecs = ^TRLXLSSheetsRecs;
 
   {@class TRLXLSWorkbook - Representa uma planilha Excel. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLXLSWorkbook = class
   private
     FUserName: AnsiString;
@@ -970,7 +992,9 @@ type
 
   TRLXLSFilterOptions = set of TRLXLSFilterOption;
   {/@type}
-
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLXLSTab = class
   public
     Position: Integer;
@@ -986,7 +1010,10 @@ type
     Width: Integer;
   end;
   TRLXLSTabColumns = array of TRLXLSTabColumn;
-
+	
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}
   TRLXLSTabs = class(TObjectList)
   private
     function GetTabs(I: Integer): TRLXLSTab;
@@ -1005,6 +1032,9 @@ type
    @links TRLHTMLFilter, TRLRichFilter, TRLPDFFilter.
    @ancestor TRLCustomSaveFilter.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLXLSFilter = class(TRLCustomSaveFilter)
   private
     FWorkbook: TRLXLSWorkbook;

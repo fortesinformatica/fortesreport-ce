@@ -173,6 +173,9 @@ type
   {@class TRLPreviewSetup - Opções do pré-visualizador padrão.
    Todos os relatórios que não tiverem suas próprias configurações de previsualização
    seguirão as regras estabelecidas neste componente. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLPreviewSetup = class(TComponent)
   private
     FBeforePrint: TNotifyEvent;

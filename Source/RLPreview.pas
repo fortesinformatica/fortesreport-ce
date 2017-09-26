@@ -84,6 +84,9 @@ type
   {@class TRLPreview - Componente para pré-visualização das páginas geradas.
    Possui métodos para controlar a navegação.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLPreview = class(TScrollBox)
   private
 
@@ -267,6 +270,9 @@ type
 
   {@class TRLPreviewBox - Caixa de visualização de página.
    @pub }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLPreviewBox = class(TCustomControl)
   private
 
