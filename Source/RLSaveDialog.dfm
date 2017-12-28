@@ -115,7 +115,7 @@ object RLSaveDialog: TRLSaveDialog
     Height = 25
     Caption = 'Salvar'
     Default = True
-    ModalResult = 1
+    ModalResult = 0
     TabOrder = 3
   end
   object ButtonCancel: TButton

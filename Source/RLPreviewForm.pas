@@ -57,7 +57,7 @@ uses
   {$EndIf}
    Messages, SysUtils, Math, Contnrs, Classes,
   {$IfDef FPC}
-   LMessages, LCLIntf, LCLType, FileUtil,
+   LMessages, LCLIntf, LCLType, LazFileUtils,
   {$EndIf}
   {$IfDef CLX}
    QTypes, QControls, QButtons, QExtCtrls, QForms, QDialogs, QStdCtrls, QGraphics, Qt,
@@ -173,6 +173,9 @@ type
   {@class TRLPreviewSetup - Opções do pré-visualizador padrão.
    Todos os relatórios que não tiverem suas próprias configurações de previsualização
    seguirão as regras estabelecidas neste componente. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	 
   TRLPreviewSetup = class(TComponent)
   private
     FBeforePrint: TNotifyEvent;
@@ -1639,7 +1642,7 @@ begin
   if not (csDesigning in ComponentState) then
   begin
     if Assigned(SetupInstance) then
-      raise Exception.Create(GetLocalizeStr('Only one instance of ' + ClassName + ' is allowed.'));
+      raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_OnlyOneInstance), [ClassName]));
     SetupInstance := Self;
   end;
 end;

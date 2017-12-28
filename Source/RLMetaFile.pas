@@ -551,20 +551,24 @@ type
 
     {@method LineTo - Traça uma linha reta ligando a posição atual do cursor às coordenadas passadas. :/}
     procedure LineTo(AX, AY: Integer);
-    
-    {@method Rectangle - Desenha um retângulo. :}
+
+    {@method Rectangle - Desenha um retângulo. :/}
     procedure Rectangle(ALeft, ATop, ARight, ABottom: Integer); overload;
     procedure Rectangle(const ARect: TRect); overload;
     {/@method}
 
-    {@method Ellipse - Desenha uma ellipse. :}
+    {@method Ellipse - Desenha uma ellipse. :/}
     procedure Ellipse(AX1, AY1, AX2, AY2: Integer); overload;
     procedure Ellipse(const ARect: TRect); overload;
     {/@method}
 
     {@method Polygon - Desenha um polígono. :/}
     procedure Polygon(const APoints: array of TPoint);
-    
+
+    {@method Arc - Draw the arc. :/}
+    procedure Arc(const ARectEllipse, ARectArc: TRect); overload;
+    procedure Arc(const AX1, AY1, AX2, AY2, SX, SY, EX, EY: Integer); overload;
+
     {@method Polyline - Desenha uma série de linhas ligando os pontos passados. :/}
     procedure Polyline(const APoints: array of TPoint);
 
@@ -574,12 +578,12 @@ type
     {@method WriteLn - Escreve um texto na posição atual do cursor e salta para a linha seguinte. :/}
     procedure Writeln(const AText: String);
 
-    {@method TextOut - Escreve um texto na posição informada. :}
+    {@method TextOut - Escreve um texto na posição informada. :/}
     procedure TextOut(ALeft, ATop: Integer; const AText: AnsiString);
     procedure TextOutEx(ALeft, ATop: Integer; const AText: AnsiString; ATextFlags: TRLMetaTextFlags);
     {/@method}
 
-    {@method TextRect - Escreve um texto delimitado pelo retângulo informado. :}
+    {@method TextRect - Escreve um texto delimitado pelo retângulo informado. :/}
     procedure TextRect(const ARect: TRect; ALeft, ATop: Integer; const AText: AnsiString);
     procedure TextRectEx(const ARect: TRect; ALeft, ATop: Integer; const AText: AnsiString; AAlignment: TRLMetaTextAlignment; ALayout: TRLMetaTextLayout; ATextFlags: TRLMetaTextFlags);
     {/@method}
@@ -740,7 +744,15 @@ type
 
     {@method Assign - Assume as características de um outro objeto. :/}
     procedure Assign(AObject: TRLGraphicObject); dynamic;
-    
+
+    {@method TransformRect - Transform ASourceRect rectangle for PaintTo procedure.
+     HigherRightBottom - When True, Right and Bottom coordinates of the output rectagle are checked,
+                         so they are at least one pixel larger than Left and Top. :/}
+    function TransformRect(const ASourceRect: TRLMetaRect; AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer; const HigherRightBottom: Boolean): TRect;
+
+    {@method TransformBounds - Transform FBoundsRect rectangle for PaintTo procedure using TransformRect. :/}
+    function TransformBounds(AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer; const HigherRightBottom: Boolean): TRect;
+
     {@method Offset - Desloca as coordenadas do objeto. :/}
     procedure Offset(AXDesloc, AYDesloc: Integer); dynamic;
 
@@ -920,6 +932,33 @@ type
     property Pen: TRLMetaPen read FPen write SetPen;
     property Brush: TRLMetaBrush read FBrush write SetBrush;
   end;
+
+  { TRLArcObject }
+
+  TRLArcObject = class(TRLGraphicObject)
+  private
+    FArcRect: TRLMetaRect;
+    FPen: TRLMetaPen;
+    FBrush: TRLMetaBrush;
+    //
+    procedure SetPen(Value: TRLMetaPen);
+    procedure SetBrush(Value: TRLMetaBrush);
+  public
+    constructor Create(ASurface: TRLGraphicSurface); override;
+    destructor Destroy; override;
+    //
+    procedure SaveToStream(AStream: TStream); override;
+    procedure LoadFromStream(AStream: TStream); override;
+    //
+    procedure PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer); override;
+    procedure Assign(AObject: TRLGraphicObject); override;
+    procedure Inflate(AXFactor, AYFactor: double); override;
+    //
+    property Pen: TRLMetaPen read FPen write SetPen;
+    property Brush: TRLMetaBrush read FBrush write SetBrush;
+    {@prop ArcRect - Dimensions of the Arc. :/}
+    property ArcRect: TRLMetaRect read FArcRect write FArcRect;
+   end;
 
   { TRLPolygonObject }
 
@@ -1176,6 +1215,8 @@ const
   gkPolyline = 10;
   gkCutBegin = 11;
   gkCutEnd = 12;
+  gkArc = 13;
+
   // TImageKind
   ikBitmap = 0;
   ikJPeg = 1;
@@ -1387,6 +1428,16 @@ begin
                            Brush.Color := ToMetaColor(rec.Brush.Color);
                            Brush.Style := ToMetaBrushStyle(rec.Brush.Style);
                          end;
+          gkArc: with TRLArcObject.Create(surface) do
+                         begin
+                           BoundsRect := ToMetaRect(Rect(rec.X1, rec.Y1, rec.X2, rec.Y2));
+                           Pen.Color := ToMetaColor(rec.Pen.Color);
+                           Pen.Mode := ToMetaPenMode(rec.Pen.Mode);
+                           Pen.Style := ToMetaPenStyle(rec.Pen.Style);
+                           Pen.Width := rec.Pen.Width;
+                           AInput.Read(rec, SizeOf(rec));
+                           ArcRect := ToMetaRect(Rect(rec.X1, rec.Y1, rec.X2, rec.Y2));
+                         end;
           gkPolygon: with TRLPolygonObject.Create(surface) do
                          begin
                            Points := ToMetaPointArray(StrToPoints(AnsiString(texts[rec.Text])));
@@ -1502,6 +1553,8 @@ begin
           rec^.Kind := gkStretchDraw
         else if obj is TRLEllipseObject then
           rec^.Kind := gkEllipse
+        else if obj is TRLArcObject then
+          rec^.Kind := gkArc
         else if obj is TRLPolygonObject then
           rec^.Kind := gkPolygon
         else if obj is TRLPolylineObject then
@@ -1525,6 +1578,7 @@ begin
           rec^.X2 := TRLLineObject(obj).BoundsRect.Right;
           rec^.Y2 := TRLLineObject(obj).BoundsRect.Bottom;
         end;
+
         if obj is TRLTextObject then
         begin
           rec^.X := TRLTextObject(obj).Origin.X;
@@ -1535,6 +1589,7 @@ begin
           rec^.X := 0;
           rec^.Y := 0;
         end;
+
         if obj is TRLImageObject then
         begin
           S := TRLImageObject(obj).Data;
@@ -1543,6 +1598,7 @@ begin
           else if Copy(S, 1, 3) = 'ICO' then
             rec^.Tag := ord(ikIcon);
         end;
+
         rec^.Color := 0; // not used
         if obj is TRLTextObject then
         begin
@@ -1556,6 +1612,8 @@ begin
           pen := TRLRectangleObject(obj).Pen
         else if obj is TRLEllipseObject then
           pen := TRLEllipseObject(obj).Pen
+        else if obj is TRLArcObject then
+          pen := TRLArcObject(obj).Pen
         else if obj is TRLPolygonObject then
           pen := TRLPolygonObject(obj).Pen
         else if obj is TRLPolylineObject then
@@ -1580,6 +1638,8 @@ begin
           brush := TRLFillRectObject(obj).Brush
         else if obj is TRLEllipseObject then
           brush := TRLEllipseObject(obj).Brush
+        else if obj is TRLArcObject then
+          brush := TRLArcObject(obj).Brush
         else if obj is TRLPolygonObject then
           brush := TRLPolygonObject(obj).Brush
         else
@@ -1610,6 +1670,20 @@ begin
         rec^.Text := textid;
 
         objcs.Add(rec);
+
+      if obj is TRLArcObject then
+         begin
+          new(rec);
+          rec^.Kind := gkArc;
+          with rec^,TRLArcObject(obj) do
+            begin
+              X1 := ArcRect.Left;
+              Y1 := ArcRect.Top;
+              X2 := ArcRect.Right;
+              Y2 := ArcRect.Bottom;
+            end;
+          objcs.Add(rec);
+         end;
       end;
       //
       AOutput.Write(surface.FWidth, SizeOf(surface.FWidth));
@@ -1941,7 +2015,7 @@ procedure TRLGraphicStorage.SaveToStream(AStream: TStream);
       3: data := FileHeaderVersion3;
       4: data := FileHeaderVersion4;
     else
-      raise Exception.Create('Incorrect file version "' + IntToStr(FFileVersion) + '"!');
+      raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_FileVersion), [FFileVersion]));
     end;
     Result := AStream.Position;
     AStream.Write(data[1], Length(data));
@@ -2076,7 +2150,7 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
     else if data = FileHeaderVersion4 then
       FFileVersion := 4
     else
-      raise Exception.Create('Corrupt file header "' + data + '"!');
+      raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_FileCorruptedHeader), [data]));
   end;
   procedure LoadMacrosFromStream(AStream: TStream);
   var
@@ -2189,7 +2263,7 @@ end;
 procedure TRLGraphicStorage.SetFileVersion(AVersion: Integer);
 begin
   if (AVersion < 1) or (AVersion > 4) then
-    raise Exception.Create('Invalid file version!');
+    raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_FileVersion), [AVersion]));
   FFileVersion := AVersion; 
 end;
 
@@ -2395,6 +2469,7 @@ const
   ObjectKindImage = 9;
   ObjectKindSetClipRect = 10;
   ObjectKindResetClipRect = 11;
+  ObjectKindArc = 12;
 
 function GraphicObjectKind(AGraphicObject: TRLGraphicObject): TGraphicObjectKind;
 begin
@@ -2420,6 +2495,8 @@ begin
     Result := ObjectKindSetClipRect
   else if AGraphicObject is TRLResetClipRectObject then
     Result := ObjectKindResetClipRect
+  else if AGraphicObject is TRLArcObject then
+    Result := ObjectKindArc
   else
     Result := 0; 
 end;
@@ -2540,6 +2617,7 @@ begin
     ObjectKindImage: Result := TRLImageObject;
     ObjectKindSetClipRect: Result := TRLSetClipRectObject;
     ObjectKindResetClipRect: Result := TRLResetClipRectObject;
+    ObjectKindArc: Result := TRLArcObject;
   else
     Result := nil;
   end;
@@ -2558,12 +2636,12 @@ procedure TRLGraphicSurface.LoadFromStream(AStream: TStream);
     begin
       Inc(I);
       data[I] := AnsiChar(ch);
-      if ch = #26 then
+      if AnsiChar(ch) = #26 then
         Break;
     end;
     SetLength(data, I);
     if data <> SurfaceHeaderStr then
-      raise Exception.Create('File is corrupted!');
+      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileCorrupted));
   end;
   procedure LoadBoundsFromStream(AStream: TStream);
   begin
@@ -2745,6 +2823,24 @@ begin
                                   Max(obj.FromPoint.Y, obj.ToPoint.Y) + 1));
   ToMetaPen(Self.Pen, obj.Pen);
   ToMetaBrush(Self.Brush, obj.Brush);
+end;
+
+procedure TRLGraphicSurface.Arc(const ARectEllipse, ARectArc: TRect);
+var
+  obj: TRLArcObject;
+begin
+  Open;
+  FModified := True;
+  obj := TRLArcObject.Create(Self);
+  obj.ArcRect := ToMetaRect(ARectArc);
+  obj.BoundsRect := ToMetaRect(ARectEllipse);
+  ToMetaPen(Self.Pen, obj.Pen);
+  ToMetaBrush(Self.Brush, obj.Brush);
+end;
+
+procedure TRLGraphicSurface.Arc(const AX1, AY1, AX2, AY2, SX, SY, EX, EY: Integer);
+begin
+  Arc(Rect(AX1, AY1, AX2, AY2), Rect(SX, SY, EX, EY));
 end;
 
 procedure TRLGraphicSurface.Polygon(const APoints: array of TPoint);
@@ -3525,6 +3621,25 @@ begin
   GeneratorId := AObject.GeneratorId;
 end;
 
+function TRLGraphicObject.TransformRect(const ASourceRect: TRLMetaRect; AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer; const HigherRightBottom: Boolean): TRect;
+begin
+  Result.Left := AXDesloc + Round(ASourceRect.Left * AXFactor);
+  Result.Top := AYDesloc + Round(ASourceRect.Top * AYFactor);
+  Result.Right := AXDesloc + Round(ASourceRect.Right * AXFactor);
+  Result.Bottom := AYDesloc + Round(ASourceRect.Bottom * AYFactor);
+  //
+  if HigherRightBottom then
+  begin
+    Result.Right := Max(Result.Right, Result.Left + 1);
+    Result.Bottom := Max(Result.Bottom, Result.Top + 1);
+  end;
+end;
+
+function TRLGraphicObject.TransformBounds(AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer; const HigherRightBottom: Boolean): TRect;
+begin
+  Result := TransformRect(BoundsRect, AXFactor, AYFactor, AXDesloc, AYDesloc, HigherRightBottom);
+end;
+
 procedure TRLGraphicObject.Offset(AXDesloc, AYDesloc: Integer);
 begin
   Inc(FBoundsRect.Left, AXDesloc);
@@ -3568,10 +3683,7 @@ procedure TRLPixelObject.PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double; A
 var
   R: TRect;
 begin
-  R.Left := AXDesloc + Round(FBoundsRect.Left * AXFactor);
-  R.Top := AYDesloc + Round(FBoundsRect.Top * AYFactor);
-  R.Right := Max(AXDesloc + Round(FBoundsRect.Right * AXFactor), R.Left + 1);
-  R.Bottom := Max(AYDesloc + Round(FBoundsRect.Bottom * AYFactor), R.Top + 1);
+  R := Self.TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, True);
   //
   ACanvas.Brush.Style := bsSolid;
   ACanvas.Brush.Color := FromMetaColor(FColor);
@@ -3735,10 +3847,7 @@ procedure TRLRectangleObject.PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Doubl
 var
   R: TRect;
 begin
-  R.Left := AXDesloc + Round(FBoundsRect.Left * AXFactor);
-  R.Top := AYDesloc + Round(FBoundsRect.Top * AYFactor);
-  R.Right := Max(AXDesloc + Round(FBoundsRect.Right * AXFactor), R.Left + 1);
-  R.Bottom := Max(AYDesloc + Round(FBoundsRect.Bottom * AYFactor), R.Top + 1);
+  R := Self.TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, True);
   //
   FromMetaPen(FPen, ACanvas.Pen);
   PenInflate(ACanvas.Pen, AXFactor);
@@ -3882,10 +3991,7 @@ var
   O: TPoint;
   T: String;
 begin
-  R.Left := AXDesloc + Round(FBoundsRect.Left * AXFactor);
-  R.Top := AYDesloc + Round(FBoundsRect.Top * AYFactor);
-  R.Right := AXDesloc + Round(FBoundsRect.Right * AXFactor);
-  R.Bottom := AYDesloc + Round(FBoundsRect.Bottom * AYFactor);
+  R := Self.TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, False);
   O.X := AXDesloc + Round(FOrigin.X * AXFactor);
   O.Y := AYDesloc + Round(FOrigin.Y * AYFactor);
   //
@@ -3978,10 +4084,7 @@ procedure TRLFillRectObject.PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double
 var
   R: TRect;
 begin
-  R.Left := AXDesloc + Round(FBoundsRect.Left * AXFactor);
-  R.Top := AYDesloc + Round(FBoundsRect.Top * AYFactor);
-  R.Right := AXDesloc + Round(FBoundsRect.Right * AXFactor);
-  R.Bottom := AYDesloc + Round(FBoundsRect.Bottom * AYFactor);
+  R := Self.TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, False);
   //
   FromMetaBrush(FBrush, ACanvas.Brush);
   ACanvas.FillRect(R);
@@ -4042,10 +4145,7 @@ procedure TRLEllipseObject.PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double;
 var
   R: TRect;
 begin
-  R.Left := AXDesloc + Round(FBoundsRect.Left * AXFactor);
-  R.Top := AYDesloc + Round(FBoundsRect.Top * AYFactor);
-  R.Right := AXDesloc + Round(FBoundsRect.Right * AXFactor);
-  R.Bottom := AYDesloc + Round(FBoundsRect.Bottom * AYFactor);
+  R := Self.TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, False);
   //
   FromMetaPen(FPen, ACanvas.Pen);
   PenInflate(ACanvas.Pen, AXFactor);
@@ -4074,6 +4174,84 @@ begin
 end;
 
 procedure TRLEllipseObject.SetBrush(Value: TRLMetaBrush);
+begin
+  FBrush.Assign(Value);
+end;
+
+{ TRLArcObject }
+
+constructor TRLArcObject.Create(aSurface:TRLGraphicSurface);
+begin
+  FPen := nil;
+  FBrush := nil;
+  //
+  FPen := TRLMetaPen.Create(Self);
+  FBrush := TRLMetaBrush.Create(Self);
+  //
+  inherited;
+end;
+
+destructor TRLArcObject.Destroy;
+begin
+  inherited;
+  //
+  if Assigned(FPen) then
+    FPen.free;
+  if Assigned(FBrush) then
+    FBrush.free;
+end;
+
+procedure TRLArcObject.SaveToStream(aStream: TStream);
+begin
+  inherited;
+  //
+  FPen.SaveToStream(aStream);
+  FBrush.SaveToStream(AStream);
+end;
+
+procedure TRLArcObject.LoadFromStream(aStream: TStream);
+begin
+  inherited;
+  //
+  FPen.LoadFromStream(aStream);
+  FBrush.LoadFromStream(AStream);
+end;
+
+procedure TRLArcObject.PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer);
+var
+  RectEllipse, RectArc: TRect;
+begin
+  FromMetaPen(FPen, ACanvas.Pen);
+  PenInflate(ACanvas.Pen, AXFactor);
+  //
+  RectEllipse := TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, True);
+  RectArc := TransformRect(ArcRect, AXFactor, AYFactor, AXDesloc, AYDesloc, False);
+  //
+  ACanvas.Arc(RectEllipse.Left, RectEllipse.Top, RectEllipse.Right, RectEllipse.Bottom, RectArc.Left, RectArc.Top, RectArc.Right, RectArc.Bottom);
+end;
+
+procedure TRLArcObject.Assign(aObject: TRLGraphicObject);
+begin
+  inherited Assign(aObject);
+  //
+  Pen := TRLArcObject(aObject).Pen;
+  Brush := TRLArcObject(AObject).Brush;
+  ArcRect := TRLArcObject(AObject).ArcRect;
+end;
+
+procedure TRLArcObject.Inflate(aXFactor, aYFactor: double);
+begin
+  inherited Inflate(aXFactor, aYFactor);
+  //
+  FPen.Inflate(aXFactor);
+end;
+
+procedure TRLArcObject.SetPen(Value:TRLMetaPen);
+begin
+  FPen.Assign(Value);
+end;
+
+procedure TRLArcObject.SetBrush(Value: TRLMetaBrush);
 begin
   FBrush.Assign(Value);
 end;
@@ -4340,10 +4518,7 @@ procedure TRLImageObject.PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double; A
 var
   R: TRect;
 begin
-  R.Left := AXDesloc + Round(FBoundsRect.Left * AXFactor);
-  R.Top := AYDesloc + Round(FBoundsRect.Top * AYFactor);
-  R.Right := AXDesloc + Round(FBoundsRect.Right * AXFactor);
-  R.Bottom := AYDesloc + Round(FBoundsRect.Bottom * AYFactor);
+  R := Self.TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, False);
   //
   CanvasStretchDraw(ACanvas, R, Data, Parity);
 end;
@@ -4366,10 +4541,7 @@ end;
 procedure TRLSetClipRectObject.PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer);
 begin
   FSurface.PushClipRect(FSurface.FClipRect);
-  FSurface.FClipRect.Left := AXDesloc + Round(FBoundsRect.Left * AXFactor);
-  FSurface.FClipRect.Top := AYDesloc + Round(FBoundsRect.Top * AYFactor);
-  FSurface.FClipRect.Right := AXDesloc + Round(FBoundsRect.Right * AXFactor);
-  FSurface.FClipRect.Bottom := AYDesloc + Round(FBoundsRect.Bottom * AYFactor);
+  FSurface.FClipRect := Self.TransformBounds(AXFactor, AYFactor, AXDesloc, AYDesloc, False);
   CanvasSetClipRect(ACanvas, FSurface.FClipRect);
 end;
 

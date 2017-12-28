@@ -239,6 +239,9 @@ type
   { TRLCustomBarcode }
 
   {@class TRLCustomBarcode - Classe base da qual podem derivar componentes para códigos de barras. @ancestor TRLCustomControl. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLCustomBarcode = class(TRLCustomControl)
   private
     FBeforeText: TRLBeforeTextEvent;
@@ -335,6 +338,9 @@ type
   { TRLCustomDBBarcode }
 
   {@class TRLCustomDBBarcode - Classe base da qual podem derivar componentes para códigos de barras dataware. @ancestor TRLCustomBarcode.}
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLCustomDBBarcode = class(TRLCustomBarcode)
   private
     FDataField: TRLDataFieldProperty;
@@ -369,6 +375,9 @@ type
   { TRLBarcode }
 
   {@class TRLBarcode - Componente para códigos de barras. @pub. @ancestor TRLCustomBarcode. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLBarcode = class(TRLCustomBarcode)
   published
     {@prop Align = ancestor /}
@@ -442,6 +451,9 @@ type
 
 
   {@class TRLDBBarcode - Componente para códigos de barras dataware. @pub. @ancestor TRLCustomDBBarcode. }
+	{$IFDEF RTL230_UP}
+  [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
+  {$ENDIF RTL230_UP}	
   TRLDBBarcode = class(TRLCustomDBBarcode)
   published
     {@prop Align = ancestor /}
