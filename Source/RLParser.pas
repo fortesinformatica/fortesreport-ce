@@ -61,7 +61,7 @@ uses
   {$IfDef SUPPORTS_VARIANT}
    Variants,
   {$EndIf}
-  SysUtils, RLUtils;
+  SysUtils, RLUtils, RLTypes;
 
 type
   {@type TRLParserTokenKind - Tipo de token. :}
@@ -1178,7 +1178,7 @@ begin
                          Result := True;
                        end;
         tkInt64: begin
-                         SetInt64Prop(APersistent, info, Integer(AValue));
+                         SetInt64Prop(APersistent, info, PtrInt(AValue));
                          Result := True;
                        end;
       end;
