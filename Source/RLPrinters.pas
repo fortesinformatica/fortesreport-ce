@@ -368,7 +368,7 @@ begin
   //
   Printer.Orientation := ConvOrientation(AOrientation);
   FPrinterName := PrinterName;
-  PostMessage(HWND_BROADCAST, WM_DEVMODECHANGE, 0, Integer(@FPrinterName[1]));
+  PostMessage(HWND_BROADCAST, WM_DEVMODECHANGE, 0, PtrInt(@FPrinterName[1]));
 end;
 {$Else}
 procedure TRLPrinterWrapper.SelectSystemPaperSize(APaperSize: TRLSystemPaperType;

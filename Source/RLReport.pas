@@ -6606,7 +6606,7 @@ var
 begin
   R := CalcPrintBoundsRect;
   S := RequestParentSurface;
-  S.GeneratorId := Integer(Self);
+  S.GeneratorId := PtrInt(Self);
   NewGroupId;
   if not IsTransparent(Self) then
   begin
@@ -7985,7 +7985,7 @@ begin
   R := CalcPrintClientRect;
   with RequestParentSurface do
   begin
-    GeneratorId := Integer(Self);
+    GeneratorId := PtrInt(Self);
     NewGroupId;
     Font := Self.Font;
     S := AnsiString(Caption);
@@ -8142,7 +8142,7 @@ begin
   Surf := RequestParentSurface;
   with Surf do
   begin
-    GeneratorId := Integer(Self);
+    GeneratorId := PtrInt(Self);
     NewGroupId;
     Surf.Font := Self.Font;
 
@@ -9053,7 +9053,7 @@ begin
   R := CalcPrintClientRect;
   with RequestParentSurface do
   begin
-    GeneratorId := Integer(Self);
+    GeneratorId := PtrInt(Self);
     NewGroupId;
     Font := Self.Font;
     if IsTransparent(Self) then
@@ -9364,7 +9364,7 @@ begin
   if (FPicture <> nil) and (FPicture.Graphic <> nil) then
     with RequestParentSurface do
     begin
-      GeneratorId := Integer(Self);
+      GeneratorId := PtrInt(Self);
       NewGroupId;
       if FScaled then
         ScaleDraw(R, FPicture.Graphic, FCenter)
@@ -9929,7 +9929,7 @@ begin
   R := CalcPrintClientRect;
   with RequestParentSurface do
   begin
-    GeneratorId := Integer(Self);
+    GeneratorId := PtrInt(Self);
     NewGroupId;
     Brush := Self.Brush;
     Pen := Self.Pen;
@@ -10972,7 +10972,7 @@ procedure TRLCustomSite.PrepareBackgroundSurface(ABackgroundSurface: TRLGraphicS
 var
   M: TRect;
 begin
-  ABackgroundSurface.GeneratorId := Integer(Self);
+  ABackgroundSurface.GeneratorId := PtrInt(Self);
   NewGroupId;
   if (Degrade.Direction <> ddNone) and (Degrade.OppositeColor <> Color) then
     Degrade.PaintTo(ABackgroundSurface, ARect, Color)

@@ -63,7 +63,7 @@ uses
   {$Else}
    Types, Graphics, Dialogs,
   {$EndIf}
-  RLUtils, RLConsts;
+  RLUtils, RLConsts, RLTypes;
 
 const
   MetaOrientationPortrait = 1;
@@ -490,7 +490,7 @@ type
     // para livre uso
     FTag: Integer;
     // identificador de grupo e gerador
-    FGeneratorId: Integer;
+    FGeneratorId: PtrInt;
     // metasímbolos
     FMacros: TStrings;
     // retorna a quantidade de objetos incluídos
@@ -707,7 +707,7 @@ type
     property Fonts: TStrings read FFonts;
 
     {@prop GeneratorId - Identifica o objeto gerador para os próximos elementos gráficos. :/}
-    property GeneratorId: Integer read FGeneratorId write FGeneratorId;
+    property GeneratorId: PtrInt read FGeneratorId write FGeneratorId;
 
     {@prop Storage - Referência para o estoque ao qual pertence à superfície gráfica. :/}
     property Storage: TRLGraphicStorage read FStorage;

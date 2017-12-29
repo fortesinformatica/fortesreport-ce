@@ -71,6 +71,14 @@ type
     ClientHeight: Integer;
   end;
 
+  {$IfNDef FPC}
+   {$IFDEF WIN64}
+    PtrInt = NativeInt;
+   {$ELSE}
+    PtrInt = Integer;
+   {$ENDIF}
+  {$EndIf}
+
   TRLSystemPaperType = Integer;
   TRLSystemOrientation = Integer;
 
