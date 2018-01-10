@@ -5894,8 +5894,8 @@ begin
     baSidebySide,
     baDistributed:
     begin
-      B := NeedAuxBitmap;
-      B.PixelFormat := pf32bit;
+      B := TBitmap.Create;
+//      B := NeedAuxBitmap;  //Desse modo dava erro quando usava o modo distribuido
       B.Width := RectWidth(ARect);
       B.Height := RectHeight(ARect);
       D := 0;
@@ -6059,8 +6059,8 @@ begin
     baSidebySide,
     baDistributed:
     begin
-      B := NeedAuxBitmap;
-      B.PixelFormat := pf32bit;
+      B := TBitmap.Create;
+//      B := NeedAuxBitmap;  //Desse modo dava erro quando usava o modo distribuido
       B.Width := RectWidth(ARect);
       B.Height := RectHeight(ARect);
       D := 0;
@@ -6608,7 +6608,7 @@ var
 begin
   R := CalcPrintBoundsRect;
   S := RequestParentSurface;
-  S.GeneratorId := PtrInt(Self);
+  S.GeneratorId := Integer(Self);
   NewGroupId;
   if not IsTransparent(Self) then
   begin
@@ -7987,7 +7987,7 @@ begin
   R := CalcPrintClientRect;
   with RequestParentSurface do
   begin
-    GeneratorId := PtrInt(Self);
+    GeneratorId := Integer(Self);
     NewGroupId;
     Font := Self.Font;
     S := AnsiString(Caption);
@@ -8144,7 +8144,7 @@ begin
   Surf := RequestParentSurface;
   with Surf do
   begin
-    GeneratorId := PtrInt(Self);
+    GeneratorId := Integer(Self);
     NewGroupId;
     Surf.Font := Self.Font;
 
@@ -9055,7 +9055,7 @@ begin
   R := CalcPrintClientRect;
   with RequestParentSurface do
   begin
-    GeneratorId := PtrInt(Self);
+    GeneratorId := Integer(Self);
     NewGroupId;
     Font := Self.Font;
     if IsTransparent(Self) then
@@ -9366,7 +9366,7 @@ begin
   if (FPicture <> nil) and (FPicture.Graphic <> nil) then
     with RequestParentSurface do
     begin
-      GeneratorId := PtrInt(Self);
+      GeneratorId := Integer(Self);
       NewGroupId;
       if FScaled then
         ScaleDraw(R, FPicture.Graphic, FCenter)
@@ -9931,7 +9931,7 @@ begin
   R := CalcPrintClientRect;
   with RequestParentSurface do
   begin
-    GeneratorId := PtrInt(Self);
+    GeneratorId := Integer(Self);
     NewGroupId;
     Brush := Self.Brush;
     Pen := Self.Pen;
@@ -10974,7 +10974,7 @@ procedure TRLCustomSite.PrepareBackgroundSurface(ABackgroundSurface: TRLGraphicS
 var
   M: TRect;
 begin
-  ABackgroundSurface.GeneratorId := PtrInt(Self);
+  ABackgroundSurface.GeneratorId := Integer(Self);
   NewGroupId;
   if (Degrade.Direction <> ddNone) and (Degrade.OppositeColor <> Color) then
     Degrade.PaintTo(ABackgroundSurface, ARect, Color)

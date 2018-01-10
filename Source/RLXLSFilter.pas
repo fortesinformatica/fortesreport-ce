@@ -895,7 +895,7 @@ type
     iXF: Integer;
     iSST: Integer;
     iFont: Integer;
-    iFormat: Integer;
+    iFormat: PtrInt;
   end;
 
   PXLSRangeRec = ^TRLXLSRangeRec;
@@ -2344,7 +2344,7 @@ begin
         K := FormatList.IndexOf(range.Format);
         if K = -1 then
           K := FormatList.AddObject(range.Format, Pointer(FormatList.Count - N + $32));
-        FRangesRecs[M].iFormat := Integer(FormatList.Objects[K]);
+        FRangesRecs[M].iFormat := PtrInt(FormatList.Objects[K]);
       end;
       Inc(M);
     end;

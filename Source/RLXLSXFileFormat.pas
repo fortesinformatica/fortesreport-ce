@@ -63,7 +63,7 @@ uses
    Windows,
   {$EndIf}
   Classes, SysUtils, Contnrs, StrUtils, Types, Variants,
-  RLPkZip;
+  RLPkZip, RLTypes;
 
 const
   RLXLSXDefaultFontName = 'Calibri';
@@ -428,7 +428,7 @@ type
   TRLXLSXHashItem = packed record
     KeyLength: Word;
     KeyOffset: Word;
-    Data: Integer;
+    Data: PtrInt;
     Index: Integer;
   end;
 
@@ -494,12 +494,8 @@ begin
       FHeapSize := FHeapSize * 2;
     ReallocMem(FHeapPtr, FHeapSize);
   end;
-  {$IfDef FPC}
   PtrInt(ItemPtr) := PtrInt(FHeapPtr) + FHeapLength;
-  {$Else}
-  Integer(ItemPtr) := Integer(FHeapPtr) + FHeapLength;
-  {$EndIf}
-  ItemPtr.Data := Integer(Data);
+  ItemPtr.Data := PtrInt(Data);
   ItemPtr.KeyLength := Length(AnsiKey);
   Inc(FHeapLength, SizeOf(TRLXLSXHashItem));
   ItemPtr.KeyOffset := FHeapLength;
@@ -544,11 +540,7 @@ begin
     ItemPtr := Items[ItemIndex];
     if ItemPtr.KeyLength = Length(AnsiKey) then
     begin
-      {$IfDef FPC}
       PtrInt(StrPtr) := PtrInt(FHeapPtr) + ItemPtr.KeyOffset;
-      {$Else}
-      Integer(StrPtr) := Integer(FHeapPtr) + ItemPtr.KeyOffset;
-      {$EndIf}
 
       if CompareMem(StrPtr, @AnsiKey[1], Length(AnsiKey)) then
       begin
