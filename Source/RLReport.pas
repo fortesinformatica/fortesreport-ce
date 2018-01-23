@@ -8847,13 +8847,16 @@ end;
 function NextLine(const Buffer: string; var Pos: Integer; var Wrapped: Boolean;
   var LineWidth: Integer; Canvas: TObject; MaxWidth: Integer): string;
 var
-  SpaceWidth, TabWidth, Pos0, PosAux: Integer;
+  Pos0, PosAux: Integer;
   HasText: Boolean;
+
+  function GetALine: String;
+  begin
+    Result := Copy(Buffer, Pos0, Pos - Pos0)
+  end;
+
 begin
-  SpaceWidth := CanvasTextWidth(Canvas, ' ');
-  TabWidth := SpaceWidth * 8;
   Wrapped := False;
-  LineWidth := 0;
   HasText := False;
 
   Pos0 := Pos;
@@ -8861,23 +8864,20 @@ begin
     if Pos <= Length(Buffer) then
       if CharInSet(Buffer[Pos], [#9, #32]) then
       begin
+        LineWidth :=  CanvasTextWidth(Canvas, GetALine);
         if (LineWidth > MaxWidth) and HasText then
         begin
           Wrapped := True;
-          Result := Copy(Buffer, Pos0, Pos - Pos0);
+          Result := GetALine;
           while (Pos <= Length(Buffer)) and CharInSet(Buffer[Pos], [#9, #32]) do
             Inc(Pos);
           Break;
         end;
-        if Buffer[Pos] = #9 then
-          Inc(LineWidth, TabWidth)
-        else
-          Inc(LineWidth, SpaceWidth);
         Inc(Pos);
       end
       else if CharInSet(Buffer[Pos], [#13, #10]) then
       begin
-        Result := Copy(Buffer, Pos0, Pos - Pos0);
+        Result := GetALine;
         Inc(Pos);
         if (Pos <= Length(Buffer)) and CharInSet(Buffer[Pos], [#10]) then
           Inc(Pos);
@@ -8887,15 +8887,13 @@ begin
       begin
         PosAux := Pos;
         while (Pos <= Length(Buffer)) and not CharInSet(Buffer[Pos], [#9, #32, #13, #10]) do
-        begin
-          Inc(LineWidth, CanvasTextWidth(Canvas, Buffer[Pos]));
           Inc(Pos);
-        end;
+        LineWidth := CanvasTextWidth(Canvas, GetALine);
         if (LineWidth > MaxWidth) and HasText then
         begin
           Pos := PosAux;
           Wrapped := True;
-          Result := Copy(Buffer, Pos0, Pos - Pos0);
+          Result := GetALine;
           while (Pos <= Length(Buffer)) and CharInSet(Buffer[Pos], [#9, #32]) do
             Inc(Pos);
           Break;
@@ -8904,7 +8902,7 @@ begin
       end
     else
     begin
-      Result := Copy(Buffer, Pos0, Pos - Pos0);
+      Result := GetALine;
       Break;
     end;
 end;
