@@ -2230,7 +2230,7 @@ type
 
   {@class TRLCustomDBMemo - Classe base para caixa de texto multilinhas ligado a campo de dataset.
    @ancestor TRLCustomMultiLine. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDBMemo = class(TRLCustomMultiLine)
@@ -3456,6 +3456,9 @@ type
     FNextReportState: TNextReportState;
     FOnPrepareError: TRLPrepareErrorEvent;
 
+    // Bobina
+    FUnlimitedHeight: Boolean;
+
     // assign methods
 
     function GetPageNumber: Integer;
@@ -3501,6 +3504,7 @@ type
     procedure SetTitle(const Value: string);
     function IsJobTitle: Boolean;
     procedure SetJobTitle(const Value: string);
+    procedure SetUnlimitedHeight(const Value: boolean);
 
   protected
 
@@ -3593,6 +3597,10 @@ type
     {@prop ShowExplosion - Não implementada. :/}
     property ShowExplosion: Boolean
       read FShowExplosion write SetShowExplosion default False;
+
+    {@prop UnlimitedHeight - Impressão sem quebra de pagina. :/}
+    property UnlimitedHeight: Boolean
+      read FUnlimitedHeight write SetUnlimitedHeight default False;
 
     {@prop Title - Título do relatório.
      Pode ser recuperado pelo componente TRLSystemInfo. :/}
@@ -4837,7 +4845,7 @@ type
    @icon TRLReport.jpg
    @ancestor TRLCustomReport.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLReport = class(TRLCustomReport)
@@ -4923,6 +4931,8 @@ type
     property Transparent;
     {@prop Visible = ancestor /}
     property Visible;
+    {@prop UnlimitedHeight  = ancestor /}
+    property UnlimitedHeight ;
 
     // events
 
@@ -5655,6 +5665,14 @@ begin
     Exit;
   if (FPaperSize <> fpCustom) or (AValue = 0) then
     Exit;
+  if Assigned(FParentReport) and
+     FParentReport.UnlimitedHeight and
+     (not (csDesigning in FParentReport.ComponentState)) and
+     (not (FParentReport.ReportState in ([rsClosing, rsWriting]))) then
+  begin
+    Exit;
+  end;
+
   FPaperHeight := AValue;
   AdjustParent;
 end;
@@ -5673,6 +5691,9 @@ procedure TRLPageSetup.SetOrientation(const AValue: TRLPageOrientation);
 begin
   if AValue = FOrientation then
     Exit;
+  if Assigned(FParentReport) and (FParentReport.UnlimitedHeight) and (AValue = poLandscape) then
+     Exit;
+
   FOrientation := AValue;
   AdjustParent;
 end;
@@ -11645,8 +11666,10 @@ begin
   while TotalCut < FPrintSize.Y do
   begin
     CutHeight := FPrintSize.Y - TotalCut;
+    // Se relatório é de altura inifinita...
+    if Report.UnlimitedHeight then
     // se a band tem obrigatoriamente que ser impressa nesta página...
-    if BandType in [btFooter, btColumnFooter] then
+    else if BandType in [btFooter, btColumnFooter] then
     // se a band (ou pedaço) couber na página...
     else if HeightFits(CutHeight, VertSpace) then
     // se não puder dividir a band ou o pedaço que couber for menor que o tamanho mínimo...
@@ -11694,17 +11717,33 @@ begin
 end;
 
 procedure TRLCustomBand.SkipToNextPosition(AWidth, AHeight: Integer);
+var
+  Report: TRLCustomReport;
+  Pager: TRLCustomPager;
+  PrintedMM: Double;
 begin
-  with RequestParentPager do
-    RelativePagerRow := RelativePagerRow + AHeight;
+  Pager := RequestParentPager;
+  Pager.RelativePagerRow := Pager.RelativePagerRow + AHeight;
+
+  Report := RequestParentReport;
+  if Assigned(Report) and Report.UnlimitedHeight then
+  begin
+    PrintedMM :=  (Pager.RelativePagerRow * InchAsMM) / ScreenPPI;
+    if (PrintedMM > Report.PageSetup.PaperHeight) then
+      Report.PageSetup.PaperHeight := PrintedMM;
+  end;
 end;
 
 procedure TRLCustomBand.CheckPageBreak;
 var
   VertSpace: Integer;
+  R: TRLCustomReport;
 begin
+  R := FindParentReport;
+  // Se relatório é de altura inifinita...
+  if Assigned(R) and R.UnlimitedHeight then
   // se a band tem obrigatoriamente que ser impressa nesta página...
-  if BandType in [btFooter, btColumnFooter] then
+  else if BandType in [btFooter, btColumnFooter] then
   // se a band couber na página...
   else if HeightFits(FPrintSize.Y, VertSpace) then
   // se não puder dividir a band ou o pedaço que couber for menor que o tamanho mínimo...
@@ -12235,10 +12274,15 @@ procedure TRLCustomPager.InternalNewPage(ACaller: TObject; AMoveOnly: Boolean = 
 var
   SavedCaller: TObject;
   ParentPager: TRLCustomPager;
+  ParentReport: TRLCustomReport;
 begin
   SavedCaller := FNewPageCaller;
   FNewPageCaller := ACaller;
   try
+    ParentReport := FindParentReport;
+    if Assigned(ParentReport) and ParentReport.UnlimitedHeight then
+      Exit;
+
     ParentPager := FindParentPager;
     // moveonly=True significa que o Pager não vai se dividir entre a página atual e a próxima
     if IntegralHeight and (ParentPager <> nil) and
@@ -13184,6 +13228,7 @@ begin
   FShowDesigners := True;
   FShowTracks := True;
   FShowExplosion := False;
+  FUnlimitedHeight := False;
   FTitle := '';
   FJobTitle := '';
   FPrintQuality := pqFullFeature;
@@ -13464,9 +13509,20 @@ function TRLCustomReport.Prepare: Boolean;
 var
   KeepOn: Boolean;
   Rep: TRLCustomReport;
+  OldPaperHeight: Double;
 begin
   Result := False;
+  OldPaperHeight := 0;
+
   try
+    if UnlimitedHeight then
+    begin
+      if (csDesigning in ComponentState) then
+        OldPaperHeight := PageSetup.PaperHeight;
+
+      PageSetup.PaperHeight := 10;
+    end;
+
     PushBoundsRect;
     try
       Clear;
@@ -13556,6 +13612,8 @@ begin
   finally
     DestroyProgress;
     PopBoundsRect;
+    if UnlimitedHeight and (csDesigning in ComponentState) then
+      PageSetup.PaperHeight := OldPaperHeight;
   end;
 end;
 
@@ -14102,6 +14160,20 @@ begin
     FJobTitle := Value
   else
     FJobTitle := Title;
+end;
+
+procedure TRLCustomReport.SetUnlimitedHeight(const Value: boolean);
+begin
+  if Value = FUnlimitedHeight then
+    Exit;
+
+  if Value then
+  begin
+    FPageSetup.Orientation := poPortrait;
+    FPageSetup.PaperSize := fpCustom;
+  end;
+
+  FUnlimitedHeight := Value;
 end;
 
 { TRLPreviewOptions }
