@@ -240,11 +240,11 @@ procedure TRLPrinterWrapper.BeginDoc(const ATitle: string = '');
 begin
   Printer.Title := ATitle;
   Printer.BeginDoc;
-  {$ifndef FPC}
+  {$IfNDef FPC}
   Printer.Canvas.Font.PixelsPerInch := GetDeviceCaps(Printer.Handle, LOGPIXELSY);
-  {$else}
+  {$Else}
   Printer.Canvas.Font.PixelsPerInch := Printer.YDPI;
-  {$endif}
+  {$EndIf}
 end;
 
 procedure TRLPrinterWrapper.EndDoc;
@@ -281,24 +281,23 @@ end;
 procedure TRLPrinterWrapper.SelectSystemPaperSize(APaperSize: TRLSystemPaperType;
   APaperWidthMM, APaperHeightMM: Double; AOrientation: TRLSystemOrientation; ASetPaperBin: Boolean);
 var
-  FCapabilities: longint;
   {$IfDef FPC}
   FDeviceMode: PDeviceModeW;
+  PDev: TPrinterDevice;
   {$Else}
   FDeviceMode: PDeviceMode;
   {$EndIf}
+  FCapabilities, ALong: longint;
   FDriverHandle: THandle;
-  FDevice: PChar;
-  FDriver: PChar;
-  FPort: PChar;
+  FDevice, FDriver, FPort: PChar;
   FPrinterName: string;
-  {$IfDef FPC}
-  PDev: TPrinterDevice;
-  {$EndIf}
+  dmPaperWidthMax, dmPaperLengthMax: Short;
+
   function Able(Hability: Integer): Boolean;
   begin
     Result := (FCapabilities and Hability) > 0;
   end;
+
 begin
   FDriverHandle := 0;
   FDevice := nil;
@@ -320,8 +319,8 @@ begin
         Abort;
       FDeviceMode := GlobalLock(FDriverHandle);
       {$ELSE}
-       PDev := TPrinterDevice(Printer.Printers.Objects[Printer.PrinterIndex]);
-       FDeviceMode := PDev.DevModeW;
+      PDev := TPrinterDevice(Printer.Printers.Objects[Printer.PrinterIndex]);
+      FDeviceMode := PDev.DevModeW;
       {$ENDIF}
       if FDeviceMode = nil then
         Abort;
@@ -333,15 +332,29 @@ begin
         // muda o tamanho do papel
         if APaperSize = DMPAPER_USER then
         begin
-          if APaperWidthMM <> 0 then
+          dmPaperWidthMax := high(Smallint);
+          dmPaperLengthMax := dmPaperWidthMax;
+          {$IFNDEF FPC}
+          ALong := DeviceCapabilities(FDevice, FPort, DC_MAXEXTENT, nil, FDeviceMode);
+          {$Else}
+          ALong := DeviceCapabilitiesW( FDeviceMode^.dmDeviceName, nil,
+                                        DC_MAXEXTENT, nil, FDeviceMode);
+          {$EndIf}
+          if (ALong > 0) then
+          begin
+            //dmPaperLengthMax := HIWORD(ALong);  // Not Used, it will return Spooler Max Paper length. (we want try to override it)
+            dmPaperWidthMax  := LOWORD(ALong);
+          end;
+
+          if (APaperWidthMM <> 0) then
           begin
             FDeviceMode^.dmFields := FDeviceMode^.dmFields or DM_PAPERWIDTH;
-            FDeviceMode^.dmPaperWidth := Round(APaperWidthMM * 10);
+            FDeviceMode^.dmPaperWidth := min(Round(APaperWidthMM * 10), dmPaperWidthMax);
           end;
-          if APaperHeightMM <> 0 then
+          if (APaperHeightMM <> 0) then
           begin
             FDeviceMode^.dmFields := FDeviceMode^.dmFields or DM_PAPERLENGTH;
-            FDeviceMode^.dmPaperLength := Round(APaperHeightMM * 10);
+            FDeviceMode^.dmPaperLength := min(Round(APaperHeightMM * 10), dmPaperLengthMax);
           end;
         end;
         // muda a orientacao do papel
@@ -355,7 +368,7 @@ begin
         begin
           FDeviceMode^.dmFields := FDeviceMode^.dmFields or DM_DEFAULTSOURCE;
           FDeviceMode^.dmDefaultSource := DMBIN_MANUAL;
-        end; 
+        end;
       finally
         GlobalUnlock(FDriverHandle);
       end;
