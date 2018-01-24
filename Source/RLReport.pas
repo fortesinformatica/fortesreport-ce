@@ -525,7 +525,7 @@ type
    alteração na cor e estilo. Este objeto não é responsável pelo Paint do ParentControl, este é que deve faze-lo no seu
    Paint de acordo com as propriedades de borda.
    @links TRLCustomControl.Borders. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLBorders = class(TPersistent)
@@ -650,7 +650,7 @@ type
    Determina largura das margens: superior, inferior e laterais em MM. Possui método AdjustParent que chama o AdjustBounds
    do ParentControl sempre que forem alteradas as propriedades que afetam o tamanho.
    @links TRLCustomSite.Margins, TRLCustomSite.InsideMargins. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLMargins = class(TPersistent)
@@ -738,7 +738,7 @@ type
   {@class TRLPageSetup - Propriedades para configuração de página.
                          Determina a largura e altura do papel em MM, o tipo de papel utilizado e a orientação.
    @links TRLCustomReport.PageSetup. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLPageSetup = class(TPersistent)
@@ -827,7 +827,7 @@ type
   {@class TRLRealBounds - Configuração do tamanho real de um controle em milímetros ou polegadas.
                           Nota: Esta funcionalizade não está implementada.
    @links TRLCustomControl.RealBounds. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLRealBounds = class(TPersistent)
@@ -894,7 +894,7 @@ type
   {@class TRLBackground - Propriedades para uma figura a ser desenhada no fundo de um site.
                           Determina o posicionamento ou forma de distribuicao, e o tamanho da figura no parentsite.
    @links TRLCustomSite.Background, TRLDegradeEffect. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLBackground = class(TPersistent)
@@ -978,7 +978,7 @@ type
   {@class TRLDegradeEffect - Efeito de transição de cores no fundo de um site.
                              Determina as cores origem e destino e a direção do efeito.
    @links TRLCustomSite.Degrade, TRLBackground. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLDegradeEffect = class(TPersistent)
@@ -1047,7 +1047,7 @@ type
                            Determina as Bands incluidas pelos seus tipos bem como controla os tipos de Bands já
                            impressos no ParentSkipper.
    @links TRLCustomPager.SortedBands, TRLSortedBandTypes. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLSortedBands = class(TPersistent)
@@ -1097,7 +1097,7 @@ type
   end;
 
   {/@class}
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCompositeOptions = class(TPersistent)
@@ -1125,7 +1125,7 @@ type
 
   {@class TRLPreviewOptions - Opções do form de preview padrão para um componente TRLReport em particular.
    @links TRLCustomReport.PreviewOptions, TRLPreviewOptionsDefaults. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLPreviewOptions = class(TPersistent)
@@ -1208,7 +1208,7 @@ type
 
   {@class TRLCustomControl - Super classe da qual derivam todos os controles do FortesReport.
    @ancestor TCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomControl = class(TCustomControl)
@@ -1747,7 +1747,7 @@ type
 
   {@class TRLCustomDBControl - Classe base da qual se pode derivar controles de impressão dataware.
    @ancestor TRLCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDBControl = class(TRLCustomControl)
@@ -1803,7 +1803,7 @@ type
   {@class TRLCustomLabel - Classe base da qual derivam todas as caixas de texto.
    Utilize descendentes do TRLCustomLabel para imprimir textos estáticos ou dinâmicos sobre o relatório.
    @ancestor TRLCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomLabel = class(TRLCustomControl)
@@ -1848,7 +1848,7 @@ type
 
   {@class TRLCustomAngleLabel - Caixa de texto com rotação por ângulo.
    @ancestor TRLCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomAngleLabel = class(TRLCustomControl)
@@ -1911,7 +1911,7 @@ type
 
   {@class TRLCustomDBText - Classe base da qual podem derivar caixas de texto dataware.
    @ancestor TRLCustomLabel. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDBText = class(TRLCustomLabel)
@@ -2001,7 +2001,7 @@ type
 
   {@class TRLCustomDBResult - Caixa de texto para resultado de cáculos matemáticos com campos de um dataset.
    @ancestor TRLCustomDBText. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDBResult = class(TRLCustomDBText)
@@ -2098,7 +2098,7 @@ type
 
   {@class TRLCustomSystemInfo - Caixa de texto com informações de sistema.
    @ancestor TRLCustomLabel. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomSystemInfo = class(TRLCustomLabel)
@@ -2148,7 +2148,7 @@ type
 
   {@class TRLCustomMultiLine - Classe base para controles multilinhas.
    @ancestor TRLCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomMultiLine = class(TRLCustomControl)
@@ -2186,7 +2186,7 @@ type
 
   {@class TRLCustomMemo - Classe base para caixa de texto multilinhas.
    @ancestor TRLCustomMultiLine. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomMemo = class(TRLCustomMultiLine)
@@ -2230,7 +2230,7 @@ type
 
   {@class TRLCustomDBMemo - Classe base para caixa de texto multilinhas ligado a campo de dataset.
    @ancestor TRLCustomMultiLine. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDBMemo = class(TRLCustomMultiLine)
@@ -2291,7 +2291,7 @@ type
 
   {@class TRLCustomImage - Classe base para caixa de imagem.
    @ancestor TRLCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomImage = class(TRLCustomControl)
@@ -2368,7 +2368,7 @@ type
 
   {@class TRLCustomDBImage - Classe base para caixa de imagem ligada a campo de dataset.
    @ancestor TRLCustomImage. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDBImage = class(TRLCustomImage)
@@ -2447,7 +2447,7 @@ type
 
   {@class TRLCustomDraw - Classe base para caixa de desenho de figuras geométricas.
    @ancestor TRLCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDraw = class(TRLCustomControl)
@@ -2563,7 +2563,7 @@ type
    Nota: Descendentes do TRLCustomSite podem conter controles e outros paineis.
    @links TRLPanel, TRLBand, TRLGroup, TRLReport.
    @ancestor TRLCustomControl. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomSite = class(TRLCustomControl)
@@ -2773,7 +2773,7 @@ type
   {@class TRLCustomPanel - Classe base para containers de controles.
    Utilize um TRLCustomPanel como container para controles ou outros paineis.
    @ancestor TRLCustomSite. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomPanel = class(TRLCustomSite)
@@ -2797,7 +2797,7 @@ type
 
   {@class TRLCustomBandSet - Classe base para criação de bands.
    @ancestor TRLCustomSite. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomBandSet = class(TRLCustomSite)
@@ -2841,7 +2841,7 @@ type
    As bandas de impressão formam a base do algorítmo de paginação do FortesReport.
    @links TRLBand, TRLDetailGrid.
    @ancestor TRLCustomBandSet. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomBand = class(TRLCustomBandSet)
@@ -2951,7 +2951,7 @@ type
   {@class TRLCustomDetailGrid - Classe base para bandas de detalhe multi-colunas.
    Banda de tipo fixado em btDetail. Ideal para a impressão de etiquetas e relatórios em colunas.
    @ancestor TRLCustomBand. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomDetailGrid = class(TRLCustomBand)
@@ -3059,7 +3059,7 @@ type
    impressas por página.
    @links TRLReport, TRLSubDetail, TRLGroup.
    @ancestor TRLCustomBandSet. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomPager = class(TRLCustomBandSet)
@@ -3178,7 +3178,7 @@ type
   {@class TRLCustomGroup - Classe base para sequências de registros de dados.
    Utilize descendentes do TRLCustomGroup para imprimir sequências de registros de dados.
    @ancestor TRLCustomPager. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomGroup = class(TRLCustomPager)
@@ -3255,7 +3255,7 @@ type
    quando a fonte é uma DataSource, ou através de eventos de interação.
    @links TRLReport, TRLSubDetail.
    @ancestor TRLCustomPager. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomSkipper = class(TRLCustomPager)
@@ -3360,7 +3360,7 @@ type
    pelos registros principais e o TRLSubDetail pelos registros filhos.
    @links TRLSubDetail.
    @ancestor TRLCustomSkipper. }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomSubDetail = class(TRLCustomSkipper)
@@ -3411,7 +3411,7 @@ type
    @links TRLReport.
    @ancestor TRLCustomSkipper. }
   TNextReportState=(nrStart,nrNext,nrEnd);
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLCustomReport = class(TRLCustomSkipper)
@@ -3455,6 +3455,9 @@ type
     FCompositeOptions: TRLCompositeOptions;
     FNextReportState: TNextReportState;
     FOnPrepareError: TRLPrepareErrorEvent;
+
+    // Bobina
+    FUnlimitedHeight: Boolean;
 
     // assign methods
 
@@ -3501,6 +3504,7 @@ type
     procedure SetTitle(const Value: string);
     function IsJobTitle: Boolean;
     procedure SetJobTitle(const Value: string);
+    procedure SetUnlimitedHeight(const Value: boolean);
 
   protected
 
@@ -3593,6 +3597,10 @@ type
     {@prop ShowExplosion - Não implementada. :/}
     property ShowExplosion: Boolean
       read FShowExplosion write SetShowExplosion default False;
+
+    {@prop UnlimitedHeight - Impressão sem quebra de pagina. :/}
+    property UnlimitedHeight: Boolean
+      read FUnlimitedHeight write SetUnlimitedHeight default False;
 
     {@prop Title - Título do relatório.
      Pode ser recuperado pelo componente TRLSystemInfo. :/}
@@ -3709,7 +3717,7 @@ type
    @icon TRLLabel.jpg
    @ancestor TRLCustomLabel.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLLabel = class(TRLCustomLabel)
@@ -3777,7 +3785,7 @@ type
    @icon TRLAngleLabel.jpg
    @ancestor TRLCustomAngleLabel.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLAngleLabel = class(TRLCustomAngleLabel)
@@ -3849,7 +3857,7 @@ type
    @icon TRLDBText.jpg
    @ancestor TRLCustomDBText.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLDBText = class(TRLCustomDBText)
@@ -3925,7 +3933,7 @@ type
    @icon TRLDBResult.jpg
    @ancestor TRLCustomDBResult.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLDBResult = class(TRLCustomDBResult)
@@ -4009,7 +4017,7 @@ type
    @icon TRLSystemInfo.jpg
    @ancestor TRLCustomSystemInfo.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLSystemInfo = class(TRLCustomSystemInfo)
@@ -4079,7 +4087,7 @@ type
    @icon TRLMemo.jpg
    @ancestor TRLCustomMemo.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLMemo = class(TRLCustomMemo)
@@ -4151,7 +4159,7 @@ type
    @icon TRLDBMemo.jpg
    @ancestor TRLCustomDBMemo.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLDBMemo = class(TRLCustomDBMemo)
@@ -4227,7 +4235,7 @@ type
    @icon TRLImage.jpg
    @ancestor TRLCustomImage.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLImage = class(TRLCustomImage)
@@ -4291,7 +4299,7 @@ type
    @icon TRLDBImage.jpg
    @ancestor TRLCustomDBImage.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLDBImage = class(TRLCustomDBImage)
@@ -4358,7 +4366,7 @@ type
    @icon TRLDraw.jpg
    @ancestor TRLCustomDraw.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLDraw = class(TRLCustomDraw)
@@ -4435,7 +4443,7 @@ type
    @icon TRLPanel.jpg
    @ancestor TRLCustomPanel.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLPanel = class(TRLCustomPanel)
@@ -4516,7 +4524,7 @@ type
    @icon TRLBand.jpg
    @ancestor TRLCustomBand.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLBand = class(TRLCustomBand)
@@ -4597,7 +4605,7 @@ type
    @icon TRLDetailGrid.jpg
    @ancestor TRLCustomDetailGrid.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLDetailGrid = class(TRLCustomDetailGrid)
@@ -4681,7 +4689,7 @@ type
    @icon TRLGroup.jpg
    @ancestor TRLCustomGroup.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLGroup = class(TRLCustomGroup)
@@ -4760,7 +4768,7 @@ type
    @icon TRLSubDetail.jpg
    @ancestor TRLCustomSubDetail.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLSubDetail = class(TRLCustomSubDetail)
@@ -4837,7 +4845,7 @@ type
    @icon TRLReport.jpg
    @ancestor TRLCustomReport.
    @pub }
-	{$IFDEF RTL230_UP}
+  {$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
   TRLReport = class(TRLCustomReport)
@@ -4923,6 +4931,8 @@ type
     property Transparent;
     {@prop Visible = ancestor /}
     property Visible;
+    {@prop UnlimitedHeight  = ancestor /}
+    property UnlimitedHeight ;
 
     // events
 
@@ -5655,6 +5665,14 @@ begin
     Exit;
   if (FPaperSize <> fpCustom) or (AValue = 0) then
     Exit;
+  if Assigned(FParentReport) and
+     FParentReport.UnlimitedHeight and
+     (not (csDesigning in FParentReport.ComponentState)) and
+     (not (FParentReport.ReportState in ([rsClosing, rsWriting]))) then
+  begin
+    Exit;
+  end;
+
   FPaperHeight := AValue;
   AdjustParent;
 end;
@@ -5673,6 +5691,9 @@ procedure TRLPageSetup.SetOrientation(const AValue: TRLPageOrientation);
 begin
   if AValue = FOrientation then
     Exit;
+  if Assigned(FParentReport) and (FParentReport.UnlimitedHeight) and (AValue = poLandscape) then
+     Exit;
+
   FOrientation := AValue;
   AdjustParent;
 end;
@@ -11645,8 +11666,10 @@ begin
   while TotalCut < FPrintSize.Y do
   begin
     CutHeight := FPrintSize.Y - TotalCut;
+    // Se relatório é de altura inifinita...
+    if Report.UnlimitedHeight then
     // se a band tem obrigatoriamente que ser impressa nesta página...
-    if BandType in [btFooter, btColumnFooter] then
+    else if BandType in [btFooter, btColumnFooter] then
     // se a band (ou pedaço) couber na página...
     else if HeightFits(CutHeight, VertSpace) then
     // se não puder dividir a band ou o pedaço que couber for menor que o tamanho mínimo...
@@ -11694,17 +11717,33 @@ begin
 end;
 
 procedure TRLCustomBand.SkipToNextPosition(AWidth, AHeight: Integer);
+var
+  Report: TRLCustomReport;
+  Pager: TRLCustomPager;
+  PrintedMM: Double;
 begin
-  with RequestParentPager do
-    RelativePagerRow := RelativePagerRow + AHeight;
+  Pager := RequestParentPager;
+  Pager.RelativePagerRow := Pager.RelativePagerRow + AHeight;
+
+  Report := RequestParentReport;
+  if Assigned(Report) and Report.UnlimitedHeight then
+  begin
+    PrintedMM :=  (Pager.RelativePagerRow * InchAsMM) / ScreenPPI;
+    if (PrintedMM > Report.PageSetup.PaperHeight) then
+      Report.PageSetup.PaperHeight := PrintedMM;
+  end;
 end;
 
 procedure TRLCustomBand.CheckPageBreak;
 var
   VertSpace: Integer;
+  R: TRLCustomReport;
 begin
+  R := FindParentReport;
+  // Se relatório é de altura inifinita...
+  if Assigned(R) and R.UnlimitedHeight then
   // se a band tem obrigatoriamente que ser impressa nesta página...
-  if BandType in [btFooter, btColumnFooter] then
+  else if BandType in [btFooter, btColumnFooter] then
   // se a band couber na página...
   else if HeightFits(FPrintSize.Y, VertSpace) then
   // se não puder dividir a band ou o pedaço que couber for menor que o tamanho mínimo...
@@ -12235,10 +12274,15 @@ procedure TRLCustomPager.InternalNewPage(ACaller: TObject; AMoveOnly: Boolean = 
 var
   SavedCaller: TObject;
   ParentPager: TRLCustomPager;
+  ParentReport: TRLCustomReport;
 begin
   SavedCaller := FNewPageCaller;
   FNewPageCaller := ACaller;
   try
+    ParentReport := FindParentReport;
+    if Assigned(ParentReport) and ParentReport.UnlimitedHeight then
+      Exit;
+
     ParentPager := FindParentPager;
     // moveonly=True significa que o Pager não vai se dividir entre a página atual e a próxima
     if IntegralHeight and (ParentPager <> nil) and
@@ -13184,6 +13228,7 @@ begin
   FShowDesigners := True;
   FShowTracks := True;
   FShowExplosion := False;
+  FUnlimitedHeight := False;
   FTitle := '';
   FJobTitle := '';
   FPrintQuality := pqFullFeature;
@@ -13464,15 +13509,26 @@ function TRLCustomReport.Prepare: Boolean;
 var
   KeepOn: Boolean;
   Rep: TRLCustomReport;
+  OldPaperHeight: Double;
 begin
   Result := False;
+  OldPaperHeight := 0;
+
   try
+    Clear;
+    FReportState := rsWriting;
+    FReportDateTime := Now;
+
+    if UnlimitedHeight then
+    begin
+      if (csDesigning in ComponentState) then
+        OldPaperHeight := PageSetup.PaperHeight;
+
+      PageSetup.PaperHeight := 10;
+    end;
+
     PushBoundsRect;
     try
-      Clear;
-
-      FReportState := rsWriting;
-      FReportDateTime := Now;
       if CompositeOptions.ResetPageNumber or (Self = MasterReport) then
         MasterReport.FCurrentPageNumber := Self.FFirstPageNumber - 1;
       if MasterReport.ShowProgress then
@@ -13556,6 +13612,8 @@ begin
   finally
     DestroyProgress;
     PopBoundsRect;
+    if UnlimitedHeight and (csDesigning in ComponentState) then
+      PageSetup.PaperHeight := OldPaperHeight;
   end;
 end;
 
@@ -14102,6 +14160,20 @@ begin
     FJobTitle := Value
   else
     FJobTitle := Title;
+end;
+
+procedure TRLCustomReport.SetUnlimitedHeight(const Value: boolean);
+begin
+  if Value = FUnlimitedHeight then
+    Exit;
+
+  if Value then
+  begin
+    FPageSetup.Orientation := poPortrait;
+    FPageSetup.PaperSize := fpCustom;
+  end;
+
+  FUnlimitedHeight := Value;
 end;
 
 { TRLPreviewOptions }
