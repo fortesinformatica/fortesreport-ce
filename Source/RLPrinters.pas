@@ -337,8 +337,7 @@ begin
           {$IFNDEF FPC}
           ALong := DeviceCapabilities(FDevice, FPort, DC_MAXEXTENT, nil, FDeviceMode);
           {$Else}
-          ALong := DeviceCapabilitiesW( PWideChar(WideString(PDev.Device)),
-                                        PWideChar(WideString(PDev.Port)),
+          ALong := DeviceCapabilitiesW( FDeviceMode^.dmDeviceName, nil,
                                         DC_MAXEXTENT, nil, FDeviceMode);
           {$EndIf}
           if (ALong > 0) then
