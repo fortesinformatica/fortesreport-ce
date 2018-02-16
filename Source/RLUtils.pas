@@ -452,6 +452,7 @@ begin
   end;
 end;
 
+{$IfNDef FPC}
 // diretório temporário
 function GetTempDir: String;
 {$ifndef LINUX}
@@ -474,6 +475,7 @@ begin
   TempDir := '/tmp';
 {$endif}
 end;
+{$EndIf}
 
 function NewComponentName(AComponent: TComponent): String;
 var
