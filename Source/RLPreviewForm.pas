@@ -1371,25 +1371,40 @@ begin
     with TRLSaveDialog.CreateNew(nil) do
       try
         MaxPage := Preview.Pages.PageCount;
+        filt := Nil;
+        if (SelectedFilter <> nil) and (SelectedFilter is TRLCustomSaveFilter) then
+          filt := TRLCustomSaveFilter(SelectedFilter);
+
         if Self.Preview.Pages.Title <> '' then
-        {$IFDEF FPC}
-         FileName := ExpandFileNameUTF8(FileNameFromText(Self.Preview.Pages.Title))
-        {$ELSE}
-         FileName := ExpandFileName(FileNameFromText(Self.Preview.Pages.Title))
-        {$ENDIF}
-        else if (SelectedFilter <> nil) and (SelectedFilter is TRLCustomSaveFilter) then
-          FileName := TRLCustomSaveFilter(SelectedFilter).FileName
+          {$IFDEF FPC}
+           FileName := ExpandFileNameUTF8(FileNameFromText(Self.Preview.Pages.Title))
+          {$ELSE}
+           FileName := ExpandFileName(FileNameFromText(Self.Preview.Pages.Title))
+          {$ENDIF}
+        else if (filt <> nil) then
+          FileName := filt.FileName
         else
           FileName := '';
+
         if not Execute then
           Exit;
+
+        if (FileName = '') then
+          raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileNameIsEmpty));
+
         firstpg := FromPage;
         lastpg := ToPage;
         fname := FileName;
         fext := ExtractFileExt(fname);
         if fext = '' then
+        begin
           ApplyExt(fname);
-        filt := SaveFilterByFileName(fname);
+          fext := ExtractFileExt(fname);
+        end;
+
+        if (filt = Nil) or (LowerCase(filt.DefaultExt) <> LowerCase(fext)) then
+          filt := SaveFilterByFileName(fname);
+
         if filt <> nil then
         begin
           filt.FileName := fname;
