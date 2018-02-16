@@ -130,6 +130,8 @@ type
     LS_FileExists: string;
     {@var LS_FileNotFoundStr - Variável de internacionalização para "Arquivo não encontrado" :/}
     LS_FileNotFoundStr: string;
+    {@var LS_FileNameIsEmpty - Variável de internacionalização para "Nome do arquivo não especificado" :/}
+    LS_FileNameIsEmpty: string;
     {@var LS_FileNameStr - Variável de internacionalização para "Nome do arquivo" :/}
     LS_FileNameStr: string;
     {@var LS_AllFileTypesStr - Variável de internacionalização para "Todos os arquivos" :/}
@@ -371,6 +373,7 @@ var
     LS_ReportEndStr: 'End';
     LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'File not found';
+    LS_FileNameIsEmpty: 'File name not Specified';
     LS_FileNameStr: 'File Name';
     LS_AllFileTypesStr: 'All files';
     LS_LoadReportStr: 'Load report';
@@ -492,8 +495,9 @@ var
     LS_PageBreakStr: 'Continua...';
     LS_PageMendStr: 'Continuação';
     LS_ReportEndStr: 'Fim';
-    LS_FileExists: 'File already exists. Overwrite?';
+    LS_FileExists: 'Arquivo já existe. Sobreescrever?';
     LS_FileNotFoundStr: 'Arquivo não encontrado';
+    LS_FileNameIsEmpty: 'Nome do arquivo não especificado';
     LS_FileNameStr: 'Nome do arquivo';
     LS_AllFileTypesStr: 'Todos os arquivos';
     LS_LoadReportStr: 'Carregar relatório';
@@ -576,9 +580,9 @@ var
     LS_Propriedades: 'Propriedades';
     LS_Salvar_Como: 'Salvar Como';
     LS_FileCorrupted: 'Arquivo Corrompido';
-    LS_FileCorruptedHeader: 'Corrupted file header "%s"!';
-    LS_FileVersion: 'Vers úo de arquivo inv ílido %d!';
-    LS_PageSettings: 'Configura Ô  es da p ígina';
+    LS_FileCorruptedHeader: 'Cabeçalho de arquivo corrompido "%s"!';
+    LS_FileVersion: 'Versão de arquivo inválida %d!';
+    LS_PageSettings: 'Configurações da página';
     LS_PageMargins: 'Margem';
     LS_PageMarginsTop: 'Superior';
     LS_PageMarginsBottom: 'Inferior';
@@ -593,8 +597,8 @@ var
     LS_PaperOrientationLandscape: 'Paisagem';
     LS_PaperOrientationPortrait: 'Retrato';
     LS_Duplex: 'Impressão frente e verso';
-    LS_OnlyOneInstance: 'Only one instance of %s is allowed!';
-    LS_NotImplemented: '%s is not yet implemented for this platform!';
+    LS_OnlyOneInstance: 'Apenas uma instância de %s é permitida!';
+    LS_NotImplemented: '%s ainda não foi implementado para esta plataforma!';
     LS_NoHandle: 'Handle não disponível!';
 
     LS_LastFooMsg: '';
@@ -617,6 +621,7 @@ var
     LS_ReportEndStr: 'Fin';
     LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Fichier non trouvé';
+    LS_FileNameIsEmpty: 'File name not Specified';
     LS_FileNameStr: 'Nom de Fichier';
     LS_AllFileTypesStr: 'Tous les fichiers';
     LS_LoadReportStr: 'Ouvrir rapport';
@@ -740,6 +745,7 @@ var
     LS_ReportEndStr: 'Extremo';
     LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Archivo no encontrado';
+    LS_FileNameIsEmpty: 'File name not Specified';
     LS_FileNameStr: 'Nombre del Archivo';
     LS_AllFileTypesStr: 'Todos los archivos';
     LS_LoadReportStr: 'Cargar el informe';
@@ -863,6 +869,7 @@ var
     LS_ReportEndStr: 'Fine';
     LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Archivio non fondò';
+    LS_FileNameIsEmpty: 'File name not Specified';
     LS_FileNameStr: 'Nome di file';
     LS_AllFileTypesStr: 'Tutti archiviano';
     LS_LoadReportStr: 'Rapporto di carico';
@@ -986,6 +993,7 @@ var
     LS_ReportEndStr: 'Ende';
     LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'File fand nicht';
+    LS_FileNameIsEmpty: 'File name not Specified';
     LS_FileNameStr: 'Akte Name';
     LS_AllFileTypesStr: 'Alles legt ab';
     LS_LoadReportStr: 'Lastbericht';
@@ -1109,6 +1117,7 @@ var
     LS_ReportEndStr: 'ÐšÐ¾Ð½ÐµÑ†';
     LS_FileExists: 'File already exists. Overwrite?';
     LS_FileNotFoundStr: 'Ð¤Ð°Ð¹Ð» Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½';
+    LS_FileNameIsEmpty: 'File name not Specified';
     LS_FileNameStr: 'Ð˜Ð¼Ñ? Ñ„Ð°Ð¹Ð»Ð°';
     LS_AllFileTypesStr: 'Ð’Ñ?Ðµ Ñ„Ð°Ð¹Ð»Ñ‹';
     LS_LoadReportStr: 'Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ñ‡ÐµÑ‚';
@@ -1232,6 +1241,7 @@ var
     LS_ReportEndStr: 'Konec';
     LS_FileExists: 'Soubor již existuje. Pøepsat?';
     LS_FileNotFoundStr: 'Soubor nenalezen';
+    LS_FileNameIsEmpty: 'File name not Specified';
     LS_FileNameStr: 'Název souboru';
     LS_AllFileTypesStr: 'Všechny soubory';
     LS_LoadReportStr: 'Naèíst report';
