@@ -320,7 +320,7 @@ begin
     ACh := RefusedCh[RefusedChCount];
     Dec(RefusedChCount);
   end
-  else if Boolean(Buffer^) then
+  else if Assigned(Buffer) and Boolean(Buffer^) then
   begin
     ACh := Buffer^;
     Inc(Buffer);

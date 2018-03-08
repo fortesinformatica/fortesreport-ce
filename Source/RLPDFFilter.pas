@@ -1757,7 +1757,10 @@ begin
   // begin text
   Writeln('BT');
   // font number and size
-  Writeln('/F' + IntToStr(AFontId) + ' ' + IntToStr(AFontSize) + ' Tf');
+  if AFontSize < 0 then
+    Writeln('/F' + IntToStr(AFontId) + ' ' + IntToStr(AFontSize*(-1)) + ' Tf')
+  else
+    Writeln('/F' + IntToStr(AFontId) + ' ' + IntToStr(AFontSize) + ' Tf');
   // position
   Writeln(PDF_FloatToStr(ALeft) + ' ' + PDF_FloatToStr(ATop) + ' Td');
   // sub/superscript
