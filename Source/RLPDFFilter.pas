@@ -1753,14 +1753,16 @@ end;
 
 procedure TRLPDFFilter.WriteText(ALeft, ATop: Double; const AText: string;
   AFontId, AFontSize: Integer);
+var
+  FontSize: Integer;
 begin
   // begin text
   Writeln('BT');
   // font number and size
-  if AFontSize < 0 then
-    Writeln('/F' + IntToStr(AFontId) + ' ' + IntToStr(AFontSize*(-1)) + ' Tf')
-  else
-    Writeln('/F' + IntToStr(AFontId) + ' ' + IntToStr(AFontSize) + ' Tf');
+  FontSize := AFontSize;
+  if AFontSize < 0 then //Resolver problema com font size negativo, causando texto invertido
+    FontSize := (AFontSize * (-1)) - 2;
+  Writeln('/F' + IntToStr(AFontId) + ' ' + IntToStr(FontSize) + ' Tf');
   // position
   Writeln(PDF_FloatToStr(ALeft) + ' ' + PDF_FloatToStr(ATop) + ' Td');
   // sub/superscript
