@@ -1570,7 +1570,7 @@ begin
       Preview.NextPage
     else
       Exit;
-  TimerRepeat.Tag := TimerRepeat.Tag + Integer(TimerRepeat.Interval);
+  TimerRepeat.Tag := TimerRepeat.Tag + PtrInt(TimerRepeat.Interval);
 end;
 
 procedure TRLPreviewForm.SpeedButtonPriorMouseDown(Sender: TObject;
