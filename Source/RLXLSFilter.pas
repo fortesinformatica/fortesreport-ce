@@ -2182,7 +2182,7 @@ begin
     if sz > 0 then
     begin
       AStream.Write(ABuff^, sz);
-      ABuff := Pointer(Integer(ABuff) + sz);
+      ABuff := Pointer(PtrInt(ABuff) + sz);
       ASize := ASize - sz;
       ACode := B8_CONTINUE;
     end;
@@ -2203,7 +2203,7 @@ begin
 {$ifdef MSWINDOWS}
     GetObject(AFont.Handle, SizeOf(TLogFont), @lf);
 {$endif}
-    StringToWideChar(AnsiString(AFont.Name), PWideChar(Integer(font) + SizeOf(TRLXLSBiff8FONT)), room);
+    StringToWideChar(AnsiString(AFont.Name), PWideChar(PtrInt(font) + SizeOf(TRLXLSBiff8FONT)), room);
     font.dyHeight := AFont.Size * 20;
     if fsItalic in AFont.Style then
       font.grbit := font.grbit or B8_FONT_grbit_fItalic;
@@ -2270,7 +2270,7 @@ begin
   room := WideStringSize(AFormatString);
   format := AllocMem(SizeOf(TRLXLSBiff8FORMAT) + room);
   try
-    StringToWideChar(AFormatString, PWideChar(Integer(format) + SizeOf(TRLXLSBiff8FORMAT)), room);
+    StringToWideChar(AFormatString, PWideChar(PtrInt(format) + SizeOf(TRLXLSBiff8FORMAT)), room);
     format.ifmt := AFormatCode;
     format.cch := Length(AFormatString);
     format.cchgrbit := $01;
@@ -2617,7 +2617,7 @@ begin
     BoundSheet.cch := Length(ASheet.Title);
     BoundSheet.cchgrbit := 1;
     if BoundSheet.cch > 0 then
-      StringToWideChar(ASheet.Title, PWideChar(Integer(BoundSheet) + SizeOf(TRLXLSBiff8BOUNDSHEET)), TitleLen);
+      StringToWideChar(ASheet.Title, PWideChar(PtrInt(BoundSheet) + SizeOf(TRLXLSBiff8BOUNDSHEET)), TitleLen);
     WriteBIFF(AStream, B8_BOUNDSHEET, BoundSheet, SizeOf(TRLXLSBiff8BOUNDSHEET) + TitleLen);
   finally
     FreeMem(BoundSheet);
@@ -2789,7 +2789,7 @@ begin
             repeat
               sz := (Min(RangeTextLen - ltitleoffset, MaxBiffRecordSize - sstblockoffset)) and (not 1);
               ReallocMem(sst, sstsize + sz);
-              Move(Pointer(Integer(sstbuf) + ltitleoffset)^, Pointer(Integer(sst) + sstsize)^, sz);
+              Move(Pointer(PtrInt(sstbuf) + ltitleoffset)^, Pointer(PtrInt(sst) + sstsize)^, sz);
               sstsize := sstsize + sz;
               sstblockoffset := sstblockoffset + sz;
               ltitleoffset := ltitleoffset + sz;
@@ -3445,7 +3445,7 @@ begin
       try
         header.cch := Length(aux);
         header.cchgrbit := 1;
-        StringToWideChar(aux, PWideChar(Integer(header) + SizeOf(TRLXLSBiff8HEADER)), room);
+        StringToWideChar(aux, PWideChar(PtrInt(header) + SizeOf(TRLXLSBiff8HEADER)), room);
         WriteBIFF(AStream, B8_HEADER, header, SizeOf(TRLXLSBiff8HEADER) + room);
       finally
         FreeMem(header);
@@ -3466,7 +3466,7 @@ begin
       try
         footer.cch := Length(aux);
         footer.cchgrbit := 1;
-        StringToWideChar(aux, PWideChar(Integer(footer) + SizeOf(TRLXLSBiff8HEADER)), room);
+        StringToWideChar(aux, PWideChar(PtrInt(footer) + SizeOf(TRLXLSBiff8HEADER)), room);
         WriteBIFF(AStream, B8_FOOTER, footer, SizeOf(TRLXLSBiff8FOOTER) + room);
       finally
         FreeMem(footer);

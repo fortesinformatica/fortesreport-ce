@@ -499,7 +499,7 @@ begin
   ItemPtr.KeyLength := Length(AnsiKey);
   Inc(FHeapLength, SizeOf(TRLXLSXHashItem));
   ItemPtr.KeyOffset := FHeapLength;
-  Move(AnsiKey[1], Pointer(Integer(FHeapPtr) + ItemPtr.KeyOffset)^, Length(AnsiKey));
+  Move(AnsiKey[1], Pointer(PtrInt(FHeapPtr) + ItemPtr.KeyOffset)^, Length(AnsiKey));
   Inc(FHeapLength, Length(AnsiKey));
   FBuckets[BucketIndex].Add(ItemPtr);
   ItemPtr.Index := FItems.Count;
