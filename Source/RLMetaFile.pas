@@ -4326,13 +4326,17 @@ begin
   ACanvas.Polygon(P);
 end;
 
-procedure TRLPolygonObject.Assign(AObject: TRLGraphicObject); 
+procedure TRLPolygonObject.Assign(AObject: TRLGraphicObject);
+var
+  i: Integer;
 begin
   inherited Assign(AObject);
   //
   Pen := TRLPolygonObject(AObject).Pen;
   Brush := TRLPolygonObject(AObject).Brush;
-  Points := TRLPolygonObject(AObject).Points;
+  SetLength(FPoints, Length(TRLPolygonObject(AObject).Points));
+  for i := Low(Points) to High(Points) do
+    Points[i] := TRLPolygonObject(AObject).Points[i];
 end;
 
 procedure TRLPolygonObject.Offset(AXDesloc, AYDesloc: Integer);

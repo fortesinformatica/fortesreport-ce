@@ -3552,7 +3552,7 @@ type
 
     procedure Clear;
     function ShowPrintDialog: Boolean;
-    function Prepare: Boolean;
+    function Prepare: Boolean; Virtual;
     function Preview(Dest: TRLPreview = nil): Boolean;
     function PreviewModal: Boolean;
     procedure ClosePreview;
