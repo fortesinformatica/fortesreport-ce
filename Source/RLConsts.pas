@@ -1347,6 +1347,129 @@ var
 
     LS_LastFooMsg: '';
   );
+  
+  GermanStrings: TRLLocaleStrings = (
+    LS_PrintingInProgressStr: 'Drucke...';
+    LS_FilterInProgressStr: 'Speichere Bericht...';
+    LS_PreparingReportStr: 'Bereite den Bericht vor...';
+    LS_PrinterNotFoundStr: 'Drucker nicht gefunden';
+    LS_NoPrinterSelected: 'Es ist kein Drucker ausgewählt.';	
+    LS_NoPathToPrinterStr: 'Ungültiger Druckerpfad';
+    LS_LoadDefaultConfigStr: 'Standardkonfiguration laden';
+    LS_PrinterDriverErrorStr: 'Druckertreiberfehler';
+    LS_PageStr: 'Seite';
+    LS_PrepareErrorStr: 'Fehler beim vorbereiten des Berichts';
+    LS_PageBreakStr: 'Setze fort...';
+    LS_PageMendStr: 'Fortsetzung';
+    LS_ReportEndStr: 'Ende';
+	LS_FileExists: 'Die Datei existiert bereits. Überschreiben?';
+    LS_FileNotFoundStr: 'Datei nicht gefunden';
+	LS_FileNameIsEmpty: 'Kein Dateiname angegeben';
+    LS_FileNameStr: 'Dateiname';
+    LS_AllFileTypesStr: 'Alle Dateien';
+    LS_LoadReportStr: 'Bericht laden';
+    LS_NotFoundStr: 'Nicht gefunden';
+    LS_WaitStr: 'Bitte warten...';
+    LS_FinishedStr: 'Fertig';
+    LS_CancelStr: 'Abbrechen';
+    LS_CloseStr: 'Schliessen';
+    LS_SaveStr: 'Speichern';
+    LS_SendStr: 'Senden';
+    LS_PrintStr: 'Drucken';
+    LS_AboutTheStr: 'Über';
+    LS_PreviewStr: 'Vorschau';
+    LS_OfStr: 'von';
+    LS_ZoomStr: 'Zoom';
+    LS_FirstPageStr: 'Erste Seite';
+    LS_PriorPageStr: 'Vorherige Seite';
+    LS_NextPageStr: 'Nächste Seite';
+    LS_LastPageStr: 'Letzte Seite';
+    LS_EntirePageStr: 'Gesamte Seite';
+    LS_EntireWidthStr: 'Gesamte Breite';
+    LS_MultiplePagesStr: 'Mehrere Seiten';
+    LS_ConfigPrinterStr: 'Drucker konfigurieren';
+    LS_SaveToFileStr: 'Als Datei speichern';
+    LS_SendToStr: 'Senden an';
+    LS_PrinterStr: 'Drucker';
+    LS_NameStr: 'Name';
+    LS_PrintToFileStr: 'In Datei drucken';
+    LS_PrintInBackgroundStr: 'Im Hintergrund drucken';
+    LS_OptionsStr: 'Optionen';
+    LS_SaveInBackground: 'Im Hintergrund speichern';
+    LS_PageRangeStr: 'Seitenbereich';
+    LS_CopyAsImageStr: 'Als Bild kopieren';
+	LS_CopyAsMetafileStr: 'Als Metadatei kopieren';
+    LS_RangeFromStr: 'von';
+    LS_RangeToStr: 'bis';
+    LS_AllStr: 'Alle';
+    LS_PagesStr: 'Seiten';
+    LS_SelectionStr: 'Auswahl';
+    LS_CopiesStr: 'Kopien';
+    LS_NumberOfCopiesStr: 'Kopienanzahl';
+    LS_OkStr: 'Ok';
+    LS_DivideScreenStr: 'Bildschirm teilen';
+    LS_InvalidNameStr: 'Ungültiger Name';
+    LS_DuplicateNameStr: 'Name bereits in Benutzung';
+    LS_UseFilterStr: 'Filter';
+    LS_WebPageStr: 'Webseite';
+    LS_RichFormatStr: 'RichText Format';
+    LS_PDFFormatStr: 'PDF Dokument';
+    LS_XLSFormatStr97_2013: 'Exceltabelle 97-2013';
+	LS_XLSFormatStr: 'Exceltabelle';
+    LS_AtStr: 'at';
+    LS_FormStr: 'Formular';
+    LS_DefaultStr: 'Standard';
+    LS_ZoomInStr: 'Zoom erhöhen';
+    LS_ZoomOutStr: 'Zoom verringern';
+    LS_CopyStr: 'Kopieren';
+    LS_EditStr: 'Bearbeiten';
+    LS_FindCaptionStr: 'Suchen';
+    LS_TextToFindStr: 'Te&xt';
+    LS_FindNextStr: '&Weitersuchen';
+    LS_WholeWordsStr: '&Nur ganze Worte';
+    LS_MatchCaseStr: '&Groß- / Kleinschreibung';
+    LS_DirectionUpStr: '&Hoch';
+    LS_DirectionDownStr: '&Runter';
+    LS_DirectionCaptionStr: 'Richtung';
+    LS_ColumnsStr: 'Spalten';
+    LS_SetupStr: 'Setup...';
+    LS_FontSizeError: 'Schriftgrößenfehler';
+    LS_OddPages: 'Ungerade';
+    LS_EvenPages: 'Gerade';
+    LS_OddPagesOnly: 'Nur ungerade Seiten';
+    LS_EvenPagesOnly: 'Nur gerade Seiten';
+    LS_AllOddAndEven: 'Alle';
+    LS_PrintDialogError: 'Probleme mit dem Druckerdialog';
+    LS_PageSelectionHint: 'Seiten oder Seitenbereiche mit ";" trennen. Z.B.: 1;3;5-12;4';
+    LS_DefaultJobTitle: 'Bericht "%s"';
+    LS_ZoomHint: 'Zoom ändern';
+    Ls_Aplicar: 'Übernehmen';
+    LS_Propriedades: 'Einstellungen';
+    LS_Salvar_Como: 'Speichern unter';
+    LS_FileCorrupted: 'Die Datei ist beschädigt!';
+    LS_FileCorruptedHeader: 'Beschädigter file header "%s"!';
+    LS_FileVersion: 'ungültige Dateiversion %d!';
+    LS_PageSettings: 'Seiteneinstellungen';
+    LS_PageMargins: 'Ränder';
+    LS_PageMarginsTop: 'Oben';
+    LS_PageMarginsBottom: 'Unten';
+    LS_PageMarginsRigth: 'Rechts';
+    LS_PageMarginsLeft: 'Links';
+    LS_PageMarginsPaper: 'Seitenränder';
+    LS_PagePaper: 'Papier';
+    LS_PaperSize: 'Papiergröße';
+    LS_PaperSizeWidth: 'Breite';
+    LS_PaperSizeHeigth: 'Höhe';
+    LS_PaperOrientation: 'Ausrichtung';
+    LS_PaperOrientationLandscape: 'Querformat';
+    LS_PaperOrientationPortrait: 'Hochformat';
+    LS_Duplex: 'automatischer, doppelseitiger Druck';
+    LS_OnlyOneInstance: 'Es ist nur eine Instanz von %s erlaubt!';
+    LS_NotImplemented: '%s ist für diese Platform noch nicht implementiert!';
+    LS_NoHandle: 'Handle nicht verfügbar!';	
+	
+    LS_LastFooMsg: '';	
+  );
 
 procedure DetectLocale;
 {$IfNDef MSWINDOWS}
@@ -1372,6 +1495,8 @@ begin
     LocaleStrings := RussianStrings
   else if dlct = 'CS' then
     LocaleStrings := CzechStrings
+  else if dlct = 'DE' then
+    LocaleStrings := GermanStrings
   else
     LocaleStrings := EnglishStrings;
 {$Else}
@@ -1384,6 +1509,7 @@ begin
     $1d {LANG_SWEDISH}: LocaleStrings := SwedishStrings;
     $19 {LANG_RUSSIAN}: LocaleStrings := RussianStrings;
     $05 {LANG_CZECH}: LocaleStrings := CzechStrings;
+    $07 {LANG_GERMAN}: LocaleStrings := GermanStrings;
   else
     LocaleStrings := EnglishStrings;
   end;
