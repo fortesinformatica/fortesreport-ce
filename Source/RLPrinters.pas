@@ -77,11 +77,13 @@ uses
 type
   TRLPrintOddEvenPages = (odOddPagesOnly, odEvenPagesOnly, odAllPages);
 
+  {$IfNDef FPC}
   TSavedPrinterSettings = record
     PrinterName: String;
     DevMode: PDeviceMode;
     Bytes: Integer;
   end;
+  {$EndIf}
 
   TRLPrinterWrapper = class
   private
@@ -89,7 +91,9 @@ type
     FCustomWidth: Double;
     FCustomHeight: Double;
     FOddEven: TRLPrintOddEvenPages;
+    {$IfNDef FPC}
     SavedPrinterSettings: TSavedPrinterSettings;
+    {$EndIf}
     //
     function GetPrinterIndex: Integer;
     procedure SetPrinterIndex(const Value: Integer);
@@ -112,9 +116,11 @@ type
     function GetCanvas: TCanvas;
     function GetPrinterDisplays(AIndex: Integer): string;
     procedure LoadDefaultMetrics(var APrinterMetrics: TRLPrinterMetrics);
+    {$IfNDef FPC}
     procedure CreateDeviceMode(WindowHandle: HWND);
     procedure ApplyDeviceMode;
     procedure ClearSavedDevMode;
+    {$EndIf}
   protected
     procedure GetBinNames(AStringList: TStrings);
   public
@@ -228,14 +234,19 @@ begin
   //
   inherited;
 
+  {$IfNDef FPC}
   SavedPrinterSettings.PrinterName := '';
   SavedPrinterSettings.DevMode := nil;
   SavedPrinterSettings.Bytes := 0;
+  {$EndIf}
 end;
 
 destructor TRLPrinterWrapper.Destroy;
 begin
+  {$IfNDef FPC}
   ClearSavedDevMode;
+  {$EndIf}
+
   if Assigned(FPrinters) then
     FPrinters.free;
   //
@@ -253,7 +264,9 @@ end;
 
 procedure TRLPrinterWrapper.BeginDoc(const ATitle: string = '');
 begin
+  {$IfNDef FPC}
   ApplyDeviceMode;
+  {$EndIf}
   Printer.Title := ATitle;
   Printer.BeginDoc;
   {$IfNDef FPC}
@@ -909,10 +922,31 @@ begin
 {$endif}
 end;
 
+function TRLPrinterWrapper.ExecuteSetup(WindowHandle: HWND): Boolean;
+{$IfNDef FPC}
+begin
+  Result := false;
+  CreateDeviceMode(WindowHandle);
+  Result := true;
+end;
+{$else}
+begin
+  Result := False;
+  {$IFDEF MSWINDOWS}
+    TWinPrinter(Printer).AdvancedProperties;
+    Result := True;
+  {$ELSE}
+    ShowMessage(Format(GetLocalizeStr(LocaleStrings.LS_NotImplemented), ['Printer.AdvancedProperties']));
+  {$ENDIF}
+end;
+{$EndIf}
+
+{$IfNDef FPC}
 procedure TRLPrinterWrapper.ClearSavedDevMode;
 begin
-  if Assigned(SavedPrinterSettings.DevMode)
-  then FreeMem(SavedPrinterSettings.DevMode);
+  if Assigned(SavedPrinterSettings.DevMode) then
+    FreeMem(SavedPrinterSettings.DevMode);
+
   SavedPrinterSettings.PrinterName := '';
   SavedPrinterSettings.Bytes := 0;
 end;
@@ -921,9 +955,9 @@ procedure TRLPrinterWrapper.CreateDeviceMode(WindowHandle: HWND);
 var
   Device, Driver, Port: array[0..MAX_PATH] of char;
   PrinterHandle: THandle;
-  OldModeHandle: NativeUint; //hDeviceMode
+  OldModeHandle: THandle; //hDeviceMode
   OldDeviceMode: PDeviceMode; //PrinterDevMode
-  NewModeHandle: NativeUint;
+  NewModeHandle: THandle;
   NewDeviceMode: PDeviceMode;
   BytesNeeded: Integer;
 begin
@@ -932,11 +966,11 @@ begin
   try
     OldDeviceMode := GlobalLock(OldModeHandle);
     try
-      BytesNeeded := WinSpool.DocumentProperties(WindowHandle, PrinterHandle, Device, nil, nil, 0);
+      BytesNeeded := WinSpool.DocumentProperties(WindowHandle, PrinterHandle, Device, NewDeviceMode^, OldDeviceMode^, 0);
       NewModeHandle := GlobalAlloc(GHND, BytesNeeded);
       NewDeviceMode := GlobalLock(NewModeHandle);
       try
-        case WinSpool.DocumentProperties(WindowHandle, PrinterHandle, Device, NewDeviceMode, OldDeviceMode, DM_OUT_BUFFER or DM_IN_PROMPT or DM_IN_BUFFER) of
+        case WinSpool.DocumentProperties(WindowHandle, PrinterHandle, Device, NewDeviceMode^, OldDeviceMode^, DM_OUT_BUFFER or DM_IN_PROMPT or DM_IN_BUFFER) of
           IDOK: begin
             Printer.SetPrinter(Device, Driver, Port, NewModeHandle);
             ClearSavedDevMode;
@@ -963,11 +997,12 @@ procedure TRLPrinterWrapper.ApplyDeviceMode;
 var
   Device, Driver, Port: array[0..MAX_PATH] of char;
   PrinterHandle: THandle;
-  OldModeHandle: NativeUint; //hDeviceMode
+  OldModeHandle: THandle; //hDeviceMode
   NewModeHandle: NativeUint;
   NewDeviceMode: PDeviceMode;
 begin
-  if Printer.Printers[Printer.PrinterIndex] = SavedPrinterSettings.PrinterName then begin
+  if Printer.Printers[Printer.PrinterIndex] = SavedPrinterSettings.PrinterName then
+  begin
     Printer.GetPrinter(Device, Driver, Port, OldModeHandle);
     if WinSpool.OpenPrinter(@Device, PrinterHandle, nil) then
     try
@@ -975,7 +1010,7 @@ begin
         NewModeHandle := GlobalAlloc(GHND, SavedPrinterSettings.Bytes);
         NewDeviceMode := GlobalLock(NewModeHandle);
         try
-          case WinSpool.DocumentProperties(0, PrinterHandle, Device, NewDeviceMode, SavedPrinterSettings.DevMode, DM_OUT_BUFFER or DM_IN_BUFFER) of
+          case WinSpool.DocumentProperties(0, PrinterHandle, Device, NewDeviceMode^, SavedPrinterSettings.DevMode^, DM_OUT_BUFFER or DM_IN_BUFFER) of
             IDOK: begin
               Printer.SetPrinter(Device, Driver, Port, NewModeHandle);
             end;
@@ -992,25 +1027,7 @@ begin
     end;
   end;
 end;
-
-function TRLPrinterWrapper.ExecuteSetup(WindowHandle: HWND): Boolean;
-{$ifndef FPC}
-begin
-  Result := false;
-  CreateDeviceMode(WindowHandle);
-  Result := true;
-end;
-{$else}
-begin
-  Result := False;
-  {$IFDEF MSWINDOWS}
-    TWinPrinter(Printer).AdvancedProperties;
-    Result := True;
-  {$ELSE}
-    ShowMessage(Format(GetLocalizeStr(LocaleStrings.LS_NotImplemented), ['Printer.AdvancedProperties']));
-  {$ENDIF}
-end;
-{$endif}
+{$EndIf}
 
 function TRLPrinterWrapper.GetPrinterDisplays(AIndex: Integer): string;
 var
