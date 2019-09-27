@@ -132,7 +132,7 @@ type
     //
     procedure NewPage;
     function Printers: TStrings;
-    function ExecuteSetup(WindowHandle: HWND): Boolean;
+    function ExecuteSetup(WindowHandle: THandle): Boolean;
     function SetupEnabled: Boolean;
     procedure Refresh;
     function SupportsDuplex: Boolean;
@@ -922,7 +922,7 @@ begin
 {$endif}
 end;
 
-function TRLPrinterWrapper.ExecuteSetup(WindowHandle: HWND): Boolean;
+function TRLPrinterWrapper.ExecuteSetup(WindowHandle: THandle): Boolean;
 {$IfNDef FPC}
 begin
   Result := false;
