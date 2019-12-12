@@ -1,38 +1,38 @@
 { Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,7 +41,7 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
@@ -76,21 +76,21 @@ uses
   {$EndIf}
   Math;
 
-{@var TempDir - Especifica aonde dever„o ser criados os arquivos tempor·rios.
- Na inicializaÁ„o do sistema È atribuido um valor padr„o a esta vari·vel. Este valor pode ser alterado depois.
- No Windows o diretÛrio padr„o È "WINDOWS\TEMP", e no Linux È o "/tmp".
+{@var TempDir - Especifica aonde dever√£o ser criados os arquivos tempor√°rios.
+ Na inicializa√ß√£o do sistema √© atribuido um valor padr√£o a esta vari√°vel. Este valor pode ser alterado depois.
+ No Windows o diret√≥rio padr√£o √© "WINDOWS\TEMP", e no Linux √© o "/tmp".
  @links GetTempFileName. :/}
 var TempDir: String = '.';
 
-{@proc FreeObj - Libera objeto se n„o for nil e em seguida limpa a vari·vel.
+{@proc FreeObj - Libera objeto se n√£o for nil e em seguida limpa a vari√°vel.
  @links FreePtr. :/}
 procedure FreeObj(var AObj);
 
-{@proc FreePtr - Libera ponteiro se n„o for nil e em seguida limpa a vari·vel.
+{@proc FreePtr - Libera ponteiro se n√£o for nil e em seguida limpa a vari√°vel.
  @links FreeObj. :/}
 procedure FreePtr(var APtr);
 
-{@func ByteToHex - Retorna o byte em notaÁ„o hexadecimal de dois dÌgitos.
+{@func ByteToHex - Retorna o byte em nota√ß√£o hexadecimal de dois d√≠gitos.
  @links HexToByte. :/}
 function ByteToHex(const AByte: Byte): AnsiString;
 
@@ -102,117 +102,117 @@ function HexToByte(const AHex: AnsiString): Byte;
  @links HexToGraphic, HexToByte. :/}
 function HexToBitmap(const AHex: AnsiString): TBitmap;
 
-{@func HexToGraphic - Cria um gr·fico qualquer a partir de uma cadeia hexadecimal.
+{@func HexToGraphic - Cria um gr√°fico qualquer a partir de uma cadeia hexadecimal.
  @links HexToBitmap, HexToByte. :/}
 function HexToGraphic(const AHex: AnsiString): TGraphic;
 
 {@func NewComponentName - Cria um nome para um novo componente. :/}
 function NewComponentName(AComponent: TComponent): String;
 
-{@func GetTempFileName - Retorna nome de arquivo tempor·rio.
+{@func GetTempFileName - Retorna nome de arquivo tempor√°rio.
  @links TempDir. :/}
 function GetTempFileName: String;
 
 function TokenListChanged(const ATokenList: String; ATokenNo: Integer;
   const ANewTokenValue: string; ATokenSeparator: Char = '|'): String;
 
-{@func Token - Retorna a parte de n˙mero aIndex da string aTokenList cujas partes s„o separadas pelo caractere aTokenSeparator. :/}
+{@func Token - Retorna a parte de n√∫mero aIndex da string aTokenList cujas partes s√£o separadas pelo caractere aTokenSeparator. :/}
 function Token(const ATokenList: String; AIndex: Integer; ATokenSeparator: char = '|'): String;
 
-{@func ThreadIt - Executa um mÈtodo ou procedure em segundo plano. :}
+{@func ThreadIt - Executa um m√©todo ou procedure em segundo plano. :}
 function ThreadIt(AMethod: TThreadMethod; ALoop: Boolean = False): TThread; overload;
 function ThreadIt(AProc: TProcedure; ALoop: Boolean = False): TThread; overload;
 {/@func}
 
-{@func FormatFileExt - Adiciona ponto a uma extens„o, se n„o houver. :/}
+{@func FormatFileExt - Adiciona ponto a uma extens√£o, se n√£o houver. :/}
 function FormatFileExt(const AExt: String): String;
 
-{@func AddFileFilter - Adiciona filtro de arquivos com nome aFilter, descriÁ„o aDescription e extens„o padr„o aExt. :/}
+{@func AddFileFilter - Adiciona filtro de arquivos com nome aFilter, descri√ß√£o aDescription e extens√£o padr√£o aExt. :/}
 function AddFileFilter(const AFilter: String; const ADescription, AExt: String): String;
 
-{@func GetFileFilterExt - Devolve a extens„o padr„o para arquivos correspondentes ao filtro aFilter. :/}
+{@func GetFileFilterExt - Devolve a extens√£o padr√£o para arquivos correspondentes ao filtro aFilter. :/}
 function GetFileFilterExt(const AFilter: String; AIndex: Integer): String;
 
-{@func RotatePoints - Rotaciona os pontos aPoints em 2D de acordo com o ‚ngulo aAngle.
+{@func RotatePoints - Rotaciona os pontos aPoints em 2D de acordo com o √¢ngulo aAngle.
  @links RotateBitmap. :/}
 procedure RotatePoints(var APoints: array of TPoint; const AAngle: Double);
 
-{@func RotateBitmap - Rotaciona o bitmap TBitmap em 2D de acordo com o ‚ngulo aAngle e devolve em aDest.
- Nota: O bitmap aDest deve ter tamanho suficiente para a imagem rotacionada. Este c·lculo pode ser feito
+{@func RotateBitmap - Rotaciona o bitmap TBitmap em 2D de acordo com o √¢ngulo aAngle e devolve em aDest.
+ Nota: O bitmap aDest deve ter tamanho suficiente para a imagem rotacionada. Este c√°lculo pode ser feito
  previamente com a proc RotatePoints.
  @links RotatePoints, RotatedBitmap. :/}
 procedure RotateBitmap(ASource, ADest: TBitmap; AAngle: Double; AAxis, AOffset: TPoint);
 
-{@func RotatedBitmap - Cria e devolve um bitmap compatÌvel com o bitmap aSource rotacionado em 2D de acordo com o ‚ngulo aAngle com
+{@func RotatedBitmap - Cria e devolve um bitmap compat√≠vel com o bitmap aSource rotacionado em 2D de acordo com o √¢ngulo aAngle com
  tamanho calculado.
  @links RotateBitmap. :/}
 function RotatedBitmap(ASource: TBitmap; AAngle: Double): TBitmap;
 
-{@func PointsRect - Retorna um ret‚ngulo delimitando a ·rea definida pelos pontos aPoints.
+{@func PointsRect - Retorna um ret√¢ngulo delimitando a √°rea definida pelos pontos aPoints.
  @links PointsSize. :/}
 function PointsRect(const APoints: array of TPoint): TRect;
 
-{@func PointsSize - Retorna o tamanho da ·rea definida pelos pontos aPoints.
+{@func PointsSize - Retorna o tamanho da √°rea definida pelos pontos aPoints.
  @links PointsRect. :/}
 function PointsSize(const APoints: array of TPoint): TPoint;
 
-{@func ScalePoints - Modifica as dimensıes dos pontos aPoints para que caibam no ret‚ngulo definido por aRect respeitando a proporÁ„o.
+{@func ScalePoints - Modifica as dimens√µes dos pontos aPoints para que caibam no ret√¢ngulo definido por aRect respeitando a propor√ß√£o.
  @links PointsRect. :/}
 procedure ScalePoints(var APoints: array of TPoint; const ARect: TRect);
 
-{@func StretchPoints - Amplia ou reduz as dimensıes dos pontos aPoints para que caibam no ret‚ngulo definido por aRect.
+{@func StretchPoints - Amplia ou reduz as dimens√µes dos pontos aPoints para que caibam no ret√¢ngulo definido por aRect.
  @links PointsRect. :/}
 procedure StretchPoints(var APoints: array of TPoint; const ARect: TRect);
 
-{@func CenterPoints - Centraliza os pontos aPoints no ret‚gulo aRect.
+{@func CenterPoints - Centraliza os pontos aPoints no ret√¢gulo aRect.
  @links PointsRect. :/}
 procedure CenterPoints(var APoints: array of TPoint; const ARect: TRect);
 
-{@func TextBounds - Calcula as dimensıes do texto aText de acordo com a fonte aFont e opcionalmente rotacionado em
- 2D de acordo com o ‚ngulo aAngle.
+{@func TextBounds - Calcula as dimens√µes do texto aText de acordo com a fonte aFont e opcionalmente rotacionado em
+ 2D de acordo com o √¢ngulo aAngle.
  @links PointsRect. :/}
 function TextBounds(const AText: string; AFont: TFont; AAngle: Double): TPoint;
 
-{@proc MoveRect - Desloca o ret‚ngulo horizontalmente de acordo com aX e verticalmente de acordo com aY.
- Nota: Valores positivos deslocam o ret‚ngulo para a direita ou abaixo. :/}
+{@proc MoveRect - Desloca o ret√¢ngulo horizontalmente de acordo com aX e verticalmente de acordo com aY.
+ Nota: Valores positivos deslocam o ret√¢ngulo para a direita ou abaixo. :/}
 procedure MoveRect(var ARect: TRect; AX, AY: Integer);
 
-{@func RectWidth - Retorna a largura do ret‚ngulo aRect.
+{@func RectWidth - Retorna a largura do ret√¢ngulo aRect.
  @links RectHeight. :/}
 function RectWidth(const ARect: TRect): Integer;
 
-{@func RectHeight - Retorna a largura do ret‚ngulo aRect.
+{@func RectHeight - Retorna a largura do ret√¢ngulo aRect.
  @links RectWidth. :/}
 function RectHeight(const ARect: TRect): Integer;
 
-{@func ReduceRect - Retorna o ret‚ngulo aRect reduzido de acordo com os decrementos especificados em aPixels. :/}
+{@func ReduceRect - Retorna o ret√¢ngulo aRect reduzido de acordo com os decrementos especificados em aPixels. :/}
 function ReduceRect(const ARect: TRect; APixels: TRect): TRect;
 
-{@func IncreaseRect - Retorna o ret‚ngulo aRect ampliado de acordo com os incrementos especificados em aPixels. :/}
+{@func IncreaseRect - Retorna o ret√¢ngulo aRect ampliado de acordo com os incrementos especificados em aPixels. :/}
 function IncreaseRect(const ARect: TRect; APixels: TRect): TRect;
 
-{@func DiffRect - Retorna a diferenÁa entre os ret‚ngulos aRectOut e aRectIn, desde que aRectIn esteja dentro
+{@func DiffRect - Retorna a diferen√ßa entre os ret√¢ngulos aRectOut e aRectIn, desde que aRectIn esteja dentro
  de aRectOut. :/}
 function DiffRect(const ARectOut, ARectIn: TRect): TRect;
 
-{@func IterateJustification - Faz a justificaÁ„o do texto distribuindo espaÁos. A funÁ„o deve ser executada atÈ
+{@func IterateJustification - Faz a justifica√ß√£o do texto distribuindo espa√ßos. A fun√ß√£o deve ser executada at√©
  se obter a largura total do texto. :/}
 function IterateJustification(var AText: AnsiString; var AIndex: Integer): Boolean;
 
-{@func ScaleRect - Calcula a maior amostra do ret‚ngulo aSource escalonado de modo a caber em aTarget. :/}
+{@func ScaleRect - Calcula a maior amostra do ret√¢ngulo aSource escalonado de modo a caber em aTarget. :/}
 function ScaleRect(const ASource, ATarget: TRect; ACenter: Boolean): TRect;
 
 procedure StreamWrite(AStream: TStream; const AStr: string);
 procedure StreamWriteLn(AStream: TStream; const AStr: string = '');
 
-{@proc RegisterTempFile - Registra um arquivo tempor·rio para ser excluÌdo na finalizaÁ„o. :/}
+{@proc RegisterTempFile - Registra um arquivo tempor√°rio para ser exclu√≠do na finaliza√ß√£o. :/}
 procedure RegisterTempFile(const AFileName: String);
-{@proc UnregisterTempFile - Retira arquivo tempor·rio da lista de arquivos a excluir na finalizac„o. :/}
+{@proc UnregisterTempFile - Retira arquivo tempor√°rio da lista de arquivos a excluir na finalizac√£o. :/}
 procedure UnregisterTempFile(const AFileName: String);
-{@proc ClearTempFiles - Destroi arquivos tempor·rios registrados pela proc RegisterTempFile. :/}
+{@proc ClearTempFiles - Destroi arquivos tempor√°rios registrados pela proc RegisterTempFile. :/}
 procedure ClearTempFiles;
 
-{@proc SmartGetFieldDisplayText - Retorna a verdadeira intenÁ„o do texto de exibiÁ„o do valor do campo. :/}
+{@proc SmartGetFieldDisplayText - Retorna a verdadeira inten√ß√£o do texto de exibi√ß√£o do valor do campo. :/}
 function SmartGetFieldDisplayText(Field: TField; const Mask: string = ''): String;
 
 var
@@ -387,7 +387,7 @@ var
 begin
   stream := TStringStream.Create('');
   try
-    // traduz string hex em bin·ria
+    // traduz string hex em bin√°ria
     L := Length(AHex);
     I := 1;
     while I < L do
@@ -395,7 +395,7 @@ begin
       stream.WriteString(AnsiChar(HexToByte(AHex[I] + AHex[I + 1])));
       Inc(I, 2);
     end;
-    // procura referÍncia para a classe
+    // procura refer√™ncia para a classe
     Result := NeedAuxBitmap;
     stream.Seek(0, 0);
     TPublicGraphic(Result).ReadData(stream);
@@ -415,7 +415,7 @@ begin
   Result := nil;
   stream := TStringStream.Create('');
   try
-    // traduz string hex em bin·ria
+    // traduz string hex em bin√°ria
     L := Length(AHex);
     I := 1;
     while I < L do
@@ -428,7 +428,7 @@ begin
     stream.Read(Size, 1);
     SetLength(graphclassname, Size);
     stream.Read(graphclassname[1], Size);
-    // procura referÍncia para a classe
+    // procura refer√™ncia para a classe
     graphclassname := UpperCase(graphclassname);
     if graphclassname = 'TBITMAP' then
       graphclass := TBitmap
@@ -453,7 +453,7 @@ begin
 end;
 
 {$IfNDef FPC}
-// diretÛrio tempor·rio
+// diret√≥rio tempor√°rio
 function GetTempDir: String;
 {$ifndef LINUX}
 var
@@ -462,8 +462,8 @@ var
 {$endif}
 begin
 {$ifndef LINUX}
-  GetDir(0, H); // salva diretÛrio atual
-  GetWindowsDirectory(@P, 256); // diretÛrio do windows
+  GetDir(0, H); // salva diret√≥rio atual
+  GetWindowsDirectory(@P, 256); // diret√≥rio do windows
   ChDir(strpas(P));
   try
     GetTempPath(256, @P);
@@ -1017,10 +1017,10 @@ begin
   sh := ASource.Bottom - ASource.Top;
   tw := ATarget.Right - ATarget.Left;
   th := ATarget.Bottom - ATarget.Top;
-  // calcula o maior dos fatores de proporÁ„o entre largura e altura
-  if (sw = 0) then //PrecauÁ„o para evitar divis„o por zero
+  // calcula o maior dos fatores de propor√ß√£o entre largura e altura
+  if (sw = 0) then //Precau√ß√£o para evitar divis√£o por zero
     sw := 1;
-  if (sh = 0) then //PrecauÁ„o para evitar divis„o por zero
+  if (sh = 0) then //Precau√ß√£o para evitar divis√£o por zero
     sh := 1;
   fw := tw / sw;
   fh := th / sh;
@@ -1103,7 +1103,15 @@ begin
 end;
 
 initialization
-  TempDir := GetTempDir;
+  try
+    TempDir := GetTempDir;
+  except
+    on E: Exception do
+    begin
+      ForceDirectories(application.ExeName+'tmp\');
+      TempDir := ExtractFilePath(application.ExeName)+'tmp\';
+    end;
+  end;
   AuxBitmap := nil;
   LogClear;
 
