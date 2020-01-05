@@ -966,7 +966,9 @@ begin
   try
     OldDeviceMode := GlobalLock(OldModeHandle);
     try
-      BytesNeeded := WinSpool.DocumentProperties(WindowHandle, PrinterHandle, Device, NewDeviceMode^, OldDeviceMode^, 0);
+      BytesNeeded := WinSpool.DocumentProperties(WindowHandle, PrinterHandle, Device, nil, nil, 0);
+      if BytesNeeded < 0 then
+        raise Exception.Create('The call to DocumentProperties failed.');
       NewModeHandle := GlobalAlloc(GHND, BytesNeeded);
       NewDeviceMode := GlobalLock(NewModeHandle);
       try
