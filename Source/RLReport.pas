@@ -3444,7 +3444,7 @@ type
     FTitle: string;
     FJobTitle: string;
     FReportDateTime: TDateTime;
-    FDefaultFilter: TRLCustomPrintFilter;
+    FDefaultFilter: TRLCustomFilter;
     FExpressionParser: TRLExpressionParser;
     FShowProgress: Boolean;
     FPrintQuality: TRLPrintQuality;
@@ -3468,7 +3468,7 @@ type
     procedure SetShowTracks(const AValue: Boolean);
     procedure SetShowExplosion(const AValue: Boolean);
     procedure SetPrintQuality(const AValue: TRLPrintQuality);
-    procedure SetDefaultFilter(const AValue: TRLCustomPrintFilter);
+    procedure SetDefaultFilter(const AValue: TRLCustomFilter);
     procedure SetExpressionParser(const AValue: TRLExpressionParser);
     procedure SetAdjustableMargins(const AValue: Boolean);
     procedure SetPageSetup(const Value: TRLPageSetup);
@@ -3624,7 +3624,7 @@ type
 
     {@prop DefaultFilter - Filtro padrão de impressão.
      @links TRLCustomPrintFilter. :/}
-    property DefaultFilter: TRLCustomPrintFilter
+    property DefaultFilter: TRLCustomFilter
       read FDefaultFilter write SetDefaultFilter;
 
     {@prop ExpressionParser - Referência para um objeto avaliador de expressões matemáticas.
@@ -13936,7 +13936,7 @@ begin
   InvalidateAll;
 end;
 
-procedure TRLCustomReport.SetDefaultFilter(const AValue: TRLCustomPrintFilter);
+procedure TRLCustomReport.SetDefaultFilter(const AValue: TRLCustomFilter);
 begin
   FDefaultFilter := AValue;
   if AValue <> nil then
