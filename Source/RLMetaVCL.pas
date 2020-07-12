@@ -302,7 +302,7 @@ begin
     taRightJustify: Result := MetaTextAlignmentRight;
     taCenter: Result := MetaTextAlignmentCenter;
   else
-    if ASource = succ(taCenter) then
+    if ASource > High(TAlignment) then
       Result := MetaTextAlignmentJustify
     else
       Result := MetaTextAlignmentLeft;
@@ -316,7 +316,7 @@ begin
     tlBottom: Result := MetaTextLayoutBottom;
     tlCenter: Result := MetaTextLayoutCenter;
   else
-    if ASource = succ(tlCenter) then
+    if ASource > High(TTextLayout) then
       Result := MetaTextLayoutJustify
     else
       Result := MetaTextLayoutTop;
@@ -505,7 +505,7 @@ begin
     MetaTextAlignmentLeft: Result := taLeftJustify;
     MetaTextAlignmentRight: Result := taRightJustify;
     MetaTextAlignmentCenter: Result := taCenter;
-    MetaTextAlignmentJustify: Result := succ(taCenter);
+    MetaTextAlignmentJustify: Result := High(TAlignment);
   else
     Result := taLeftJustify;
   end;
@@ -517,7 +517,7 @@ begin
     MetaTextLayoutTop: Result := tlTop;
     MetaTextLayoutBottom: Result := tlBottom;
     MetaTextLayoutCenter: Result := tlCenter;
-    MetaTextLayoutJustify: Result := succ(tlCenter);
+    MetaTextLayoutJustify: Result := High(TTextLayout);
   else
     Result := tlTop;
   end;
