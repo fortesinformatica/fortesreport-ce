@@ -1096,7 +1096,7 @@ function SmartGetFieldDisplayText(Field: TField; const Mask: string = ''): Strin
 begin
   if (Field is TBlobField) and not Assigned(Field.OnGetText) then
     Result := Field.AsString
-  else if (Field is TFloatField) and (Mask <> '') then
+  else if (Field is TNumericField) and (Mask <> '') then
     Result := FormatFloat(Mask, Field.AsFloat)
   else
     Result := Field.DisplayText;
