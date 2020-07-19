@@ -474,6 +474,9 @@ begin
     try
       S.Seek(0, soFromBeginning);
       T := S.ReadString(3);
+      if (S.Position = 0) then
+        S.Seek(3, soFromCurrent);
+
       if T = 'NIL' then
         Result := nil
       else if T = 'BMP' then
