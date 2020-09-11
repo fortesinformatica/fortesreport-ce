@@ -55,7 +55,7 @@ uses
   {$IfDef MSWINDOWS}
    Windows,
   {$EndIf}
-   Messages, SysUtils, Math, Contnrs, Classes,
+   Messages, SysUtils, Math, Contnrs, Classes, ComCtrls,
   {$IfDef FPC}
    LMessages, LCLIntf, LCLType, LazFileUtils,
   {$EndIf}
@@ -66,7 +66,7 @@ uses
   {$EndIf}
   RLConsts, RLMetaFile, RLPreview, RLFilters, RLUtils, RLPrintDialog,
   RLSaveDialog, RLPrinters, RLTypes, RLFindDialog, RLComponentFactory,
-  RLAbout;
+  RLAbout, RLSpoolFilter, RLPDFFilter;
 
 {$IfDef FPC}
 const
@@ -78,6 +78,7 @@ type
   { TRLPreviewForm }
 
   TRLPreviewForm = class(TForm)
+    RLPDFFilter1: TRLPDFFilter;
     TimerRepeat: TTimer;
     PanelContainer: TPanel;
     PanelTools: TPanel;
@@ -89,6 +90,9 @@ type
     SpeedButtonZoomDown: TSpeedButton;
     SpeedButtonZoomUp: TSpeedButton;
     SpeedButtonClose: TSpeedButton;
+    SpeedButtonSeArch: TSpeedButton;
+//    SpeedButtonSetup: TSpeedButton;
+//    Bevel7: TBevel;
     Bevel1: TBevel;
     Bevel3: TBevel;
     Bevel4: TBevel;
@@ -113,6 +117,8 @@ type
     procedure SpeedButtonLastClick(Sender: TObject);
     procedure SpeedButtonSaveClick(Sender: TObject);
     procedure SpeedButtonCloseClick(Sender: TObject);
+    procedure SpeedButtonSearchClick(Sender: TObject);
+//    procedure SpeedButtonSetupClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormKeyUp(Sender: TObject; var Key: Word;
@@ -305,7 +311,7 @@ type
 var
   DefaultWindowState: TWindowState = wsMaximized;
   DefaultWindowBounds: TRect;
-  DefaultFormStyle: TFormStyle = fsNormal;
+  DefaultFormStyle: TFormStyle = fsMDIChild;
   DefaultShowModal: Boolean = False;
   DefaultPosition: TPosition = poScreenCenter;
   DefaultBorderIcons: TBorderIcons = [biSystemMenu, biMinimize, biMaximize];
@@ -388,7 +394,11 @@ var
   savecursor: TCursor;
   pages: TRLGraphicStorage;
 begin
+  {$IfDef FPC}
+  if not FileExistsUTF8(AFileName) then
+  {$Else}
   if not FileExists(AFileName) then
+  {$EndIf}
     raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_FileNotFoundStr + ' "' + AFileName + '"'));
   //
   pages := TRLGraphicStorage.Create;
@@ -886,7 +896,7 @@ begin
     begin
       Name := 'SpeedButtonClose';
       Parent := PanelTools;
-      Left := 151;
+      Left := 708;
       Top := 1;
       Width := 49;
       Height := 22;
@@ -902,11 +912,94 @@ begin
     begin
       Name := 'Bevel1';
       Parent := PanelTools;
-      Left := 204;
+      Left := 156;
       Top := 1;
       Width := 2;
       Height := 21;
     end;
+
+    // Ed Search Speed Button
+    SpeedButtonSeArch:=TSpeedButton.Create(Self);
+    with SpeedButtonSeArch do
+    begin
+      Name := 'SpeedButtonSeArch';
+      Parent := PanelTools;
+      Left := 162;
+      Top := 1;
+      Width := 25;
+      Height := 22;
+      Flat := True;
+      ShowHint := True;
+      Glyph := HexToBitmap (
+      '42030000424D42030000000000003600000028000000110000000F0000000100'+
+      '1800000000000C030000120B0000120B00000000000000000000808000808000'+
+      '8080008080008080008080008080008080008080008080008080008080008080'+
+      '0080800080800080800080800000808000000000000000000000000000000000'+
+      '8080008080008080008080008080000000000000000000000000000000008080'+
+      '0000808000000000808080000000000000000000808000808000808000808000'+
+      '8080000000008080800000000000000000008080000080800000000080808000'+
+      '0000000000000000808000808000808000808000808000000000808080000000'+
+      '0000000000008080000080800000000000000000000000000000000000000000'+
+      '0000FFFFFF000000000000000000000000000000000000000000808000008080'+
+      '0000000080808000000000000000000000000000000000000000000080808000'+
+      '0000000000000000000000000000808000008080000000008080800000000000'+
+      '0000000000000000000080800000000080808000000000000000000000000000'+
+      '0000808000008080000000008080800000000000000000000000000000008080'+
+      '0000000080808000000000000000000000000000000080800000808000808000'+
+      '0000000000000000000000000000000000000000000000000000000000000000'+
+      '0000000000000080800080800000808000808000808000000000808080000000'+
+      '000000000000FFFFFF0000008080800000000000000000008080008080008080'+
+      '0000808000808000808000000000000000000000000000000000808000000000'+
+      '0000000000000000000000008080008080008080000080800080800080800080'+
+      '8000000000000000000000808000808000808000000000000000000000808000'+
+      '80800080800080800000808000808000808000808000808080FFFFFF00000080'+
+      '8000808000808000808080FFFFFF000000808000808000808000808000008080'+
+      '0080800080800080800000000000000000000080800080800080800000000000'+
+      '0000000000808000808000808000808000008080008080008080008080008080'+
+      '0080800080800080800080800080800080800080800080800080800080800080'+
+      '800080800000');
+      Spacing := -1;
+      OnClick := SpeedButtonSearchClick;
+    end;
+
+{    SpeedButtonSetup:=TSpeedButton.Create(Self);
+    with SpeedButtonSetup do
+    begin
+      Name := 'SpeedButtonSetup';
+      Parent := PanelTools;
+      Left := 192;
+      Top := 1;
+      Width := 22;
+      Height := 22;
+      Flat := True;
+      ShowHint := True;
+      Glyph := HexToBitmap(
+      '4E010000424D4E01000000000000760000002800000011000000120000000100'+
+      '040000000000D8000000C40E0000C40E00001000000000000000000000000000'+
+      '80000080000000808000800000008000800080800000C0C0C000808080000000'+
+      'FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777'+
+      '7777700000007777830388888888700000007700833370077778700000007733'+
+      '037303737F7870000000770F33F33F30F778700000007330F77770337F787000'+
+      '0000737F7383F7F3F77870000000733738F837337F78700000007703F8F8733F'+
+      'F77870000000773F08F8073F7F787000000077338888F33FF778700000007777'+
+      '8FFFFFFF7F787000000077778FFFFFFFFF887000000077778FFFFFFF88887000'+
+      '000077778FFFFFFF87887000000077778FFFFFFF888770000000777788888888'+
+      '887770000000777777777777777770000000');
+      Spacing := -1;
+      OnClick := SpeedButtonSetupClick;
+    end;
+
+    TRLComponentFactory.CreateComponent(TBevel, Self, Bevel7);
+    with Bevel7 do
+    begin
+      Name := 'Bevel7';
+      Parent := PanelTools;
+      Left := 217;
+      Top := 1;
+      Width := 2;
+      Height := 21;
+    end; }
+
     TRLComponentFactory.CreateComponent(TBevel, Self, Bevel3);
     with Bevel3 do
     begin
@@ -1202,6 +1295,12 @@ begin
   SpeedButtonSave.Hint := GetLocalizeStr(LocaleStrings.LS_SaveToFileStr);
   SpeedButtonSave.ShowHint := True;
   SpeedButtonSave.Caption := GetLocalizeStr(LocaleStrings.LS_SaveStr);
+
+  SpeedButtonSeArch.Hint    := GetLocalizeStr(LocaleStrings.LS_FindCaptionStr);
+  SpeedButtonSeArch.ShowHint:= True;
+//  SpeedButtonSetup.Hint     := GetLocalizeStr(LocaleStrings.LS_ConfigPrinterStr);
+//  SpeedButtonSetup.ShowHint := True;
+
   SpeedButtonEdit.Hint := GetLocalizeStr(LocaleStrings.LS_EditStr);
   SpeedButtonEdit.ShowHint := True;
   SpeedButtonSend.Caption := GetLocalizeStr(LocaleStrings.LS_SendStr);
@@ -1315,11 +1414,13 @@ begin
   if Assigned(SetupInstance) and Assigned(SetupInstance.BeforePrint) then
     SetupInstance.BeforePrint(Self);
   RLPrinter.OddEven := odAllPages;
+  RLPrinter.Copies := 1;
   priorfocus := Screen.ActiveControl;
   try
     dialog := TRLPrintDialog.CreateNew(nil);
     try
       dialog.MaxPage := Preview.Pages.PageCount;
+      dialog.Copies := 1;
       if Preview.Pages.Orientation = MetaOrientationLandscape then
         dialog.Orientation := poLandscape
       else
@@ -1460,6 +1561,66 @@ procedure TRLPreviewForm.SpeedButtonCloseClick(Sender: TObject);
 begin
   Close;
 end;
+
+procedure TRLPreviewForm.SpeedButtonSearchClick(Sender: TObject);
+begin
+  ShowFindDialog;
+end;
+
+{
+Rotina antiga funcionava o codigo abaixo
+procedure TRLPreviewForm.SpeedButtonSetupClick(Sender: TObject);
+Var
+  priorfocus:TWinControl;
+  filter    :TRLCustomPrintFilter;
+begin
+  if Assigned(SetupInstance) and Assigned(SetupInstance.BeforePrint) then
+    SetupInstance.BeforePrint(Self);
+  priorfocus:=Screen.ActiveControl;
+  try
+    PrintParams.Clear;
+    PrintParams.MaxPage:=Preview.Pages.PageCount;
+    if Preview.Pages.Orientation=MetaOrientationLandscape then
+      PrintParams.Orientation:=poLandscape
+    else
+      PrintParams.Orientation:=poPortrait;
+
+    with TRLPrintDialog.Create(nil) do begin
+      FormStyle:=Self.FormStyle;
+      try
+        if not Execute then
+          Exit;
+      finally
+        Free;
+      end;
+    end;
+    //
+    filter:=PrintParams.Filter;
+
+    if filter=nil then begin
+       filter:=SpoolFilter;
+       PrintParams.filter:= SpoolFilter;
+       end;
+
+    filter.Pages         :=Preview.Pages;
+    filter.FirstPage     :=PrintParams.FromPage;
+    filter.LastPage      :=PrintParams.ToPage;
+    filter.Copies        :=PrintParams.Copies;
+    filter.BackgroundMode:=PrintParams.BackgroundMode;
+
+    if (rpoprintdirect in PrintParams.Options) then
+       filter.Run;
+    //
+    SentToPrinter:=True;
+  finally
+    // controle de foco para CLX
+    if not Assigned(priorfocus) or not ((priorfocus is TCustomEdit) or (priorfocus is TCustomComboBox)) then
+      priorfocus:=EditPageNo;
+    priorfocus.SetFocus;
+  end;
+  if Assigned(SetupInstance) and Assigned(SetupInstance.AfterPrint) then
+    SetupInstance.AfterPrint(Self);
+end; }
 
 procedure TRLPreviewForm.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
