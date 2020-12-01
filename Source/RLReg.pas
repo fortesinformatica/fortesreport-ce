@@ -117,6 +117,9 @@ end;
 
 procedure Register;
 begin
+  {$IFDEF DELPHICOMPILER9_UP}
+  ForceDemandLoadState(dlDisable);
+  {$ENDIF}
   // componentes
   RegisterComponents('Fortes Report CE', [TRLReport, 
                                       TRLBand, 
