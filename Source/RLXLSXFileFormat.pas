@@ -1663,6 +1663,14 @@ begin
     for RowId := RowId1 to RowId2 do
     begin
       Row := FindRow(RowId, True);
+
+      if ColId1 > ColId2 then
+	    begin
+	      ColId := ColId1;
+    	  ColId1 := ColId2;
+	      ColId2 := ColId;
+	    end;
+	  
       for ColId := ColId1 to ColId2 do
       begin
         Cell := Row.FindCell(ColId, True);
@@ -1709,6 +1717,7 @@ begin
   Result := FindCell(RowId, ColId, True);
   Result.FValueType := TRLXLSXCellValueTypeFloat;
   Result.FValue.FloatValue := FloatValue;
+
 end;
 
 function TRLXLSXWorksheet.SetString(RowId, ColId: Integer; const StringValue: string): TRLXLSXCell;
