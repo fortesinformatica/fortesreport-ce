@@ -5,7 +5,7 @@
 	"homepage": "fortesreport.com.br",
 	"mainsrc": "./Source",
 	"projects": [
-		"./Packages/frce.dpk"
+		"./Packages/frce.dproj"
 	],
 	"dependencies": {}
 }
