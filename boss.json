@@ -1,0 +1,11 @@
+{
+	"name": "fortesreport-ce",
+	"description": "The FortesReport is a powerful report generator available as a package of components for Delphi.",
+	"version": "1.0.0",
+	"homepage": "fortesreport.com.br",
+	"mainsrc": "./Source",
+	"projects": [
+		"./Packages/frce.dproj"
+	],
+	"dependencies": {}
+}
