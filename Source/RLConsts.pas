@@ -92,11 +92,16 @@ const
   {****                                  *}	
 
 const
-  CS_CopyrightStr = 'Copyright © 1999-2016 Fortes Informática';
+  CS_CopyrightStr = 'Copyright © 1999-2021 Fortes Informática';
   CS_ProductTitleStr = 'FortesReport Community Edition';
   CS_URLStr = 'http://www.fortesreport.com.br';
-  CS_AuthorNameStr = 'Ronaldo Moreira';
-  CS_Version = '4.0';
+  CS_URLGitHubStr = 'https://github.com/fortesinformatica/fortesreport-ce';
+  CS_AuthorNameStr = 'Ronaldo Moreira' + sLineBreak + sLineBreak +
+                     'Márcio Martins' + sLineBreak +
+					 'Daniel Simões de Almeida' + sLineBreak +
+                     'Régys Borges da Silveira' + sLineBreak +
+                     'Juliomar Marchetti';
+  CS_Version = '4.0.0.1';
 
 type
   TRLLocaleStrings = record

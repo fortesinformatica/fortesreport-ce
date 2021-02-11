@@ -65,7 +65,8 @@ uses
    Types, Controls, Buttons, ExtCtrls, Forms, Dialogs, StdCtrls, Graphics,
   {$EndIf}
   RLConsts, RLMetaFile, RLPreview, RLFilters, RLUtils, RLPrintDialog,
-  RLSaveDialog, RLPrinters, RLTypes, RLFindDialog, RLComponentFactory;
+  RLSaveDialog, RLPrinters, RLTypes, RLFindDialog, RLComponentFactory,
+  RLAbout;
 
 {$IfDef FPC}
 const
@@ -157,6 +158,7 @@ type
     { Protected declarations }
     procedure DoClose(var Action: TCloseAction); override;
     procedure CreateParams(var Params: TCreateParams); override;
+	procedure OnClickRLAbout(Sender: TObject);
   public
     { Public declarations }
     constructor Create(AOwner: TComponent); reintroduce;
@@ -1169,6 +1171,7 @@ begin
         ParentShowHint := False;
         ShowHint := True;
         Spacing := -1;
+		OnClick := OnClickRLAbout;
       end;
     end;
   end;
@@ -1230,6 +1233,18 @@ begin
 
   if Assigned(OnCreatePreviewForm) then
     OnCreatePreviewForm(Self);
+end;
+
+procedure TRLPreviewForm.OnClickRLAbout(Sender: TObject);
+var
+  LFormRLAbout : TFormRLAbout;
+begin
+  LFormRLAbout := TFormRLAbout.Create(Self);
+  try
+	LFormRLAbout.ShowModal;
+  finally
+	LFormRLAbout.Free;
+  end;
 end;
 
 procedure TRLPreviewForm.DoClose(var Action: TCloseAction);

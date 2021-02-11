@@ -77,6 +77,7 @@ type
     LabelTitle: TLabel;
     LabelVersion: TLabel;
     LabelHome: TLabel;
+	LabelGitHub: TLabel;
     LabelCopyright: TLabel;
     BitBtnOk: TBitBtn;
     procedure LabelHomeClick(Sender: TObject);
@@ -140,7 +141,7 @@ begin
    BorderStyle := bsDialog;
   {$endif};
   Caption := GetLocalizeStr(LocaleStrings.LS_AboutTheStr + ' ' + CS_ProductTitleStr);
-  ClientHeight := 155;
+  ClientHeight := 180;
   ClientWidth := 373;
   Color := clWhite;
   Position := poScreenCenter;
@@ -253,9 +254,28 @@ begin
     Name := 'LabelHome';
     Parent := Self;
     Left := 52;
-    Top := 92;
+    Top := 145;
     Hint := CS_URLStr;
     Caption := CS_URLStr;
+    Font.Name := 'helvetica';
+    Font.Color := clBlue;
+    Font.Height := -11;
+    Font.Pitch := fpVariable;
+    Font.Style := [fsUnderline];
+    ParentFont := False;
+    Cursor := crHandPoint;
+    OnClick := LabelHomeClick;
+  end;
+  
+  TRLComponentFactory.CreateComponent(TLabel, Self, LabelGitHub);
+  with LabelGitHub do
+  begin
+    Name := 'LabelGitHub';
+    Parent := Self;
+    Left := 52;
+    Top := 155;
+    Hint := CS_URLGitHubStr;
+    Caption := CS_URLGitHubStr;
     Font.Name := 'helvetica';
     Font.Color := clBlue;
     Font.Height := -11;
