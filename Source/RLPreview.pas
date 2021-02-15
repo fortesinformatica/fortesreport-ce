@@ -1095,7 +1095,7 @@ begin
       Invalidate;
     end;
   end;
-  if Parent is TRLPreview and (ssCtrl in Shift) then
+  if (Parent is TRLPreview) and (ssCtrl in Shift) then
     (Parent as TRLPreview).Capture(X, Y);
 end;
 
