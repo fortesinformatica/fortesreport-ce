@@ -308,12 +308,11 @@ var
 
 function NeedAuxBitmap: TBitmap;
 begin
-  if AuxBitmap = nil then
-  begin
-    AuxBitmap := TRLBitmap.Create;
-    AuxBitmap.Width := 1;
-    AuxBitmap.Height := 1;
-  end;
+  if AuxBitmap <> nil then
+    AuxBitmap.Free;
+  AuxBitmap := TRLBitmap.Create;
+  AuxBitmap.Width := 1;
+  AuxBitmap.Height := 1;
   Result := AuxBitmap;
 end;
 
