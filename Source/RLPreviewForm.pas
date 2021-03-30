@@ -311,7 +311,7 @@ type
 var
   DefaultWindowState: TWindowState = wsMaximized;
   DefaultWindowBounds: TRect;
-  DefaultFormStyle: TFormStyle = fsMDIChild;
+  DefaultFormStyle: TFormStyle = fsNormal;
   DefaultShowModal: Boolean = False;
   DefaultPosition: TPosition = poScreenCenter;
   DefaultBorderIcons: TBorderIcons = [biSystemMenu, biMinimize, biMaximize];
