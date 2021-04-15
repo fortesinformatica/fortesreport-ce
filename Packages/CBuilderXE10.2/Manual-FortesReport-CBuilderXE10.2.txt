@@ -1,0 +1,238 @@
+=============================================================
+# FortesReport
+##  C++Builder Packages Installation Manual
+
+
+  By
+    Marcelo Augusto Cicogna
+    HydroByte Software
+
+=============================================================
+## Goals
+  - New C++Builder packages.
+  - Reorganize C++ compiled files derived from FortesReport's
+    Object Pascal source.
+  - Allow more than one version or build to coexist on
+    Windows.
+  - Allow our project to be easily setup to use FortesReport,
+    focused in checking items in
+    "Project > Options > Packages" list.
+
+  Tested with FortesReport CE from SVN.
+
+-------------------------------------------------------------
+## Notation
+  * [Name]: IDE name or localization tag.
+  * {Path}: Shortcut for paths names.
+  
+  Note: here {Path} is not like IDE's macros $(Path).
+  
+  See APPENDIX A for IDE Names and Localization.
+
+-------------------------------------------------------------
+## Pre Conditions
+
+  a) If compiling from new source code, remove FortesReport
+     package from Installed Packages before start.
+  b) Clean target Bpl, Lib and Include folders.
+
+-------------------------------------------------------------
+## 1. C++Builder Version, Platform and Config
+
+  a) Unpack FortesReport, or get a SVN version, in a folder of
+     your choice.
+     Let's call it "{FRP_Folder}".
+     For example:
+       "C:\MyComponents\FortesReport"
+
+  b) Choose your C++Builder version in FortesReport "\Packages"
+     folder. For example:
+       "{FRP_Folder}\Packages\CBuilderXE10.2".
+     Let's call this entire path of {FRP_Pk_Path}.
+
+  c) For C++Builder XE10.2.
+     Check if there is your Platform and Config. You may have 
+     to create the paths:
+       "{FRP_Pk_Path}\{Platform}\{Config}"
+     For example:
+       "C:\MyComponents\FortesReport\Packages\CBuilderXE10.2\Win32\Release"
+       "C:\MyComponents\FortesReport\Packages\CBuilderXE10.2\Win32\Debug"       
+
+     By default, C++Builder FortesReport packages are set to
+     Platform = Win32 and Config = Release.    
+
+-------------------------------------------------------------
+## 2. Environment Setup
+
+  a) Open your IDE.
+
+  b) Access IDE's "Environment Variables".
+
+  c) Under "System variables" click "Add Override"
+     and add "{FRP_Pk_Path}\{Platform}\{Config}\Bpl;" to "Path".
+     For example:
+       "C:\MyComponents\FortesReport\Packages\CBuilderXE2\Win32\Release\Bpl"       
+     See Troubleshoot 6.b.
+
+  d) Under "User overrides" create "FREP" variable with
+     value equals to {FRP_Pk_Path} (see Step 1.b).
+
+  e) Under IDE's [Include Path] proceed:
+       Add 32-bit Windows (Compiler and Classic Compiler)
+         "$(FREP)\$(Platform)\Release\Include"       
+
+     Under IDE's [Library Path] proceed:
+       Add 32-bit Windows (Compiler and Classic Compiler)
+         "$(FREP)\$(Platform)\Release\Lib"       
+     See Troubleshoot 6.c.
+
+  f) Access Windows' "Environment Variables".
+     In "User variables for <user>" add
+       "{FRP_Pk_Path}\{Platform}\{Config}\Bpl;" to "Path".
+     For example:
+       "C:\MyComponents\FortesReport\Packages\CBuilderXE2\Win32\Release\Bpl"       
+     See Troubleshoot 6.f.
+  
+  Note: you can repeat steps c) and e) for multi-platform 
+    and/or multi-config options that you may use in your 
+    projects.
+
+-------------------------------------------------------------
+## 3. Install 
+
+### 3.1 Win32
+
+  a) Open "{FRP_Pk_Path}\frcec.cbproj" project.
+
+  b) Build "frcec.bpl".
+     Note: don't Make it. Build it.
+     See Troubleshoot 6.c and 6.e.
+
+  c) Right click on "frcec.bpl" project, in
+     Project Manager, and choose "Install". If the
+     installation succeeds, you will receive a dialog
+     confirmation about the FortesReport Installed Components.     
+     See Troubleshoot 6.b.
+
+-------------------------------------------------------------
+## 4. Your Project
+
+  a) It is important to check one option in your project that
+     will use FortesReport.
+     Under [C++ Linker], set or check these option:
+       "Link with Dynamic RTL" = true;
+       "Link with the Delphi Runtime Library" = false
+
+     In other words, this option must be equal to those found
+     in FortesReport Packages, at IDE's [C++ Linker].
+     By default, C++Builder FortesReport packages set these
+     options to true and false, respectively.     
+     See Troubleshoot 6.a.
+
+-------------------------------------------------------------
+## 5. Deploy
+
+  a) If you are using dynamic build packages, deploy the
+     "frcec.bpl" file.
+     The packages "frcec.bpl" are located in folder:
+       "{FRP_Pk_Path}\{Platform}\{Config}\Bpl".
+
+-------------------------------------------------------------
+## 6. Troubleshoot
+
+  a) Project <Prj.exe> raised exception class <$Address> with
+     message 'access violation at <0xAddress>: read of
+     address <0xAddress>
+     - See Step 4 about [C++ Linker] and "Link with Dynamic RTL"
+       Make sure your project has the same option as FortesReport
+       Packages (by default, Dynamic RTL is set to false).
+
+  b) Installing "frcec.bpl" raises errors about
+     frcec.bpl could not be found.
+     - Check if the "{FRP_Pk_Path}\{Platform}\{Config}\Bpl;" was
+       included into "Path" as determined at Step 2.c.
+
+  c) Errors complaining about *.dcu missing files.
+     - Check Step 2.e.
+     - Check Step 3.b.
+
+  d) ilink64 errors complaining about unresolved external *.o files.
+     - Remove *.bpi from Requires list (Project Manager treeview)
+       and Add Reference... again.
+
+  e) At compiling start, dialog asking to remove units.
+     Mark "View details" and check which package name is shown as
+     "required" in the end of de list. 
+     - Uncheck FortesReport from installed packages.
+     - If error persists, check and clean BPL files from
+       Embarcadero "Public Documents" directory.
+         C:\Users\Public\Documents\Embarcadero\Studio\19.0\BPL
+     - If error persists, restart the IDE.
+     
+  f) Errors complaining about *.bpl missing files when running
+     your app.
+     - If inside IDE, check Path in Step 2.c.
+     - If outside IDE, check Path in Step 2.f.
+
+-------------------------------------------------------------
+## 7. Clean Up
+
+  FortesReport packages for C++Builder XE10.2 or up have some
+  clean up tasks scheduled to post build operation.
+  See IDE's Post-Build at [Build Events].
+
+-------------------------------------------------------------
+## 8. Debug
+
+  If you want to debug FortesReport source code, take these steps:
+
+  a) Setup your IDE Environment.
+     See Steps 2.c and 2.e.
+     Under "User overrides" create "FRPSOURCE" variable
+     with value equals to:
+       "{FRP_Folder}\src"
+
+  b) Open "{FRP_Pk_Path}\frcec.cbproj" group project and
+     change the "Build Configuration" to "Debug".
+     Build all projects.
+     See also Setp 1.c.
+
+  c) Under [Debugger], add items to "Source path":
+      $(FRPSOURCE)
+      
+  d) Into your project, with Debug configuration, do:
+     - Under [C++ Linker] set
+       "Link with Dynamic RTL" to false.
+     - Under [Runtime Packages] set
+       "Build/Link with runtime packages" to false.
+
+
+=============================================================
+## APPENDIX
+
+-------------------------------------------------------------
+## A. IDE Names and Localization
+
+  - CBuilderXE2 / 10.2
+
+    [Include Path]:
+    "Tools > Options > Env. Options > C++ Options > Paths and Directories"
+    32-bit Windows: (Compiler and Classic Compiler)
+    64-bit Windows
+
+    [Libray Path]:
+    "Tools > Options > Env. Options > C++ Options > Paths and Directories"
+    32-bit Windows: Compiler and Classic Compiler)
+    64-bit Windows
+
+    [C++ Linker]
+    "Project > Options > C++ Linker"
+
+    [Build Events]
+    "Project > Options > Build Events"
+
+    [Debugger]
+    "Project > Options > Debugger"
+
+    [Runtime Packages]
+    "Project > Options > Packages > Runtime Packages"

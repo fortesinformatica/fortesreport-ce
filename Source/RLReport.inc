@@ -63,6 +63,11 @@
 // biblioteca do Jedi assim temos atualizado sempre
 {$I RLReport_jedi.inc}
 
+//Para compilação em IDE C++Builder (sem Delphi personality)
+{$IFDEF BCB}
+  {$I RLReport_BCB.inc}
+{$ENDIF}
+
 {$IFDEF DELPHI15_UP}
   {$DEFINE HAS_FORMATSETTINGS}
 {$ENDIF}
