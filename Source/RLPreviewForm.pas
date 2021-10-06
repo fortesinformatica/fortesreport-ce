@@ -1414,13 +1414,11 @@ begin
   if Assigned(SetupInstance) and Assigned(SetupInstance.BeforePrint) then
     SetupInstance.BeforePrint(Self);
   RLPrinter.OddEven := odAllPages;
-  RLPrinter.Copies := 1;
   priorfocus := Screen.ActiveControl;
   try
     dialog := TRLPrintDialog.CreateNew(nil);
     try
       dialog.MaxPage := Preview.Pages.PageCount;
-      dialog.Copies := 1;
       if Preview.Pages.Orientation = MetaOrientationLandscape then
         dialog.Orientation := poLandscape
       else
@@ -1566,61 +1564,6 @@ procedure TRLPreviewForm.SpeedButtonSearchClick(Sender: TObject);
 begin
   ShowFindDialog;
 end;
-
-{
-Rotina antiga funcionava o codigo abaixo
-procedure TRLPreviewForm.SpeedButtonSetupClick(Sender: TObject);
-Var
-  priorfocus:TWinControl;
-  filter    :TRLCustomPrintFilter;
-begin
-  if Assigned(SetupInstance) and Assigned(SetupInstance.BeforePrint) then
-    SetupInstance.BeforePrint(Self);
-  priorfocus:=Screen.ActiveControl;
-  try
-    PrintParams.Clear;
-    PrintParams.MaxPage:=Preview.Pages.PageCount;
-    if Preview.Pages.Orientation=MetaOrientationLandscape then
-      PrintParams.Orientation:=poLandscape
-    else
-      PrintParams.Orientation:=poPortrait;
-
-    with TRLPrintDialog.Create(nil) do begin
-      FormStyle:=Self.FormStyle;
-      try
-        if not Execute then
-          Exit;
-      finally
-        Free;
-      end;
-    end;
-    //
-    filter:=PrintParams.Filter;
-
-    if filter=nil then begin
-       filter:=SpoolFilter;
-       PrintParams.filter:= SpoolFilter;
-       end;
-
-    filter.Pages         :=Preview.Pages;
-    filter.FirstPage     :=PrintParams.FromPage;
-    filter.LastPage      :=PrintParams.ToPage;
-    filter.Copies        :=PrintParams.Copies;
-    filter.BackgroundMode:=PrintParams.BackgroundMode;
-
-    if (rpoprintdirect in PrintParams.Options) then
-       filter.Run;
-    //
-    SentToPrinter:=True;
-  finally
-    // controle de foco para CLX
-    if not Assigned(priorfocus) or not ((priorfocus is TCustomEdit) or (priorfocus is TCustomComboBox)) then
-      priorfocus:=EditPageNo;
-    priorfocus.SetFocus;
-  end;
-  if Assigned(SetupInstance) and Assigned(SetupInstance.AfterPrint) then
-    SetupInstance.AfterPrint(Self);
-end; }
 
 procedure TRLPreviewForm.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
