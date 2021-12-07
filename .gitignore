@@ -60,3 +60,5 @@ log_*.txt
 Binary
 frceInstall.ini
 
+
+*.bak
