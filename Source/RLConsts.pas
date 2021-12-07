@@ -65,7 +65,7 @@ const
   {@const ScreenPPI - Resolução do monitor em pixels por polegada.
    Representa a quantidade de pixels por polegada do vídeo. O valor real varia de monitor para monitor mas,
    para facilitar cálculos e tornar os projetos independentes do terminal, essa valor é assumido como sendo 96. :/}
-  ScreenPPI = 96;
+//  ScreenPPI = 96;
 
   {@const InchAsMM - Fator de conversão de polegada para milímetros.
    Este fator é utilizado em diversos pontos para conversões de coordenadas. :/}
@@ -73,7 +73,7 @@ const
 
   {@const MMAsPixels - Fator de conversão de milímetros para pixels de tela.
    @links ScreenPPI, InchAsMM. :/}
-  MMAsPixels = ScreenPPI / InchAsMM;
+//  MMAsPixels = ScreenPPI / InchAsMM;
 
   MaxPageNo = 999999;
 

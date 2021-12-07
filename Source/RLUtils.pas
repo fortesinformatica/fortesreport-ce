@@ -72,7 +72,11 @@ uses
   {$IfDef CLX}
    QTypes, QGraphics, QForms,
   {$Else}
-   Types, Graphics, Forms,
+   {$IfDef FMX}
+    FMX.Types, FMX.Graphics, FMX.Forms,
+   {$Else}
+    Types, Graphics, Forms,
+   {$EndIf}
   {$EndIf}
   Math;
 
@@ -215,6 +219,15 @@ procedure ClearTempFiles;
 {@proc SmartGetFieldDisplayText - Retorna a verdadeira intenção do texto de exibição do valor do campo. :/}
 function SmartGetFieldDisplayText(Field: TField; const Mask: string = ''): String;
 
+{@const ScreenPPI - Resolução do monitor em pixels por polegada.
+ Representa a quantidade de pixels por polegada do vídeo. O valor real varia de monitor para monitor mas,
+ para facilitar cálculos e tornar os projetos independentes do terminal, essa valor é assumido como sendo 96. :/}
+function ScreenPPI: Integer;
+
+{@const MMAsPixels - Fator de conversão de milímetros para pixels de tela.
+ @links ScreenPPI, InchAsMM. :/}
+function MMAsPixels: Double;
+
 var
   LogFileName: String = 'rlib.log';
 
@@ -255,6 +268,8 @@ type
   end;
 
 implementation
+uses
+  RLConsts;
 
 {$IfDef NO_CHARINSET}
 function CharInSet(C: AnsiChar; const CharSet: TSysCharSet): Boolean;
@@ -1099,6 +1114,16 @@ begin
     Result := FormatFloat(Mask, Field.AsFloat)
   else
     Result := Field.DisplayText;
+end;
+
+function ScreenPPI: Integer;
+begin
+  Result := Screen.PixelsPerInch;
+end;
+
+function MMAsPixels: Double;
+begin
+  Result := ScreenPPI / InchAsMM;
 end;
 
 initialization
