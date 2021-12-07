@@ -8883,14 +8883,14 @@ begin
   Pos0 := Pos;
   while True do
     if Pos <= Length(Buffer) then
-      if CharInSet(Buffer[Pos], [#9, #32]) then
+      if CharInSet(Buffer[Pos], SOFT_LINEBREAK) then
       begin
         LineWidth :=  CanvasTextWidth(Canvas, GetALine);
         if (LineWidth > MaxWidth) and HasText then
         begin
           Wrapped := True;
           Result := GetALine;
-          while (Pos <= Length(Buffer)) and CharInSet(Buffer[Pos], [#9, #32]) do
+          while (Pos <= Length(Buffer)) and CharInSet(Buffer[Pos], SOFT_LINEBREAK) do
             Inc(Pos);
           Break;
         end;
@@ -8907,7 +8907,7 @@ begin
       else
       begin
         PosAux := Pos;
-        while (Pos <= Length(Buffer)) and not CharInSet(Buffer[Pos], [#9, #32, #13, #10]) do
+        while (Pos <= Length(Buffer)) and not CharInSet(Buffer[Pos], SOFT_LINEBREAK + HARD_LINEBREAK) do
           Inc(Pos);
         LineWidth := CanvasTextWidth(Canvas, GetALine);
         if (LineWidth > MaxWidth) and HasText then
@@ -8915,7 +8915,7 @@ begin
           Pos := PosAux;
           Wrapped := True;
           Result := GetALine;
-          while (Pos <= Length(Buffer)) and CharInSet(Buffer[Pos], [#9, #32]) do
+          while (Pos <= Length(Buffer)) and CharInSet(Buffer[Pos], SOFT_LINEBREAK) do
             Inc(Pos);
           Break;
         end;
@@ -9829,7 +9829,7 @@ procedure ProducePolygonPoints(var ADest: TPointArray; const APoints: string);
 
   function NextInt(var I, N: Integer): Boolean;
   const
-    SpaceSet = [#32, #9, #13, #10, #26];
+    SpaceSet = SOFT_LINEBREAK + HARD_LINEBREAK + [#26];  // Ctrl-Z
     NumSet = ['0'..'9'];
   var
     M: Integer;

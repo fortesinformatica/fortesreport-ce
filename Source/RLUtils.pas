@@ -993,7 +993,7 @@ end;
 function IterateJustification(var AText: AnsiString; var AIndex: Integer): Boolean;
   function FindSpc: Boolean;
   const
-    SPC = [#32, #9, #13, #10];
+    SPC = SOFT_LINEBREAK + HARD_LINEBREAK;
   begin
     Result := False;
     while (AIndex > 0) and CharInSet(AText[AIndex], SPC) do

@@ -77,6 +77,9 @@ const
 
   MaxPageNo = 999999;
 
+  HARD_LINEBREAK = [#13, #10];  // CR, LF
+  SOFT_LINEBREAK = [#9,' ','-','.',',']; // TAB
+
   ReportFileExt = '.rpf';
 
   { constantes para exibição na inicialização e no sobre do delphi a partir da versão 2009 }
