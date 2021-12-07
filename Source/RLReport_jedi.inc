@@ -122,91 +122,98 @@
 
   Directive           Description
   ------------------------------------------------------------------------------
-  DELPHI1             Defined when compiling with Delphi 1 (Codename WASABI/MANGO)
-  DELPHI2             Defined when compiling with Delphi 2 (Codename POLARIS)
-  DELPHI3             Defined when compiling with Delphi 3 (Codename IVORY)
-  DELPHI4             Defined when compiling with Delphi 4 (Codename ALLEGRO)
-  DELPHI5             Defined when compiling with Delphi 5 (Codename ARGUS)
-  DELPHI6             Defined when compiling with Delphi 6 (Codename ILLIAD)
-  DELPHI7             Defined when compiling with Delphi 7 (Codename AURORA)
-  DELPHI8             Defined when compiling with Delphi 8 (Codename OCTANE)
-  DELPHI2005          Defined when compiling with Delphi 2005 (Codename DIAMONDBACK)
-  DELPHI9             Alias for DELPHI2005
-  DELPHI10            Defined when compiling with Delphi 2006 (Codename DEXTER)
-  DELPHI2006          Alias for DELPHI10
-  DELPHI11            Defined when compiling with Delphi 2007 for Win32 (Codename SPACELY)
-  DELPHI2007          Alias for DELPHI11
-  DELPHI12            Defined when compiling with Delphi 2009 for Win32 (Codename TIBURON)
-  DELPHI2009          Alias for DELPHI12
-  DELPHI14            Defined when compiling with Delphi 2010 for Win32 (Codename WEAVER)
-  DELPHI2010          Alias for DELPHI14
-  DELPHI15            Defined when compiling with Delphi XE for Win32 (Codename FULCRUM)
-  DELPHIXE            Alias for DELPHI15
-  DELPHI16            Defined when compiling with Delphi XE2 for Win32 (Codename PULSAR)
-  DELPHIXE2           Alias for DELPHI16
-  DELPHI17            Defined when compiling with Delphi XE3 for Win32 (Codename WATERDRAGON)
-  DELPHIXE3           Alias for DELPHI17
-  DELPHI18            Defined when compiling with Delphi XE4 for Win32 (Codename QUINTESSENCE)
-  DELPHIXE4           Alias for DELPHI18
-  DELPHI19            Defined when compiling with Delphi XE5 for Win32 (Codename ZEPHYR)
-  DELPHIXE5           Alias for DELPHI19
-  DELPHI20            Defined when compiling with Delphi XE6 for Win32 (Codename PROTEUS)
-  DELPHIXE6           Alias for DELPHI20
-  DELPHI21            Defined when compiling with Delphi XE7 for Win32 (Codename CARPATHIA)
-  DELPHIXE7           Alias for DELPHI21
-  DELPHI22            Defined when compiling with Delphi XE8 for Win32 (Codename ELBRUS)
-  DELPHIXE8           Alias for DELPHI22
-  DELPHI23            Defined when compiling with Delphi 10 for Win32 (Codename AITANA)
-  DELPHIX_SEATTLE     Alias for DELPHI23
-  DELPHI24            Defined when compiling with Delphi 10.1 for Win32 (Codename BIGBEN)
-  DELPHIX_BERLIN      Alias for DELPHI24
-  DELPHI25            Defined when compiling with Delphi 10.2 for Win32 (Codename GODZILLA)
-  DELPHIX_TOKYO       Alias for DELPHI25
-  DELPHI26            Defined when compiling with Delphi 10.3 for Win32 (Codename CARNIVAL)
-  DELPHIX_RIO         Alias for DELPHI26
-  DELPHI1_UP          Defined when compiling with Delphi 1 or higher
-  DELPHI2_UP          Defined when compiling with Delphi 2 or higher
-  DELPHI3_UP          Defined when compiling with Delphi 3 or higher
-  DELPHI4_UP          Defined when compiling with Delphi 4 or higher
-  DELPHI5_UP          Defined when compiling with Delphi 5 or higher
-  DELPHI6_UP          Defined when compiling with Delphi 6 or higher
-  DELPHI7_UP          Defined when compiling with Delphi 7 or higher
-  DELPHI8_UP          Defined when compiling with Delphi 8 or higher
-  DELPHI2005_UP       Defined when compiling with Delphi 2005 or higher
-  DELPHI9_UP          Alias for DELPHI2005_UP
-  DELPHI10_UP         Defined when compiling with Delphi 2006 or higher
-  DELPHI2006_UP       Alias for DELPHI10_UP
-  DELPHI11_UP         Defined when compiling with Delphi 2007 for Win32 or higher
-  DELPHI2007_UP       Alias for DELPHI11_UP
-  DELPHI12_UP         Defined when compiling with Delphi 2009 for Win32 or higher
-  DELPHI2009_UP       Alias for DELPHI12_UP
-  DELPHI14_UP         Defined when compiling with Delphi 2010 for Win32 or higher
-  DELPHI2010_UP       Alias for DELPHI14_UP
-  DELPHI15_UP         Defined when compiling with Delphi XE for Win32 or higher
-  DELPHIXE_UP         Alias for DELPHI15_UP
-  DELPHI16_UP         Defined when compiling with Delphi XE2 for Win32 or higher
-  DELPHIXE2_UP        Alias for DELPHI16_UP
-  DELPHI17_UP         Defined when compiling with Delphi XE3 for Win32 or higher
-  DELPHIXE3_UP        Alias for DELPHI17_UP
-  DELPHI18_UP         Defined when compiling with Delphi XE4 for Win32 or higher
-  DELPHIXE4_UP        Alias for DELPHI18_UP
-  DELPHI19_UP         Defined when compiling with Delphi XE5 for Win32 or higher
-  DELPHIXE5_UP        Alias for DELPHI19_UP
-  DELPHI20_UP         Defined when compiling with Delphi XE6 for Win32 or higher
-  DELPHIXE6_UP        Alias for DELPHI20_UP
-  DELPHI21_UP         Defined when compiling with Delphi XE7 for Win32 or higher
-  DELPHIXE7_UP        Alias for DELPHI21_UP
-  DELPHI22_UP         Defined when compiling with Delphi XE8 for Win32 or higher
-  DELPHIXE8_UP        Alias for DELPHI22_UP
-  DELPHI23_UP         Defined when compiling with Delphi 10 for Win32 or higher
-  DELPHIX_SEATTLE_UP  Alias for DELPHI23_UP
-  DELPHI24_UP         Defined when compiling with Delphi 10.1 for Win32 or higher
-  DELPHIX_BERLIN_UP   Alias for DELPHI24_UP
-  DELPHI25_UP         Defined when compiling with Delphi 10.2 for Win32 or higher
-  DELPHIX_TOKYO_UP    Alias for DELPHI25_UP
-  DELPHI26_UP         Defined when compiling with Delphi 10.3 for Win32 or higher
-  DELPHIX_RIO_UP      Alias for DELPHI26_UP
-  DELPHI27_UP         Defined when compiling with Delphi 10.4 for Win32 or higher
+  DELPHI1                Defined when compiling with Delphi 1 (Codename WASABI/MANGO)
+  DELPHI2                Defined when compiling with Delphi 2 (Codename POLARIS)
+  DELPHI3                Defined when compiling with Delphi 3 (Codename IVORY)
+  DELPHI4                Defined when compiling with Delphi 4 (Codename ALLEGRO)
+  DELPHI5                Defined when compiling with Delphi 5 (Codename ARGUS)
+  DELPHI6                Defined when compiling with Delphi 6 (Codename ILLIAD)
+  DELPHI7                Defined when compiling with Delphi 7 (Codename AURORA)
+  DELPHI8                Defined when compiling with Delphi 8 (Codename OCTANE)
+  DELPHI2005             Defined when compiling with Delphi 2005 (Codename DIAMONDBACK)
+  DELPHI9                Alias for DELPHI2005
+  DELPHI10               Defined when compiling with Delphi 2006 (Codename DEXTER)
+  DELPHI2006             Alias for DELPHI10
+  DELPHI11               Defined when compiling with Delphi 2007 for Win32 (Codename SPACELY)
+  DELPHI2007             Alias for DELPHI11
+  DELPHI12               Defined when compiling with Delphi 2009 for Win32 (Codename TIBURON)
+  DELPHI2009             Alias for DELPHI12
+  DELPHI14               Defined when compiling with Delphi 2010 for Win32 (Codename WEAVER)
+  DELPHI2010             Alias for DELPHI14
+  DELPHI15               Defined when compiling with Delphi XE for Win32 (Codename FULCRUM)
+  DELPHIXE               Alias for DELPHI15
+  DELPHI16               Defined when compiling with Delphi XE2 for Win32 (Codename PULSAR)
+  DELPHIXE2              Alias for DELPHI16
+  DELPHI17               Defined when compiling with Delphi XE3 for Win32 (Codename WATERDRAGON)
+  DELPHIXE3              Alias for DELPHI17
+  DELPHI18               Defined when compiling with Delphi XE4 for Win32 (Codename QUINTESSENCE)
+  DELPHIXE4              Alias for DELPHI18
+  DELPHI19               Defined when compiling with Delphi XE5 for Win32 (Codename ZEPHYR)
+  DELPHIXE5              Alias for DELPHI19
+  DELPHI20               Defined when compiling with Delphi XE6 for Win32 (Codename PROTEUS)
+  DELPHIXE6              Alias for DELPHI20
+  DELPHI21               Defined when compiling with Delphi XE7 for Win32 (Codename CARPATHIA)
+  DELPHIXE7              Alias for DELPHI21
+  DELPHI22               Defined when compiling with Delphi XE8 for Win32 (Codename ELBRUS)
+  DELPHIXE8              Alias for DELPHI22
+  DELPHI23               Defined when compiling with Delphi 10 for Win32 (Codename AITANA)
+  DELPHIX_SEATTLE        Alias for DELPHI23
+  DELPHI24               Defined when compiling with Delphi 10.1 for Win32 (Codename BIGBEN)
+  DELPHIX_BERLIN         Alias for DELPHI24
+  DELPHI25               Defined when compiling with Delphi 10.2 for Win32 (Codename GODZILLA)
+  DELPHIX_TOKYO          Alias for DELPHI25
+  DELPHI26               Defined when compiling with Delphi 10.3 for Win32 (Codename CARNIVAL)
+  DELPHIX_RIO            Alias for DELPHI26
+  DELPHI27               Defined when compiling with Delphi 10.4 for Win32 (Codename DENALI)
+  DELPHIX_SYDNEY         Alias for DELPHI27
+  DELPHI28               Defined when compiling with Delphi 10.4 for Win32 (Codename OLYMPUS)
+  DELPHIX_ALEXANDRIA     Alias for DELPHI28
+  DELPHI1_UP             Defined when compiling with Delphi 1 or higher
+  DELPHI2_UP             Defined when compiling with Delphi 2 or higher
+  DELPHI3_UP             Defined when compiling with Delphi 3 or higher
+  DELPHI4_UP             Defined when compiling with Delphi 4 or higher
+  DELPHI5_UP             Defined when compiling with Delphi 5 or higher
+  DELPHI6_UP             Defined when compiling with Delphi 6 or higher
+  DELPHI7_UP             Defined when compiling with Delphi 7 or higher
+  DELPHI8_UP             Defined when compiling with Delphi 8 or higher
+  DELPHI2005_UP          Defined when compiling with Delphi 2005 or higher
+  DELPHI9_UP             Alias for DELPHI2005_UP
+  DELPHI10_UP            Defined when compiling with Delphi 2006 or higher
+  DELPHI2006_UP          Alias for DELPHI10_UP
+  DELPHI11_UP            Defined when compiling with Delphi 2007 for Win32 or higher
+  DELPHI2007_UP          Alias for DELPHI11_UP
+  DELPHI12_UP            Defined when compiling with Delphi 2009 for Win32 or higher
+  DELPHI2009_UP          Alias for DELPHI12_UP
+  DELPHI14_UP            Defined when compiling with Delphi 2010 for Win32 or higher
+  DELPHI2010_UP          Alias for DELPHI14_UP
+  DELPHI15_UP            Defined when compiling with Delphi XE for Win32 or higher
+  DELPHIXE_UP            Alias for DELPHI15_UP
+  DELPHI16_UP            Defined when compiling with Delphi XE2 for Win32 or higher
+  DELPHIXE2_UP           Alias for DELPHI16_UP
+  DELPHI17_UP            Defined when compiling with Delphi XE3 for Win32 or higher
+  DELPHIXE3_UP           Alias for DELPHI17_UP
+  DELPHI18_UP            Defined when compiling with Delphi XE4 for Win32 or higher
+  DELPHIXE4_UP           Alias for DELPHI18_UP
+  DELPHI19_UP            Defined when compiling with Delphi XE5 for Win32 or higher
+  DELPHIXE5_UP           Alias for DELPHI19_UP
+  DELPHI20_UP            Defined when compiling with Delphi XE6 for Win32 or higher
+  DELPHIXE6_UP           Alias for DELPHI20_UP
+  DELPHI21_UP            Defined when compiling with Delphi XE7 for Win32 or higher
+  DELPHIXE7_UP           Alias for DELPHI21_UP
+  DELPHI22_UP            Defined when compiling with Delphi XE8 for Win32 or higher
+  DELPHIXE8_UP           Alias for DELPHI22_UP
+  DELPHI23_UP            Defined when compiling with Delphi 10 for Win32 or higher
+  DELPHIX_SEATTLE_UP     Alias for DELPHI23_UP
+  DELPHI24_UP            Defined when compiling with Delphi 10.1 for Win32 or higher
+  DELPHIX_BERLIN_UP      Alias for DELPHI24_UP
+  DELPHI25_UP            Defined when compiling with Delphi 10.2 for Win32 or higher
+  DELPHIX_TOKYO_UP       Alias for DELPHI25_UP
+  DELPHI26_UP            Defined when compiling with Delphi 10.3 for Win32 or higher
+  DELPHIX_RIO_UP         Alias for DELPHI26_UP
+  DELPHI27_UP            Defined when compiling with Delphi 10.4 for Win32 or higher
+  DELPHIX_SYDNEY_UP      Alias for DELPHI27_UP
+  DELPHI28_UP            Defined when compiling with Delphi 11 for Win32 or higher
+  DELPHIX_ALEXANDRIA_UP  Alias for DELPHI28_UP
 
 
 - Kylix Versions
@@ -255,6 +262,7 @@
   DELPHICOMPILER25     Defined when compiling with Delphi Personality of BDS 19.0
   DELPHICOMPILER26     Defined when compiling with Delphi Personality of BDS 20.0
   DELPHICOMPILER27     Defined when compiling with Delphi Personality of BDS 21.0
+  DELPHICOMPILER28     Defined when compiling with Delphi Personality of BDS 22.0
   DELPHICOMPILER1_UP   Defined when compiling with Delphi 1 or higher
   DELPHICOMPILER2_UP   Defined when compiling with Delphi 2 or higher
   DELPHICOMPILER3_UP   Defined when compiling with Delphi 3 or higher
@@ -281,6 +289,7 @@
   DELPHICOMPILER25_UP  Defined when compiling with Delphi 10.2 for Win32 or higher
   DELPHICOMPILER26_UP  Defined when compiling with Delphi 10.3 for Win32 or higher
   DELPHICOMPILER27_UP  Defined when compiling with Delphi 10.4 for Win32 or higher
+  DELPHICOMPILER28_UP  Defined when compiling with Delphi 11 for Win32 or higher
 
 
 - C++Builder Versions
@@ -313,6 +322,7 @@
   BCB25        Defined when compiling with C++Builder Personality of RAD Studio 10.2 Tokyo (also known as C++Builder 10.2 Tokyo) (Codename GODZILLA)
   BCB26        Defined when compiling with C++Builder Personality of RAD Studio 10.3 Rio (also known as C++Builder 10.3) (Codename CARNIVAL)
   BCB27        Defined when compiling with C++Builder Personality of RAD Studio 10.4 Rio (also known as C++Builder 10.4) (Codename DENALI)
+  BCB28        Defined when compiling with C++Builder Personality of RAD Studio 11 (also known as C++Builder 11) (Codename OLYMPUS)
   BCB1_UP      Defined when compiling with C++Builder 1 or higher
   BCB3_UP      Defined when compiling with C++Builder 3 or higher
   BCB4_UP      Defined when compiling with C++Builder 4 or higher
@@ -335,6 +345,7 @@
   BCB25_UP     Defined when compiling with C++Builder Personality of RAD Studio 10.2 or higher
   BCB26_UP     Defined when compiling with C++Builder Personality of RAD Studio 10.3 or higher
   BCB27_UP     Defined when compiling with C++Builder Personality of RAD Studio 10.4 or higher
+  BCB28_UP     Defined when compiling with C++Builder Personality of RAD Studio 11 or higher
 
 
 - RAD Studio / Borland Developer Studio Versions
@@ -368,6 +379,7 @@
   BDS19        Defined when compiling with BDS 19.0 (Embarcadero RAD Studio 10.2) (Codename GODZILLA)
   BDS20        Defined when compiling with BDS 20.0 (Embarcadero RAD Studio 10.3) (Codename CARNIVAL)
   BDS21        Defined when compiling with BDS 21.0 (Embarcadero RAD Studio 10.4) (Codename DENALI)
+  BDS22        Defined when compiling with BDS 22.0 (Embarcadero RAD Studio 11) (Codename OLYMPUS)
   BDS2_UP      Defined when compiling with BDS 2.0 or higher
   BDS3_UP      Defined when compiling with BDS 3.0 or higher
   BDS4_UP      Defined when compiling with BDS 4.0 or higher
@@ -387,6 +399,7 @@
   BDS19_UP     Defined when compiling with BDS 19.0 or higher
   BDS20_UP     Defined when compiling with BDS 20.0 or higher
   BDS21_UP     Defined when compiling with BDS 21.0 or higher
+  BDS22_UP     Defined when compiling with BDS 22.0 or higher
 
 - Compiler Versions
 
@@ -425,6 +438,7 @@
   COMPILER25     Defined when compiling with Delphi or C++Builder Personalities of BDS 19.0
   COMPILER26     Defined when compiling with Delphi or C++Builder Personalities of BDS 20.0
   COMPILER27     Defined when compiling with Delphi or C++Builder Personalities of BDS 21.0
+  COMPILER28     Defined when compiling with Delphi or C++Builder Personalities of BDS 22.0
   COMPILER1_UP   Defined when compiling with Delphi 1 or higher
   COMPILER2_UP   Defined when compiling with Delphi 2 or C++Builder 1 or higher
   COMPILER3_UP   Defined when compiling with Delphi 3 or higher
@@ -452,6 +466,7 @@
   COMPILER25_UP  Defined when compiling with Delphi or C++Builder Personalities of BDS 19.0 or higher
   COMPILER26_UP  Defined when compiling with Delphi or C++Builder Personalities of BDS 20.0 or higher
   COMPILER27_UP  Defined when compiling with Delphi or C++Builder Personalities of BDS 21.0 or higher
+  COMPILER28_UP  Defined when compiling with Delphi or C++Builder Personalities of BDS 22.0 or higher
 
 
 - RTL Versions
@@ -496,6 +511,7 @@
   RTL320_UP     Defined when compiling with Delphi or C++Builder Personalities of BDS 19.0 or higher
   RTL330_UP     Defined when compiling with Delphi or C++Builder Personalities of BDS 20.0 or higher
   RTL340_UP     Defined when compiling with Delphi or C++Builder Personalities of BDS 21.0 or higher
+  RTL350_UP     Defined when compiling with Delphi or C++Builder Personalities of BDS 22.0 or higher
 
 
 - CLR Versions
@@ -612,6 +628,7 @@
   HAS_EXCEPTION_STACKTRACE       Exception class has the StackTrace propery (D12+)
   SUPPORTS_LEGACYIFEND           Compiler supports the LEGACYIFEND directive (D17+)
   DEPRECATED_TCHARACTER          TCharacter is deprecated and replaced by a record helper on Char (D18+)
+  HAS_PROPERTY_OLDCREATEORDER    The OldCreateOrder property is available (D5 - D27)
 
 
 - Compiler Settings
@@ -680,15 +697,6 @@
       {$DEFINE CPU386}
       {$DEFINE CPU32}
     {$ENDIF ~CPUX86}
-
-    // The ASSEMBLER symbol appeared with Delphi 7
-    {$IFNDEF COMPILER7_UP}
-      {$DEFINE CPUASM}
-    {$ELSE}
-      {$IFDEF ASSEMBLER}
-        {$DEFINE CPUASM}
-      {$ENDIF ASSEMBLER}
-    {$ENDIF ~COMPILER7_UP}    
   {$ENDIF ~CLR}
 {$ENDIF BORLAND}
 
@@ -1088,23 +1096,39 @@
         {$DEFINE BCB27}
       {$ELSE}
         {$DEFINE DELPHI27}
+        {$DEFINE DELPHIX_SYDNEY}  // synonym to DELPHI27
         {$DEFINE DELPHICOMPILER27}
       {$ENDIF BCB}
       {$DEFINE RTL340_UP}
       {$UNDEF UNKNOWN_COMPILER_VERSION}
     {$ENDIF VER340}
 
+    {$IFDEF VER350} // RAD Studio 11
+      {$DEFINE BDS}
+      {$DEFINE BDS22}
+      {$DEFINE COMPILER28}
+      {$IFDEF BCB}
+        {$DEFINE BCB28}
+      {$ELSE}
+        {$DEFINE DELPHI28}
+        {$DEFINE DELPHIX_ALEXANDRIA}  // synonym to DELPHI28
+        {$DEFINE DELPHICOMPILER28}
+      {$ENDIF BCB}
+      {$DEFINE RTL350_UP}
+      {$UNDEF UNKNOWN_COMPILER_VERSION}
+    {$ENDIF VER350}
+
     {$IFDEF UNKNOWN_COMPILER_VERSION} // adjust for newer version (always use latest version)
       {$DEFINE BDS}
-      {$DEFINE BDS21}
-      {$DEFINE COMPILER27}
+      {$DEFINE BDS22}
+      {$DEFINE COMPILER28}
       {$IFDEF BCB}
-        {$DEFINE BCB27}
+        {$DEFINE BCB28}
       {$ELSE}
-        {$DEFINE DELPHI27}
-        {$DEFINE DELPHICOMPILER27}
+        {$DEFINE DELPHI28}
+        {$DEFINE DELPHICOMPILER28}
       {$ENDIF BCB}
-      {$DEFINE RTL340_UP}
+      {$DEFINE RTL350_UP}
       {$UNDEF UNKNOWN_COMPILER_VERSION}
     {$ENDIF}
 
@@ -1124,6 +1148,7 @@
 { DELPHIX_UP from DELPHIX mappings                                             }
 {------------------------------------------------------------------------------}
 
+{$IFDEF DELPHI28} {$DEFINE DELPHI28_UP} {$ENDIF}
 {$IFDEF DELPHI27} {$DEFINE DELPHI27_UP} {$ENDIF}
 {$IFDEF DELPHI26} {$DEFINE DELPHI26_UP} {$ENDIF}
 {$IFDEF DELPHI25} {$DEFINE DELPHI25_UP} {$ENDIF}
@@ -1155,7 +1180,13 @@
 { DELPHIX_UP from DELPHIX_UP mappings                                          }
 {------------------------------------------------------------------------------}
 
+{$IFDEF DELPHI28_UP}
+  {$DEFINE DELPHIX_ALEXANDRIA_UP} // synonym to DELPHI28_UP
+  {$DEFINE DELPHI27_UP}
+{$ENDIF}
+
 {$IFDEF DELPHI27_UP}
+  {$DEFINE DELPHIX_SYDNEY_UP} // synonym to DELPHI27_UP
   {$DEFINE DELPHI26_UP}
 {$ENDIF}
 
@@ -1256,6 +1287,7 @@
 { BCBX_UP from BCBX mappings                                                   }
 {------------------------------------------------------------------------------}
 
+{$IFDEF BCB28} {$DEFINE BCB28_UP} {$ENDIF}
 {$IFDEF BCB27} {$DEFINE BCB27_UP} {$ENDIF}
 {$IFDEF BCB26} {$DEFINE BCB26_UP} {$ENDIF}
 {$IFDEF BCB25} {$DEFINE BCB25_UP} {$ENDIF}
@@ -1283,6 +1315,7 @@
 { BCBX_UP from BCBX_UP mappings                                                }
 {------------------------------------------------------------------------------}
 
+{$IFDEF BCB28_UP} {$DEFINE BCB27_UP} {$ENDIF}
 {$IFDEF BCB27_UP} {$DEFINE BCB26_UP} {$ENDIF}
 {$IFDEF BCB26_UP} {$DEFINE BCB25_UP} {$ENDIF}
 {$IFDEF BCB25_UP} {$DEFINE BCB24_UP} {$ENDIF}
@@ -1309,6 +1342,7 @@
 { BDSX_UP from BDSX mappings                                                   }
 {------------------------------------------------------------------------------}
 
+{$IFDEF BDS22} {$DEFINE BDS22_UP} {$ENDIF}
 {$IFDEF BDS21} {$DEFINE BDS21_UP} {$ENDIF}
 {$IFDEF BDS20} {$DEFINE BDS20_UP} {$ENDIF}
 {$IFDEF BDS19} {$DEFINE BDS19_UP} {$ENDIF}
@@ -1333,6 +1367,7 @@
 { BDSX_UP from BDSX_UP mappings                                                }
 {------------------------------------------------------------------------------}
 
+{$IFDEF BDS22_UP} {$DEFINE BDS21_UP} {$ENDIF}
 {$IFDEF BDS21_UP} {$DEFINE BDS20_UP} {$ENDIF}
 {$IFDEF BDS20_UP} {$DEFINE BDS19_UP} {$ENDIF}
 {$IFDEF BDS19_UP} {$DEFINE BDS18_UP} {$ENDIF}
@@ -1356,6 +1391,7 @@
 { DELPHICOMPILERX_UP from DELPHICOMPILERX mappings                             }
 {------------------------------------------------------------------------------}
 
+{$IFDEF DELPHICOMPILER28} {$DEFINE DELPHICOMPILER28_UP} {$ENDIF}
 {$IFDEF DELPHICOMPILER27} {$DEFINE DELPHICOMPILER27_UP} {$ENDIF}
 {$IFDEF DELPHICOMPILER26} {$DEFINE DELPHICOMPILER26_UP} {$ENDIF}
 {$IFDEF DELPHICOMPILER25} {$DEFINE DELPHICOMPILER25_UP} {$ENDIF}
@@ -1387,6 +1423,7 @@
 { DELPHICOMPILERX_UP from DELPHICOMPILERX_UP mappings                          }
 {------------------------------------------------------------------------------}
 
+{$IFDEF DELPHICOMPILER28_UP} {$DEFINE DELPHICOMPILER27_UP} {$ENDIF}
 {$IFDEF DELPHICOMPILER27_UP} {$DEFINE DELPHICOMPILER26_UP} {$ENDIF}
 {$IFDEF DELPHICOMPILER26_UP} {$DEFINE DELPHICOMPILER25_UP} {$ENDIF}
 {$IFDEF DELPHICOMPILER25_UP} {$DEFINE DELPHICOMPILER24_UP} {$ENDIF}
@@ -1418,6 +1455,7 @@
 { COMPILERX_UP from COMPILERX mappings                                         }
 {------------------------------------------------------------------------------}
 
+{$IFDEF COMPILER28} {$DEFINE COMPILER28_UP} {$ENDIF}
 {$IFDEF COMPILER27} {$DEFINE COMPILER27_UP} {$ENDIF}
 {$IFDEF COMPILER26} {$DEFINE COMPILER26_UP} {$ENDIF}
 {$IFDEF COMPILER25} {$DEFINE COMPILER25_UP} {$ENDIF}
@@ -1450,6 +1488,7 @@
 { COMPILERX_UP from COMPILERX_UP mappings                                      }
 {------------------------------------------------------------------------------}
 
+{$IFDEF COMPILER28_UP} {$DEFINE COMPILER27_UP} {$ENDIF}
 {$IFDEF COMPILER27_UP} {$DEFINE COMPILER26_UP} {$ENDIF}
 {$IFDEF COMPILER26_UP} {$DEFINE COMPILER25_UP} {$ENDIF}
 {$IFDEF COMPILER25_UP} {$DEFINE COMPILER24_UP} {$ENDIF}
@@ -1481,6 +1520,7 @@
 { RTLX_UP from RTLX_UP mappings                                                }
 {------------------------------------------------------------------------------}
 
+{$IFDEF RTL350_UP} {$DEFINE RTL340_UP} {$ENDIF}
 {$IFDEF RTL340_UP} {$DEFINE RTL330_UP} {$ENDIF}
 {$IFDEF RTL330_UP} {$DEFINE RTL320_UP} {$ENDIF}
 {$IFDEF RTL320_UP} {$DEFINE RTL310_UP} {$ENDIF}
@@ -1722,6 +1762,19 @@
   {$DEFINE SUPPORTS_UNICODE}
 {$ENDIF CLR}
 
+{$IFDEF BORLAND}
+  {$IFNDEF CLR}
+    // The ASSEMBLER symbol appeared with Delphi 7
+    {$IFNDEF COMPILER7_UP}
+      {$DEFINE CPUASM}
+    {$ELSE}
+      {$IFDEF ASSEMBLER}
+        {$DEFINE CPUASM}
+      {$ENDIF ASSEMBLER}
+    {$ENDIF ~COMPILER7_UP}
+  {$ENDIF ~CLR}
+{$ENDIF BORLAND}
+
 {$IFDEF COMPILER1_UP}
   {$DEFINE SUPPORTS_CONSTPARAMS}
   {$DEFINE SUPPORTS_SINGLE}
@@ -1850,6 +1903,7 @@
 
 {$IFDEF RTL130_UP}
   {$DEFINE HAS_UNIT_CONTNRS}
+  {$DEFINE HAS_PROPERTY_OLDCREATEORDER}
 {$ENDIF RTL130_UP}
 
 {$IFDEF RTL140_UP}
@@ -1911,6 +1965,14 @@
 {$IFDEF RTL270_UP}
   {$DEFINE HAS_AUTOMATIC_DB_FIELDS}
 {$ENDIF RTL270_UP}
+
+{$IFDEF RTL320_UP}
+  {$UNDEF HAS_UNIT_LIBC}
+{$ENDIF RTL320_UP}
+
+{$IFDEF RTL350_UP}
+  {$UNDEF HAS_PROPERTY_OLDCREATEORDER}
+{$ENDIF}
 
 {------------------------------------------------------------------------------}
 { Cross-platform related defines                                               }

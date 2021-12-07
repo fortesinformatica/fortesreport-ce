@@ -532,7 +532,7 @@ begin
      if VersionNumberStr = 'd16' then
         Sender.Options.Add('-NSData.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win');
 
-     if MatchText(VersionNumberStr, ['d17','d18','d19','d20','d21','d22','d23','d24','d25','d26','d27']) then
+     if MatchText(VersionNumberStr, ['d17','d18','d19','d20','d21','d22','d23','d24','d25','d26','d27','d28']) then
         Sender.Options.Add('-NSWinapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell');
 
   end;
@@ -597,7 +597,9 @@ begin
     else if oFRCE.Installations[iFor].VersionNumberStr = 'd26' then
       edtDelphiVersion.Items.Add('Delphi 10.3 Rio')
     else if oFRCE.Installations[iFor].VersionNumberStr = 'd27' then
-      edtDelphiVersion.Items.Add('Delphi 10.4 Sydney');
+      edtDelphiVersion.Items.Add('Delphi 10.4 Sydney')
+    else if oFRCE.Installations[iFor].VersionNumberStr = 'd28' then
+      edtDelphiVersion.Items.Add('Delphi 11 Alexandria');
 
     // -- Evento disparado antes de iniciar a execução do processo.
     oFRCE.Installations[iFor].DCC32.OnBeforeExecute := BeforeExecute;

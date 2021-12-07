@@ -1,12 +1,12 @@
 object RLPreviewForm: TRLPreviewForm
-  Left = 214
-  Height = 406
-  Top = 221
-  Width = 806
+  Left = -4
+  Height = 433
+  Top = -4
+  Width = 814
   VertScrollBar.Range = 29
   Caption = 'Pré-visualização'
-  ClientHeight = 406
-  ClientWidth = 806
+  ClientHeight = 433
+  ClientWidth = 814
   Color = clBtnFace
   Font.Color = clWindowText
   Font.Height = 11
@@ -14,13 +14,13 @@ object RLPreviewForm: TRLPreviewForm
   Font.Pitch = fpVariable
   KeyPreview = True
   OnKeyDown = FormKeyDown
-  LCLVersion = '1.4.2.0'
+  LCLVersion = '2.0.8.0'
   WindowState = wsMaximized
   object PanelContainer: TPanel
     Left = 0
-    Height = 383
+    Height = 608
     Top = 23
-    Width = 806
+    Width = 1024
     Align = alClient
     BevelOuter = bvLowered
     Caption = ' '
@@ -30,13 +30,13 @@ object RLPreviewForm: TRLPreviewForm
     Left = 0
     Height = 23
     Top = 0
-    Width = 806
+    Width = 1024
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 1
     Caption = ' '
     ClientHeight = 23
-    ClientWidth = 806
+    ClientWidth = 1024
     TabOrder = 1
     object SpeedButtonPrint: TSpeedButton
       Left = 1
@@ -374,7 +374,7 @@ object RLPreviewForm: TRLPreviewForm
       end
     end
     object PanelCopyright: TPanel
-      Left = 783
+      Left = 1001
       Height = 21
       Top = 1
       Width = 22
