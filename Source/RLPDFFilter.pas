@@ -1480,7 +1480,7 @@ begin
           Writeln;
           W := 0;
         end;
-        Write(IntToStr(rec.Widths[J]) + ' ');
+        Write(IntToStr(MulDiv(rec.Widths[J], 96, ScreenPPI)) + ' ');
         Inc(W);
       end;
       Writeln;
