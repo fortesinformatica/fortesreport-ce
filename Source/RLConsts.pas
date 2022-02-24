@@ -99,7 +99,7 @@ const
   CS_ProductTitleStr = 'FortesReport Community Edition';
   CS_URLStr = 'http://www.fortesreport.com.br';
   CS_URLGitHubStr = 'https://github.com/fortesinformatica/fortesreport-ce';
-  CS_AuthorNameStr = 'Ronaldo Moreira' + sLineBreak + sLineBreak +
+  CS_AuthorNameStr = 'Ronaldo Moreira' + sLineBreak +
                      'Márcio Martins' + sLineBreak +
 					 'Daniel Simões de Almeida' + sLineBreak +
                      'Régys Borges da Silveira' + sLineBreak +
