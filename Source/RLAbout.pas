@@ -254,7 +254,7 @@ begin
     Name := 'LabelHome';
     Parent := Self;
     Left := 52;
-    Top := 145;
+    Top := 140;
     Hint := CS_URLStr;
     Caption := CS_URLStr;
     Font.Name := 'helvetica';
