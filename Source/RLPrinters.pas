@@ -580,7 +580,6 @@ begin
       LoadDefaultMetrics(APrinterMetrics);
       if not WarningDisplayed then
       begin
-        ///ShowMessage(LocaleStrings.LS_LoadDefaultConfigStr+sLineBreak+sLineBreak+'Mensagem: '+e.Message);
         WarningDisplayed := True;
       end;
     end;
@@ -936,7 +935,7 @@ begin
     TWinPrinter(Printer).AdvancedProperties;
     Result := True;
   {$ELSE}
-    ShowMessage(Format(GetLocalizeStr(LocaleStrings.LS_NotImplemented), ['Printer.AdvancedProperties']));
+	raise Exception.Create(Format(GetLocalizeStr(LocaleStrings.LS_NotImplemented), ['Printer.AdvancedProperties']));
   {$ENDIF}
 end;
 {$EndIf}

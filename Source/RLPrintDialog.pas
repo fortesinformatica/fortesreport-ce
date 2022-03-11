@@ -929,7 +929,7 @@ begin
   Screen.Cursor := crHourGlass;
   try
     if not RLPrinter.ExecuteSetup(Self.Handle) then
-      ShowMessage(GetLocalizeStr(LocaleStrings.LS_PrintDialogError));
+      raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_PrintDialogError));
   finally
     Screen.Cursor := crDefault;
     ButtonPrinterSetup.Enabled := True;

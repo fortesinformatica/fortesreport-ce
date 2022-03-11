@@ -13606,7 +13606,7 @@ begin
             if Assigned(OnPrepareError) then
               OnPrepareError(Self, E)
             else
-              ShowMessage(GetLocalizeStr(Name + ': ' + LocaleStrings.LS_PrepareErrorStr +
+			  raise Exception.Create(GetLocalizeStr(Name + ': ' + LocaleStrings.LS_PrepareErrorStr +
                           sLineBreak + E.ClassName + '(' + E.Message + ')'));
       end;
     end;

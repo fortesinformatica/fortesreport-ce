@@ -314,7 +314,7 @@ begin
     end;
   end; 
   if not found then
-    ShowMessage(GetLocalizeStr(LocaleStrings.LS_NotFoundStr)); 
+	raise Exception.Create(GetLocalizeStr(LocaleStrings.LS_NotFoundStr));
 end;
 
 destructor TfrmRLFindDialog.Destroy;
