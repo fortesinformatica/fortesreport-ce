@@ -152,6 +152,7 @@ type
     procedure AddLibraryPathToDelphiPath(const APath, AProcurarRemover: String);
     procedure FindDirs(ADirRoot: String; bAdicionar: Boolean = True);
     procedure CopiarArquivosToLib;
+    procedure InstalarOPacoteNoDelphi(const NomePacote: String);
   public
 
   end;
@@ -625,10 +626,26 @@ end;
 // botão de compilação e instalação dos pacotes selecionados no treeview
 procedure TfrmPrincipal.btnInstalarfrceClick(Sender: TObject);
 var
-  iDpk: Integer;
+//  iDpk: Integer;
   bRunOnly: Boolean;
   NomePacote: String;
   Cabecalho: String;
+  function ExistePacoteDesingtimeParaPacote(NomeArquivoPacoteDCL: string): boolean;
+  var
+    bRunOnlyLocal:Boolean;
+  begin
+    Result := False;
+    if not FileExists(NomeArquivoPacoteDCL) then
+    begin
+      Exit;
+    end;
+    if not IsDelphiPackage(NomeArquivoPacoteDCL) then
+    begin
+      Exit;
+    end;
+    GetDPKFileInfo(NomeArquivoPacoteDCL, bRunOnlyLocal);
+    Result := bRunOnlyLocal;
+  end;
 
   procedure MostrarMensagemInstalado(const aMensagem: String; const aErro: String = '');
   var
@@ -751,29 +768,13 @@ begin
           GetDPKFileInfo(sDirPackage + NomePacote, bRunOnly);
           if not bRunOnly then
           begin
-            WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
-
-            if oFRCE.Installations[iVersion].InstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
-            begin
-              lstMsgInstalacao.Items.Add(Format('Pacote "%s" instalado com sucesso.', [NomePacote]));
-              lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-            end
-            else
-            begin
-              Inc(FCountErros);
-              lstMsgInstalacao.Items.Add(Format('Ocorreu um erro ao instalar o pacote "%s".', [NomePacote]));
-              lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-            end;
-//              else
-//              begin
-//                WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
-//
-//                if oFRCE.Installations[iVersion].UninstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
-//                begin
-//                  lstMsgInstalacao.Items.Add(Format('Pacote "%s" removido com sucesso...', [NomePacote]));
-//                  lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
-//                end;
-//              end;
+            InstalarOPacoteNoDelphi(NomePacote);
+          end
+          else
+          begin
+            //procura um pacote desingtime para o pacote RunOnly
+            if ExistePacoteDesingtimeParaPacote(sDirPackage + 'DCL'+ NomePacote) then
+              InstalarOPacoteNoDelphi('DCL'+ NomePacote);
           end;
         end;
         pgbInstalacao.Position := pgbInstalacao.Position + 1;
@@ -1035,6 +1036,33 @@ end;
 procedure TfrmPrincipal.btnVisualizarLogCompilacaoClick(Sender: TObject);
 begin
   ShellExecute(Handle, 'open', PWideChar(PathArquivoLog), '', '', 1);
+end;
+
+procedure TfrmPrincipal.InstalarOPacoteNoDelphi(const NomePacote: String);
+begin
+  WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
+
+  if oFRCE.Installations[iVersion].InstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
+  begin
+    lstMsgInstalacao.Items.Add(Format('Pacote "%s" instalado com sucesso.', [NomePacote]));
+    lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
+  end
+  else
+  begin
+    Inc(FCountErros);
+    lstMsgInstalacao.Items.Add(Format('Ocorreu um erro ao instalar o pacote "%s".', [NomePacote]));
+    lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
+  end;
+//  else
+//  begin
+//    WriteToTXT(AnsiString(PathArquivoLog), AnsiString(''));
+//
+//    if oFRCE.Installations[iVersion].UninstallPackage(sDirPackage + NomePacote, sDirLibrary, sDirLibrary) then
+//    begin
+//      lstMsgInstalacao.Items.Add(Format('Pacote "%s" removido com sucesso...', [NomePacote]));
+//      lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
+//    end;
+//  end;
 end;
 
 procedure TfrmPrincipal.wizPrincipalCancelButtonClick(Sender: TObject);

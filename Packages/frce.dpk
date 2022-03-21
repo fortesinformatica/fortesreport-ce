@@ -27,11 +27,11 @@ package frce;
 {$DEFINE RELEASE}
 {$DEFINE DELPHI}
 {$DEFINE VCL}
+{$RUNONLY}
 
 requires
   rtl,
   vcl,
-  designide,
   xmlrtl,
   vclactnband,
   vclx,
@@ -67,8 +67,6 @@ contains
   RLMetaVCL in '..\Source\RLMetaVCL.pas',
   RLFindDialog in '..\Source\RLFindDialog.pas',
   RLAbout in '..\Source\RLAbout.pas',
-  RLReg in '..\Source\RLReg.pas',
-  RLDesign in '..\Source\RLDesign.pas',
   RlCompilerConsts in '..\Source\RlCompilerConsts.pas',
   RLComponentFactory in '..\Source\RLComponentFactory.pas',
   RLCRC32 in '..\Source\RLCRC32.pas',

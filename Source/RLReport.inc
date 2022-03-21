@@ -49,6 +49,9 @@
 {.$DEFINE KYLIX}
 {.$DEFINE FREEPASCAL}
 
+// Para Remover Warnings de CAST causados por WideString/String/AnsiString, descomente a linha abaixo. (Copiado do Projeto ACBr)
+{.$DEFINE REMOVE_CAST_WARN}
+
 {$IFDEF FPC}
   {$DEFINE VCL}
   {$DEFINE UNICODE} // Lazarus 0.9.26 usa UnicodeString como default para String
@@ -56,6 +59,7 @@
   {$DEFINE COMPILER7}
   {$DEFINE HAS_FORMATSETTINGS}
   {$H+}
+  {$UNDEF REMOVE_CAST_WARN} //Devido a problemas com a mensagem de erro "Message recordind not yet supported"
 {$ELSE}
   {$DEFINE BORLAND}
 {$ENDIF}
@@ -72,6 +76,22 @@
   {$DEFINE HAS_FORMATSETTINGS}
 {$ENDIF}
 
+{$IFNDEF DELPHIXE2_UP}
+  {$IFDEF BORLAND}
+    {$UNDEF REMOVE_CAST_WARN}
+  {$ENDIF}
+{$ENDIF}
+
+{$IFDEF REMOVE_CAST_WARN}
+  {$WARN IMPLICIT_STRING_CAST OFF}
+  {$WARN IMPLICIT_STRING_CAST_LOSS OFF}
+  {$WARN SYMBOL_PLATFORM OFF}
+  {.$WARN SYMBOL_DEPRECATED OFF}
+  {$IFDEF BORLAND}
+    {$WARN DUPLICATE_CTOR_DTOR OFF}
+    {$WARN CVT_ACHAR_TO_WCHAR OFF}
+  {$ENDIF}
+{$ENDIF}
 
 
 
