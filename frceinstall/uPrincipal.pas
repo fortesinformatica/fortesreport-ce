@@ -644,7 +644,7 @@ var
       Exit;
     end;
     GetDPKFileInfo(NomeArquivoPacoteDCL, bRunOnlyLocal);
-    Result := bRunOnlyLocal;
+    Result := not bRunOnlyLocal;
   end;
 
   procedure MostrarMensagemInstalado(const aMensagem: String; const aErro: String = '');
@@ -773,8 +773,8 @@ begin
           else
           begin
             //procura um pacote desingtime para o pacote RunOnly
-            if ExistePacoteDesingtimeParaPacote(sDirPackage + 'DCL'+ NomePacote) then
-              InstalarOPacoteNoDelphi('DCL'+ NomePacote);
+            if ExistePacoteDesingtimeParaPacote(sDirPackage + 'dcl'+ NomePacote) then
+              InstalarOPacoteNoDelphi('dcl'+ NomePacote);
           end;
         end;
         pgbInstalacao.Position := pgbInstalacao.Position + 1;
