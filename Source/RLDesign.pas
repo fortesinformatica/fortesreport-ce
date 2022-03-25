@@ -65,7 +65,11 @@ uses
   {$IfDef CLX}
    QForms,
   {$Else}
-   Forms,
+   {$If CompilerVersion > 21}
+     Vcl.Forms,
+   {$Else}
+     Forms,
+   {$EndIf}
   {$EndIf}
   RLReport, RLConsts, RLUtils, RLTypes, RLAbout;
 

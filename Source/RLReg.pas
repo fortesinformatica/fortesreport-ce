@@ -62,7 +62,12 @@ uses
    {$EndIf}
   {$EndIf}
   {$IfDef DELPHI2007_UP}
-   ToolsApi, Windows, Graphics,
+   ToolsApi, Windows,
+   {$If CompilerVersion > 21}
+   Vcl.Graphics,
+   {$Else}
+   Graphics,
+   {$EndIf}
   {$EndIf}
   RLDesign, RLReport,
   RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter,
