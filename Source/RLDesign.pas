@@ -69,7 +69,7 @@ uses
      Vcl.Forms,
    {$Else}
      Forms,
-   {$EndIf}
+   {$IfEnd}
   {$EndIf}
   RLReport, RLConsts, RLUtils, RLTypes, RLAbout;
 

@@ -67,7 +67,7 @@ uses
    Vcl.Graphics,
    {$Else}
    Graphics,
-   {$EndIf}
+   {$IfEnd}
   {$EndIf}
   RLDesign, RLReport,
   RLDraftFilter, RLPDFFilter, RLHTMLFilter, RLRichFilter,
