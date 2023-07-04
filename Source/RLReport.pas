@@ -5916,34 +5916,38 @@ begin
     baDistributed:
     begin
       B := NeedAuxBitmap;
-      B.PixelFormat := pf32bit;
-      B.Width := RectWidth(ARect);
-      B.Height := RectHeight(ARect);
-      D := 0;
-      Y := 0;
-      repeat
-        X := -D * FWidth div 2;
+      try
+        B.PixelFormat := pf32bit;
+        B.Width := RectWidth(ARect);
+        B.Height := RectHeight(ARect);
+        D := 0;
+        Y := 0;
         repeat
-          R.Left := X;
-          R.Top := Y;
-          if FStretch then
-          begin
-            R.Right := R.Left + FWidth;
-            R.Bottom := R.Top + FHeight;
-          end
-          else
-          begin
-            R.Right := R.Left + FPicture.Width;
-            R.Bottom := R.Top + FPicture.Height;
-          end;
-          B.Canvas.StretchDraw(R, FPicture.Graphic);
-          Inc(X, FWidth);
-        until X > B.Width;
-        if FArrange = baDistributed then
-          D := 1 - D;
-        Inc(Y, FHeight);
-      until Y > B.Height;
-      ACanvas.StretchDraw(ARect, B);
+          X := -D * FWidth div 2;
+          repeat
+            R.Left := X;
+            R.Top := Y;
+            if FStretch then
+            begin
+              R.Right := R.Left + FWidth;
+              R.Bottom := R.Top + FHeight;
+            end
+            else
+            begin
+              R.Right := R.Left + FPicture.Width;
+              R.Bottom := R.Top + FPicture.Height;
+            end;
+            B.Canvas.StretchDraw(R, FPicture.Graphic);
+            Inc(X, FWidth);
+          until X > B.Width;
+          if FArrange = baDistributed then
+            D := 1 - D;
+          Inc(Y, FHeight);
+        until Y > B.Height;
+        ACanvas.StretchDraw(ARect, B);
+      finally
+        B.Free;
+      end;
     end;
   end;
 end;
@@ -6081,34 +6085,38 @@ begin
     baDistributed:
     begin
       B := NeedAuxBitmap;
-      B.PixelFormat := pf32bit;
-      B.Width := RectWidth(ARect);
-      B.Height := RectHeight(ARect);
-      D := 0;
-      Y := 0;
-      repeat
-        X := -D * FWidth div 2;
+      try
+        B.PixelFormat := pf32bit;
+        B.Width := RectWidth(ARect);
+        B.Height := RectHeight(ARect);
+        D := 0;
+        Y := 0;
         repeat
-          R.Left := X;
-          R.Top := Y;
-          if FStretch then
-          begin
-            R.Right := R.Left + FWidth;
-            R.Bottom := R.Top + FHeight;
-          end
-          else
-          begin
-            R.Right := R.Left + FPicture.Width;
-            R.Bottom := R.Top + FPicture.Height;
-          end;
-          B.Canvas.StretchDraw(R, FPicture.Graphic);
-          Inc(X, FWidth);
-        until X > B.Width;
-        if FArrange = baDistributed then
-          D := 1 - D;
-        Inc(Y, FHeight);
-      until Y > B.Height;
-      ASurface.StretchDraw(ARect, B);
+          X := -D * FWidth div 2;
+          repeat
+            R.Left := X;
+            R.Top := Y;
+            if FStretch then
+            begin
+              R.Right := R.Left + FWidth;
+              R.Bottom := R.Top + FHeight;
+            end
+            else
+            begin
+              R.Right := R.Left + FPicture.Width;
+              R.Bottom := R.Top + FPicture.Height;
+            end;
+            B.Canvas.StretchDraw(R, FPicture.Graphic);
+            Inc(X, FWidth);
+          until X > B.Width;
+          if FArrange = baDistributed then
+            D := 1 - D;
+          Inc(Y, FHeight);
+        until Y > B.Height;
+        ASurface.StretchDraw(ARect, B);
+      finally
+        B.Free;
+      end;
     end;
   end;
 end;
@@ -8996,9 +9004,13 @@ var
   AuxBitmap: TBitmap;
 begin
   AuxBitmap := NeedAuxBitmap;
-  AuxBitmap.Canvas.Font.Assign(Font);
-  RunMemo(Buffer, AuxBitmap.Canvas, taLeftJustify, Rect(0, 0, MaxWidth, MaxInt),
-    MaxWidth, MaxInt, Result);
+  try
+    AuxBitmap.Canvas.Font.Assign(Font);
+    RunMemo(Buffer, AuxBitmap.Canvas, taLeftJustify, Rect(0, 0, MaxWidth, MaxInt),
+      MaxWidth, MaxInt, Result);
+  finally
+    AuxBitmap.Free;
+  end;
 end;
 
 procedure MemoDraw(const Buffer: string; Canvas: TObject;

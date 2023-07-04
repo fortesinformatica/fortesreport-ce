@@ -636,34 +636,38 @@ begin
                              'background-color:#FFFFFF;">');
   cliprct := Rect(0, 0, FPrintSize.X, FPrintSize.Y);
   bmpcalc := NeedAuxBitmap;
-  // grava tags
-  for I := 0 to APage.ObjectCount - 1 do
-  begin
-    obj := APage.Objects[I];
-    if obj is TRLPixelObject then
-      DrawPixel(TRLPixelObject(obj))
-    else if obj is TRLLineObject then
-      DrawLine(TRLLineObject(obj))
-    else if obj is TRLRectangleObject then
-      DrawRectangle(TRLRectangleObject(obj))
-    else if obj is TRLTextObject then
-      DrawText(TRLTextObject(obj))
-    else if obj is TRLFillRectObject then
-      DrawFillRect(TRLFillRectObject(obj))
-    else if obj is TRLEllipseObject then
-      DrawEllipse(TRLEllipseObject(obj))
-    else if obj is TRLPolygonObject then
-      DrawPolygon(TRLPolygonObject(obj))
-    else if obj is TRLPolylineObject then
-      DrawPolyline(TRLPolylineObject(obj))
-    else if obj is TRLImageObject then
-      DrawImage(TRLImageObject(obj))
-    else if obj is TRLSetClipRectObject then
-      DrawSetClipRect(TRLSetClipRectObject(obj))
-    else if obj is TRLResetClipRectObject then
-      DrawResetClipRect(TRLResetClipRectObject(obj));
+  try
+    // grava tags
+    for I := 0 to APage.ObjectCount - 1 do
+    begin
+      obj := APage.Objects[I];
+      if obj is TRLPixelObject then
+        DrawPixel(TRLPixelObject(obj))
+      else if obj is TRLLineObject then
+        DrawLine(TRLLineObject(obj))
+      else if obj is TRLRectangleObject then
+        DrawRectangle(TRLRectangleObject(obj))
+      else if obj is TRLTextObject then
+        DrawText(TRLTextObject(obj))
+      else if obj is TRLFillRectObject then
+        DrawFillRect(TRLFillRectObject(obj))
+      else if obj is TRLEllipseObject then
+        DrawEllipse(TRLEllipseObject(obj))
+      else if obj is TRLPolygonObject then
+        DrawPolygon(TRLPolygonObject(obj))
+      else if obj is TRLPolylineObject then
+        DrawPolyline(TRLPolylineObject(obj))
+      else if obj is TRLImageObject then
+        DrawImage(TRLImageObject(obj))
+      else if obj is TRLSetClipRectObject then
+        DrawSetClipRect(TRLSetClipRectObject(obj))
+      else if obj is TRLResetClipRectObject then
+        DrawResetClipRect(TRLResetClipRectObject(obj));
+    end;
+    Writeln(FWorkingFileHandle, '</div>');
+  finally
+    bmpcalc.Free;
   end;
-  Writeln(FWorkingFileHandle, '</div>');
 end;
 
 procedure TRLHTMLFilter.WritePageHeader(var AFile: textfile);

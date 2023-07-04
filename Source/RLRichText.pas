@@ -741,7 +741,11 @@ var
   bmp: TBitmap;
 begin
   bmp := NeedAuxBitmap;
-  RichTextParse(ARichText, bmp.Canvas, ARect, AWordWrap, Result, raMeasure);
+  try
+    RichTextParse(ARichText, bmp.Canvas, ARect, AWordWrap, Result, raMeasure);
+  finally
+    bmp.Free;
+  end;
 end;
 
 procedure RichTextDraw(const ARichText: String; ACanvas: TObject; ARect: TRect; AWordWrap: Boolean);

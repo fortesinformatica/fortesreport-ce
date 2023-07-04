@@ -318,17 +318,11 @@ begin
   Result.PixelFormat := pf32bit;
 end;
 
-var
-  AuxBitmap: TBitmap;
-
 function NeedAuxBitmap: TBitmap;
 begin
-  if AuxBitmap <> nil then
-    AuxBitmap.Free;
-  AuxBitmap := TRLBitmap.Create;
-  AuxBitmap.Width := 1;
-  AuxBitmap.Height := 1;
-  Result := AuxBitmap;
+  Result := TRLBitmap.Create;
+  Result.Width := 1;
+  Result.Height := 1;
 end;
 
 procedure LogClear;
@@ -949,6 +943,7 @@ begin
     RotatePoints(P, AAngle);
     Result := PointsSize(P);
   end;
+  FreeObj(B);
 end;
 
 procedure MoveRect(var ARect: TRect; AX, AY: Integer);
@@ -1128,11 +1123,9 @@ end;
 
 initialization
   TempDir := GetTempDir;
-  AuxBitmap := nil;
   LogClear;
 
 finalization
   ClearTempFiles;
-  FreeObj(AuxBitmap);
 
 end.  

@@ -523,16 +523,20 @@ begin
     Height := SpeedButtonClose.Height;
     // copia a mesma margem dos outros botòes
     B := NeedAuxBitmap;
-    B.Canvas.Font := PanelTools.Font;
-    Width := B.Canvas.TextWidth(Caption) + SpeedButtonClose.Width - B.Canvas.TextWidth(SpeedButtonClose.Caption);
-    //
-    Flat := True;
-    ParentShowHint := False;
-    ShowHint := True;
-    Spacing := -1;
-    OnClick := SpeedButtonCustomActionClick;
-    if Assigned(SetupInstance) then
-      Enabled := @SetupInstance.OnCustomAction <> nil;
+    try
+      B.Canvas.Font := PanelTools.Font;
+      Width := B.Canvas.TextWidth(Caption) + SpeedButtonClose.Width - B.Canvas.TextWidth(SpeedButtonClose.Caption);
+      //
+      Flat := True;
+      ParentShowHint := False;
+      ShowHint := True;
+      Spacing := -1;
+      OnClick := SpeedButtonCustomActionClick;
+      if Assigned(SetupInstance) then
+        Enabled := @SetupInstance.OnCustomAction <> nil;
+    finally
+      B.Free;
+    end;
   end;
   for I := 0 to PanelTools.ControlCount - 1 do
   begin

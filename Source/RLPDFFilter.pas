@@ -740,12 +740,16 @@ var
   B: TBitmap;
 begin
   B := NeedAuxBitmap;
-  with B.Canvas do
-  begin
-    Font.Name := AFont.Name;
-    Font.Size := AFont.Size;
-    Result.X := TextWidth(AText);
-    Result.Y := TextHeight(AText);
+  try
+    with B.Canvas do
+    begin
+      Font.Name := AFont.Name;
+      Font.Size := AFont.Size;
+      Result.X := TextWidth(AText);
+      Result.Y := TextHeight(AText);
+    end;
+  finally
+    B.Free;
   end;
 end;
 

@@ -2949,11 +2949,15 @@ var
   B: TBitmap;
 begin
   B := NeedAuxBitmap;
-  B.Width := ASource.Right - ASource.Left;
-  B.Height := ASource.Bottom - ASource.Top;
-  B.PixelFormat := pf32bit;
-  B.Canvas.CopyRect(Rect(0, 0, B.Width, B.Height), ACanvas, ASource);
-  StretchDraw(ADest, B);
+  try
+    B.Width := ASource.Right - ASource.Left;
+    B.Height := ASource.Bottom - ASource.Top;
+    B.PixelFormat := pf32bit;
+    B.Canvas.CopyRect(Rect(0, 0, B.Width, B.Height), ACanvas, ASource);
+    StretchDraw(ADest, B);
+  finally
+    B.Free;
+  end;
 end;
 
 procedure TRLGraphicSurface.CopyRect(const ADest: TRect; ASurface: TRLGraphicSurface; const ASource: TRect);
@@ -3040,8 +3044,12 @@ var
   B: TBitmap;
 begin
   B := NeedAuxBitmap;
-  B.Canvas.Font.Assign(FFont);
-  Result := B.Canvas.TextWidth(AText);
+  try
+    B.Canvas.Font.Assign(FFont);
+    Result := B.Canvas.TextWidth(AText);
+  finally
+    B.Free;
+  end;
 end;
 
 function TRLGraphicSurface.TextHeight(const AText: String): Integer;
@@ -3049,8 +3057,12 @@ var
   B: TBitmap;
 begin
   B := NeedAuxBitmap;
-  B.Canvas.Font.Assign(FFont);
-  Result := B.Canvas.TextHeight(AText);
+  try
+    B.Canvas.Font.Assign(FFont);
+    Result := B.Canvas.TextHeight(AText);
+  finally
+    B.Free;
+  end;
 end;
 
 procedure TRLGraphicSurface.TextOut(ALeft, ATop: Integer; const AText: AnsiString);

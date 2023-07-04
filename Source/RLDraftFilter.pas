@@ -1043,24 +1043,28 @@ var
   FontSizeBitmap: TBitmap;
 begin
   FontSizeBitmap := NeedAuxBitmap;
-  FontSizeBitmap.Canvas.Font.Name := AFontName;
-  FontSizeBitmap.Canvas.Font.Size := ASize;
-  // a largura média de um caractere em pixels é dada pela largura da amostra em
-  // pixels dividida pela largura da amostra em caracteres com a fonte indicada
-  // um fator "mágico" foi calculado através de testes para chegar ao valor ideal  
-  OneCharWidth := MagicDelta * FontSizeBitmap.Canvas.TextWidth(TextSample) / Length(TextSample);
-  CharsPerInch := ScreenPPI / OneCharWidth;
-  //
-  if CharsPerInch <= 5 then
-    Result := 5
-  else if CharsPerInch <= 10 then
-    Result := 10
-  else if CharsPerInch <= 12 then
-    Result := 12
-  else if CharsPerInch <= 17 then
-    Result := 17
-  else
-    Result := 20;
+  try
+    FontSizeBitmap.Canvas.Font.Name := AFontName;
+    FontSizeBitmap.Canvas.Font.Size := ASize;
+    // a largura média de um caractere em pixels é dada pela largura da amostra em
+    // pixels dividida pela largura da amostra em caracteres com a fonte indicada
+    // um fator "mágico" foi calculado através de testes para chegar ao valor ideal
+    OneCharWidth := MagicDelta * FontSizeBitmap.Canvas.TextWidth(TextSample) / Length(TextSample);
+    CharsPerInch := ScreenPPI / OneCharWidth;
+    //
+    if CharsPerInch <= 5 then
+      Result := 5
+    else if CharsPerInch <= 10 then
+      Result := 10
+    else if CharsPerInch <= 12 then
+      Result := 12
+    else if CharsPerInch <= 17 then
+      Result := 17
+    else
+      Result := 20;
+  finally
+    FontSizeBitmap.Free;
+  end;
 end;
 
 function TRLDraftFilter.CPPSelectionToCPP(ACPP: TRLCPPSelection): Integer;

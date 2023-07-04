@@ -575,11 +575,15 @@ var
   B: TBitmap;
 begin
   B := NeedAuxBitmap;
-  B.Width := ARect.Right - ARect.Left;
-  B.Height := ARect.Bottom - ARect.Top;
-  B.PixelFormat := pf32bit;
-  B.Canvas.CopyRect(Rect(0, 0, B.Width, B.Height), ACanvas, ARect);
-  Result := ToMetaGraphic(B);
+  try
+    B.Width := ARect.Right - ARect.Left;
+    B.Height := ARect.Bottom - ARect.Top;
+    B.PixelFormat := pf32bit;
+    B.Canvas.CopyRect(Rect(0, 0, B.Width, B.Height), ACanvas, ARect);
+    Result := ToMetaGraphic(B);
+  finally
+    B.Free;
+  end;
 end;
 
 procedure CanvasSetRectData(ACanvas: TCanvas; const ARect: TRect; const AData: String; AParity: Boolean);
@@ -753,58 +757,62 @@ var
   bmp: TBitmap;
 begin
   bmp := NeedAuxBitmap;
-  bmp.Width := 1;
-  bmp.Height := 1;
-  bmp.Canvas.Font.Name := AFontName;
-  bmp.Canvas.Font.Style := AFontStyles;
-  bmp.Canvas.Font.Size := 750;
-  //
-  size := GetOutlineTextMetricsA(bmp.Canvas.Handle, SizeOf(TOutlineTextmetricA), nil);
-  if size = 0 then
-    raise Exception.Create('Invalid font for GetOutlineTextMetrics');
-  GetMem(outl, size);
   try
-    outl^.otmSize := size;
-    if GetOutlineTextMetricsA(bmp.Canvas.Handle, size, outl) = 0 then
-      raise Exception.Create('GetOutlineTextMetrics failed');
+    bmp.Width := 1;
+    bmp.Height := 1;
+    bmp.Canvas.Font.Name := AFontName;
+    bmp.Canvas.Font.Style := AFontStyles;
+    bmp.Canvas.Font.Size := 750;
     //
-    AFontRec.TrueType := (outl^.otmTextMetrics.tmPitchAndFamily and TMPF_TRUETYPE) = TMPF_TRUETYPE;
-    AFontRec.BaseFont := AFontName;
-    AFontRec.FirstChar := Byte(outl^.otmTextMetrics.tmFirstChar);
-    AFontRec.LastChar := Byte(outl^.otmTextMetrics.tmLastChar);
+    size := GetOutlineTextMetricsA(bmp.Canvas.Handle, SizeOf(TOutlineTextmetricA), nil);
+    if size = 0 then
+      raise Exception.Create('Invalid font for GetOutlineTextMetrics');
+    GetMem(outl, size);
+    try
+      outl^.otmSize := size;
+      if GetOutlineTextMetricsA(bmp.Canvas.Handle, size, outl) = 0 then
+        raise Exception.Create('GetOutlineTextMetrics failed');
+      //
+      AFontRec.TrueType := (outl^.otmTextMetrics.tmPitchAndFamily and TMPF_TRUETYPE) = TMPF_TRUETYPE;
+      AFontRec.BaseFont := AFontName;
+      AFontRec.FirstChar := Byte(outl^.otmTextMetrics.tmFirstChar);
+      AFontRec.LastChar := Byte(outl^.otmTextMetrics.tmLastChar);
 
-    {$IfDef FPC}
-    GetCharWidth(bmp.Canvas.Handle,aFontRec.FirstChar,aFontRec.LastChar,aFontRec.Widths[aFontRec.FirstChar]);
-    {$Else}
-    for I := AFontRec.FirstChar to AFontRec.LastChar do
-      AFontRec.Widths[I] := bmp.Canvas.TextWidth(Chr(I));
-    {$EndIf}
+      {$IfDef FPC}
+      GetCharWidth(bmp.Canvas.Handle,aFontRec.FirstChar,aFontRec.LastChar,aFontRec.Widths[aFontRec.FirstChar]);
+      {$Else}
+      for I := AFontRec.FirstChar to AFontRec.LastChar do
+        AFontRec.Widths[I] := bmp.Canvas.TextWidth(Chr(I));
+      {$EndIf}
 
-    AFontRec.FontDescriptor.Name := AFontName;
-    AFontRec.FontDescriptor.Styles := '';
-    if fsBold in AFontStyles then
-      AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'Bold';
-    if fsItalic in AFontStyles then
-      AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'Italic';
-    if fsUnderline in AFontStyles then
-      AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'Underline';
-    if fsStrikeOut in AFontStyles then
-      AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'StrikeOut';
-    AFontRec.FontDescriptor.Flags := 32;
-    AFontRec.FontDescriptor.FontBBox := outl^.otmrcFontBox;
-    AFontRec.FontDescriptor.MissingWidth := 0;
-    AFontRec.FontDescriptor.StemV := 0;
-    AFontRec.FontDescriptor.StemH := 0; 
-    AFontRec.FontDescriptor.ItalicAngle := outl^.otmItalicAngle;
-    AFontRec.FontDescriptor.CapHeight := outl^.otmsCapEmHeight;
-    AFontRec.FontDescriptor.XHeight := outl^.otmsXHeight;
-    AFontRec.FontDescriptor.Ascent := outl^.otmTextMetrics.tmAscent;
-    AFontRec.FontDescriptor.Descent := outl^.otmTextMetrics.tmDescent;
-    AFontRec.FontDescriptor.Leading := outl^.otmTextMetrics.tmInternalLeading;
-    AFontRec.FontDescriptor.MaxWidth := outl^.otmTextMetrics.tmMaxCharWidth;
-    AFontRec.FontDescriptor.AvgWidth := outl^.otmTextMetrics.tmAveCharWidth;
+      AFontRec.FontDescriptor.Name := AFontName;
+      AFontRec.FontDescriptor.Styles := '';
+      if fsBold in AFontStyles then
+        AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'Bold';
+      if fsItalic in AFontStyles then
+        AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'Italic';
+      if fsUnderline in AFontStyles then
+        AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'Underline';
+      if fsStrikeOut in AFontStyles then
+        AFontRec.FontDescriptor.Styles := AFontRec.FontDescriptor.Styles + 'StrikeOut';
+      AFontRec.FontDescriptor.Flags := 32;
+      AFontRec.FontDescriptor.FontBBox := outl^.otmrcFontBox;
+      AFontRec.FontDescriptor.MissingWidth := 0;
+      AFontRec.FontDescriptor.StemV := 0;
+      AFontRec.FontDescriptor.StemH := 0;
+      AFontRec.FontDescriptor.ItalicAngle := outl^.otmItalicAngle;
+      AFontRec.FontDescriptor.CapHeight := outl^.otmsCapEmHeight;
+      AFontRec.FontDescriptor.XHeight := outl^.otmsXHeight;
+      AFontRec.FontDescriptor.Ascent := outl^.otmTextMetrics.tmAscent;
+      AFontRec.FontDescriptor.Descent := outl^.otmTextMetrics.tmDescent;
+      AFontRec.FontDescriptor.Leading := outl^.otmTextMetrics.tmInternalLeading;
+      AFontRec.FontDescriptor.MaxWidth := outl^.otmTextMetrics.tmMaxCharWidth;
+      AFontRec.FontDescriptor.AvgWidth := outl^.otmTextMetrics.tmAveCharWidth;
+    finally
+      FreeMem(outl, size);
+    end;
   finally
-    FreeMem(outl, size);
+    bmp.Free;
   end;
 end;
 {$Else}
@@ -815,40 +823,44 @@ var
   i  :integer;
 begin
   bmp := NeedAuxBitmap;
-  bmp.Canvas.Font.Name := aFontName;
-  bmp.Canvas.Font.Style := aFontStyles;
-  bmp.Canvas.Font.Size := 750;
-  //
-  aFontRec.TrueType := True;
-  aFontRec.BaseFont := aFontName;
-  aFontRec.FirstChar := 32;
-  aFontRec.LastChar := 255;
-  for i:=aFontRec.FirstChar to aFontRec.LastChar do
-    aFontRec.Widths[i] := bmp.Canvas.TextWidth( GetLocalizeStr(Chr(i)) );
-  //
-  aFontRec.FontDescriptor.Name := aFontName;
-  aFontRec.FontDescriptor.Styles := '';
-  if fsBold in aFontStyles then
-    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Bold';
-  if fsItalic in aFontStyles then
-    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Italic';
-  if fsUnderline in aFontStyles then
-    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Underline';
-  if fsStrikeOut in aFontStyles then
-    aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'StrikeOut';
-  aFontRec.FontDescriptor.Flags :=32;
-  aFontRec.FontDescriptor.FontBBox := Rect(-498,1023,1120,-307);
-  aFontRec.FontDescriptor.MissingWidth := 0;
-  aFontRec.FontDescriptor.StemV := 0;
-  aFontRec.FontDescriptor.StemH := 0;
-  aFontRec.FontDescriptor.ItalicAngle := 0;
-  aFontRec.FontDescriptor.CapHeight := 0;
-  aFontRec.FontDescriptor.XHeight := 0;
-  aFontRec.FontDescriptor.Ascent := 0;
-  aFontRec.FontDescriptor.Descent := 0;
-  aFontRec.FontDescriptor.Leading := 0;
-  aFontRec.FontDescriptor.MaxWidth := 0;
-  aFontRec.FontDescriptor.AvgWidth := 0;
+  try
+    bmp.Canvas.Font.Name := aFontName;
+    bmp.Canvas.Font.Style := aFontStyles;
+    bmp.Canvas.Font.Size := 750;
+    //
+    aFontRec.TrueType := True;
+    aFontRec.BaseFont := aFontName;
+    aFontRec.FirstChar := 32;
+    aFontRec.LastChar := 255;
+    for i:=aFontRec.FirstChar to aFontRec.LastChar do
+      aFontRec.Widths[i] := bmp.Canvas.TextWidth( GetLocalizeStr(Chr(i)) );
+    //
+    aFontRec.FontDescriptor.Name := aFontName;
+    aFontRec.FontDescriptor.Styles := '';
+    if fsBold in aFontStyles then
+      aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Bold';
+    if fsItalic in aFontStyles then
+      aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Italic';
+    if fsUnderline in aFontStyles then
+      aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'Underline';
+    if fsStrikeOut in aFontStyles then
+      aFontRec.FontDescriptor.Styles := aFontRec.FontDescriptor.Styles+'StrikeOut';
+    aFontRec.FontDescriptor.Flags :=32;
+    aFontRec.FontDescriptor.FontBBox := Rect(-498,1023,1120,-307);
+    aFontRec.FontDescriptor.MissingWidth := 0;
+    aFontRec.FontDescriptor.StemV := 0;
+    aFontRec.FontDescriptor.StemH := 0;
+    aFontRec.FontDescriptor.ItalicAngle := 0;
+    aFontRec.FontDescriptor.CapHeight := 0;
+    aFontRec.FontDescriptor.XHeight := 0;
+    aFontRec.FontDescriptor.Ascent := 0;
+    aFontRec.FontDescriptor.Descent := 0;
+    aFontRec.FontDescriptor.Leading := 0;
+    aFontRec.FontDescriptor.MaxWidth := 0;
+    aFontRec.FontDescriptor.AvgWidth := 0;
+  finally
+    bmp.Free;
+  end;
 end;
 {$EndIf}
 
