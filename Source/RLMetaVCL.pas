@@ -59,7 +59,9 @@ uses
   {$EndIf}
   SysUtils, Classes, Math,
   Graphics, StdCtrls,
-  RLMetaFile, RLUtils, RLConsts;
+  RLMetaFile, RLUtils, RLConsts,
+  Vcl.Imaging.GIFImg,
+  Vcl.Imaging.pngimage;
 
 type
   TPointArray = array of TPoint;
@@ -270,27 +272,34 @@ begin
     G := ASource;
     // identifica os tipos nativos
     if G = nil then
-      S.WriteString('NIL')
+       S.WriteString('NIL')
     else if G is TBitmap then
-      S.WriteString('BMP')
+       S.WriteString('BMP')
     else if G is TIcon then
-      S.WriteString('ICO')
+       S.WriteString('ICO')
+    else if (G is TPngImage) then   //Adicionado novo Formato em 12/09/23 para transparência
+      S.WriteString('PNG')
+    else if (G is TWICImage) then   //Adicionado novo Formato em 12/09/23 para transparência
+      S.WriteString('TIF')
+    else if (G is TGIFImage) then   //Adicionado novo Formato em 12/09/23 para transparência
+      S.WriteString('GIF')
     else
     begin
       // qualquer outro formato é transformado em bmp para ficar compatível com um carregador de qualquer plataforma
-      M := TRLBitmap.Create;
-      M.Width := ASource.Width;
-      M.Height := ASource.Height;
-      G := M;
+      M             := TRLBitmap.Create;
+      M.Width       := ASource.Width;
+      M.Height      := ASource.Height;
+      M.Transparent := ASource.Transparent;
+      G             := M;
       M.Canvas.Draw(0, 0, ASource);
       S.WriteString('BMP');
     end;
     if Assigned(G) then
-      G.SaveToStream(S);
+       G.SaveToStream(S);
     Result := S.DataString;
   finally
     if Assigned(M) then
-      M.free;
+       M.free;
     S.free;
   end;
 end;
@@ -483,6 +492,12 @@ begin
         Result := TRLBitmap.Create
       else if T = 'ICO' then
         Result := TIcon.Create
+      else if T = 'PNG' then         //Adicionado novo Formato em 12/09/23 para transparência
+        Result := TPNGImage.Create
+      else if T = 'TIF' then         //Adicionado novo Formato em 12/09/23 para transparência
+        Result := TWICImage.Create
+      else if T = 'GIF' then         //Adicionado novo Formato em 12/09/23  para transparência
+        Result := TGIFImage.Create
       else
         Result := nil;
       if Assigned(Result) then
@@ -594,6 +609,7 @@ var
 begin
   graphic := FromMetaGraphic(AData);
   if graphic <> nil then
+  Begin
     try
       auxrect := ARect;
       if AParity then
@@ -605,6 +621,7 @@ begin
     finally
       graphic.free;
     end;
+  end;
 end;
 
 procedure CanvasStretchDraw(ACanvas: TCanvas; const ARect: TRect; const AData: String; AParity: Boolean);
