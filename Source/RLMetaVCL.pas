@@ -59,11 +59,20 @@ uses
   {$EndIf}
   SysUtils, Classes, Math,
   Graphics, StdCtrls,
+  {$IfNDef FPC}
+   {$IfDef SUPPORT_PNG}
+    pngimage,
+   {$EndIf}
+  {$EndIf}
   RLMetaFile, RLUtils, RLConsts;
 
 type
   TPointArray = array of TPoint;
-  
+
+{$IfDef FPC}
+ TPngImage = TPortableNetworkGraphic;
+{$EndIf}
+
 function ToMetaRect(const ASource: TRect): TRLMetaRect;
 function ToMetaColor(ASource: TColor): TRLMetaColor;
 function ToMetaPenMode(ASource: TPenMode): TRLMetaPenMode;
@@ -275,6 +284,10 @@ begin
       S.WriteString('BMP')
     else if G is TIcon then
       S.WriteString('ICO')
+    {$IfDef SUPPORT_PNG}
+    else if G is TPngImage then
+      S.WriteString('PNG')
+    {$EndIf}
     else
     begin
       // qualquer outro formato é transformado em bmp para ficar compatível com um carregador de qualquer plataforma
@@ -483,6 +496,10 @@ begin
         Result := TRLBitmap.Create
       else if T = 'ICO' then
         Result := TIcon.Create
+      {$IfDef SUPPORT_PNG}
+      else if T = 'PNG' then
+        Result := TPngImage.Create
+      {$EndIf}
       else
         Result := nil;
       if Assigned(Result) then
