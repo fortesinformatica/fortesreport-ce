@@ -39,7 +39,7 @@
 
 {******************************************************************************
 |* Historico
-|*
+7|*
 |* xx/xx/xxxx:  Autor...
 |* - Descrição...
 ******************************************************************************}
@@ -57,11 +57,15 @@ uses
   {$IfDef FPC}
    LCLIntf, LCLType, LCLProc,
   {$EndIf}
+
+  {$IFDEF COMPILER20_UP}
+    Vcl.Imaging.GIFImg,
+    Vcl.Imaging.pngimage,
+  {$EndIf}
+
   SysUtils, Classes, Math,
   Graphics, StdCtrls,
-  RLMetaFile, RLUtils, RLConsts,
-  Vcl.Imaging.GIFImg,
-  Vcl.Imaging.pngimage;
+  RLMetaFile, RLUtils, RLConsts;
 
 type
   TPointArray = array of TPoint;
@@ -277,12 +281,14 @@ begin
        S.WriteString('BMP')
     else if G is TIcon then
        S.WriteString('ICO')
+   {$IFDEF COMPILER20_UP}
     else if (G is TPngImage) then   //Adicionado novo Formato em 12/09/23 para transparência
       S.WriteString('PNG')
     else if (G is TWICImage) then   //Adicionado novo Formato em 12/09/23 para transparência
       S.WriteString('TIF')
     else if (G is TGIFImage) then   //Adicionado novo Formato em 12/09/23 para transparência
       S.WriteString('GIF')
+   {$EndIf}
     else
     begin
       // qualquer outro formato é transformado em bmp para ficar compatível com um carregador de qualquer plataforma
@@ -492,16 +498,19 @@ begin
         Result := TRLBitmap.Create
       else if T = 'ICO' then
         Result := TIcon.Create
+     {$IFDEF COMPILER20_UP}
       else if T = 'PNG' then         //Adicionado novo Formato em 12/09/23 para transparência
         Result := TPNGImage.Create
       else if T = 'TIF' then         //Adicionado novo Formato em 12/09/23 para transparência
         Result := TWICImage.Create
       else if T = 'GIF' then         //Adicionado novo Formato em 12/09/23  para transparência
         Result := TGIFImage.Create
+     {$EndIf}
+
       else
         Result := nil;
       if Assigned(Result) then
-        Result.LoadFromStream(S);
+         Result.LoadFromStream(S);
     finally
       S.free;
     end;
