@@ -600,7 +600,9 @@ begin
     else if oFRCE.Installations[iFor].VersionNumberStr = 'd27' then
       edtDelphiVersion.Items.Add('Delphi 10.4 Sydney')
     else if oFRCE.Installations[iFor].VersionNumberStr = 'd28' then
-      edtDelphiVersion.Items.Add('Delphi 11 Alexandria');
+      edtDelphiVersion.Items.Add('Delphi 11 Alexandria')
+    else if oFRCE.Installations[iFor].VersionNumberStr = 'd29' then
+      edtDelphiVersion.Items.Add('Delphi 12');
 
     // -- Evento disparado antes de iniciar a execução do processo.
     oFRCE.Installations[iFor].DCC32.OnBeforeExecute := BeforeExecute;

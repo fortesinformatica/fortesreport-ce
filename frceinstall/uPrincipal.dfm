@@ -16,7 +16,6 @@ object frmPrincipal: TfrmPrincipal
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object wizPrincipal: TJvWizard
     Left = 0
@@ -24,7 +23,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 720
     Height = 478
     ActivePage = wizPgInicio
-    ButtonBarHeight = 42
+    ButtonBarHeight = 52
     ButtonStart.Caption = 'Para o in'#237'cio'
     ButtonStart.NumGlyphs = 1
     ButtonStart.Width = 100
@@ -649,7 +648,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 0
       Top = 71
       Width = 166
-      Height = 365
+      Height = 355
       ItemHeight = 30
       AllowClickableNodes = False
       Color = 5788637
