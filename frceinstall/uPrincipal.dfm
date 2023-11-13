@@ -5,8 +5,8 @@ object frmPrincipal: TfrmPrincipal
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Instalador FortesReport Community Edition'
-  ClientHeight = 478
-  ClientWidth = 720
+  ClientHeight = 526
+  ClientWidth = 716
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,10 +20,10 @@ object frmPrincipal: TfrmPrincipal
   object wizPrincipal: TJvWizard
     Left = 0
     Top = 0
-    Width = 720
-    Height = 478
+    Width = 716
+    Height = 526
     ActivePage = wizPgInicio
-    ButtonBarHeight = 52
+    ButtonBarHeight = 64
     ButtonStart.Caption = 'Para o in'#237'cio'
     ButtonStart.NumGlyphs = 1
     ButtonStart.Width = 100
@@ -49,9 +49,11 @@ object frmPrincipal: TfrmPrincipal
     ShowRouteMap = True
     OnFinishButtonClick = wizPrincipalFinishButtonClick
     OnCancelButtonClick = wizPrincipalCancelButtonClick
+    ExplicitWidth = 714
+    ExplicitHeight = 461
     DesignSize = (
-      720
-      478)
+      716
+      526)
     object wizPgInicio: TJvWizardWelcomePage
       Header.Visible = False
       Header.Height = 50
@@ -83,6 +85,8 @@ object frmPrincipal: TfrmPrincipal
       WaterMark.Image.Alignment = iaCenter
       WaterMark.Image.Layout = ilTop
       WaterMark.Width = 80
+      ExplicitWidth = 548
+      ExplicitHeight = 326
       object Label6: TLabel
         Left = 25
         Top = 34
@@ -254,6 +258,8 @@ object frmPrincipal: TfrmPrincipal
       Color = clWhite
       Caption = 'Configura'#231#245'es'
       OnNextButtonClick = wizPgConfiguracaoNextButtonClick
+      ExplicitWidth = 558
+      ExplicitHeight = 397
       object Label4: TLabel
         Left = 18
         Top = 157
@@ -380,6 +386,8 @@ object frmPrincipal: TfrmPrincipal
       Color = clWhite
       Caption = 'Reposit'#243'rio'
       OnEnterPage = wizPgObterFontesEnterPage
+      ExplicitWidth = 558
+      ExplicitHeight = 397
       object Label1: TLabel
         Left = 77
         Top = 177
@@ -465,6 +473,8 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Instala'#231#227'o'
       OnEnterPage = wizPgInstalacaoEnterPage
       OnNextButtonClick = wizPgInstalacaoNextButtonClick
+      ExplicitWidth = 558
+      ExplicitHeight = 397
       object btnInstalarfrce: TSpeedButton
         Left = 431
         Top = 336
@@ -553,6 +563,8 @@ object frmPrincipal: TfrmPrincipal
       VisibleButtons = [bkFinish]
       Color = clWhite
       Caption = 'Fim'
+      ExplicitWidth = 558
+      ExplicitHeight = 397
       object Label3: TLabel
         Left = 39
         Top = 58
@@ -648,7 +660,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 0
       Top = 71
       Width = 166
-      Height = 355
+      Height = 391
       ItemHeight = 30
       AllowClickableNodes = False
       Color = 5788637
@@ -662,17 +674,19 @@ object frmPrincipal: TfrmPrincipal
       Indent = 15
       NodeColors.Selected = clBlack
       UsePageTitle = False
+      ExplicitHeight = 326
     end
     object pnlTopo: TPanel
       Left = 0
       Top = 0
-      Width = 720
+      Width = 716
       Height = 71
       Align = alTop
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 4
+      ExplicitWidth = 714
       object Image1: TImage
         Left = 473
         Top = 9
