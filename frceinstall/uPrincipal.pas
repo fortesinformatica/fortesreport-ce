@@ -1,39 +1,39 @@
 {******************************************************************************}
 { Projeto: FortesReport Community Edition                                      }
-{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
-{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
-{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
-{ Al√©m disso possui uma rica paleta de Componentes                             }
+{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
+{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
+{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
+{ AlÈm disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
+{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M√°rcio Martins                                  }
-{                              R√©gys Borges da Silveira                        }
+{                              M·rcio Martins                                  }
+{                              RÈgys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
+{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
-{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
-{ qualquer vers√£o posterior.                                                   }
+{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
+{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
+{ qualquer vers„o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
-{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
+{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
-{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
+{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
+{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -42,7 +42,7 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - Descri√ß√£o...
+|* - DescriÁ„o...
 ******************************************************************************}
 
 unit uPrincipal;
@@ -237,7 +237,7 @@ begin
   Result := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
 end;
 
-// retornar o caminho completo para o arquivo .ini de configura√ß√µes
+// retornar o caminho completo para o arquivo .ini de configuraÁıes
 function TfrmPrincipal.PathArquivoIni: String;
 var
   NomeApp: String;
@@ -253,14 +253,14 @@ begin
     'log_' + StringReplace(edtDelphiVersion.Text, ' ', '_', [rfReplaceAll]) + '.txt';
 end;
 
-// verificar se no caminho informado j√° existe o .svn indicando que o
-// checkout j√° foi feito no diretorio
+// verificar se no caminho informado j· existe o .svn indicando que o
+// checkout j· foi feito no diretorio
 function TfrmPrincipal.IsCheckOutJaFeito(const ADiretorio: String): Boolean;
 begin
   Result := DirectoryExists(IncludeTrailingPathDelimiter(ADiretorio) + '.svn')
 end;
 
-// ler o arquivo .ini de configura√ß√µes e setar os campos com os valores lidos
+// ler o arquivo .ini de configuraÁıes e setar os campos com os valores lidos
 procedure TfrmPrincipal.LerConfiguracoes;
 var
   ArqIni: TIniFile;
@@ -283,7 +283,7 @@ begin
   end;
 end;
 
-// gravar as configura√ß√µes efetuadas pelo usu√°rio
+// gravar as configuraÁıes efetuadas pelo usu·rio
 procedure TfrmPrincipal.GravarConfiguracoes;
 var
   ArqIni: TIniFile;
@@ -300,10 +300,10 @@ begin
   end;
 end;
 
-// cria√ß√£o dos diret√≥rios necess√°rios
+// criaÁ„o dos diretÛrios necess·rios
 procedure TfrmPrincipal.CreateDirectoryLibrarysNotExist;
 begin
-  // Checa se existe diret√≥rio da plataforma
+  // Checa se existe diretÛrio da plataforma
   if not DirectoryExists(sDirLibrary) then
     ForceDirectories(sDirLibrary);
 end;
@@ -346,7 +346,7 @@ var
 begin
   with oFRCE.Installations[iVersion] do
   begin
-    // tentar ler o path configurado na ide do delphi, se n√£o existir ler
+    // tentar ler o path configurado na ide do delphi, se n„o existir ler
     // a atual para complementar e fazer o override
     PathsAtuais := ConfigData.ReadString(cs, 'PATH', '$(PATH)');
     if PathsAtuais = '$(PATH)' then
@@ -377,7 +377,7 @@ begin
       // escrever a variavel no override da ide
       ConfigData.WriteString(cs, 'PATH', ListaPaths.DelimitedText);
 
-      // enviar um broadcast de atualiza√ß√£o para o windows
+      // enviar um broadcast de atualizaÁ„o para o windows
       wParam := 0;
       lParam := LongInt(cs);
       SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, wParam, lParam, SMTO_NORMAL, 4000, aResult);
@@ -447,7 +447,7 @@ begin
 
 end;
 
-// setar a plataforma de compila√ß√£o
+// setar a plataforma de compilaÁ„o
 procedure TfrmPrincipal.SetPlatformSelected;
 var
   sVersao: String;
@@ -472,22 +472,22 @@ begin
   end;
 end;
 
-// Evento disparado a cada a√ß√£o do instalador
+// Evento disparado a cada aÁ„o do instalador
 procedure TfrmPrincipal.OutputCallLine(const Text: string);
 begin
-  // remover a warnings de convers√£o de string (delphi 2010 em diante)
-  // as diretivas -W e -H n√£o removem estas mensagens
+  // remover a warnings de convers„o de string (delphi 2010 em diante)
+  // as diretivas -W e -H n„o removem estas mensagens
   if (pos('Warning: W1057', Text) <= 0) and ((pos('Warning: W1058', Text) <= 0)) then
     WriteToTXT(AnsiString(PathArquivoLog), AnsiString(Text));
 end;
 
-// evento para setar os par√¢metros do compilador antes de compilar
+// evento para setar os par‚metros do compilador antes de compilar
 procedure TfrmPrincipal.BeforeExecute(Sender: TJclBorlandCommandLineTool);
 begin
-  // limpar os par√¢metros do compilador
+  // limpar os par‚metros do compilador
   Sender.Options.Clear;
 
-  // n√£o utilizar o dcc32.cfg
+  // n„o utilizar o dcc32.cfg
   if oFRCE.Installations[iVersion].SupportsNoConfig then
     Sender.Options.Add('--no-config');
 
@@ -503,9 +503,9 @@ begin
   Sender.Options.Add('-M');
   // -Q = Quiet compile
   Sender.Options.Add('-Q');
-  // n√£o mostrar warnings
+  // n„o mostrar warnings
   Sender.Options.Add('-H-');
-  // n√£o mostrar hints
+  // n„o mostrar hints
   Sender.Options.Add('-W-');
   // -D<syms> = Define conditionals
   Sender.Options.Add('-DRELEASE');
@@ -525,13 +525,13 @@ begin
   //
   with oFRCE.Installations[iVersion] do
   begin
-     // -- Path para instalar os pacotes do Rave no D7, nas demais vers√µes
+     // -- Path para instalar os pacotes do Rave no D7, nas demais versıes
      // -- o path existe.
      if VersionNumberStr = 'd7' then
         Sender.AddPathOption('U', oFRCE.Installations[iVersion].RootDir + '\Rave5\Lib');
 
-     // -- Na vers√£o XE2 por motivo da nova tecnologia FireMonkey, deve-se adicionar
-     // -- os prefixos dos nomes, para identificar se ser√° compilado para VCL ou FMX
+     // -- Na vers„o XE2 por motivo da nova tecnologia FireMonkey, deve-se adicionar
+     // -- os prefixos dos nomes, para identificar se ser· compilado para VCL ou FMX
      if VersionNumberStr = 'd16' then
         Sender.Options.Add('-NSData.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win');
 
@@ -552,7 +552,7 @@ begin
 
   oFRCE := TJclBorRADToolInstallations.Create;
 
-  // popular o combobox de vers√µes do delphi instaladas na m√°quina
+  // popular o combobox de versıes do delphi instaladas na m·quina
   for iFor := 0 to oFRCE.Count - 1 do
   begin
     if      oFRCE.Installations[iFor].VersionNumberStr = 'd3' then
@@ -606,7 +606,7 @@ begin
     else if oFRCE.Installations[iFor].VersionNumberStr = 'd29' then
       edtDelphiVersion.Items.Add('Delphi 12');
 
-    // -- Evento disparado antes de iniciar a execu√ß√£o do processo.
+    // -- Evento disparado antes de iniciar a execuÁ„o do processo.
     oFRCE.Installations[iFor].DCC32.OnBeforeExecute := BeforeExecute;
 
     // -- Evento para saidas de mensagens.
@@ -627,7 +627,7 @@ begin
   oFRCE.Free;
 end;
 
-// bot√£o de compila√ß√£o e instala√ß√£o dos pacotes selecionados no treeview
+// bot„o de compilaÁ„o e instalaÁ„o dos pacotes selecionados no treeview
 procedure TfrmPrincipal.btnInstalarfrceClick(Sender: TObject);
 var
 //  iDpk: Integer;
@@ -661,7 +661,7 @@ var
       case sDestino of
 //        tdSystem: Msg := Format(aMensagem + ' em "%s"', [PathSystem]);
         tdDelphi: Msg := Format(aMensagem + ' em "%s"', [sPathBin]);
-        tdNone:   Msg := 'Tipo de destino "nenhum" n√£o aceito!';
+        tdNone:   Msg := 'Tipo de destino "nenhum" n„o aceito!';
       end;
     end
     else
@@ -671,7 +671,7 @@ var
       case sDestino of
 //        tdSystem: Msg := Format(aMensagem + ' em "%s": "%s"', [PathSystem, aErro]);
         tdDelphi: Msg := Format(aMensagem + ' em "%s": "%s"', [sPathBin, aErro]);
-        tdNone:   Msg := 'Tipo de destino "nenhum" n√£o aceito!';
+        tdNone:   Msg := 'Tipo de destino "nenhum" n„o aceito!';
       end;
     end;
 
@@ -691,7 +691,7 @@ begin
   wizPgInstalacao.EnableButton(TJvWizardButtonKind(bkCancel), False);
   try
     Cabecalho := 'Caminho: ' + edtDirDestino.Text + sLineBreak +
-                 'Vers√£o do delphi: ' + edtDelphiVersion.Text + ' (' + IntToStr(iVersion)+ ')' + sLineBreak +
+                 'Vers„o do delphi: ' + edtDelphiVersion.Text + ' (' + IntToStr(iVersion)+ ')' + sLineBreak +
                  'Plataforma: ' + edtPlatform.Text + '(' + IntToStr(Integer(tPlatform)) + ')' + sLineBreak +
                  StringOfChar('=', 80);
 
@@ -706,19 +706,19 @@ begin
     // Seta a plataforna selecionada
     SetPlatformSelected;
     pgbInstalacao.Position := pgbInstalacao.Position + 1;
-    lstMsgInstalacao.Items.Add('Setando par√¢metros de plataforma...');
+    lstMsgInstalacao.Items.Add('Setando par‚metros de plataforma...');
     Application.ProcessMessages;
-    WriteToTXT(AnsiString(PathArquivoLog), AnsiString('Setando par√¢metros de plataforma...'));
+    WriteToTXT(AnsiString(PathArquivoLog), AnsiString('Setando par‚metros de plataforma...'));
 
-    // Cria diret√≥rio de biblioteca da vers√£o do delphi selecionada,
-    // s√≥ ser√° criado se n√£o existir
+    // Cria diretÛrio de biblioteca da vers„o do delphi selecionada,
+    // sÛ ser· criado se n„o existir
     CreateDirectoryLibrarysNotExist;
     pgbInstalacao.Position := pgbInstalacao.Position + 1;
-    lstMsgInstalacao.Items.Add('Criando diret√≥rios de bibliotecas...');
+    lstMsgInstalacao.Items.Add('Criando diretÛrios de bibliotecas...');
     Application.ProcessMessages;
-    WriteToTXT(AnsiString(PathArquivoLog), AnsiString('Criando diret√≥rios de bibliotecas...'));
+    WriteToTXT(AnsiString(PathArquivoLog), AnsiString('Criando diretÛrios de bibliotecas...'));
 
-    // Adiciona os paths dos fontes na vers√£o do delphi selecionada
+    // Adiciona os paths dos fontes na vers„o do delphi selecionada
     AddLibrarySearchPath;
     pgbInstalacao.Position := pgbInstalacao.Position + 1;
     lstMsgInstalacao.Items.Add('Adicionando library paths...');
@@ -730,7 +730,7 @@ begin
     lstMsgInstalacao.Items.Add('COMPILANDO OS PACOTES...');
 
     NomePacote := 'frce.dpk';
-    // Busca diret√≥rio do pacote
+    // Busca diretÛrio do pacote
     ExtrairDiretorioPacote(NomePacote);
 
     if (IsDelphiPackage(NomePacote)) then
@@ -754,7 +754,7 @@ begin
     Application.ProcessMessages;
 
 
-    // instalar os pacotes somente se n√£o ocorreu erro na compila√ß√£o e plataforma for Win32
+    // instalar os pacotes somente se n„o ocorreu erro na compilaÁ„o e plataforma for Win32
     if (edtPlatform.ItemIndex = 0) then
     begin
       if (FCountErros <= 0) then
@@ -763,7 +763,7 @@ begin
         lstMsgInstalacao.Items.Add('INSTALANDO OS PACOTES...');
         lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
 
-        // Busca diret√≥rio do pacote
+        // Busca diretÛrio do pacote
         ExtrairDiretorioPacote(NomePacote);
 
         if IsDelphiPackage(NomePacote) then
@@ -789,14 +789,14 @@ begin
       else
       begin
         lstMsgInstalacao.Items.Add('');
-        lstMsgInstalacao.Items.Add('Abortando... Ocorreram erros na compila√ß√£o dos pacotes.');
+        lstMsgInstalacao.Items.Add('Abortando... Ocorreram erros na compilaÁ„o dos pacotes.');
         lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
       end;
     end
     else
     begin
       lstMsgInstalacao.Items.Add('');
-      lstMsgInstalacao.Items.Add('Para a plataforma de 64 bits os pacotes s√£o somente compilados.');
+      lstMsgInstalacao.Items.Add('Para a plataforma de 64 bits os pacotes s„o somente compilados.');
       lstMsgInstalacao.ItemIndex := lstMsgInstalacao.Count - 1;
     end;
 
@@ -812,9 +812,9 @@ begin
     Application.MessageBox(
       PWideChar(
         'Pacotes compilados e instalados com sucesso! '+sLineBreak+
-        'Clique em "Pr√≥ximo" para finalizar a instala√ß√£o.'
+        'Clique em "PrÛximo" para finalizar a instalaÁ„o.'
       ),
-      'Instala√ß√£o',
+      'InstalaÁ„o',
       MB_ICONINFORMATION + MB_OK
     );
   end
@@ -822,41 +822,41 @@ begin
   begin
     if Application.MessageBox(
       PWideChar(
-        'Ocorreram erros durante o processo de instala√ß√£o, '+sLineBreak+
-        'para maiores informa√ß√µes verifique o arquivo de log gerado.'+sLineBreak+sLineBreak+
+        'Ocorreram erros durante o processo de instalaÁ„o, '+sLineBreak+
+        'para maiores informaÁıes verifique o arquivo de log gerado.'+sLineBreak+sLineBreak+
         'Deseja visualizar o arquivo de log gerado?'
       ),
-      'Instala√ß√£o',
+      'InstalaÁ„o',
       MB_ICONQUESTION + MB_YESNO
     ) = ID_YES then
     begin
       btnVisualizarLogCompilacao.Click;
     end;
   end;
-  //-- Copiar todas as BPLs para a pasta SYSTEM do windows, isso √© necess√°rio
+  //-- Copiar todas as BPLs para a pasta SYSTEM do windows, isso È necess·rio
   //-- por motivo do delphi ao iniciar buscar as BPLs nas pastas SYSTEM
-  //-- se n√£o tiver na poasta padr√£o dele.
+  //-- se n„o tiver na poasta padr„o dele.
 //  CopiarArquivosBPLsSystem;
 end;
 
-// chama a caixa de dialogo para selecionar o diret√≥rio de instala√ß√£o
-// seria bom que a caixa fosse aquele que possui o bot√£o de criar pasta
+// chama a caixa de dialogo para selecionar o diretÛrio de instalaÁ„o
+// seria bom que a caixa fosse aquele que possui o bot„o de criar pasta
 procedure TfrmPrincipal.btnSelecDirInstallClick(Sender: TObject);
 var
   Dir: String;
 begin
-  if SelectDirectory('Selecione o diret√≥rio de instala√ß√£o', '', Dir, [sdNewFolder, sdNewUI, sdValidateDir]) then
+  if SelectDirectory('Selecione o diretÛrio de instalaÁ„o', '', Dir, [sdNewFolder, sdNewUI, sdValidateDir]) then
     edtDirDestino.Text := Dir;
 end;
 
-// quando trocar a vers√£o verificar se libera ou n√£o o combo
-// da plataforma de compila√ß√£o
+// quando trocar a vers„o verificar se libera ou n„o o combo
+// da plataforma de compilaÁ„o
 procedure TfrmPrincipal.edtDelphiVersionChange(Sender: TObject);
 begin
   iVersion := edtDelphiVersion.ItemIndex;
   sPathBin := IncludeTrailingPathDelimiter(oFRCE.Installations[iVersion].BinFolderName);
-  // -- Plataforma s√≥ habilita para Delphi XE2
-  // -- Desabilita para vers√£o diferente de Delphi XE2
+  // -- Plataforma sÛ habilita para Delphi XE2
+  // -- Desabilita para vers„o diferente de Delphi XE2
   edtPlatform.Enabled := oFRCE.Installations[iVersion].VersionNumber >= 9;
   if oFRCE.Installations[iVersion].VersionNumber < 9 then
     edtPlatform.ItemIndex := 0;
@@ -872,7 +872,7 @@ end;
 procedure TfrmPrincipal.wizPgInicioNextButtonClick(Sender: TObject;
   var Stop: Boolean);
 begin
-  // Verificar se o delphi est√° aberto
+  // Verificar se o delphi est· aberto
   {$IFNDEF DEBUG}
   if oFRCE.AnyInstanceRunning then
   begin
@@ -885,8 +885,8 @@ begin
   end;
   {$ENDIF}
 
-  // Verificar se o tortoise est√° instalado, se n√£o estiver, n√£o mostrar a aba de atualiza√ß√£o
-  // o usu√°rio deve utilizar software proprio e fazer manualmente
+  // Verificar se o tortoise est· instalado, se n„o estiver, n„o mostrar a aba de atualizaÁ„o
+  // o usu·rio deve utilizar software proprio e fazer manualmente
   // pedido do forum
   wizPgObterFontes.Visible := TSVN_Class.SVNInstalled;
 end;
@@ -904,12 +904,12 @@ begin
   else // win64
     btnInstalarfrce.Caption := 'Compilar';
 
-  // mostrar ao usu√°rio as informa√ß√µes de compila√ß√£o
+  // mostrar ao usu·rio as informaÁıes de compilaÁ„o
   with lbInfo.Items do
   begin
     Clear;
     Add(edtDelphiVersion.Text + ' ' + edtPlatform.Text);
-    Add('Dir. Instala√ß√£o  : ' + edtDirDestino.Text);
+    Add('Dir. InstalaÁ„o  : ' + edtDirDestino.Text);
     Add('Dir. Bibliotecas : ' + sDirLibrary);
   end;
 end;
@@ -921,7 +921,7 @@ begin
   begin
     Stop := True;
     Application.MessageBox(
-      'Clique no bot√£o instalar antes de continuar.',
+      'Clique no bot„o instalar antes de continuar.',
       'Erro.',
       MB_OK + MB_ICONERROR
     );
@@ -931,7 +931,7 @@ begin
   begin
     Stop := True;
     Application.MessageBox(
-      'Ocorreram erros durante a compila√ß√£o e instala√ß√£o dos pacotes, verifique.',
+      'Ocorreram erros durante a compilaÁ„o e instalaÁ„o dos pacotes, verifique.',
       'Erro.',
       MB_OK + MB_ICONERROR
     );
@@ -946,31 +946,31 @@ begin
     Stop := True;
     edtDelphiVersion.SetFocus;
     Application.MessageBox(
-      'Vers√£o do delphi n√£o suportada pelo FRCE.',
+      'Vers„o do delphi n„o suportada pelo FRCE.',
       'Erro.',
       MB_OK + MB_ICONERROR
     );
   end;
 
-  // verificar se foi informado o diret√≥rio
+  // verificar se foi informado o diretÛrio
   if Trim(edtDirDestino.Text) = EmptyStr then
   begin
     Stop := True;
     edtDirDestino.SetFocus;
     Application.MessageBox(
-      'Diret√≥rio de instala√ß√£o n√£o foi informado.',
+      'DiretÛrio de instalaÁ„o n„o foi informado.',
       'Erro.',
       MB_OK + MB_ICONERROR
     );
   end;
 
-  // prevenir vers√£o do delphi em branco
+  // prevenir vers„o do delphi em branco
   if Trim(edtDelphiVersion.Text) = '' then
   begin
     Stop := True;
     edtDelphiVersion.SetFocus;
     Application.MessageBox(
-      'Vers√£o do delphi n√£o foi informada.',
+      'Vers„o do delphi n„o foi informada.',
       'Erro.',
       MB_OK + MB_ICONERROR
     );
@@ -982,30 +982,30 @@ begin
     Stop := True;
     edtPlatform.SetFocus;
     Application.MessageBox(
-      'Plataforma de compila√ß√£o n√£o foi informada.',
+      'Plataforma de compilaÁ„o n„o foi informada.',
       'Erro.',
       MB_OK + MB_ICONERROR
     );
   end;
 
-  // Gravar as configura√ß√µes em um .ini para utilizar depois
+  // Gravar as configuraÁıes em um .ini para utilizar depois
   GravarConfiguracoes;
 end;
 
 procedure TfrmPrincipal.wizPgObterFontesEnterPage(Sender: TObject;
   const FromPage: TJvWizardCustomPage);
 begin
-  // verificar se o checkout j√° foi feito se sim, atualizar
-  // se n√£o fazer o checkout
+  // verificar se o checkout j· foi feito se sim, atualizar
+  // se n„o fazer o checkout
   if IsCheckOutJaFeito(edtDirDestino.Text) then
   begin
-    lblInfoObterFontes.Caption := 'Clique em "Atualizar" para efetuar a atualiza√ß√£o do reposit√≥rio FRCE.';
+    lblInfoObterFontes.Caption := 'Clique em "Atualizar" para efetuar a atualizaÁ„o do repositÛrio FRCE.';
     btnSVNCheckoutUpdate.Caption := 'Atualizar...';
     btnSVNCheckoutUpdate.Tag := -1;
   end
   else
   begin
-    lblInfoObterFontes.Caption := 'Clique em "Download" para efetuar o download do reposit√≥rio FRCE.';
+    lblInfoObterFontes.Caption := 'Clique em "Download" para efetuar o download do repositÛrio FRCE.';
     btnSVNCheckoutUpdate.Caption := 'Download...';
     btnSVNCheckoutUpdate.Tag := 1;
   end;
@@ -1013,16 +1013,16 @@ end;
 
 procedure TfrmPrincipal.btnSVNCheckoutUpdateClick(Sender: TObject);
 begin
-  // chamar o m√©todo de update ou checkout conforme a necessidade
+  // chamar o mÈtodo de update ou checkout conforme a necessidade
   if TButton(Sender).Tag > 0 then
   begin
-    // criar o diret√≥rio onde ser√° baixado o reposit√≥rio
+    // criar o diretÛrio onde ser· baixado o repositÛrio
     if not DirectoryExists(edtDirDestino.Text) then
     begin
       if not ForceDirectories(edtDirDestino.Text) then
       begin
         raise EDirectoryNotFoundException.Create(
-          'Ocorreu o seguinte erro ao criar o diret√≥rio' + sLineBreak +
+          'Ocorreu o seguinte erro ao criar o diretÛrio' + sLineBreak +
             SysErrorMessage(GetLastError));
       end;
     end;
@@ -1072,7 +1072,7 @@ end;
 procedure TfrmPrincipal.wizPrincipalCancelButtonClick(Sender: TObject);
 begin
   if Application.MessageBox(
-    'Deseja realmente cancelar a instala√ß√£o?',
+    'Deseja realmente cancelar a instalaÁ„o?',
     'Fechar',
     MB_ICONQUESTION + MB_YESNO
   ) = ID_YES then
