@@ -388,6 +388,9 @@ type
   TPublicGraphic = class(TGraphic)
   end;
 
+var
+  AuxBitmap: TBitmap;
+
 function HexToBitmap(const AHex: AnsiString): TBitmap;
 var
   stream: TStringStream;
@@ -404,7 +407,14 @@ begin
       Inc(I, 2);
     end;
     // procura referência para a classe
-    Result := NeedAuxBitmap;
+    if AuxBitmap <> nil then
+      AuxBitmap.Free;
+
+    AuxBitmap := TRLBitmap.Create;
+    AuxBitmap.Width := 1;
+    AuxBitmap.Height := 1;
+
+    Result := AuxBitmap;
     stream.Seek(0, 0);
     TPublicGraphic(Result).ReadData(stream);
   finally
@@ -1124,8 +1134,10 @@ end;
 initialization
   TempDir := GetTempDir;
   LogClear;
+  AuxBitmap := Nil;
 
 finalization
   ClearTempFiles;
+  FreeObj(AuxBitmap);
 
 end.  
