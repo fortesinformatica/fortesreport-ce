@@ -348,7 +348,9 @@ begin
   begin
     // tentar ler o path configurado na ide do delphi, se não existir ler
     // a atual para complementar e fazer o override
-    PathsAtuais := Trim(EnvironmentVariables.Values['PATH']);
+    PathsAtuais := ConfigData.ReadString(cs, 'PATH', '$(PATH)');
+    if PathsAtuais = '$(PATH)' then
+      PathsAtuais := Trim(EnvironmentVariables.Values['PATH']);
     if PathsAtuais = '' then
       PathsAtuais := GetEnvironmentVariable('PATH');
 
