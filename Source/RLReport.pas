@@ -57,7 +57,11 @@ uses
     Windows,
    {$EndIf}
   {$EndIf}
-  Messages, DB, Classes, SysUtils, Math, Contnrs, TypInfo,
+  Messages, DB,
+  {$IfDef DELPHIX_SEATTLE_UP}
+    FmtBcd,
+  {$EndIf}
+   Classes, SysUtils, Math, Contnrs, TypInfo,
   {$IfDef CLX}
    QTypes, QButtons, QGraphics, QControls, QDialogs, QForms, QExtCtrls,
    QDBCtrls, QMask, RLMetaCLX,
@@ -323,7 +327,7 @@ type
    Indica que informações estatísticas devem ser exibidas pelo controle TRLDBResult.
    Pode assumir um dos seguintes valores:
    riAverage - Média aritmética dos valores impressos;
-   riCount - Número de ocorrências dos valores impressos; 
+   riCount - Número de ocorrências dos valores impressos;
    riFirst - Primeiro valor impresso;
    riLast - Último valor impresso;
    riMax - Maior dos valores impressos;
@@ -331,7 +335,7 @@ type
    riSum - Somátório de todos os valores impressos;
    riFirstText - Primeiro texto impresso;
    riLastText - Último texto impresso;
-   riSimple - Útil para a resolução de fórmulas com funções built-in. 
+   riSimple - Útil para a resolução de fórmulas com funções built-in.
    @links TRLDBResult. :/}
   TRLResultInfo = (riAverage, riCount, riFirst, riLast, riMax, riMin,
     riSum, riFirstText, riLastText, riSimple);
@@ -7020,7 +7024,7 @@ begin
   Result := TRLCustomSite(W);
 end;
 
-// band anterior 
+// band anterior
 function TRLCustomControl.FindParentBand: TRLCustomBand;
 var
   W: TControl;
@@ -7052,12 +7056,12 @@ var
 begin
   W := Self;
   while (W <> nil) and not (W is TRLCustomSkipper) do
-    W := W.Parent;  
-  
+    W := W.Parent;
+
   if Assigned(W) then
     Result := TRLCustomSkipper(W)
   else
-    Result := nil;   
+    Result := nil;
 end;
 
 function TRLCustomControl.FindParentPager: TRLCustomPager;
@@ -7066,12 +7070,12 @@ var
 begin
   W := Parent;
   while (W <> nil) and not (W is TRLCustomPager) do
-    W := W.Parent;  
-  
+    W := W.Parent;
+
   if Assigned(W) then
     Result := TRLCustomPager(W)
   else
-    Result := nil;  
+    Result := nil;
 end;
 
 function TRLCustomControl.FindParentSurface: TRLGraphicSurface;
@@ -8449,7 +8453,7 @@ begin
         Result := ApplyMask(P.Parse(Self, FDataFormula))
       else
         Result := '';
-    end    
+    end
     else
       Result := '';
   end;
@@ -8648,7 +8652,10 @@ begin
   FLast := fieldvalue;
   FLastText := fieldtext;
 {$ifdef SUPPORTS_VARIANT}
-  if VarType(fieldvalue) in [varSmallint, varInteger, varSingle, varDouble, varCurrency] then
+  if (VarType(fieldvalue) in [varSmallint, varInteger, varSingle, varDouble, varCurrency])
+  {$ifdef DELPHIX_SEATTLE_UP}
+    or (VarIsFMTBcd(fieldvalue))
+  {$endif} then
     FSum := FSum + fieldvalue;
 {$else}
   if VarIsNumeric(fieldvalue) then
@@ -10434,7 +10441,7 @@ begin
       end;
     end;
 
-    // outros alinhamentos que pegam a mesma sobra de espaço 
+    // outros alinhamentos que pegam a mesma sobra de espaço
     leftrect := alignrect;
     rightrect := alignrect;
 
@@ -10801,7 +10808,7 @@ begin
   end;
 end;
 
-// desenha regua 
+// desenha regua
 procedure TRLCustomSite.DrawTracks;
 const
   clCm = $00DFDFDF;
@@ -10868,7 +10875,7 @@ begin
   end;
 end;
 
-// preenche regiao nao utilizada com barras 
+// preenche regiao nao utilizada com barras
 procedure TRLCustomSite.DrawUnusedRect(Rect: TRect);
 const
   clDarkness = $00F4F4F4;
@@ -10884,7 +10891,7 @@ begin
   end;
 end;
 
-// zera contadores 
+// zera contadores
 procedure InitializeAllFrom(AParent: TWinControl);
 var
   I: Integer;
@@ -10901,7 +10908,7 @@ begin
   InitializeAllFrom(Self);
 end;
 
-// incrementa contadores 
+// incrementa contadores
 procedure ComputeDetailAllFrom(AParent: TWinControl; ACaller: TObject);
 var
   I: Integer;
@@ -10940,7 +10947,7 @@ begin
   InvalidateAllFrom(Self);
 end;
 
-// invoca evento durante a impressão 
+// invoca evento durante a impressão
 procedure TRLCustomSite.DoOnDraw(ASurface: TRLGraphicSurface; ARect: TRect);
 var
   R: TRect;
@@ -11279,7 +11286,7 @@ begin
   end;
 end;
 
-// retangulo interno as bordas 
+// retangulo interno as bordas
 function TRLCustomSite.CalcBordersRect: TRect;
 begin
   Result := ReduceRect(CalcMarginalRect, CalcBordersPixels);
@@ -11333,7 +11340,7 @@ begin
   end;
 end;
 
-// espacos perdidos em pixels de tela 
+// espacos perdidos em pixels de tela
 function TRLCustomSite.CalcWastedPixels: TRect;
 begin
   Result := DiffRect(CalcSizeRect, GetClientRect);
@@ -12502,7 +12509,7 @@ begin
     L := SortedBands.List[btDetail];
     if L.Count = 0 then
       Exit;
-    // encontra a band que será utilizada para completar a página  
+    // encontra a band que será utilizada para completar a página
     B := nil;
     for I := 0 to L.Count - 1 do
       if TObject(L.Items[I]) is TRLCustomBand then
