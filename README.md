@@ -9,3 +9,5 @@ The FortesReport is a powerful report generator available as a package of compon
 #
 [<img src="https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/gb.svg" alt="drawing" height="26"/>](https://github.com/fortesinformatica/fortesreport-ce/blob/master/README.md)
 [<img src="https://raw.githubusercontent.com/hampusborgos/country-flags/main/svg/br.svg" alt="drawing" height="26"/>](https://github.com/fortesinformatica/fortesreport-ce/blob/master/README.pt-BR.md)
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/WdOgM-ahsYE/0.jpg)](https://www.youtube.com/watch?v=WdOgM-ahsYE)
