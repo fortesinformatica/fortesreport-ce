@@ -50,5 +50,9 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+Data 13/09/2025
+[*] Atualização para instalação com Delphi 13 Florence
+Por: Victor H. Gonzales e Alexandre de Paula
+
 Data 27/03/2017
 [+] Adição do suporte ao RAD Studio Tokyo
