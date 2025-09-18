@@ -1,38 +1,38 @@
-{ Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+Ôªø{ Projeto: FortesReport Community Edition                                      }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLPreviewForm - ImplementaÁ„o do form padr„o de prÈ-visualizaÁ„o. }
+{@unit RLPreviewForm - Implementa√ß√£o do form padr√£o de pr√©-visualiza√ß√£o. }
 unit RLPreviewForm;
 
 interface
@@ -78,7 +78,6 @@ type
   { TRLPreviewForm }
 
   TRLPreviewForm = class(TForm)
-    RLPDFFilter1: TRLPDFFilter;
     TimerRepeat: TTimer;
     PanelContainer: TPanel;
     PanelTools: TPanel;
@@ -90,7 +89,6 @@ type
     SpeedButtonZoomDown: TSpeedButton;
     SpeedButtonZoomUp: TSpeedButton;
     SpeedButtonClose: TSpeedButton;
-    SpeedButtonSeArch: TSpeedButton;
 //    SpeedButtonSetup: TSpeedButton;
 //    Bevel7: TBevel;
     Bevel1: TBevel;
@@ -178,9 +176,9 @@ type
   TRLPreviewEditOptions = (eoCanReposition, eoCanResizeItems, eoCanEditText, eoCanDeleteItems, eoCanPointOut);
   TRLPreviewEditOptionsSet = set of TRLPreviewEditOptions;
 
-  {@class TRLPreviewSetup - OpÁıes do prÈ-visualizador padr„o.
-   Todos os relatÛrios que n„o tiverem suas prÛprias configuraÁıes de previsualizaÁ„o
-   seguir„o as regras estabelecidas neste componente. }
+  {@class TRLPreviewSetup - Op√ß√µes do pr√©-visualizador padr√£o.
+   Todos os relat√≥rios que n√£o tiverem suas pr√≥prias configura√ß√µes de previsualiza√ß√£o
+   seguir√£o as regras estabelecidas neste componente. }
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}	 
@@ -228,10 +226,10 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
 
-    {@prop SentToPrinter - Indica se o relatÛrio foi impresso ao menos uma vez. :/}
+    {@prop SentToPrinter - Indica se o relat√≥rio foi impresso ao menos uma vez. :/}
     property SentToPrinter: Boolean read GetSentToPrinter write SetSentToPrinter;
 
-    {@prop WindowBounds - Indica ou determina as dimensıes padrıes da janela quando ela n„o est· maximizada. :/}
+    {@prop WindowBounds - Indica ou determina as dimens√µes padr√µes da janela quando ela n√£o est√° maximizada. :/}
     property WindowBounds: TRect read GetWindowBounds write SetWindowBounds;
   published
     {@prop WindowState - Indica o estado inicial da janela de preview. :/}
@@ -240,13 +238,13 @@ type
     {@prop FormStyle - Indica o estilo da janela de preview. :/}
     property FormStyle: TFormStyle read GetFormStyle write SetFormStyle default fsNormal;
 
-    {@prop ShowModal - Indica se a janela de preview ser· modal. :/}
+    {@prop ShowModal - Indica se a janela de preview ser√° modal. :/}
     property ShowModal: Boolean read GetShowModal write SetShowModal default False;
 
-    {@prop Position - Indica a posiÁ„o da janela de preview. :/}
+    {@prop Position - Indica a posi√ß√£o da janela de preview. :/}
     property Position: TPosition read GetPosition write SetPosition default poScreenCenter;
 
-    {@prop BorderIcons - Seleciona os botıes da janela de preview. :/}
+    {@prop BorderIcons - Seleciona os bot√µes da janela de preview. :/}
     property BorderIcons: TBorderIcons read GetBorderIcons write SetBorderIcons default [biSystemMenu, biMinimize, biMaximize];
 
     {@prop HelpFile - Nome do arquivo de help para a janela preview, se houver. :/}
@@ -255,47 +253,47 @@ type
     {@prop HelpContext - Contexto de help para a janela preview, se houver. :/}
     property HelpContext: Integer read GetHelpContext write SetHelpContext default 0;
 
-    {@prop Caption - TÌtulo da janela de preview. :/}
+    {@prop Caption - T√≠tulo da janela de preview. :/}
     property Caption: string read GetCaption write SetCaption;
 
     {@prop ZoomFactor - Fator de zoom inicial (percentual). :/}
     property ZoomFactor: Double read GetZoomFactor write SetZoomFactor stored IsZoomFactor;
 
-    {@prop EnabledButtons - Botıes habilitados.
-                            AtravÈs desta prop pode-se mostrar ou esconder botıes da barra de ferramentas.
+    {@prop EnabledButtons - Bot√µes habilitados.
+                            Atrav√©s desta prop pode-se mostrar ou esconder bot√µes da barra de ferramentas.
      @links TRLPreviewFormButtonsSet. :/}
     property EnabledButtons: TRLPreviewFormButtonsSet read FEnabledButtons write SetEnabledButtons default [pbPrint, pbSave, pbSend];
 
     property CustomActionText: string read FCustomActionText write FCustomActionText;
     property OnCustomAction: TNotifyEvent read FOnCustomAction write FOnCustomAction;
 
-    {@prop EditOptions - OpÁıes de ediÁ„o (ainda n„o disponÌvel).
-     Determina que operaÁıes poder„o ser realizadas pelo usu·rio no conte˙do do relatÛrio
-     j· preparado.
+    {@prop EditOptions - Op√ß√µes de edi√ß√£o (ainda n√£o dispon√≠vel).
+     Determina que opera√ß√µes poder√£o ser realizadas pelo usu√°rio no conte√∫do do relat√≥rio
+     j√° preparado.
      @links TRLPreviewEditOptions,TRLPreviewEditOptionsSet. :/}
     property EditOptions: TRLPreviewEditOptionsSet read FEditOptions write SetEditOptions default [];
 
-    {@event BeforePrint - Sempre antes de imprimir ou quando o usu·rio pressiona o bot„o "Imprimir". :/}
+    {@event BeforePrint - Sempre antes de imprimir ou quando o usu√°rio pressiona o bot√£o "Imprimir". :/}
     property BeforePrint: TNotifyEvent read FBeforePrint write FBeforePrint;
 
-    {@event AfterPrint - Sempre apÛs a impress„o ou quando o filtro de impress„o termina de processar todas as p·ginas. :/}
+    {@event AfterPrint - Sempre ap√≥s a impress√£o ou quando o filtro de impress√£o termina de processar todas as p√°ginas. :/}
     property AfterPrint: TNotifyEvent read FAfterPrint write FAfterPrint;
 
-    {@event BeforeSave - Sempre antes de salvar/exportar ou quando o usu·rio pressiona o bot„o "Salvar". :/}
+    {@event BeforeSave - Sempre antes de salvar/exportar ou quando o usu√°rio pressiona o bot√£o "Salvar". :/}
     property BeforeSave: TNotifyEvent read FBeforeSave write FBeforeSave;
 
-    {@event AfterSave - Sempre apÛs o salvamento/exportaÁ„o ou quando o filtro de salvamento termina de processar todas as p·ginas. :/}
+    {@event AfterSave - Sempre ap√≥s o salvamento/exporta√ß√£o ou quando o filtro de salvamento termina de processar todas as p√°ginas. :/}
     property AfterSave: TNotifyEvent read FAfterSave write FAfterSave;
 
-    {@event BeforeSend - Sempre antes de enviar o relatÛrio via e-mail ou quando o usu·rio pressionar o bot„o "Enviar". :/}
+    {@event BeforeSend - Sempre antes de enviar o relat√≥rio via e-mail ou quando o usu√°rio pressionar o bot√£o "Enviar". :/}
     property BeforeSend: TNotifyEvent read FBeforeSend write FBeforeSend;
 
-    {@event OnSend - Sempre ao enviar um relatÛrio via e-mail.
-     O programador deve implementar este evento e providenciar o envio do relatÛrio.
-     O FortesReport n„o prove esta rotina, apenas fornece a interface para isso. :/}
+    {@event OnSend - Sempre ao enviar um relat√≥rio via e-mail.
+     O programador deve implementar este evento e providenciar o envio do relat√≥rio.
+     O FortesReport n√£o prove esta rotina, apenas fornece a interface para isso. :/}
     property OnSend: TNotifyEvent read FOnSend write FOnSend;
 
-    {@event AfterSend - Sempre apÛs a conclus„o do envio do relatÛrio via e-mail. :/}
+    {@event AfterSend - Sempre ap√≥s a conclus√£o do envio do relat√≥rio via e-mail. :/}
     property AfterSend: TNotifyEvent read FAfterSend write FAfterSend;
   end;
   {/@class}
@@ -323,20 +321,20 @@ var
   OnCreatePreviewForm: TOnCreatePreviewFormProc = nil;
   ShowPreviewOnWindowsTaskBar: Boolean = False;
 
-{@proc PreviewPagesWithOptions - Exibe o form padr„o de prÈ-visualizaÁ„o com opÁıes. :}
+{@proc PreviewPagesWithOptions - Exibe o form padr√£o de pr√©-visualiza√ß√£o com op√ß√µes. :}
 procedure PreviewPagesWithOptions(APages: TRLGraphicStorage; AShowModal: Boolean;
   AFormStyle: TFormStyle; APosition: TPosition; AWindowState: TWindowState;
   ABorderIcons: TBorderIcons; const AHelpFile: string; AHelpContext: Integer; ACaption: TCaption);
 {/@proc}
 
-{@proc PreviewPages - Exibe o form padr„o de prÈ-visualizaÁ„o com as opÁıes default. :/}
+{@proc PreviewPages - Exibe o form padr√£o de pr√©-visualiza√ß√£o com as op√ß√µes default. :/}
 procedure PreviewPages(APages: TRLGraphicStorage);
-{@proc PreviewFromFile - Carrega o arquivo de relatÛrio e exibe o form padr„o de prÈ-visualizaÁ„o. :/}
+{@proc PreviewFromFile - Carrega o arquivo de relat√≥rio e exibe o form padr√£o de pr√©-visualiza√ß√£o. :/}
 procedure PreviewFromFile(const AFileName: string);
-{@proc PreviewFromStream - Carrega a stream de relatÛrio e exibe o form padr„o de prÈ-visualizaÁ„o. :/}
+{@proc PreviewFromStream - Carrega a stream de relat√≥rio e exibe o form padr√£o de pr√©-visualiza√ß√£o. :/}
 procedure PreviewFromStream(AStream: TStream);
-{@proc PreviewFromFileDialog - Exibe di·logo para a carga de arquivo de relatÛrio e exibe
- o form padr„o de prÈ-visualizaÁ„o. :/}
+{@proc PreviewFromFileDialog - Exibe di√°logo para a carga de arquivo de relat√≥rio e exibe
+ o form padr√£o de pr√©-visualiza√ß√£o. :/}
 procedure PreviewFromFileDialog;
 
 {/@unit}
@@ -347,7 +345,7 @@ implementation
 uses VCLCom;
 {$endif}
 
-///{$R *.dfm}
+{$R *.dfm}
 
 var
   SetupInstance: TRLPreviewSetup = nil;
@@ -521,7 +519,7 @@ begin
     Left := SpeedButtonClose.BoundsRect.Right;
     Top := SpeedButtonClose.Top;
     Height := SpeedButtonClose.Height;
-    // copia a mesma margem dos outros botÚes
+    // copia a mesma margem dos outros bot√≤es
     B := NeedAuxBitmap;
     try
       B.Canvas.Font := PanelTools.Font;
@@ -689,7 +687,7 @@ begin
   Height := 375;
   VertScrollBar.Range := 29;
   AutoScroll := False;
-  Caption := 'PrÈ-visualizaÁ„o';
+  Caption := 'Pr√©-visualiza√ß√£o';
   KeyPreview := True;
   WindowState := wsNormal;
   OnKeyDown := FormKeyDown;
@@ -848,7 +846,7 @@ begin
       Height := 22;
       Caption := ' ';
       Flat := True;
-      Hint := 'VocÍ tambÈm pode aumentar ou reduzir o zoom do relatÛrio'+sLineBreak+
+      Hint := 'Voc√™ tamb√©m pode aumentar ou reduzir o zoom do relat√≥rio'+sLineBreak+
               'precionando "Ctrl" e usando a rolagem do mouse.';
       ShowHint := True;
       HexToBitmap(
@@ -877,7 +875,7 @@ begin
       Height := 22;
       Caption := ' ';
       Flat := True;
-      Hint := 'VocÍ tambÈm pode aumentar ou reduzir o zoom do relatÛrio'+sLineBreak+
+      Hint := 'Voc√™ tamb√©m pode aumentar ou reduzir o zoom do relat√≥rio'+sLineBreak+
               'precionando "Ctrl" e usando a rolagem do mouse.';
       ShowHint := True;
       HexToBitmap(
@@ -1223,9 +1221,9 @@ begin
           '50%'+sLineBreak+
           '25%'+sLineBreak+
           '10%'+sLineBreak+
-          'Largura da p·gina'+sLineBreak+
-          'P·gina inteira'+sLineBreak+
-          'V·rias p·ginas'+sLineBreak;
+          'Largura da p√°gina'+sLineBreak+
+          'P√°gina inteira'+sLineBreak+
+          'V√°rias p√°ginas'+sLineBreak;
       end;
     end;
     TRLComponentFactory.CreateComponent(TPanel, Self, PanelCopyright);

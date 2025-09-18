@@ -1,38 +1,38 @@
-{ Projeto: FortesReport Community Edition                                      }
-{ É um poderoso gerador de relatórios disponível como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatórios são constituídos por bandas que  }
-{ têm funções específicas no fluxo de impressão. Você definir agrupamentos     }
-{ subníveis e totais simplesmente pela relação hierárquica entre as bandas.    }
-{ Além disso possui uma rica paleta de Componentes                             }
+ï»¿{ Projeto: FortesReport Community Edition                                      }
+{ Ã‰ um poderoso gerador de relatÃ³rios disponÃ­vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relatÃ³rios sÃ£o constituÃ­dos por bandas que  }
+{ tÃªm funÃ§Ãµes especÃ­ficas no fluxo de impressÃ£o. VocÃª definir agrupamentos     }
+{ subnÃ­veis e totais simplesmente pela relaÃ§Ã£o hierÃ¡rquica entre as bandas.    }
+{ AlÃ©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
+{ Direitos Autorais Reservados(c) Copyright Â© 1999-2015 Fortes InformÃ¡tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              Márcio Martins                                  }
-{                              Régys Borges da Silveira                        }
+{                              MÃ¡rcio Martins                                  }
+{                              RÃ©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  VocÃª pode obter a Ãºltima versÃ£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informaÃ§Ãµes vocÃª pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
-{ sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a versão 2.1 da Licença, ou (a seu critério) }
-{ qualquer versão posterior.                                                   }
+{  Esta biblioteca Ã© software livre; vocÃª pode redistribuÃ­-la e/ou modificÃ¡-la }
+{ sob os termos da LicenÃ§a PÃºblica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a versÃ£o 2.1 da LicenÃ§a, ou (a seu critÃ©rio) }
+{ qualquer versÃ£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca é distribuída na expectativa de que seja útil, porém, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE OU      }
-{ ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICENÇA.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca Ã© distribuÃ­da na expectativa de que seja Ãºtil, porÃ©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia implÃ­cita de COMERCIABILIDADE OU      }
+{ ADEQUAÃ‡ÃƒO A UMA FINALIDADE ESPECÃFICA. Consulte a LicenÃ§a PÃºblica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICENÃ‡A.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  Você deve ter recebido uma cópia da Licença Pública Geral Menor do GNU junto}
-{ com esta biblioteca; se não, escreva para a Free Software Foundation, Inc.,  }
-{ no endereço 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ Você também pode obter uma copia da licença em:                              }
+{  VocÃª deve ter recebido uma cÃ³pia da LicenÃ§a PÃºblica Geral Menor do GNU junto}
+{ com esta biblioteca; se nÃ£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endereÃ§o 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ VocÃª tambÃ©m pode obter uma copia da licenÃ§a em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - Descrição...
+|* - DescriÃ§Ã£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLPDFFilter - Implementação do filtro para criação de arquivos PDF. }
+{@unit RLPDFFilter - ImplementaÃ§Ã£o do filtro para criaÃ§Ã£o de arquivos PDF. }
 unit RLPDFFilter;
 
 {$Q-}
@@ -173,10 +173,10 @@ type
 
   { TRLPDFFilter }
 
-  {@class TRLPDFFilter - Filtro para criação de documentos PDF a partir de um relatório.
+  {@class TRLPDFFilter - Filtro para criaÃ§Ã£o de documentos PDF a partir de um relatÃ³rio.
    O arquivo gerado pode ser lido pelo aplicativo Adobe AcrobatReader e pelo plugin associado
-   ao navegador de internet. Inclui imagens e fontes em um só volume e o resultado final é
-   bastante fiel ao relatório original, sendo ideal para distribuição via internet.
+   ao navegador de internet. Inclui imagens e fontes em um sÃ³ volume e o resultado final Ã©
+   bastante fiel ao relatÃ³rio original, sendo ideal para distribuiÃ§Ã£o via internet.
    @links TRLHTMLFilter, TRLRichFilter, TRLXLSFilter.
    @ancestor TRLCustomSaveFilter.
    @pub }
@@ -324,10 +324,10 @@ type
     property PageSetup: TRLPDFFilterPageSetup read FPageSetup write SetPageSetup;
     property TextControl: TRLPDFFilterTextControl read FTextControl write SetTextControl;
 
-    //Ricardo - 20101019 - Sobrecarga criada para atender a DLL de geração do DANFE
+    //Ricardo - 20101019 - Sobrecarga criada para atender a DLL de geraÃ§Ã£o do DANFE
     procedure FilterPages(APages: TRLGraphicStorage; AOutputBuffer: TStream); overload;
   published
-    {@prop DocumentInfo - Informações do documento gerado.
+    {@prop DocumentInfo - InformaÃ§Ãµes do documento gerado.
      @links TRLPDFFilterDocumentInfo. :/}
     property DocumentInfo: TRLPDFFilterDocumentInfo
       read FDocumentInfo write SetDocumentInfo;
@@ -398,7 +398,7 @@ type
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
-  {@class TRLPDFFilterDocumentInfo - Informações para a geração de documento PDF. }
+  {@class TRLPDFFilterDocumentInfo - InformaÃ§Ãµes para a geraÃ§Ã£o de documento PDF. }
   TRLPDFFilterDocumentInfo = class(TPersistent)
   private
     FTitle: string;
@@ -414,7 +414,7 @@ type
     procedure Assign(Source: TRLPDFFilterDocumentInfo); reintroduce;
     procedure Clear;
   published
-    {@prop Title - Título do documento. :/}
+    {@prop Title - TÃ­tulo do documento. :/}
     property Title: string read FTitle write FTitle;
 
     {@prop Subject - Assunto do documento. :/}
@@ -426,7 +426,7 @@ type
     {@prop KeyWords - Palavras chaves para busca. :/}
     property KeyWords: string read FKeyWords write FKeyWords;
 
-    {@prop Creator - Programa utilitário gerador. :/}
+    {@prop Creator - Programa utilitÃ¡rio gerador. :/}
     property Creator: string read FCreator write FCreator;
 
     {@prop Producer - Nome da produtora. :/}
@@ -816,12 +816,12 @@ begin
   with AObj.Font.Color do
     Writeln(RGBStr(Red, Green, Blue) + ' rg');
 
-  // define retângulo de corte
+  // define retÃ¢ngulo de corte
   if (AObj.TextFlags and MetaTextFlagAutoSize) = 0 then
   begin
     R := AObj.BoundsRect;
     case AObj.Alignment of
-      MetaTextAlignmentLeft: Inc(R.Right, MagicX); //isso faz vazar à direita, mas é aceitável. Por enquanto.
+      MetaTextAlignmentLeft: Inc(R.Right, MagicX); //isso faz vazar Ã  direita, mas Ã© aceitÃ¡vel. Por enquanto.
       MetaTextAlignmentRight: Dec(R.Left, MagicX);
       MetaTextAlignmentCenter,
       MetaTextAlignmentJustify:
@@ -863,7 +863,7 @@ begin
   else
     T := FPagePrintSize.Y - AObj.BoundsRect.Bottom;
   end;
-  T := T + W.Y div 4; //Ajuste fino para as posições verticais das palavras impressas.(magic)
+  T := T + W.Y div 4; //Ajuste fino para as posiÃ§Ãµes verticais das palavras impressas.(magic)
   // textout
   WriteText(
     PDF_PixelsToPoints(L),
@@ -920,13 +920,13 @@ begin
   // matriz de posicionamento (translation: 1 0 0 1 left top)
   Writeln('1 0 0 1 ' + PDF_PointStr(AObj.BoundsRect.Left,
     AObj.BoundsRect.Bottom) + ' cm');
-  // matriz de rotação (rotation: cosT sinT -sinT cosT 0 0)
+  // matriz de rotaÃ§Ã£o (rotation: cosT sinT -sinT cosT 0 0)
   // WriteLn('1 0 0 1 0 0 cm');
   // matriz de escalonameto (scale: width 0 0 height 0 0)
   Writeln(PDF_FloatToStr(PDF_PixelsToPoints(AObj.BoundsRect.Right -
     AObj.BoundsRect.Left)) + ' 0 0 ' + PDF_FloatToStr(
     PDF_PixelsToPoints(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top)) + ' 0 0 cm');
-  // matriz de inclinação (skew: 1 tanX tanY 1 0 0)
+  // matriz de inclinaÃ§Ã£o (skew: 1 tanX tanY 1 0 0)
   // WriteLn('1 0 0 1 0 0 cm');
   Writeln('/Image' + IntToStr(AObj.Tag) + ' Do');
   Writeln('Q');
@@ -1745,7 +1745,7 @@ function TRLPDFFilter.BeginStream: Integer;
 begin
   Writeln('>>');
   Writeln('stream');
-  // marca o offset de início deste stream
+  // marca o offset de inÃ­cio deste stream
   Result := FWritePos;
 end;
 
@@ -2081,7 +2081,7 @@ begin
     PDF_Zeros(H, 2) + PDF_Zeros(N, 2) + PDF_Zeros(S, 2);
 end;
 
-// String de referência ao objeto aIndex
+// String de referÃªncia ao objeto aIndex
 class function TRLPDFFilter.PDF_IndirectObjStr(AIndex: Integer): AnsiString;
 begin
   Result := IntToStr(AIndex) + ' 0 R';
