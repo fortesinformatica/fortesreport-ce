@@ -1,39 +1,39 @@
-{******************************************************************************}
+Ôªø{******************************************************************************}
 { Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -42,12 +42,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLDraftFilter - ImplementaÁ„o do filtro de impress„o draft. }
+{@unit RLDraftFilter - Implementa√ß√£o do filtro de impress√£o draft. }
 unit RLDraftFilter;
 
 interface
@@ -75,112 +75,112 @@ uses
   RLMetaFile, RLConsts, RLUtils, RLFilters, RLTypes, RLPrinters;
 
 type
-  {@type TRLDraftAccentMethod - Comportamento do filtro em relaÁ„o aos caracteres acentuados.
-   Algumas impressoras n„o suportam ou podem n„o estar adequadamente configuradas para imprimir
+  {@type TRLDraftAccentMethod - Comportamento do filtro em rela√ß√£o aos caracteres acentuados.
+   Algumas impressoras n√£o suportam ou podem n√£o estar adequadamente configuradas para imprimir
    caracteres acentuados.
-   O mÈtodo de acentuaÁ„o do filtro pode ser:
+   O m√©todo de acentua√ß√£o do filtro pode ser:
    amOverwrite - O filtro provoca o retorno do carro para imprimir o caractere de acento sobre a letra;
-   amTakeOut - O caractere È impresso sem o acento;
-   amSustain - O caractere È enviado sem modificaÁıes (exige configuraÁ„o da impressora). :/}
+   amTakeOut - O caractere √© impresso sem o acento;
+   amSustain - O caractere √© enviado sem modifica√ß√µes (exige configura√ß√£o da impressora). :/}
   TRLDraftAccentMethod = (amOverwrite, amTakeOut, amSustain);
 
-  {@type TRLDraftEjectMethod - Comportamento do filtro em relaÁ„o ao salto de p·gina.
-   Quando se trabalha com um tamanho especÌfico de formul·rio, pode ser necess·rio modificar a maneira
-   como o filtro efetua os saltos de p·gina.
-   O mÈtodo de salto do filtro pode ser:
-   ejCompletePage - Envia cÛdigos de salto de linha atÈ completar a p·gina. A dist‚ncia entre os p·ginas pode
-   dilatar ou contrair ao longo da impress„o;
-   ejForceWithCode - Envia cÛdigo de salto de p·gina para a impressora. Este È o melhor mÈtodo para formul·rios
-   contÌnuos padr„o, porÈm pode n„o servir para formul·rios de tamanho customizado;
-   ejLeavePage - Deixa o carro da impressora na posiÁ„o aonde parou. Pode ser utilizado com formul·rios sem picote
+  {@type TRLDraftEjectMethod - Comportamento do filtro em rela√ß√£o ao salto de p√°gina.
+   Quando se trabalha com um tamanho espec√≠fico de formul√°rio, pode ser necess√°rio modificar a maneira
+   como o filtro efetua os saltos de p√°gina.
+   O m√©todo de salto do filtro pode ser:
+   ejCompletePage - Envia c√≥digos de salto de linha at√© completar a p√°gina. A dist√¢ncia entre os p√°ginas pode
+   dilatar ou contrair ao longo da impress√£o;
+   ejForceWithCode - Envia c√≥digo de salto de p√°gina para a impressora. Este √© o melhor m√©todo para formul√°rios
+   cont√≠nuos padr√£o, por√©m pode n√£o servir para formul√°rios de tamanho customizado;
+   ejLeavePage - Deixa o carro da impressora na posi√ß√£o aonde parou. Pode ser utilizado com formul√°rios sem picote
    como rolos por ex, ou quando se deseja economizar papel com testes. :/}
   TRLDraftEjectMethod = (ejCompletePage, ejForceWithCode, ejLeavePage);
 
-  {@type TRLPrinterFamily - FamÌlia de impressoras.
-   AlÈm dos cÛdigos de programaÁ„o, pode ser interessante conhecer algumas particularidades da impressora a
-   ser utilizada e que n„o podem ser informadas somente com comandos, como a impress„o de gr·ficos, por exemplo.
-   A famÌlia pode ser:
-   fmCustom - CÛdigos de programaÁ„o informados pelo usu·rio na prop Commands;
-   fmEpsonLike - CÛdigos de programaÁ„o da especificaÁ„o EPSON/FX;
-   fmESCP2 - CÛdigos de programaÁ„o da especificaÁ„o EPSON ESC/P2. :/}
+  {@type TRLPrinterFamily - Fam√≠lia de impressoras.
+   Al√©m dos c√≥digos de programa√ß√£o, pode ser interessante conhecer algumas particularidades da impressora a
+   ser utilizada e que n√£o podem ser informadas somente com comandos, como a impress√£o de gr√°ficos, por exemplo.
+   A fam√≠lia pode ser:
+   fmCustom - C√≥digos de programa√ß√£o informados pelo usu√°rio na prop Commands;
+   fmEpsonLike - C√≥digos de programa√ß√£o da especifica√ß√£o EPSON/FX;
+   fmESCP2 - C√≥digos de programa√ß√£o da especifica√ß√£o EPSON ESC/P2. :/}
   TRLPrinterFamily = (fmCustom, fmEpsonLike, fmESCP2);
 
-  {@type TRLDeviceKind - Tipo de dispositivo de impress„o.
-   Indica como o relatÛrio deve ser despachado.
+  {@type TRLDeviceKind - Tipo de dispositivo de impress√£o.
+   Indica como o relat√≥rio deve ser despachado.
    Pode assumir um dos seguintes valores:
    dkPrinter - Utilizar o nome da impressora;
-   dkPrinterPort - A prop DevicePath ser· preenchida em runtime de acordo com a impressora selecionada no
-   di·logo de impress„o. Este È o padr„o mais recomendado para o Windows, pois o prÛprio sistema se
-   encarregar· de descobrir o caminho para o dispositivo atravÈs de informaÁıes do SO (default);
-   dkProgram - A prop DevicePath indica o nome de um programa spooler. Padr„o recomendado para o Linux;
-   dkFileName - A prop DevicePath aponta para um nome de arquivo. Este arquivo poder· ser copiado para
+   dkPrinterPort - A prop DevicePath ser√° preenchida em runtime de acordo com a impressora selecionada no
+   di√°logo de impress√£o. Este √© o padr√£o mais recomendado para o Windows, pois o pr√≥prio sistema se
+   encarregar√° de descobrir o caminho para o dispositivo atrav√©s de informa√ß√µes do SO (default);
+   dkProgram - A prop DevicePath indica o nome de um programa spooler. Padr√£o recomendado para o Linux;
+   dkFileName - A prop DevicePath aponta para um nome de arquivo. Este arquivo poder√° ser copiado para
    outra impressora, ou ser utilizado como debug. :/}
   TRLDeviceKind = (dkPrinter, dkPrinterPort, dkProgram, dkFileName);
 
-  {@type TRLDitheringMethod - MÈtodo para impress„o de imagens.
-   Esta propriedade indica que tÈcnica deve ser utilizada para transformar imagens coloridas em pontos preto e branco.
+  {@type TRLDitheringMethod - M√©todo para impress√£o de imagens.
+   Esta propriedade indica que t√©cnica deve ser utilizada para transformar imagens coloridas em pontos preto e branco.
    Pode ser um dos seguintes valores:
-   dmNone - Indica que nenhuma imagem ser· impressa;
-   dmColorTable - Tabela de associaÁ„o de cores. Este mÈtodo geralmente apresenta os melhores resultados;
-   dmErrorDiffusion - Difus„o de erros. :/}
+   dmNone - Indica que nenhuma imagem ser√° impressa;
+   dmColorTable - Tabela de associa√ß√£o de cores. Este m√©todo geralmente apresenta os melhores resultados;
+   dmErrorDiffusion - Difus√£o de erros. :/}
   TRLDitheringMethod = (dmNone, dmColorTable, dmErrorDiffusion);
 
-  {@type TRLLineDrawMethod - MÈtodo para impress„o de linhas e traÁos.
-   Para imprimir linhas retas em modo texto, È necess·rio informar o conjunto de caracteres a utilizar.
+  {@type TRLLineDrawMethod - M√©todo para impress√£o de linhas e tra√ßos.
+   Para imprimir linhas retas em modo texto, √© necess√°rio informar o conjunto de caracteres a utilizar.
    Pode ser um dos seguintes valores:
-   ldNone - Nenhuma linha ou traÁo ser· impresso;
+   ldNone - Nenhuma linha ou tra√ßo ser√° impresso;
    ldMinusAndPipe - Linhas horizontais como sinal negativo "-" e verticais como pipes "|";
-   ldGraphicCharset - Utilizar os conectores gr·ficos do padr„o ProPrinter (exige configuraÁ„o da impressora). :/}
+   ldGraphicCharset - Utilizar os conectores gr√°ficos do padr√£o ProPrinter (exige configura√ß√£o da impressora). :/}
   TRLLineDrawMethod = (ldNone, ldMinusAndPipe, ldGraphicCharset);
 
-  {@type TRLFillArtMethod - MÈtodo para preenchimento de ·reas.
-   Define o mÈtodo para representaÁ„o de ret‚ngulos sÛlidos ou linhas grossas em impressoras matriciais.
+  {@type TRLFillArtMethod - M√©todo para preenchimento de √°reas.
+   Define o m√©todo para representa√ß√£o de ret√¢ngulos s√≥lidos ou linhas grossas em impressoras matriciais.
    Pode ser um dos seguintes valores:
-   fmNone - Nenhum preenchimento ser· impresso;
-   fmLetterX - A letra X ser· utilizada ;
-   fmGraphicCharset - Utilizar os caracteres gr·ficos do padr„o ProPrinter (exige configuraÁ„o da impressora). :/}
+   fmNone - Nenhum preenchimento ser√° impresso;
+   fmLetterX - A letra X ser√° utilizada ;
+   fmGraphicCharset - Utilizar os caracteres gr√°ficos do padr√£o ProPrinter (exige configura√ß√£o da impressora). :/}
   TRLFillArtMethod = (fmNone, fmLetterX, fmGraphicCharset);
 
-  {@type TRLFormSelection - SeleÁ„o da largura do formul·rio contÌnuo.
-   Indica como ser· escolhido formul·rio em relaÁ„o ‡ largura.  
+  {@type TRLFormSelection - Sele√ß√£o da largura do formul√°rio cont√≠nuo.
+   Indica como ser√° escolhido formul√°rio em rela√ß√£o √† largura.  
    Pode ser um dos seguintes valores:
-   fsNone - Nenhuma adaptaÁ„o È feita e nenhum di·logo È exibido;
-   fsAccordingToOrientation - O di·logo apresentar· as opÁıes de 80cols para Portrait e 132cols para Landscape,
-   e o default ser· de acordo com a orientaÁ„o do relatÛrio;
-   fs80Cols - O default ser· o formul·rio de 80cols;
-   fs132Cols - O default ser· o formul·rio de 132cols. :/}
+   fsNone - Nenhuma adapta√ß√£o √© feita e nenhum di√°logo √© exibido;
+   fsAccordingToOrientation - O di√°logo apresentar√° as op√ß√µes de 80cols para Portrait e 132cols para Landscape,
+   e o default ser√° de acordo com a orienta√ß√£o do relat√≥rio;
+   fs80Cols - O default ser√° o formul√°rio de 80cols;
+   fs132Cols - O default ser√° o formul√°rio de 132cols. :/}
   TRLFormSelection = (fsNone, fsAccordingToOrientation, fs80Cols, fs132Cols);
 
-  {@type TRLStretchCharWidth - MÈtodo de adaptaÁ„o do tamanho das fontes para o formul·rio escolhido.
+  {@type TRLStretchCharWidth - M√©todo de adapta√ß√£o do tamanho das fontes para o formul√°rio escolhido.
    Pode ser um dos seguintes valores:
-   scNone - Nenhuma adaptaÁ„o ser· feita;
-   scEnlargementsOnly - A fonte dever· ser aumentada quando o formul·rio for maior;
-   scShrinksOnly - A fonte dever· ser encolhida quando o formul·rio for menor;
-   scAlways - A fonte dever· ser aumentada ou encolhida de acordo com a escolha do formul·rio. :/}
+   scNone - Nenhuma adapta√ß√£o ser√° feita;
+   scEnlargementsOnly - A fonte dever√° ser aumentada quando o formul√°rio for maior;
+   scShrinksOnly - A fonte dever√° ser encolhida quando o formul√°rio for menor;
+   scAlways - A fonte dever√° ser aumentada ou encolhida de acordo com a escolha do formul√°rio. :/}
   TRLStretchCharWidth = (scNone, scEnlargementsOnly, scShrinksOnly, scAlways);
 
-  {@type TRLDraftTextDecoration - Define como os efeitos de fonte ser„o implementados.
+  {@type TRLDraftTextDecoration - Define como os efeitos de fonte ser√£o implementados.
    Pode ser um dos seguintes valores:
-   ddIncludeNone - Nenhum efeito È realizado;
-   ddIncludeAll - Todos os efeitos s„o realizados;
+   ddIncludeNone - Nenhum efeito √© realizado;
+   ddIncludeAll - Todos os efeitos s√£o realizados;
    ddCustomized - Somente os efeitos indicados na prop TextStyles. :/}
   TRLDraftTextDecoration = (ddIncludeNone, ddIncludeAll, ddCustomized);
 
   {@type TRLDraftTextStyles - Indica que efeitos de fonte devem ser realizados ou ignorados pelo filtro.
-   Pode ser nenhum ou uma combinaÁ„o dos seguintes valores:
-   tsItalic - Efeito it·lico (fonte inclinada);
+   Pode ser nenhum ou uma combina√ß√£o dos seguintes valores:
+   tsItalic - Efeito it√°lico (fonte inclinada);
    tsBold - Efeito negrito (passada dupla);
    tsUnderline - Efeito sublinhado. :/}
   TRLDraftTextStyles = set of (tsItalic, tsBold, tsUnderline);
 
-  {@type TRLCPPSelection - Indica a polÌtica de compress„o dos caracteres, e pode ser fixa ou vari·vel.
+  {@type TRLCPPSelection - Indica a pol√≠tica de compress√£o dos caracteres, e pode ser fixa ou vari√°vel.
    Pode ser um dos seguintes valores:
-   csAutomatic - A compress„o varia de acordo com a fonte de cada label;
-   csFixed5CPP - Compress„o fixa em 5cpp;
-   csFixed10CPP - Compress„o fixa em 10cpp;
-   csFixed12CPP - Compress„o fixa em 12cpp;
-   csFixed17CPP - Compress„o fixa em 17cpp;
-   csFixed20CPP - Fixa Compress„o fm 20cpp. :/}
+   csAutomatic - A compress√£o varia de acordo com a fonte de cada label;
+   csFixed5CPP - Compress√£o fixa em 5cpp;
+   csFixed10CPP - Compress√£o fixa em 10cpp;
+   csFixed12CPP - Compress√£o fixa em 12cpp;
+   csFixed17CPP - Compress√£o fixa em 17cpp;
+   csFixed20CPP - Fixa Compress√£o fm 20cpp. :/}
   TRLCPPSelection = (csAutomatic, csFixed5CPP, csFixed10CPP, csFixed12CPP, csFixed17CPP, csFixed20CPP);
 
   TDraftObj = class;
@@ -189,14 +189,14 @@ type
 
   { TRLDraftFilter }
 
-  {@class TRLDraftFilter - Filtro de impress„o para impressoras matriciais.
-   Este filtro age substituindo os comandos gr·ficos que seriam enviados ao driver da impressora por cÛdigos de
-   programaÁ„o, os quais s„o enviados diretamente para o dispositivo de impress„o ou programa spooler. Com isso se
-   consegue imprimir o mesmo relatÛrio em impressoras de tecnologias diferentes, mantendo-se o design gr·fico original
+  {@class TRLDraftFilter - Filtro de impress√£o para impressoras matriciais.
+   Este filtro age substituindo os comandos gr√°ficos que seriam enviados ao driver da impressora por c√≥digos de
+   programa√ß√£o, os quais s√£o enviados diretamente para o dispositivo de impress√£o ou programa spooler. Com isso se
+   consegue imprimir o mesmo relat√≥rio em impressoras de tecnologias diferentes, mantendo-se o design gr√°fico original
    com impressoras a jato e a laser, e alta velocidade em uma matricial.
-   H· v·rias propriedades e maneiras de se conseguir bons resultados, equilibrando velocidade e qualidade de impress„o.   
-   Nota: O algorÌtmo do filtro conseguir· fazer uma melhor aproximaÁ„o de fontes TrueType vari·veis do que de fontes
-   fixas. Portanto, n„o È necess·rio desenhar os relatÛrios em uma fonte com pitch fixo, como: Courier ou Terminal.
+   H√° v√°rias propriedades e maneiras de se conseguir bons resultados, equilibrando velocidade e qualidade de impress√£o.   
+   Nota: O algor√≠tmo do filtro conseguir√° fazer uma melhor aproxima√ß√£o de fontes TrueType vari√°veis do que de fontes
+   fixas. Portanto, n√£o √© necess√°rio desenhar os relat√≥rios em uma fonte com pitch fixo, como: Courier ou Terminal.
    @ancestor TRLCustomPrintFilter.
    @links TRLHTMLFilter, TRLRichFilter.
    @pub }
@@ -307,112 +307,112 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
 
-    {@method DefaultCommands - Preenche lista de cÛdigos de programaÁ„o de acordo com a famÌlia de impressoras
+    {@method DefaultCommands - Preenche lista de c√≥digos de programa√ß√£o de acordo com a fam√≠lia de impressoras
      escolhida. :/}
     procedure DefaultCommands;
 
   published
   
-    {@method SetOrientation - Seleciona a orientaÁ„o de papel padr„o.
+    {@method SetOrientation - Seleciona a orienta√ß√£o de papel padr√£o.
      @links TRLPageOrientation. :/}
     procedure SetOrientation(AOrientation: TRLPageOrientation); override;
 
-    {@prop Commands - CÛdigos de programaÁ„o para a impressora.
-     Esta propriedade especifica os cÛdigos de compress„o, efeitos de fonte e controle de p·gina nativos da impressora.
-     Os cÛdigos da configuraÁ„o default s„o para impressoras do tipo EPSON. … possÌvel porÈm adapt·-los a praticamente
+    {@prop Commands - C√≥digos de programa√ß√£o para a impressora.
+     Esta propriedade especifica os c√≥digos de compress√£o, efeitos de fonte e controle de p√°gina nativos da impressora.
+     Os c√≥digos da configura√ß√£o default s√£o para impressoras do tipo EPSON. √â poss√≠vel por√©m adapt√°-los a praticamente
      qualquer impressora matricial.
      Cada linha deve indicar o comando e a sequencia de bytes na seguinte forma: "NOME=Asc1,'Chr1',Asc2,'ChrN',Asc2".
-     Pode conter as seguintes vari·veis: 
+     Pode conter as seguintes vari√°veis: 
      CR - Retorno do carro (ex.: CR=13);
-     LF - AvanÁo de linha (ex.: LF=10);
+     LF - Avan√ßo de linha (ex.: LF=10);
      BS - Retrocesso de 1 caractere (ex.: BS=8);
-     FF - AvanÁo de p·gina (ex.: FF=12);
-     Reset - InicializaÁ„o da impressora (ex.: RESET=27,'@');
+     FF - Avan√ßo de p√°gina (ex.: FF=12);
+     Reset - Inicializa√ß√£o da impressora (ex.: RESET=27,'@');
      MicroOn - Micro salto de N/12 de linha (ex.: MicroOn=27,'A',#);
      MicroOff - Volta ao salto normal de linha (ex.: MicroOff=27,'2');
-     Space - O caractere de espaÁo (ex.: Space=32);
-     CPP10 - Compress„o a 10 caracteres/polegada (ex.: CPP10=27,'P',18);
-     CPP12 - Compress„o a 12 caracteres/polegada (ex.: CPP12=27,'M',18);
-     CPP17 - Compress„o a 17 caracteres/polegada (ex.: CPP17=27,'P',15);
-     CPP20 - Compress„o a 20 caracteres/polegada (ex.: CPP20=27,'M',15);
+     Space - O caractere de espa√ßo (ex.: Space=32);
+     CPP10 - Compress√£o a 10 caracteres/polegada (ex.: CPP10=27,'P',18);
+     CPP12 - Compress√£o a 12 caracteres/polegada (ex.: CPP12=27,'M',18);
+     CPP17 - Compress√£o a 17 caracteres/polegada (ex.: CPP17=27,'P',15);
+     CPP20 - Compress√£o a 20 caracteres/polegada (ex.: CPP20=27,'M',15);
      ExpandOn - Liga modo expandido (ex.: ExpandOn=27,'W',1);
      ExpandOff - Modo expandido desligado (ex.: ExpandOff=27,'W',0);
      BoldOn - Liga modo negrito (ex.: BoldOn=27,'G');
      BoldOff - Modo negrito desligado (ex.: BoldOff=27,'H');
-     ItalicOn - Liga modo it·lico (ex.: ItalicOn=27,'4');
-     ItalicOff - Modo it·lico desligado (ex.: ItalicOff=27,'5');
-     UnderlineOn - Liga modo it·lico (ex.: UnderlineOn=27,'-1');
-     UnderlineOff - Modo it·lico desligado (ex.: UnderlineOff=27,'-0');
-     RAW - Envio de sequÍncia de bytes para impress„o de gr·ficos (ex.: RAW=27,'L',#l,#h).
+     ItalicOn - Liga modo it√°lico (ex.: ItalicOn=27,'4');
+     ItalicOff - Modo it√°lico desligado (ex.: ItalicOff=27,'5');
+     UnderlineOn - Liga modo it√°lico (ex.: UnderlineOn=27,'-1');
+     UnderlineOff - Modo it√°lico desligado (ex.: UnderlineOff=27,'-0');
+     RAW - Envio de sequ√™ncia de bytes para impress√£o de gr√°ficos (ex.: RAW=27,'L',#l,#h).
      @links DefaultCommands, PrinterFamily. :/}
     property Commands: TStrings read FCommands write SetCommands stored IsCustomPrinterFamily;
 
-    {@prop DriverName - Nome de arquivo "driver" contendo os cÛdigos de programaÁ„o da impressora.
-     Utilize esta propriedade quando quiser manter os cÛdigos de programaÁ„o da impressora
-     em um arquivo texto externo ao programa. A sintaxe do arquivo È a mesma da propriedade
+    {@prop DriverName - Nome de arquivo "driver" contendo os c√≥digos de programa√ß√£o da impressora.
+     Utilize esta propriedade quando quiser manter os c√≥digos de programa√ß√£o da impressora
+     em um arquivo texto externo ao programa. A sintaxe do arquivo √© a mesma da propriedade
      Commands.
      @links Commands, DefaultCommands. :/}
     property DriverName: String read FDriverName write FDriverName;
 
-    {@prop DeviceKind - Tipo de dispositivo de impress„o.
-     Indica que tipo de dispositivo est· identificado na propriedade DevicePath.
+    {@prop DeviceKind - Tipo de dispositivo de impress√£o.
+     Indica que tipo de dispositivo est√° identificado na propriedade DevicePath.
      @links TRLDeviceKind, DevicePath. :/}
     property DeviceKind: TRLDeviceKind read FDeviceKind write FDeviceKind stored IsCustomDevice;
 
-    {@prop DevicePath - Caminho para o dispositivo de impress„o.
-     Esta propriedade indica o nome ou o caminho do dispositivo de impress„o ou programa spooler.
-     No Windows pode-se utilizar um dos dispositivos padrıes: PRN, LPT1, LPT2 etc, ou um caminho de
-     rede no formato "\\computador\impressora". O dispositivo PRN È especialmente interessante, pois
+    {@prop DevicePath - Caminho para o dispositivo de impress√£o.
+     Esta propriedade indica o nome ou o caminho do dispositivo de impress√£o ou programa spooler.
+     No Windows pode-se utilizar um dos dispositivos padr√µes: PRN, LPT1, LPT2 etc, ou um caminho de
+     rede no formato "\\computador\impressora". O dispositivo PRN √© especialmente interessante, pois
      sempre representa a impressora atualmente selecionada pelo sistema.
      No Linux pode-se informar tanto um caminho para um dispositivo (ex.: "/dev/lp0") como para um
-     programa de controle de spool como o lpr (ex.: "lpr -P%p %f"). Neste ˙ltimo caso, "%p" representa
-     o nome de uma impressora v·lida cadastrada pelo linuxconf, e "%f" o nome de um arquivo tempor·rio
+     programa de controle de spool como o lpr (ex.: "lpr -P%p %f"). Neste √∫ltimo caso, "%p" representa
+     o nome de uma impressora v√°lida cadastrada pelo linuxconf, e "%f" o nome de um arquivo tempor√°rio
      gerado pelo FR.
      @links DeviceKind. :/}
     property DevicePath: String read FDevicePath write FDevicePath stored IsCustomDevice;
 
-    {@prop AccentMethod - Comportamento do filtro em relaÁ„o a caracteres acentuados.
-     Algumas impressoras n„o suportam ou podem n„o estar adequadamente configuradas para imprimir
+    {@prop AccentMethod - Comportamento do filtro em rela√ß√£o a caracteres acentuados.
+     Algumas impressoras n√£o suportam ou podem n√£o estar adequadamente configuradas para imprimir
      caracteres acentuados.
      @links TRLDraftAccentMethod. :/}
     property AccentMethod: TRLDraftAccentMethod read FAccentMethod write FAccentMethod default amOverwrite;
 
-    {@prop EjectMethod - Comportamento do filtro em relaÁ„o aos saltos de p·ginas.
-     Em alguns casos quando se tem um tamanho especÌfico de formul·rio pode ser necess·rio
-     modificar a maneira como o filtro efetua os saltos de p·gina.
+    {@prop EjectMethod - Comportamento do filtro em rela√ß√£o aos saltos de p√°ginas.
+     Em alguns casos quando se tem um tamanho espec√≠fico de formul√°rio pode ser necess√°rio
+     modificar a maneira como o filtro efetua os saltos de p√°gina.
      @links TRLDraftEjectMethod, Commands. :/}
     property EjectMethod: TRLDraftEjectMethod read FEjectMethod write FEjectMethod default ejCompletePage;
 
-    {@prop PrinterFamily - FamÌlia de impressoras.
-     ¿s vezes È desej·vel conhecer algumas particularidades da impressora a ser utilizada e que
-     n„o podem ser informadas somente com comandos, como a impress„o de gr·ficos.
+    {@prop PrinterFamily - Fam√≠lia de impressoras.
+     √Äs vezes √© desej√°vel conhecer algumas particularidades da impressora a ser utilizada e que
+     n√£o podem ser informadas somente com comandos, como a impress√£o de gr√°ficos.
      @links TRLPrinterFamily. :/}
     property PrinterFamily: TRLPrinterFamily read FPrinterFamily write SetPrinterFamily default fmEpsonLike;
 
-    {@prop DitheringMethod - MÈtodo para impress„o de imagens.
-     Esta propriedade indica que mÈtodo deve ser utilizado para transformar imagens coloridas
+    {@prop DitheringMethod - M√©todo para impress√£o de imagens.
+     Esta propriedade indica que m√©todo deve ser utilizado para transformar imagens coloridas
      em preto e branco.
      @links TRLDitheringMethod. :/}
     property DitheringMethod: TRLDitheringMethod read FDitheringMethod write FDitheringMethod default dmColorTable;
 
-    {@prop LineDrawMethod - MÈtodo para impress„o de linhas.
-     Esta propriedade indica que mÈtodo deve ser utilizado para desenhar linhas numa impressora
+    {@prop LineDrawMethod - M√©todo para impress√£o de linhas.
+     Esta propriedade indica que m√©todo deve ser utilizado para desenhar linhas numa impressora
      matricial.
      @links TRLLineDrawMethod. :/}
     property LineDrawMethod: TRLLineDrawMethod read FLineDrawMethod write FLineDrawMethod default ldMinusAndPipe;
 
-    {@prop FillArtMethod - MÈtodo para o preenchimento de ret‚ngulos ou traÁos grossos. :/}
+    {@prop FillArtMethod - M√©todo para o preenchimento de ret√¢ngulos ou tra√ßos grossos. :/}
     property FillArtMethod: TRLFillArtMethod read FFillArtMethod write FFillArtMethod default fmNone;
 
-    {@prop FormSelection - PolÌtica de seleÁ„o de tamanho para formul·rios contÌnuos.
+    {@prop FormSelection - Pol√≠tica de sele√ß√£o de tamanho para formul√°rios cont√≠nuos.
      @links TRLFormSelection. :/}
     property FormSelection: TRLFormSelection read FFormSelection write SetFormSelection default fsAccordingToOrientation;
 
-    {@prop StretchCharWidth - MÈtodo de adaptaÁ„o do tamanho das fontes.
+    {@prop StretchCharWidth - M√©todo de adapta√ß√£o do tamanho das fontes.
      @links TRLStretchCharWidth. :/}
     property StretchCharWidth: TRLStretchCharWidth read FStretchCharWidth write FStretchCharWidth default scShrinksOnly;
 
-    {@prop TextDecoration - DecoraÁ„o do texto.
+    {@prop TextDecoration - Decora√ß√£o do texto.
      @links TRLDraftTextDecoration. :/}
     property TextDecoration: TRLDraftTextDecoration read FTextDecoration write SetTextDecoration default ddIncludeAll;
     
@@ -420,7 +420,7 @@ type
      @links TRLDraftTextStyles. :/}
     property TextStyles: TRLDraftTextStyles read FTextStyles write SetTextStyle stored IsCustomTextStyle;
 
-    {@prop CPPSelection - Fixa uma compress„o padr„o para todo o relatÛrio.
+    {@prop CPPSelection - Fixa uma compress√£o padr√£o para todo o relat√≥rio.
      @links Commands, TRLCPPSelection. :/}
     property CPPSelection: TRLCPPSelection read FCPPSelection write FCPPSelection default csAutomatic;
 
@@ -473,9 +473,9 @@ const
   DefaultFontName = 'Arial';
   DefaultFontSize = 6;
   //
-  AccentLetters = '·‡„‚‰¡¿√¬ƒÈËÍÎ…» ÀÌÏÓÔÕÃŒœÛÚıÙˆ”“’‘÷˙˘˚¸⁄Ÿ€‹Á«∫™';
+  AccentLetters = '√°√†√£√¢√§√Å√Ä√É√Ç√Ñ√©√®√™√´√â√à√ä√ã√≠√¨√Æ√Ø√ç√å√é√è√≥√≤√µ√¥√∂√ì√í√ï√î√ñ√∫√π√ª√º√ö√ô√õ√ú√ß√á¬∫¬™';
   NormalLetters = 'aaaaaAAAAAeeeeEEEEiiiiIIIIoooooOOOOOuuuuUUUUcCoa';
-  AccentChars = '''`~^®''`~^®''`^®''`^®''`^®''`^®''`~^®''`~^®''`^®''`^®,,__';
+  AccentChars = '''`~^¬®''`~^¬®''`^¬®''`^¬®''`^¬®''`^¬®''`~^¬®''`~^¬®''`^¬®''`^¬®,,__';
 
 var
   PinsPerRow: Integer = 12;
@@ -739,7 +739,7 @@ begin
     PinsPerRow := 60 // 0..255 360/6LPP
   else
     PinsPerRow := 12; // 0..85 60/6LPP
-  // medidas padr„o papel carta
+  // medidas padr√£o papel carta
   FCurrentLPP := StandardLPP;
   FCurrentCPP := StandardCPP;
   FCurrentBoldState := False;
@@ -832,7 +832,7 @@ end;
 procedure TRLDraftFilter.InternalNewPage;
 begin
   case FEjectMethod of
-    ejCompletePage: SetPrintPos(PixelToPinY(FPrintSize.Y), PixelToPinX(0)); // posicionamento vertical da proxima p·gina em agulhas
+    ejCompletePage: SetPrintPos(PixelToPinY(FPrintSize.Y), PixelToPinX(0)); // posicionamento vertical da proxima p√°gina em agulhas
     ejForceWithCode: DeviceWrite(PrintCode('FF'));
     ejLeavePage: SetPrintPos(FCurrentPrintPos.Y + PinsPerRow, PixelToPinX(0)); // apenas salta uma linha
   end;
@@ -953,7 +953,7 @@ var
 begin
   Dec(X, FPrintCut.X);
   qpol := (X * FormFactorX) / ScreenPPI; // transforma X em polegadas
-  qcol := qpol * StandardCPP; // transforma polegadas em colunas de acordo com o cpp padr„o
+  qcol := qpol * StandardCPP; // transforma polegadas em colunas de acordo com o cpp padr√£o
   Result := Trunc(qcol * PinsPerCol); // transforma colunas em pinos
 end;
 
@@ -963,7 +963,7 @@ var
 begin
   Dec(Y, FPrintCut.Y);
   qpol := Y / ScreenPPI; // transforma Y em polegadas
-  qlin := qpol * StandardLPP; // transforma polegadas em linhas de acordo com o lpp padr„o
+  qlin := qpol * StandardLPP; // transforma polegadas em linhas de acordo com o lpp padr√£o
   Result := Trunc(qlin * PinsPerRow); // transforma linhas em pinos
 end;
 
@@ -1046,9 +1046,9 @@ begin
   try
     FontSizeBitmap.Canvas.Font.Name := AFontName;
     FontSizeBitmap.Canvas.Font.Size := ASize;
-    // a largura mÈdia de um caractere em pixels È dada pela largura da amostra em
+    // a largura m√©dia de um caractere em pixels √© dada pela largura da amostra em
     // pixels dividida pela largura da amostra em caracteres com a fonte indicada
-    // um fator "m·gico" foi calculado atravÈs de testes para chegar ao valor ideal
+    // um fator "m√°gico" foi calculado atrav√©s de testes para chegar ao valor ideal
     OneCharWidth := MagicDelta * FontSizeBitmap.Canvas.TextWidth(TextSample) / Length(TextSample);
     CharsPerInch := ScreenPPI / OneCharWidth;
     //
@@ -1100,7 +1100,7 @@ begin
   end;
   FCurrentCPP := ACPP;
   FCurrentCharWidth := Trunc(PinsPerCol * StandardCPP / FCurrentCPP);
-  // forÁa o reposicionamento do carro para a nova compress„o
+  // for√ßa o reposicionamento do carro para a nova compress√£o
   with FCurrentPrintPos do
     SetPrintPos(Y, 0);
 end;
@@ -1121,7 +1121,7 @@ begin
       DeviceWrite(PrintCode('BoldOff'));
     FCurrentBoldState := newbold;
   end;
-  // it·lico
+  // it√°lico
   newitalic := ((AStyle and MetaFontStyleItalic) = MetaFontStyleItalic) and (tsItalic in FTextStyles);
   if newitalic <> FCurrentItalicState then
   begin
@@ -1319,19 +1319,19 @@ var
 begin
   if FLineDrawMethod = ldNone then
     Exit;
-  // se n„o for sÛlido
+  // se n√£o for s√≥lido
   if AObj.Pen.Style <> MetaPenStyleSolid then
     Exit;
   // se for de cor clara
   with AObj.Pen.Color do
     if (Red + Green + Blue) / 3 > 127 then
       Exit;
-  // escolhe o cpp default para o ret‚ngulo
+  // escolhe o cpp default para o ret√¢ngulo
   TraceCPP := SelectFontCPP(DefaultFontName, DefaultFontSize);
-  // tamanho de um caractere em agulhas no cpp padr„o
+  // tamanho de um caractere em agulhas no cpp padr√£o
   OneLetterWidthInPins := CPPPins(TraceCPP);
   OneLetterHeightInPins := LPPPins(StandardLPP);
-  // calcula as dimensıes do retangulo em caracteres
+  // calcula as dimens√µes do retangulo em caracteres
   RectHorzLength := (PixelToPinX(AObj.BoundsRect.Right) - PixelToPinX(AObj.BoundsRect.Left)) div OneLetterWidthInPins;
   RectVertLength := (PixelToPinY(AObj.BoundsRect.Bottom) - PixelToPinY(AObj.BoundsRect.Top)) div OneLetterHeightInPins;
   //
@@ -1384,7 +1384,7 @@ var
 begin
   if FFillArtMethod = fmNone then
     Exit;
-  // se n„o for sÛlido  
+  // se n√£o for s√≥lido  
   if AObj.Brush.Style <> MetaBrushStyleSolid then
     Exit;
   // se for de cor clara  
@@ -1482,7 +1482,7 @@ begin
   try
     // seleciona textos
     GetObjList(APage, objlist);
-    // inicializaÁ„o da impressora
+    // inicializa√ß√£o da impressora
     if FSendFirstReset then
       DeviceWrite(PrintCode('Reset'));
     FSendFirstReset := False;
@@ -1493,15 +1493,15 @@ begin
     for I := 0 to objlist.Count - 1 do
     begin
       obj := TDraftObj(objlist[I]);
-      // posiÁ„o do objeto em agulhas
+      // posi√ß√£o do objeto em agulhas
       objpos := obj.PinBounds;
-      // n„o pode imprimir antes da linha atual (ou fora da ·rea imprimÌvel)
+      // n√£o pode imprimir antes da linha atual (ou fora da √°rea imprim√≠vel)
       if objpos.Top < FCurrentPrintPos.Y then
         objpos.Top := FCurrentPrintPos.Y;
       //
       if obj is TDraftText then
       begin
-        // compress„o
+        // compress√£o
         SetPrintCompression(TDraftText(obj).CPP);
         // posicionamento
         SetPrintPos(objpos.Top, objpos.Left);

@@ -13,9 +13,7 @@ object frmRLFindDialog: TfrmRLFindDialog
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsStayOnTop
-  OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 96
   TextHeight = 13
   object LabelTextToFind: TLabel
     Left = 8
@@ -36,7 +34,7 @@ object frmRLFindDialog: TfrmRLFindDialog
     Top = 12
     Width = 75
     Height = 21
-    Caption = '&Próxima'
+    Caption = '&Pr'#243'xima'
     Default = True
     TabOrder = 1
     OnClick = BitBtnFindNextClick
@@ -64,7 +62,7 @@ object frmRLFindDialog: TfrmRLFindDialog
     Top = 64
     Width = 193
     Height = 17
-    Caption = 'Diferenciar &maiúsculas e minúsculas'
+    Caption = 'Diferenciar &mai'#250'sculas e min'#250'sculas'
     TabOrder = 4
   end
   object RadioGroupDirection: TRadioGroup
@@ -72,7 +70,7 @@ object frmRLFindDialog: TfrmRLFindDialog
     Top = 36
     Width = 73
     Height = 49
-    Caption = ' Direção '
+    Caption = ' Dire'#231#227'o '
     ItemIndex = 1
     Items.Strings = (
       'A&cima'

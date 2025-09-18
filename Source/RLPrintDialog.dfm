@@ -2,7 +2,6 @@ object RLPrintDialog: TRLPrintDialog
   Left = 189
   Top = 520
   ActiveControl = ComboBoxPrinterNames
-  AutoScroll = False
   AutoSize = True
   BorderWidth = 8
   Caption = 'Imprimir'
@@ -15,10 +14,8 @@ object RLPrintDialog: TRLPrintDialog
   Font.Name = 'MS Sans Serif'
   Font.Pitch = fpVariable
   Font.Style = []
-  OldCreateOrder = True
   Position = poScreenCenter
   Scaled = False
-  PixelsPerInch = 96
   TextHeight = 13
   object GroupBoxPrinter: TGroupBox
     Left = 0
@@ -58,7 +55,6 @@ object RLPrintDialog: TRLPrintDialog
       Width = 365
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       TabOrder = 0
       OnChange = ComboBoxPrinterNamesChange
     end
@@ -77,7 +73,6 @@ object RLPrintDialog: TRLPrintDialog
       Width = 365
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       TabOrder = 1
       OnChange = ComboBoxFiltersChange
     end
@@ -87,7 +82,6 @@ object RLPrintDialog: TRLPrintDialog
       Width = 161
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       TabOrder = 2
     end
     object ButtonPrinterSetup: TButton
@@ -226,7 +220,6 @@ object RLPrintDialog: TRLPrintDialog
       Width = 161
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       TabOrder = 1
       Items.Strings = (
         'Pares'

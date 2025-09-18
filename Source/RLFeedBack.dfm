@@ -6,7 +6,6 @@ object frmRLFeedBack: TfrmRLFeedBack
   HorzScrollBar.Range = 61
   VertScrollBar.Range = 45
   ActiveControl = BitBtnCancel
-  AutoScroll = False
   Caption = 'Progresso'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,10 +14,10 @@ object frmRLFeedBack: TfrmRLFeedBack
   Font.Name = 'MS Sans Serif'
   Font.Pitch = fpVariable
   Font.Style = []
-  OldCreateOrder = True
   Position = poScreenCenter
-  OnDestroy = FormDestroy
-  PixelsPerInch = 96
+  DesignSize = (
+    377
+    90)
   TextHeight = 13
   object LabelStepName: TLabel
     Left = 14
@@ -40,8 +39,6 @@ object frmRLFeedBack: TfrmRLFeedBack
     Width = 355
     Height = 17
     Anchors = [akLeft, akTop, akRight]
-    Min = 0
-    Max = 100
     Step = 1
     TabOrder = 1
   end
@@ -52,9 +49,10 @@ object frmRLFeedBack: TfrmRLFeedBack
     Height = 25
     Anchors = [akBottom]
     Caption = '&Cancelar'
+    Kind = bkCancel
+    NumGlyphs = 2
     TabOrder = 0
     OnClick = BitBtnCancelClick
-    Kind = bkCancel
   end
   object TimerBlink: TTimer
     Enabled = False

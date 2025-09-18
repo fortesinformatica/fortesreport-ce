@@ -1,38 +1,38 @@
-{ Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+Ôªø{ Projeto: FortesReport Community Edition                                      }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,7 +41,7 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
@@ -152,6 +152,8 @@ type
   end;
 
 implementation
+
+{$R *.dfm}
 
 uses Types;
 
@@ -396,7 +398,7 @@ begin
     Name := 'LabelOptions';
     Parent := GroupBoxPrinter;
     AutoSize := True;
-    Caption := 'OpÁıes do filtro:';
+    Caption := 'Op√ß√µes do filtro:';
   end;
 
   TRLComponentFactory.CreateComponent(TComboBox, Self, ComboBoxPrinterNames);
@@ -463,7 +465,7 @@ begin
   begin
     Name := 'GroupBoxPages';
     Parent := Self;
-    Caption := 'Intervalo de p·ginas';
+    Caption := 'Intervalo de p√°ginas';
     TabOrder := 1;
   end;
 
@@ -502,7 +504,7 @@ begin
   begin
     Name := 'RadioButtonPagesSelect';
     Parent := GroupBoxPages;
-    Caption := 'SeleÁ„o';
+    Caption := 'Sele√ß√£o';
     TabOrder := 4;
   end;
 
@@ -538,7 +540,7 @@ begin
   begin
     Name := 'LabelToPage';
     Parent := GroupBoxPages;
-    Caption := '&atÈ:';
+    Caption := '&at√©:';
     {$IfDef FPC}
     AnchorSideTop.Control := RadioButtonPagesInterval;
     AnchorSideTop.Side := asrCenter;
@@ -579,7 +581,7 @@ begin
   begin
     Name := 'GroupBoxCopies';
     Parent := Self;
-    Caption := 'CÛpias';
+    Caption := 'C√≥pias';
     TabOrder := 2;
   end;
 
@@ -588,7 +590,7 @@ begin
   begin
     Name := 'LabelCopies';
     Parent := GroupBoxCopies;
-    Caption := 'N˙mero de &cÛpias:';
+    Caption := 'N√∫mero de &c√≥pias:';
   end;
 
   TRLComponentFactory.CreateComponent(TEdit, Self, EditCopies);
@@ -606,7 +608,7 @@ begin
     Name := 'LabelOddPages';
     Parent := GroupBoxCopies;
     Alignment := taRightJustify;
-    Caption := 'Pares/Õmpares:';
+    Caption := 'Pares/√çmpares:';
     FocusControl := ComboBoxOddPages;
   end;
 
@@ -619,7 +621,7 @@ begin
     ItemHeight := 13;
     TabOrder := 1;
     Items.Text := 'Pares'+sLineBreak+
-                  'Õmpares'+sLineBreak+
+                  '√çmpares'+sLineBreak+
                   'Todas';
   end;
 

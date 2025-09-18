@@ -1,38 +1,38 @@
-{ Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+Ôªø{ Projeto: FortesReport Community Edition                                      }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLXLSFilter - ImplementaÁ„o do filtro para criaÁ„o de planilhas do Excel. }
+{@unit RLXLSFilter - Implementa√ß√£o do filtro para cria√ß√£o de planilhas do Excel. }
 unit RLXLSFilter;
 
 interface
@@ -490,10 +490,10 @@ type
   TRLXLSCol = class;
   TRLXLSFilter = class;
 
-  {@type TRLXLSCellDataType - Tipo de dado de uma cÈlula ou faixa de cÈlulas.
+  {@type TRLXLSCellDataType - Tipo de dado de uma c√©lula ou faixa de c√©lulas.
    Pode ser:
-   ctNumber - A cÈlula È um valor e pode ser envolvido em c·lculos;
-   ctString - O conte˙do da cÈlula È um texto. :/}
+   ctNumber - A c√©lula √© um valor e pode ser envolvido em c√°lculos;
+   ctString - O conte√∫do da c√©lula √© um texto. :/}
   TRLXLSCellDataType = (ctNumber, ctString, ctDate, ctTime);
 
   TRLXLSLineStyleType = (lsNone, lsThin, lsMedium, lsDashed, lsDotted, lsThick, lsDouble, 
@@ -530,14 +530,14 @@ type
     szPaperLegal, {8 1/2 x 14"}
     szPaperStatement, {5 1/2 x 8 1/2"}
     szPaperExecutive, {7 1/4 x 10 1/2"}
-    szPaperA3, {297 x 420 ÏÏ}
-    szPaperA4, {210 x 297 ÏÏ}
-    szPaperA4SmallSheet, {210 x 297 ÏÏ}
-    szPaperA5, {148 x 210 ÏÏ}
-    szPaperB4, {250 x 354 ÏÏ}
-    szPaperB5, {182 x 257 ÏÏ}
+    szPaperA3, {297 x 420 √¨√¨}
+    szPaperA4, {210 x 297 √¨√¨}
+    szPaperA4SmallSheet, {210 x 297 √¨√¨}
+    szPaperA5, {148 x 210 √¨√¨}
+    szPaperB4, {250 x 354 √¨√¨}
+    szPaperB5, {182 x 257 √¨√¨}
     szPaperFolio, {8 1/2 x 13"}
-    szPaperQuartoSheet, {215 x 275 ÏÏ}
+    szPaperQuartoSheet, {215 x 275 √¨√¨}
     szPaper10x14, {10 x 14"}
     szPaper11x17, {11 x 17"}
     szPaperNote, {8 1/2 x 11"}
@@ -549,46 +549,46 @@ type
     szPaperCSheet, {17 x 22"}
     szPaperDSheet, {22 x 34"}
     szPaperESheet, {34 x 44"}
-    szPaperDLEnvelope, {110 x 220 ÏÏ}
-    szPaperC5Envelope, {162 x 229 ÏÏ}
-    szPaperC3Envelope, {324 x 458 ÏÏ}
-    szPaperC4Envelope, {229 x 324 ÏÏ}
-    szPaperC6Envelope, {114 x 162 ÏÏ}
-    szPaperC65Envelope, {114 x 229 ÏÏ}
-    szPaperB4Envelope, {250 x 353 ÏÏ}
-    szPaperB5Envelope, {176 x 250 ÏÏ}
-    szPaperB6Envelope, {176 x 125 ÏÏ}
-    szPaperItalyEnvelope, {110 x 230 ÏÏ}
+    szPaperDLEnvelope, {110 x 220 √¨√¨}
+    szPaperC5Envelope, {162 x 229 √¨√¨}
+    szPaperC3Envelope, {324 x 458 √¨√¨}
+    szPaperC4Envelope, {229 x 324 √¨√¨}
+    szPaperC6Envelope, {114 x 162 √¨√¨}
+    szPaperC65Envelope, {114 x 229 √¨√¨}
+    szPaperB4Envelope, {250 x 353 √¨√¨}
+    szPaperB5Envelope, {176 x 250 √¨√¨}
+    szPaperB6Envelope, {176 x 125 √¨√¨}
+    szPaperItalyEnvelope, {110 x 230 √¨√¨}
     szPaperMonarchEnvelope, {3 7/8 x 7 1/2"}
     szPaper63_4Envelope, {3 5/8 x 6 1/2"}
     szPaperUSStdFanfold, {14 7/8 x 11"}
     szPaperGermanStdFanfold, {8 1/2 x 12"}
     szPaperGermanLegalFanfold, {8 1/2 x 13"}
-    szPaperB4_ISO, {250 x 353 ÏÏ}
-    szPaperJapanesePostcard, {100 x 148 ÏÏ}
+    szPaperB4_ISO, {250 x 353 √¨√¨}
+    szPaperJapanesePostcard, {100 x 148 √¨√¨}
     szPaper9x11, {9 x 11"}
     szPaper10x11, {10 x 11"}
     szPaper15x11, {15 x 11"}
-    szPaperEnvelopeInvite, {220 x 220 ÏÏ}
+    szPaperEnvelopeInvite, {220 x 220 √¨√¨}
     szPaperLetterExtra, {9 \ 275 x 12"}
     szPaperLegalExtra, {9 \275 x 15"}
     szPaperTabloidExtra, {11.69 x 18"}
     szPaperA4Extra, {9.27 x 12.69"}
     szPaperLetterTransverse, {8 \275 x 11"}
-    szPaperA4Transverse, {210 x 297 ÏÏ}
+    szPaperA4Transverse, {210 x 297 √¨√¨}
     szPaperLetterExtraTransverse, {9\275 x 12"}
-    szPaperSuperASuperAA4, {227 x 356 ÏÏ}
-    szPaperSuperBSuperBA3, {305 x 487 ÏÏ}
+    szPaperSuperASuperAA4, {227 x 356 √¨√¨}
+    szPaperSuperBSuperBA3, {305 x 487 √¨√¨}
     szPaperLetterPlus, {8.5 x 12.69"}
-    szPaperA4Plus, {210 x 330 ÏÏ}
-    szPaperA5Transverse, {148 x 210 ÏÏ}
-    szPaperB5_JIS_Transverse, {182 x 257 ÏÏ}
-    szPaperA3Extra, {322 x 445 ÏÏ}
-    szPaperA5Extra, {174 x 235 ÏÏ}
-    szPaperB5_ISO_Extra, {201 x 276 ÏÏ}
-    szPaperA2, {420 x 594 ÏÏ}
-    szPaperA3Transverse, {297 x 420 ÏÏ}
-    szPaperA3ExtraTransverse {322 x 445 ÏÏ});
+    szPaperA4Plus, {210 x 330 √¨√¨}
+    szPaperA5Transverse, {148 x 210 √¨√¨}
+    szPaperB5_JIS_Transverse, {182 x 257 √¨√¨}
+    szPaperA3Extra, {322 x 445 √¨√¨}
+    szPaperA5Extra, {174 x 235 √¨√¨}
+    szPaperB5_ISO_Extra, {201 x 276 √¨√¨}
+    szPaperA2, {420 x 594 √¨√¨}
+    szPaperA3Transverse, {297 x 420 √¨√¨}
+    szPaperA3ExtraTransverse {322 x 445 √¨√¨});
 
   { TRLXLSBorder }
 	{$IFDEF RTL230_UP}
@@ -630,8 +630,8 @@ type
 
   { TRLXLSRange }
 
-  {@class TRLXLSRange - Representa uma faixa de cÈlulas de uma planilha.
-   Uma faixa (range) È o meio para se acessar ou modificar o conte˙do e as caracterÌsticas das cÈlulas. }
+  {@class TRLXLSRange - Representa uma faixa de c√©lulas de uma planilha.
+   Uma faixa (range) √© o meio para se acessar ou modificar o conte√∫do e as caracter√≠sticas das c√©lulas. }
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}	 
@@ -670,15 +670,15 @@ type
   public
     constructor Create;
     destructor Destroy; override;
-    {@prop Worksheet - ReferÍncia ‡ aba da planilha a qual pertence esta faixa de cÈlulas. @links TRLXLSWorksheet. :/}
+    {@prop Worksheet - Refer√™ncia √† aba da planilha a qual pertence esta faixa de c√©lulas. @links TRLXLSWorksheet. :/}
     property Worksheet: TRLXLSWorksheet read FWorksheet;
-    {@prop Workbook - ReferÍncia ‡ planilha a qual pertence esta faixa de cÈlulas. @links TRLXLSWorkbook. :/}
+    {@prop Workbook - Refer√™ncia √† planilha a qual pertence esta faixa de c√©lulas. @links TRLXLSWorkbook. :/}
     property Workbook: TRLXLSWorkbook read GetWorkbook;
-    {@prop Font - ConfiguraÁ„o de fonte das cÈlulas. :/}
+    {@prop Font - Configura√ß√£o de fonte das c√©lulas. :/}
     property Font: TFont read FFont;
-    {@prop CellArea - Faixa de cÈlulas compreendidas pela faixa. :/}
+    {@prop CellArea - Faixa de c√©lulas compreendidas pela faixa. :/}
     property CellArea: TRLXLSCellArea read FCellArea write FCellArea;
-    {@prop Value - Valor das cÈlulas como AnsiString. :/}
+    {@prop Value - Valor das c√©lulas como AnsiString. :/}
     property Value: AnsiString read FValue write SetValue;
     {@prop DataType - Tipo de dado das celulas. @links TRLXLSCellDataType. :/}
     property DataType: TRLXLSCellDataType read FDataType write FDataType;
@@ -700,7 +700,7 @@ type
     constructor Create;
     {@prop Height - Altura da linha em pixels. :/}
     property Height: Integer read FHeight write FHeight;
-    {@prop Index - Õndice da linha na lista de linhas. :/}
+    {@prop Index - √çndice da linha na lista de linhas. :/}
     property Index: Integer read FIndex;
     property Y: Integer read FY;
   end;
@@ -721,7 +721,7 @@ type
     constructor Create;
     {@prop Width - Largura da coluna em pontos. :/}
     property Width: Integer read FWidth write FWidth;
-    {@prop Index - Õndice da coluna na lista de colunas. :/}
+    {@prop Index - √çndice da coluna na lista de colunas. :/}
     property Index: Integer read FIndex;
     property X: Integer read FX;
   end;
@@ -729,7 +729,7 @@ type
 
   { TRLXLSPageSetup }
   
-  {@class TRLXLSPageSetup - ConfiguraÁ„o da p·gina de impress„o no Excel. }
+  {@class TRLXLSPageSetup - Configura√ß√£o da p√°gina de impress√£o no Excel. }
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}	
@@ -779,51 +779,51 @@ type
   public
     constructor Create;
   published
-    {@prop Copies - Quantidade inicial de cÛpias para imprimir. :/}
+    {@prop Copies - Quantidade inicial de c√≥pias para imprimir. :/}
     property Copies: Integer read FCopies write FCopies default 1;
     {@prop Zoom - Percentual de zoom inicial. :/}
     property Zoom: Integer read FZoom write FZoom default 100;
-    {@prop CenterHorizontally - Centralizar p·gina horizontalmente. :/}
+    {@prop CenterHorizontally - Centralizar p√°gina horizontalmente. :/}
     property CenterHorizontally: Boolean read FCenterHorizontally write FCenterHorizontally default False;
-    {@prop CenterVertically - Centralizar p·gina verticalmente. :/}
+    {@prop CenterVertically - Centralizar p√°gina verticalmente. :/}
     property CenterVertically: Boolean read FCenterVertically write FCenterVertically default False;
     {@prop BlackAndWhite - Imprimir em preto e branco. :/}
     property BlackAndWhite: Boolean read FBlackAndWhite write FBlackAndWhite default False;
     {@prop Draft - Imprimir em modo de rascunho. :/}
     property Draft: Boolean read FDraft write FDraft default False;
-    {@prop PrintNotes - Imprimir notas de rodapÈ. :/}
+    {@prop PrintNotes - Imprimir notas de rodap√©. :/}
     property PrintNotes: Boolean read FPrintNotes write FPrintNotes default False;
     {@prop PrintGridLines - Imprimir linhas de grade. :/}
     property PrintGridLines: Boolean read FPrintGridLines write FPrintGridLines default False;
-    {@prop LeftMargin - Margem de impress„o a esquerda em cm. :/}
+    {@prop LeftMargin - Margem de impress√£o a esquerda em cm. :/}
     property LeftMargin: Double read FLeftMargin write FLeftMargin stored False;
-    {@prop TopMargin - Margem de impress„o superior em cm. :/}
+    {@prop TopMargin - Margem de impress√£o superior em cm. :/}
     property TopMargin: Double read FTopMargin write FTopMargin stored False;
-    {@prop RightMargin - Margem de impress„o a direita em cm. :/}
+    {@prop RightMargin - Margem de impress√£o a direita em cm. :/}
     property RightMargin: Double read FRightMargin write FRightMargin stored False;
-    {@prop BottomMargin - Margem de impress„o inferior em cm. :/}
+    {@prop BottomMargin - Margem de impress√£o inferior em cm. :/}
     property BottomMargin: Double read FBottomMargin write FBottomMargin stored False;
-    {@prop FirstPageNumber - N˙mero para a primeira p·gina. :/}
+    {@prop FirstPageNumber - N√∫mero para a primeira p√°gina. :/}
     property FirstPageNumber: Integer read FFirstPageNumber write FFirstPageNumber default 1;
-    {@prop FitToPagesTall - Encaixar a p·gina de acordo com a altura. :/}
+    {@prop FitToPagesTall - Encaixar a p√°gina de acordo com a altura. :/}
     property FitToPagesTall: Boolean read FFitToPagesTall write FFitToPagesTall default True;
-    {@prop FitToPagesWide - Encaixar a p·gina de acordo com a largura. :/}
+    {@prop FitToPagesWide - Encaixar a p√°gina de acordo com a largura. :/}
     property FitToPagesWide: Boolean read FFitToPagesWide write FFitToPagesWide default True;
-    {@prop LeftFooter - Texto para rodapÈ ‡ esquerda. :/}
+    {@prop LeftFooter - Texto para rodap√© √† esquerda. :/}
     property LeftFooter: AnsiString read FLeftFooter write FLeftFooter;
-    {@prop LeftHeader - Texto para cabeÁalho ‡ esquerda. :/}
+    {@prop LeftHeader - Texto para cabe√ßalho √† esquerda. :/}
     property LeftHeader: AnsiString read FLeftHeader write FLeftHeader;
-    {@prop CenterFooter - Texto para rodapÈ centralizado. :/}
+    {@prop CenterFooter - Texto para rodap√© centralizado. :/}
     property CenterFooter: AnsiString read FCenterFooter write FCenterFooter;
-    {@prop CenterHeader - Texto para cabeÁalho centralizado. :/}
+    {@prop CenterHeader - Texto para cabe√ßalho centralizado. :/}
     property CenterHeader: AnsiString read FCenterHeader write FCenterHeader;
-    {@prop RightFooter - Texto para rodapÈ ‡ direita. :/}
+    {@prop RightFooter - Texto para rodap√© √† direita. :/}
     property RightFooter: AnsiString read FRightFooter write FRightFooter;
-    {@prop RightHeader - Texto para cabeÁalho ‡ direita. :/}
+    {@prop RightHeader - Texto para cabe√ßalho √† direita. :/}
     property RightHeader: AnsiString read FRightHeader write FRightHeader;
-    {@prop HeaderMargin - Margem para o cabeÁalho em cm. :/}
+    {@prop HeaderMargin - Margem para o cabe√ßalho em cm. :/}
     property HeaderMargin: Double read FHeaderMargin write FHeaderMargin;
-    {@prop FooterMargin - Margem para o rodapÈ em cm. :/}
+    {@prop FooterMargin - Margem para o rodap√© em cm. :/}
     property FooterMargin: Double read FFooterMargin write FFooterMargin;
   end;
   {/@class}
@@ -857,32 +857,32 @@ type
   public
     constructor Create(AWorkbook: TRLXLSWorkbook);
     destructor Destroy; override;
-    {@method FindRow - Retorna a referÍncia para a linha indicada pelo Ìndice informado.
-    Pode opcionalmente criar a linha se n„o a encontrar.
+    {@method FindRow - Retorna a refer√™ncia para a linha indicada pelo √≠ndice informado.
+    Pode opcionalmente criar a linha se n√£o a encontrar.
     @links TRLXLSRow. :/}
     function FindRow(ARowIndex: Integer; ACanCreate: Boolean): TRLXLSRow;
-    {@method FindCol - Retorna a referÍncia para a coluna indicada pelo Ìndice informado.
-    Pode opcionalmente criar a coluna se n„o a encontrar.
+    {@method FindCol - Retorna a refer√™ncia para a coluna indicada pelo √≠ndice informado.
+    Pode opcionalmente criar a coluna se n√£o a encontrar.
     @links TRLXLSCol. :/}
     function FindCol(AColIndex: Integer; ACanCreate: Boolean): TRLXLSCol;
     function NewRange(X0, Y0, X1, Y1: Integer): TRLXLSRange;
-    {@prop Title - TÌtulo da aba. :/}
+    {@prop Title - T√≠tulo da aba. :/}
     property Title: AnsiString read FTitle write SetTitle;
-    {@prop Workbook - ReferÍncia ‡ planilha. @links TRLXLSWorkbook. :/}
+    {@prop Workbook - Refer√™ncia √† planilha. @links TRLXLSWorkbook. :/}
     property Workbook: TRLXLSWorkbook read FWorkbook;
-    {@prop Index - Õndice da aba dentre as abas da planilha. :/}
+    {@prop Index - √çndice da aba dentre as abas da planilha. :/}
     property Index: Integer read GetIndex;
     {@prop CellArea - Tamanho da aba medida em celulas. :/}
     property CellArea: TRLXLSCellArea read FCellArea;
-    {@prop Ranges - ReferÍncia a i-Èsima faixa de cÈlulas. @links TRLXLSRange. :/}
+    {@prop Ranges - Refer√™ncia a i-√©sima faixa de c√©lulas. @links TRLXLSRange. :/}
     property Ranges[I: Integer]: TRLXLSRange read GetRanges;
-    {@prop RangeCount - Retorna a quantidade de faixas de cÈlulas. @links Ranges. :/}
+    {@prop RangeCount - Retorna a quantidade de faixas de c√©lulas. @links Ranges. :/}
     property RangeCount: Integer read GetRangeCount;
-    {@prop Rows - ReferÍncia a i-Èsima linha da aba da planilha. @links TRLXLSRow. :/}
+    {@prop Rows - Refer√™ncia a i-√©sima linha da aba da planilha. @links TRLXLSRow. :/}
     property Rows[ARowIndex: Integer]: TRLXLSRow read GetRows;
     {@prop RowCount - Quantidade de linhas da aba. :/}
     property RowCount: Integer read GetRowCount;
-    {@prop Cols - ReferÍncia a i-Èsima coluna da aba da planilha. @links TRLXLSCol. :/}
+    {@prop Cols - Refer√™ncia a i-√©sima coluna da aba da planilha. @links TRLXLSCol. :/}
     property Cols[AColIndex: Integer]: TRLXLSCol read GetCols;
     {@prop ColCount - Quantidade de colunas da aba. :/}
     property ColCount: Integer read GetColCount;
@@ -962,19 +962,19 @@ type
     destructor Destroy; override;
     {@method Clear - Limpa a planilha excluindo todas os textos e abas. :/}
     procedure Clear;
-    {@method NewSheet - Adiciona uma nova aba e retorna referÍncia a ela. @links TRLXLSWorksheet. :/}
+    {@method NewSheet - Adiciona uma nova aba e retorna refer√™ncia a ela. @links TRLXLSWorksheet. :/}
     function NewSheet: TRLXLSWorksheet;
 
     procedure SaveToStream(AStream: TStream);
     procedure SaveToFile(const AFileName: AnsiString);
 
-    {@prop UserName - Nome do usu·rio dono da planilha. :/}
+    {@prop UserName - Nome do usu√°rio dono da planilha. :/}
     property UserName: AnsiString read FUserName write SetUserName;
     {@prop SheetCount - Quantidade de abas da planilha. :/}
     property SheetCount: Integer read GetSheetCount;
-    {@prop Sheets - Retorna referÍncia a i-Èsima aba da planilha. :/}
+    {@prop Sheets - Retorna refer√™ncia a i-√©sima aba da planilha. :/}
     property Sheets[I: Integer]: TRLXLSWorksheet read GetWorkSheet;
-    {@prop PageSetup - ConfiguraÁ„o da impress„o das p·ginas. @links TRLXLSPageSetup:/}
+    {@prop PageSetup - Configura√ß√£o da impress√£o das p√°ginas. @links TRLXLSPageSetup:/}
     property PageSetup: TRLXLSPageSetup read FPageSetup;
     property FindValueCells: Boolean read FFindValueCells write FFindValueCells;
   end;
@@ -982,12 +982,12 @@ type
 
   { TRLXLSFilter }
 
-  {@type TRLXLSFilterOptions - OpÁıes para a geraÁ„o do arquivo planilha.
+  {@type TRLXLSFilterOptions - Op√ß√µes para a gera√ß√£o do arquivo planilha.
    Pode ser um conjunto dos seguintes valores:
-   foFindNumberCells - Tenta encontrar valores e datas no relatÛrio e formata as
-   cÈlulas correspondentes;
-   foOneSheetOnly - Cria apenas uma aba para conter todas as p·ginas do relatÛrio
-   ao invÈs de criar uma aba para cada p·gina (padr„o). :}
+   foFindNumberCells - Tenta encontrar valores e datas no relat√≥rio e formata as
+   c√©lulas correspondentes;
+   foOneSheetOnly - Cria apenas uma aba para conter todas as p√°ginas do relat√≥rio
+   ao inv√©s de criar uma aba para cada p√°gina (padr√£o). :}
   TRLXLSFilterOption = (foFindValueCells, foOneSheetOnly);
 
   TRLXLSFilterOptions = set of TRLXLSFilterOption;
@@ -1024,11 +1024,11 @@ type
     property Tabs[I: Integer]: TRLXLSTab read GetTabs; default;
   end;
 
-  {@class TRLXLSFilter - Filtro para criaÁ„o de planilhas formato Excel XLS a partir de um relatÛrio.
-   Este filtro gera arquivos bin·rios compatÌveis com o formato XLS legÌveis pelo Microsoft Excel ou ExcelViewer.
-   S„o exportados todos os textos presentes no relatÛrio com suas fontes e posiÁıes mantidas.
-   Para cada p·gina do relatÛrio ser· criada uma aba na planilha.
-   Nota: Gr·ficos, linhas e cores ainda n„o s„o suportados.
+  {@class TRLXLSFilter - Filtro para cria√ß√£o de planilhas formato Excel XLS a partir de um relat√≥rio.
+   Este filtro gera arquivos bin√°rios compat√≠veis com o formato XLS leg√≠veis pelo Microsoft Excel ou ExcelViewer.
+   S√£o exportados todos os textos presentes no relat√≥rio com suas fontes e posi√ß√µes mantidas.
+   Para cada p√°gina do relat√≥rio ser√° criada uma aba na planilha.
+   Nota: Gr√°ficos, linhas e cores ainda n√£o s√£o suportados.
    @links TRLHTMLFilter, TRLRichFilter, TRLPDFFilter.
    @ancestor TRLCustomSaveFilter.
    @pub }
@@ -1054,13 +1054,13 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    {@prop WorkBook - ReferÍncia o objeto planilha interno do filtro.
+    {@prop WorkBook - Refer√™ncia o objeto planilha interno do filtro.
      @links TRLXLSWorkbook. :/}
     property WorkBook: TRLXLSWorkbook read FWorkbook;
   published
-    {@prop Options - OpÁıes diversas de geraÁ„o do arquivo planilha. @links TRLXLSFilterOptions. :/}
+    {@prop Options - Op√ß√µes diversas de gera√ß√£o do arquivo planilha. @links TRLXLSFilterOptions. :/}
     property Options: TRLXLSFilterOptions read FOptions write FOptions default [];
-    {@prop PageSetup - ConfiguraÁ„o da impress„o das p·ginas. @links TRLXLSPageSetup:/}
+    {@prop PageSetup - Configura√ß√£o da impress√£o das p√°ginas. @links TRLXLSPageSetup:/}
     property PageSetup: TRLXLSPageSetup read GetPageSetup write SetPageSetup;
     {@prop FileName = ancestor /}
     property FileName;
@@ -1500,8 +1500,8 @@ begin
   {$EndIf}
   ValueText := Trim(ValueText);
   if SameText(ValueText, '0.00') or SameText(ValueText, '0') then
-    //N„o faz nada
-  else if not ((ValueText+' ')[1] in ['1'..'9', '-', '(']) then //desconsiderando n˙meros iniciados por 0 para n„o traduzir erroneamente cÛdigos ex: 0002
+    //N√£o faz nada
+  else if not ((ValueText+' ')[1] in ['1'..'9', '-', '(']) then //desconsiderando n√∫meros iniciados por 0 para n√£o traduzir erroneamente c√≥digos ex: 0002
     Exit;
   EntreParenteses := AnsiStartsText('(', ValueText) and AnsiEndsText(')', ValueText);
   if EntreParenteses then
@@ -1517,7 +1517,7 @@ begin
     try
       Val(ValueText, Value, ErrorCode);
     except
-      //Fred/Rolim/Marcio Martins - Tenta converter o n˙mero, se n„o puder, retorna false e retorna o ValueText original.
+      //Fred/Rolim/Marcio Martins - Tenta converter o n√∫mero, se n√£o puder, retorna false e retorna o ValueText original.
       Result:=False;
       ValueText:=BackupValueText;
       Exit;
@@ -1833,7 +1833,7 @@ begin
   Result := TRLXLSRow.Create;
   Result.FIndex := ARowIndex;
   FRows.Add(Result);
-  // expande as dimensıes da sheet
+  // expande as dimens√µes da sheet
   if (FCellArea.Y0 = -1) or (ARowIndex < FCellArea.Y0) then
     FCellArea.Y0 := ARowIndex;
   if (FCellArea.Y1 = -1) or (ARowIndex > FCellArea.Y1) then
@@ -1867,7 +1867,7 @@ begin
   Result := TRLXLSCol.Create;
   Result.FIndex := AColIndex;
   FCols.Add(Result);
-  // expande as dimensıes da sheet
+  // expande as dimens√µes da sheet
   if (FCellArea.X0 = -1) or (AColIndex < FCellArea.X0) then
     FCellArea.X0 := AColIndex;
   if (FCellArea.X1 = -1) or (AColIndex > FCellArea.X1) then
@@ -1878,7 +1878,7 @@ procedure TRLXLSWorksheet.AddRange(Range: TRLXLSRange);
 begin
   Range.FWorksheet := Self;
   FRanges.Add(Range);
-  // expande as dimensıes da sheet
+  // expande as dimens√µes da sheet
   if (Self.FCellArea.X0 = -1) or (Range.CellArea.X0 < Self.FCellArea.X0) then
     Self.FCellArea.X0 := Range.CellArea.X0;
   if (Self.FCellArea.Y0 = -1) or (Range.CellArea.Y0 < Self.FCellArea.Y0) then
@@ -2017,7 +2017,7 @@ begin
           Range.Value := RLRange.Value;
       end;
       { TODO :
-C:\Projetos\RLib_zBACKUPS\RLib_Excel_N„o Usar\Debug\ExemplosXLS\FROTA INSPE«√O PARA REVIS√O DA FROTA.rpf
+C:\Projetos\RLib_zBACKUPS\RLib_Excel_N√£o Usar\Debug\ExemplosXLS\FROTA INSPE√á√ÉO PARA REVIS√ÉO DA FROTA.rpf
 Ajustar a fonte no XLS. }
       Range.Font.Name := RLRange.Font.Name;
       Range.Font.Size := RLRange.Font.Size;
@@ -2550,14 +2550,14 @@ var
 begin
   FormatList := TStringList.Create;
   try
-    FormatList.AddObject('#,##0".";\-#,##0"."', Pointer($0005));
-    FormatList.AddObject('#,##0".";[Red]\-#,##0"."', Pointer($0006));
-    FormatList.AddObject('#,##0.00".";\-#,##0.00"."', Pointer($0007));
-    FormatList.AddObject('#,##0.00".";[Red]\-#,##0.00"."', Pointer($0008));
-    FormatList.AddObject('_-* #,##0"."_-;\-* #,##0"."_-;_-* "-""."_-;_-@_-', Pointer($002A));
-    FormatList.AddObject('_-* #,##0__._-;\-* #,##0__._-;_-* "-"__._-;_-@_-', Pointer($0029));
-    FormatList.AddObject('_-* #,##0.00"."_-;\-* #,##0.00"."_-;_-* "-"??"."_-;_-@_-', Pointer($002C));
-    FormatList.AddObject('_-* #,##0.00__._-;\-* #,##0.00__._-;_-* "-"??__._-;_-@_-', Pointer($002B));
+    FormatList.AddObject('#,##0"√∞.";\-#,##0"√∞."', Pointer($0005));
+    FormatList.AddObject('#,##0"√∞.";[Red]\-#,##0"√∞."', Pointer($0006));
+    FormatList.AddObject('#,##0.00"√∞.";\-#,##0.00"√∞."', Pointer($0007));
+    FormatList.AddObject('#,##0.00"√∞.";[Red]\-#,##0.00"√∞."', Pointer($0008));
+    FormatList.AddObject('_-* #,##0"√∞."_-;\-* #,##0"√∞."_-;_-* "-""√∞."_-;_-@_-', Pointer($002A));
+    FormatList.AddObject('_-* #,##0_√∞_._-;\-* #,##0_√∞_._-;_-* "-"_√∞_._-;_-@_-', Pointer($0029));
+    FormatList.AddObject('_-* #,##0.00"√∞."_-;\-* #,##0.00"√∞."_-;_-* "-"??"√∞."_-;_-@_-', Pointer($002C));
+    FormatList.AddObject('_-* #,##0.00_√∞_._-;\-* #,##0.00_√∞_._-;_-* "-"??_√∞_._-;_-@_-', Pointer($002B));
     FormatList.AddObject('dd\/mm\/yyyy', Pointer($002D));
 ///      FormatList.AddObject('hh\:nn\:ss', Pointer($012E));
     BuildFormatList(FormatList);
@@ -3067,7 +3067,7 @@ var
   function NewFATItemIndex: Cardinal;
   begin
     Inc(FATItemCount);
-    // esta fat j· encheu, grava e passa pra outra
+    // esta fat j√° encheu, grava e passa pra outra
     if FATItemCount > FATEntriesPerSector then
     begin
       AStream.Write(FATSectorRec, SizeOf(FATSectorRec));
@@ -3081,9 +3081,9 @@ begin
   HeaderOffset := AStream.Position;
   WriteSectorRec;
 
-  // o setor de numero 0 È gravado na verdade no offset 512 do arquivo
-  // o offset de um setor È calculado pela formula: (SectorNo+1) shl _uSectorShift
-  // onde _uSectorShift normalmente È 9, que indica setores de 512 bytes
+  // o setor de numero 0 √© gravado na verdade no offset 512 do arquivo
+  // o offset de um setor √© calculado pela formula: (SectorNo+1) shl _uSectorShift
+  // onde _uSectorShift normalmente √© 9, que indica setores de 512 bytes
   NextSectorNo := 0;
   DataTotalSize := 0;
   
@@ -3111,10 +3111,10 @@ begin
     SysUtils.DeleteFile(TempFileName);
   end;
   
-  // quantidade de setores de 512 bytes necess·rios para os dados
+  // quantidade de setores de 512 bytes necess√°rios para os dados
   DataSectorCount := DataLastSector - DataFirstSector + 1;
   
-  // calcula quantas fats de 128 entradas s„o necess·rias para referenciar todos os setores
+  // calcula quantas fats de 128 entradas s√£o necess√°rias para referenciar todos os setores
   FATSectorCount := (DataSectorCount + 128 - 1) div 128;
 
   // reserva (FATSectorCount) setores para a fat a partir do offset atual
@@ -3127,7 +3127,7 @@ begin
     WriteSectorRec;
   end;
 
-  // reserva um ˙nico setor para diretorio
+  // reserva um √∫nico setor para diretorio
   DirectoryOffset := AStream.Position;
   DirectoryFirstSector := NextSectorNo;
   DirectoryLastSector := NextSectorNo;
@@ -3172,7 +3172,7 @@ begin
     FATSectorRec[NewFATItemIndex] := DataSectorNo;
   end;
   FATSectorRec[NewFATItemIndex] := ENDOFCHAIN;
-  // reserva os setores das prÛprias fats
+  // reserva os setores das pr√≥prias fats
   FATSectorNo := FATFirstSector;
   while FATSectorNo <= FATLastSector do
   begin
@@ -3188,7 +3188,7 @@ begin
     FATSectorRec[NewFATItemIndex] := DirectorySectorNo;
   end;
   FATSectorRec[NewFATItemIndex] := ENDOFCHAIN;
-  // completa as 128 entradas da ˙ltima fat com ponteiros nulos e grava
+  // completa as 128 entradas da √∫ltima fat com ponteiros nulos e grava
   if FATItemCount < FATEntriesPerSector then
   begin
     while FATItemCount < FATEntriesPerSector do
@@ -3210,7 +3210,7 @@ begin
   DirectorySectorRec._sidLeftSib := NOSTREAM;
   DirectorySectorRec._sidRightSib := NOSTREAM;
   DirectorySectorRec._sidChild := 1;
-  DirectorySectorRec._clsId := ' '#8#2#0#0#0#0#0'¿'#0#0#0#0#0#0'F';
+  DirectorySectorRec._clsId := ' '#8#2#0#0#0#0#0'√Ä'#0#0#0#0#0#0'F';
   DirectorySectorRec._sectStart := ENDOFCHAIN;
   AStream.Write(DirectorySectorRec, SizeOf(DirectorySectorRec));
   // STREAM
@@ -3893,7 +3893,7 @@ begin
       if APage.Objects[I] is TRLTextObject then
       begin
         TextObject := APage.Objects[I] as TRLTextObject;
-{Fred/Tiago        // sÛ me interessam os textos nao vazios, pois nao vou criar celulas vazias
+{Fred/Tiago        // s√≥ me interessam os textos nao vazios, pois nao vou criar celulas vazias
         if TextObject.DisplayText = '' then
           ;///Continue;}
 
@@ -4006,7 +4006,7 @@ begin
         VertAlignment := vaTop;
       end;
  
-      // procura faixa de cÈlulas
+      // procura faixa de c√©lulas
       ObjectArea := BestBounds(ObjectRect, TextObject.Alignment, TextObject.Layout,
         IsAutoSize(TextObject), Cols, Rows);
       NewestRange := TRLXLSRange.Create;
