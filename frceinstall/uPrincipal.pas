@@ -463,12 +463,14 @@ begin
   begin
     tPlatform   := bpWin32;
     sDirLibrary := sDirRoot + sTipo + 'Lib' + sVersao;
+    oFRCE.Installations[iVersion].DCC := oFRCE.Installations[iVersion].DCC32;
   end
   else
   if edtPlatform.ItemIndex = 1 then // Win64
   begin
     tPlatform   := bpWin64;
     sDirLibrary := sDirRoot + sTipo + 'Lib' + sVersao + 'x64';
+    oFRCE.Installations[iVersion].DCC := (oFRCE.Installations[iVersion] as TJclBDSInstallation).DCC64;
   end;
 end;
 
@@ -609,6 +611,7 @@ begin
       edtDelphiVersion.Items.Add('Delphi 13 Florence');
 
     // -- Evento disparado antes de iniciar a execução do processo.
+
     oFRCE.Installations[iFor].DCC32.OnBeforeExecute := BeforeExecute;
 
     // -- Evento para saidas de mensagens.
