@@ -49,8 +49,6 @@
 {@unit RLPDFFilter - Implementação do filtro para criação de arquivos PDF. }
 unit RLPDFFilter;
 
-{$Q-}
-{$R-}
 interface
 
 uses
@@ -80,6 +78,8 @@ const
   PDF_MAXROWS = 4;
   PDF_MAXCOLORSTACK = 64;
   PDF_EOL = #13#10;
+
+  PDF_TEMP_DIR = 'C:\Temp\';
 
 const
   PS1FONTNAMES: array[1..PDF_MAXPSTYPE1] of AnsiString = (
@@ -186,6 +186,7 @@ type
   TRLPDFFilter = class(TRLCustomSaveFilter)
   private
     // variables
+    FileNameTemp: String;
     FOutputStream: TStream;
     FPrintCut: TPoint;
     FPrintSize: TPoint;
@@ -723,8 +724,22 @@ begin
   FPrintSize.Y := Pages.OrientedHeight;
   FPagePrintSize := FPrintSize;
 
+  if not DirectoryExists( PDF_TEMP_DIR ) then
+  begin
+    ForceDirectories( PDF_TEMP_DIR );
+  end;
+
+  FileNameTemp := PDF_TEMP_DIR + ExtractFileName( FileName );
+
+  if FileExists( FileNameTemp ) then
+  begin
+    DeleteFile( FileNameTemp );
+  end;
+
   if not FUsingExternalOutputBuffer then
-    FOutputStream := TFileStream.Create(FileName, fmCreate);
+  begin
+    FOutputStream := TFileStream.Create(FileNameTemp, fmCreate);
+  end;
 
   BeginDoc;
 end;
@@ -735,6 +750,13 @@ begin
 
   if not FUsingExternalOutputBuffer then  
     FOutputStream.Free;
+
+  if not CopyFile(PChar(FileNameTemp), PChar(FileName), False) then
+  begin
+    raise Exception.CreateFmt('Erro ao copiar o arquivo para %s. Código de erro: %d', [FileName, GetLastError]);
+  end;
+
+  DeleteFile(FileNameTemp);
 end;
 
 function TRLPDFFilter.GetTextSize(const AText: string; AFont: TRLMetaFont): TPoint;
