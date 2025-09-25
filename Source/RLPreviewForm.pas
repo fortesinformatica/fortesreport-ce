@@ -141,6 +141,7 @@ type
     FEditingPageNo: Boolean;
     FFindDialog: TfrmRLFindDialog;
     FSpeedButtonCustomAction: TSpeedButton;
+    SpeedButtonSeArch: TSpeedButton;
     //
     procedure WMActivate(var Message: TWMActivate); message WM_ACTIVATE;
     procedure Init;
