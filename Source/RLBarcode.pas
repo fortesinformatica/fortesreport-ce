@@ -1,39 +1,39 @@
-{******************************************************************************}
+Ôªø{******************************************************************************}
 { Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -42,12 +42,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLBarcode - ImplementaÁ„o dos componentes para cÛdigo de barras. }
+{@unit RLBarcode - Implementa√ß√£o dos componentes para c√≥digo de barras. }
 unit RLBarcode;
 
 interface
@@ -70,135 +70,135 @@ uses
   RLReport, RLConsts;
 
 type
-  {@type TRLBarcodeType - Padr„o de codificaÁ„o para o cÛdigo de barras.
+  {@type TRLBarcodeType - Padr√£o de codifica√ß√£o para o c√≥digo de barras.
   Pode ser um dos seguintes valores:
-  bcCode2OF5Interleaved - CÛdigo 25, tambÈm conhecido como "CÛdigo 2 de 5". …
-    utilizado sobretudo no manuseio de invent·rios, em fichas de compensaÁ„o
-    banc·ria, na identificaÁ„o de envelopes de acabamento de fotografias, em
-    passagens aÈreas, no manuseio de bagagens e cargas e em dezenas de outras
-    aplicaÁıes. … um formato de cÛdigo distinto, de comprimento vari·vel e
+  bcCode2OF5Interleaved - C√≥digo 25, tamb√©m conhecido como "C√≥digo 2 de 5". √â
+    utilizado sobretudo no manuseio de invent√°rios, em fichas de compensa√ß√£o
+    banc√°ria, na identifica√ß√£o de envelopes de acabamento de fotografias, em
+    passagens a√©reas, no manuseio de bagagens e cargas e em dezenas de outras
+    aplica√ß√µes. √â um formato de c√≥digo distinto, de comprimento vari√°vel e
     consiste em duas barras espessas em um total de cinco barras para cada
-    caractere codificado. O cÛdigo deve ter comprimento par;
-  bcCode2OF5Industry - ITF ou "EntrelaÁado de 2 de 5". Esse cÛdigo de barras È um
-    dos formatos mais populares utilizados pelas ind˙strias de transporte e de
-    armazenamento e foi desenvolvido com base no CÛdigo 25. Ambos os formatos
-    utilizam as mesmas tÈcnicas de codificaÁ„o, exceto que, no formato ITF,
-    tanto as barras quanto os espaÁos transportam dados. Os dÌgitos de posiÁ„o
-    Ìmpar s„o codificados nas barras e os dÌgitos de posiÁ„o par s„o codificados
-    nos espaÁos. O ITF È um formato de alta densidade, de comprimento vari·vel,
-    exclusivamente numÈrico;
+    caractere codificado. O c√≥digo deve ter comprimento par;
+  bcCode2OF5Industry - ITF ou "Entrela√ßado de 2 de 5". Esse c√≥digo de barras √© um
+    dos formatos mais populares utilizados pelas ind√∫strias de transporte e de
+    armazenamento e foi desenvolvido com base no C√≥digo 25. Ambos os formatos
+    utilizam as mesmas t√©cnicas de codifica√ß√£o, exceto que, no formato ITF,
+    tanto as barras quanto os espa√ßos transportam dados. Os d√≠gitos de posi√ß√£o
+    √≠mpar s√£o codificados nas barras e os d√≠gitos de posi√ß√£o par s√£o codificados
+    nos espa√ßos. O ITF √© um formato de alta densidade, de comprimento vari√°vel,
+    exclusivamente num√©rico;
   bcCode2OF5Matrix - ver bcCode2OF5Industry;
-  bcCode39 - CÛdigo 39, tambÈm conhecido como "CÛdigo 3 de 9", È o formato mais
-    popular utilizado em invent·rio e controle n„o varejista. O formato consiste
-    em trÍs elementos espessos (barras ou espaÁos) em um totalizado em manufatura,
-    aplicaÁıes militares e de sa˙de. O formato distinto de comprimento vari·vel
+  bcCode39 - C√≥digo 39, tamb√©m conhecido como "C√≥digo 3 de 9", √© o formato mais
+    popular utilizado em invent√°rio e controle n√£o varejista. O formato consiste
+    em tr√™s elementos espessos (barras ou espa√ßos) em um totalizado em manufatura,
+    aplica√ß√µes militares e de sa√∫de. O formato distinto de comprimento vari√°vel
     aceita os 44 caracteres seguintes: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ.*$/+%. O
-    asterisco (*) È utilizado como caractere de inÌcio/parada, n„o podendo ser
-    utilizado no corpo da mensagem. VocÍ tambÈm pode adicionar um dÌgito de verificaÁ„o
-    que ajude a garantir a seguranÁa do cÛdigo de barras. O CÛdigo 39 suporta os
-    formatos de dÌgito de verificaÁ„o MÛdulo 43 e xxx-nnnnnnn-c utilizados pela
-    alf‚ndega dos E.U.A. para remessas de importaÁ„o/exportaÁ„o e em dezenas de
-    outras aplicaÁıes;
-  bcCode39Extended - O cÛdigo extendido 39 foi desenvolvido para proporcionar
-    meios de codificar os caracteres adicionais que n„o s„o normalmente parte
-    do conjunto de caracteres do cÛdigo 39 (caracteres min˙sculos e sÌmbolos). Os
-    caracteres extendidos s„o codificados por um par de caracteres normais do
-    cÛdigo 39; por exemplo, uma min˙scula "a" (que n„o faz parte do conjunto de
-    caracteres do cÛdigo 39) pode ser codificado pelo par "+A". Um cÛdigo de controle
+    asterisco (*) √© utilizado como caractere de in√≠cio/parada, n√£o podendo ser
+    utilizado no corpo da mensagem. Voc√™ tamb√©m pode adicionar um d√≠gito de verifica√ß√£o
+    que ajude a garantir a seguran√ßa do c√≥digo de barras. O C√≥digo 39 suporta os
+    formatos de d√≠gito de verifica√ß√£o M√≥dulo 43 e xxx-nnnnnnn-c utilizados pela
+    alf√¢ndega dos E.U.A. para remessas de importa√ß√£o/exporta√ß√£o e em dezenas de
+    outras aplica√ß√µes;
+  bcCode39Extended - O c√≥digo extendido 39 foi desenvolvido para proporcionar
+    meios de codificar os caracteres adicionais que n√£o s√£o normalmente parte
+    do conjunto de caracteres do c√≥digo 39 (caracteres min√∫sculos e s√≠mbolos). Os
+    caracteres extendidos s√£o codificados por um par de caracteres normais do
+    c√≥digo 39; por exemplo, uma min√∫scula "a" (que n√£o faz parte do conjunto de
+    caracteres do c√≥digo 39) pode ser codificado pelo par "+A". Um c√≥digo de controle
     de retorno do carro pode ser codificado pelo par "#";
-  bcCode128A - CÛdigo 128 È um formato alfanumÈrico de alta densidade e comprimento
-    vari·vel utilizado na ind˙stria de transporte e etiquetagem. Esse cÛdigo possui
-    106 padrıes de barras e espaÁos. Cada padr„o pode ter trÍs significados, dependendo
-    de qual dos trÍs conjuntos de caracteres È empregado. Um conjunto de caracteres
-    codifica todos os caracteres de controle ASCII e mai˙sculos, um outro codifica
-    todos os caracteres mai˙sculos e min˙sculos e o terceiro conjunto codifica os
-    pares de dÌgitos numÈricos de 00 a 99. O conjunto de caracteres utilizado È
-    determinado pelo caractere inicial. O CÛdigo 128 tambÈm permite codificar quatro
-    cÛdigos de funÁ„o:
+  bcCode128A - C√≥digo 128 √© um formato alfanum√©rico de alta densidade e comprimento
+    vari√°vel utilizado na ind√∫stria de transporte e etiquetagem. Esse c√≥digo possui
+    106 padr√µes de barras e espa√ßos. Cada padr√£o pode ter tr√™s significados, dependendo
+    de qual dos tr√™s conjuntos de caracteres √© empregado. Um conjunto de caracteres
+    codifica todos os caracteres de controle ASCII e mai√∫sculos, um outro codifica
+    todos os caracteres mai√∫sculos e min√∫sculos e o terceiro conjunto codifica os
+    pares de d√≠gitos num√©ricos de 00 a 99. O conjunto de caracteres utilizado √©
+    determinado pelo caractere inicial. O C√≥digo 128 tamb√©m permite codificar quatro
+    c√≥digos de fun√ß√£o:
     FNC1 - reservado para uso em EAN (European Article Numbering);
-    FNC2 - utilizado para instruir o leitor de cÛdigo de barras na concatenaÁ„o da
-      mensagem em um sÌmbolo de cÛdigo de barras com a mensagem no sÌmbolo de texto;
-    FNC3 - utilizado para instruir o leitor de cÛdigo de barras a efetuar uma redefiniÁ„o;
-    FNC4 - utilizado em aplicaÁıes de sistemas fechados.
-    Uma variaÁ„o do formato CÛdigo 128 È o EAN 128. Esse sÌmbolo utiliza o mesmo
-    conjunto de cÛdigos que o CÛdigo 128, mas os cÛdigos de funÁ„o de FNC2 a FNC4
-    n„o podem ser utilizados e FNC1 È utilizado como parte do cÛdigo inicial;
+    FNC2 - utilizado para instruir o leitor de c√≥digo de barras na concatena√ß√£o da
+      mensagem em um s√≠mbolo de c√≥digo de barras com a mensagem no s√≠mbolo de texto;
+    FNC3 - utilizado para instruir o leitor de c√≥digo de barras a efetuar uma redefini√ß√£o;
+    FNC4 - utilizado em aplica√ß√µes de sistemas fechados.
+    Uma varia√ß√£o do formato C√≥digo 128 √© o EAN 128. Esse s√≠mbolo utiliza o mesmo
+    conjunto de c√≥digos que o C√≥digo 128, mas os c√≥digos de fun√ß√£o de FNC2 a FNC4
+    n√£o podem ser utilizados e FNC1 √© utilizado como parte do c√≥digo inicial;
   bcCode128B - ver bcCode128A;
   bcCode128C - ver bcCode128A;
-  bcCode93 - O cÛdigo 93 È uma vers„o mais compacta do cÛdigo 39. Codifica
-    exatamente os mesmos caracteres que o cÛdigo 39, mas utiliza 9 elementos de
-    barra por caractere ao invÈs de 15. O dÌgito verificador o dÌgito verificador
-    mÛdulo 43 È opcional, como no cÛdigo 39;
+  bcCode93 - O c√≥digo 93 √© uma vers√£o mais compacta do c√≥digo 39. Codifica
+    exatamente os mesmos caracteres que o c√≥digo 39, mas utiliza 9 elementos de
+    barra por caractere ao inv√©s de 15. O d√≠gito verificador o d√≠gito verificador
+    m√≥dulo 43 √© opcional, como no c√≥digo 39;
   bcCode93Extended - ver bcCode93;
-  bcMSI - O cÛdigo de barras MSI Plessey È utilizado principalmente em bibliotecas e
-    em etiquetagem de prateleiras de lojas. O MSI Plessey È um formato de comprimento
-    vari·vel que permite codificar os 10 caracteres seguintes: 0123456789. Cada caractere
-    consiste em oito elementos: quatro barras e quatro espaÁos;
-  bcPostNet - Os cÛdigos de barras POSTNET (Postal Numeric Encoding Technique) s„o
-    utilizados para codificar cÛdigos de endereÁamento postal no correio dos
-    E.U.A. O processo de manuseio de correspondÍncia do ServiÁo postal foi
-    desenvolvido para ser totalmente automatizado e os cÛdigos de barras POSTNET
+  bcMSI - O c√≥digo de barras MSI Plessey √© utilizado principalmente em bibliotecas e
+    em etiquetagem de prateleiras de lojas. O MSI Plessey √© um formato de comprimento
+    vari√°vel que permite codificar os 10 caracteres seguintes: 0123456789. Cada caractere
+    consiste em oito elementos: quatro barras e quatro espa√ßos;
+  bcPostNet - Os c√≥digos de barras POSTNET (Postal Numeric Encoding Technique) s√£o
+    utilizados para codificar c√≥digos de endere√ßamento postal no correio dos
+    E.U.A. O processo de manuseio de correspond√™ncia do Servi√ßo postal foi
+    desenvolvido para ser totalmente automatizado e os c√≥digos de barras POSTNET
     alimentam o equipamento automatizado. O POSTNET difere dos outros formatos em
-    que a altura das barras varia, e n„o a largura das barras. Cada n˙mero È
-    representado por um padr„o de cinco barras. Uma ˙nica barra alta È utilizada
-    para as barras de inÌcio e parada. O POSTNET pode ser utilizado como cÛdigo
-    de barras de ponto de entrega de cinco dÌgitos, de nove dÌgitos e de 11
-    dÌgitos. Esses cÛdigos s„o freq¸entemente utilizados em conjunto com as barras
-    FIM que se encontram no canto superior direito de uma correspondÍncia, como
-    cartıes-resposta comerciais;
-  bcCodaBar - O CodBar È utilizado freq¸entemente em bibliotecas, bancos de
-    sangue e na atividade de encomendas aÈreas. O formato de comprimento vari·vel
-    permite a codificaÁ„o dos 20 caracteres seguintes: 0123456789-$:/.+ABCD. Os
-    caracteres de inÌcio e de parada de uma mensagem CodBar precisam ser A, B, C ou D;
-  bcEAN8 - O sistema EAN (European Article Numbering) È uma vers„o europÈia do
-    cÛdigo UPC (Universal Product Code). Atualmente, esse cÛdigo È denominado
-    International Article Number, mas a abreviaÁ„o EAN permanece. Os cÛdigos
-    EAN encontram-se em itens de varejo na Europa. Esse n˙mero È apropriado para uso
-    em publicaÁıes e periÛdicos, aparecendo como um cÛdigo de barras adicional
-    no lado direito do cÛdigo de barras principal. … a vers„o simplificada do padr„o
-    EAN-13 para aplicaÁ„o em produtos onde a etiqueta no padr„o EAN-13 fique muito
-    grande. O EAN-8 codifica atÈ oito dÌgitos, consistindo em dois dÌgitos do cÛdigo
-    do paÌs, cinco dÌgitos de dados e um dÌgito de verificaÁ„o. Um n˙mero opcional de
-    dois ou cinco dÌgitos pode ser acrescentado ao cÛdigo de barras principal;
-  bcEAN13 - O EAN-13 È a vers„o europÈia do UPC (A) (Universal Product Code). … o
-    padr„o adotado pela ABAC (EAN Brasil) para codificaÁ„o de produtos em
-    supermercados. TambÈm È designado para uso em publicaÁıes e periÛdicos, aparecendo
-    como um cÛdigo de barras adicional no lado direito do cÛdigo de barras principal. Permite
-    a codificaÁ„o de atÈ 13 dÌgitos numÈricos. A diferenÁa entre o EAN-13 e o
-    UPC (A) È que o EAN-13 codifica um 13∞ dÌgito no padr„o de paridade dos seis dÌgitos
-    da esquerda de um sÌmbolo UPC (A). Esse 13∞ dÌgito, combinado com o 12∞, representa um
-    cÛdigo de paÌs. Um n˙mero opcional de dois ou cinco dÌgitos pode ser acrescentado ao
-    cÛdigo de barras principal;
-  bcUPC_A - Os sÌmbolos UPC (Universal Product Code) s„o usados em aplicaÁıes de
-    varejo nos Estados Unidos e no Canad·. O UPC(A) È um formato de 12
-    dÌgitos. O sÌmbolo consiste em 11 dÌgitos de dados e um dÌgito de
-    verificaÁ„o. Normalmente, o primeiro dÌgito representa o tipo de produto
-    sendo identificado. Os cinco dÌgitos seguintes s„o um cÛdigo de fabricante
-    e os cinco dÌgitos seguintes s„o utilizados para identificar um produto especÌfico;
-  bcUPC_E0 - Como o UPC(A), o UPC(E) È utilizado em aplicaÁıes de varejo, no entanto,
-    como o cÛdigo de barras È menor, ele È mais adequado para itens menores. Esse formato
-    tambÈm È chamado de "zero suprimido" porque o UPC(E) compacta um cÛdigo de 12 dÌgitos
-    UPC(A) em um cÛdigo de seis dÌgitos. O UPC(E) suprime o dÌgito de sistema numÈrico,
-    os dÌgitos finais no cÛdigo de fabricante e os zeros iniciais na parte de identificaÁ„o
-    de produto do cÛdigo. Um n˙mero opcional de dois ou cinco dÌgitos pode ser adicionado
-    ao do cÛdigo de barras UPC(A) e UPC(E) principal. Esse n˙mero È designado para uso em
-    publicaÁıes e periÛdicos, aparecendo como um cÛdigo de barras adicional no lado direito
-    do cÛdigo de barras principal;
+    que a altura das barras varia, e n√£o a largura das barras. Cada n√∫mero √©
+    representado por um padr√£o de cinco barras. Uma √∫nica barra alta √© utilizada
+    para as barras de in√≠cio e parada. O POSTNET pode ser utilizado como c√≥digo
+    de barras de ponto de entrega de cinco d√≠gitos, de nove d√≠gitos e de 11
+    d√≠gitos. Esses c√≥digos s√£o freq√ºentemente utilizados em conjunto com as barras
+    FIM que se encontram no canto superior direito de uma correspond√™ncia, como
+    cart√µes-resposta comerciais;
+  bcCodaBar - O CodBar √© utilizado freq√ºentemente em bibliotecas, bancos de
+    sangue e na atividade de encomendas a√©reas. O formato de comprimento vari√°vel
+    permite a codifica√ß√£o dos 20 caracteres seguintes: 0123456789-$:/.+ABCD. Os
+    caracteres de in√≠cio e de parada de uma mensagem CodBar precisam ser A, B, C ou D;
+  bcEAN8 - O sistema EAN (European Article Numbering) √© uma vers√£o europ√©ia do
+    c√≥digo UPC (Universal Product Code). Atualmente, esse c√≥digo √© denominado
+    International Article Number, mas a abrevia√ß√£o EAN permanece. Os c√≥digos
+    EAN encontram-se em itens de varejo na Europa. Esse n√∫mero √© apropriado para uso
+    em publica√ß√µes e peri√≥dicos, aparecendo como um c√≥digo de barras adicional
+    no lado direito do c√≥digo de barras principal. √â a vers√£o simplificada do padr√£o
+    EAN-13 para aplica√ß√£o em produtos onde a etiqueta no padr√£o EAN-13 fique muito
+    grande. O EAN-8 codifica at√© oito d√≠gitos, consistindo em dois d√≠gitos do c√≥digo
+    do pa√≠s, cinco d√≠gitos de dados e um d√≠gito de verifica√ß√£o. Um n√∫mero opcional de
+    dois ou cinco d√≠gitos pode ser acrescentado ao c√≥digo de barras principal;
+  bcEAN13 - O EAN-13 √© a vers√£o europ√©ia do UPC (A) (Universal Product Code). √â o
+    padr√£o adotado pela ABAC (EAN Brasil) para codifica√ß√£o de produtos em
+    supermercados. Tamb√©m √© designado para uso em publica√ß√µes e peri√≥dicos, aparecendo
+    como um c√≥digo de barras adicional no lado direito do c√≥digo de barras principal. Permite
+    a codifica√ß√£o de at√© 13 d√≠gitos num√©ricos. A diferen√ßa entre o EAN-13 e o
+    UPC (A) √© que o EAN-13 codifica um 13¬∞ d√≠gito no padr√£o de paridade dos seis d√≠gitos
+    da esquerda de um s√≠mbolo UPC (A). Esse 13¬∞ d√≠gito, combinado com o 12¬∞, representa um
+    c√≥digo de pa√≠s. Um n√∫mero opcional de dois ou cinco d√≠gitos pode ser acrescentado ao
+    c√≥digo de barras principal;
+  bcUPC_A - Os s√≠mbolos UPC (Universal Product Code) s√£o usados em aplica√ß√µes de
+    varejo nos Estados Unidos e no Canad√°. O UPC(A) √© um formato de 12
+    d√≠gitos. O s√≠mbolo consiste em 11 d√≠gitos de dados e um d√≠gito de
+    verifica√ß√£o. Normalmente, o primeiro d√≠gito representa o tipo de produto
+    sendo identificado. Os cinco d√≠gitos seguintes s√£o um c√≥digo de fabricante
+    e os cinco d√≠gitos seguintes s√£o utilizados para identificar um produto espec√≠fico;
+  bcUPC_E0 - Como o UPC(A), o UPC(E) √© utilizado em aplica√ß√µes de varejo, no entanto,
+    como o c√≥digo de barras √© menor, ele √© mais adequado para itens menores. Esse formato
+    tamb√©m √© chamado de "zero suprimido" porque o UPC(E) compacta um c√≥digo de 12 d√≠gitos
+    UPC(A) em um c√≥digo de seis d√≠gitos. O UPC(E) suprime o d√≠gito de sistema num√©rico,
+    os d√≠gitos finais no c√≥digo de fabricante e os zeros iniciais na parte de identifica√ß√£o
+    de produto do c√≥digo. Um n√∫mero opcional de dois ou cinco d√≠gitos pode ser adicionado
+    ao do c√≥digo de barras UPC(A) e UPC(E) principal. Esse n√∫mero √© designado para uso em
+    publica√ß√µes e peri√≥dicos, aparecendo como um c√≥digo de barras adicional no lado direito
+    do c√≥digo de barras principal;
   bcUPC_E1 - ver bcUPC_E0;
   bcUPC_Supp2 - ver bcUPC_Supp;
   bcUPC_Supp5 - ver bcUPC_Supp;
-  bcEAN128A - Mais abrangente que os demais cÛdigos, o UCC/EAN-128 È complementar,
-    baseado em Identificadores de AplicaÁ„o (AI), identificando o significado e o
+  bcEAN128A - Mais abrangente que os demais c√≥digos, o UCC/EAN-128 √© complementar,
+    baseado em Identificadores de Aplica√ß√£o (AI), identificando o significado e o
     formato de dados. O UCC/EAN-128 pode, inclusive, ser aplicado em unidades de
-    distribuiÁ„o, permitindo a identificaÁ„o do n˙mero de lote, sÈrie, data de
-    fabricaÁ„o, validade, textos livres e outros dados. A utilizaÁ„o do UCC/EAN-128
-    È m˙ltipla, podendo ser aplicado na logÌstica e automaÁ„o de v·rios setores
-    produtivos e comerciais, como o ramo alimentÌcio, farmacÍutico, vestu·rio e
-    de papel, entre outros. AlÈm disso, pode ser usado na distribuiÁ„o, armazenamento,
-    invent·rios e gest„o de estoque, proporcionando agilidade na captura de informaÁıes,
-    com menor margem de erros. Trata-se de um sistema que possui abrangÍncia necess·ria
-    para a obtenÁ„o de grandes ganhos na cadeia distributiva, sempre objetivando a
-    otimizar e a maximizar, por meio da informaÁ„o r·pida e precisa;
+    distribui√ß√£o, permitindo a identifica√ß√£o do n√∫mero de lote, s√©rie, data de
+    fabrica√ß√£o, validade, textos livres e outros dados. A utiliza√ß√£o do UCC/EAN-128
+    √© m√∫ltipla, podendo ser aplicado na log√≠stica e automa√ß√£o de v√°rios setores
+    produtivos e comerciais, como o ramo aliment√≠cio, farmac√™utico, vestu√°rio e
+    de papel, entre outros. Al√©m disso, pode ser usado na distribui√ß√£o, armazenamento,
+    invent√°rios e gest√£o de estoque, proporcionando agilidade na captura de informa√ß√µes,
+    com menor margem de erros. Trata-se de um sistema que possui abrang√™ncia necess√°ria
+    para a obten√ß√£o de grandes ganhos na cadeia distributiva, sempre objetivando a
+    otimizar e a maximizar, por meio da informa√ß√£o r√°pida e precisa;
   bcEAN128B - ver bcEAN128A;
   bcEAN128C - ver bcEAN128A.
   :}
@@ -220,7 +220,7 @@ type
 
   TRLBarcodeCheckSumMethod = (cmNone, cmModule10);
 
-  {@type TRLBarcodeOrientation - OrientaÁ„o do desenho das barras.
+  {@type TRLBarcodeOrientation - Orienta√ß√£o do desenho das barras.
    Pode ser um dos seguintes valores:
    boLeftToRight - Da esquerda para a direita;
    boBottomToTop - De baixo para cima;
@@ -228,17 +228,17 @@ type
   TRLBarcodeOrientation = (boLeftToRight, boBottomToTop, boTopToBottom);
   {/@type}
 
-  {@type TRLBarcodeInvalidCode - O que deve ser exibido se o cÛdigo contiver erros.
+  {@type TRLBarcodeInvalidCode - O que deve ser exibido se o c√≥digo contiver erros.
    Pode ser um dos seguintes valores:
-   icEmptyRect - Apresenta um ret‚ngulo vazio;
-   icCrossOut - Apresenta o cÛdigo de barras rasurado com uma cruz vermelha;
-   icDrawAnyway - Desenha as barras extraindo os dÌgitos inv·lidos.:}
+   icEmptyRect - Apresenta um ret√¢ngulo vazio;
+   icCrossOut - Apresenta o c√≥digo de barras rasurado com uma cruz vermelha;
+   icDrawAnyway - Desenha as barras extraindo os d√≠gitos inv√°lidos.:}
   TRLBarcodeInvalidCode = (icEmptyRect, icCrossOut, icDrawAnyway);
   {/@type}
 
   { TRLCustomBarcode }
 
-  {@class TRLCustomBarcode - Classe base da qual podem derivar componentes para cÛdigos de barras. @ancestor TRLCustomControl. }
+  {@class TRLCustomBarcode - Classe base da qual podem derivar componentes para c√≥digos de barras. @ancestor TRLCustomControl. }
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}	
@@ -302,34 +302,34 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Paint; override;
-    {@prop AutoSize - Redimensionamento autom·tico. Determina se o controle ir· se redimensionar automaticamente de acordo com o tamanho do seu conte˙do. :/}
+    {@prop AutoSize - Redimensionamento autom√°tico. Determina se o controle ir√° se redimensionar automaticamente de acordo com o tamanho do seu conte√∫do. :/}
     property AutoSize default True;
-    {@prop Caption - Texto a ser impresso como cÛdigo de barras. :/}
+    {@prop Caption - Texto a ser impresso como c√≥digo de barras. :/}
     property Caption;
     {@prop BarColor - Cor das barras. Determina a cor das barras cheias. :/}
     property BarColor: TColor read FBarColor write SetBarColor default clBlack;
-    {@prop ShowText - Determina se e como ser„o exibidas as informaÁıes junto com as barras.
+    {@prop ShowText - Determina se e como ser√£o exibidas as informa√ß√µes junto com as barras.
      Pode ser um dos seguintes valores:
-     boNone - Nenhum texto È exibido;
-     boCode - Apenas o valor do cÛdigo de barras;
-     boType - Apenas o tipo de cÛdigo de barras utilizado;
-     boBoth - Ambos o valor e o tipo de cÛdigo. :/}
+     boNone - Nenhum texto √© exibido;
+     boCode - Apenas o valor do c√≥digo de barras;
+     boType - Apenas o tipo de c√≥digo de barras utilizado;
+     boBoth - Ambos o valor e o tipo de c√≥digo. :/}
     property ShowText: TRLBarcodeTextOption read FShowText write SetShowText default boNone;
-    {@prop Module - Fator de ampliaÁ„o da largura das barras. :/}
+    {@prop Module - Fator de amplia√ß√£o da largura das barras. :/}
     property Module: Integer read FModule write SetModule default 1;
-    {@prop Ratio - Raz„o entre as larguras das barras. :/}
+    {@prop Ratio - Raz√£o entre as larguras das barras. :/}
     property Ratio: Double read FRatio write SetRatio stored IsRatio;
-    {@prop BarcodeType - Padr„o de cÛdigo de barras. @links TRLBarcodeType. :/}
+    {@prop BarcodeType - Padr√£o de c√≥digo de barras. @links TRLBarcodeType. :/}
     property BarcodeType: TRLBarcodeType read FBarcodeType write SetBarcodeType default bcCode2of5Interleaved;
-    {@prop Orientation - OrientaÁ„o da leitura das barras. :/}
+    {@prop Orientation - Orienta√ß√£o da leitura das barras. :/}
     property Orientation: TRLBarcodeOrientation read FOrientation write SetOrientation default boLeftToRight;
-    {@prop Margins - Margens externas do cÛdigo de barras. @links TRLMargins. :/}
+    {@prop Margins - Margens externas do c√≥digo de barras. @links TRLMargins. :/}
     property Margins: TRLMargins read FMargins write SetMargins;
-    {@prop InvalidCode - Determina o que deve ser exibido se o cÛdigo tiver algum erro. @links TRLBarcodeInvalidCode. :/}
+    {@prop InvalidCode - Determina o que deve ser exibido se o c√≥digo tiver algum erro. @links TRLBarcodeInvalidCode. :/}
     property InvalidCode: TRLBarcodeInvalidCode read FInvalidCode write SetInvalidCode default icEmptyRect;
     property CheckSum: Boolean read FCheckSum write SetCheckSum default False;
     property CheckSumMethod: TRLBarcodeCheckSumMethod read FCheckSumMethod write SetCheckSumMethod default cmModule10;
-    {@prop BeforePrint - Antes da impress„o. Ocorre antes da impress„o do controle para alterar o texto ou anular a sua impress„o. :/}
+    {@prop BeforePrint - Antes da impress√£o. Ocorre antes da impress√£o do controle para alterar o texto ou anular a sua impress√£o. :/}
     property BeforePrint: TRLBeforeTextEvent read FBeforeText write FBeforeText;
   end;
   {/@class}
@@ -337,7 +337,7 @@ type
 
   { TRLCustomDBBarcode }
 
-  {@class TRLCustomDBBarcode - Classe base da qual podem derivar componentes para cÛdigos de barras dataware. @ancestor TRLCustomBarcode.}
+  {@class TRLCustomDBBarcode - Classe base da qual podem derivar componentes para c√≥digos de barras dataware. @ancestor TRLCustomBarcode.}
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}	
@@ -360,13 +360,13 @@ type
     constructor Create(AOwner: TComponent); override;
     {@prop DataField - Nome do campo associado. :/}
     property DataField: TRLDataFieldProperty read FDataField write SetDataField;
-    {@prop DataFormula - Express„o matem·tica envolvendo campos, valores e literais. :/}
+    {@prop DataFormula - Express√£o matem√°tica envolvendo campos, valores e literais. :/}
     property DataFormula: string read FDataFormula write SetDataFormula;
-    {@prop DataSource - ReferÍncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
+    {@prop DataSource - Refer√™ncia ao DataSource que controle utiliza para se conectar ao DataSet. :/}
     property DataSource: TDataSource read FDataSource write SetDataSource;
-    {@prop Field - ReferÍncia para o objeto TField determinado pelas props DataField e DataSource. :/}
+    {@prop Field - Refer√™ncia para o objeto TField determinado pelas props DataField e DataSource. :/}
     property Field: TField read GetField;
-    {@prop DataSet - ReferÍncia para o objeto TDataSet determinado pela prop DataSource. :/}
+    {@prop DataSet - Refer√™ncia para o objeto TDataSet determinado pela prop DataSource. :/}
     property DataSet: TDataSet read GetDataSet;
   end;
   {/@class}
@@ -374,7 +374,7 @@ type
 
   { TRLBarcode }
 
-  {@class TRLBarcode - Componente para cÛdigos de barras. @pub. @ancestor TRLCustomBarcode. }
+  {@class TRLBarcode - Componente para c√≥digos de barras. @pub. @ancestor TRLCustomBarcode. }
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}	
@@ -450,7 +450,7 @@ type
   {/@class}
 
 
-  {@class TRLDBBarcode - Componente para cÛdigos de barras dataware. @pub. @ancestor TRLCustomDBBarcode. }
+  {@class TRLDBBarcode - Componente para c√≥digos de barras dataware. @pub. @ancestor TRLCustomDBBarcode. }
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}	
@@ -717,7 +717,7 @@ begin
   Result := NewBitmap(AWidth, AHeight);
   try
     BarData := GetBarData(AText);
-    // desenha o cÛdigo de barras
+    // desenha o c√≥digo de barras
     PaintRect := Rect(0, 0, AWidth, AHeight);
     MarginalRect := PaintRect;
     with Result.Canvas do
@@ -734,7 +734,7 @@ begin
         // reserva uma linha no topo para o tipo
         if FShowText in [boType, boBoth] then
           Inc(MarginalRect.Top, TextHeight(' '));
-        // reserva meia linha em baixo para o cÛdigo (postnet È um linha)
+        // reserva meia linha em baixo para o c√≥digo (postnet √© um linha)
         if FShowText in [boCode, boBoth] then
           if FBarcodeType = bcPostNet then
             Dec(MarginalRect.Bottom, TextHeight(' '))
@@ -1220,7 +1220,7 @@ const
      ('2515'), // 8
      ('1507')); // 9
 
-// Zuordung der Paraitaetsfolgen f¸r EAN13
+// Zuordung der Paraitaetsfolgen f√ºr EAN13
 const
   Table_ParityEAN13: array[0..9, 1..6] of Char = 
     (('A', 'A', 'A', 'A', 'A', 'A'), // 0
@@ -1511,7 +1511,7 @@ const
     (A: ')'; B: ')'; C: '09'; Data: '221213'), 
     (A: '*'; B: '*'; C: '10'; Data: '221312'), 
     (A: '+'; B: '+'; C: '11'; Data: '231212'), 
-    (A: '¥'; B: '¥'; C: '12'; Data: '112232'), 
+    (A: '¬¥'; B: '¬¥'; C: '12'; Data: '112232'), 
     (A: '-'; B: '-'; C: '13'; Data: '122132'), 
     (A: '.'; B: '.'; C: '14'; Data: '122231'), 
     (A: '/'; B: '/'; C: '15'; Data: '113222'), 

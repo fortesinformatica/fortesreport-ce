@@ -1,38 +1,38 @@
-{ Projeto: FortesReport Community Edition                                      }
-{ É um poderoso gerador de relatórios disponível como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatórios são constituídos por bandas que  }
-{ têm funções específicas no fluxo de impressão. Você definir agrupamentos     }
-{ subníveis e totais simplesmente pela relação hierárquica entre as bandas.    }
-{ Além disso possui uma rica paleta de Componentes                             }
+ï»¿{ Projeto: FortesReport Community Edition                                      }
+{ Ã‰ um poderoso gerador de relatÃ³rios disponÃ­vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relatÃ³rios sÃ£o constituÃ­dos por bandas que  }
+{ tÃªm funÃ§Ãµes especÃ­ficas no fluxo de impressÃ£o. VocÃª definir agrupamentos     }
+{ subnÃ­veis e totais simplesmente pela relaÃ§Ã£o hierÃ¡rquica entre as bandas.    }
+{ AlÃ©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
+{ Direitos Autorais Reservados(c) Copyright Â© 1999-2015 Fortes InformÃ¡tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              Márcio Martins                                  }
-{                              Régys Borges da Silveira                        }
+{                              MÃ¡rcio Martins                                  }
+{                              RÃ©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  VocÃª pode obter a Ãºltima versÃ£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informaÃ§Ãµes vocÃª pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
-{ sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a versão 2.1 da Licença, ou (a seu critério) }
-{ qualquer versão posterior.                                                   }
+{  Esta biblioteca Ã© software livre; vocÃª pode redistribuÃ­-la e/ou modificÃ¡-la }
+{ sob os termos da LicenÃ§a PÃºblica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a versÃ£o 2.1 da LicenÃ§a, ou (a seu critÃ©rio) }
+{ qualquer versÃ£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca é distribuída na expectativa de que seja útil, porém, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE OU      }
-{ ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICENÇA.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca Ã© distribuÃ­da na expectativa de que seja Ãºtil, porÃ©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia implÃ­cita de COMERCIABILIDADE OU      }
+{ ADEQUAÃ‡ÃƒO A UMA FINALIDADE ESPECÃFICA. Consulte a LicenÃ§a PÃºblica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICENÃ‡A.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  Você deve ter recebido uma cópia da Licença Pública Geral Menor do GNU junto}
-{ com esta biblioteca; se não, escreva para a Free Software Foundation, Inc.,  }
-{ no endereço 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ Você também pode obter uma copia da licença em:                              }
+{  VocÃª deve ter recebido uma cÃ³pia da LicenÃ§a PÃºblica Geral Menor do GNU junto}
+{ com esta biblioteca; se nÃ£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endereÃ§o 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ VocÃª tambÃ©m pode obter uma copia da licenÃ§a em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - Descrição...
+|* - DescriÃ§Ã£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLMetaFile - Implementação das classes e rotinas para manipulação de coleções gráficas. }
+{@unit RLMetaFile - ImplementaÃ§Ã£o das classes e rotinas para manipulaÃ§Ã£o de coleÃ§Ãµes grÃ¡ficas. }
 unit RLMetaFile;
 
 interface
@@ -308,43 +308,43 @@ type
     property Items[I: Integer]: Int64 read GetItems write SetItems; default;
   end;
 
-  {@class TRLGraphicStorage - Coleção de páginas ou superfícies de desenho. }
+  {@class TRLGraphicStorage - ColeÃ§Ã£o de pÃ¡ginas ou superfÃ­cies de desenho. }
   TRLGraphicStorage = class(TComponent)
   private
-    // cache para páginas em memória
+    // cache para pÃ¡ginas em memÃ³ria
     FPageCache: TObjectList;
-    // endereço das páginas em disco (stream)
+    // endereÃ§o das pÃ¡ginas em disco (stream)
     FPageAllocation: TRLPageAllocation;
-    // arquivo temporário para armazenamento das páginas
+    // arquivo temporÃ¡rio para armazenamento das pÃ¡ginas
     FTempStream: TStream;
     FTempFileName: String;
-    // versão do arquivo carregado que indica também o formato da gravação
+    // versÃ£o do arquivo carregado que indica tambÃ©m o formato da gravaÃ§Ã£o
     FFileVersion: Integer;
-    // metasímbolos
+    // metasÃ­mbolos
     FMacros: TStrings;
-    // lista de referências à este objeto. quando não houver mais referências, o objeto é destruído
+    // lista de referÃªncias Ã  este objeto. quando nÃ£o houver mais referÃªncias, o objeto Ã© destruÃ­do
     FReferenceList: TList;
-    // guarda referência à página no cache em memória
+    // guarda referÃªncia Ã  pÃ¡gina no cache em memÃ³ria
     procedure AddToCache(ASurface: TRLGraphicSurface);
-    // retorna referência à página se ela estiver no cache em memória
+    // retorna referÃªncia Ã  pÃ¡gina se ela estiver no cache em memÃ³ria
     function GetFromCache(APageIndex: Integer): TRLGraphicSurface;
-    // atualiza pendências do cache em disco
+    // atualiza pendÃªncias do cache em disco
     procedure FlushCache;
-    // instancia página e carrega do disco
+    // instancia pÃ¡gina e carrega do disco
     function LoadPageFromDisk(APageIndex: Integer): TRLGraphicSurface;
-    // retorna referência à página quer esteja em disco ou cachê
+    // retorna referÃªncia Ã  pÃ¡gina quer esteja em disco ou cachÃª
     function GetPages(APageIndex: Integer): TRLGraphicSurface;
-    // retorna a quantidade de páginas estocadas
+    // retorna a quantidade de pÃ¡ginas estocadas
     function GetPageCount: Integer;
-    // força a criação do arquivo temporário
+    // forÃ§a a criaÃ§Ã£o do arquivo temporÃ¡rio
     procedure TempStreamNeeded;
-    // armazena a página no espaço temporário em disco
+    // armazena a pÃ¡gina no espaÃ§o temporÃ¡rio em disco
     procedure StorePage(ASurface: TRLGraphicSurface);
-    // recupera a página do espaço temporário em disco
+    // recupera a pÃ¡gina do espaÃ§o temporÃ¡rio em disco
     procedure RetrievePage(ASurface: TRLGraphicSurface);
-    // policia o número da versão para gravação
+    // policia o nÃºmero da versÃ£o para gravaÃ§Ã£o
     procedure SetFileVersion(AVersion: Integer);
-    // getters e setters de símbolos especiais
+    // getters e setters de sÃ­mbolos especiais
     function GetFirstPageNumber: Integer;
     function GetHeight: Integer;
     function GetLastPageNumber: Integer;
@@ -371,106 +371,106 @@ type
     constructor Create(AOwner: TComponent = nil); reintroduce;
     destructor Destroy; override;
 
-    {@method Link - Cria uma referência para o componente.
-     A instância é mantida até que não haja mais referências a ela. :/}
+    {@method Link - Cria uma referÃªncia para o componente.
+     A instÃ¢ncia Ã© mantida atÃ© que nÃ£o haja mais referÃªncias a ela. :/}
     procedure Link(AComponent: TComponent);
 
-    {@method Unlink - Retira referência para o componente.
-     Quando não houver mais referências, a instância é automaticamente liberada. :/}
+    {@method Unlink - Retira referÃªncia para o componente.
+     Quando nÃ£o houver mais referÃªncias, a instÃ¢ncia Ã© automaticamente liberada. :/}
     procedure Unlink(AComponent: TComponent = nil);
 
-    {@method Add - Adiciona página à coleção. :/}
+    {@method Add - Adiciona pÃ¡gina Ã  coleÃ§Ã£o. :/}
     procedure Add(ASurface: TRLGraphicSurface);
 
-    {@method Update - Atualiza dados da página em disco. :/}
+    {@method Update - Atualiza dados da pÃ¡gina em disco. :/}
     procedure Update(ASurface: TRLGraphicSurface);
 
-    {@method Clear - Libera todas as páginas da memória e do cachê. :/}
+    {@method Clear - Libera todas as pÃ¡ginas da memÃ³ria e do cachÃª. :/}
     procedure Clear;
 
-    {@method SaveToFile - Salva páginas para uma arquivo em disco. :/}
+    {@method SaveToFile - Salva pÃ¡ginas para uma arquivo em disco. :/}
     procedure SaveToFile(const AFileName: String);
     
-    {@method LoadFromFile - Carrega páginas de um arquivo em disco. :/}
+    {@method LoadFromFile - Carrega pÃ¡ginas de um arquivo em disco. :/}
     procedure LoadFromFile(const AFileName: String);
 
-    {@method SaveToStream - Salva páginas em uma stream. :/}
+    {@method SaveToStream - Salva pÃ¡ginas em uma stream. :/}
     procedure SaveToStream(AStream: TStream);
 
-    {@method LoadFromStream - Carrega páginas de uma stream. :/}
+    {@method LoadFromStream - Carrega pÃ¡ginas de uma stream. :/}
     procedure LoadFromStream(AStream: TStream);
 
-    {@prop Pages - Retorna página pelo índice. :/}
+    {@prop Pages - Retorna pÃ¡gina pelo Ã­ndice. :/}
     property Pages[APageIndex: Integer]: TRLGraphicSurface read GetPages; default;
 
-    {@prop PageCount - Retorna a quantidade páginas armazenadas. :/}
+    {@prop PageCount - Retorna a quantidade pÃ¡ginas armazenadas. :/}
     property PageCount: Integer read GetPageCount;
 
-    {@prop FileVersion - Indica versão do relatório carregado ou determina a versão do arquivo a ser gravado.
-     Esta prop pode ser utilizada para converter arquivos de uma versão para outra, bastando para isso, carregar
-     o arquivo, alterar a sua versão e salvá-lo novamente. :/}
+    {@prop FileVersion - Indica versÃ£o do relatÃ³rio carregado ou determina a versÃ£o do arquivo a ser gravado.
+     Esta prop pode ser utilizada para converter arquivos de uma versÃ£o para outra, bastando para isso, carregar
+     o arquivo, alterar a sua versÃ£o e salvÃ¡-lo novamente. :/}
     property FileVersion: Integer read FFileVersion write SetFileVersion;
 
-    {@prop Macros - Lista de símbolos para tradução em tempo de visualização ou impressão. :/}
+    {@prop Macros - Lista de sÃ­mbolos para traduÃ§Ã£o em tempo de visualizaÃ§Ã£o ou impressÃ£o. :/}
     property Macros: TStrings read FMacros;
 
-    {@prop FirstPageNumber - Numeração para a primeira página.
-     Este número é normalmente 1, mas o relatório pode ser parte de uma encadernação maior e por isso ter uma
-     numeração intercalada. :/}
+    {@prop FirstPageNumber - NumeraÃ§Ã£o para a primeira pÃ¡gina.
+     Este nÃºmero Ã© normalmente 1, mas o relatÃ³rio pode ser parte de uma encadernaÃ§Ã£o maior e por isso ter uma
+     numeraÃ§Ã£o intercalada. :/}
     property FirstPageNumber: Integer read GetFirstPageNumber write SetFirstPageNumber;
 
-    {@prop LastPageNumber - Número da última página. :/}
+    {@prop LastPageNumber - NÃºmero da Ãºltima pÃ¡gina. :/}
     property LastPageNumber: Integer read GetLastPageNumber write SetLastPageNumber;
 
-    {@prop Title - Título do relatório. :/}
+    {@prop Title - TÃ­tulo do relatÃ³rio. :/}
     property Title: String read GetTitle write SetTitle;
 
-    {@prop JobTitle - Título do relatório para o spool de impressão. :/}
+    {@prop JobTitle - TÃ­tulo do relatÃ³rio para o spool de impressÃ£o. :/}
     property JobTitle: String read GetJobTitle write SetJobTitle;
 
-    {@prop Orientation - Orientação do papel. :/}
+    {@prop Orientation - OrientaÃ§Ã£o do papel. :/}
     property Orientation: TRLMetaOrientation read GetOrientation write SetOrientation;
 
-    {@prop PaperWidth - Largura do papel em milímetros. :/}
+    {@prop PaperWidth - Largura do papel em milÃ­metros. :/}
     property PaperWidth: Double read GetPaperWidth write SetPaperWidth;
 
-    {@prop PaperHeight - Altura do papel em milímetros. :/}
+    {@prop PaperHeight - Altura do papel em milÃ­metros. :/}
     property PaperHeight: Double read GetPaperHeight write SetPaperHeight;
 
-    {@prop OrientedPaperWidth - Largura do papel orientado para leitura em milímetros. :/}
+    {@prop OrientedPaperWidth - Largura do papel orientado para leitura em milÃ­metros. :/}
     property OrientedPaperWidth: Double read GetOrientedPaperWidth;
 
-    {@prop OrientedPaperHeight - Altura do papel orientado para leitura em milímetros. :/}
+    {@prop OrientedPaperHeight - Altura do papel orientado para leitura em milÃ­metros. :/}
     property OrientedPaperHeight: Double read GetOrientedPaperHeight;
 
-    {@prop OrientedWidth - Largura da superfície orientada para leitura em pixels. :/}
+    {@prop OrientedWidth - Largura da superfÃ­cie orientada para leitura em pixels. :/}
     property OrientedWidth: Integer read GetOrientedWidth;
 
-    {@prop OrientedHeight - Altura da superfície orientada para leitura em pixels. :/}
+    {@prop OrientedHeight - Altura da superfÃ­cie orientada para leitura em pixels. :/}
     property OrientedHeight: Integer read GetOrientedHeight;
 
-    {@prop Width - Largura da superfície em pixels. :/}
+    {@prop Width - Largura da superfÃ­cie em pixels. :/}
     property Width: Integer read GetWidth;
 
-    {@prop Height - Altura da superfície em pixels. :/}
+    {@prop Height - Altura da superfÃ­cie em pixels. :/}
     property Height: Integer read GetHeight;
   end;
   {/@class}
 
-  {@class TRLGraphicSurface - Superfície de desenho.
-   Assemelha-se ao TCanvas e, embora não haja qualquer relação hierárquica, contempla a maioria de seus métodos de
+  {@class TRLGraphicSurface - SuperfÃ­cie de desenho.
+   Assemelha-se ao TCanvas e, embora nÃ£o haja qualquer relaÃ§Ã£o hierÃ¡rquica, contempla a maioria de seus mÃ©todos de
    desenho. }
   TRLGraphicSurface = class
   private
-    // referência ao estoque. o estoque será avisado sempre que uma página for detruída para que seja excluída do cachê 
+    // referÃªncia ao estoque. o estoque serÃ¡ avisado sempre que uma pÃ¡gina for detruÃ­da para que seja excluÃ­da do cachÃª 
     FStorage: TRLGraphicStorage;
-    // índice da página
+    // Ã­ndice da pÃ¡gina
     FPageIndex: Integer;
-    // lista de objetos gráficos
+    // lista de objetos grÃ¡ficos
     FObjects: TObjectList;
-    // posição do cursor (caneta)
+    // posiÃ§Ã£o do cursor (caneta)
     FPenPos: TPoint;
-    // largura, altura e orientação
+    // largura, altura e orientaÃ§Ã£o
     FWidth: Integer;
     FHeight: Integer;
     // prop de desenho atuais
@@ -482,7 +482,7 @@ type
     // indica se algo foi desenhado
     FOpened: Boolean;
     FModified: Boolean;
-    // coleção de fontes
+    // coleÃ§Ã£o de fontes
     FFonts: TStrings;
     // controle de clipping
     FClipStack: TList;
@@ -491,26 +491,26 @@ type
     FTag: Integer;
     // identificador de grupo e gerador
     FGeneratorId: PtrInt;
-    // metasímbolos
+    // metasÃ­mbolos
     FMacros: TStrings;
-    // retorna a quantidade de objetos incluídos
+    // retorna a quantidade de objetos incluÃ­dos
     function GetObjectCount: Integer;
-    // referência ao objeto pelo índice
+    // referÃªncia ao objeto pelo Ã­ndice
     function GetObjects(AIndex: Integer): TRLGraphicObject;
     // muda as props de desenho
     procedure SetBrush(const Value: TBrush);
     procedure SetFont(const Value: TFont);
     procedure SetPen(const Value: TPen);
-    // desenho a nível de pontos
+    // desenho a nÃ­vel de pontos
     function GetPixels(X, Y: Integer): TColor;
     procedure SetPixels(X, Y: Integer; const Value: TColor);
     //
     procedure SetStorage(AStorage: TRLGraphicStorage);
-    // empilha o retângulo de corte 
+    // empilha o retÃ¢ngulo de corte 
     procedure PushClipRect(const ARect: TRect);
-    // desempilha o retângulo de corte
+    // desempilha o retÃ¢ngulo de corte
     procedure PopClipRect(var ARect: TRect);
-    // persistência de símbolos
+    // persistÃªncia de sÃ­mbolos
     function GetOrientation: TRLMetaOrientation;
     procedure SetOrientation(const Value: TRLMetaOrientation);
     function GetPaperHeight: Double;
@@ -525,19 +525,19 @@ type
     constructor Create;
     destructor Destroy; override;
 
-    {@method SaveToFile - Salva os dados da página em um arquivo. :/}
+    {@method SaveToFile - Salva os dados da pÃ¡gina em um arquivo. :/}
     procedure SaveToFile(const AFileName: String);
 
-    {@method LoadFromFile - Restaura os dados da página de um arquivo. :/}
+    {@method LoadFromFile - Restaura os dados da pÃ¡gina de um arquivo. :/}
     procedure LoadFromFile(const AFileName: String);
 
-    {@method SaveToStream - Salva os dados da página em uma stream. :/}
+    {@method SaveToStream - Salva os dados da pÃ¡gina em uma stream. :/}
     procedure SaveToStream(AStream: TStream);
 
-    {@method LoadFromStream - Carrega os dados da página de uma stream. :/}
+    {@method LoadFromStream - Carrega os dados da pÃ¡gina de uma stream. :/}
     procedure LoadFromStream(AStream: TStream);
 
-    {@method FindFreeRow - Retorna a altura neutra mais próxima da coordenada informada, aonde nenhum texto é cortado. :/}
+    {@method FindFreeRow - Retorna a altura neutra mais prÃ³xima da coordenada informada, aonde nenhum texto Ã© cortado. :/}
     function FindFreeRow(ANearRow: Integer; var ARow: Integer): Boolean;
 
     {@method TextWidth - Retorna a largura do texto de acordo com a fonte atual. :/}
@@ -549,10 +549,10 @@ type
     {@method MoveTo - Posiciona o cursor de desenho e escrita. :/}
     procedure MoveTo(AX, AY: Integer);
 
-    {@method LineTo - Traça uma linha reta ligando a posição atual do cursor às coordenadas passadas. :/}
+    {@method LineTo - TraÃ§a uma linha reta ligando a posiÃ§Ã£o atual do cursor Ã s coordenadas passadas. :/}
     procedure LineTo(AX, AY: Integer);
 
-    {@method Rectangle - Desenha um retângulo. :/}
+    {@method Rectangle - Desenha um retÃ¢ngulo. :/}
     procedure Rectangle(ALeft, ATop, ARight, ABottom: Integer); overload;
     procedure Rectangle(const ARect: TRect); overload;
     {/@method}
@@ -562,157 +562,157 @@ type
     procedure Ellipse(const ARect: TRect); overload;
     {/@method}
 
-    {@method Polygon - Desenha um polígono. :/}
+    {@method Polygon - Desenha um polÃ­gono. :/}
     procedure Polygon(const APoints: array of TPoint);
 
     {@method Arc - Draw the arc. :/}
     procedure Arc(const ARectEllipse, ARectArc: TRect); overload;
     procedure Arc(const AX1, AY1, AX2, AY2, SX, SY, EX, EY: Integer); overload;
 
-    {@method Polyline - Desenha uma série de linhas ligando os pontos passados. :/}
+    {@method Polyline - Desenha uma sÃ©rie de linhas ligando os pontos passados. :/}
     procedure Polyline(const APoints: array of TPoint);
 
-    {@method Write - Escreve um texto na posição atual do cursor. :/}
+    {@method Write - Escreve um texto na posiÃ§Ã£o atual do cursor. :/}
     procedure Write(const AText: String);
 
-    {@method WriteLn - Escreve um texto na posição atual do cursor e salta para a linha seguinte. :/}
+    {@method WriteLn - Escreve um texto na posiÃ§Ã£o atual do cursor e salta para a linha seguinte. :/}
     procedure Writeln(const AText: String);
 
-    {@method TextOut - Escreve um texto na posição informada. :/}
+    {@method TextOut - Escreve um texto na posiÃ§Ã£o informada. :/}
     procedure TextOut(ALeft, ATop: Integer; const AText: AnsiString);
     procedure TextOutEx(ALeft, ATop: Integer; const AText: AnsiString; ATextFlags: TRLMetaTextFlags);
     {/@method}
 
-    {@method TextRect - Escreve um texto delimitado pelo retângulo informado. :/}
+    {@method TextRect - Escreve um texto delimitado pelo retÃ¢ngulo informado. :/}
     procedure TextRect(const ARect: TRect; ALeft, ATop: Integer; const AText: AnsiString);
     procedure TextRectEx(const ARect: TRect; ALeft, ATop: Integer; const AText: AnsiString; AAlignment: TRLMetaTextAlignment; ALayout: TRLMetaTextLayout; ATextFlags: TRLMetaTextFlags);
     {/@method}
 
-    {@method FillRect - Preenche um retângulo com os padrões definidos na prop Brush. :/}
+    {@method FillRect - Preenche um retÃ¢ngulo com os padrÃµes definidos na prop Brush. :/}
     procedure FillRect(const ARect: TRect);
     
-    {@method Draw - Desenha a imagem nas coordenadas indicadas mantendo seu tamanho e proporção. :}
+    {@method Draw - Desenha a imagem nas coordenadas indicadas mantendo seu tamanho e proporÃ§Ã£o. :}
     procedure Draw(AX, AY: Integer; AGraphic: TGraphic; AParity: Boolean = False); overload;
     procedure Draw(AX, AY: Integer; ASurface: TRLGraphicSurface); overload;
     {/@method}
 
-    {@method StretchDraw - Desenha uma imagem alterando características de modo a preencher todo o retângulo. :}
+    {@method StretchDraw - Desenha uma imagem alterando caracterÃ­sticas de modo a preencher todo o retÃ¢ngulo. :}
     procedure StretchDraw(const ARect: TRect; AGraphic: TGraphic; AParity: Boolean = False); overload;
     procedure StretchDraw(const ARect: TRect; ASurface: TRLGraphicSurface); overload;
     {/@method}
 
-    {@method ScaleDraw - Desenha uma imagem contida num retângulo respeitando suas proporções. :}
+    {@method ScaleDraw - Desenha uma imagem contida num retÃ¢ngulo respeitando suas proporÃ§Ãµes. :}
     procedure ScaleDraw(const ARect: TRect; AGraphic: TGraphic; ACenter: Boolean); overload;
     procedure ScaleDraw(const ARect: TRect; ASurface: TRLGraphicSurface; ACenter: Boolean); overload;
     {/@method}
 
-    {@method ClipDraw - Desenha um corte de uma imagem de modo a interceptar o retângulo. :}
+    {@method ClipDraw - Desenha um corte de uma imagem de modo a interceptar o retÃ¢ngulo. :}
     procedure ClipDraw(const ARect: TRect; AGraphic: TGraphic; ACenter: Boolean); overload;
     procedure ClipDraw(const ARect: TRect; ASurface: TRLGraphicSurface; ACenter: Boolean); overload;
     {/@method}
 
-    {@method CopyRect - Copia os objetos que interceptam o retângulo para uma outra superfície. :}
+    {@method CopyRect - Copia os objetos que interceptam o retÃ¢ngulo para uma outra superfÃ­cie. :}
     procedure CopyRect(const ADest: TRect; ACanvas: TCanvas; const ASource: TRect); overload;
     procedure CopyRect(const ADest: TRect; ASurface: TRLGraphicSurface; const ASource: TRect); overload;
     {/@method}
 
-    {@method SetClipRect - Determina um novo retângulo de corte para desenho e retorna a definição antiga. :/}
+    {@method SetClipRect - Determina um novo retÃ¢ngulo de corte para desenho e retorna a definiÃ§Ã£o antiga. :/}
     procedure SetClipRect(const ARect: TRect);
 
-    {@method ResetClipRect - Anula o retângulo de corte para desenho. :/}
+    {@method ResetClipRect - Anula o retÃ¢ngulo de corte para desenho. :/}
     procedure ResetClipRect;
 
-    {@method Open - Inicializa a superfície. :/}
+    {@method Open - Inicializa a superfÃ­cie. :/}
     procedure Open;
 
-    {@method Close - Finaliza a superfície e apaga tudo o que foi feito. :/}
+    {@method Close - Finaliza a superfÃ­cie e apaga tudo o que foi feito. :/}
     procedure Close;
     
-    {@method Clear - Libera todos os objetos e fontes da página e reposiciona a caneta. :/}
+    {@method Clear - Libera todos os objetos e fontes da pÃ¡gina e reposiciona a caneta. :/}
     procedure Clear;
 
-    {@method PaintTo - Desenha a superfície em um Canvas com fator de escala definido pelas relações entre o retângulo
-     passado e as dimensões da superfície. :/}
+    {@method PaintTo - Desenha a superfÃ­cie em um Canvas com fator de escala definido pelas relaÃ§Ãµes entre o retÃ¢ngulo
+     passado e as dimensÃµes da superfÃ­cie. :/}
     procedure PaintTo(ACanvas: TCanvas; ARect: TRect);
 
-    {@method PageIndex - Retorna o índice da página na lista. :/}
+    {@method PageIndex - Retorna o Ã­ndice da pÃ¡gina na lista. :/}
     property PageIndex: Integer read FPageIndex;
 
-    {@prop Opened - Indica se a superfície já foi aberta. :/}
+    {@prop Opened - Indica se a superfÃ­cie jÃ¡ foi aberta. :/}
     property Opened: Boolean read FOpened;
 
-    {@prop Modified - Indica se a superfície foi modificada. :/}
+    {@prop Modified - Indica se a superfÃ­cie foi modificada. :/}
     property Modified: Boolean read FModified write FModified;
 
-    {@prop Objects - Vetor de objetos da superfície. :/}
+    {@prop Objects - Vetor de objetos da superfÃ­cie. :/}
     property Objects[AIndex: Integer]: TRLGraphicObject read GetObjects;
 
-    {@prop ObjectCount - Quantidade de objetos na superfície. :/}
+    {@prop ObjectCount - Quantidade de objetos na superfÃ­cie. :/}
     property ObjectCount: Integer read GetObjectCount;
 
-    {@prop Brush - Padrão utilizado para preenchimentos. :/}
+    {@prop Brush - PadrÃ£o utilizado para preenchimentos. :/}
     property Brush: TBrush read FBrush write SetBrush;
 
-    {@prop Pen - Padrão utilizado para linhas. :/}
+    {@prop Pen - PadrÃ£o utilizado para linhas. :/}
     property Pen: TPen read FPen write SetPen;
 
-    {@prop Font - Fonte padrão para escrita. :/}
+    {@prop Font - Fonte padrÃ£o para escrita. :/}
     property Font: TFont read FFont write SetFont;
 
     {@prop Pixels - Matriz de pontos. :/}
     property Pixels[X, Y: Integer]: TColor read GetPixels write SetPixels;
 
-    {@prop Width - Largura da superfície em pixels. :/}
+    {@prop Width - Largura da superfÃ­cie em pixels. :/}
     property Width: Integer read FWidth write FWidth;
 
-    {@prop Height - Altura da superfície em pixels. :/}
+    {@prop Height - Altura da superfÃ­cie em pixels. :/}
     property Height: Integer read FHeight write FHeight;
 
-    {@prop Orientation - Orientação da superfície. :/}
+    {@prop Orientation - OrientaÃ§Ã£o da superfÃ­cie. :/}
     property Orientation: TRLMetaOrientation read GetOrientation write SetOrientation;
 
-    {@prop PaperWidth - Largura do papel em milímetros. :/}
+    {@prop PaperWidth - Largura do papel em milÃ­metros. :/}
     property PaperWidth: Double read GetPaperWidth write SetPaperWidth;
 
-    {@prop PaperHeight - Altura do papel em milímetros. :/}
+    {@prop PaperHeight - Altura do papel em milÃ­metros. :/}
     property PaperHeight: Double read GetPaperHeight write SetPaperHeight;
 
-    {@prop OrientedPaperWidth - Largura do papel orientado para leitura em milímetros. :/}
+    {@prop OrientedPaperWidth - Largura do papel orientado para leitura em milÃ­metros. :/}
     property OrientedPaperWidth: Double read GetOrientedPaperWidth;
 
-    {@prop OrientedPaperHeight - Altura do papel orientado para leitura em milímetros. :/}
+    {@prop OrientedPaperHeight - Altura do papel orientado para leitura em milÃ­metros. :/}
     property OrientedPaperHeight: Double read GetOrientedPaperHeight;
 
-    {@prop OrientedWidth - Largura da superfície orientada para leitura em pixels. :/}
+    {@prop OrientedWidth - Largura da superfÃ­cie orientada para leitura em pixels. :/}
     property OrientedWidth: Integer read GetOrientedWidth;
 
-    {@prop OrientedHeight - Altura da superfície orientada para leitura em pixels. :/}
+    {@prop OrientedHeight - Altura da superfÃ­cie orientada para leitura em pixels. :/}
     property OrientedHeight: Integer read GetOrientedHeight;
 
-    {@prop PenPos - Posição atual do cursor. :/}
+    {@prop PenPos - PosiÃ§Ã£o atual do cursor. :/}
     property PenPos: TPoint read FPenPos write FPenPos;
 
-    {@prop Margins - Margens de texto para uso com os métodos: Write e WriteLn. :/}
+    {@prop Margins - Margens de texto para uso com os mÃ©todos: Write e WriteLn. :/}
     property Margins: TRect read FMargins write FMargins;
 
-    {@prop ClipRect - Retângulo de corte atual. :/}
+    {@prop ClipRect - RetÃ¢ngulo de corte atual. :/}
     property ClipRect: TRect read FClipRect;
 
-    {@prop Tag - Inteiro associado à superfície.
-     Não tem significado para o sistema e pode ser livremente utilizado pelo usuário.
-     Nota: Esta prop não é armazenada em disco. :/}
+    {@prop Tag - Inteiro associado Ã  superfÃ­cie.
+     NÃ£o tem significado para o sistema e pode ser livremente utilizado pelo usuÃ¡rio.
+     Nota: Esta prop nÃ£o Ã© armazenada em disco. :/}
     property Tag: Integer read FTag write FTag;
 
     {@prop Fonts - Lista de fontes utilizadas. :/}
     property Fonts: TStrings read FFonts;
 
-    {@prop GeneratorId - Identifica o objeto gerador para os próximos elementos gráficos. :/}
+    {@prop GeneratorId - Identifica o objeto gerador para os prÃ³ximos elementos grÃ¡ficos. :/}
     property GeneratorId: PtrInt read FGeneratorId write FGeneratorId;
 
-    {@prop Storage - Referência para o estoque ao qual pertence à superfície gráfica. :/}
+    {@prop Storage - ReferÃªncia para o estoque ao qual pertence Ã  superfÃ­cie grÃ¡fica. :/}
     property Storage: TRLGraphicStorage read FStorage;
 
-    {@prop Macros - Lista de símbolos para tradução em tempo de visualização ou impressão. :/}
+    {@prop Macros - Lista de sÃ­mbolos para traduÃ§Ã£o em tempo de visualizaÃ§Ã£o ou impressÃ£o. :/}
     property Macros: TStrings read FMacros;
   end;
   {/@class}
@@ -736,13 +736,13 @@ type
     {@method LoadFromStream - Carrega os dados do objeto de uma stream. :/}
     procedure LoadFromStream(AStream: TStream); dynamic;
 
-    {@method Clone - Instancia um novo objeto com características semelhantes. :/}
+    {@method Clone - Instancia um novo objeto com caracterÃ­sticas semelhantes. :/}
     function Clone(ASurface: TRLGraphicSurface): TRLGraphicObject;
 
     {@method PaintTo - Desenha o objeto em um canvas com os fatores de escala passados. :/}
     procedure PaintTo(ACanvas: TCanvas; AXFactor, AYFactor: Double; AXDesloc, AYDesloc: Integer); dynamic; abstract;
 
-    {@method Assign - Assume as características de um outro objeto. :/}
+    {@method Assign - Assume as caracterÃ­sticas de um outro objeto. :/}
     procedure Assign(AObject: TRLGraphicObject); dynamic;
 
     {@method TransformRect - Transform ASourceRect rectangle for PaintTo procedure.
@@ -759,21 +759,21 @@ type
     {@method Inflate - Redimensiona o controle de acordo com os fatores passados. :/}
     procedure Inflate(AXFactor, AYFactor: Double); dynamic;
 
-    {@prop BoundsRect - Dimensões do objeto. :/}
+    {@prop BoundsRect - DimensÃµes do objeto. :/}
     property BoundsRect: TRLMetaRect read FBoundsRect write FBoundsRect;
 
-    {@prop GroupId - Índice de grupo. Os elementos gráficos gerados na mesma operação têm o mesmo GroupId. :/}
+    {@prop GroupId - Ãndice de grupo. Os elementos grÃ¡ficos gerados na mesma operaÃ§Ã£o tÃªm o mesmo GroupId. :/}
     property GroupId: Integer read FGroupId write FGroupId;
 
-    {@prop GeneratorId - Identifica o objeto gerador do elemento gráfico. :/}
+    {@prop GeneratorId - Identifica o objeto gerador do elemento grÃ¡fico. :/}
     property GeneratorId: Integer read FGeneratorId write FGeneratorId;
 
     {@prop Tag - Inteiro associado ao objeto.
-     Não tem significado para o sistema e pode ser livremente utilizado pelo usuário.
-     Nota: Esta prop não é armazenada em disco. :/}
+     NÃ£o tem significado para o sistema e pode ser livremente utilizado pelo usuÃ¡rio.
+     Nota: Esta prop nÃ£o Ã© armazenada em disco. :/}
     property Tag: Integer read FTag write FTag;
 
-    {@prop Surface - Referência para a superfície gráfica à qual pertence o objeto. :/}
+    {@prop Surface - ReferÃªncia para a superfÃ­cie grÃ¡fica Ã  qual pertence o objeto. :/}
     property Surface: TRLGraphicSurface read FSurface;
   end;
   {/@class}
@@ -1056,7 +1056,7 @@ function MetaPoint(X, Y: Integer): TRLMetaPoint;
 function MetaRect(ALeft, ATop, ARight, ABottom: Integer): TRLMetaRect;
 function MetaColor(ARed, AGreen, ABlue: Byte): TRLMetaColor;
 
-{@function NewGroupId - Cria um identificador para um novo grupo de elementos gráficos.
+{@function NewGroupId - Cria um identificador para um novo grupo de elementos grÃ¡ficos.
  @links TRLGraphicObject.GroupId, TRLGraphicSurface.GeneratorId, TRLGraphicObject.GeneratorId. :/}
 function NewGroupId: Integer;
 
@@ -1078,7 +1078,7 @@ begin
   Result := CurrentGroupId;
 end;
 
-// retorna dimensões de uma coleção de pontos
+// retorna dimensÃµes de uma coleÃ§Ã£o de pontos
 function GetPointsBounds(const APoints: TRLMetaPointArray): TRect;
 var
   I: Integer;
@@ -1124,21 +1124,21 @@ begin
     Result := def;
 end;
 
-// retorna um bitmap a partir de um pedaço recortado do gráfico aGraphic que caiba em aRect
+// retorna um bitmap a partir de um pedaÃ§o recortado do grÃ¡fico aGraphic que caiba em aRect
 function ClipGraphic(AGraphic: TGraphic; var ARect: TRect; const ACenter: Boolean): TBitmap;
 var
   graphicrect: TRect;
 begin
-  // cria um retângulo com o tamanho natural do gráfico na posição de corte 
+  // cria um retÃ¢ngulo com o tamanho natural do grÃ¡fico na posiÃ§Ã£o de corte 
   graphicrect := Rect(ARect.Left, ARect.Top, ARect.Left + AGraphic.Width, ARect.Top + AGraphic.Height);
-  // centraliza os dois retângulos
+  // centraliza os dois retÃ¢ngulos
   if ACenter then
     OffsetRect(graphicrect, ((ARect.Right - ARect.Left) - (graphicrect.Right - graphicrect.Left)) div 2, 
                            ((ARect.Bottom - ARect.Top) - (graphicrect.Bottom - graphicrect.Top)) div 2);
-  // faz a interseção dos dois retângulos em aRect
+  // faz a interseÃ§Ã£o dos dois retÃ¢ngulos em aRect
   if IntersectRect(ARect, ARect, graphicrect) then
   begin
-    // projeta um bitmap do tamanho de aRect e de qualidade compatível com aGraphic
+    // projeta um bitmap do tamanho de aRect e de qualidade compatÃ­vel com aGraphic
     Result := TRLBitmap.Create;
     Result.Width := ARect.Right - ARect.Left;
     Result.Height := ARect.Bottom - ARect.Top;
@@ -1146,33 +1146,33 @@ begin
     // transfere imagem para o novo bitmap
     Result.Canvas.Draw(graphicrect.Left - ARect.Left, graphicrect.Top - ARect.Top, AGraphic);
   end
-  // se não houver interseção...
+  // se nÃ£o houver interseÃ§Ã£o...
   else
     Result := nil;
 end;
 
-// retorna um bitmap a partir de um pedaço recortado do gráfico aGraphic que caiba em aRect
+// retorna um bitmap a partir de um pedaÃ§o recortado do grÃ¡fico aGraphic que caiba em aRect
 function ClipSurface(ASurface: TRLGraphicSurface; var ARect: TRect; const ACenter: Boolean): TRLGraphicSurface;
 var
   graphicrect: TRect;
 begin
-  // cria um retângulo com o tamanho natural do gráfico na posição de corte
+  // cria um retÃ¢ngulo com o tamanho natural do grÃ¡fico na posiÃ§Ã£o de corte
   graphicrect := Rect(ARect.Left, ARect.Top, ARect.Left + ASurface.Width, ARect.Top + ASurface.Height);
-  // centraliza os dois retângulos
+  // centraliza os dois retÃ¢ngulos
   if ACenter then
     OffsetRect(graphicrect, ((ARect.Right - ARect.Left) - (graphicrect.Right - graphicrect.Left)) div 2, 
                            ((ARect.Bottom - ARect.Top) - (graphicrect.Bottom - graphicrect.Top)) div 2);
-  // faz a interseção dos dois retângulos em aRect
+  // faz a interseÃ§Ã£o dos dois retÃ¢ngulos em aRect
   if IntersectRect(ARect, ARect, graphicrect) then
   begin
-    // projeta um bitmap do tamanho de aRect e de qualidade compatível com aGraphic
+    // projeta um bitmap do tamanho de aRect e de qualidade compatÃ­vel com aGraphic
     Result := TRLGraphicSurface.Create;
     Result.Width := ARect.Right - ARect.Left;
     Result.Height := ARect.Bottom - ARect.Top;
     // transfere imagem para o novo bitmap
     Result.Draw(graphicrect.Left - ARect.Left, graphicrect.Top - ARect.Top, ASurface);
   end
-  // se não houver interseção...
+  // se nÃ£o houver interseÃ§Ã£o...
   else
     Result := nil;
 end;
@@ -1835,19 +1835,19 @@ var
 begin
   TempStreamNeeded;
   FTempStream.Position := FTempStream.Size;
-  // guarda a posição de gravação e reserva espaço para o tamanho
+  // guarda a posiÃ§Ã£o de gravaÃ§Ã£o e reserva espaÃ§o para o tamanho
   beginpos := FTempStream.Position;
   size := 0;
   FTempStream.Write(size, SizeOf(size));
   datapos := FTempStream.Position;
-  // atualiza a lista de páginas atribuindo o novo offset
+  // atualiza a lista de pÃ¡ginas atribuindo o novo offset
   if ASurface.FPageIndex = -1 then
     ASurface.FPageIndex := FPageAllocation.Add(beginpos)
   else
     FPageAllocation[ASurface.FPageIndex] := beginpos;
-  // salva a página em disco
+  // salva a pÃ¡gina em disco
   ASurface.SaveToStream(FTempStream);
-  // atualiza o tamanho no início da gravação e retorna o cursor para o fim do arquivo
+  // atualiza o tamanho no inÃ­cio da gravaÃ§Ã£o e retorna o cursor para o fim do arquivo
   endpos := FTempStream.Position;
   size := Integer(endpos - datapos);
   FTempStream.Position := beginpos;
@@ -1890,7 +1890,7 @@ procedure TRLGraphicStorage.AddToCache(ASurface: TRLGraphicSurface);
 var
   S: TRLGraphicSurface;
 begin
-  // limite de dez páginas em cachê
+  // limite de dez pÃ¡ginas em cachÃª
   if FPageCache.Count >= MAXPAGECACHE then
   begin
     S := TRLGraphicSurface(FPageCache[0]);
@@ -2028,7 +2028,7 @@ procedure TRLGraphicStorage.SaveToStream(AStream: TStream);
     // grava a quantidade de macros
     count := FMacros.Count;
     AStream.Write(count, SizeOf(count));
-    // grava símbolos
+    // grava sÃ­mbolos
     for I := 0 to count - 1 do
     begin
       ln := AnsiString(FMacros[I]);
@@ -2051,15 +2051,15 @@ procedure TRLGraphicStorage.SaveToStream(AStream: TStream);
   var
     size: Integer;
   begin
-    // lê o tamanho da página armazenada
+    // lÃª o tamanho da pÃ¡gina armazenada
     FTempStream.Position := FPageAllocation[APageIndex];
     FTempStream.Read(size, SizeOf(size));
-    // guarda posição inicial de gravação da nova stream
+    // guarda posiÃ§Ã£o inicial de gravaÃ§Ã£o da nova stream
     Result := AStream.Position;
-    // versões >2 gravam o tamanho da página
+    // versÃµes >2 gravam o tamanho da pÃ¡gina
     if FFileVersion > 2 then
       AStream.Write(size, SizeOf(size));
-    // grava página no novo stream
+    // grava pÃ¡gina no novo stream
     if FFileVersion > 2 then
       AStream.CopyFrom(FTempStream, size)
     else
@@ -2072,22 +2072,22 @@ procedure TRLGraphicStorage.SaveToStream(AStream: TStream);
     offsets: array of Integer;
     offsets64: array of Int64;
   begin
-    // grava a quantidade de páginas
+    // grava a quantidade de pÃ¡ginas
     count := FPageAllocation.Count;
     AStream.Write(count, SizeOf(count));
-    // guarda posição inicial de gravação da tabela de páginas
+    // guarda posiÃ§Ã£o inicial de gravaÃ§Ã£o da tabela de pÃ¡ginas
     pagetbl := AStream.Position;
 
     if FFileVersion >= 4 then
     begin
-      // reserva espaço para os offsets
+      // reserva espaÃ§o para os offsets
       SetLength(offsets64, count);
       for I := 0 to count - 1 do
         AStream.Write(offsets64[I], SizeOf(offsets64[I]));
-      // grava páginas e memoriza os offsets
+      // grava pÃ¡ginas e memoriza os offsets
       for I := 0 to FPageAllocation.Count - 1 do
         offsets64[I] := SavePageToStream(AStream, I);
-      // guarda posição atual, grava offsets e restaura posição
+      // guarda posiÃ§Ã£o atual, grava offsets e restaura posiÃ§Ã£o
       savedpos := AStream.Position;
       AStream.Position := pagetbl;
       for I := 0 to count - 1 do
@@ -2095,20 +2095,20 @@ procedure TRLGraphicStorage.SaveToStream(AStream: TStream);
     end
     else
     begin
-      // reserva espaço para os offsets
+      // reserva espaÃ§o para os offsets
       SetLength(offsets, count);
       for I := 0 to count - 1 do
         AStream.Write(offsets[I], SizeOf(offsets[I]));
-      // grava páginas e memoriza os offsets
+      // grava pÃ¡ginas e memoriza os offsets
       page0 := AStream.Position;
       for I := 0 to FPageAllocation.Count - 1 do
         offsets[I] := SavePageToStream(AStream, I);
-      // guarda posição atual, grava offsets e restaura posição
+      // guarda posiÃ§Ã£o atual, grava offsets e restaura posiÃ§Ã£o
       savedpos := AStream.Position;
       AStream.Position := pagetbl;
       for I := 0 to count - 1 do
       begin
-        // nas versões <=2 o offsets da primeira página era 0
+        // nas versÃµes <=2 o offsets da primeira pÃ¡gina era 0
         if FFileVersion <= 2 then
           Dec(offsets[I], page0);
         AStream.Write(offsets[I], SizeOf(offsets[I]));
@@ -2158,10 +2158,10 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
     ln, name, value: AnsiString;
   begin
     AStream.Read(count, SizeOf(count));
-    // grava símbolos e seus valores
+    // grava sÃ­mbolos e seus valores
     for I := 0 to count - 1 do
     begin
-      // lê length + nome
+      // lÃª length + nome
       AStream.Read(len, SizeOf(len));
       SetLength(ln, len);
       AStream.Read(ln[1], len);
@@ -2187,7 +2187,7 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
 
     if FFileVersion >= 4 then
     begin
-      // lê offsets
+      // lÃª offsets
       for I := 0 to count - 1 do
       begin
         AStream.Read(offset64, SizeOf(offset64));
@@ -2196,7 +2196,7 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
     end
     else
     begin
-      // lê offsets
+      // lÃª offsets
       for I := 0 to count - 1 do
       begin
         AStream.Read(offset, SizeOf(offset));
@@ -2204,7 +2204,7 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
       end;
     end;
 
-    // nas versões <=2 o offsets da primeira página era 0
+    // nas versÃµes <=2 o offsets da primeira pÃ¡gina era 0
     if FFileVersion <= 2 then
     begin
       page0 := AStream.Position;
@@ -2217,19 +2217,19 @@ procedure TRLGraphicStorage.LoadFromStream(AStream: TStream);
     sizeat, beginat, endat: Int64;
     size: Integer;
   begin
-    // lê o tamanho da página armazenada
+    // lÃª o tamanho da pÃ¡gina armazenada
     AStream.Position := FPageAllocation[APageIndex];
-    // versões >2 indicam o tamanho da página
+    // versÃµes >2 indicam o tamanho da pÃ¡gina
     if FFileVersion > 2 then
       AStream.Read(size, SizeOf(size))
     else
       size := 0;
-    // atualiza tabela de páginas
+    // atualiza tabela de pÃ¡ginas
     FPageAllocation[APageIndex] := FTempStream.Position;
     // grava o tamanho
     sizeat := FTempStream.Position;
     FTempStream.Write(size, SizeOf(size));
-    // grava página no stream de trabalho
+    // grava pÃ¡gina no stream de trabalho
     if FFileVersion > 2 then
       FTempStream.CopyFrom(AStream, size)
     else
@@ -2515,7 +2515,7 @@ procedure TRLGraphicSurface.SaveToStream(AStream: TStream);
   end;
   function SaveBoundsToStream(AStream: TStream): Int64;
   begin
-    // guarda posição inicial de gravação
+    // guarda posiÃ§Ã£o inicial de gravaÃ§Ã£o
     Result := AStream.Position;
     AStream.Write(FWidth, SizeOf(FWidth));
     AStream.Write(FHeight, SizeOf(FHeight));
@@ -2528,7 +2528,7 @@ procedure TRLGraphicSurface.SaveToStream(AStream: TStream);
     // grava a quantidade de macros
     count := FMacros.Count;
     AStream.Write(count, SizeOf(count));
-    // grava símbolos
+    // grava sÃ­mbolos
     for I := 0 to count - 1 do
     begin
       ln := AnsiString(FMacros[I]);
@@ -2542,7 +2542,7 @@ procedure TRLGraphicSurface.SaveToStream(AStream: TStream);
     count, len, I: Integer;
     name: AnsiString;
   begin
-    // guarda posição inicial de gravação
+    // guarda posiÃ§Ã£o inicial de gravaÃ§Ã£o
     Result := AStream.Position;
     //
     count := FFonts.Count;
@@ -2565,7 +2565,7 @@ procedure TRLGraphicSurface.SaveToStream(AStream: TStream);
     dataoffset: Int64;
     endpos: Int64;
   begin
-    // guarda posição inicial de gravação
+    // guarda posiÃ§Ã£o inicial de gravaÃ§Ã£o
     Result := AStream.Position;
     // grava tipo
     kind := GraphicObjectKind(AObject);
@@ -2654,10 +2654,10 @@ procedure TRLGraphicSurface.LoadFromStream(AStream: TStream);
     ln: AnsiString;
   begin
     AStream.Read(count, SizeOf(count));
-    // grava símbolos e seus valores
+    // grava sÃ­mbolos e seus valores
     for I := 0 to count - 1 do
     begin
-      // lê length + nome
+      // lÃª length + nome
       AStream.Read(len, SizeOf(len));
       SetLength(ln, len);
       AStream.Read(ln[1], len);
@@ -2694,7 +2694,7 @@ procedure TRLGraphicSurface.LoadFromStream(AStream: TStream);
       AStream.Read(kind, SizeOf(kind));
       AStream.Read(size, SizeOf(size));
       creator := GraphicObjectClass(kind);
-      // se a classe não for conhecida, salta o segmento
+      // se a classe nÃ£o for conhecida, salta o segmento
       if creator <> nil then
         creator.Create(Self).LoadFromStream(AStream)
       else

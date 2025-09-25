@@ -1,38 +1,38 @@
-{ Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+Ôªø{ Projeto: FortesReport Community Edition                                      }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLFilters - ImplementaÁ„o do filtro padr„o de impress„o e classes abstratas para filtros de gravaÁ„o e impress„o. }
+{@unit RLFilters - Implementa√ß√£o do filtro padr√£o de impress√£o e classes abstratas para filtros de grava√ß√£o e impress√£o. }
 unit RLFilters;
 
 interface
@@ -84,7 +84,7 @@ type
 
   { TRLCustomFilter }
 
-  {@class TRLCustomFilter - Classe abstrata ancestral de todos os filtro de gravaÁ„o e impress„o.
+  {@class TRLCustomFilter - Classe abstrata ancestral de todos os filtro de grava√ß√£o e impress√£o.
    @links TRLHTMLFilter, TRLPDFFilter, TRLRichFilter, TRLDraftFilter. }
   TRLCustomFilter = class(TComponent)
   private
@@ -139,12 +139,12 @@ type
 
     // virtual methods
 
-    {@method GetDisplayLabel - Devolve nome do filtro para exibiÁ„o em caixas de seleÁ„o. :/}
+    {@method GetDisplayLabel - Devolve nome do filtro para exibi√ß√£o em caixas de sele√ß√£o. :/}
     function GetDisplayLabel: string; virtual;
 
     // static methods
 
-    {@method GetDisplayName - Devolve nome do filtro para exibiÁ„o em tempo de design. :/}
+    {@method GetDisplayName - Devolve nome do filtro para exibi√ß√£o em tempo de design. :/}
     function GetDisplayName: string;
 
     {@method BeginDoc - Inicializa o processo de filtragem. :/}
@@ -153,16 +153,16 @@ type
     {@method EndDoc - Finaliza o processo de filtragem. :/}
     procedure EndDoc;
 
-    {@method NewPage - Adiciona uma nova p·gina. :/}
+    {@method NewPage - Adiciona uma nova p√°gina. :/}
     procedure NewPage;
 
-    {@method DrawPage - Desenha o conte˙do da superfÌcie informada na p·gina corrente. :/}
+    {@method DrawPage - Desenha o conte√∫do da superf√≠cie informada na p√°gina corrente. :/}
     procedure DrawPage(APage: TRLGraphicSurface);
 
-    {@method FilterPages - Processa as p·ginas atravÈs do filtro.
-     A lista de p·ginas aPages pode ser obtida na prop Pages de um TRLReport apÛs a preparaÁ„o do relatÛrio, ou de
-     modo avulso criando uma instancia do TRLGraphicStorage e carregando um relatÛrio do disco.
-     Os par‚metros aFirstPage e aLastPage s„o opcionais e indicam o intervalo de p·ginas a processar.
+    {@method FilterPages - Processa as p√°ginas atrav√©s do filtro.
+     A lista de p√°ginas aPages pode ser obtida na prop Pages de um TRLReport ap√≥s a prepara√ß√£o do relat√≥rio, ou de
+     modo avulso criando uma instancia do TRLGraphicStorage e carregando um relat√≥rio do disco.
+     Os par√¢metros aFirstPage e aLastPage s√£o opcionais e indicam o intervalo de p√°ginas a processar.
      @links TRLGraphicStorage, TRLCustomReport.Pages. :}
     procedure FilterPages(APages: TRLGraphicStorage; AFirstPage, ALastPage: Integer; const APageSelection: string; AOddPages: Integer); overload;
     procedure FilterPages(APages: TRLGraphicStorage); overload;
@@ -170,16 +170,16 @@ type
 
     // custom properties
 
-    {@prop DisplayName - Retorna o nome para exibiÁ„o em caixas de seleÁ„o. :/}
+    {@prop DisplayName - Retorna o nome para exibi√ß√£o em caixas de sele√ß√£o. :/}
     property DisplayName: string read GetDisplayName write FDisplayName stored IsDisplayName;
 
-    {@prop Pages - ReferÍncia ‡ coleÁ„o de p·ginas a filtrar. :/}
+    {@prop Pages - Refer√™ncia √† cole√ß√£o de p√°ginas a filtrar. :/}
     property Pages: TRLGraphicStorage read FPages write SetPages;
 
-    {@prop ShowProgress - Mostra barra de progresso do salvamento ou impress„o. :/}
+    {@prop ShowProgress - Mostra barra de progresso do salvamento ou impress√£o. :/}
     property ShowProgress: Boolean read FShowProgress write FShowProgress default True;
 
-    {@prop Canceled - Indica se o processo foi interrompido pelo usu·rio. :/}
+    {@prop Canceled - Indica se o processo foi interrompido pelo usu√°rio. :/}
     property Canceled: Boolean read FCanceled write FCanceled;
   end;
   {/@class}
@@ -187,45 +187,45 @@ type
 
   { TRLCustomPrintFilter }
 
-  {@class TRLCustomPrintFilter - Classe base para filtros de impress„o.
+  {@class TRLCustomPrintFilter - Classe base para filtros de impress√£o.
    @links TRLDraftFilter. }
   TRLCustomPrintFilter = class(TRLCustomFilter)
   protected
 
     // virtual methods
 
-    {@method GetOptionsLabel - Devolve texto para opÁıes de filtragem.
-     Reescreva este mÈtodo nos descendentes para informar se h· opÁıes de filtragem e qual È o texto para o di·logo. :/}
+    {@method GetOptionsLabel - Devolve texto para op√ß√µes de filtragem.
+     Reescreva este m√©todo nos descendentes para informar se h√° op√ß√µes de filtragem e qual √© o texto para o di√°logo. :/}
     function GetOptionsLabel: string; virtual;
 
-    {@method GetOptions - Devolve lista de opÁıes de filtragem.
-     Reescreva este mÈtodo nos descendentes para informar que opÁıes de filtragem devem aparecer no di·logo. :/}
+    {@method GetOptions - Devolve lista de op√ß√µes de filtragem.
+     Reescreva este m√©todo nos descendentes para informar que op√ß√µes de filtragem devem aparecer no di√°logo. :/}
     function GetOptions: TStrings; virtual;
 
-    {@method GetOptionIndex - Devolve o Ìndice da opÁ„o de filtragem atualmente selecionada.
-     Reescreva este mÈtodo nos descendentes para customizar a seleÁ„o de opÁıes. :/}
+    {@method GetOptionIndex - Devolve o √≠ndice da op√ß√£o de filtragem atualmente selecionada.
+     Reescreva este m√©todo nos descendentes para customizar a sele√ß√£o de op√ß√µes. :/}
     function GetOptionIndex: Integer; virtual;
 
-    {@method SetOptionIndex - Altera o Ìndice da opÁ„o de filtragem.
-     Reescreva este mÈtodo nos descendentes para customizar a seleÁ„o de opÁıes. :/}
+    {@method SetOptionIndex - Altera o √≠ndice da op√ß√£o de filtragem.
+     Reescreva este m√©todo nos descendentes para customizar a sele√ß√£o de op√ß√µes. :/}
     procedure SetOptionIndex(const Value: Integer); virtual;
 
   public
 
     // custom methods
 
-    {@method SetOrientation - Altera a orientaÁ„o do papel. :/}
+    {@method SetOrientation - Altera a orienta√ß√£o do papel. :/}
     procedure SetOrientation(AOrientation: TRLPageOrientation); virtual;
 
     // properties
 
-    {@prop OptionsLabel - Texto para opÁıes de filtragem. :/}
+    {@prop OptionsLabel - Texto para op√ß√µes de filtragem. :/}
     property OptionsLabel: string read GetOptionsLabel;
 
-    {@prop Options - Lista de opÁıes de filtragem. :/}
+    {@prop Options - Lista de op√ß√µes de filtragem. :/}
     property Options: TStrings read GetOptions;
 
-    {@prop OptionIndex - OpÁ„o default ou selecionada pelo di·logo de impress„o. :/}
+    {@prop OptionIndex - Op√ß√£o default ou selecionada pelo di√°logo de impress√£o. :/}
     property OptionIndex: Integer read GetOptionIndex write SetOptionIndex;
   end;
   {/@class}
@@ -254,30 +254,30 @@ type
     {@prop FileName - Nome do arquivo destino para o filtro de salvamento. :/}
     property FileName: string read FFileName write FFileName;
 
-    {@prop DefaultExt - Extens„o padr„o para o arquivo destino. :/}
+    {@prop DefaultExt - Extens√£o padr√£o para o arquivo destino. :/}
     property DefaultExt: string read FDefaultExt write FDefaultExt;
   end;
   {/@class}
   
 {@var ActiveFilters - Lista de filtros ativos.
- Esta lista contÈm referÍncias a todos os filtros de impress„o e salvamento instanciados.
+ Esta lista cont√©m refer√™ncias a todos os filtros de impress√£o e salvamento instanciados.
  @links TRLCustomFilter, SelectedFilter. :/}
 var ActiveFilters: TList = nil;
 
 {@var SelectedFilter - Filtro atualmente selecionado.
- Esta vari·vel contÈm a referÍncia para o filtro atualmente selecionado pelo usu·rio.
+ Esta vari√°vel cont√©m a refer√™ncia para o filtro atualmente selecionado pelo usu√°rio.
  @links TRLCustomFilter, ActiveFilters. :/}
 var SelectedFilter: TRLCustomFilter = nil;
 
-{@func FilterPages - Envia p·ginas para um filtro de impress„o ou salvamento.
- A lista de p·ginas aPages pode ser obtida na prop Pages de um TRLReport apÛs a preparaÁ„o do relatÛrio, ou de modo
- avulso criando uma instancia do TRLGraphicStorage e carregando um relatÛrio do disco.
+{@func FilterPages - Envia p√°ginas para um filtro de impress√£o ou salvamento.
+ A lista de p√°ginas aPages pode ser obtida na prop Pages de um TRLReport ap√≥s a prepara√ß√£o do relat√≥rio, ou de modo
+ avulso criando uma instancia do TRLGraphicStorage e carregando um relat√≥rio do disco.
  @links TRLCustomFilter, TRLGraphicStorage, TRLCustomReport.Pages. :}
 procedure FilterPages(APages: TRLGraphicStorage; AFilter: TRLCustomFilter; AFirstPage,
   ALastPage: Integer; const APageSelection: string; AOddPages: Integer);
 {/@func}
 
-{@func SaveFilterByFileName - Retorna uma referÍncia para um filtro de salvamento instanciado baseado na extens„o
+{@func SaveFilterByFileName - Retorna uma refer√™ncia para um filtro de salvamento instanciado baseado na extens√£o
  do nome de arquivo informado.
  @links TRLCustomSaveFilter. :/}
 function SaveFilterByFileName(const AFileName: string): TRLCustomSaveFilter;
@@ -367,7 +367,7 @@ end;
 procedure TRLCustomFilter.EndDoc;
 begin
   InternalEndDoc;
-  // libera as p·ginas
+  // libera as p√°ginas
   Pages := nil;
 end;
 
