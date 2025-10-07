@@ -1,38 +1,38 @@
-{ Projeto: FortesReport Community Edition                                      }
-{ … um poderoso gerador de relatÛrios disponÌvel como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatÛrios s„o constituÌdos por bandas que  }
-{ tÍm funÁıes especÌficas no fluxo de impress„o. VocÍ definir agrupamentos     }
-{ subnÌveis e totais simplesmente pela relaÁ„o hier·rquica entre as bandas.    }
-{ AlÈm disso possui uma rica paleta de Componentes                             }
+Ôªø{ Projeto: FortesReport Community Edition                                      }
+{ √â um poderoso gerador de relat√≥rios dispon√≠vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relat√≥rios s√£o constitu√≠dos por bandas que  }
+{ t√™m fun√ß√µes espec√≠ficas no fluxo de impress√£o. Voc√™ definir agrupamentos     }
+{ subn√≠veis e totais simplesmente pela rela√ß√£o hier√°rquica entre as bandas.    }
+{ Al√©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Inform·tica     }
+{ Direitos Autorais Reservados(c) Copyright ¬© 1999-2015 Fortes Inform√°tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              M·rcio Martins                                  }
-{                              RÈgys Borges da Silveira                        }
+{                              M√°rcio Martins                                  }
+{                              R√©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  VocÍ pode obter a ˙ltima vers„o desse arquivo na pagina do Projeto          }
+{  Voc√™ pode obter a √∫ltima vers√£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informaÁıes vocÍ pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informa√ß√µes voc√™ pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca È software livre; vocÍ pode redistribuÌ-la e/ou modific·-la }
-{ sob os termos da LicenÁa P˙blica Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a vers„o 2.1 da LicenÁa, ou (a seu critÈrio) }
-{ qualquer vers„o posterior.                                                   }
+{  Esta biblioteca √© software livre; voc√™ pode redistribu√≠-la e/ou modific√°-la }
+{ sob os termos da Licen√ßa P√∫blica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a vers√£o 2.1 da Licen√ßa, ou (a seu crit√©rio) }
+{ qualquer vers√£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca È distribuÌda na expectativa de que seja ˙til, porÈm, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implÌcita de COMERCIABILIDADE OU      }
-{ ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICEN«A.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca √© distribu√≠da na expectativa de que seja √∫til, por√©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia impl√≠cita de COMERCIABILIDADE OU      }
+{ ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICEN√áA.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral Menor do GNU junto}
-{ com esta biblioteca; se n„o, escreva para a Free Software Foundation, Inc.,  }
-{ no endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ VocÍ tambÈm pode obter uma copia da licenÁa em:                              }
+{  Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral Menor do GNU junto}
+{ com esta biblioteca; se n√£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ Voc√™ tamb√©m pode obter uma copia da licen√ßa em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - DescriÁ„o...
+|* - Descri√ß√£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLParser - ImplementaÁ„o do componente de avaliaÁ„o de expressıes. }
+{@unit RLParser - Implementa√ß√£o do componente de avalia√ß√£o de express√µes. }
 unit RLParser;
 
 interface
@@ -87,25 +87,25 @@ type
   TRLParserValueList = class;
   TRLParserParamList = class;
 
-  {@type TRLParserOnIdentifierEvent - Identificador encontrado. Este evento È disparado para todo identificador encontrado na express„o.
-   Sender È o expressionparser que invocou o evento;
-   Identifier È uma sequÍncia alfanumÈrica que È o nome da vari·vel encontrada;
-   Params È um vetor variant que contÈm a lista de par‚metros que seguem o identificador, caso seja uma chamada a funÁ„o;
-   Result È o resultado da express„o que pode ser informado pelo usu·rio.
+  {@type TRLParserOnIdentifierEvent - Identificador encontrado. Este evento √© disparado para todo identificador encontrado na express√£o.
+   Sender √© o expressionparser que invocou o evento;
+   Identifier √© uma sequ√™ncia alfanum√©rica que √© o nome da vari√°vel encontrada;
+   Params √© um vetor variant que cont√©m a lista de par√¢metros que seguem o identificador, caso seja uma chamada a fun√ß√£o;
+   Result √© o resultado da express√£o que pode ser informado pelo usu√°rio.
    @links TRLExpressionParser, TRLExpressionParser.OnIdentifier, TRLExpressionParser.OnUnknown. :/}
   TRLParserOnIdentifierEvent = procedure(Sender: TObject; const Identifier: String; Params: variant; var Result: variant) of object;
 
-  {@type TRLParserOnTokenEvent - Evento para sequÍncias de caracteres.
-   Sender È o expressionparser que invocou o evento;
-   Token È uma sequÍncia qualquer de caracteres que tem a mesma sem‚ntica e que pode ser traduzida pelo usu·rio;
-   Kind È o tipo de sequÍncia do modo como foi identificada pelo parser.
+  {@type TRLParserOnTokenEvent - Evento para sequ√™ncias de caracteres.
+   Sender √© o expressionparser que invocou o evento;
+   Token √© uma sequ√™ncia qualquer de caracteres que tem a mesma sem√¢ntica e que pode ser traduzida pelo usu√°rio;
+   Kind √© o tipo de sequ√™ncia do modo como foi identificada pelo parser.
    @links TRLExpressionParser, TRLParserTokenKind. :/}
   TRLParserOnTokenEvent = procedure(Sender: TObject; var Token: String; var Kind: TRLParserTokenKind) of object;
 
-  {@type TRLParserOnException - Evento disparado quando ocorre uma exceÁ„o durante a traduÁ„o da express„o.
-   Sender È o expressionparser que invocou o evento;
-   E È uma referÍncia para o objeto exceÁ„o;
-   Result È o valor assumido.
+  {@type TRLParserOnException - Evento disparado quando ocorre uma exce√ß√£o durante a tradu√ß√£o da express√£o.
+   Sender √© o expressionparser que invocou o evento;
+   E √© uma refer√™ncia para o objeto exce√ß√£o;
+   Result √© o valor assumido.
    @links TRLExpressionParser. :/}
   TRLParserOnException = procedure(Sender: TObject; var E: Exception; var Result: variant) of object;
 
@@ -123,7 +123,7 @@ type
 
   { TRLExpressionParser }
 
-  {@class TRLExpressionParser - Avaliador de expressıes.
+  {@class TRLExpressionParser - Avaliador de express√µes.
    @pub }
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
@@ -187,40 +187,40 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
 
-    {@method CreateFunction - Adiciona uma funÁ„o prÈ-definida.
-     Uma funÁ„o para o expressionparser È uma express„o associada a um sÌmbolo com par‚metros,
-     na forma: "NOME(P1,P2,...,Pn)=EXPRESS√O".
+    {@method CreateFunction - Adiciona uma fun√ß√£o pr√©-definida.
+     Uma fun√ß√£o para o expressionparser √© uma express√£o associada a um s√≠mbolo com par√¢metros,
+     na forma: "NOME(P1,P2,...,Pn)=EXPRESS√ÉO".
      Ex.: Min(p1,p2)=If(p1<p2,p1,p2) :/}
     function CreateFunction(const ADeclaration: String; const AExpression: String): TRLParserFunction;
 
-    {@method CreateValue - Associa um sÌmbolo a uma constante. Quando o expressionparser tenta resolver uma express„o,
-     procura pelos sÌmbolos nas listas de sÌmbolos e funÁıes prÈ-definidas antes de disparar o evento OnUnknown.
+    {@method CreateValue - Associa um s√≠mbolo a uma constante. Quando o expressionparser tenta resolver uma express√£o,
+     procura pelos s√≠mbolos nas listas de s√≠mbolos e fun√ß√µes pr√©-definidas antes de disparar o evento OnUnknown.
      @links builtin:build-in. :/}
     function CreateValue(const AName: String; const AValue: variant): TRLParserValue;
     
-    {@method Evaluate - Avalia uma express„o e retorna o resultado.
-     Chamado sem par‚metros indica que o c·lculo deve ser executado com a prop Expression.
-     O par‚metro aExpression È uma fÛrmula cujos elementos podem ser de qualquer tipo de dado prim·rio: integer,
+    {@method Evaluate - Avalia uma express√£o e retorna o resultado.
+     Chamado sem par√¢metros indica que o c√°lculo deve ser executado com a prop Expression.
+     O par√¢metro aExpression √© uma f√≥rmula cujos elementos podem ser de qualquer tipo de dado prim√°rio: integer,
      float, string e boolean.
-     Podem ser incluÌdos e ser„o resolvidos automaticamente: nomes de campos, funÁıes e sÌmbolos prÈ-definidos, e
-     funÁıes built-in.
+     Podem ser inclu√≠dos e ser√£o resolvidos automaticamente: nomes de campos, fun√ß√µes e s√≠mbolos pr√©-definidos, e
+     fun√ß√µes built-in.
      @links Expression, BuiltIn:build-in. :}
     function Evaluate: variant; overload;
     function Evaluate(const AExpression: String): variant; overload;
     {/@method}
 
-    {@method Invalidate - Invalida a ˙ltima compilaÁ„o feita para a express„o. ForÁa a recompilaÁ‡o na prÛxima avaliaÁ„o.
+    {@method Invalidate - Invalida a √∫ltima compila√ß√£o feita para a express√£o. For√ßa a recompila√ß√†o na pr√≥xima avalia√ß√£o.
      @links Evaluate, Clear. :/}
     procedure Invalidate;
 
-    {@method Clear - Esvazia a lista de valores e funÁıes prÈ-definidos.
+    {@method Clear - Esvazia a lista de valores e fun√ß√µes pr√©-definidos.
      @links ValueList, FunctionList, CreateFunction, CreateValue. :/}
     procedure Clear;
 
-    {@prop FunctionList - ReferÍncia para a lista de funÁıes prÈ-definidas. :/}
+    {@prop FunctionList - Refer√™ncia para a lista de fun√ß√µes pr√©-definidas. :/}
     property FunctionList: TRLParserFunctionList read FFunctionList;
 
-    {@prop ValueList - ReferÍncia para a lista de valores prÈ-definidos. :/}
+    {@prop ValueList - Refer√™ncia para a lista de valores pr√©-definidos. :/}
     property ValueList: TRLParserValueList read FValueList;
     
     property IdentifierId: Integer read FIdentifierId;
@@ -234,43 +234,43 @@ type
   published
     { Published declarations }
 
-    {@prop Expression - Express„o padr„o a avaliar.
-     A express„o pode ser simples como a soma de dois n˙meros ou nomes de campos de uma
-     tabela. Pode ser tambÈm um script complexo em dialeto pascal acessando componentes
+    {@prop Expression - Express√£o padr√£o a avaliar.
+     A express√£o pode ser simples como a soma de dois n√∫meros ou nomes de campos de uma
+     tabela. Pode ser tamb√©m um script complexo em dialeto pascal acessando componentes
      e modificando suas propriedades.
-     O resultado ser· sempre o valor do ˙ltimo n˙mero, literal, identificador ou operaÁ„o
-     mencionado na express„o. :/}
+     O resultado ser√° sempre o valor do √∫ltimo n√∫mero, literal, identificador ou opera√ß√£o
+     mencionado na express√£o. :/}
     property Expression: String read FExpression write SetExpression;
 
-    {@prop Options - OpÁıes de escopo para resoluÁ„o de identificadores. :/}
+    {@prop Options - Op√ß√µes de escopo para resolu√ß√£o de identificadores. :/}
     property Options: TRLParserOptions read FOptions write FOptions default [poScanComponents];
-    {@event OnIdentifier - Evento disparado antes da avaliaÁ„o de um identificador.
+    {@event OnIdentifier - Evento disparado antes da avalia√ß√£o de um identificador.
      @links TRLParserOnIdentifierEvent. :/}
     property OnIdentifier: TRLParserOnIdentifierEvent read FOnIdentifier write FOnIdentifier;
 
-    {@event OnUnknown - Evento disparado quando um identificador n„o pode ser resolvido pelo parser.
+    {@event OnUnknown - Evento disparado quando um identificador n√£o pode ser resolvido pelo parser.
      @links TRLParserOnIdentifierEvent. :/}
     property OnUnknown: TRLParserOnIdentifierEvent read FOnUnknown write FOnUnknown;
 
-    {@event OnToken - Evento chamado para cada sequÍncia de caracteres encontrada.
-     Os operadores e estruturas de controle do expressionparser s„o simbÛlicos e escritos em inglÍs. Utilize este
-     evento para customizar o dialÈto utilizado.
+    {@event OnToken - Evento chamado para cada sequ√™ncia de caracteres encontrada.
+     Os operadores e estruturas de controle do expressionparser s√£o simb√≥licos e escritos em ingl√™s. Utilize este
+     evento para customizar o dial√©to utilizado.
      @links TRLParserOnTokenEvent. :/}
     property OnToken: TRLParserOnTokenEvent read FOnToken write FOnToken;
 
-    {@event OnException - Evento disparado quando ocorre uma exceÁ„o na traduÁ„o da express„o.
+    {@event OnException - Evento disparado quando ocorre uma exce√ß√£o na tradu√ß√£o da express√£o.
      @links TRLParserOnException. :/}
     property OnException: TRLParserOnException read FOnException write FOnException;
   end;
   {/@class}
 
-  {@article BuiltIn - FunÁıes e constantes prÈ-compiladas do componente TRLExpressionParser.
+  {@article BuiltIn - Fun√ß√µes e constantes pr√©-compiladas do componente TRLExpressionParser.
    PI - Retorna o valor de PI = 3.1415926535897932385;
    TRUE - Contante booleana equivalente a verdadeiro;
    FALSE - Contante booleana equivalente a falso;
-   MINOR(V1,V2,..,VN) - FunÁ„o que retorna o menor dos valores passados;
-   MAJOR(V1,V2,..,VN) - FunÁ„o que retorna o maior dos valores passados;
-   IF(C,V1,V2) - FunÁ„o que retorna o valor V1 se a condiÁ„o C for verdadeira, e V2, caso contr·rio. /}
+   MINOR(V1,V2,..,VN) - Fun√ß√£o que retorna o menor dos valores passados;
+   MAJOR(V1,V2,..,VN) - Fun√ß√£o que retorna o maior dos valores passados;
+   IF(C,V1,V2) - Fun√ß√£o que retorna o valor V1 se a condi√ß√£o C for verdadeira, e V2, caso contr√°rio. /}
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
@@ -321,7 +321,7 @@ type
     constructor Create(AParser: TRLExpressionParser); reintroduce;
     destructor Destroy; override;
 
-    {@method Invalidate - Invalida a ˙ltima compilaÁ„o feita para a express„o. ForÁa a recompilaÁ‡o na prÛxima avaliaÁ„o.
+    {@method Invalidate - Invalida a √∫ltima compila√ß√£o feita para a express√£o. For√ßa a recompila√ß√†o na pr√≥xima avalia√ß√£o.
      @links Evaluate. :/}
     procedure Invalidate;
     
@@ -1259,11 +1259,11 @@ begin
     Delete(path, 1, I);
     if part = '' then
       Break;
-    // procura parte dependente, podendo apelar para o usu·rio  
+    // procura parte dependente, podendo apelar para o usu√°rio  
     found := FindDependentPart(parent, part);
-    // se n„o achou a parte dependente, ent„o ela talvez seja uma prop
+    // se n√£o achou a parte dependente, ent√£o ela talvez seja uma prop
     if found = nil then
-      // mas, se ainda houver mais partes a procurar, ent„o desiste
+      // mas, se ainda houver mais partes a procurar, ent√£o desiste
       if path <> '' then
         Break
       else
@@ -1273,7 +1273,7 @@ begin
         Result := True;
         Break;
       end
-    // se encontrou a parte e n„o h· outras partes a procurar, ent„o retorna a parte sem prop
+    // se encontrou a parte e n√£o h√° outras partes a procurar, ent√£o retorna a parte sem prop
     else if path = '' then
     begin
       APersistent := found;
@@ -1281,7 +1281,7 @@ begin
       Result := True;
       Break;
     end
-    // sen„o, procura dentro da parte encontrada
+    // sen√£o, procura dentro da parte encontrada
     else
       parent := found;
   until False; 
@@ -1316,7 +1316,7 @@ var
   prmitem: TRLParserParam;
 begin
   Result := Unassigned;
-  // o usu·rio resolve previamente
+  // o usu√°rio resolve previamente
   if Assigned(FOnIdentifier) then
   begin
     // user defined

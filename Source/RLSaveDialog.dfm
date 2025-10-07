@@ -13,10 +13,8 @@ object RLSaveDialog: TRLSaveDialog
   Font.Name = 'MS Sans Serif'
   Font.Pitch = fpVariable
   Font.Style = []
-  OldCreateOrder = True
   Position = poScreenCenter
   Scaled = False
-  PixelsPerInch = 96
   TextHeight = 13
   object LabelFileName: TLabel
     Left = 12
@@ -44,7 +42,7 @@ object RLSaveDialog: TRLSaveDialog
     Top = 68
     Width = 365
     Height = 101
-    Caption = ' Páginas no intervalo  '
+    Caption = ' P'#225'ginas no intervalo  '
     TabOrder = 2
     object LabelFromPage: TLabel
       Left = 68
@@ -59,7 +57,7 @@ object RLSaveDialog: TRLSaveDialog
       Top = 45
       Width = 18
       Height = 13
-      Caption = '&até:'
+      Caption = '&at'#233':'
       FocusControl = EditToPage
     end
     object RadioButtonPagesAll: TRadioButton
@@ -77,7 +75,7 @@ object RLSaveDialog: TRLSaveDialog
       Top = 44
       Width = 61
       Height = 17
-      Caption = 'Páginas'
+      Caption = 'P'#225'ginas'
       TabOrder = 1
     end
     object RadioButtonPagesSelect: TRadioButton
@@ -85,7 +83,7 @@ object RLSaveDialog: TRLSaveDialog
       Top = 68
       Width = 73
       Height = 17
-      Caption = '&Seleção'
+      Caption = '&Sele'#231#227'o'
       TabOrder = 2
     end
     object EditFromPage: TEdit
@@ -115,7 +113,6 @@ object RLSaveDialog: TRLSaveDialog
     Height = 25
     Caption = 'Salvar'
     Default = True
-    ModalResult = 0
     TabOrder = 3
   end
   object ButtonCancel: TButton
@@ -141,9 +138,7 @@ object RLSaveDialog: TRLSaveDialog
     Width = 269
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
     TabOrder = 1
-    OnChange = ComboBoxFiltersChange
   end
   object SaveDialog: TSaveDialog
     Left = 340

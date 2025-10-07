@@ -1,38 +1,38 @@
 { Projeto: FortesReport Community Edition                                      }
-{ É um poderoso gerador de relatórios disponível como um pacote de componentes }
-{ para Delphi. Em FortesReport, os relatórios são constituídos por bandas que  }
-{ têm funções específicas no fluxo de impressão. Você definir agrupamentos     }
-{ subníveis e totais simplesmente pela relação hierárquica entre as bandas.    }
-{ Além disso possui uma rica paleta de Componentes                             }
+{ Ã‰ um poderoso gerador de relatÃ³rios disponÃ­vel como um pacote de componentes }
+{ para Delphi. Em FortesReport, os relatÃ³rios sÃ£o constituÃ­dos por bandas que  }
+{ tÃªm funÃ§Ãµes especÃ­ficas no fluxo de impressÃ£o. VocÃª definir agrupamentos     }
+{ subnÃ­veis e totais simplesmente pela relaÃ§Ã£o hierÃ¡rquica entre as bandas.    }
+{ AlÃ©m disso possui uma rica paleta de Componentes                             }
 {                                                                              }
-{ Direitos Autorais Reservados(c) Copyright © 1999-2015 Fortes Informática     }
+{ Direitos Autorais Reservados(c) Copyright Â© 1999-2015 Fortes InformÃ¡tica     }
 {                                                                              }
 { Colaboradores nesse arquivo: Ronaldo Moreira                                 }
-{                              Márcio Martins                                  }
-{                              Régys Borges da Silveira                        }
+{                              MÃ¡rcio Martins                                  }
+{                              RÃ©gys Borges da Silveira                        }
 {                              Juliomar Marchetti                              }
 {                                                                              }
-{  Você pode obter a última versão desse arquivo na pagina do Projeto          }
+{  VocÃª pode obter a Ãºltima versÃ£o desse arquivo na pagina do Projeto          }
 {  localizado em                                                               }
 { https://github.com/fortesinformatica/fortesreport-ce                         }
 {                                                                              }
-{  Para mais informações você pode consultar o site www.fortesreport.com.br ou }
+{  Para mais informaÃ§Ãµes vocÃª pode consultar o site www.fortesreport.com.br ou }
 {  no Yahoo Groups https://groups.yahoo.com/neo/groups/fortesreport/info       }
 {                                                                              }
-{  Esta biblioteca é software livre; você pode redistribuí-la e/ou modificá-la }
-{ sob os termos da Licença Pública Geral Menor do GNU conforme publicada pela  }
-{ Free Software Foundation; tanto a versão 2.1 da Licença, ou (a seu critério) }
-{ qualquer versão posterior.                                                   }
+{  Esta biblioteca Ã© software livre; vocÃª pode redistribuÃ­-la e/ou modificÃ¡-la }
+{ sob os termos da LicenÃ§a PÃºblica Geral Menor do GNU conforme publicada pela  }
+{ Free Software Foundation; tanto a versÃ£o 2.1 da LicenÃ§a, ou (a seu critÃ©rio) }
+{ qualquer versÃ£o posterior.                                                   }
 {                                                                              }
-{  Esta biblioteca é distribuída na expectativa de que seja útil, porém, SEM   }
-{ NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE OU      }
-{ ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública Geral Menor}
-{ do GNU para mais detalhes. (Arquivo LICENÇA.TXT ou LICENSE.TXT)              }
+{  Esta biblioteca Ã© distribuÃ­da na expectativa de que seja Ãºtil, porÃ©m, SEM   }
+{ NENHUMA GARANTIA; nem mesmo a garantia implÃ­cita de COMERCIABILIDADE OU      }
+{ ADEQUAÃ‡ÃƒO A UMA FINALIDADE ESPECÃFICA. Consulte a LicenÃ§a PÃºblica Geral Menor}
+{ do GNU para mais detalhes. (Arquivo LICENÃ‡A.TXT ou LICENSE.TXT)              }
 {                                                                              }
-{  Você deve ter recebido uma cópia da Licença Pública Geral Menor do GNU junto}
-{ com esta biblioteca; se não, escreva para a Free Software Foundation, Inc.,  }
-{ no endereço 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
-{ Você também pode obter uma copia da licença em:                              }
+{  VocÃª deve ter recebido uma cÃ³pia da LicenÃ§a PÃºblica Geral Menor do GNU junto}
+{ com esta biblioteca; se nÃ£o, escreva para a Free Software Foundation, Inc.,  }
+{ no endereÃ§o 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.          }
+{ VocÃª tambÃ©m pode obter uma copia da licenÃ§a em:                              }
 { http://www.opensource.org/licenses/gpl-license.php                           }
 {                                                                              }
 {******************************************************************************}
@@ -41,12 +41,12 @@
 |* Historico
 |*
 |* xx/xx/xxxx:  Autor...
-|* - Descrição...
+|* - DescriÃ§Ã£o...
 ******************************************************************************}
 
 {$I RLReport.inc}
 
-{@unit RLHTMLFilter - Implementação do filtro para criação de páginas web. }
+{@unit RLHTMLFilter - ImplementaÃ§Ã£o do filtro para criaÃ§Ã£o de pÃ¡ginas web. }
 unit RLHTMLFilter;
 
 interface
@@ -61,21 +61,21 @@ uses
   RLMetaFile, RLConsts, RLFilters, RLUtils, RLTypes;
 
 type
-  {@type TRLHTMLDocumentStyle - Estilo para geração de páginas html.
+  {@type TRLHTMLDocumentStyle - Estilo para geraÃ§Ã£o de pÃ¡ginas html.
    Pode ser um dos seguintes valores:
-   dsCSS2 - O filtro gera apenas uma página html para todo o relatório (além dos arquivos
-   de imagens) que inclui instruções especiais da especificação CSS2 para salto de página;
-   dsOldStyle - É gerada uma página html para cada página de relatório. :/}
+   dsCSS2 - O filtro gera apenas uma pÃ¡gina html para todo o relatÃ³rio (alÃ©m dos arquivos
+   de imagens) que inclui instruÃ§Ãµes especiais da especificaÃ§Ã£o CSS2 para salto de pÃ¡gina;
+   dsOldStyle - Ã‰ gerada uma pÃ¡gina html para cada pÃ¡gina de relatÃ³rio. :/}
   TRLHTMLDocumentStyle = (dsCSS2, dsOldStyle);
 
-  {@type TRLHTMLSaveGraphicEvent - Evento para a gravação de imagem em disco em formato
-  ou localização alternativas. Implementando este evento vc se responsabiliza por gravar
+  {@type TRLHTMLSaveGraphicEvent - Evento para a gravaÃ§Ã£o de imagem em disco em formato
+  ou localizaÃ§Ã£o alternativas. Implementando este evento vc se responsabiliza por gravar
   a imagem em disco, podendo mudar o formato e o nome do arquivo. :/}
   TRLHTMLSaveGraphicEvent = procedure(Sender: TObject; AGraphic: TGraphic; var FileName: String; var Saved: Boolean) of object;
 
   { TRLHTMLFilter }
 
-  {@class TRLHTMLFilter - Filtro para criação de páginas html a partir de um relatório.
+  {@class TRLHTMLFilter - Filtro para criaÃ§Ã£o de pÃ¡ginas html a partir de um relatÃ³rio.
    @links TRLRichFilter, TRLPDFFilter, TRLXLSFilter. 
    @ancestor TRLCustomSaveFilter.
    @pub }
@@ -128,7 +128,7 @@ type
 
     // properties 
     
-    {@prop DocumentStyle - Estilo para a geração das páginas html.
+    {@prop DocumentStyle - Estilo para a geraÃ§Ã£o das pÃ¡ginas html.
      @links TRLHTMLDocumentStyle. :/}
     property DocumentStyle: TRLHTMLDocumentStyle read FDocumentStyle write FDocumentStyle;
 
@@ -138,7 +138,7 @@ type
     property DisplayName;
 
     {@event OnSaveGraphic - Ao salvar imagem em disco. Implemente este evento se quiser
-    interferir na gravação das imagens em disco. As imagens normalmente são gravadas em
+    interferir na gravaÃ§Ã£o das imagens em disco. As imagens normalmente sÃ£o gravadas em
     formato bitmap (.bmp). :/}
     property OnSaveGraphic: TRLHTMLSaveGraphicEvent read FOnSaveGraphic write FOnSaveGraphic;
   end;
@@ -148,7 +148,7 @@ type
 {@func ColorToHex - Devolve uma string com a cor em formato RGB-Hexadecimal. :/}
 function ColorToHex(AColor: TColor): String;
 
-{@func EncodeISO - Codifica uma string padrão ascii em formato ISO para html. :/}
+{@func EncodeISO - Codifica uma string padrÃ£o ascii em formato ISO para html. :/}
 function EncodeISO(const AStr: String): String;
 
 {/@unit}
@@ -370,7 +370,7 @@ begin
   //
   AssignFile(FWorkingFileHandle, FWorkingFileName);
   Rewrite(FWorkingFileHandle);
-  // demarca inicio da página
+  // demarca inicio da pÃ¡gina
   Writeln(FWorkingFileHandle);
   Writeln(FWorkingFileHandle, BEGINPAGETAG);
   //
@@ -383,7 +383,7 @@ var
   F: textfile;
   N: String;
 begin
-  // demarca final da página
+  // demarca final da pÃ¡gina
   Writeln(FWorkingFileHandle);
   Writeln(FWorkingFileHandle, ENDPAGETAG);
   Inc(FFileCount);
@@ -427,11 +427,11 @@ end;
 
 procedure TRLHTMLFilter.InternalNewPage;
 begin
-  // demarca final da página
+  // demarca final da pÃ¡gina
   Writeln(FWorkingFileHandle);
   Writeln(FWorkingFileHandle, ENDPAGETAG);
   Inc(FFileCount);
-  // demarca inicio da página
+  // demarca inicio da pÃ¡gina
   Writeln(FWorkingFileHandle);
   Writeln(FWorkingFileHandle, BEGINPAGETAG);
 end;
@@ -520,7 +520,7 @@ var
                                'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' + 
                                ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + ';' + 
                                'background-color:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) + ';"></div>');
-    // início de layer
+    // inÃ­cio de layer
     if (AObj.TextFlags and MetaTextFlagAutoSize) = MetaTextFlagAutoSize then
       Write(FWorkingFileHandle, '<div style="position:absolute;' + 
                                'left:' + IntToStr(AObj.Origin.X - FPrintCut.X) + 'px;' + 
@@ -599,7 +599,7 @@ var
     graphfn: String;
     graph: TGraphic;
   begin
-    /// verificar repetição de arq de imagens aqui (crc?)
+    /// verificar repetiÃ§Ã£o de arq de imagens aqui (crc?)
     graph := FromMetaGraphic(AObj.Data);
     if Assigned(graph) then
       try
@@ -675,7 +675,7 @@ var
   I, P: Integer;
   S, fn, fz, fc: String;
 begin
-  // cabeçalho do documento
+  // cabeÃ§alho do documento
   Writeln(AFile, '<html>');
   Writeln(AFile);
   Writeln(AFile, '<head>');

@@ -4,7 +4,6 @@ object RLPreviewForm: TRLPreviewForm
   Width = 806
   Height = 406
   VertScrollBar.Range = 29
-  AutoScroll = False
   Caption = 'Pr'#233'-visualiza'#231#227'o'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,16 +13,14 @@ object RLPreviewForm: TRLPreviewForm
   Font.Pitch = fpVariable
   Font.Style = []
   KeyPreview = True
-  OldCreateOrder = True
   WindowState = wsMaximized
   OnKeyDown = FormKeyDown
-  PixelsPerInch = 96
   TextHeight = 13
   object PanelContainer: TPanel
     Left = 0
     Top = 23
-    Width = 798
-    Height = 349
+    Width = 790
+    Height = 344
     Align = alClient
     BevelOuter = bvLowered
     Caption = ' '
@@ -32,7 +29,7 @@ object RLPreviewForm: TRLPreviewForm
   object PanelTools: TPanel
     Left = 0
     Top = 0
-    Width = 798
+    Width = 790
     Height = 23
     Align = alTop
     BevelOuter = bvNone
@@ -342,7 +339,6 @@ object RLPreviewForm: TRLPreviewForm
         Width = 145
         Height = 21
         DropDownCount = 11
-        ItemHeight = 13
         TabOrder = 0
         OnChange = ComboBoxZoomChange
         Items.Strings = (
@@ -360,7 +356,7 @@ object RLPreviewForm: TRLPreviewForm
       end
     end
     object PanelCopyright: TPanel
-      Left = 775
+      Left = 767
       Top = 1
       Width = 22
       Height = 21
