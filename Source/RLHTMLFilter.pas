@@ -478,42 +478,43 @@ var
   end;
   procedure DrawPixel(AObj: TRLPixelObject);
   begin
-    Write(FWorkingFileHandle, '<hr style="position:absolute;' + 
+    Write(FWorkingFileHandle, '<div name="pixel" style="position:absolute;' +
                              'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' + 
                              'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' + 
                              'width:1px;' + 
-                             'height:1px;' + 
+                             'height:1px;' +
+
                              ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + ';' + 
-                             'color:#' + ColorToHex(FromMetaColor(AObj.Color)) + ';">');
+                             'background-color:#' + ColorToHex(FromMetaColor(AObj.Color)) + ';"></div>');
     Writeln(FWorkingFileHandle);
   end;
   procedure DrawLine(AObj: TRLLineObject);
   begin
-    Write(FWorkingFileHandle, '<hr style="position:absolute;' + 
+    Write(FWorkingFileHandle, '<div name="linha" style="position:absolute;' +
                              'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' + 
                              'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' + 
                              'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' + 
-                             'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' + 
+                             'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' +
                              ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + ';' + 
-                             'color:#' + ColorToHex(FromMetaColor(AObj.Pen.Color)) + ';">');
+                             'background-color:#' + ColorToHex(FromMetaColor(AObj.Pen.Color)) + ';"></div>');
     Writeln(FWorkingFileHandle);
   end;
   procedure DrawRectangle(AObj: TRLRectangleObject);
   begin
-    Write(FWorkingFileHandle, '<hr style="position:absolute;' + 
-                             'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' + 
-                             'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' + 
-                             'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' + 
-                             'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' + 
-                             ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + ';' + 
-                             'color:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) + ';">');
+    Write(FWorkingFileHandle, '<div name="Bordas" style="position:absolute;' +
+                             'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' +
+                             'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' +
+                             'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' +
+                             'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' +
+                             ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + ';' +
+                             'background-color:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) + ';"></div>');
     Writeln(FWorkingFileHandle);
   end;
   procedure DrawText(AObj: TRLTextObject);
   begin
     // cor de fundo
     if AObj.Brush.Style <> MetaBrushStyleClear then
-      Write(FWorkingFileHandle, '<div style="position:absolute;' + 
+      Write(FWorkingFileHandle, '<div name="fundo" style="position:absolute;' +
                                'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' + 
                                'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' + 
                                'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' + 
@@ -522,24 +523,24 @@ var
                                'background-color:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) + ';"></div>');
     // início de layer
     if (AObj.TextFlags and MetaTextFlagAutoSize) = MetaTextFlagAutoSize then
-      Write(FWorkingFileHandle, '<div style="position:absolute;' + 
-                               'left:' + IntToStr(AObj.Origin.X - FPrintCut.X) + 'px;' + 
+      Write(FWorkingFileHandle, '<div name="texto" style="position:absolute;' +
+                               'left:' + IntToStr(AObj.Origin.X - FPrintCut.X) + 'px;' +
                                'top:' + IntToStr(AObj.Origin.Y - FPrintCut.Y) + 'px;' + 
                                ClipStr(FromMetaPoint(AObj.Origin), cliprct) + '">')
     else
       case AObj.Alignment of
-        MetaTextAlignmentCenter: Write(FWorkingFileHandle, '<div style="position:absolute;' + 
+        MetaTextAlignmentCenter: Write(FWorkingFileHandle, '<div name="texto" style="position:absolute;' +
                                                           'left:' + IntToStr((AObj.BoundsRect.Right + AObj.BoundsRect.Left - TextWidth(AObj.DisplayText, AObj.Font)) div 2) + 'px;' + 
                                                           'top:' + IntToStr(AObj.Origin.Y - FPrintCut.Y) + 'px;' + 
                                                           ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + '">');
-        MetaTextAlignmentRight: Write(FWorkingFileHandle, '<div style="position:absolute;' + 
-                                                          'left:' + IntToStr(AObj.BoundsRect.Right - TextWidth(AObj.DisplayText, AObj.Font)) + 'px;' + 
-                                                          'top:' + IntToStr(AObj.Origin.Y - FPrintCut.Y) + 'px;' + 
+        MetaTextAlignmentRight: Write(FWorkingFileHandle, '<div name="texto" style="position:absolute;' +
+                                                          'left:' + IntToStr(AObj.BoundsRect.Right - TextWidth(AObj.DisplayText, AObj.Font)) + 'px;' +
+                                                          'top:' + IntToStr(AObj.Origin.Y - FPrintCut.Y) + 'px;' +
                                                           ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + '">');
       else //TextAlignmentLeftJustify
-        Write(FWorkingFileHandle, '<div style="position:absolute;' + 
-                                 'left:' + IntToStr(AObj.Origin.X - FPrintCut.X) + 'px;' + 
-                                 'top:' + IntToStr(AObj.Origin.Y - FPrintCut.Y) + 'px;' + 
+        Write(FWorkingFileHandle, '<div name="texto" style="position:absolute;' +
+                                 'left:' + IntToStr(AObj.Origin.X - FPrintCut.X) + 'px;' +
+                                 'top:' + IntToStr(AObj.Origin.Y - FPrintCut.Y) + 'px;' +
                                  ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + '">');
       end;
     // seleciona fonte
@@ -572,27 +573,127 @@ var
   procedure DrawFillRect(AObj: TRLFillRectObject);
   begin
     if AObj.Brush.Style = MetaBrushStyleClear then
-      Exit;
-    Write(FWorkingFileHandle, '<div style="position:absolute;' + 
-                             'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' + 
-                             'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' + 
-                             'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' + 
-                             'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' + 
-                             ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + ';' + 
-                             'background-color:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) + '"></div>');
+       Exit;
+    Write(FWorkingFileHandle, '<div name="preenchimento" style="position:absolute;' +
+                               'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' +
+                               'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' +
+                               'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' +
+                               'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' +
+                               ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + ';' +
+                               'background-color:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) + '"></div>');
     Writeln(FWorkingFileHandle);
   end;
   procedure DrawEllipse(AObj: TRLEllipseObject);
+  var
+  cx, cy, rx, ry, EstiloLinha: String;
   begin
-    ///
+    with AObj.BoundsRect do
+    begin
+      cx := FloatToStr((Right - Left) / 2 + AObj.Pen.Width );
+      cy := FloatToStr((Bottom - Top) / 2 + AObj.Pen.Width );
+      rx := FloatToStr((Right - Left) / 2);
+      ry := FloatToStr((Bottom - Top) / 2);
+    end;
+
+     EstiloLinha := '';
+       case AObj.Pen.Style of
+       MetaPenStyleSolid: EstiloLinha := '';
+       MetaPenStyleDash: EstiloLinha := ';stroke-dasharray:10,10';
+       MetaPenStyleDot: EstiloLinha := ';stroke-dasharray:2,2';
+       MetaPenStyleDashDot: EstiloLinha := ';stroke-dasharray:10,5,2,5';
+       MetaPenStyleDashDotDot: EstiloLinha := ';stroke-dasharray:10,5,2,5,2,5';
+       MetaPenStyleInsideFrame: EstiloLinha := '';
+       end;
+
+     Write(FWorkingFileHandle, '<div name="Elipse" style="position:absolute;' +
+                                 'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' +
+                                 'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px">' +
+                                 '<svg width=' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left + AObj.Pen.Width) + 'px' +
+                                 ' height=' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top + AObj.Pen.Width) + 'px>' +
+                                 '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry + '"' +
+                                 ' style="fill:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) +
+                                 ';stroke:#' + ColorToHex(FromMetaColor(AObj.Pen.Color)) +
+                                 EstiloLinha +
+                                 ';stroke-width' + IntToStr(AObj.Pen.Width) + ';"/></svg></div>');
+     Writeln(FWorkingFileHandle);
   end;
   procedure DrawPolygon(AObj: TRLPolygonObject);
+    var
+    I: Integer;
+    Pontos,EstiloLinha : String;
   begin
-    ///
+     Pontos := '';
+     for I := 0 to High(AObj.Points) do
+         Pontos := Pontos + ' ' + IntToStr(AObj.Points[I].X - FPrintCut.X - AObj.BoundsRect.Left) + ',' +
+                                  InttoStr(AObj.Points[I].Y - FPrintCut.Y - AObj.BoundsRect.Top);
+
+     EstiloLinha := '';
+       case AObj.Pen.Style of
+       MetaPenStyleSolid: EstiloLinha := '';
+       MetaPenStyleDash: EstiloLinha := ';stroke-dasharray:10,10';
+       MetaPenStyleDot: EstiloLinha := ';stroke-dasharray:2,2';
+       MetaPenStyleDashDot: EstiloLinha := ';stroke-dasharray:10,5,2,5';
+       MetaPenStyleDashDotDot: EstiloLinha := ';stroke-dasharray:10,5,2,5,2,5';
+       MetaPenStyleInsideFrame: EstiloLinha := '';
+       end;
+
+     if High(AObj.Points) > 2  then
+       begin // se tem mais que 2 pontos é um polygon
+         Write(FWorkingFileHandle, '<div name="Poligono" style="position:absolute;' +
+                                     'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' +
+                                     'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px">' +
+                                     '<svg width=' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px' +
+                                     ' height=' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px>' +
+                                     '<polygon points="' + Pontos + '"' +
+                                     ' style="fill:#' + ColorToHex(FromMetaColor(AObj.Brush.Color)) +
+                                     ';stroke:#' + ColorToHex(FromMetaColor(AObj.Pen.Color)) +
+                                     EstiloLinha +
+                                     ';stroke-width:' + IntToStr(AObj.Pen.Width) + ';"/></svg></div>');
+         Writeln(FWorkingFileHandle);
+       end
+     else
+       begin // se tem só 2 pontos é um polyline
+         Write(FWorkingFileHandle, '<div name="PoligonoLinha" style="position:absolute;' +
+                                     'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' +
+                                     'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px">' +
+                                     '<svg width=' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px' +
+                                     ' height=' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px>' +
+                                     '<polyline points="' + Pontos + '"' +
+                                     ' style="stroke:#' + ColorToHex(FromMetaColor(AObj.Pen.Color)) +
+                                     EstiloLinha +
+                                     ';stroke-width:' + IntToStr(AObj.Pen.Width) + ';"/></svg></div>');
+         Writeln(FWorkingFileHandle);
+       end;
   end;
   procedure DrawPolyline(AObj: TRLPolylineObject);
+    var
+    I: Integer;
+    Pontos,EstiloLinha : String;
   begin
-    ///
+     Pontos := '';
+     for I := 0 to High(AObj.Points) do
+         Pontos := Pontos + ' ' + IntToStr(AObj.Points[I].X - FPrintCut.X - AObj.BoundsRect.Left) + ',' +
+                                  InttoStr(AObj.Points[I].Y - FPrintCut.Y - AObj.BoundsRect.Top);
+
+     EstiloLinha := '';
+       case AObj.Pen.Style of
+       MetaPenStyleSolid: EstiloLinha := '';
+       MetaPenStyleDash: EstiloLinha := ';stroke-dasharray:10,10';
+       MetaPenStyleDot: EstiloLinha := ';stroke-dasharray:2,2';
+       MetaPenStyleDashDot: EstiloLinha := ';stroke-dasharray:10,5,2,5';
+       MetaPenStyleDashDotDot: EstiloLinha := ';stroke-dasharray:10,5,2,5,2,5';
+       MetaPenStyleInsideFrame: EstiloLinha := '';
+       end;
+
+     Write(FWorkingFileHandle, '<div name="PoligonoLinha" style="position:absolute;' +
+                                 'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' +
+                                 'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px">' +
+                                 '<svg width=' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px' +
+                                 ' height=' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px>' +
+                                 '<polyline points="' + Pontos + '"' +
+                                 ' style="stroke:#' + ColorToHex(FromMetaColor(AObj.Pen.Color)) +
+                                 EstiloLinha +
+                                 ';stroke-width:' + IntToStr(AObj.Pen.Width) + ';"/></svg></div>');
   end;
   procedure DrawImage(AObj: TRLImageObject);
   var
@@ -605,18 +706,18 @@ var
       try
         if DoSaveGraphic(graph, graphfn) then
         begin
-          Write(FWorkingFileHandle, '<div style="position:absolute;' + 
-                                   'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' + 
-                                   'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' + 
-                                   'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' + 
-                                   'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' + 
+          Write(FWorkingFileHandle, '<div style="position:absolute;' +
+                                   'left:' + IntToStr(AObj.BoundsRect.Left - FPrintCut.X) + 'px;' +
+                                   'top:' + IntToStr(AObj.BoundsRect.Top - FPrintCut.Y) + 'px;' +
+                                   'width:' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + 'px;' +
+                                   'height:' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + 'px;' +
                                    ClipStr(FromMetaRect(AObj.BoundsRect), cliprct) + '">');
-          Write(FWorkingFileHandle, '<img src="' + ExtractFileName(graphfn) + '" ' + 
-                                   'width=' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + ' ' + 
+          Write(FWorkingFileHandle, '<img src="' + ExtractFileName(graphfn) + '" ' +
+                                   'width=' + IntToStr(AObj.BoundsRect.Right - AObj.BoundsRect.Left) + ' ' +
                                    'height=' + IntToStr(AObj.BoundsRect.Bottom - AObj.BoundsRect.Top) + '>');
           Write(FWorkingFileHandle, '</div>');
           Writeln(FWorkingFileHandle);
-        end; 
+        end;
       finally
         graph.free;
       end;
