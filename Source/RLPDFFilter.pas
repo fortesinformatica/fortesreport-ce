@@ -107,6 +107,9 @@ const
   voCenterWindow = 16;
 
 type
+  Win1252String = type AnsiString(1252); // for the CP-1252 conversion
+
+type
   TRLPDFFilterPageModeType = (pmRegular, pmOutlines, pmThumbs, pmFullScreen);
   TRLPDFFilterPageLayoutType = (plRegular, plSinglePage, plOneColumn,
     plTwoColumnLeft, plTwoColumnRight);
@@ -394,7 +397,7 @@ type
       write FColumnLeadingPointSize;
     property CharCount: Word read FCharCount write FCharCount;
   end;
-	
+
 	{$IFDEF RTL230_UP}
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   {$ENDIF RTL230_UP}
@@ -471,6 +474,42 @@ const
   NULLLOCATION: TRLPDFFilterLocationType = (X: 0; Y: 0);
 
 // UTILS
+
+// HELPER FUNCTION FOR TEXT WIDTH EVEN FOR codes > #127
+function GetWinAnsiWidth(const Rec: TRLMetaFontMetrics; C: Byte): Integer;
+begin
+  case C of
+    128: Result := 556;  // € width (units consistent with other widths in Rec.Widths)
+    130: Result := 278;  // ‚
+    131: Result := 556;  // ƒ
+    132: Result := 556;  // „
+    133: Result := 1000; // …
+    134: Result := 556;  // †
+    135: Result := 556;  // ‡
+    136: Result := 333;  // ˆ
+    137: Result := 1000; // ‰
+    138: Result := 556;  // Š
+    139: Result := 333;  // ‹
+    140: Result := 889;  // Œ
+    142: Result := 556;  // Ž
+    145: Result := 278;  // ‘
+    146: Result := 278;  // ’
+    147: Result := 556;  // “
+    148: Result := 556;  // ”
+    149: Result := 350;  // •
+    150: Result := 556;  // –
+    151: Result := 1000; // —
+    152: Result := 333;  // ˜
+    153: Result := 1000; // ™
+    154: Result := 556;  // š
+    155: Result := 333;  // ›
+    156: Result := 889;  // œ
+    158: Result := 556;  // ž
+    159: Result := 1000; // Ÿ
+  else
+    Result := Rec.Widths[C];  // ASCII or normal code
+  end;
+end;
 
 function IntToOctal(AValue: Integer; AWidth: Integer = 0): string;
 begin
@@ -1486,7 +1525,7 @@ begin
           Writeln;
           W := 0;
         end;
-        Write(IntToStr(MulDiv(rec.Widths[J], 96, ScreenPPI)) + ' ');
+        Write(IntToStr(MulDiv(GetWinAnsiWidth(rec, J), 96, ScreenPPI)) + ' '); // text width even for codes > #127
         Inc(W);
       end;
       Writeln;
@@ -2113,25 +2152,32 @@ end;
 class function TRLPDFFilter.PDF_EncodeText(const AText: string): string;
 var
   I: Integer;
+  B: AnsiString;
 begin
-  Result := GetAnsiStr(AText);
 
-  for I := Length(Result) downto 1 do
-    if CharInSet(Result[I], ['(', ')', '\']) then
-    begin
-      case Result[I] of
-        #08: Result[I] := 'b';
-        #10: Result[I] := 'n';
-        #12: Result[I] := 'f';
-        #13: Result[I] := 'r';
-      end;
-      Insert('\', Result, I);
-    end
-    else if not CharInSet(Result[I], [#32..#126, #128..#255]) then
-    begin
-      Insert(IntToOctal(Ord(Result[I]), 3), Result, I + 1);
-      Result[I] := '\';
+// IntToOctal(Value, 3) converts 0–255 ? "000".."377" octal string.
+// Euro sign (#128) ? \200 in the PDF stream.
+// (, ), \ are properly escaped.
+// All printable ASCII (#32..#126) remain unchanged.
+
+  // Convert UTF-16 to Windows-1252 (PDF WinAnsi)
+  B := Win1252String(AText);
+
+  Result := '';
+
+  for I := 1 to Length(B) do
+  begin
+    case B[I] of
+      '(': Result := Result + '\(';   // escape parentheses
+      ')': Result := Result + '\)';
+      '\': Result := Result + '\\';   // escape backslash
+      else
+        if Byte(B[I]) > 127 then      // non-ASCII (like €)
+          Result := Result + '\' + IntToOctal(Byte(B[I]), 3)
+        else
+          Result := Result + B[I];    // printable ASCII
     end;
+  end;
 end;
 
 initialization
