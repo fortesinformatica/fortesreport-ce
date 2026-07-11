@@ -200,13 +200,14 @@ type
     para a obtenção de grandes ganhos na cadeia distributiva, sempre objetivando a
     otimizar e a maximizar, por meio da informação rápida e precisa;
   bcEAN128B - ver bcEAN128A;
-  bcEAN128C - ver bcEAN128A.
+  bcEAN128C - ver bcEAN128A;
+  bcCode128 - Codificacao Code 128 com selecao automatica de subconjunto (A, B ou C).
   :}
   TRLBarcodeType = (bcCode2OF5Interleaved, bcCode2OF5Industry, bcCode2OF5Matrix, 
     bcCode39, bcCode39Extended, bcCode128A, bcCode128B, bcCode128C, 
     bcCode93, bcCode93Extended, bcMSI, bcPostNet, bcCodaBar, bcEAN8, 
     bcEAN13, bcUPC_A, bcUPC_E0, bcUPC_E1, bcUPC_Supp2, bcUPC_Supp5, 
-    bcEAN128A, bcEAN128B, bcEAN128C);
+    bcEAN128A, bcEAN128B, bcEAN128C, bcCode128);
   {/@type}
 
   // para uso interno somente
@@ -566,7 +567,8 @@ var
     (Name: 'UPC Supp5'; DigitsOnly: True), 
     (Name: 'EAN 128A'; DigitsOnly: False), 
     (Name: 'EAN 128B'; DigitsOnly: False), 
-    (Name: 'EAN 128C'; DigitsOnly: True));
+    (Name: 'EAN 128C'; DigitsOnly: True),
+    (Name: 'Code 128 Auto'; DigitsOnly: False));
 
 // UTILS
 
@@ -1056,9 +1058,10 @@ begin
       FRatio := 2.25
     else if FRatio > 3 then
       FRatio := 3;
-    bcCode128A, 
-    bcCode128B, 
-    bcCode128C, 
+    bcCode128A,
+    bcCode128B,
+    bcCode128C,
+    bcCode128,
     bcCode93, 
     bcCode93Extended, 
     bcMSI, 
@@ -1097,9 +1100,10 @@ begin
     bcCode2OF5Matrix: Result := GetAs2OF5Matrix(PureBarText);
     bcCode39: Result := GetAs39(PureBarText);
     bcCode39Extended: Result := GetAs39Extended(PureBarText);
-    bcCode128A, 
-    bcCode128B, 
-    bcCode128C, 
+    bcCode128A,
+    bcCode128B,
+    bcCode128C,
+    bcCode128,
     bcEAN128A, 
     bcEAN128B, 
     bcEAN128C: Result := GetAs128(PureBarText);
@@ -1635,14 +1639,177 @@ const
         Break;
       end;
   end;
-var
+  // find code 128 num subconjunto explicito (A ou B)
+  function Find_Code128AorB(C: Char; ASubset: Char): Integer;
+  var
+    I: Integer;
+    V: Char;
+  begin
+    Result := -1;
+    for I := 0 to High(Table_128) do
+    begin
+      if ASubset = 'A' then
+        V := Table_128[I].A
+      else
+        V := Table_128[I].B;
+      if C = V then
+      begin
+        Result := I;
+        Break;
+      end;
+    end;
+  end;
+  // subconjunto necessario para representar um caractere nao numerico:
+  // 'A' para maiusculas/digitos/simbolos (ASCII < 96), 'B' para minusculas
+  // e demais caracteres altos (ASCII >= 96)
+  function NeededTextSubset(C: Char): Char;
+  begin
+    if Ord(C) >= 96 then
+      Result := 'B'
+    else
+      Result := 'A';
+  end;var
   I, J, idx: Integer;
   startcode: string;
   checksum: Integer;
   codeword_pos: Integer;
   text: string;
+  curSubset: Char;
+  needed: Char;
+  numDigits: Integer;
 begin
   text := AText;
+
+  if FBarcodeType = bcCode128 then
+  begin
+    // CODE 128 hibrido com chaveamento automatico de subconjunto (A, B e C):
+    // - sequencias numericas longas usam o subconjunto C (2 digitos por simbolo);
+    // - maiusculas, digitos avulsos e simbolos usam o subconjunto A;
+    // - minusculas (e demais caracteres ASCII >= 96) usam o subconjunto B.
+    // determina o subconjunto inicial conforme os primeiros caracteres
+    J := 1;
+    while (J <= Length(text)) and CharInSet(text[J], ['0'..'9']) do
+      Inc(J);
+    numDigits := J - 1;
+    if numDigits >= 4 then
+    begin
+      checksum := 105;
+      Result := Convert(StartC);
+      curSubset := 'C';
+    end
+    else
+    begin
+      // inicia em A ou B conforme o primeiro caractere nao numerico
+      curSubset := 'A';
+      for J := 1 to Length(text) do
+        if not CharInSet(text[J], ['0'..'9']) then
+        begin
+          curSubset := NeededTextSubset(text[J]);
+          Break;
+        end;
+      if curSubset = 'A' then
+      begin
+        checksum := 103;
+        Result := Convert(StartA);
+      end
+      else
+      begin
+        checksum := 104;
+        Result := Convert(StartB);
+      end;
+    end;
+    codeword_pos := 1;
+    I := 1;
+    while I <= Length(text) do
+    begin
+      J := I;
+      while (J <= Length(text)) and CharInSet(text[J], ['0'..'9']) do
+        Inc(J);
+      numDigits := J - I;
+      if curSubset = 'C' then
+      begin
+        if numDigits >= 2 then
+        begin
+          idx := Find_Code128C(Copy(text, I, 2));
+          if idx < 0 then
+            idx := 0;
+          Result := Result + Convert(Table_128[idx].Data);
+          Inc(checksum, idx * codeword_pos);
+          Inc(codeword_pos);
+          Inc(I, 2);
+        end
+        else
+        begin
+          // sai do C para o subconjunto de texto adequado (A ou B)
+          curSubset := NeededTextSubset(text[I]);
+          if curSubset = 'A' then
+            idx := 101 // CODE A
+          else
+            idx := 100; // CODE B
+          Result := Result + Convert(Table_128[idx].Data);
+          Inc(checksum, idx * codeword_pos);
+          Inc(codeword_pos);
+        end;
+      end
+      else
+      begin
+        if numDigits >= 4 then
+        begin
+          // trecho numerico longo: troca para C (codifica 1 digito antes se impar)
+          if numDigits mod 2 = 1 then
+          begin
+            idx := Find_Code128AorB(text[I], curSubset);
+            if idx < 0 then
+            begin
+              FInvalid := True;
+              idx := 0;
+            end;
+            Result := Result + Convert(Table_128[idx].Data);
+            Inc(checksum, idx * codeword_pos);
+            Inc(codeword_pos);
+            Inc(I);
+          end;
+          curSubset := 'C';
+          Result := Result + Convert(Table_128[99].Data); // CODE C
+          Inc(checksum, 99 * codeword_pos);
+          Inc(codeword_pos);
+        end
+        else
+        begin
+          // caractere avulso: chaveia A<->B se o caractere exigir
+          if not CharInSet(text[I], ['0'..'9']) then
+          begin
+            needed := NeededTextSubset(text[I]);
+            if needed <> curSubset then
+            begin
+              if needed = 'A' then
+                idx := 101 // CODE A
+              else
+                idx := 100; // CODE B
+              Result := Result + Convert(Table_128[idx].Data);
+              Inc(checksum, idx * codeword_pos);
+              Inc(codeword_pos);
+              curSubset := needed;
+            end;
+          end;
+          idx := Find_Code128AorB(text[I], curSubset);
+          if idx < 0 then
+          begin
+            FInvalid := True;
+            idx := 0;
+          end;
+          Result := Result + Convert(Table_128[idx].Data);
+          Inc(checksum, idx * codeword_pos);
+          Inc(codeword_pos);
+          Inc(I);
+        end;
+      end;
+    end;
+    checksum := checksum mod 103;
+    Result := Result + Convert(Table_128[checksum].Data);
+    Result := Result + Convert(Stop);
+    Exit;
+  end;
   case FBarcodeType of
     bcCode128A,
     bcEAN128A: begin

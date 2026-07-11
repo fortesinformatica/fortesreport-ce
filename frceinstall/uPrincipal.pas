@@ -463,12 +463,14 @@ begin
   begin
     tPlatform   := bpWin32;
     sDirLibrary := sDirRoot + sTipo + 'Lib' + sVersao;
+    oFRCE.Installations[iVersion].DCC := oFRCE.Installations[iVersion].DCC32;
   end
   else
   if edtPlatform.ItemIndex = 1 then // Win64
   begin
     tPlatform   := bpWin64;
     sDirLibrary := sDirRoot + sTipo + 'Lib' + sVersao + 'x64';
+    oFRCE.Installations[iVersion].DCC := (oFRCE.Installations[iVersion] as TJclBDSInstallation).DCC64;
   end;
 end;
 
@@ -535,7 +537,7 @@ begin
      if VersionNumberStr = 'd16' then
         Sender.Options.Add('-NSData.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win');
 
-     if MatchText(VersionNumberStr, ['d17','d18','d19','d20','d21','d22','d23','d24','d25','d26','d27','d28','d29']) then
+     if MatchText(VersionNumberStr, ['d17','d18','d19','d20','d21','d22','d23','d24','d25','d26','d27','d28','d29', 'd37']) then
         Sender.Options.Add('-NSWinapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell');
 
   end;
@@ -604,9 +606,12 @@ begin
     else if oFRCE.Installations[iFor].VersionNumberStr = 'd28' then
       edtDelphiVersion.Items.Add('Delphi 11 Alexandria')
     else if oFRCE.Installations[iFor].VersionNumberStr = 'd29' then
-      edtDelphiVersion.Items.Add('Delphi 12');
+      edtDelphiVersion.Items.Add('Delphi 12 Athens')
+    else if oFRCE.Installations[iFor].VersionNumberStr = 'd37' then
+      edtDelphiVersion.Items.Add('Delphi 13 Florence');
 
     // -- Evento disparado antes de iniciar a execução do processo.
+
     oFRCE.Installations[iFor].DCC32.OnBeforeExecute := BeforeExecute;
 
     // -- Evento para saidas de mensagens.
