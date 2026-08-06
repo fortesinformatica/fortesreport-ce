@@ -153,6 +153,8 @@ type
     procedure FindDirs(ADirRoot: String; bAdicionar: Boolean = True);
     procedure CopiarArquivosToLib;
     procedure InstalarOPacoteNoDelphi(const NomePacote: String);
+    function RemoverPathsDuplicados(const APaths: String): String;
+    procedure UsarResponseFileSeNecessario(Sender: TJclBorlandCommandLineTool);
   public
 
   end;
@@ -483,8 +485,106 @@ begin
     WriteToTXT(AnsiString(PathArquivoLog), AnsiString(Text));
 end;
 
+// Remove diretorios repetidos e vazios de uma lista de paths separada por ";".
+// A Library Path do Delphi costuma ter muitas entradas duplicadas, o que
+// aumenta desnecessariamente o tamanho da linha de comando do compilador.
+function TfrmPrincipal.RemoverPathsDuplicados(const APaths: String): String;
+var
+  slOrigem, slDestino, slIndice: TStringList;
+  iFor: Integer;
+  sPath: String;
+begin
+  slOrigem  := TStringList.Create;
+  slDestino := TStringList.Create;
+  slIndice  := TStringList.Create;
+  try
+    slOrigem.StrictDelimiter := True;
+    slOrigem.Delimiter := ';';
+    slOrigem.DelimitedText := APaths;
+
+    slIndice.CaseSensitive := False;
+    slIndice.Sorted := True;
+    slIndice.Duplicates := dupIgnore;
+
+    for iFor := 0 to slOrigem.Count - 1 do
+    begin
+      sPath := ExcludeTrailingPathDelimiter(Trim(slOrigem[iFor]));
+
+      if (sPath = '') or (slIndice.IndexOf(sPath) >= 0) then
+        Continue;
+
+      slIndice.Add(sPath);
+      slDestino.Add(sPath);
+    end;
+
+    slDestino.StrictDelimiter := True;
+    slDestino.Delimiter := ';';
+    Result := slDestino.DelimitedText;
+  finally
+    slIndice.Free;
+    slDestino.Free;
+    slOrigem.Free;
+  end;
+end;
+
+// A API CreateProcess do Windows limita a linha de comando a 32767 caracteres.
+// Quando a Library Path do Delphi e muito grande (muitos componentes instalados
+// ou diretorios com nomes longos) o dcc32/dcc64 nem chega a ser executado e a
+// compilacao falha sem nenhuma mensagem de erro. Nesse caso as opcoes sao
+// gravadas em um "response file" (@arquivo), suportado pelo compilador, o que
+// mantem a linha de comando pequena.
+procedure TfrmPrincipal.UsarResponseFileSeNecessario(Sender: TJclBorlandCommandLineTool);
+const
+  // 32767 do Windows menos uma margem para o nome do compilador e do pacote
+  CLimiteLinhaComando = 30000;
+var
+  iFor, iTamanho: Integer;
+  sArquivoResposta: String;
+  slOpcoes: TStringList;
+begin
+  iTamanho := Length(Sender.FileName) + Length(sDirPackage) + 64;
+
+  for iFor := 0 to Sender.Options.Count - 1 do
+    Inc(iTamanho, Length(Sender.Options[iFor]) + 1);
+
+  if iTamanho <= CLimiteLinhaComando then
+    Exit;
+
+  sArquivoResposta := IncludeTrailingPathDelimiter(sDirLibrary) + 'frce_dcc.rsp';
+
+  slOpcoes := TStringList.Create;
+  try
+    slOpcoes.Assign(Sender.Options);
+
+    // --no-config precisa continuar na linha de comando
+    iFor := slOpcoes.IndexOf('--no-config');
+    if iFor >= 0 then
+      slOpcoes.Delete(iFor);
+
+    // gravar em ANSI, o compilador nao interpreta BOM/UTF-8 no response file
+    slOpcoes.SaveToFile(sArquivoResposta, TEncoding.ANSI);
+
+    Sender.Options.Clear;
+
+    if oFRCE.Installations[iVersion].SupportsNoConfig then
+      Sender.Options.Add('--no-config');
+
+    // as aspas envolvem tambem o "@" para suportar diretorios com espacos
+    Sender.Options.Add('"@' + sArquivoResposta + '"');
+
+    WriteToTXT(AnsiString(PathArquivoLog),
+      AnsiString(Format('Linha de comando muito grande (%d caracteres). ' +
+        'Usando response file: %s', [iTamanho, sArquivoResposta])));
+    WriteToTXT(AnsiString(PathArquivoLog), AnsiString(slOpcoes.Text));
+  finally
+    slOpcoes.Free;
+  end;
+end;
+
 // evento para setar os parâmetros do compilador antes de compilar
 procedure TfrmPrincipal.BeforeExecute(Sender: TJclBorlandCommandLineTool);
+var
+  sLibraryPath: String;
 begin
   // limpar os parâmetros do compilador
   Sender.Options.Clear;
@@ -512,13 +612,15 @@ begin
   // -D<syms> = Define conditionals
   Sender.Options.Add('-DRELEASE');
   // -U<paths> = Unit directories
+  sLibraryPath := RemoverPathsDuplicados(oFRCE.Installations[iVersion].LibrarySearchPath[tPlatform]);
+
   Sender.AddPathOption('U', oFRCE.Installations[iVersion].LibFolderName[tPlatform]);
-  Sender.AddPathOption('U', oFRCE.Installations[iVersion].LibrarySearchPath[tPlatform]);
+  Sender.AddPathOption('U', sLibraryPath);
   Sender.AddPathOption('U', sDirLibrary);
   // -I<paths> = Include directories
-  Sender.AddPathOption('I', oFRCE.Installations[iVersion].LibrarySearchPath[tPlatform]);
+  Sender.AddPathOption('I', sLibraryPath);
   // -R<paths> = Resource directories
-  Sender.AddPathOption('R', oFRCE.Installations[iVersion].LibrarySearchPath[tPlatform]);
+  Sender.AddPathOption('R', sLibraryPath);
   // -N0<path> = unit .dcu output directory
   Sender.AddPathOption('N0', sDirLibrary);
   Sender.AddPathOption('LE', sDirLibrary);
@@ -539,8 +641,10 @@ begin
 
      if MatchText(VersionNumberStr, ['d17','d18','d19','d20','d21','d22','d23','d24','d25','d26','d27','d28','d29', 'd37']) then
         Sender.Options.Add('-NSWinapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell');
-
   end;
+
+  // usar response file quando a linha de comando estourar o limite do Windows
+  UsarResponseFileSeNecessario(Sender);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
@@ -613,6 +717,11 @@ begin
     // -- Evento disparado antes de iniciar a execução do processo.
 
     oFRCE.Installations[iFor].DCC32.OnBeforeExecute := BeforeExecute;
+
+    // -- o mesmo tratamento para o compilador de 64 bits, quando existir.
+    if (oFRCE.Installations[iFor] is TJclBDSInstallation) and
+       (clDcc64 in oFRCE.Installations[iFor].CommandLineTools) then
+      (oFRCE.Installations[iFor] as TJclBDSInstallation).DCC64.OnBeforeExecute := BeforeExecute;
 
     // -- Evento para saidas de mensagens.
     oFRCE.Installations[iFor].OutputCallback := OutputCallLine;

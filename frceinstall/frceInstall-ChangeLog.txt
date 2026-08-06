@@ -50,6 +50,13 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+Data 06/08/2026
+[-] Corrigida a falha de compilação silenciosa quando a Library Path do Delphi
+    gera uma linha de comando maior que o limite de 32767 caracteres do Windows.
+    As opções do dcc32/dcc64 passam a ser gravadas em um response file (@arquivo)
+    e os diretórios duplicados da Library Path são removidos.
+Por: Victor H. Gonzales "Panda"
+
 Data 13/09/2025
 [*] Atualização para instalação com Delphi 13 Florence
 Por: Victor H. Gonzales e Alexandre de Paula
