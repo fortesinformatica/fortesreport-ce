@@ -109,6 +109,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="SVN_Class.pas"/>
+        <DCCReference Include="uPlataformaAlvo.pas"/>
         <DCCReference Include="uPrincipal.pas">
             <Form>frmPrincipal</Form>
         </DCCReference>

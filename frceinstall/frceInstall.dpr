@@ -50,6 +50,7 @@ program frceInstall;
 uses
   Forms,
   SVN_Class in 'SVN_Class.pas',
+  uPlataformaAlvo in 'uPlataformaAlvo.pas',
   uPrincipal in 'uPrincipal.pas' {frmPrincipal};
 
 {$R *.res}
