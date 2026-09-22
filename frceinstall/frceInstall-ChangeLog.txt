@@ -50,6 +50,109 @@ Símbolo : Significado
 [*]     : Recurso modificado/melhorado
 [-]     : Correção de Bug (assim esperamos)
 
+Data 22/09/2026
+[+] Log da instalação colorido, no mesmo esquema do instalador do ACBr: a lista
+    de andamento passou a ser desenhada manualmente (lbOwnerDrawFixed, fonte
+    Consolas) e cada mensagem carrega a sua severidade -- verde para sucesso,
+    vermelho e negrito para erro, laranja para aviso, preto e negrito para os
+    títulos de etapa e azul para as demais informações. A seleção é ignorada de
+    propósito no desenho: a última linha fica sempre selecionada para a lista
+    rolar sozinha, e sem isso ela perderia a cor. Mensagens com quebra de linha
+    viram um item por linha, para o caractere de controle não aparecer no meio
+    do texto.
+[+] Lista de IDEs no lugar dos combos "Versão do delphi" e "Plataforma". Cada
+    combinação de IDE com plataforma (Win32/Win64) é um alvo, e vários podem ser
+    marcados de uma vez -- antes era preciso voltar à tela de configuração e
+    repetir a instalação para cada versão do Delphi. Uma versão nova do Delphi
+    passa a aparecer na lista mesmo sem estar mapeada no código, pelo nome que a
+    JCL informa. A seleção é gravada no .ini; quem já tinha um .ini das versões
+    anteriores tem a versão e a plataforma que estavam gravadas marcadas
+    automaticamente na primeira abertura.
+[+] Compilação dos pacotes nos modos Release e Debug. Os modos não são uma
+    escolha à parte: decorrem de "Deixar somente a pasta Lib no Library Path":
+
+      marcada    -> Release e Debug. Os projetos do usuário compilam contra os
+                    .dcu prontos, então precisam do Release para o build normal
+                    e do Debug para quem marca "use debug .dcus".
+
+      desmarcada -> somente Release. Os fontes ficam no Library Path e cada
+                    projeto recompila o FortesReport com as opções dele,
+                    ignorando os .dcu daqui. Sobra como consumidor só a IDE, que
+                    carrega os BPL de Release. Compilar Debug nesse caso seria
+                    dobrar o tempo de instalação para gerar algo que ninguém abre.
+
+    Os .dcu de Debug são registrados no Debug DCU Path da IDE.
+[-] As chaves do compilador eram as mesmas para todo mundo, e não eram as de
+    Release: mandavam -$O- (otimização desligada) e -$W+ (stack frames ligados)
+    junto com -DRELEASE. Agora o Release usa -$O+ -$W- -$D- -$L- -$Y- -$C- e o
+    Debug -$O- -$W+ -$D+ -$L+ -$Y+ -$C+ -V. Todas as chaves são informadas
+    explicitamente nos dois modos, para o resultado não depender do padrão do
+    dcc32. Q (overflow) e R (range) continuam desligados nos dois modos: ligá-los
+    faria o RLCRC32, que conta com o estouro de inteiro, levantar exceção.
+[-] -B e -M eram enviados juntos ao compilador, e um anula o outro: com o -B o
+    compilador refaz tudo e o -M perde o efeito. Ficou só o -B, que é o que já
+    valia na prática. Ele também é o único seguro agora, porque na compilação
+    Debug o -U inclui a pasta do Release e o -M poderia dar por bom um .dcu da
+    outra configuração.
+[+] Instalação dos pacotes na IDE de 64 bits do Delphi (lista "Known Packages
+    x64"), quando a versão instalada possuir bin64\bds.exe e o designide para
+    Win64. O suporte é detectado pelos arquivos e não pelo número da versão,
+    assim um Delphi novo passa a funcionar sem alterar o instalador. Opção
+    "Instalar também na IDE de 64 bits (se houver suporte)" na tela de
+    configuração.
+[-] Win64 era "somente compila" em tudo: além de não instalar na IDE, a limpeza
+    do Library Path e a cópia dos .dcr/.res/.dfm/.ini/.inc para a pasta Lib só
+    aconteciam para Win32, porque estavam dentro do teste de plataforma da tela.
+    Agora Win32 e Win64 se comportam igual.
+[*] Cada combinação passa a ter a sua própria pasta de artefatos:
+    Binary\Lib<versao>\<Plataforma>\<Configuração>. Antes Win32 e Win64 gravavam
+    em Lib<versao> e Lib<versao>x64, com BPL, DCP e DCU soltos na raiz -- trocar
+    de configuração mudaria o caminho do BPL e deixaria o registro anterior da
+    IDE apontando para o lugar errado. O que estiver solto na raiz da plataforma
+    (layout antigo) é removido no início da instalação.
+[-] Corrigido o "Can't load package ... frce.bpl" ao abrir a IDE. A limpeza dos
+    pacotes registrados era feita só para a IDE que estava sendo instalada e só
+    na lista de 32 bits. Agora a limpeza cobre as duas listas da IDE, acontece
+    uma única vez por IDE em cada execução, e uma varredura inicial remove
+    registros órfãos de TODAS as IDEs detectadas, inclusive as não marcadas.
+[-] A pasta dos BPLs voltou a ser informada no PATH da IDE para as DUAS
+    plataformas. É por ali que a IDE localiza os BPLs de runtime exigidos pelos
+    pacotes de design; o Package Search Path serve aos projetos e não ao
+    carregamento dos pacotes da IDE. Não há conflito entre Win32 e Win64 de mesmo
+    nome: o loader do Windows ignora a DLL de arquitetura errada e continua
+    procurando nas pastas seguintes (é o que a própria Delphi faz ao deixar Bpl e
+    Bpl\Win64 juntos no PATH do sistema).
+[-] A gravação do PATH da IDE terminava com "raise" sempre que o
+    SendMessageTimeout devolvia um resultado diferente de zero -- o valor lido
+    era o retorno da mensagem, e não um código de erro. O broadcast foi removido:
+    a IDE lê a configuração ao abrir, e ela precisa estar fechada de qualquer
+    jeito para a instalação.
+[+] Conferência da dependência: ao registrar o dclfrce o instalador avisa se o
+    frce.bpl não estiver na MESMA pasta (mesma versão do Delphi, plataforma e
+    configuração), caso em que a IDE não conseguiria carregar o pacote.
+[*] O pacote de design passou a ser registrado na IDE a partir do BPL já
+    compilado, em vez de chamar o InstallPackage da JCL, que recompilava tudo de
+    novo.
+[*] Velocidade: os diretórios do Library/Browsing Path passaram a ser gravados de
+    uma vez só -- a JCL regrava o EnvOptions.proj a cada diretório.
+[*] Um arquivo de log por alvo (log_<IDE>_<Plataforma>.txt), com cabeçalho
+    informando os modos compilados e se os pacotes seriam registrados na IDE.
+    "Visualizar log" abre o log do último alvo instalado.
+[*] Quando um alvo falha, a instalação para na hora (um alvo com erro quase
+    sempre indica um problema que se repetiria nos demais), e a mensagem diz QUAL
+    alvo interrompeu a fila.
+[-] As mensagens de "instalado em ..." saíam vazias: dependiam de um campo de
+    destino que nunca era atribuído e cujo valor padrão não tinha tratamento.
+    O código morto foi removido.
+[-] A pasta "Source" não entrava no Library/Browsing Path, só as subpastas dela
+    -- e o FortesReport tem .pas direto nela.
+[*] Os namespaces (-NS) passaram a ser decididos pela versão dos pacotes da IDE
+    em vez de uma lista fixa de versões, que deixaria um Delphi novo sem eles.
+[*] Validações da tela de configuração: ao menos um alvo marcado, e a pasta
+    informada precisa conter "Packages". O aviso sobre versões antigas do Delphi
+    sai uma única vez, ao concluir a escolha, listando todas as marcadas.
+Por: Victor H. Gonzales "Panda"
+
 Data 06/08/2026
 [-] Corrigida a falha de compilação silenciosa quando a Library Path do Delphi
     gera uma linha de comando maior que o limite de 32767 caracteres do Windows.

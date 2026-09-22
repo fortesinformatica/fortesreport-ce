@@ -262,23 +262,10 @@ object frmPrincipal: TfrmPrincipal
       ExplicitHeight = 397
       object Label4: TLabel
         Left = 18
-        Top = 157
-        Width = 79
+        Top = 152
+        Width = 278
         Height = 13
-        Caption = 'Vers'#227'o do delphi'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label5: TLabel
-        Left = 196
-        Top = 157
-        Width = 52
-        Height = 13
-        Caption = 'Plataforma'
+        Caption = 'IDEs e plataformas onde o FortesReport ser'#225' instalado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -291,7 +278,7 @@ object frmPrincipal: TfrmPrincipal
         Top = 102
         Width = 321
         Height = 13
-        Caption = 
+        Caption =
           'Diret'#243'rio onde ser'#225' instalado (o diret'#243'rio ser'#225' criado se n'#227'o ex' +
           'istir)'
         Font.Charset = DEFAULT_CHARSET
@@ -312,40 +299,21 @@ object frmPrincipal: TfrmPrincipal
         ShowHint = True
         OnClick = btnSelecDirInstallClick
       end
-      object edtDelphiVersion: TComboBox
+      object btnMarcarTodos: TSpeedButton
         Left = 18
-        Top = 173
-        Width = 172
-        Height = 21
-        Style = csDropDownList
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        OnChange = edtDelphiVersionChange
+        Top = 287
+        Width = 100
+        Height = 23
+        Caption = 'Marcar todos'
+        OnClick = btnMarcarTodosClick
       end
-      object edtPlatform: TComboBox
-        Left = 196
-        Top = 173
-        Width = 172
-        Height = 21
-        Style = csDropDownList
-        Enabled = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ItemIndex = 0
-        ParentFont = False
-        TabOrder = 2
-        Text = 'Win32'
-        Items.Strings = (
-          'Win32'
-          'Win64')
+      object btnDesmarcarTodos: TSpeedButton
+        Left = 124
+        Top = 287
+        Width = 100
+        Height = 23
+        Caption = 'Desmarcar todos'
+        OnClick = btnDesmarcarTodosClick
       end
       object edtDirDestino: TEdit
         Left = 18
@@ -360,6 +328,61 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
         TabOrder = 0
         Text = 'C:\fortesreport-ce'
+      end
+      object lstAlvos: TCheckListBox
+        Left = 18
+        Top = 168
+        Width = 519
+        Height = 113
+        Hint = 'Marque as IDEs e plataformas onde deseja instalar o FortesReport'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ItemHeight = 15
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+      end
+      object chkSomenteLib: TCheckBox
+        Left = 18
+        Top = 316
+        Width = 519
+        Height = 17
+        Hint = 'Marcada: compila Release e Debug e tira os fontes do Library Path. Desmarcada: compila somente Release e mant'#233'm os fontes no Library Path.'
+        Caption = 'Deixar somente a pasta Lib no Library Path (Release + Debug)'
+        Checked = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        State = cbChecked
+        TabOrder = 2
+      end
+      object chkInstalarIDE64: TCheckBox
+        Left = 18
+        Top = 337
+        Width = 519
+        Height = 17
+        Hint = 'Registra os pacotes tamb'#233'm na lista "Known Packages x64" da IDE de 64 bits.'
+        Caption = 'Instalar tamb'#233'm na IDE de 64 bits (se houver suporte)'
+        Checked = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        State = cbChecked
+        TabOrder = 3
       end
     end
     object wizPgObterFontes: TJvWizardInteriorPage
@@ -497,16 +520,18 @@ object frmPrincipal: TfrmPrincipal
         Top = 87
         Width = 516
         Height = 220
+        Style = lbOwnerDrawFixed
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
+        Font.Height = -12
+        Font.Name = 'Consolas'
         Font.Style = []
-        ItemHeight = 13
+        ItemHeight = 15
         ParentFont = False
         ParentShowHint = False
         ShowHint = True
         TabOrder = 1
+        OnDrawItem = lstMsgInstalacaoDrawItem
       end
       object pgbInstalacao: TProgressBar
         Left = 21

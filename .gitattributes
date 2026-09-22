@@ -3,8 +3,8 @@
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
-*.pas text
-*.dfm text
+*.pas -text
+*.dfm -text
 *.md text
 *.txt text
 *.java text
