@@ -413,13 +413,14 @@ end;
 
 function CellId(RowId, ColId: Integer): string;
 begin
-  Result := Chr(ColId mod 26 + 65);
-  repeat
-    ColId := ColId div 26;
-    if ColId <= 0 then
-      Break;
-    Result := Chr(ColId mod 26 + 65) + Result;
-  until False;
+  // ColId começa em 0: 0 = A, 25 = Z, 26 = AA, 701 = ZZ, 702 = AAA
+  Result := '';
+  Inc(ColId);
+  while ColId > 0 do
+  begin
+    Result := Chr((ColId - 1) mod 26 + 65) + Result;
+    ColId := (ColId - 1) div 26;
+  end;
   Result := Result + IntToStr(RowId + 1);
 end;
 
